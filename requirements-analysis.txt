@@ -1,0 +1,28 @@
+# Additional dependencies for the analysis phases.
+#
+# requirements.txt is the ORIGINAL environment capture and is deliberately
+# left unmodified. This file records only what was added on top of it.
+#
+# Install:  .venv/bin/python -m pip install -r requirements-analysis.txt
+
+# --- Phase 0 (installed) ---
+pyarrow==26.0.0          # Parquet backend for the probe matrix cache
+pytest==9.2.0            # Phase 0 verification suite
+# transitive: iniconfig==2.3.1, pluggy==1.7.0
+
+# --- Deferred: install at the phase that needs it ---
+# Verified installable against this environment (Python 3.13.13,
+# numpy 2.5.4) by `pip install --dry-run` on 2026-11-02, but NOT installed,
+# because Phase 0 does not require them.
+#
+# statsmodels==0.15.0       # Phase 5  -- regression diagnostics, multiple testing
+#                           #   (pulls patsy==1.0.3)
+# scikit-survival==0.28.0   # Phase 5-7 -- penalized Cox, time-dependent AUC,
+#                           #   integrated Brier score.
+#                           #   NOTE: no prebuilt wheel for this Python/numpy
+#                           #   combination; compiles from source. Apple clang
+#                           #   21.0.0 + CommandLineTools are present.
+#                           #   (pulls ecos, numexpr, osqp, setuptools)
+#
+# scipy.stats.false_discovery_control is available in the installed
+# scipy 1.18.1, so FDR control needs no additional dependency.

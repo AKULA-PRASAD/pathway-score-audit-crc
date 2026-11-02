@@ -1,0 +1,27 @@
+{
+    "total_samples":585,
+    "unique_sample_ids":585,
+    "study_subsets":{
+        "discovery":443,
+        "validation":123,
+        "Non Tumoral":19
+    },
+    "tumor_stages":{
+        "2.0":271,
+        "3.0":210,
+        "4.0":60,
+        "1.0":38,
+        "0.0":4,
+        "nan":2
+    },
+    "rfs_events":{
+        "0.0":395,
+        "1.0":179,
+        "nan":11
+    },
+    "os_events":{
+        "0.0":385,
+        "1.0":194,
+        "nan":6
+    }
+}

@@ -1,0 +1,36 @@
+# --- virtual environment ---
+.venv/
+venv/
+env/
+
+# --- raw data (356 MB; integrity tracked in data/raw/CHECKSUMS.sha256) ---
+data/raw/*
+!data/raw/CHECKSUMS.sha256
+# NOTE: 'data/raw/*' not 'data/raw/' -- git cannot re-include a file
+# whose PARENT DIRECTORY is excluded, so the negation above would be
+# silently ignored with a trailing-slash pattern.
+
+# --- generated caches (reproducible from raw data) ---
+data/processed/
+
+# --- python bytecode / build ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# --- os / editor ---
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# --- credentials and secrets (defensive; none currently in project) ---
+.env
+.env.*
+*.pem
+*.key
+credentials.json
+secrets.yaml

@@ -1,0 +1,111 @@
+{
+  "description": "SHA-256 baseline of all pre-Phase-0 project files. Tripwire for accidental modification.",
+  "captured_utc": "2026-11-02T15:25:09.133107+00:00",
+  "phase": "pre-phase-0",
+  "file_count": 19,
+  "exclusions": {
+    ".venv/": "Virtual environment. Third-party code, reproducible from requirements.txt; not project work product.",
+    "data/raw/": "Large immutable downloads (356 MB). Tracked separately in data/raw/CHECKSUMS.sha256 and gitignored for size.",
+    "data/processed/": "Generated cache artifacts. Reproducible from raw data by scripts/13_build_probe_cache.py; integrity covered by the cache manifest.",
+    "__pycache__/, *.pyc": "Python bytecode. Generated, machine-specific.",
+    ".DS_Store": "macOS Finder metadata. Not project content.",
+    ".git/": "Version control internals."
+  },
+  "files": {
+    "requirements.txt": {
+      "sha256": "b644d9c56185303d1b36490155b7812b40d8b1c3a908d0df3a3696f087ae5b8d",
+      "size_bytes": 2156,
+      "mode": "0o644"
+    },
+    "metadata/GSE39582_acquisition_info.json": {
+      "sha256": "218e005bf6a5866dfee633e47c46add34ef25b2d26a52a236763aa095563112b",
+      "size_bytes": 1166,
+      "mode": "0o644"
+    },
+    "metadata/GSE39582_sample_metadata.csv": {
+      "sha256": "37cef7feb767766f31bbe2100bb6185b578a2dd5d6236bb83b4ae971bdcb5291",
+      "size_bytes": 146326,
+      "mode": "0o644"
+    },
+    "reports/GSE39582_clinical_summary.json": {
+      "sha256": "60a6832032d53d9bd3bd364f331f8c37ec3254adec2c0aa3b2551ce6c7d1c466",
+      "size_bytes": 456,
+      "mode": "0o644"
+    },
+    "reports/GSE39582_missingness.csv": {
+      "sha256": "9cb5a459e8006436455cfe251105bb0bca4fc23eb2abedeae7afd204845d77eb",
+      "size_bytes": 1276,
+      "mode": "0o644"
+    },
+    "results/probe_correlation_audit/within_gene_correlation_summary.csv": {
+      "sha256": "748173556ed84cca5de259fc34d40c0a8214b8c02ee142dda7e3487ec3601adf",
+      "size_bytes": 722444,
+      "mode": "0o644"
+    },
+    "results/probe_correlation_audit/within_gene_probe_correlations.csv": {
+      "sha256": "da9888e121b5ccd80adac72112224edbe2ae8a62d1ba300923ed876f219e4d4b",
+      "size_bytes": 2897570,
+      "mode": "0o644"
+    },
+    "scripts/01_download_geo.py": {
+      "sha256": "8d54f5c96bce07edd45d7ef2a2afa882db27f3f57c181cf7b705c255ee951059",
+      "size_bytes": 2171,
+      "mode": "0o644"
+    },
+    "scripts/02_audit_geo_metadata.py": {
+      "sha256": "626d93edb07ce53ce979d6d56c38af1e1d5c6c82dd971e3aafa996729a8dbf53",
+      "size_bytes": 2431,
+      "mode": "0o644"
+    },
+    "scripts/03_audit_rfs_by_subset.py": {
+      "sha256": "2a6cfe728efc8c07b00268fcb49d50b30b507ce741d9e678339c01c9f75c494f",
+      "size_bytes": 2353,
+      "mode": "0o644"
+    },
+    "scripts/04_investigate_zero_rfs.py": {
+      "sha256": "3428055de90c36253029d0aa9917bbe94189b11b5c7199c9ba491e589164d5a3",
+      "size_bytes": 1487,
+      "mode": "0o644"
+    },
+    "scripts/05_audit_stage_2_3.py": {
+      "sha256": "66095d630c4ac04740da18ebbef2b392c4c2a36e964c047d95426f0fa3df77de",
+      "size_bytes": 1515,
+      "mode": "0o644"
+    },
+    "scripts/06_inspect_expression_data.py": {
+      "sha256": "74436c7ad1ff132fdd4cdcca4ee1ab459523c8c82fe43589207f20876fa2fbd0",
+      "size_bytes": 1971,
+      "mode": "0o644"
+    },
+    "scripts/07_audit_all_expression.py": {
+      "sha256": "72fb13dfbdc02c6b545149e779e4821f5a702eb981d01735a18bd8fdcc8ead13",
+      "size_bytes": 5038,
+      "mode": "0o644"
+    },
+    "scripts/08_check_probe_consistency.py": {
+      "sha256": "807b0310676bda42129558ec4f81bccd6d8e429331543431c90565d05749b420",
+      "size_bytes": 2991,
+      "mode": "0o644"
+    },
+    "scripts/09_download_gpl570_annotation.py": {
+      "sha256": "8cc90dcddc5faaaf2130fa117a75543e4253fe30d42507b64cd3b9191e0f3fe8",
+      "size_bytes": 1167,
+      "mode": "0o644"
+    },
+    "scripts/10_inspect_gpl570_annotation.py": {
+      "sha256": "d49b8c010738c58a5e738ed745c13ea22ae8d1ba18b00fb0382280e457098673",
+      "size_bytes": 2139,
+      "mode": "0o644"
+    },
+    "scripts/11_audit_probe_gene_mapping.py": {
+      "sha256": "e5dbe01df74bf23ecb8b5bf9be1826639b4174cceb58f621edc8e67fd3e2c598",
+      "size_bytes": 4829,
+      "mode": "0o644"
+    },
+    "scripts/12_audit_within_gene_probe_correlation.py": {
+      "sha256": "15f5874a51ec8455eb578888ecc7537ad1df0fd54cc0bc7aada071162183d354",
+      "size_bytes": 7740,
+      "mode": "0o644"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+# =====================================================================
+# COAD transportability -- INFRASTRUCTURE configuration
+# =====================================================================
+#
+# SCOPE: this file holds infrastructure parameters ONLY.
+#
+# The following are DELIBERATELY ABSENT and must not be added here
+# without explicit sign-off at the phase that owns them:
+#
+#   * clinical endpoint definition (RFS semantics, time units,
+#     zero-time rule, missing-data policy)      -> Phase 1
+#   * cohort eligibility (tumour type, stage,   -> Phase 1
+#     subset membership, exclusions)
+#   * expression filtering thresholds           -> Phase 2
+#   * probe-to-gene aggregation rule            -> Phase 2
+#   * cross-cohort normalization strategy       -> Phase 4
+#
+# Their absence is intentional and load-bearing. A default silently
+# appearing in a config file is how an unexamined scientific choice
+# becomes permanent. If you find such a key here, it was added in
+# error -- remove it and raise it at the owning phase.
+# =====================================================================
+
+cache:
+  # Storage precision. float64 preserves the 9-10 significant digits
+  # present in the SOFT file and permits bit-exact round-trip testing.
+  dtype: float64
+  compression: snappy
+  # Cache staleness is detected by SHA-256 of the source file, never by
+  # modification time.
+  validate_source_checksum: true
+  # The cache holds every deposited sample. Subsetting is a Phase 1
+  # decision and never happens at cache-build time.
+  sample_scope: all_deposited_samples
+
+reproducibility:
+  random_seed: 20261102
+  # Number of arrays independently re-parsed from the SOFT file and
+  # compared against the cache during verification.
+  verification_sample_size: 20
+
+compute:
+  n_jobs: -1
+
+platform:
+  # Properties of the GPL570 array design and the GEO deposit, not
+  # analysis choices.
+  expected_probe_count: 54675
+  expected_sample_count: 585

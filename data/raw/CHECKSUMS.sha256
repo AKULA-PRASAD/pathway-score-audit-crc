@@ -1,0 +1,6 @@
+# SHA-256 checksums of original raw downloads (GEO).
+# Raw data is gitignored for size; this file is the integrity record.
+# Captured: 2026-11-02T15:25:09.139980+00:00
+# Verify:  shasum -a 256 -c CHECKSUMS.sha256  (run from data/raw/)
+afeaa4a33378c082bf213d2e7351c483e005d8cde30a39da0e1bc6433df1b77d  gse39582/GSE39582_family.soft.gz
+4bd2256fae7fe004b609b700612c631a7353b3d8a3ec84c7b5ca6714e71e5f72  gpl570/GPL570_platform.soft
