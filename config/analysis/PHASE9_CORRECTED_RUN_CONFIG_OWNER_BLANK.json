@@ -11,7 +11,7 @@
  ],
 
  "_PLAN_FIXED_NOTE": "schema, base, run_ids, B_out_initial and B_in cannot be blank: validate_structure() rejects any value other than these plan-fixed ones (plan lines 354, 355, 237, 238). n_workers is an engineering setting copied from the driver template; it is excluded from the configuration hash and does not affect results.",
- "schema": "p9c-config-1",
+ "schema": "p9c-config-2",
  "base": 2026110300,
  "run_ids": [0, 1, 2, 3, 4],
  "B_out_initial": 500,
@@ -19,52 +19,54 @@
  "n_workers": 8,
 
  "_D01": "Decision 1 - CV-seed deviation adjudication. Owner sets true once adjudicated.",
- "cv_seed_deviation_adjudicated": null,
+ "cv_seed_deviation_adjudicated": true,
 
  "_D02": "Decision 2 - apparent-fit seed convention. convention: 'independent' or 'as_run'. T is APPLICABLE ONLY IF convention = 'independent': then it is required, an integer in [1, 4294967295]. Under 'as_run', T must stay null.",
- "apparent_cv": {"convention": null, "T": null},
+ "apparent_cv": {"convention": "independent", "T": 20261106},
 
  "_D03": "Maximum B_in. The schema requires an integer in [1, 4294967295], at least B_in, and the pre-execution gate enumerates stream states up to it. Separately, owner_decisions_outside_schema.D03_structural_argument_accepted records whether the structural argument (all indices < 2**32) is accepted. Accepting it does NOT remove the need for an integer here.",
- "B_in_max": null,
+ "B_in_max": 100,
 
  "_D04": "Whether to compute the as-run variant: true or false. It must not be true when apparent_cv.convention = 'as_run'.",
- "as_run_variant": null,
+ "as_run_variant": true,
 
  "_D05": "EP-1 option: 'A' (Silverman h only) or 'B' (max over 0.5h, h, 2h). This choice also determines the endpoint MC-SE used by plan sections 6.4 and 6.5 and by H2.",
- "ep1_option": null,
+ "ep1_option": "B",
 
  "_D06": "W5. action: 'W5-A' or 'W5-B'. corrective_rule is APPLICABLE ONLY IF action = 'W5-A'; the only implemented value is 'next_rung_above_current'. definition: the only implemented value is 'adjudication_D5_as_proposed'.",
- "w5": {"action": null, "corrective_rule": null, "definition": null},
+ "w5": {"action": "W5-A", "corrective_rule": "next_rung_above_current", "definition": "adjudication_D5_as_proposed", "exclusion_rule": "usable_within_k_positions_v1"},
 
  "_D07": "Ladder. rungs: strictly increasing integers above B_out_initial. beyond_ladder_rule: 'top_up_to_max_rung_then_reassess' or 'stop_and_label_imprecise'.",
- "ladder": {"rungs": null, "beyond_ladder_rule": null},
+ "ladder": {"rungs": [750, 1000, 1500, 2000, 3000], "beyond_ladder_rule": "top_up_to_max_rung_then_reassess"},
 
  "_D08": "New output directory, relative to the repository root. It must be new and outside every protected directory listed in _NOTICE.",
- "output_dir": null,
+ "output_dir": "reports/phase9/corrected_rerun",
 
  "_D09": "Pre-execution gate approval. The only accepted value is 'V1-V5_H4_as_implemented_p9c-1'.",
- "verification_gate": null,
+ "verification_gate": "V1-V5_H4_as_implemented_p9c-1",
 
  "_D10": "Runtime budget per run, in hours: a positive number. Plan 9.5 halts a run when the projected runtime exceeds twice this value.",
- "runtime_budget_hours_per_run": null,
+ "runtime_budget_hours_per_run": 4.0,
 
  "approvals": {
-  "cv_seed_deviation_adjudicated": {"approved": false, "date": null, "reference": null},
-  "apparent_cv":                   {"approved": false, "date": null, "reference": null},
-  "B_in_max":                      {"approved": false, "date": null, "reference": null},
-  "as_run_variant":                {"approved": false, "date": null, "reference": null},
-  "ep1_option":                    {"approved": false, "date": null, "reference": null},
-  "w5":                            {"approved": false, "date": null, "reference": null},
-  "ladder":                        {"approved": false, "date": null, "reference": null},
-  "output_dir":                    {"approved": false, "date": null, "reference": null},
-  "verification_gate":             {"approved": false, "date": null, "reference": null},
-  "runtime_budget_hours_per_run":  {"approved": false, "date": null, "reference": null}
+  "cv_seed_deviation_adjudicated": {"approved": true, "date": "2026-11-06", "reference": "Owner adjudication, Decision 1; Phase 9 plan §8.2, line 364"},
+  "apparent_cv":                   {"approved": true, "date": "2026-11-06", "reference": "Owner adjudication, Decision 2; independent apparent-fit CV stream, T=20261106"},
+  "B_in_max":                      {"approved": true, "date": "2026-11-06", "reference": "Owner adjudication, Decision 3; Phase 9 plan line 473 (B_out and B_in may only increase); adjudication record Decision 2 (B_in,max declaration); empirical collision check covers configured B_in = 100."},
+  "as_run_variant":                {"approved": true, "date": "2026-11-06", "reference": "Owner adjudication, Decision 4; as-run apparent-fit variant for V4 verification and decomposition of inner-CV versus apparent-CV seed effects."},
+  "ep1_option":                    {"approved": true, "date": "2026-11-06", "reference": "Owner adjudication, Decision 5A; EP-1 conservative acceptance using the maximum endpoint MC-SE across bandwidths 0.5h, h and 2h; plan §2.2."},
+  "w5":                            {"approved": true, "date": "2026-11-06", "reference": "Owner adjudication, Decision 6; Phase 9 plan line 469; W5 endpoint-stability requirement and conservative top-up interpretation. | Owner adjudication, Decision 6B; W5 exclusion-handling rule usable_within_k_positions_v1, including both approved refinements."},
+  "ladder":                        {"approved": true, "date": "2026-11-06", "reference": "Owner adjudication, Decision 7A; Phase 9 plan §2.4, lines 118–132, and H3, line 456."},
+  "output_dir":                    {"approved": true, "date": "2026-11-06", "reference": "Owner adjudication, Decision 8; corrected pipeline config.py:107–112 and 251–267; orchestration.py:77–87; integrity.py:112–125."},
+  "verification_gate":             {"approved": true, "date": "2026-11-06", "reference": "Owner adjudication, Decision 9; corrected pipeline gate.py, verification.py, integrity.py and config.py; Phase 9 plan and corrected-pipeline verification audit."},
+  "runtime_budget_hours_per_run":  {"approved": true, "date": "2026-11-06", "reference": "Owner Decision 10; historical uninterrupted runtime mean of 3.78 hours per 500 replicates, with corrected-pipeline overhead allowance."}
  },
 
  "_OUTSIDE_SCHEMA_NOTE": "Decisions 3 (structural argument), 11, 12 and 13 have no field in schema p9c-config-1; they are recorded in the block below. READ AND ENFORCED: only D13_driver_freeze. The launcher (scripts/42) refuses before Python starts unless approved is true, both hashes are 64-hex, driver_path is scripts/41_phase9_corrected_driver.py, freeze_record_sha256 equals the SHA-256 of the complete freeze-record bytes, sha256 equals the freeze inventory's driver entry and every inventoried file matches; it does NOT check date or reference. The Python verify_code_identity additionally requires a non-blank date and reference, and repeats the hash, inventory, environment and loaded-module checks (DEC-B2, DEC-E1). RECORDED BUT NOT READ as executable configuration: D03, D11 and D12 entries. Their approved behaviour is implemented in code, not selected by these entries: Decision 3 -- the pre-execution gate evaluates the structural argument (V2-structural) and, independently, enumerates every initial stream state for k below the top ladder rung and b below B_in_max (V2-domain); Decision 11 -- the strict literal 5 % predicate 20 * b > n (b non-estimable among n completed replicates; exactly 5 % does not trigger), history assessment and eligibility classes (INELIGIBLE > UNVERIFIABLE > INCOMPLETE > ELIGIBLE), create-only checkpoints whose sealed boundaries must reproduce, historical-preservation failures held pending owner adjudication, runtime-halt and unterminated-invocation control requiring explicit authorisation, pending-window rules (DEC-C1), and top-ups only from a sizing decision re-derived from the checkpoints of all five runs (Path C); Decision 12 -- Option C lambda capture: a failed fit records lambda_status captured (the selected lambda and tuning score), not_applicable_before_tuning (lambda_at_failure null) or fixed_zero_no_molecular_block (lambda_at_failure 0.0), and any capture inconsistency fails closed (LambdaCaptureDefect).",
  "owner_decisions_outside_schema": {
-  "D03_structural_argument_accepted": {"value": null, "_allowed": "true or false", "approved": false, "date": null, "reference": null},
-  "D11_five_percent_stop_rule":       {"value": null, "_allowed": "'literal' or 'minimum_count'", "minimum_count": null, "_minimum_count_applicable": "ONLY IF value = 'minimum_count'", "approved": false, "date": null, "reference": null},
+  "D03_structural_argument_accepted": {"value": true, "_allowed": "true or false", "approved": true, "date": "2026-11-06", "reference": "Owner adjudication, Decision 3; corrected pipeline rng.py, lines 176–203; NumPy 2.5.4 seed construction and index-bound checks"},
+  "D05_endpoint_mcse_for_6_4_6_5_H2": {"value": "min_over_bandwidths_per_run_per_endpoint; §6.5 uses the minimum of the run's two endpoint values; calculated before §6.5 exclusions", "approved": true, "date": "2026-11-06", "reference": "Owner adjudication, Decision 5B; conservative endpoint MC-SE rule for reliability assessments under plan §§6.4, 6.5 and H2."},
+  "D07_sizing_rule_above_500":        {"rule": "B_req = B_cur * (rho_max / 0.05)^2", "rho_max": "maximum across all five runs and both endpoints", "target": "smallest approved ladder rung >= B_req and > B_cur", "common_target": true, "full_reassessment_after_topup": true, "approved": true, "date": "2026-11-06", "reference": "Owner adjudication, Decision 7B; adjudication record Decision 4 clarification, item 9; Phase 9 plan §§2.2 and 2.4."},
+  "D11_five_percent_stop_rule":       {"value": "literal", "_allowed": "'literal' or 'minimum_count'", "minimum_count": null, "_minimum_count_applicable": "ONLY IF value = 'minimum_count'", "approved": true, "date": "2026-11-06", "reference": "Owner approval of Decision 11 items 1–19 (2026-11-06): strict literal non-estimable predicate 20 * n_nonestimable > n_completed"},
   "D12_lambda_at_failure":            {"value": null, "_allowed": "'accept_not_recorded' or 'approve_additional_tune_lambda_call'", "approved": false, "date": null, "reference": null},
   "D13_driver_freeze":                {"driver_path": "scripts/41_phase9_corrected_driver.py", "sha256": null, "_sha256_note": "DEC-B2: SHA-256 of the frozen driver file at driver_path; must equal the driver entry in the freeze record's code inventory", "freeze_record_sha256": null, "_freeze_record_sha256_note": "DEC-B2: SHA-256 of the complete bytes of config/analysis/PHASE9_CORRECTED_FREEZE_RECORD.json (the code-identity anchor). The freeze record never contains this configuration or its hash. Both hashes stay null until Decision 13 is approved; no freeze exists yet.", "approved": false, "date": null, "reference": null}
  },
