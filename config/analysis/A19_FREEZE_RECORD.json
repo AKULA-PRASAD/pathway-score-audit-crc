@@ -1,0 +1,146 @@
+{
+  "record_type": "A19_MISSING_DATA_STRATEGY_FREEZE",
+  "frozen_utc": "2026-11-02T21:47:11.883173+00:00",
+  "status": "FROZEN",
+  "decision": {
+    "strategy": "COMPLETE-CASE ANALYSIS",
+    "applies_to": [
+      "M1 primary (clinical only)",
+      "M2 primary (frozen 4-set pathway panel)",
+      "M2 sensitivity (frozen 5-set pathway panel)",
+      "M3 exploratory (transcriptome-wide)"
+    ],
+    "multiple_imputation_required": false,
+    "basis": "Phase 6D definitive missingness audit",
+    "approved_by": "project owner"
+  },
+  "evidence": {
+    "cohort": "S3",
+    "n": 453,
+    "complete_cases_per_planned_model": 452,
+    "pct": 99.8,
+    "excluded": 1,
+    "per_model": [
+      {
+        "model": "M1 primary (clinical only)",
+        "complete_cases": 452,
+        "pct": 99.8,
+        "lost": 1
+      },
+      {
+        "model": "M2 primary (4-set) + M1",
+        "complete_cases": 452,
+        "pct": 99.8,
+        "lost": 1
+      },
+      {
+        "model": "M2 sensitivity (5-set) + M1",
+        "complete_cases": 452,
+        "pct": 99.8,
+        "lost": 1
+      },
+      {
+        "model": "M3 exploratory (21,815 genes) + M1",
+        "complete_cases": 452,
+        "pct": 99.8,
+        "lost": 1
+      }
+    ],
+    "expression_nan_values": 0,
+    "expression_zero_variance_genes": 0
+  },
+  "excluded_observations": [
+    {
+      "sample_id": "GSM972262",
+      "title": "CIT306",
+      "dataset": "discovery",
+      "combat_batch": "batch05",
+      "missing_variables": [
+        "chemotherapy.adjuvant"
+      ],
+      "raw_values": {
+        "chemotherapy.adjuvant": "N/A"
+      }
+    }
+  ],
+  "prohibited_imputation": [
+    "expression values",
+    "pathway members",
+    "endpoint fields",
+    "sample identifiers",
+    "cohort membership",
+    "provenance fields"
+  ],
+  "m2_coverage_rules": {
+    "unchanged": true,
+    "rule": ">=80% of resolved members AND >=20 genes surviving per-fold zero-variance exclusion",
+    "missing_members": "EXCLUDED from the score and enumerated; never substituted"
+  },
+  "contingency": {
+    "optional_covariates_excluded_from_M1": [
+      "tnm.t",
+      "tnm.n",
+      "tnm.m",
+      "mmr.status",
+      "cimp.status",
+      "cin.status",
+      "kras.mutation",
+      "braf.mutation",
+      "tp53.mutation"
+    ],
+    "if_proposed_in_future_require": [
+      "reassess the scientific rationale and missingness",
+      "recalculate complete-case retention",
+      "reconsider whether multiple imputation is justified",
+      "account for assay/batch structure",
+      "obtain explicit approval before changing the model specification"
+    ],
+    "mi_auto_activation": false,
+    "note": "Multiple imputation must NOT be activated automatically."
+  },
+  "deferred": {
+    "pooling_rubin_vs_averaged_predictions": {
+      "status": "DEFERRED \u2014 NOT APPLICABLE",
+      "reason": "Pooling across imputations has no role under a complete-case strategy. No pooling strategy is specified, and none is invented.",
+      "reopens_if": "multiple imputation is proposed AND approved in a future analysis"
+    }
+  },
+  "preserved_phase6d_findings": {
+    "nd_na_distinction": "The deposit documents 'ND: not determined' and 'NA: Not applicable', but ND is used 0 times. Both meanings collapse to 'N/A'.",
+    "structural_na": "Structural N/A values (e.g. chemotherapy type when no chemotherapy was given; mutation detail columns when WT) must NOT be treated as ordinary missing observations.",
+    "batch_association": "Molecular assay availability is strongly associated with processing batch: tp53.mutation missingness is 0% in four batches and 100% in three.",
+    "mechanism_qualified": "MCAR is inconsistent with the evidence. MAR (conditional on batch) and MNAR/structural remain QUALIFIED ASSESSMENTS, not proven classifications.",
+    "single_missing_chemotherapy": "One observation (GSM972262 / CIT306) has chemotherapy.adjuvant = 'N/A' and is the sole complete-case exclusion. It is documented, never silently discarded."
+  },
+  "source_artifacts": {
+    "definitive_audit": {
+      "file": "reports/phase6d/definitive_audit.json",
+      "sha256": "2cec95b5ab4a9730484a0093c4a91b991fad32928cd476b3d3c824976e5f947f"
+    },
+    "exclusions": {
+      "file": "reports/phase6d/complete_case_exclusions.json",
+      "sha256": "52c1c1ae28c9d5892420e7ff92c9e3ef3c7e493bc2a4a5ce1e900fb70f52b20a"
+    }
+  },
+  "upstream_frozen_hashes": {
+    "m2_panel_4set.json": "bab99da9f139db34ccc2d5f5f954cda9e92fc6cf33f41a076024e5146b065dfe",
+    "m2_panel_5set.json": "6058f733b2acda1c7a77746a83bb5d72dd8a9ae64522c81958299af9da79cc27"
+  },
+  "modification_policy": "Immutable. A change of strategy requires a new approval, a recomputed complete-case assessment, and a re-freeze. Multiple imputation must never be activated automatically.",
+  "environment": {
+    "captured_utc": "2026-11-02T21:47:11.884388+00:00",
+    "python_version": "3.13.13",
+    "python_executable": "/Users/kalki/coad_transportability/.venv/bin/python",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.5.4",
+      "pandas": "2.3.3",
+      "scipy": "1.18.1",
+      "sklearn": "1.9.1",
+      "lifelines": "0.30.3",
+      "pyarrow": "26.0.0",
+      "pytest": "9.2.0"
+    }
+  }
+}

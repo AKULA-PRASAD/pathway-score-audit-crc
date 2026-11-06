@@ -1,0 +1,217 @@
+{
+  "record_type": "M2_PATHWAY_SPECIFICATION_FREEZE",
+  "frozen_utc": "2026-11-02T21:13:12.824057+00:00",
+  "approval": {
+    "approved_by": "project owner",
+    "approval_basis": "Phase 6C rev. 2 specification audit",
+    "primary_panel": "4-set",
+    "sensitivity_panel": "5-set",
+    "sensitivity_only_addition": "HALLMARK_PI3K_AKT_MTOR_SIGNALING",
+    "immutability_clause": "HALLMARK_PI3K_AKT_MTOR_SIGNALING is a SENSITIVITY-ONLY addition. It must NOT be promoted to the primary panel, and must NOT be removed from the sensitivity panel, on the basis of observed model performance. Any such change would convert a pre-specified analysis into a post-hoc one and reclassifies M2 as M3-exploratory.",
+    "outcome_blind": true,
+    "outcome_blind_statement": "Panel membership and the primary/sensitivity assignment were decided using gene-set metadata, published colorectal cancer biology, and the outcome-blind expression correlation structure. No recurrence, survival or outcome variable was accessed at any point.",
+    "frozen_before_outcome_analysis": true,
+    "selection_criteria_used": [
+      "effective dimensionality (identical: 3 PCs for 80%, Kaiser 2)",
+      "score-matrix conditioning (2.95 vs 6.95)",
+      "smallest eigenvalue (0.480 vs 0.280)",
+      "count of |r| > 0.5 pairs (0 vs 1)",
+      "parameter budget against 136 events",
+      "published recurrence-prediction evidence strength"
+    ],
+    "selection_criteria_NOT_used": [
+      "any recurrence or survival association",
+      "any model fit or performance metric",
+      "any outcome column whatsoever"
+    ]
+  },
+  "specifications": {
+    "primary": {
+      "file": "config/pathways/m2_panel_4set.json",
+      "panel": "4-set",
+      "n_sets": 4,
+      "gene_sets": [
+        "HALLMARK_E2F_TARGETS",
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION",
+        "HALLMARK_P53_PATHWAY",
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING"
+      ],
+      "union_unique_genes": 607,
+      "sha256": "43ce15b2f0e06f7530ac91ca76ed0c67d487519d388ddc9069194b8a9a16713e",
+      "superseded_sha256": [
+        {
+          "sha256": "bab99da9f139db34ccc2d5f5f954cda9e92fc6cf33f41a076024e5146b065dfe",
+          "superseded_by": "M2-A1",
+          "superseded_utc": "2026-11-03T00:12:16.028544+00:00"
+        },
+        {
+          "sha256": "cb4de071e2f64a6b6d401015ea70b22705e9a4149f71de6f6795845e1ce47b11",
+          "superseded_by": "M2-A2",
+          "superseded_utc": "2026-11-03T01:48:17.748073+00:00"
+        }
+      ],
+      "specification_revision": 3
+    },
+    "sensitivity": {
+      "file": "config/pathways/m2_panel_5set.json",
+      "panel": "5-set",
+      "n_sets": 5,
+      "gene_sets": [
+        "HALLMARK_E2F_TARGETS",
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION",
+        "HALLMARK_P53_PATHWAY",
+        "HALLMARK_PI3K_AKT_MTOR_SIGNALING",
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING"
+      ],
+      "union_unique_genes": 702,
+      "sha256": "d792368a85b1f3c00d61433217a64e2ea60438a6ee562ba2eac9729f64afba37",
+      "superseded_sha256": [
+        {
+          "sha256": "6058f733b2acda1c7a77746a83bb5d72dd8a9ae64522c81958299af9da79cc27",
+          "superseded_by": "M2-A1",
+          "superseded_utc": "2026-11-03T00:12:16.028544+00:00"
+        },
+        {
+          "sha256": "10dae4874a918160c50dd050fb267fca26474827d8215d53bd56b7f89ddd5275",
+          "superseded_by": "M2-A2",
+          "superseded_utc": "2026-11-03T01:48:17.748073+00:00"
+        }
+      ],
+      "specification_revision": 3
+    }
+  },
+  "source_database": {
+    "name": "MSigDB Human Hallmark (collection H)",
+    "version": "v2026.2.Hs",
+    "release_date": "2026-10-15",
+    "n_sets_in_collection": 50,
+    "source_symbols": "https://data.broadinstitute.org/gsea-msigdb/msigdb/release/2026.2.Hs/h.all.v2026.2.Hs.symbols.gmt",
+    "source_entrez": "https://data.broadinstitute.org/gsea-msigdb/msigdb/release/2026.2.Hs/h.all.v2026.2.Hs.entrez.gmt",
+    "sha256_symbols": "56bba1300555fb6302844fc8cdca63406eb50fa1a2472ec86468747efb3fb89b",
+    "sha256_entrez": "a26578a72aed3171fffce4d2cda8672c41783f4deb7a3743f16b3f5af82b355e"
+  },
+  "mapping_provenance": {
+    "primary_path": "MSigDB Entrez -> GPL570 ENTREZ_GENE_ID -> our gene symbol",
+    "fallback_path": "direct symbol match",
+    "entrez_bridge_coverage": "20471/21815 (93.8%)",
+    "one_entrez_to_many_symbols": 0,
+    "one_probe_to_many_genes": 0,
+    "note": "ambiguous (multi-gene) probes were excluded from the representation in Phase 2, so no probe contributes to two genes",
+    "unmatched_definition": "a source gene with NO match by Entrez AND no match by symbol. Genes recovered under a legacy alias (e.g. MSigDB CCN1 -> our CYR61) are MATCHED, not unmatched."
+  },
+  "scoring": {
+    "method": "mean of training-fold-standardised member genes",
+    "formula": "score_P(i) = mean_{g in P \u2229 index, sigma_g>0} (x_gi - mu_g^train) / sigma_g^train, with sigma_g^train = sqrt(sum_{j in train}(x_gj - mu_g^train)^2 / (n_train - 1))",
+    "mu_sigma_estimated_on": "TRAINING FOLD SAMPLES ONLY",
+    "applied_to_heldout": "using training-derived mu and sigma, unchanged",
+    "zero_variance_genes": "sigma_g^train == 0 -> gene EXCLUDED for that fold; exclusion recorded per fold",
+    "missing_gene_members": "genes absent from the frozen index are EXCLUDED and enumerated; never imputed",
+    "minimum_set_coverage": ">=80% of source members must resolve, AND >=20 genes must remain after per-fold zero-variance exclusion; otherwise the score is dropped for that fold and the drop recorded",
+    "score_standardisation": "TRAINING-FOLD ONLY. Each pathway score is centred and scaled to unit variance using the mean and sample SD (ddof=1) of the TRAINING samples of that fold, applied unchanged to held-out samples. Recomputed independently inside every resampling, bootstrap and inner-CV tuning operation. Training-fold SD == 0 or <= 1e-12 -> the score is DROPPED for that fold and the exclusion recorded. A non-finite training-fold mean or SD marks the replicate NON-ESTIMABLE, recorded with its reason; never silently redrawn or substituted. The unstandardised scores are preserved unchanged as the auditable source features. This is a SECOND standardisation, applied to the scores, and does not alter the frozen gene-level standardisation (sigma_ddof=1, M2-A1) that produces them.",
+    "interpretation": "a score is the mean standardised expression of the set's member genes, in training-fold SD units. Positive = coordinated above-average expression of the set relative to the training fold.",
+    "each_gene_once": "guaranteed: scores are computed on the frozen GENE-LEVEL matrix (one row per gene). Probe multiplicity was resolved upstream by median aggregation.",
+    "software": {
+      "numpy": "2.5.4",
+      "pandas": "2.3.3"
+    },
+    "no_new_packages_required": true,
+    "sigma_ddof": 1,
+    "sigma_ddof_rule": "sigma_g^train is the SAMPLE standard deviation over the training-fold samples: denominator n_train - 1 (ddof=1). An implementation MUST pass this value explicitly and MUST NOT rely on a library default.",
+    "score_standardisation_implementation": "src/score_standardisation.py :: standardise_scores_training_fold"
+  },
+  "target_index": {
+    "source": "data/processed/frozen/frozen_gene_to_probeset_median.csv",
+    "n_genes": 21815,
+    "identifier_type": "HGNC-style gene symbols from the GPL570 platform record",
+    "representation": "frozen median aggregation (Phase 2B)"
+  },
+  "upstream_hashes": {
+    "frozen_gene_to_probeset_median.csv": "08f8715fb7eca5a0cad9516e66343bdd3edf48b1e68535e10b8da59dc054e237"
+  },
+  "environment": {
+    "captured_utc": "2026-11-02T21:13:12.825885+00:00",
+    "python_version": "3.13.13",
+    "python_executable": "/Users/kalki/coad_transportability/.venv/bin/python",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.5.4",
+      "pandas": "2.3.3",
+      "scipy": "1.18.1",
+      "sklearn": "1.9.1",
+      "lifelines": "0.30.3",
+      "pyarrow": "26.0.0",
+      "pytest": "9.2.0"
+    }
+  },
+  "specification_revision": 3,
+  "original_freeze": {
+    "frozen_utc": "2026-11-02T21:13:12.824057+00:00",
+    "note": "the original freeze, preserved verbatim. Superseded hashes below are the bytes this record attested to before amendment M2-A1.",
+    "sha256": {
+      "m2_panel_4set.json": "bab99da9f139db34ccc2d5f5f954cda9e92fc6cf33f41a076024e5146b065dfe",
+      "m2_panel_5set.json": "6058f733b2acda1c7a77746a83bb5d72dd8a9ae64522c81958299af9da79cc27",
+      "M2_FREEZE_RECORD.json": "2a9250bb8d908583dec1f2c3767df3a74cc2ec518f4f35b5992f8d4ea77aee0a"
+    }
+  },
+  "amendment_history": [
+    {
+      "amendment_id": "M2-A1",
+      "amended_utc": "2026-11-03T00:12:16.028544+00:00",
+      "date": "2026-11-02",
+      "title": "Pin the training-fold standard-deviation estimator to ddof=1",
+      "approved_by": "project owner",
+      "approval_basis": "Phase 8A s3.5 / s4.4 open item U5",
+      "previous_state": "AMBIGUOUS. The frozen scoring rule specified 'per-gene mu-hat/sigma-hat from training fold only' but did NOT pin the denominator of sigma-hat. numpy.std defaults to ddof=0 (population SD); pandas.DataFrame.std defaults to ddof=1 (sample SD). Two conforming implementations could therefore produce different numeric scores from the same frozen specification and the same data.",
+      "approved_convention": "ddof = 1 (sample standard deviation, denominator n_train - 1)",
+      "rationale": [
+        "consistency with Phase 8A, which used ddof=1 throughout",
+        "explicit reproducibility across implementations: the specification must determine the numbers, not the default of whichever library a future implementer happens to call"
+      ],
+      "expected_numerical_consequence": "sample-standard-deviation scaling rather than population-standard-deviation scaling. Because every gene within a fold shares the same n_train, this is a single constant rescaling of every score in that fold by sqrt(n/(n-1)) relative to ddof=0 -- measured at 1.0011055835 for n=453 in Phase 8A, matching the analytic constant to 10 decimal places. Rank order and all inter-score correlations are unchanged; the numeric score values are not.",
+      "membership_changed": false,
+      "roles_changed": false,
+      "coverage_rules_changed": false,
+      "outcome_data_used": false,
+      "outcome_blind_statement": "The ddof convention was identified and decided outcome-blind, in Phase 8A, which blocked the recurrence endpoint at the I/O layer. No outcome, recurrence or survival variable informed this amendment, so it does NOT reclassify M2 as M3-exploratory under the modification policy.",
+      "permitted_under": "modification_policy: 'Permitted revisions are limited to non-outcome corrections, which must be recorded with reason and timestamp, retain the prior version, and re-freeze.'",
+      "superseded_sha256": "bab99da9f139db34ccc2d5f5f954cda9e92fc6cf33f41a076024e5146b065dfe",
+      "superseded_formula": "score_P(i) = mean_{g in P \u2229 index, sigma_g>0} (x_gi - mu_g^train) / sigma_g^train"
+    },
+    {
+      "amendment_id": "M2-A2",
+      "amended_utc": "2026-11-03T01:48:17.748073+00:00",
+      "date": "2026-11-03",
+      "title": "Training-fold-only standardisation of the M2 pathway scores",
+      "approved_by": "project owner",
+      "approval_basis": "Phase 8D decision D8D-1, Option B; Phase 9 protocol v2.1; user authorisation 2026-11-03",
+      "previous_state": "NONE before the Cox model (penalisation handles scale). If added later it is training-fold-only.",
+      "why_the_previous_justification_was_wrong": "Ridge and elastic-net penalties are NOT scale-invariant: the penalty is applied per unit coefficient, so a predictor with smaller dispersion needs a larger coefficient for the same effect and is shrunk harder. Phase 8C measured a 3x dispersion range across the five scores (SD 0.554 E2F to 0.185 PI3K), so the previous state would have penalised them unequally for a reason unrelated to their content.",
+      "approved_convention": "TRAINING-FOLD ONLY. Each pathway score is centred and scaled to unit variance using the mean and sample SD (ddof=1) of the TRAINING samples of that fold, applied unchanged to held-out samples. Recomputed independently inside every resampling, bootstrap and inner-CV tuning operation. Training-fold SD == 0 or <= 1e-12 -> the score is DROPPED for that fold and the exclusion recorded. A non-finite training-fold mean or SD marks the replicate NON-ESTIMABLE, recorded with its reason; never silently redrawn or substituted. The unstandardised scores are preserved unchanged as the auditable source features. This is a SECOND standardisation, applied to the scores, and does not alter the frozen gene-level standardisation (sigma_ddof=1, M2-A1) that produces them.",
+      "implementation": "src/score_standardisation.py :: standardise_scores_training_fold",
+      "canonical_scorer_unmodified": "src/pathway_scoring.py is NOT modified by this amendment; the gene-level sigma_ddof=1 standardisation and score_panel's source are unchanged.",
+      "coefficient_interpretation": "a molecular pathway coefficient is a log cause-specific hazard ratio per one training-fold standard deviation of that pathway score",
+      "dispersion_is_not_relevance": "standardisation removes the dispersion difference from the coefficient scale, so a larger standardised coefficient does NOT mean a pathway is more biologically important. Phase 8C's within-set coherence table is reported alongside the coefficients so the two are not conflated. No outcome association has been tested.",
+      "clinical_predictor_scaling_out_of_scope": "M2-A2 settles ONLY the pathway block. Clinical predictor scaling is governed by amendment P6B-A1 and is unchanged here.",
+      "membership_changed": false,
+      "roles_changed": false,
+      "coverage_rules_changed": false,
+      "sigma_ddof_changed": false,
+      "outcome_data_used": false,
+      "outcome_blind_statement": "The ambiguity was identified and decided outcome-blind in Phases 8C-8D, which blocked the recurrence endpoint at the I/O layer. No outcome, recurrence or survival variable informed this amendment, so it does NOT reclassify M2 as M3-exploratory under the modification policy.",
+      "permitted_under": "modification_policy: non-outcome corrections, recorded with reason and timestamp, prior version retained, re-freeze"
+    }
+  ],
+  "amendment_policy_note": "Hashes recorded by EARLIER phases (A19_FREEZE_RECORD.json, QC_DECISIONS_RECORD.json) are historical attestations of the bytes those phases actually read. They are NOT updated by an amendment and must not be rewritten. A consumer verifying such an attestation resolves it against this amendment chain: a recorded hash is valid if it equals the current file or appears in that specification's superseded_sha256 list.",
+  "record_superseded_sha256": [
+    {
+      "sha256": "2a9250bb8d908583dec1f2c3767df3a74cc2ec518f4f35b5992f8d4ea77aee0a",
+      "superseded_by": "M2-A1"
+    },
+    {
+      "sha256": "c2b31f3340b3635595457fcb0e33460c6032c66f6712a0afc4b7b2c65c0287dc",
+      "superseded_by": "M2-A2"
+    }
+  ],
+  "record_superseded_note": "hashes of THIS record superseded by an approved amendment. Earlier phases (A-19, Phase 7C QC decisions, Phase 8D, Phase 9) attest to the bytes they actually read; those attestations are never rewritten and resolve here."
+}

@@ -1,0 +1,74 @@
+{
+ "_STATUS": "UNAPPROVED DRAFT - BLANK OWNER FILL-IN CONFIGURATION. NOT VALID. NO SCIENTIFIC EXECUTION IS AUTHORIZED.",
+ "_NOTICE": [
+  "Blank (null) fields are intentional. They were not populated from the plan, previous runs, engineering recommendations or any other source.",
+  "Creating this file does not constitute owner approval of anything.",
+  "This configuration must not be considered valid until every required decision and approval below is completed by the owner.",
+  "Every 'approved' flag is false. Only the owner may set one to true, together with a date and a reference.",
+  "output_dir must be a NEW directory inside the repository and outside every protected directory: reports/phase9/dc_interval, reports/phase9/dc_interval_audit, reports/phase9/execution, reports/phase9/execution_s7, reports/phase9/h5_spotcheck, reports/phase9/final_project, docs, data, config, src, scripts, tests, .git, .venv.",
+  "Schema: p9c-config-1, as read by scripts/41_phase9_corrected_driver.py (src/phase9_corrected/config.py). Keys beginning with '_' are annotations; the pipeline ignores them.",
+  "Source record: reports/phase9/final_project/documentation/PHASE9_METHODOLOGICAL_CLARIFICATION_AND_OWNER_ADJUDICATION_DRAFT.md (unchanged by this file)."
+ ],
+
+ "_PLAN_FIXED_NOTE": "schema, base, run_ids, B_out_initial and B_in cannot be blank: validate_structure() rejects any value other than these plan-fixed ones (plan lines 354, 355, 237, 238). n_workers is an engineering setting copied from the driver template; it is excluded from the configuration hash and does not affect results.",
+ "schema": "p9c-config-1",
+ "base": 2026110300,
+ "run_ids": [0, 1, 2, 3, 4],
+ "B_out_initial": 500,
+ "B_in": 100,
+ "n_workers": 8,
+
+ "_D01": "Decision 1 - CV-seed deviation adjudication. Owner sets true once adjudicated.",
+ "cv_seed_deviation_adjudicated": null,
+
+ "_D02": "Decision 2 - apparent-fit seed convention. convention: 'independent' or 'as_run'. T is APPLICABLE ONLY IF convention = 'independent': then it is required, an integer in [1, 4294967295]. Under 'as_run', T must stay null.",
+ "apparent_cv": {"convention": null, "T": null},
+
+ "_D03": "Maximum B_in. The schema requires an integer in [1, 4294967295], at least B_in, and the pre-execution gate enumerates stream states up to it. Separately, owner_decisions_outside_schema.D03_structural_argument_accepted records whether the structural argument (all indices < 2**32) is accepted. Accepting it does NOT remove the need for an integer here.",
+ "B_in_max": null,
+
+ "_D04": "Whether to compute the as-run variant: true or false. It must not be true when apparent_cv.convention = 'as_run'.",
+ "as_run_variant": null,
+
+ "_D05": "EP-1 option: 'A' (Silverman h only) or 'B' (max over 0.5h, h, 2h). This choice also determines the endpoint MC-SE used by plan sections 6.4 and 6.5 and by H2.",
+ "ep1_option": null,
+
+ "_D06": "W5. action: 'W5-A' or 'W5-B'. corrective_rule is APPLICABLE ONLY IF action = 'W5-A'; the only implemented value is 'next_rung_above_current'. definition: the only implemented value is 'adjudication_D5_as_proposed'.",
+ "w5": {"action": null, "corrective_rule": null, "definition": null},
+
+ "_D07": "Ladder. rungs: strictly increasing integers above B_out_initial. beyond_ladder_rule: 'top_up_to_max_rung_then_reassess' or 'stop_and_label_imprecise'.",
+ "ladder": {"rungs": null, "beyond_ladder_rule": null},
+
+ "_D08": "New output directory, relative to the repository root. It must be new and outside every protected directory listed in _NOTICE.",
+ "output_dir": null,
+
+ "_D09": "Pre-execution gate approval. The only accepted value is 'V1-V5_H4_as_implemented_p9c-1'.",
+ "verification_gate": null,
+
+ "_D10": "Runtime budget per run, in hours: a positive number. Plan 9.5 halts a run when the projected runtime exceeds twice this value.",
+ "runtime_budget_hours_per_run": null,
+
+ "approvals": {
+  "cv_seed_deviation_adjudicated": {"approved": false, "date": null, "reference": null},
+  "apparent_cv":                   {"approved": false, "date": null, "reference": null},
+  "B_in_max":                      {"approved": false, "date": null, "reference": null},
+  "as_run_variant":                {"approved": false, "date": null, "reference": null},
+  "ep1_option":                    {"approved": false, "date": null, "reference": null},
+  "w5":                            {"approved": false, "date": null, "reference": null},
+  "ladder":                        {"approved": false, "date": null, "reference": null},
+  "output_dir":                    {"approved": false, "date": null, "reference": null},
+  "verification_gate":             {"approved": false, "date": null, "reference": null},
+  "runtime_budget_hours_per_run":  {"approved": false, "date": null, "reference": null}
+ },
+
+ "_OUTSIDE_SCHEMA_NOTE": "Decisions 3 (structural argument), 11, 12 and 13 have no field in schema p9c-config-1; they are recorded in the block below. READ AND ENFORCED: only D13_driver_freeze. The launcher (scripts/42) refuses before Python starts unless approved is true, both hashes are 64-hex, driver_path is scripts/41_phase9_corrected_driver.py, freeze_record_sha256 equals the SHA-256 of the complete freeze-record bytes, sha256 equals the freeze inventory's driver entry and every inventoried file matches; it does NOT check date or reference. The Python verify_code_identity additionally requires a non-blank date and reference, and repeats the hash, inventory, environment and loaded-module checks (DEC-B2, DEC-E1). RECORDED BUT NOT READ as executable configuration: D03, D11 and D12 entries. Their approved behaviour is implemented in code, not selected by these entries: Decision 3 -- the pre-execution gate evaluates the structural argument (V2-structural) and, independently, enumerates every initial stream state for k below the top ladder rung and b below B_in_max (V2-domain); Decision 11 -- the strict literal 5 % predicate 20 * b > n (b non-estimable among n completed replicates; exactly 5 % does not trigger), history assessment and eligibility classes (INELIGIBLE > UNVERIFIABLE > INCOMPLETE > ELIGIBLE), create-only checkpoints whose sealed boundaries must reproduce, historical-preservation failures held pending owner adjudication, runtime-halt and unterminated-invocation control requiring explicit authorisation, pending-window rules (DEC-C1), and top-ups only from a sizing decision re-derived from the checkpoints of all five runs (Path C); Decision 12 -- Option C lambda capture: a failed fit records lambda_status captured (the selected lambda and tuning score), not_applicable_before_tuning (lambda_at_failure null) or fixed_zero_no_molecular_block (lambda_at_failure 0.0), and any capture inconsistency fails closed (LambdaCaptureDefect).",
+ "owner_decisions_outside_schema": {
+  "D03_structural_argument_accepted": {"value": null, "_allowed": "true or false", "approved": false, "date": null, "reference": null},
+  "D11_five_percent_stop_rule":       {"value": null, "_allowed": "'literal' or 'minimum_count'", "minimum_count": null, "_minimum_count_applicable": "ONLY IF value = 'minimum_count'", "approved": false, "date": null, "reference": null},
+  "D12_lambda_at_failure":            {"value": null, "_allowed": "'accept_not_recorded' or 'approve_additional_tune_lambda_call'", "approved": false, "date": null, "reference": null},
+  "D13_driver_freeze":                {"driver_path": "scripts/41_phase9_corrected_driver.py", "sha256": null, "_sha256_note": "DEC-B2: SHA-256 of the frozen driver file at driver_path; must equal the driver entry in the freeze record's code inventory", "freeze_record_sha256": null, "_freeze_record_sha256_note": "DEC-B2: SHA-256 of the complete bytes of config/analysis/PHASE9_CORRECTED_FREEZE_RECORD.json (the code-identity anchor). The freeze record never contains this configuration or its hash. Both hashes stay null until Decision 13 is approved; no freeze exists yet.", "approved": false, "date": null, "reference": null}
+ },
+
+ "_D14": "Explicit scientific execution authorization. Only the owner may set authorized = true, with a date and a reference.",
+ "execution_authorization": {"authorized": false, "date": null, "reference": null}
+}
