@@ -1,145 +1,147 @@
-# Does a pathway signature add prognostic value in colon cancer? A fully auditable nested-bootstrap analysis
+# Optimism-corrected prognostic value of a pathway signature in colon cancer
 
-> **Status (2026-11-06):** the corrected Phase 9 pipeline is **implemented, tested and committed**. A **candidate code freeze** has been generated and checked; final freeze approval is pending. The previously approved owner decisions (1–11) have been entered into the run configuration. **The corrected scientific bootstrap has not been run.** No corrected confidence interval or scientific conclusion exists yet. All results below are labelled **historical** or **pending**.
+A pre-specified analysis of whether four pathway scores improve recurrence prediction beyond a clinical Cox model, with a nested bootstrap to put a confidence interval on the optimism-corrected gain.
 
-## 1. The question
+**Status (6 November 2026).** The corrected Phase 9 pipeline described below is implemented, tested and committed. A candidate code freeze has been generated and checked against the committed code but has not yet been approved. The previously approved analysis decisions are entered in the run configuration. **The corrected bootstrap has not been run.** No corrected interval or conclusion exists yet; any number quoted here is either historical or explicitly marked as pending.
 
-Gene-expression signatures are often reported to improve recurrence prediction in colorectal cancer. Many such claims do not survive careful validation: the apparent gain is inflated by **optimism**, because a model with more parameters fits its own training data better than new data.
+## The question
 
-This project asks a narrow, pre-specified question on a public cohort: **does adding four frozen pathway scores to a clinical Cox model improve discrimination after correcting for optimism, and how precisely can that improvement be estimated?**
+Expression signatures are frequently reported to improve prognosis in colorectal cancer, but part of the apparent improvement is usually optimism: a model with more parameters fits its own training data better than it fits new patients. I wanted to ask a narrow question on a public cohort and answer it carefully. After correcting for optimism, does adding a small, frozen set of pathway scores to a clinical model improve discrimination, and how precisely can that improvement be estimated?
 
-| Item | Specification |
+| | |
 |---|---|
-| Data | GEO **GSE39582** (Affymetrix GPL570), stage II–III colon cancer, cohort **S3 = 453 samples**, 0 exclusions |
+| Data | GEO GSE39582 (Affymetrix GPL570), stage II–III colon cancer; analysis cohort of 453 samples, no exclusions |
 | Endpoint | cause-specific recurrence, as deposited |
 | M1 | clinical-only Cox model (5 parameters) |
-| M2 (primary) | M1 + four pre-registered pathway scores, frozen panel (9 parameters) |
-| Estimand | **ΔC_corrected = C_corrected(M2) − C_corrected(M1)**: the optimism-corrected difference in Harrell's C |
-| Deliverable | a 95 % percentile interval for ΔC_corrected, with Monte-Carlo error reported |
+| M2 (primary) | M1 plus four pre-registered pathway scores (9 parameters) |
+| Estimand | ΔC_corrected = C_corrected(M2) − C_corrected(M1), the optimism-corrected difference in Harrell's C |
+| Target output | a 95 % percentile interval for ΔC_corrected, with its Monte Carlo error |
 
-Everything was fixed before any outcome analysis: the cohort, endpoint, panel membership, scoring, representation (median, primary) and model forms. Each decision is recorded in a dated, hash-pinned protocol (`docs/PHASE9_MODELING_PROTOCOL_DRAFT.md`, `docs/PHASE9_DELTAC_INTERVAL_PLAN.md`).
+The cohort, endpoint, panel membership, scoring method, gene-level representation and model forms were all fixed before any outcome was examined. They are recorded in dated protocol documents that the pipeline pins by hash: `docs/PHASE9_MODELING_PROTOCOL_DRAFT.md` and `docs/PHASE9_DELTAC_INTERVAL_PLAN.md`.
 
-## 2. Why a nested bootstrap
+## Why a nested bootstrap
 
-A single Harrell optimism correction gives a **point estimate** of ΔC_corrected but no valid interval. An interval needs the sampling distribution of the *whole correction procedure*:
+Harrell's bootstrap optimism correction gives a point estimate of ΔC_corrected but no valid interval for it. To get an interval, the whole correction procedure has to be repeated on resampled data:
 
 ```
-for each outer replicate k = 1..B_out          (B_out = 500, top-up ladder 750 … 3000)
-    D*_k  = stratified bootstrap of the cohort
-    fit M1, M2 on D*_k                          -> apparent C on D*_k
+for each outer replicate k = 1..B_out          (B_out = 500; may grow to 750 ... 3000)
+    D*_k = stratified bootstrap of the cohort
+    fit M1 and M2 on D*_k                       -> apparent C on D*_k
     for each inner replicate b = 1..B_in        (B_in = 100)
         J*_k,b = bootstrap of D*_k
-        fit M1, M2 on J*_k,b; evaluate on D*_k   -> optimism(M, k, b)
+        fit M1 and M2 on J*_k,b, evaluate on D*_k -> optimism(M, k, b)
     ΔC_corrected(k) = ΔC_apparent(k) − mean_b[opt(M2) − opt(M1)]
 interval = percentiles of {ΔC_corrected(k)}
 ```
 
-M2's ridge penalty λ is re-tuned by 5-fold CV inside **every** fit (about 10⁵ penalised Cox fits per run). Design choices that are argued in the plan rather than assumed:
-- **M1 and M2 are paired** on the same resamples. Pairing removes about 44 % of the inner Monte-Carlo noise (ρ ≈ 0.68).
-- **B_in = 100** inflates the outer SD by about 1.2 %. The inflation is conservative and is disclosed, not deconvolved.
-- Inner replicates where either model fails are **excluded as pairs**, with a bounding analysis.
-- **Five independent full-size runs** measure Monte-Carlo reproducibility directly.
-- **Endpoint Monte-Carlo SE** is estimated by kernel quantile methods at three bandwidths. EP-1 uses the most conservative; reliability screening uses the least.
-- **Adaptive sizing:** B_out grows along a fixed ladder until the endpoint MC-SE is below 5 % of the interval width, or a W5 stability breach forces a top-up.
+M2's ridge penalty is re-tuned by five-fold cross-validation inside every fit, so a single run involves on the order of 10⁵ penalised Cox fits. The main design choices, each argued in the plan:
 
-## 3. Why there is a "corrected" pipeline
+- **Pairing.** M1 and M2 are fitted on the same resamples. In the earlier runs this removed about 44 % of the inner Monte Carlo variance of the optimism difference (correlation ≈ 0.68).
+- **Inner bootstrap size.** B_in = 100 inflates the outer standard deviation by about 1.2 %. That makes the interval slightly conservative; I report the inflation rather than trying to remove it.
+- **Fit failures.** Inner replicates in which either model fails are dropped as a pair, and a bounding analysis checks how much this could matter.
+- **Reproducibility.** Five independent full-size runs measure Monte Carlo reproducibility directly.
+- **Endpoint Monte Carlo error.** It is estimated with kernel quantile methods at three bandwidths. The acceptance rule (EP-1) uses the largest of the three estimates; the reliability screens use the smallest.
+- **Adaptive sizing.** B_out is increased along a fixed ladder until the endpoint Monte Carlo error is below 5 % of the interval width. A failed stability check (W5) also forces a top-up.
 
-The original Phase 9 run (historical, 2026-11-03/04) produced a point estimate, **ΔC_corrected = +0.0043**, but **no interval for it**. A later audit found a protocol deviation: every λ-tuning cross-validation consumed **the same PCG64 starting state as the bootstrap resample it was tuning on**, instead of the independent child stream the plan specified. This was verified empirically, 9/9 cases (`CV_SEED_DEVIATION_DRAFT_v2.md`).
+## Why there is a corrected pipeline
 
-The historical outputs are **preserved byte-for-byte and hash-pinned**. They are used only as verification references. The corrected pipeline (`src/phase9_corrected/`) re-implements the procedure with the specified stream separation and reuses the frozen fitting code (`src/phase9_execution.py`) unchanged. It reproduces the historical *outer* resamples exactly, which is checked against stored hashes.
+The original Phase 9 run (3–4 November 2026) produced a point estimate of **ΔC_corrected = +0.0043**, with no interval. A later audit of that run found a deviation from the plan. The cross-validation used to tune λ started from the same random-number-generator state as the bootstrap resample it was tuning on, instead of drawing from a separate stream as the plan specifies. I confirmed this empirically in every case examined (9 of 9). The deviation is documented in a protocol-deviation note that is kept with the historical outputs; those outputs are not included in this repository.
 
-## 4. Engineering for reproducibility and auditability
+The historical outputs are kept unchanged and are pinned by hash; the new pipeline uses them only as reference data for verification. The corrected pipeline (`src/phase9_corrected/`) implements the specified stream separation and calls the original fitting code (`src/phase9_execution.py`) without modification. Its outer bootstrap resamples are checked against the hashes stored by the historical run, so the outer resamples match the historical run exactly.
 
-### RNG stream design
-- Every random draw comes from a **named `SeedSequence` child**: outer, apparent-CV (with its own entropy word `T`), inner, inner-CV and inner-reserve, per run, k and b. No stream is ever reused.
-- A **pre-execution gate** enumerates every initial PCG64 state the run could use. For the approved domain that is about 4.5 M states (5 runs × k < 3,000 × b < 100 × 5 families, plus the primary seeds), and the gate proves they are all distinct.
-- Every replicate record stores SHA-256 fingerprints of the stream states and resample multiplicities it consumed, so stream assignment is **verifiable after the fact**.
+## Reproducibility and audit design
 
-### Execution control
-- **Append-only checkpoints** with a header binding config and manifest hashes. Each invocation's durable `start`/`end`/`auth` records seal byte boundaries, and history is re-derived from them before any dispatch.
-- **Crash consistency:** create-only writes with `F_FULLFSYNC`. An interrupted invocation is detected as UNTERMINATED and needs an explicit owner acknowledgement before it resumes.
-- **Runtime monitor:** projects completion time after warm-up and halts at twice the declared budget. Resuming needs a single-use authorisation reference.
-- **Non-estimable stop rule:** a strict literal 5 % predicate (`20·b > n`) applied to every prefix of the record stream.
-- **Eligibility engine:** classifies every run as INELIGIBLE, UNVERIFIABLE, INCOMPLETE or ELIGIBLE, with all reasons retained. The same assessment drives dispatch, sizing and reporting.
-- **Top-ups (Path C):** allowed only from a sizing decision that the frozen code re-derives from all five checkpoints.
+**Random-number streams**
+- Every random draw comes from its own `SeedSequence` child, indexed by run, outer replicate k and inner replicate b. The streams are: outer resample, apparent-fit CV (seeded from a separate entropy word), inner resample, inner CV and an inner reserve. No stream is used twice.
+- Before any replicate is computed, a gate enumerates every initial generator state the run could use and checks they are all distinct. For the configured design that is about 4.5 million states.
+- Each replicate record stores fingerprints of the stream states and resample multiplicities it actually consumed, so stream assignment can be checked afterwards.
 
-### Code identity: "the code that runs is the code that was reviewed"
-- A **freeze record** holds SHA-256 hashes of 27 source files and a blocking environment fingerprint: interpreter path and hash, packages, the NumPy BLAS/LAPACK build, thread variables and launch flags.
-- The owner anchors it by recording its SHA-256 in the configuration.
-- A **bash launcher** (`scripts/42`) verifies the anchor and every file with `/usr/bin/jq` and `/usr/bin/shasum` **before Python starts**. It then runs `python -I -B -X pycache_prefix=<fresh empty dir>`, so no stale bytecode can be loaded.
-- In-process checks confirm that every loaded repository module matches the freeze.
-- The run manifest and the gate evidence bind every invocation to the same configuration, code and data hashes.
+**Long-running execution**
+- Checkpoints are append-only. Each run's checkpoint carries a header that binds it to the configuration and input manifest.
+- Each invocation writes durable start, end and authorisation records. Before anything new is dispatched, the run history is reconstructed from these records and checked against the checkpoint bytes.
+- Records are created exclusively and synced with `F_FULLFSYNC`. An invocation that died without an end record is classed as unterminated, and it cannot be resumed until it is explicitly acknowledged.
+- A runtime monitor projects completion time after a warm-up period. It halts the run if the projection exceeds twice the declared budget; resuming then requires a single-use authorisation reference.
+- The run stops if more than 5 % of completed outer replicates are non-estimable (strict literal rule, `20·b > n`), checked on every prefix of the record stream.
+- Each run is classified as ineligible, unverifiable, incomplete or eligible, with every reason kept. The same assessment controls dispatch, sizing and reporting.
+- Increasing B_out (a top-up) is allowed only on the basis of a sizing decision that the frozen code recomputes from all five checkpoints.
 
-### Post-run verification runner (`scripts/43`)
-The runner works through these steps in order:
-1. Identity binding.
-2. **Stage A:** recomputes every interrupted window and compares it byte-for-byte.
-3. **Stage B:** eligibility.
-4. Sizing recomputation at every ladder level.
-5. **V1–V5:**
-   - V1: outer and inner resamples regenerated and compared with stored hashes and with the frozen historical code path;
-   - V2: stream assignment;
-   - V3: invariance of the M1 quantities to the CV correction;
-   - V4: reproduction of the as-run variant against history;
-   - V5: full recomputation of 20 replicates.
+**Code identity**
+- A freeze record lists SHA-256 hashes of the 27 source files the analysis depends on. It also records an environment fingerprint: interpreter path and hash, installed package versions, the NumPy BLAS/LAPACK build, thread settings and interpreter launch flags.
+- The run configuration stores the freeze record's own hash.
+- A shell launcher (`scripts/42_phase9_corrected_launch.sh`) checks that hash and every listed file, using system `jq` and `shasum`, before Python starts. It then starts Python in isolated mode with a fresh, empty bytecode directory, so no stale `.pyc` file can be loaded.
+- Once running, the pipeline re-checks every repository module it has loaded against the freeze.
+- Every invocation records the freshly executed pre-execution gate result it relied on.
 
-Verdicts are PASS, FAIL, NOT_APPLICABLE or NOT_COMPARABLE, each with counts and reasons. Missing evidence is never PASS, and only an overall PASS permits reporting.
+**Post-run verification** (`scripts/43_phase9_corrected_verify.py`)
 
-## 5. Verification of the software (not the science)
+The runner works through these checks in order:
+1. Every invocation is bound to the same configuration, manifest and freeze.
+2. Interrupted stretches of work are recomputed and compared byte-for-byte with the checkpoint.
+3. Run eligibility is re-assessed.
+4. The sizing decision is recomputed at every ladder level.
+5. The record-level checks:
+   - V1 regenerates outer and inner resamples and compares them with stored hashes and with the historical code path;
+   - V2 checks stream assignment;
+   - V3 checks that the clinical-only model is unaffected by the seed correction;
+   - V4 checks the as-run variant against the historical results;
+   - V5 recomputes 20 replicates in full.
 
-- **1,075 automated tests** pass on synthetic data; 549 of them cover the corrected pipeline.
-- **Independent oracles:**
-  - sizing and MC-SE rules are re-derived in a pure-Python reference implementation, at 1e-10 tolerance;
-  - the gate's state-count formula is checked against the real enumerator;
-  - non-finite JSON semantics are checked empirically.
-- **Adversarial tests**, for example:
-  - a failed pre-execution gate edited to PASS (it now cannot authorise dispatch, because the gate runs freshly per invocation);
-  - tampered or forged evidence files;
-  - stale `.pyc` shadowing;
-  - repository-root module shadowing;
-  - launcher refusal paths.
-- **Process:** owner-approved decisions, each implementation independently code-reviewed, findings triaged and fixed, protected files verified by hash after every cycle.
+Each check reports PASS, FAIL, NOT_APPLICABLE or NOT_COMPARABLE, with counts and reasons. Missing evidence never counts as a pass, and results may be reported only if the overall verdict is PASS.
 
-Passing tests show the software implements the approved protocol. They are **not** evidence about colon-cancer biology or about the size of ΔC.
+## Software testing
 
-## 6. Status
+The corrected pipeline has 549 automated tests; the full local suite, including earlier phases of the project, has 1,075, all passing. Most of the corrected-pipeline tests use synthetic data and stand-in model fits. A few check hashes or loading of the locally held study inputs and historical outputs. Those files are not distributed here, so those tests will not pass on a fresh clone.
+
+Besides ordinary unit and integration tests, the suite includes:
+- **independent reference calculations**, for example a separate pure-Python implementation of the sizing and Monte Carlo error rules, compared to a relative tolerance of 10⁻¹⁰;
+- **checks against the real enumerator**, for the gate's state count;
+- **tamper tests**:
+  - a failed gate result edited to read PASS;
+  - altered or substituted evidence files;
+  - stale bytecode;
+  - a module placed at the repository root to shadow a library;
+  - every refusal path in the launcher.
+
+These tests show that the software does what the protocol says. They say nothing about colon-cancer biology or about the size of ΔC.
+
+## Current status
 
 | Component | Status |
 |---|---|
-| Protocol, estimand, cohort, models | Frozen (historical phases) |
-| Historical point estimate ΔC_corrected = +0.0043 | Historical; **no interval**; affected by the CV-seed deviation |
-| Corrected pipeline, launcher, runner, freeze tooling | **Implemented, tested, committed** (`bba7f6d`) |
-| Candidate freeze record | **Generated and checked against the committed code; final approval (Decision 13) pending** (27 files, SHA-256 `618f20eb…a790`) |
-| Owner decisions 1–11 in the run configuration | **Populated** from the recorded approvals, with dates and references; the configuration passes the pipeline's static validation except for the execution authorisation |
-| Decision 12 (λ at failure, Option C) | **Implemented and tested**; its entry in the configuration's decision record is **unresolved**, because the template's allowed values do not include Option C (the pipeline does not read this entry) |
-| Decision 13 final freeze approval | **Pending** |
-| Decision 14 scientific execution authorisation | **Pending** |
-| Corrected bootstrap (5 runs × 500 × 100) | **Not run** |
-| Corrected interval for ΔC_corrected, and any corrected conclusion | **Pending**: no corrected result exists |
+| Protocol, estimand, cohort, models | fixed in earlier phases |
+| Historical point estimate, ΔC_corrected = +0.0043 | historical only: no interval, and affected by the seed deviation |
+| Corrected pipeline, launcher, verification runner, freeze tooling | implemented, tested, committed |
+| Candidate freeze record (27 files, SHA-256 `618f20eb…a790`) | generated and checked against the committed code; approval pending |
+| Analysis decisions 1–11 in the run configuration | entered, with dates and references; the configuration passes static validation except for the execution authorisation |
+| Decision 12 (recording λ when a fit fails) | implemented and tested; its entry in the configuration's decision log is unresolved, because the template does not list the chosen option (the pipeline does not read this entry) |
+| Freeze approval (Decision 13) | pending |
+| Authorisation to run (Decision 14) | pending |
+| Corrected bootstrap (5 runs × 500 outer × 100 inner replicates) | not run |
+| Corrected interval for ΔC_corrected, and any conclusion | pending: none exists yet |
 
-## 7. Remaining steps to a scientific result
+## Remaining steps
 
-The run configuration (`config/analysis/PHASE9_CORRECTED_RUN_CONFIG_OWNER_BLANK.json`) already holds the approved scientific decisions. What remains:
-1. **Decision 13:** the owner independently re-hashes and reviews the candidate freeze, installs it as the freeze record, and records its SHA-256 and the driver hash.
-2. **Manual anchor check:** re-hash the freeze record and the launcher; confirm the repository root has no importable entries other than `src` and `tests`.
-3. **Decision 14:** the owner authorises execution in the configuration.
-4. Run `scripts/42_phase9_corrected_launch.sh run …` for runs 0–4 (with the four BLAS/OpenMP thread variables unset, as at freeze capture), then `… verify`.
+1. Re-hash and review the candidate freeze, install it as `config/analysis/PHASE9_CORRECTED_FREEZE_RECORD.json`, and record its hash and the driver hash in the configuration.
+2. Before running, re-hash the freeze record and the launcher, and check that the repository root contains no importable Python files or packages other than `src` and `tests`.
+3. Record the execution authorisation in the configuration.
+4. Run `scripts/42_phase9_corrected_launch.sh run <config> <run> 500` for runs 0–4, with the BLAS/OpenMP thread variables unset as they were at freeze capture. Then run `scripts/42_phase9_corrected_launch.sh verify <config>`.
 
-## 8. Repository map
+## Repository layout
 
 | Path | Contents |
 |---|---|
-| `src/phase9_corrected/` | engine, RNG streams, resampling, fitting adapter, checkpointing, orchestration, statistics (EP-1, W5, sizing), reliability, gate, verification, post-run runner |
-| `src/phase9_execution.py`, `src/pathway_scoring.py`, `src/score_standardisation.py` | frozen historical fitting and scoring code (unchanged) |
-| `scripts/40` | historical driver (frozen reference) |
+| `src/phase9_corrected/` | replicate engine, random streams, resampling, fitting adapter, checkpointing, orchestration, statistics (EP-1, W5, sizing), reliability checks, gate, verification and post-run runner |
+| `src/phase9_execution.py`, `src/pathway_scoring.py`, `src/score_standardisation.py` | original fitting and scoring code, used unchanged |
+| `scripts/40_phase9_dc_interval.py` | original Phase 9 driver, kept as the reference code path |
 | `scripts/41`–`44` | corrected driver, launcher, verification entry point, freeze preparation |
-| `tests/test_phase9_corrected_*.py` | synthetic, adversarial and oracle tests |
-| `docs/PHASE9_DECISION13_FREEZE_PROCEDURE.md` | freeze, trust anchor and launch procedure |
+| `config/analysis/PHASE9_CORRECTED_RUN_CONFIG_OWNER_BLANK.json` | run configuration with the recorded analysis decisions |
+| `docs/PHASE9_DECISION13_FREEZE_PROCEDURE.md` | freeze, hash-anchoring and launch procedure |
+| `tests/test_phase9_corrected_*.py` | tests for the corrected pipeline |
 
 ```bash
-.venv/bin/python -m pytest -q tests/test_phase9_corrected_*.py   # synthetic tests only; no real data
+.venv/bin/python -m pytest -q tests/test_phase9_corrected_*.py
 ```
 
-## 9. Skills demonstrated
+## Methods and tools
 
-Survival analysis (Cox models, Harrell's C, optimism correction) · resampling inference (nested bootstrap, Monte-Carlo error, kernel quantile SEs) · reproducible-research engineering (RNG stream design, content-addressed code freezes, crash-consistent checkpoints) · verification design (independent oracles, adversarial tests) · protocol discipline (pre-registration, deviation records, honest scoping of claims).
+Cox proportional-hazards models with ridge penalties, Harrell's C and bootstrap optimism correction, nested bootstrap inference with Monte Carlo error estimation, NumPy `SeedSequence` stream design, hash-based code and data provenance, crash-consistent checkpointing, and test design with independent reference implementations. Python (NumPy, pandas, lifelines, pyarrow, pytest) and Bash.
