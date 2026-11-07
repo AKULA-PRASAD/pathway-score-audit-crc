@@ -170,11 +170,24 @@ Verification refuses if any incomplete or unrecognised artifact is present, if a
 
 **Root-shadow detection (review D1).** The root scan reports top-level module files, extension modules and regular packages, including packages whose `__init__` is a versioned (`.cpython-*`) or `abi3` extension. A namespace directory (no `__init__`) is not reported, because it cannot shadow a regular module found later on `sys.path`.
 
-## 7. Path C: the missing sizing-decision step (owner decision outstanding)
+## 7. Path C: the sizing-decision step
 
-A top-up beyond B_out_initial (Path C) is dispatched only when `run_corrected` verifies `<output_dir>/sizing/level<B_cur, 5 digits>.json` (schema `p9c-sizing-1`, `verify_sizing_decision`). **No tool creates that file.** `build_sizing_decision` computes its content, but nothing writes it. The runner verifies sizing files and must never create them (Decision 13 B3).
+A top-up beyond B_out_initial (Path C) is dispatched only when `run_corrected` verifies `<output_dir>/sizing/level<B_cur, 5 digits>.json` (schema `p9c-sizing-1`, `verify_sizing_decision`). The frozen package computes the content (`build_sizing_decision`) but contains no tool that writes it. The runner verifies sizing files and must never create them (Decision 13 B3).
 
-A future, separately authorised sizing-decision workflow must:
+**Resolution (7 November 2026).** Verification at B_out = 500 returned FAIL on a single check: the recomputed sizing decision required a top-up to 750. The owner chose to complete the campaign, and the writer `scripts/45_phase9_sizing_decision.py` was added. It meets the requirements below with one documented difference from item 1:
+
+- It is not part of the Decision 13 freeze and is not started by the launcher. Adding it to the freeze would change the freeze record, then the Decision 13 hash in the configuration, then the configuration hash that every checkpoint, start record and the input manifest are bound to. That would invalidate the 2,500 replicates already computed.
+- Instead it requires the launcher's interpreter flags (`-I -B -X pycache_prefix=<fresh, empty, external directory>`). It runs the frozen `verify_code_identity`, which covers the freeze anchor, every frozen file, the loaded package modules and the environment, with only its own entry-point module excluded. It prints its own SHA-256, and it re-checks the stored manifest against the current inputs, code and environment.
+- This difference does not weaken the trust model. The sizing file is an input, not an authority. Before any top-up, `run_corrected` re-derives every value in it from the checkpoints with frozen code, and the post-run runner does so again, so a file that differs in any respect is refused. Each run's top-up also requires the owner's explicit `--topup-authorization` reference.
+
+The writer's run at B_out = 500 recorded:
+- decision `top_up`, giving 750 (`rho_max` = 0.0592);
+- writer SHA-256 `cf4e3702…bccf9`;
+- sizing file SHA-256 `28c689bb…dcf03`, verified for all five runs.
+
+The top-up reference is "Owner authorization of the Path C top-up to 750, 2026-11-07".
+
+The sizing-decision workflow must:
 1. Start through the launcher, under the same freeze, flags and identity checks.
 2. Take as inputs only: the approved configuration; the manifest; the verified freeze; and the five checkpoints at B_cur, each run complete at B_cur, CLEAN, ELIGIBLE, and with every window a bound Stage A PASS. Run the post-run runner first at that level to produce the window results.
 3. Compute the content with `orchestration.build_sizing_decision`, the single source of truth (Decisions 5A, 5B, 6A, 6B, 7A and 7B), and write it once with `durable_create`. It must never overwrite an existing file.
@@ -183,5 +196,5 @@ A future, separately authorised sizing-decision workflow must:
 
 ## 8. Open items
 
-- **Sizing files:** see section 7 (owner decision).
+- **Sizing files:** resolved for this campaign by `scripts/45_phase9_sizing_decision.py` (section 7). A later freeze could include the writer and give the launcher a `size` command.
 - **Platform:** Linux paths are untested. The procedure assumes macOS (`/usr/bin/jq`, `/usr/bin/shasum`, `/usr/bin/sw_vers`, `F_FULLFSYNC`).
