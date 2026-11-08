@@ -1,0 +1,33 @@
+{
+  "record_type": "PHASE6B_PROTOCOL_AMENDMENT_RECORD",
+  "document": "docs/PHASE6B_MODELING_PROTOCOL_DRAFT.md",
+  "created_utc": "2026-11-03T01:49:17.688496+00:00",
+  "note": "Phase 6B's Register A is untouched by every amendment here. Only protocol TEXT is amended, and the superseded wording is preserved verbatim both in this record and in the document itself.",
+  "amendments": [
+    {
+      "amendment_id": "P6B-A1",
+      "date": "2026-11-03",
+      "amended_utc": "2026-11-03T01:49:17.688496+00:00",
+      "approved_by": "project owner",
+      "basis": [
+        "Phase 8D decision D9-1",
+        "docs/PHASE9_MODELING_PROTOCOL_DRAFT.md v2.1 section 3.5",
+        "docs/PHASE9_FINAL_AUDIT.md Finding 3"
+      ],
+      "target_section": "3.1 (M1 table, 'Penalisation' row)",
+      "superseded_text": "ridge, lambda tuned **inside** resampling",
+      "replacement_text": "the clinical block (the four binary covariates and the age spline basis) is force-included and UNPENALISED in M1, M2 and M3. The ridge penalty applies only to the M2 pathway scores; the elastic-net penalty only to the M3 candidate genes. lambda (and alpha for M3) are tuned by inner cross-validation inside each training fold. M1 therefore has no penalised term and no lambda to tune.",
+      "rationale": "Ridge is not scale-invariant; the clinical block is four binaries plus a year-scale age spline basis, so penalising it makes shrinkage depend on units. An unpenalised coefficient is scale-equivariant, which removes the question rather than answering it by convention. It also preserves nesting and makes clinical coefficients comparable across models.",
+      "register_A_item": false,
+      "register_A_changed": false,
+      "clinical_block_identical_across_models": true,
+      "clinical_block_separately_penalised_or_retuned": false,
+      "m1_nested_in_m2_when_molecular_coefficients_zero": true,
+      "molecular_tuning_location": "inner cross-validation inside each training fold / bootstrap replicate",
+      "required_delta_c_interpretation": "delta-C = C(M2) - C(M1) compares an unpenalised clinical baseline against a model with an unpenalised clinical block plus a SHRUNKEN molecular block. Molecular shrinkage can make the comparison CONSERVATIVE with respect to detecting an incremental molecular contribution. It MUST NOT be described as an unbiased estimate of the molecular block's contribution.",
+      "outcome_data_used": false,
+      "document_sha256_before": "7ef83d6e47a226025b72981b7c1dce60d0b3112a38154437ca4564a2ebbfcccc",
+      "document_sha256_after": "755e44d3c00d4a591882f9da0c7128c081bc886f43888b27055a2d7a3315de3a"
+    }
+  ]
+}

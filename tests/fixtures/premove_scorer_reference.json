@@ -1,0 +1,502 @@
+{
+  "source_sha256": "48b89542c77b1413aa694e419c8bc90b51f7750a1a828a25bf326f7c6c9b4e87",
+  "signature": "(X: 'pd.DataFrame', panel: 'dict', train_ids, *, ddof: 'int | None' = None)",
+  "scenarios": {
+    "4set": {
+      "full_cohort": {
+        "sha256_float64": "4bcc8bcae8d2bc76df3e7a0a299cc63fd6916dbd99d4749da2e7abf189588d15",
+        "columns": [
+          "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION",
+          "HALLMARK_E2F_TARGETS",
+          "HALLMARK_WNT_BETA_CATENIN_SIGNALING",
+          "HALLMARK_P53_PATHWAY"
+        ],
+        "index_head": [
+          "GSM971959",
+          "GSM971962",
+          "GSM971963"
+        ],
+        "index_tail": [
+          "GSM972520",
+          "GSM972521",
+          "GSM972522"
+        ],
+        "shape": [
+          453,
+          4
+        ]
+      },
+      "fold_fit": {
+        "sha256_float64": "0efd207d225af3e7ff65cf085c27e8052a94e191986d423a104f1a6b49e8eae8",
+        "columns": [
+          "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION",
+          "HALLMARK_E2F_TARGETS",
+          "HALLMARK_WNT_BETA_CATENIN_SIGNALING",
+          "HALLMARK_P53_PATHWAY"
+        ],
+        "index_head": [
+          "GSM971959",
+          "GSM971962",
+          "GSM971963"
+        ],
+        "index_tail": [
+          "GSM972520",
+          "GSM972521",
+          "GSM972522"
+        ],
+        "shape": [
+          453,
+          4
+        ]
+      },
+      "fold_fit_heldout_deleted": {
+        "sha256_float64": "84a14e9eff42177b28e7529f7a26df1d348294fc9c1e95575958ae5b6d6fa5f6",
+        "columns": [
+          "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION",
+          "HALLMARK_E2F_TARGETS",
+          "HALLMARK_WNT_BETA_CATENIN_SIGNALING",
+          "HALLMARK_P53_PATHWAY"
+        ],
+        "index_head": [
+          "GSM971959",
+          "GSM971962",
+          "GSM971963"
+        ],
+        "index_tail": [
+          "GSM972340",
+          "GSM972341",
+          "GSM972343"
+        ],
+        "shape": [
+          300,
+          4
+        ]
+      },
+      "fold_fit_heldout_poisoned": {
+        "sha256_float64": "cd3ec1e29ccf6af535a0c6bcbc1c0b2e21dc0f851dd167b73a246f3bd249b2de",
+        "columns": [
+          "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION",
+          "HALLMARK_E2F_TARGETS",
+          "HALLMARK_WNT_BETA_CATENIN_SIGNALING",
+          "HALLMARK_P53_PATHWAY"
+        ],
+        "index_head": [
+          "GSM971959",
+          "GSM971962",
+          "GSM971963"
+        ],
+        "index_tail": [
+          "GSM972520",
+          "GSM972521",
+          "GSM972522"
+        ],
+        "shape": [
+          453,
+          4
+        ]
+      },
+      "ddof0_override": {
+        "sha256_float64": "21b209c5b0584a4747d034e253c6880792bb785d5cc288c47e979ca50d84ca94",
+        "columns": [
+          "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION",
+          "HALLMARK_E2F_TARGETS",
+          "HALLMARK_WNT_BETA_CATENIN_SIGNALING",
+          "HALLMARK_P53_PATHWAY"
+        ],
+        "index_head": [
+          "GSM971959",
+          "GSM971962",
+          "GSM971963"
+        ],
+        "index_tail": [
+          "GSM972520",
+          "GSM972521",
+          "GSM972522"
+        ],
+        "shape": [
+          453,
+          4
+        ]
+      },
+      "diag_full": {
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": {
+          "n_source": 200,
+          "n_resolved_in_panel": 198,
+          "n_present_in_matrix": 198,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.99,
+          "n_zero_variance_dropped": 0,
+          "zero_variance_genes": [],
+          "n_genes_used": 198,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_E2F_TARGETS": {
+          "n_source": 200,
+          "n_resolved_in_panel": 195,
+          "n_present_in_matrix": 195,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.975,
+          "n_zero_variance_dropped": 0,
+          "zero_variance_genes": [],
+          "n_genes_used": 195,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": {
+          "n_source": 42,
+          "n_resolved_in_panel": 41,
+          "n_present_in_matrix": 41,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.97619,
+          "n_zero_variance_dropped": 0,
+          "zero_variance_genes": [],
+          "n_genes_used": 41,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_P53_PATHWAY": {
+          "n_source": 200,
+          "n_resolved_in_panel": 194,
+          "n_present_in_matrix": 194,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.97,
+          "n_zero_variance_dropped": 0,
+          "zero_variance_genes": [],
+          "n_genes_used": 194,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        }
+      },
+      "diag_fold": {
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": {
+          "n_source": 200,
+          "n_resolved_in_panel": 198,
+          "n_present_in_matrix": 198,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.99,
+          "n_zero_variance_dropped": 0,
+          "zero_variance_genes": [],
+          "n_genes_used": 198,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_E2F_TARGETS": {
+          "n_source": 200,
+          "n_resolved_in_panel": 195,
+          "n_present_in_matrix": 195,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.975,
+          "n_zero_variance_dropped": 0,
+          "zero_variance_genes": [],
+          "n_genes_used": 195,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": {
+          "n_source": 42,
+          "n_resolved_in_panel": 41,
+          "n_present_in_matrix": 41,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.97619,
+          "n_zero_variance_dropped": 0,
+          "zero_variance_genes": [],
+          "n_genes_used": 41,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_P53_PATHWAY": {
+          "n_source": 200,
+          "n_resolved_in_panel": 194,
+          "n_present_in_matrix": 194,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.97,
+          "n_zero_variance_dropped": 0,
+          "zero_variance_genes": [],
+          "n_genes_used": 194,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        }
+      },
+      "zero_variance_injection": {
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": 0,
+        "HALLMARK_E2F_TARGETS": 1,
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": 0,
+        "HALLMARK_P53_PATHWAY": 0
+      },
+      "victim_gene": "AK2"
+    },
+    "5set": {
+      "full_cohort": {
+        "sha256_float64": "9b57bf07f251198b36c35e1a0162a693add9ab2abd3cd56182866da219e8986e",
+        "columns": [
+          "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION",
+          "HALLMARK_E2F_TARGETS",
+          "HALLMARK_WNT_BETA_CATENIN_SIGNALING",
+          "HALLMARK_P53_PATHWAY",
+          "HALLMARK_PI3K_AKT_MTOR_SIGNALING"
+        ],
+        "index_head": [
+          "GSM971959",
+          "GSM971962",
+          "GSM971963"
+        ],
+        "index_tail": [
+          "GSM972520",
+          "GSM972521",
+          "GSM972522"
+        ],
+        "shape": [
+          453,
+          5
+        ]
+      },
+      "fold_fit": {
+        "sha256_float64": "98cceeab66953fd268b04fea22669122a4319be5964ee1da7a017918a8334f29",
+        "columns": [
+          "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION",
+          "HALLMARK_E2F_TARGETS",
+          "HALLMARK_WNT_BETA_CATENIN_SIGNALING",
+          "HALLMARK_P53_PATHWAY",
+          "HALLMARK_PI3K_AKT_MTOR_SIGNALING"
+        ],
+        "index_head": [
+          "GSM971959",
+          "GSM971962",
+          "GSM971963"
+        ],
+        "index_tail": [
+          "GSM972520",
+          "GSM972521",
+          "GSM972522"
+        ],
+        "shape": [
+          453,
+          5
+        ]
+      },
+      "fold_fit_heldout_deleted": {
+        "sha256_float64": "384ab076fa824941c41a7196cfa12a681ef15416f411a2302632759fcfd0e1b6",
+        "columns": [
+          "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION",
+          "HALLMARK_E2F_TARGETS",
+          "HALLMARK_WNT_BETA_CATENIN_SIGNALING",
+          "HALLMARK_P53_PATHWAY",
+          "HALLMARK_PI3K_AKT_MTOR_SIGNALING"
+        ],
+        "index_head": [
+          "GSM971959",
+          "GSM971962",
+          "GSM971963"
+        ],
+        "index_tail": [
+          "GSM972340",
+          "GSM972341",
+          "GSM972343"
+        ],
+        "shape": [
+          300,
+          5
+        ]
+      },
+      "fold_fit_heldout_poisoned": {
+        "sha256_float64": "f4a367124a8b0a3a7dd4eb331a0661c45beaad56cc0d744aae6a941c8153c76e",
+        "columns": [
+          "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION",
+          "HALLMARK_E2F_TARGETS",
+          "HALLMARK_WNT_BETA_CATENIN_SIGNALING",
+          "HALLMARK_P53_PATHWAY",
+          "HALLMARK_PI3K_AKT_MTOR_SIGNALING"
+        ],
+        "index_head": [
+          "GSM971959",
+          "GSM971962",
+          "GSM971963"
+        ],
+        "index_tail": [
+          "GSM972520",
+          "GSM972521",
+          "GSM972522"
+        ],
+        "shape": [
+          453,
+          5
+        ]
+      },
+      "ddof0_override": {
+        "sha256_float64": "bc3b25146fa464792861495dd3f8b3a822d4a2aa131704612400e991b6f62bf0",
+        "columns": [
+          "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION",
+          "HALLMARK_E2F_TARGETS",
+          "HALLMARK_WNT_BETA_CATENIN_SIGNALING",
+          "HALLMARK_P53_PATHWAY",
+          "HALLMARK_PI3K_AKT_MTOR_SIGNALING"
+        ],
+        "index_head": [
+          "GSM971959",
+          "GSM971962",
+          "GSM971963"
+        ],
+        "index_tail": [
+          "GSM972520",
+          "GSM972521",
+          "GSM972522"
+        ],
+        "shape": [
+          453,
+          5
+        ]
+      },
+      "diag_full": {
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": {
+          "n_source": 200,
+          "n_resolved_in_panel": 198,
+          "n_present_in_matrix": 198,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.99,
+          "n_zero_variance_dropped": 0,
+          "zero_variance_genes": [],
+          "n_genes_used": 198,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_E2F_TARGETS": {
+          "n_source": 200,
+          "n_resolved_in_panel": 195,
+          "n_present_in_matrix": 195,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.975,
+          "n_zero_variance_dropped": 0,
+          "zero_variance_genes": [],
+          "n_genes_used": 195,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": {
+          "n_source": 42,
+          "n_resolved_in_panel": 41,
+          "n_present_in_matrix": 41,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.97619,
+          "n_zero_variance_dropped": 0,
+          "zero_variance_genes": [],
+          "n_genes_used": 41,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_P53_PATHWAY": {
+          "n_source": 200,
+          "n_resolved_in_panel": 194,
+          "n_present_in_matrix": 194,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.97,
+          "n_zero_variance_dropped": 0,
+          "zero_variance_genes": [],
+          "n_genes_used": 194,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_PI3K_AKT_MTOR_SIGNALING": {
+          "n_source": 105,
+          "n_resolved_in_panel": 104,
+          "n_present_in_matrix": 104,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.990476,
+          "n_zero_variance_dropped": 0,
+          "zero_variance_genes": [],
+          "n_genes_used": 104,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        }
+      },
+      "diag_fold": {
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": {
+          "n_source": 200,
+          "n_resolved_in_panel": 198,
+          "n_present_in_matrix": 198,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.99,
+          "n_zero_variance_dropped": 0,
+          "zero_variance_genes": [],
+          "n_genes_used": 198,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_E2F_TARGETS": {
+          "n_source": 200,
+          "n_resolved_in_panel": 195,
+          "n_present_in_matrix": 195,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.975,
+          "n_zero_variance_dropped": 0,
+          "zero_variance_genes": [],
+          "n_genes_used": 195,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": {
+          "n_source": 42,
+          "n_resolved_in_panel": 41,
+          "n_present_in_matrix": 41,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.97619,
+          "n_zero_variance_dropped": 0,
+          "zero_variance_genes": [],
+          "n_genes_used": 41,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_P53_PATHWAY": {
+          "n_source": 200,
+          "n_resolved_in_panel": 194,
+          "n_present_in_matrix": 194,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.97,
+          "n_zero_variance_dropped": 0,
+          "zero_variance_genes": [],
+          "n_genes_used": 194,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_PI3K_AKT_MTOR_SIGNALING": {
+          "n_source": 105,
+          "n_resolved_in_panel": 104,
+          "n_present_in_matrix": 104,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.990476,
+          "n_zero_variance_dropped": 0,
+          "zero_variance_genes": [],
+          "n_genes_used": 104,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        }
+      },
+      "zero_variance_injection": {
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": 0,
+        "HALLMARK_E2F_TARGETS": 1,
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": 0,
+        "HALLMARK_P53_PATHWAY": 0,
+        "HALLMARK_PI3K_AKT_MTOR_SIGNALING": 0
+      },
+      "victim_gene": "AK2"
+    }
+  },
+  "error_contract": {
+    "no_train_ids": {
+      "raised": "TypeError",
+      "message": "score_panel() missing 1 required positional argument: 'train_ids'"
+    },
+    "train_ids_none": {
+      "raised": "ValueError",
+      "message": "train_ids is mandatory -- frozen rule: mu/sigma are estimated on TRAINING SAMPLES ONLY"
+    },
+    "unpinned_ddof": {
+      "raised": "ValueError",
+      "message": "panel does not pin scoring.sigma_ddof -- refusing to fall back on a library default (amendment M2-A1)"
+    },
+    "one_train_sample": {
+      "raised": "ValueError",
+      "message": "need >= 2 training samples to estimate sigma"
+    }
+  }
+}

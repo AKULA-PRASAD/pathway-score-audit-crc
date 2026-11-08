@@ -1,0 +1,105 @@
+{
+  "record_type": "PHASE7C_QC_DECISIONS",
+  "decided_utc": "2026-11-02T22:27:37.221512+00:00",
+  "approved_by": "project owner",
+  "decisions": {
+    "D1_hc1_amendment": {
+      "decision": "APPROVED - amend H-C1 from set equality to subset-with-zero-missing",
+      "defect_recorded": true,
+      "corrected_criterion_recorded": true,
+      "rationale_recorded": true,
+      "approval_recorded": true,
+      "original_execution_result_preserved": true,
+      "where": "config/analysis/QC_SPECIFICATION.json -> revision_history[2].amendment",
+      "specification_revision": 3,
+      "broadens_hard_criteria_list": false,
+      "changes_any_threshold": false
+    },
+    "D2_retain_all_453": {
+      "decision": "APPROVED - retain all 453 S3 samples",
+      "samples_retained": 453,
+      "samples_excluded": 0,
+      "soft_flagged_samples": 29,
+      "investigation_records_preserved": 29,
+      "no_soft_flagged_sample_authorized_for_exclusion": true,
+      "explicit_statement": "No independent evidence demonstrated technical invalidity for any soft-flagged sample. Of the 29 flagged samples, 26 had NO independent technical evidence of invalidity, and the remaining 3 carried only further statistical flags (extreme PCA score, or a degradation contrast deviating from the unflagged median) rather than a demonstrated technical fault. The sole direct technical measure available on this matrix - the AFFX 3'/5' degradation contrast - did NOT discriminate flagged from unflagged arrays (ACTB median 0.792 vs 0.772; GAPDH 0.259 vs 0.188).",
+      "flagged_sample_ids": [
+        "GSM971986",
+        "GSM971993",
+        "GSM972059",
+        "GSM972061",
+        "GSM972077",
+        "GSM972079",
+        "GSM972089",
+        "GSM972097",
+        "GSM972105",
+        "GSM972113",
+        "GSM972149",
+        "GSM972177",
+        "GSM972220",
+        "GSM972221",
+        "GSM972257",
+        "GSM972264",
+        "GSM972274",
+        "GSM972275",
+        "GSM972283",
+        "GSM972295",
+        "GSM972305",
+        "GSM972311",
+        "GSM972357",
+        "GSM972361",
+        "GSM972444",
+        "GSM972445",
+        "GSM972467",
+        "GSM972479",
+        "GSM972499"
+      ]
+    },
+    "D3_observations_not_justifications": {
+      "decision": "APPROVED - record as QC OBSERVATIONS, explicitly NOT exclusion justifications",
+      "observations": [
+        {
+          "id": "OBS-1",
+          "subject": "batch05 flag-rate association",
+          "finding": "Soft-flag rate varies by ComBat processing batch: batch05 20.4% (10/49), batch03 7.8%, batch02/09/10 0.0%. chi2=23.2, df=8, p=0.003, Cramer's V=0.226.",
+          "interpretation": "Batch-ASSOCIATED but not batch-DETERMINED. Markedly weaker than the near-deterministic batch patterning found for molecular-assay missingness in Phase 6D.",
+          "status": "OBSERVATION ONLY",
+          "is_exclusion_justification": false,
+          "action_taken": "none - no sample excluded, no batch correction applied"
+        },
+        {
+          "id": "OBS-2",
+          "subject": "GSM972311 clustering singleton",
+          "finding": "Hierarchical clustering 2-cluster cut splits 452/1, isolating GSM972311. Its sum(1-rho)=57.72 is the cohort maximum and ~1.8x the Tukey fence of 32.098.",
+          "interpretation": "Correlation-distant WITHOUT being distributionally or degradation-abnormal: per-array median 4.8096 and IQR 2.8450 both lie inside their fences, PCA z-scores are unremarkable (PC1 -0.48, PC2 -2.19), and its degradation contrast shows no deviation.",
+          "status": "OBSERVATION ONLY",
+          "is_exclusion_justification": false,
+          "action_taken": "none - retained in the cohort"
+        }
+      ]
+    }
+  },
+  "preserved": {
+    "qc_thresholds_unchanged": true,
+    "specification_revision_history": 3,
+    "investigation_records": "reports/phase7c/investigation_records.json",
+    "original_hc1_execution_result": "preserved in revision_history[2].amendment"
+  },
+  "frozen_artifacts_unmodified": {
+    "frozen_gene_to_probeset_median.csv": "08f8715fb7eca5a0cad9516e66343bdd3edf48b1e68535e10b8da59dc054e237",
+    "frozen_gene_to_probe_discovery443.csv": "c386d5f11cc511dc240ad7f1cd47124e7687266ba4807d6be3dc80d7abd857bc",
+    "m2_panel_4set.json": "bab99da9f139db34ccc2d5f5f954cda9e92fc6cf33f41a076024e5146b065dfe",
+    "m2_panel_5set.json": "6058f733b2acda1c7a77746a83bb5d72dd8a9ae64522c81958299af9da79cc27",
+    "A19_FREEZE_RECORD.json": "a77de7b37fe09eeb9d9958ca012648e63fb349c19614b0c2dc99591da2cf561f",
+    "expression_median_S0.parquet": "a1ca41807c53458489617e677f2bdb3f0a72b2c9a71d8ded59b4eeef60c73676",
+    "cohort_membership.csv": "bd3671f8df64c594d273a23abed80b83dd17742aee15bd83ac114211be5fcd01"
+  },
+  "actions_not_performed": [
+    "normalization",
+    "batch correction",
+    "modeling",
+    "feature selection",
+    "sample exclusion",
+    "outcome analysis"
+  ]
+}

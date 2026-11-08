@@ -1,0 +1,476 @@
+{
+  "schema_version": 1,
+  "status": "APPROVED - REVISION 3 - thresholds immutable",
+  "prepared_utc": "2026-11-02T22:06:54.298223+00:00",
+  "scope": {
+    "input": "deposited GSE39582 expression matrix, used as-is (Phase 7A Rank 1)",
+    "platform": "GPL570 Affymetrix HG-U133 Plus 2.0",
+    "dimensions": {
+      "probe_sets": 54675,
+      "samples": 585
+    },
+    "scale": "log2",
+    "documented_processing": "RMA + ComBat, fitting population UNDOCUMENTED",
+    "analysis_cohort": "S3 (453), per frozen Phase 3 bundle"
+  },
+  "methodological_posture": {
+    "distributions_not_inspected": true,
+    "rationale": "QC metric distributions were deliberately NOT computed before writing this specification. Choosing a numeric cutoff by looking at the distribution it is meant to screen is circular. Where no literature-justified constant exists, a DATA-ADAPTIVE rule (Tukey) is pre-specified instead, and the ACTION remains investigation pending approval."
+  },
+  "inapplicable_metrics": {
+    "GNUSE": "requires fRMA; not used under Rank 1",
+    "NUSE / RLE": "require probe-level PLM fits from CEL files",
+    "RNA degradation slope (affy::AffyRNAdeg)": "requires CEL probe-level data",
+    "percent present / MAS5 calls": "requires CEL data",
+    "array background / spike-in controls": "not recoverable post-RMA",
+    "note": "These are standard Affymetrix QC metrics that CANNOT be computed from an already RMA-normalised, ComBat-adjusted matrix. Their absence is a limitation of the approved input, not an oversight."
+  },
+  "tiers": {
+    "HARD_EXCLUSION": "Deterministic integrity failure where the sample or data is DEMONSTRABLY INVALID. May trigger automatic halt or rejection ONLY under both conditions: (a) the failure is deterministic - no threshold judgement is involved; and (b) the invalidity is demonstrable, not inferred. Hard exclusions must NOT be broadened beyond the 9 criteria listed.",
+    "SOFT_INVESTIGATION": "pre-specified data-adaptive flag; triggers INVESTIGATION. Exclusion requires explicit written approval",
+    "DESCRIPTIVE": "reported only; NEVER independently triggers exclusion"
+  },
+  "criteria": [
+    {
+      "id": "H-S1",
+      "domain": "sample",
+      "tier": "HARD_EXCLUSION",
+      "metric": "count of non-finite values in the sample's column",
+      "rule": "exclude if count > 0",
+      "justification": "a non-finite value is not a measurement; no threshold judgement is involved",
+      "action": "exclude + report",
+      "level": "sample",
+      "effect_on_frozen": "none expected - currently 0 across all 585 samples",
+      "expected_triggers": 0
+    },
+    {
+      "id": "H-S2",
+      "domain": "cohort",
+      "tier": "HARD_EXCLUSION",
+      "metric": "sample_id present in the frozen Phase 3 cohort_membership.csv",
+      "rule": "a sample absent from the frozen manifest is not analysable",
+      "justification": "cohort membership is frozen (Phase 1/3); QC cannot add samples",
+      "action": "exclude + report",
+      "level": "sample",
+      "effect_on_frozen": "none",
+      "expected_triggers": 0
+    },
+    {
+      "id": "H-S3",
+      "domain": "cohort",
+      "tier": "HARD_EXCLUSION",
+      "metric": "exactly-duplicated sample columns (bitwise identical vectors)",
+      "rule": "flag any duplicate pair; investigate provenance; exclude at most one after approval",
+      "justification": "an exact duplicate indicates a processing or deposit error, not biology",
+      "action": "investigate then exclude with approval",
+      "level": "sample",
+      "effect_on_frozen": "would require approval",
+      "expected_triggers": 0
+    },
+    {
+      "id": "H-S4",
+      "domain": "cohort",
+      "tier": "HARD_EXCLUSION",
+      "metric": "non-tumoural sample present in the analysis cohort",
+      "rule": "the 19 non-tumoural mucosa samples must not appear in S3",
+      "justification": "deterministic from frozen source_name; analysis is tumour-only",
+      "action": "exclude + report",
+      "level": "sample",
+      "effect_on_frozen": "none - S3 excludes them by construction",
+      "expected_triggers": 0
+    },
+    {
+      "id": "S-S1",
+      "domain": "sample",
+      "tier": "SOFT_INVESTIGATION",
+      "metric": "per-array median of log2 expression",
+      "rule": "Tukey boxplot-whisker rule: flag values beyond Q3 + 1.5*IQR (or below Q1 - 1.5*IQR) of the metric's own distribution across arrays. This is the outlier convention used by arrayQualityMetrics (Kauffmann et al., Bioinformatics 2009;25(3):415-416). It is DATA-ADAPTIVE, so it can be pre-specified without choosing a numeric cutoff by inspection.",
+      "justification": "post-quantile-normalisation, per-array medians should be near-constant; a departure indicates an array that did not normalise as expected",
+      "action": "INVESTIGATE ONLY - exclusion PROHIBITED on this flag alone; requires an investigation record and explicit written approval",
+      "level": "sample",
+      "effect_on_frozen": "exclusion would change the analysis cohort and requires approval",
+      "automatic_exclusion": "PROHIBITED"
+    },
+    {
+      "id": "S-S2",
+      "domain": "sample",
+      "tier": "SOFT_INVESTIGATION",
+      "metric": "per-array interquartile range of log2 expression",
+      "rule": "Tukey boxplot-whisker rule: flag values beyond Q3 + 1.5*IQR (or below Q1 - 1.5*IQR) of the metric's own distribution across arrays. This is the outlier convention used by arrayQualityMetrics (Kauffmann et al., Bioinformatics 2009;25(3):415-416). It is DATA-ADAPTIVE, so it can be pre-specified without choosing a numeric cutoff by inspection.",
+      "justification": "IQR captures dispersion that the median does not; IQRray (Mieczkowski et al., Bioinformatics 2014;30(10):1392-1398) shows IQR-based statistics perform well on normalised data",
+      "action": "INVESTIGATE ONLY - exclusion PROHIBITED on this flag alone; requires an investigation record and explicit written approval",
+      "level": "sample",
+      "effect_on_frozen": "NONE",
+      "automatic_exclusion": "PROHIBITED"
+    },
+    {
+      "id": "S-S3",
+      "domain": "sample",
+      "tier": "SOFT_INVESTIGATION",
+      "metric": "sum of 1 - Spearman correlation to every other array in the analysis cohort",
+      "rule": "Tukey boxplot-whisker rule: flag values beyond Q3 + 1.5*IQR (or below Q1 - 1.5*IQR) of the metric's own distribution across arrays. This is the outlier convention used by arrayQualityMetrics (Kauffmann et al., Bioinformatics 2009;25(3):415-416). It is DATA-ADAPTIVE, so it can be pre-specified without choosing a numeric cutoff by inspection.",
+      "justification": "the arrayQualityMetrics 'distance between arrays' heatmap statistic; an array unlike all others is a candidate technical outlier",
+      "action": "INVESTIGATE ONLY - exclusion PROHIBITED on this flag alone; requires an investigation record and explicit written approval",
+      "level": "sample",
+      "effect_on_frozen": "NONE",
+      "automatic_exclusion": "PROHIBITED"
+    },
+    {
+      "id": "D-S1",
+      "domain": "sample",
+      "tier": "DESCRIPTIVE",
+      "metric": "PCA on the analysis cohort (centred, not scaled); PC1-PC5 scores and variance explained",
+      "rule": "NO numeric outlier rule is pre-specified",
+      "justification": "no literature-justified PCA outlier threshold exists for this setting. Defining one after seeing the scores would be circular, and PCA structure in this cohort is expected to reflect biology (CMS subtypes) as well as technique",
+      "action": "REPORT ONLY - never independently triggers exclusion",
+      "level": "sample",
+      "effect_on_frozen": "NONE",
+      "automatic_exclusion": "PROHIBITED"
+    },
+    {
+      "id": "D-S2",
+      "domain": "sample",
+      "tier": "DESCRIPTIVE",
+      "metric": "hierarchical clustering dendrogram (correlation distance, average linkage)",
+      "rule": "no cut-height rule pre-specified",
+      "justification": "same as D-S1; clustering separates biology and technique only with an external label",
+      "action": "REPORT ONLY",
+      "level": "sample",
+      "effect_on_frozen": "NONE",
+      "automatic_exclusion": "PROHIBITED"
+    },
+    {
+      "id": "D-S3",
+      "domain": "batch",
+      "tier": "DESCRIPTIVE",
+      "metric": "batch composition tables and PC-vs-batch association for the 9 recovered ComBat batches",
+      "rule": "no threshold; NO batch correction is performed",
+      "justification": "batch is confounded with the discovery/validation partition (Cramer's V 0.488, Phase 4). Reporting this is required; correcting it is prohibited",
+      "action": "REPORT ONLY - batch correction PROHIBITED",
+      "level": "sample",
+      "effect_on_frozen": "NONE",
+      "automatic_exclusion": "PROHIBITED"
+    },
+    {
+      "id": "D-S4",
+      "domain": "sample",
+      "tier": "DESCRIPTIVE",
+      "metric": "3'/5' log2 difference for ACTB (AFFX-HSAC07/X00351) and GAPDH (AFFX-HUMGAPDH/M33197)",
+      "rule": "NO threshold applied",
+      "justification": "Affymetrix guidance recommends a 3'/5' SIGNAL ratio < 3 for GAPDH and ACTB as an RNA-degradation indicator. That threshold applies to MAS5 signal ratios on the linear scale. Our values are log2, RMA-summarised AND ComBat-adjusted, so the quantity is not the one the threshold was defined for and the constant does NOT transfer. Reported as a relative diagnostic only.",
+      "action": "REPORT ONLY - the Affymetrix <3 threshold is explicitly NOT applied",
+      "level": "sample",
+      "effect_on_frozen": "NONE",
+      "automatic_exclusion": "PROHIBITED"
+    },
+    {
+      "id": "H-G1",
+      "domain": "gene",
+      "tier": "HARD_EXCLUSION",
+      "metric": "non-finite values in a probe set / gene row",
+      "rule": "any non-finite value is a data-integrity failure",
+      "justification": "A non-finite value in a gene row is a data-integrity failure, not a measurement, and no threshold judgement is involved. It is treated as HARD because the value cannot be used; but unlike the sample-level equivalent it ESCALATES rather than excluding, because removing a gene would alter the frozen Phase 2 representations and the frozen M2 member sets, which may not be modified without approval.",
+      "action": "ESCALATE - do NOT silently drop. A gene cannot be removed from a frozen representation without approval",
+      "level": "gene",
+      "effect_on_frozen": "would require reopening a frozen spec; escalate rather than act",
+      "expected_triggers": 0
+    },
+    {
+      "id": "D-G1",
+      "domain": "gene",
+      "tier": "DESCRIPTIVE",
+      "metric": "count of zero-variance genes in the analysis cohort",
+      "rule": "no cohort-level exclusion",
+      "justification": "zero-variance handling is already FROZEN in the M2 scoring specification: sigma=0 genes are excluded PER FOLD from the score, and the exclusion is recorded. A cohort-level removal would both duplicate and contradict that frozen rule",
+      "action": "REPORT ONLY",
+      "level": "gene",
+      "effect_on_frozen": "none - frozen per-fold rule governs",
+      "automatic_exclusion": "PROHIBITED"
+    },
+    {
+      "id": "D-G2",
+      "domain": "gene",
+      "tier": "DESCRIPTIVE",
+      "metric": "distribution of per-gene mean and SD; count below candidate low-expression cutoffs",
+      "rule": "NO expression filter is applied",
+      "justification": "no expression filter has ever been approved for this project (Phase 2 \u00a72). Applying one now would change the frozen representations and the M2 member sets",
+      "action": "REPORT ONLY - filtering PROHIBITED without approval",
+      "level": "gene",
+      "effect_on_frozen": "NONE - no filter is applied. Applying an expression filter would change which genes exist in the frozen Phase 2 representations and which members survive in the frozen M2 panels; prohibited without explicit approval.",
+      "automatic_exclusion": "PROHIBITED"
+    },
+    {
+      "id": "D-G3",
+      "domain": "gene",
+      "tier": "DESCRIPTIVE",
+      "metric": "inventory of AFFX control probe sets inside the frozen representations",
+      "rule": "no removal",
+      "justification": "Phase 7A found 10 AFFX control probe sets across ACTB, GAPDH and STAT1 in the frozen median representation, and that representative-IQR selected two 5' DEGRADATION CONTROLS as the representative probes for ACTB and GAPDH. The frozen specifications are immutable; this is documented, not corrected",
+      "action": "REPORT ONLY + carry as an M3 limitation",
+      "level": "gene",
+      "effect_on_frozen": "NONE - removal would reopen a frozen decision",
+      "automatic_exclusion": "PROHIBITED"
+    },
+    {
+      "id": "D-G4",
+      "domain": "gene",
+      "tier": "DESCRIPTIVE",
+      "metric": "probe-to-gene mapping summary (unique / ambiguous / unmapped)",
+      "rule": "no action",
+      "justification": "already established and frozen in Phase 2 (43,163 unique / 2,619 ambiguous / 8,893 unmapped). Re-reported for completeness",
+      "action": "REPORT ONLY",
+      "level": "gene",
+      "effect_on_frozen": "NONE - the mapping is already frozen in Phase 2 (43,163 unique / 2,619 ambiguous / 8,893 unmapped) and is re-reported only for completeness.",
+      "automatic_exclusion": "PROHIBITED"
+    },
+    {
+      "id": "H-C1",
+      "domain": "cohort",
+      "tier": "HARD_EXCLUSION",
+      "metric": "the frozen Phase 3 bundle's sample-ID set is a SUBSET of the deposited expression matrix, with zero bundle IDs missing",
+      "rule": "every frozen-bundle sample must be present in the matrix under an exactly matching identifier; any bundle ID absent from the matrix HALTS QC. Matrix-only samples are expected (non-S0 by construction) and are NOT a failure",
+      "justification": "Alignment is by identifier, never position (Phase 3 section 4.2). The Phase 3 bundle is S0-scoped by design, so set equality with the 585-array deposited matrix was never achievable; the property that guarantees integrity is that no bundle sample is missing or renamed.",
+      "action": "HALT + report",
+      "level": "cohort",
+      "expected_triggers": 0,
+      "effect_on_frozen": "NONE",
+      "amended_in_revision": 3,
+      "superseded_metric": "sample-ID set equality between the expression matrix and the frozen Phase 3 bundle",
+      "superseded_rule": "must be exactly equal; any mismatch halts QC"
+    },
+    {
+      "id": "H-C2",
+      "domain": "cohort",
+      "tier": "HARD_EXCLUSION",
+      "metric": "discovery/validation membership matches partition_and_batch.csv",
+      "rule": "must match exactly",
+      "justification": "partition is frozen; QC cannot reassign samples",
+      "action": "HALT + report",
+      "level": "cohort",
+      "expected_triggers": 0,
+      "effect_on_frozen": "NONE"
+    },
+    {
+      "id": "H-C3",
+      "domain": "cohort",
+      "tier": "HARD_EXCLUSION",
+      "metric": "S3 membership equals the frozen cohort_membership.csv (n=453)",
+      "rule": "must match exactly",
+      "justification": "S3 is frozen (Phase 1); QC cannot change cohort definition",
+      "action": "HALT + report",
+      "level": "cohort",
+      "expected_triggers": 0,
+      "effect_on_frozen": "NONE"
+    },
+    {
+      "id": "H-C4",
+      "domain": "cohort",
+      "tier": "HARD_EXCLUSION",
+      "metric": "GSM972262 is excluded under the frozen complete-case strategy",
+      "rule": "must be absent from the complete-case analysis set and present in the exclusion record",
+      "justification": "A-19 frozen: the sole complete-case exclusion, documented by sample ID and missing variable (chemotherapy.adjuvant = N/A)",
+      "action": "VERIFY + report",
+      "level": "cohort",
+      "expected_triggers": 1,
+      "effect_on_frozen": "NONE"
+    }
+  ],
+  "prohibited_actions": [
+    "outcome-guided sample exclusion",
+    "outcome-guided threshold adjustment",
+    "changing the S3 cohort based on model performance",
+    "modifying frozen Phase 2 representations",
+    "modifying either frozen M2 specification",
+    "removing genes for weak outcome association",
+    "additional batch correction",
+    "applying an expression filter without approval",
+    "silently removing or replacing AFFX control probes"
+  ],
+  "affx_sensitivity_analysis": {
+    "warranted": "CONDITIONALLY",
+    "scope": "M3 exploratory model ONLY",
+    "affected_genes": [
+      "ACTB",
+      "GAPDH",
+      "STAT1"
+    ],
+    "affected_in_M2_primary_panel": false,
+    "specification": "IF an M3 result materially implicates ACTB, GAPDH or STAT1, repeat that analysis with the three AFFX-derived genes removed and report both results side by side, clearly labelled. The frozen representations are NOT modified; the removal happens in the sensitivity analysis only.",
+    "pre_specified_now": true,
+    "frozen_specs_unchanged": true,
+    "status": "APPROVED - CONDITIONAL",
+    "approved_utc": "2026-11-02T22:15:12.489687+00:00",
+    "trigger": "ONLY if M3 materially implicates a gene affected by the identified AFFX representative-probe limitation (ACTB, GAPDH, STAT1).",
+    "reporting_requirement": "BOTH analyses reported - primary and sensitivity - clearly labelled",
+    "primary_representation": "PRESERVED - the frozen representation is not modified",
+    "anti_rescue_clause": "The sensitivity analysis must NOT be used to rescue an unfavourable result. If the primary analysis is unfavourable and the sensitivity analysis is favourable, BOTH are reported and the primary remains primary. Running it selectively, or reporting only the more favourable of the two, is prohibited."
+  },
+  "unresolved_requiring_approval": [
+    "Whether any SOFT_INVESTIGATION flag may lead to exclusion, and on what written justification",
+    "Whether a numeric threshold should be adopted for S-S1/S-S2/S-S3 after the distributions are seen (would require a second approval and must not be set to achieve a desired exclusion)",
+    "Whether the AFFX sensitivity analysis is triggered (conditional on M3 results)"
+  ],
+  "outcome_data_used": false,
+  "qc_executed": false,
+  "environment": {
+    "captured_utc": "2026-11-02T22:06:54.298349+00:00",
+    "python_version": "3.13.13",
+    "python_executable": "/Users/kalki/coad_transportability/.venv/bin/python",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.5.4",
+      "pandas": "2.3.3",
+      "scipy": "1.18.1",
+      "sklearn": "1.9.1",
+      "lifelines": "0.30.3",
+      "pyarrow": "26.0.0",
+      "pytest": "9.2.0"
+    }
+  },
+  "approved_utc": "2026-11-02T22:15:12.489687+00:00",
+  "approval": {
+    "approved_by": "project owner",
+    "basis": "Phase 7B scientific review",
+    "criteria_count_preserved": 20,
+    "thresholds_preserved": true
+  },
+  "threshold_immutability": {
+    "rule": "All 20 criteria and their current thresholds are PRESERVED. Thresholds must NOT be changed after observing QC distributions.",
+    "change_requires": [
+      "a separate documented decision",
+      "explicit approval",
+      "a written record of what was observed before the change was proposed"
+    ],
+    "prohibited": "adjusting any threshold once the QC distributions have been seen, without the documented decision and approval above. A threshold changed after inspection is no longer pre-specified.",
+    "applies_to_all_tiers": true
+  },
+  "hard_exclusion_scope": {
+    "conditions_both_required": [
+      "the failure is deterministic (no threshold judgement)",
+      "the sample/data integrity is demonstrably invalid"
+    ],
+    "may_not_be_broadened": true,
+    "fixed_criteria": [
+      "H-S1",
+      "H-S2",
+      "H-S3",
+      "H-S4",
+      "H-G1",
+      "H-C1",
+      "H-C2",
+      "H-C3",
+      "H-C4"
+    ],
+    "note": "H-S3 (duplicate columns) and H-G1 (non-finite gene row) do NOT exclude automatically: H-S3 investigates first, H-G1 escalates. Automatic action is confined to criteria where invalidity is self-evident."
+  },
+  "soft_flag_policy": {
+    "investigation_only": true,
+    "automatic_exclusion": "PROHIBITED",
+    "explicit_prohibition": "No sample may be excluded SOLELY because it crosses a Tukey 1.5 x IQR fence, or appears unusual in PCA, clustering, per-array median, per-array IQR, or between-array distance. Crossing a fence is a reason to look, never a reason to exclude.",
+    "exclusion_pathway": "soft flag -> individual investigation record (see investigation_record_template) -> STOP and request explicit approval -> exclusion only if approved",
+    "applies_to": [
+      "S-S1",
+      "S-S2",
+      "S-S3",
+      "D-S1",
+      "D-S2",
+      "D-S3",
+      "D-S4"
+    ]
+  },
+  "investigation_record_template": {
+    "required_when": "a soft-flagged sample is PROPOSED for exclusion",
+    "one_record_per_sample": true,
+    "required_fields": [
+      {
+        "field": "sample_id",
+        "description": "the GSM accession"
+      },
+      {
+        "field": "flagged_metric_and_value",
+        "description": "which criterion fired, the observed value, and the fence it crossed"
+      },
+      {
+        "field": "metadata_and_batch",
+        "description": "dataset partition, ComBat batch, stage, and other recorded characteristics"
+      },
+      {
+        "field": "independent_technical_evidence",
+        "description": "any evidence of technical invalidity independent of the flag itself; state explicitly if NONE exists"
+      },
+      {
+        "field": "biological_plausibility",
+        "description": "whether the observation could reflect biology rather than technique (e.g. CMS4 stromal phenotype)"
+      },
+      {
+        "field": "effect_on_cohort",
+        "description": "resulting n and event counts for every affected cohort - reported for transparency, NEVER used to choose whether to exclude"
+      },
+      {
+        "field": "proposed_action_and_justification",
+        "description": "the proposed action and its scientific justification"
+      }
+    ],
+    "outcome_guided_selection": "PROHIBITED - the effect_on_cohort field is reported for transparency only and must never inform the decision",
+    "terminal_step": "STOP and request explicit approval before any exclusion"
+  },
+  "preprocessing_decision": {
+    "decision": "deposited GSE39582 expression matrix used AS-IS",
+    "source": "Phase 7A Rank 1, approved",
+    "prohibited": [
+      "additional normalization",
+      "ComBat or any batch correction",
+      "fRMA execution",
+      "CEL acquisition"
+    ],
+    "preserved": true
+  },
+  "revision_history": [
+    {
+      "revision": 1,
+      "date": "2026-11-02",
+      "status": "PROPOSED",
+      "summary": "Initial 20-criterion specification; thresholds set without inspecting QC distributions."
+    },
+    {
+      "revision": 2,
+      "date": "2026-11-02",
+      "status": "APPROVED WITH CLARIFICATIONS",
+      "summary": "Seven review clarifications C1-C6: thresholds immutable; hard list fixed at 9 and may not be broadened; soft flags cannot exclude; 7-field investigation record required; AFFX sensitivity approved with anti-rescue clause; preprocessing decision preserved."
+    },
+    {
+      "revision": 3,
+      "date": "2026-11-02",
+      "status": "APPROVED - H-C1 AMENDED",
+      "summary": "H-C1 amended from set equality to subset-with-zero-missing, following a specification defect discovered during Phase 7C execution. No threshold changed. No other criterion altered.",
+      "amendment": {
+        "criterion": "H-C1",
+        "defect": "As written, H-C1 required SET EQUALITY between the deposited expression matrix (585 arrays) and the frozen Phase 3 bundle. The Phase 3 bundle is S0-scoped (461) BY DESIGN, so equality was never achievable. The criterion compared artifacts of different scope and halted on a defect in its own wording, not on a data problem.",
+        "original_metric": "sample-ID set equality between the expression matrix and the frozen Phase 3 bundle",
+        "original_rule": "must be exactly equal; any mismatch halts QC",
+        "original_execution_result": {
+          "as_written_set_equality": false,
+          "matrix_samples": 585,
+          "frozen_bundle_samples": 461,
+          "status_as_written": "FAIL (halt triggered)",
+          "preserved_for_auditability": true
+        },
+        "corrected_metric": "the frozen Phase 3 bundle's sample-ID set is a SUBSET of the deposited expression matrix, with zero bundle IDs missing from the matrix",
+        "corrected_rule": "every sample in the frozen bundle must be present in the matrix under an exactly matching identifier; any bundle ID absent from the matrix halts QC. Matrix-only samples are expected and are not a failure.",
+        "rationale": "The integrity property that matters is that no frozen-bundle sample is missing or renamed. The 124 matrix-only samples reconcile exactly as non-S0 by construction: 19 non-tumoural mucosa, 97 stage 0/I/IV or missing-stage primary tumours, and 8 stage II-III primary tumours lacking documented RFS (469 - 461 = 8, matching the records documented in Phase 1). The amendment neither broadens nor narrows the hard-criteria list and changes no threshold.",
+        "approved_by": "project owner",
+        "approved_utc": "2026-11-02T22:27:09.338954+00:00",
+        "broadens_hard_list": false,
+        "changes_any_threshold": false
+      }
+    }
+  ],
+  "specification_revision": 3,
+  "preregistration_invariant": "This document is the pre-registration. It is NOT mutated to record that QC ran: 'qc_executed' stays False here, and the fact of execution lives in config/analysis/QC_DECISIONS_RECORD.json and reports/phase7c/. The only permitted change is an APPROVED amendment, recorded in revision_history.",
+  "execution_recorded_in": [
+    "config/analysis/QC_DECISIONS_RECORD.json",
+    "reports/phase7c/qc_summary.json",
+    "docs/PHASE7C_QC_REPORT.md"
+  ]
+}
