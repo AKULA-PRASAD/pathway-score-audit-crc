@@ -1,147 +1,159 @@
-# Optimism-corrected prognostic value of a pathway signature in colon cancer
+# Optimism-corrected value of transcriptomic pathway scores for colon-cancer recurrence
 
-A pre-specified analysis of whether four pathway scores improve recurrence prediction beyond a clinical Cox model, with a nested bootstrap to put a confidence interval on the optimism-corrected gain.
+A pre-specified, audited analysis of whether four Hallmark pathway scores improve recurrence-risk discrimination beyond clinical covariates in stage II–III colon cancer (GEO GSE39582). The headline result is a nested-bootstrap confidence interval for the optimism-corrected gain in Harrell's C.
 
-**Status (6 November 2026).** The corrected Phase 9 pipeline described below is implemented, tested and committed. A candidate code freeze has been generated and checked against the committed code but has not yet been approved. The previously approved analysis decisions are entered in the run configuration. **The corrected bootstrap has not been run.** No corrected interval or conclusion exists yet; any number quoted here is either historical or explicitly marked as pending.
+**Status (8 November 2026):**
+- **Scientifically complete:** the frozen verification passed (60 of 60 checks), and an independent checkpoint-level audit reproduced every reported number.
+- **Repository disposition:** pending owner sign-off (`docs/PROJECT_COMPLETION_INVENTORY.md`).
 
-## The question
+## Research question
 
-Expression signatures are frequently reported to improve prognosis in colorectal cancer, but part of the apparent improvement is usually optimism: a model with more parameters fits its own training data better than it fits new patients. I wanted to ask a narrow question on a public cohort and answer it carefully. After correcting for optimism, does adding a small, frozen set of pathway scores to a clinical model improve discrimination, and how precisely can that improvement be estimated?
+Does adding reproducible transcriptomic pathway information improve recurrence-risk prediction beyond clinical characteristics? Are any improvements stable enough to be statistically and biologically credible?
+
+Recurrence risk after surgery for stage II–III colon cancer varies widely, and better risk discrimination could in principle inform decisions about adjuvant chemotherapy; this study does not show such utility. Expression signatures are often reported to add prognostic value in colorectal cancer, but part of an apparent gain is optimism: a larger model fits its own data better than new patients. This project therefore:
+- fixes a small, biologically motivated panel before looking at outcomes;
+- corrects for optimism;
+- puts an interval on the corrected gain, so that both its size and its stability are measured.
+
+## Main findings
+
+> Conditional on the observed 136 recurrence events and 316 censored observations in the 452-patient A-19 population.
 
 | | |
 |---|---|
-| Data | GEO GSE39582 (Affymetrix GPL570), stage II–III colon cancer; analysis cohort of 453 samples, no exclusions |
-| Endpoint | cause-specific recurrence, as deposited |
-| M1 | clinical-only Cox model (5 parameters) |
-| M2 (primary) | M1 plus four pre-registered pathway scores (9 parameters) |
-| Estimand | ΔC_corrected = C_corrected(M2) − C_corrected(M1), the optimism-corrected difference in Harrell's C |
-| Target output | a 95 % percentile interval for ΔC_corrected, with its Monte Carlo error |
+| Optimism-corrected C | M1 (clinical) **0.6016**; M2 (clinical + 4 pathways) **0.6059** |
+| ΔC_corrected (pre-specified point estimate) | **+0.0043** |
+| 95 % percentile intervals, five independent runs (B_out = 750, B_in = 100) | [−0.0086, +0.0519] · [−0.0090, +0.0469] · [−0.0093, +0.0484] · [−0.0091, +0.0518] · [−0.0091, +0.0494] |
+| Run-to-run SD of the interval endpoints | 0.00025 (lower), 0.00217 (upper) |
+| Pathway hazard ratios, primary four-set model (per SD of score) | E2F 0.91, EMT 1.07, Wnt 1.02, p53 1.00; every 95 % CI includes 1. In the five-set sensitivity model only, E2F is 0.86 (0.75–0.996), with correlated scores; not a primary finding |
+| Corrected calibration slope | M1 0.83, M2 0.86 (residual overfitting) |
+| Reliability | no hard failure. Warnings: the bootstrap distribution sits above the point estimate (z₀ ≈ −0.5), and the percentile and basic intervals diverge |
 
-The cohort, endpoint, panel membership, scoring method, gene-level representation and model forms were all fixed before any outcome was examined. They are recorded in dated protocol documents that the pipeline pins by hash: `docs/PHASE9_MODELING_PROTOCOL_DRAFT.md` and `docs/PHASE9_DELTAC_INTERVAL_PLAN.md`.
+**Interpretation:**
+- Adding the four pathway scores was **not shown** to improve discrimination. The data are compatible with no gain and with a gain of up to about 0.05 in C.
+- All percentile, basic and bias-corrected intervals include zero. That does not establish equivalence.
+- No pathway shows an independent association with recurrence in the primary model.
+- E2F (< 1) and EMT (> 1) keep consistent directions, which is biologically plausible (proliferation; mesenchymal/stromal programmes) but not demonstrated here. Pathway scores are averaged mRNA levels, not measures of pathway activation, protein activity or mutation status.
+- The corrected ΔC is stable across Monte Carlo runs and expression representations. Molecular coefficients are not stable across processing batches: leaving out one batch at a time changes the sign of the Wnt and p53 coefficients. Batch effects are characterised, not resolved.
+- A historical "paired out-of-original" ΔC interval that narrowly excluded zero is a different quantity, not an interval for the corrected ΔC, and it included zero under the alternative expression representation.
+- There is no claim of clinical utility, absolute-risk prediction, external validity, transportability or causal mechanism.
 
-## Why a nested bootstrap
+**Full report:** `docs/PHASE9_CORRECTED_FINAL_REPORT.md`.
 
-Harrell's bootstrap optimism correction gives a point estimate of ΔC_corrected but no valid interval for it. To get an interval, the whole correction procedure has to be repeated on resampled data:
+## Data, cohort and endpoint
 
-```
-for each outer replicate k = 1..B_out          (B_out = 500; may grow to 750 ... 3000)
-    D*_k = stratified bootstrap of the cohort
-    fit M1 and M2 on D*_k                       -> apparent C on D*_k
-    for each inner replicate b = 1..B_in        (B_in = 100)
-        J*_k,b = bootstrap of D*_k
-        fit M1 and M2 on J*_k,b, evaluate on D*_k -> optimism(M, k, b)
-    ΔC_corrected(k) = ΔC_apparent(k) − mean_b[opt(M2) − opt(M1)]
-interval = percentiles of {ΔC_corrected(k)}
-```
-
-M2's ridge penalty is re-tuned by five-fold cross-validation inside every fit, so a single run involves on the order of 10⁵ penalised Cox fits. The main design choices, each argued in the plan:
-
-- **Pairing.** M1 and M2 are fitted on the same resamples. In the earlier runs this removed about 44 % of the inner Monte Carlo variance of the optimism difference (correlation ≈ 0.68).
-- **Inner bootstrap size.** B_in = 100 inflates the outer standard deviation by about 1.2 %. That makes the interval slightly conservative; I report the inflation rather than trying to remove it.
-- **Fit failures.** Inner replicates in which either model fails are dropped as a pair, and a bounding analysis checks how much this could matter.
-- **Reproducibility.** Five independent full-size runs measure Monte Carlo reproducibility directly.
-- **Endpoint Monte Carlo error.** It is estimated with kernel quantile methods at three bandwidths. The acceptance rule (EP-1) uses the largest of the three estimates; the reliability screens use the smallest.
-- **Adaptive sizing.** B_out is increased along a fixed ladder until the endpoint Monte Carlo error is below 5 % of the interval width. A failed stability check (W5) also forces a top-up.
-
-## Why there is a corrected pipeline
-
-The original Phase 9 run (3–4 November 2026) produced a point estimate of **ΔC_corrected = +0.0043**, with no interval. A later audit of that run found a deviation from the plan. The cross-validation used to tune λ started from the same random-number-generator state as the bootstrap resample it was tuning on, instead of drawing from a separate stream as the plan specifies. I confirmed this empirically in every case examined (9 of 9). The deviation is documented in a protocol-deviation note that is kept with the historical outputs; those outputs are not included in this repository.
-
-The historical outputs are kept unchanged and are pinned by hash; the new pipeline uses them only as reference data for verification. The corrected pipeline (`src/phase9_corrected/`) implements the specified stream separation and calls the original fitting code (`src/phase9_execution.py`) without modification. Its outer bootstrap resamples are checked against the hashes stored by the historical run, so the outer resamples match the historical run exactly.
-
-## Reproducibility and audit design
-
-**Random-number streams**
-- Every random draw comes from its own `SeedSequence` child, indexed by run, outer replicate k and inner replicate b. The streams are: outer resample, apparent-fit CV (seeded from a separate entropy word), inner resample, inner CV and an inner reserve. No stream is used twice.
-- Before any replicate is computed, a gate enumerates every initial generator state the run could use and checks they are all distinct. For the configured design that is about 4.5 million states.
-- Each replicate record stores fingerprints of the stream states and resample multiplicities it actually consumed, so stream assignment can be checked afterwards.
-
-**Long-running execution**
-- Checkpoints are append-only. Each run's checkpoint carries a header that binds it to the configuration and input manifest.
-- Each invocation writes durable start, end and authorisation records. Before anything new is dispatched, the run history is reconstructed from these records and checked against the checkpoint bytes.
-- Records are created exclusively and synced with `F_FULLFSYNC`. An invocation that died without an end record is classed as unterminated, and it cannot be resumed until it is explicitly acknowledged.
-- A runtime monitor projects completion time after a warm-up period. It halts the run if the projection exceeds twice the declared budget; resuming then requires a single-use authorisation reference.
-- The run stops if more than 5 % of completed outer replicates are non-estimable (strict literal rule, `20·b > n`), checked on every prefix of the record stream.
-- Each run is classified as ineligible, unverifiable, incomplete or eligible, with every reason kept. The same assessment controls dispatch, sizing and reporting.
-- Increasing B_out (a top-up) is allowed only on the basis of a sizing decision that the frozen code recomputes from all five checkpoints.
-
-**Code identity**
-- A freeze record lists SHA-256 hashes of the 27 source files the analysis depends on. It also records an environment fingerprint: interpreter path and hash, installed package versions, the NumPy BLAS/LAPACK build, thread settings and interpreter launch flags.
-- The run configuration stores the freeze record's own hash.
-- A shell launcher (`scripts/42_phase9_corrected_launch.sh`) checks that hash and every listed file, using system `jq` and `shasum`, before Python starts. It then starts Python in isolated mode with a fresh, empty bytecode directory, so no stale `.pyc` file can be loaded.
-- Once running, the pipeline re-checks every repository module it has loaded against the freeze.
-- Every invocation records the freshly executed pre-execution gate result it relied on.
-
-**Post-run verification** (`scripts/43_phase9_corrected_verify.py`)
-
-The runner works through these checks in order:
-1. Every invocation is bound to the same configuration, manifest and freeze.
-2. Interrupted stretches of work are recomputed and compared byte-for-byte with the checkpoint.
-3. Run eligibility is re-assessed.
-4. The sizing decision is recomputed at every ladder level.
-5. The record-level checks:
-   - V1 regenerates outer and inner resamples and compares them with stored hashes and with the historical code path;
-   - V2 checks stream assignment;
-   - V3 checks that the clinical-only model is unaffected by the seed correction;
-   - V4 checks the as-run variant against the historical results;
-   - V5 recomputes 20 replicates in full.
-
-Each check reports PASS, FAIL, NOT_APPLICABLE or NOT_COMPARABLE, with counts and reasons. Missing evidence never counts as a pass, and results may be reported only if the overall verdict is PASS.
-
-## Software testing
-
-The corrected pipeline has 549 automated tests; the full local suite, including earlier phases of the project, has 1,075, all passing. Most of the corrected-pipeline tests use synthetic data and stand-in model fits. A few check hashes or loading of the locally held study inputs and historical outputs. Those files are not distributed here, so those tests will not pass on a fresh clone.
-
-Besides ordinary unit and integration tests, the suite includes:
-- **independent reference calculations**, for example a separate pure-Python implementation of the sizing and Monte Carlo error rules, compared to a relative tolerance of 10⁻¹⁰;
-- **checks against the real enumerator**, for the gate's state count;
-- **tamper tests**:
-  - a failed gate result edited to read PASS;
-  - altered or substituted evidence files;
-  - stale bytecode;
-  - a module placed at the repository root to shadow a library;
-  - every refusal path in the launcher.
-
-These tests show that the software does what the protocol says. They say nothing about colon-cancer biology or about the size of ΔC.
-
-## Current status
-
-| Component | Status |
+| | |
 |---|---|
-| Protocol, estimand, cohort, models | fixed in earlier phases |
-| Historical point estimate, ΔC_corrected = +0.0043 | historical only: no interval, and affected by the seed deviation |
-| Corrected pipeline, launcher, verification runner, freeze tooling | implemented, tested, committed |
-| Candidate freeze record (27 files, SHA-256 `618f20eb…a790`) | generated and checked against the committed code; approval pending |
-| Analysis decisions 1–11 in the run configuration | entered, with dates and references; the configuration passes static validation except for the execution authorisation |
-| Decision 12 (recording λ when a fit fails) | implemented and tested; its entry in the configuration's decision log is unresolved, because the template does not list the chosen option (the pipeline does not read this entry) |
-| Freeze approval (Decision 13) | pending |
-| Authorisation to run (Decision 14) | pending |
-| Corrected bootstrap (5 runs × 500 outer × 100 inner replicates) | not run |
-| Corrected interval for ΔC_corrected, and any conclusion | pending: none exists yet |
+| Dataset | GEO GSE39582 (Marisa et al., *PLoS Med* 2013): 585 Affymetrix HG-U133 Plus 2.0 arrays, deposited as RMA + ComBat |
+| Cohort | 453 stage II–III colon tumours with recurrence follow-up. QC retained all of them |
+| Analysis population | 452 patients with complete clinical covariates: 136 recurrences, 316 censored |
+| Endpoint | cause-specific recurrence as deposited. Deaths without recurrence are censored, and the recurrence-time unit is undocumented, so only rank-based quantities (C, hazard ratios) are reported |
+| Expression representation | gene level, median of uniquely mapped probes (primary); representative-IQR probe (sensitivity). Ambiguous and unmapped probes excluded |
 
-## Remaining steps
+## Methods
 
-1. Re-hash and review the candidate freeze, install it as `config/analysis/PHASE9_CORRECTED_FREEZE_RECORD.json`, and record its hash and the driver hash in the configuration.
-2. Before running, re-hash the freeze record and the launcher, and check that the repository root contains no importable Python files or packages other than `src` and `tests`.
-3. Record the execution authorisation in the configuration.
-4. Run `scripts/42_phase9_corrected_launch.sh run <config> <run> 500` for runs 0–4, with the BLAS/OpenMP thread variables unset as they were at freeze capture. Then run `scripts/42_phase9_corrected_launch.sh verify <config>`.
+- **M1:** Cox model with age (restricted cubic spline), sex, TNM stage, tumour location and adjuvant chemotherapy.
+- **M2:** M1 plus four frozen MSigDB Hallmark scores (E2F targets, EMT, p53, Wnt/β-catenin; 607 genes). Each score is the mean of training-fold-standardised member genes, then standardised again. The molecular block carries a ridge penalty, with λ tuned by five-fold event-stratified cross-validation.
+- **No leakage:** every estimated quantity (spline knots, gene scaling, score scaling, λ) is re-estimated inside every fit from that fit's training data.
+- **Estimand:** ΔC_corrected = C_corrected(M2) − C_corrected(M1), using Harrell's bootstrap optimism correction.
+- **Interval (nested bootstrap):**
+  ```
+  for k in 1..B_out:                       outer: event-stratified bootstrap D*_k
+      fit M1, M2 on D*_k                   -> apparent ΔC(k)
+      for b in 1..B_in:                    inner: bootstrap of D*_k, evaluated on D*_k
+          fit M1, M2 (paired)              -> optimism(M, k, b)
+      ΔC_corrected(k) = ΔC_app(k) − mean_b[opt(M2) − opt(M1)]
+  interval = 2.5th and 97.5th percentiles, in each of five independent runs
+  ```
+- **Monte Carlo control:** kernel quantile SE at three bandwidths. B_out grows along a fixed ladder until the endpoint SE is ≤ 5 % of the width (EP-1). Here 500 was topped up to 750.
+
+## Validation and audit
+
+- **Internal validation only.** No external validation was performed. The CIT partition of GSE39582 is confounded with batch and has 29 events, so it is not an external test.
+- **Corrected pipeline** (`src/phase9_corrected/`). It fixes a random-stream deviation in an earlier run, where cross-validation reused the bootstrap resample's random state, and calls the original fitting code unchanged.
+- **Code identity:** 27 source files are frozen by SHA-256, with a launcher that checks them before Python starts.
+- **Execution integrity:** a pre-execution gate, append-only hash-linked checkpoints, and crash-consistent invocation records.
+- **Frozen post-run verifier** (`scripts/43`): PASS, 60/60.
+  - It regenerates every resample (3,750 outer, 375,000 inner) and checks stream assignment.
+  - It recomputes the sizing decisions.
+  - It recomputes 20 replicates bit for bit.
+- **Independent audit** (`scripts/48`, standard library only): it rebuilt every interval quantity from raw checkpoint bytes and matched the official results within 2.2×10⁻¹⁶ (`reports/phase9/independent_audit/`).
+- **Point-estimate alignment:** shown in `docs/PHASE9_THETA_ALIGNMENT_AUDIT.md`.
+
+## Limitations
+
+- **Single cohort, single platform:** internal validation only.
+- **Few events:** 136 events limit precision.
+- **Batch:** processing batch is confounded with the data partition, and molecular coefficients are unstable across batches; batch was examined but not perturbed.
+- **Endpoint (U1, U2):** the recurrence-time unit is undocumented, and deaths without recurrence (10 %) are censored, which is informative. The models estimate the cause-specific recurrence hazard, not the cumulative incidence of recurrence (competing-risk analysis) or composite disease-free survival. No absolute-risk or calibration-in-the-large analysis is possible while the time unit is undocumented, and no competing-risk analysis was performed.
+- **Discrimination and calibration measures:** the C-index reflects ranking only and says nothing about clinical usefulness; no decision-curve or reclassification analysis was done. Calibration is assessed only by log-hazard slopes.
+- **Modelling:** only the molecular block is penalised, so the comparison is conservative by design. Overfitting is visible even in the clinical model (about 13.6 events per M2 coefficient).
+- **Bootstrap bias:** diagnostics are triggered in every run, in the opposite direction to the protocol's anticipated mechanism, and are unexplained.
+- **Partly historical:** calibration, the representation sensitivity (S-7) and the five-set sensitivity panel come from the earlier single-layer execution and were not re-run under the corrected streams.
 
 ## Repository layout
 
 | Path | Contents |
 |---|---|
-| `src/phase9_corrected/` | replicate engine, random streams, resampling, fitting adapter, checkpointing, orchestration, statistics (EP-1, W5, sizing), reliability checks, gate, verification and post-run runner |
-| `src/phase9_execution.py`, `src/pathway_scoring.py`, `src/score_standardisation.py` | original fitting and scoring code, used unchanged |
-| `scripts/40_phase9_dc_interval.py` | original Phase 9 driver, kept as the reference code path |
-| `scripts/41`–`44` | corrected driver, launcher, verification entry point, freeze preparation |
-| `config/analysis/PHASE9_CORRECTED_RUN_CONFIG_OWNER_BLANK.json` | run configuration with the recorded analysis decisions |
-| `docs/PHASE9_DECISION13_FREEZE_PROCEDURE.md` | freeze, hash-anchoring and launch procedure |
-| `tests/test_phase9_corrected_*.py` | tests for the corrected pipeline |
+| `src/phase9_execution.py`, `src/pathway_scoring.py`, `src/score_standardisation.py` | model pipeline and pathway scoring (frozen) |
+| `src/phase9_corrected/` | nested-bootstrap engine, random streams, checkpointing, orchestration, statistics, gate, verification |
+| `scripts/01`–`14` | data download, metadata and probe audits, probe cache |
+| `scripts/15`–`39` | Phases 1–9: cohort, gene mapping, bundle, QC, EDA, protocol, Phase 9 primary execution (`38`) and S-7 (`39`) |
+| `scripts/40`–`48` | as-run nested driver (historical), corrected driver (`41`), launcher (`42`), verifier (`43`), freeze tooling (`44`), sizing writer (`45`), gated report (`46`), θ̂ alignment check (`47`), independent audit (`48`) |
+| `config/analysis/`, `config/pathways/` | run configuration with owner decisions, freeze record, QC and amendment records, frozen pathway panels |
+| `docs/` | phase reports, protocols (`PHASE9_MODELING_PROTOCOL_DRAFT.md` v3.1, `PHASE9_DELTAC_INTERVAL_PLAN.md` v2.1), audits, final report |
+| `reports/phase9/corrected_rerun/` | corrected campaign: checkpoints, invocation records, gate evidence, sizing, verification reports |
+| `reports/phase9/corrected_rerun_report/` | final interval results (JSON) and tables |
+| `reports/phase9/independent_audit/` | independent audit results and report |
+| `reports/phase9/execution*/`, `dc_interval/`, `final_project/` | historical Phase 9 outputs, kept unchanged; the as-run intervals are superseded |
+| `tests/` | 1,085 tests |
+
+## Environment
+
+- **Python:** 3.13.13 with NumPy 2.5.4, pandas, lifelines, SciPy, pyarrow and pytest. The exact versions are in `requirements.txt` (original capture) and `requirements-analysis.txt` (additions).
+- **Platform:** macOS arm64. The freeze record pins the environment fingerprint, including the BLAS/LAPACK build, and the launcher needs system `jq` and `shasum`.
 
 ```bash
-.venv/bin/python -m pytest -q tests/test_phase9_corrected_*.py
+python3.13 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt -r requirements-analysis.txt
+.venv/bin/python -m pytest -q tests/
 ```
 
-## Methods and tools
+Some tests read the locally built study inputs and historical outputs. They pass only after the data pipeline below has been run.
 
-Cox proportional-hazards models with ridge penalties, Harrell's C and bootstrap optimism correction, nested bootstrap inference with Monte Carlo error estimation, NumPy `SeedSequence` stream design, hash-based code and data provenance, crash-consistent checkpointing, and test design with independent reference implementations. Python (NumPy, pandas, lifelines, pyarrow, pytest) and Bash.
+## Reproduction
+
+1. **Data** (public, about 356 MB): `scripts/01_download_geo.py` and `scripts/09_download_gpl570_annotation.py`. Then build the caches and the analysis bundle with scripts 13, 16–23 in order. `data/raw/CHECKSUMS.sha256` and the manifests pin every input.
+2. **Historical Phase 9 primary estimate:** `scripts/38_phase9_execute.py`.
+3. **Corrected campaign:** see `docs/PHASE9_DECISION13_FREEZE_PROCEDURE.md`.
+   ```bash
+   unset OMP_NUM_THREADS MKL_NUM_THREADS OPENBLAS_NUM_THREADS VECLIB_MAXIMUM_THREADS NUMEXPR_NUM_THREADS
+   CFG=config/analysis/PHASE9_CORRECTED_RUN_CONFIG_OWNER_BLANK.json
+   for r in 0 1 2 3 4; do scripts/42_phase9_corrected_launch.sh run $CFG $r 500; done
+   # a top-up beyond 500 requires the sizing decision (scripts/45) and an explicit authorisation reference
+   scripts/42_phase9_corrected_launch.sh verify $CFG
+   P=$(mktemp -d); .venv/bin/python -I -B -X pycache_prefix=$P scripts/46_phase9_corrected_report.py $CFG <out_dir>
+   python3 -I -B scripts/48_phase9_independent_audit.py <audit_dir>
+   ```
+   One run takes about 3–5 h at 500 replicates on 8 cores.
+
+**Without re-running, from the archived checkpoints:**
+- restore the archive (below);
+- run the verifier, the report tool and the independent audit. These recompute every reported number in under an hour.
+
+## Checkpoint archive
+
+The five corrected checkpoints (113 MB each) exceed GitHub's 100 MB file limit.
+- `reports/phase9/ARCHIVE_MANIFEST_SHA256.txt` pins all 52 campaign files.
+- `docs/LARGE_ARTIFACT_ARCHIVE.md` gives the archive, restore and integrity-check commands:
+  ```bash
+  shasum -a 256 -c reports/phase9/ARCHIVE_MANIFEST_SHA256.txt
+  ```
+
+The archive destination is pending the owner's decision.
+
+## Data access and licensing
+
+- **GSE39582:** public GEO data. Cite Marisa L. et al., *PLoS Med* 2013;10:e1001453. Raw and processed data are not redistributed here: download them from GEO.
+- **Hallmark gene sets:** from MSigDB (Liberzon et al., *Cell Syst* 2015). Use is subject to MSigDB's terms. The panel files record set identifiers and resolved members.
+- **Code licence:** no licence file has been chosen yet.
