@@ -1,0 +1,78 @@
+{
+ "inputs": {
+  "config/analysis/A19_FREEZE_RECORD.json": "a77de7b37fe09eeb9d9958ca012648e63fb349c19614b0c2dc99591da2cf561f",
+  "data/processed/analysis/cohort_membership.csv": "bd3671f8df64c594d273a23abed80b83dd17742aee15bd83ac114211be5fcd01",
+  "data/processed/analysis/covariates.csv": "47b2d9829a4fccecf30663d0b0063d54664e72c1a9011938698c6c93a9441403",
+  "data/processed/analysis/endpoint.csv": "802a68575a34a3b60a50bd2452b9b09b62c1c40b90f34f4f60bb66691b0e7e0d",
+  "data/processed/analysis/partition_and_batch.csv": "57a45bab8efb81f96e838b9348edb13d4a3fbf09f2ea13f69f2d0f52700c49ed",
+  "docs/PHASE6A_ENDPOINT_RESOLUTION.md": "aca4adc4552da462186116adac8a143af189ee09869fe008e801f5ea02784d2c",
+  "docs/PHASE7C_QC_REPORT.md": "6aa4939259a3502bbf0e4b236db2967bb7faee34e6cb1fa912c9ae8919972dac",
+  "reports/phase1/cohort_counts.csv": "bdfd355fc772eb92f1ab58ad8afe48b8e21cdb3d9bf42478796a860c4dd1b0b8",
+  "reports/phase2/phase2_mapping_audit.json": "4f04594e826d457991ca21e100f1db8be41fcdc0b4697aa7dce876742c0b2e30",
+  "reports/phase7c/batch_composition.csv": "78bd0778f70d8e63e7990e53e1ade65ef439a70f665e0d5304e0a61d9bd301cf",
+  "reports/phase7c/sample_qc_metrics.csv": "272a137450018460c0f25cb1b70da1372209d84d5d82160cc612926448ff9dd7",
+  "reports/phase8a/pca_scores_gene_level.csv": "d85f7076f9371429e25ada32adee0e25ff2a3238e1d4e398f0e4029334c39d84",
+  "reports/phase8a/phase8a_summary.json": "00035e5650b9bb3a9ac2e054404c757aabe8d021376602c3a303f4f175b4e462",
+  "reports/phase8a/sample_distribution_summary.csv": "e45d0d62e8d9283ae54d5a24e9824569a0acc1906d4de26573ef20c36b422635",
+  "reports/phase8c/representation_sensitivity.csv": "e3ee06f4a5cfaf6f369bc64068d8122ef379c27a3c3f12e670fe8f9ded806c33",
+  "reports/phase8c/score_correlation_pearson_5set_sensitivity.csv": "2390b367a4193aca98f4c9cf08d1bf5834a19f47147b534c0120c2b48c59cc01",
+  "reports/phase8c/score_distributions.csv": "ab7fe0578e15ca4ef5b3276b2a86bb8d86f1d1fef5bead75c6af89d163ff1ee0",
+  "reports/phase9/corrected_rerun/runs/run0.jsonl": "0e27494ff875dcd7512355d213ee22f6bda2ce9a58595790b3a8b3b56b5dab15",
+  "reports/phase9/corrected_rerun/runs/run1.jsonl": "9dfe640b32793b5e21d40fa4723c65f8455b15282f0ad443f7a26f645a9b7f43",
+  "reports/phase9/corrected_rerun/runs/run2.jsonl": "0204da98f37ce4af5b5c7cdc61c114c602178f190bb25ca82dcba47b360e91a3",
+  "reports/phase9/corrected_rerun/runs/run3.jsonl": "05274f0e5309454f9340e8a427304cd0d94a1c3538059784d85ba539fffc1e70",
+  "reports/phase9/corrected_rerun/runs/run4.jsonl": "af7530077f5ce68ea874034d796a129327056afe20951451699d30559e58e326",
+  "reports/phase9/corrected_rerun/verification/L00750.report.json": "9558aaa5dba467fb51e6236e0794d1d3186c997edfa16d5e449406771c1fff25",
+  "reports/phase9/corrected_rerun_report/corrected_interval_results.json": "1c504b137b177f2e126719bff3566c1b739e4ab04b3304497efc78ff3153eb60",
+  "reports/phase9/execution/phase9_execution_results.json": "05d13b8b339fa7d4e60307a58e8af914cf9688963e35d3b5b63501c35f684ac3",
+  "reports/phase9/execution_s7/phase9_s7_results.json": "b9202305bb6416e1d1c468a7c05b297573e1910e17b61d04369b29f25c766c76"
+ },
+ "models_fitted": 0,
+ "outputs": {
+  "Fig1_study_design_cohort.png": "b9998a302c2647d8bd3e8508110355eea69934af28dcedcde94c5233d5d12e22",
+  "Fig1_study_design_cohort.svg": "527b00aa9207acc6cb27213acad61cb51757228da241e5785806f132362df4e3",
+  "Fig2_preprocessing_qc.png": "e8cbe5fe75e5f45c51f633e79dc1ec250f4d0239a6fa8aca43a0a663dc0d27f4",
+  "Fig2_preprocessing_qc.svg": "0b801fecd262ed44612c987f25a6b3ccfb05b3d70e3878415043f7b6aef4e915",
+  "Fig3_exploratory_structure.png": "49f3289c119086aa20e8b8731ee5f06c7c3110bbdf8abe59c147d90f1b3bf8ac",
+  "Fig3_exploratory_structure.svg": "a8101f4adb2ffc176127c12aa5bcee067ba47ea9f4744a9de29178548394c20d",
+  "Fig4_pathway_scores.png": "3abc869a12262d3ec9b41b63f6ba0b6b73d8c92b2e708ca8a9e1a3e5f3c08ae7",
+  "Fig4_pathway_scores.svg": "ffb5b3574be95d2736147aab3d1b289b070790bdd94f12cbd89202281bbc45fa",
+  "Fig5_clinical_model.png": "5efc12505b9472d56a294ae5748dc0b06d240c7a1a48dab7280bd86467d2f9b9",
+  "Fig5_clinical_model.svg": "3bf0c9c9a61c9ded8a4570e790bc44b1a97e461bea11ada56679a3dd0058bd7a",
+  "Fig6_molecular_hazard_ratios.png": "d378efeaff7c1dc4e2b21a34d3d6067a4b5e49a2c8df41999cb4bd02b9eb7fac",
+  "Fig6_molecular_hazard_ratios.svg": "e28180c4858848cbf5bfd0af7e3b0bfbae1a0f9066114a4268a12b26975a3e75",
+  "Fig7_discrimination.png": "53589cc166406243210395e0b3905f4159c82a7e502b2710044689cb0968cfbe",
+  "Fig7_discrimination.svg": "a5b3a2fe89ef7393e0175eaf8b8dcb48b191f3dc75a99b1096553c5979a61e7e",
+  "Fig8_corrected_deltaC.png": "a6d9e4cea549dc39f0cb17086a1a3a2a6c3a58e072e078792e2dafd159898308",
+  "Fig8_corrected_deltaC.svg": "19205c92682e8cda8816a7022d3bcf8d41e5f03ad118d0b8b6eb9119efdd8266",
+  "Fig9_robustness.png": "d2c370aaac3a7dcbafd913c2a0c7d7a4ad466833b8eb28e95dfcc711bc24f9c5",
+  "Fig9_robustness.svg": "dde05952bef29f5f943fb05d1b98070414f60018358d6ff48fcde6e3d49e3a4e",
+  "FigS1_monte_carlo_precision.png": "26d17159ca4557ba63a4c1cf0743c50b7b5ff69f0df9e12e319245f17f4c43cb",
+  "FigS1_monte_carlo_precision.svg": "ac1c854a4eea0ef57b4925a2cf1a0264d4268d470d749def218c4e5831f9abfc",
+  "FigS2_informative_censoring.png": "21657650b653c0eb4637f4204293226cb89b38abc28f111aa1d7d8d2dd224856",
+  "FigS2_informative_censoring.svg": "34587e0164b7e7208fbdb95ed3b882069870e5aaee1d3c622f75a1b81706416e"
+ },
+ "parameters": {
+  "dpi": 200,
+  "font": [
+   "DejaVu Sans"
+  ],
+  "palette": [
+   "#2a78d6",
+   "#eb6834",
+   "#1baf7a"
+  ],
+  "svg.fonttype": "path",
+  "svg.hashsalt": "coad-phase9-figures",
+  "theta_expected": 0.004316342804030704
+ },
+ "script": {
+  "path": "scripts/49_make_results_figures.py",
+  "sha256": "9665a462b888e0eb2b7d89c3e4717eac5409e9a1ba8de3fc027b9a6cb7352abf"
+ },
+ "software": {
+  "matplotlib": "3.11.2",
+  "numpy": "2.5.4",
+  "python": "3.13.13"
+ }
+}
