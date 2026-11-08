@@ -13,6 +13,9 @@ data/raw/*
 # --- generated caches (reproducible from raw data) ---
 data/processed/
 
+# --- external evidence fetched on demand (public supplementary data) ---
+data/external/
+
 # --- python bytecode / build ---
 __pycache__/
 *.py[cod]
@@ -34,3 +37,9 @@ Thumbs.db
 *.key
 credentials.json
 secrets.yaml
+
+# --- Phase 9 corrected checkpoints (>100 MB each at B_out = 750) ---
+# Archived outside Git (owner decision B, 8 Nov 2026); every byte is pinned by
+# reports/phase9/ARCHIVE_MANIFEST_SHA256.txt. Restore and check: docs/LARGE_ARTIFACT_ARCHIVE.md
+reports/phase9/corrected_rerun/runs/*.jsonl
+reports/phase9/corrected_rerun/runs/*.lock

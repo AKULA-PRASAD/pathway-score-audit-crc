@@ -1,0 +1,480 @@
+{
+ "bytecode_policy": "fresh_compile_prefix",
+ "code": {
+  "scripts/40_phase9_dc_interval.py": "4b1738a4d0ee0e398b35b91be37ab6afdef06e429a662ae09a0c052be74594bd",
+  "scripts/41_phase9_corrected_driver.py": "09a735ea0ce431aea36b29a3c6c636637090d5c55ca135ea302673d2b5fc1703",
+  "scripts/42_phase9_corrected_launch.sh": "ce2bafd8dcbf780a2c3523bb1a2d18c19e697350b4d33d1f62e319c486d52e2a",
+  "scripts/43_phase9_corrected_verify.py": "146c5ca13340cc2da60255e1f4590fcb5ffd325e03483ba3c05c93721d66f719",
+  "scripts/44_phase9_freeze_capture.py": "ae732a93d4c801c3a2923b4853b91c8bf1ce79952d83afacd00cd3fa67a62e4b",
+  "scripts/44_phase9_freeze_prepare.sh": "0d3722569697674bbd5045a5c5d65296ac058c05f08aab96564657852fa703ff",
+  "src/__init__.py": "aaf5544419ed02b7778d67ada934b638a21e378a9bcf1edc396a9c7874b9d0a8",
+  "src/paths.py": "f1c199fcbd18c44def3be87d2457600783f5885811864fc060df203be47fbe9a",
+  "src/pathway_scoring.py": "38cac035c0b2d4505e9d756893aac88f4fd5330d1a0c67521e1ed31e62e788a2",
+  "src/phase9_corrected/__init__.py": "c2dfd20787d6ee434c5239f58c1bd67e36a517a40c563e228e4d2b6309ee2dad",
+  "src/phase9_corrected/checkpoint.py": "e93d6e8e1fa9c14d476dc16f9c1e5e795b959a9d05ea561c2ca5e36c52de70a2",
+  "src/phase9_corrected/config.py": "110a3dd47d661dc731aa23a7265546b17729d26a292f647537b0bd9612c926d5",
+  "src/phase9_corrected/data.py": "6cc0a026a269e4208107f85c782731522635b4f14ba6cfe7389be990916f5a16",
+  "src/phase9_corrected/engine.py": "7a92370d02702640ff70ec9ed4a75a8175df40711ca9e4e3301adbd588481754",
+  "src/phase9_corrected/fitting.py": "634776cc4cc270825aa383682f4ce74812285578f5368b2beb9d3d33bf48960d",
+  "src/phase9_corrected/gate.py": "e9b734db29280ff52baa402daff97b4ed19164c077c9899089c0efa4c815565d",
+  "src/phase9_corrected/integrity.py": "5ba0585439c1f2f7adb21df803dc55e1df9053b7e46f83b31391b5c8207c3e9f",
+  "src/phase9_corrected/orchestration.py": "1a0fee240431efc7cd6ea30b61f5598f9bb564048f110f9663b2514523604a6f",
+  "src/phase9_corrected/postrun.py": "9fd8e15b93b90e2d3a2b27edd9005258564ba80b07871f891cab5840f1e7cb38",
+  "src/phase9_corrected/reliability.py": "296c705d03392ab5bde0b8780ccdcb6e9b1dda9b65abc0624486faeabcbe412c",
+  "src/phase9_corrected/resampling.py": "3f48d9719226566b44782634a139a293f6443a68a4d97099a5b38916c34b9c65",
+  "src/phase9_corrected/rng.py": "dd3a9b45750ecc4a6dd2f780c3ff562b272f224ba26daec8c3fb6056e68b5b44",
+  "src/phase9_corrected/statistics.py": "85929d479c208eb2a0557a2493e47f214712e5236df4e09afac04d49b0c19b29",
+  "src/phase9_corrected/verification.py": "75a3430c45b42503cb154de2865c27a266c2e5b0aa1ca68946a80d799d539836",
+  "src/phase9_execution.py": "571d0c233f367be66b32ba0675e9e7496acf918fc0f04d70b6c08fa203345966",
+  "src/reproducibility.py": "555e3dc9444d05a5644da208fc2eb94c87dfc3e6fe235476f77d7cfe5edd15b8",
+  "src/score_standardisation.py": "41b5c091125e1b1120a7954f17af89b9d981455abc38643bc731f02fbf6ad2cf"
+ },
+ "environment": {
+  "distributions": {
+   "anyio": [
+    "4.16.0"
+   ],
+   "appnope": [
+    "1.0.0"
+   ],
+   "argon2-cffi": [
+    "25.1.0"
+   ],
+   "argon2-cffi-bindings": [
+    "26.1.0"
+   ],
+   "arrow": [
+    "1.4.0"
+   ],
+   "asttokens": [
+    "3.0.2"
+   ],
+   "async-lru": [
+    "2.4.0"
+   ],
+   "attrs": [
+    "26.1.0"
+   ],
+   "autograd": [
+    "1.9.1"
+   ],
+   "autograd-gamma": [
+    "0.5.0"
+   ],
+   "babel": [
+    "2.18.0"
+   ],
+   "beautifulsoup4": [
+    "4.15.0"
+   ],
+   "bleach": [
+    "6.4.0"
+   ],
+   "certifi": [
+    "2026.10.23"
+   ],
+   "cffi": [
+    "2.1.1"
+   ],
+   "charset-normalizer": [
+    "3.5.2"
+   ],
+   "cloudpickle": [
+    "3.1.2"
+   ],
+   "comm": [
+    "0.2.3"
+   ],
+   "contourpy": [
+    "1.4.0"
+   ],
+   "cycler": [
+    "0.12.1"
+   ],
+   "debugpy": [
+    "1.8.22"
+   ],
+   "defusedxml": [
+    "0.7.1"
+   ],
+   "et-xmlfile": [
+    "2.0.0"
+   ],
+   "executing": [
+    "2.3.0"
+   ],
+   "fastjsonschema": [
+    "2.22.3"
+   ],
+   "fonttools": [
+    "4.68.0"
+   ],
+   "formulaic": [
+    "1.2.2"
+   ],
+   "fqdn": [
+    "1.6.0"
+   ],
+   "geoparse": [
+    "2.0.4"
+   ],
+   "h11": [
+    "0.16.0"
+   ],
+   "httpcore": [
+    "1.0.9"
+   ],
+   "httpx": [
+    "0.28.1"
+   ],
+   "idna": [
+    "3.20"
+   ],
+   "iniconfig": [
+    "2.3.1"
+   ],
+   "interface-meta": [
+    "2.0.1"
+   ],
+   "ipykernel": [
+    "7.4.0"
+   ],
+   "ipython": [
+    "9.18.1"
+   ],
+   "ipython-pygments-lexers": [
+    "1.1.1"
+   ],
+   "isoduration": [
+    "20.11.0"
+   ],
+   "jedi": [
+    "0.20.1"
+   ],
+   "jinja2": [
+    "3.1.6"
+   ],
+   "joblib": [
+    "1.6.0"
+   ],
+   "json5": [
+    "0.17.3"
+   ],
+   "jsonpointer": [
+    "3.7"
+   ],
+   "jsonschema": [
+    "4.26.0"
+   ],
+   "jsonschema-specifications": [
+    "2025.9.1"
+   ],
+   "jupyter-builder": [
+    "1.2.4"
+   ],
+   "jupyter-client": [
+    "8.10.0"
+   ],
+   "jupyter-core": [
+    "5.9.1"
+   ],
+   "jupyter-events": [
+    "0.12.1"
+   ],
+   "jupyter-lsp": [
+    "2.3.1"
+   ],
+   "jupyter-server": [
+    "2.21.1"
+   ],
+   "jupyter-server-terminals": [
+    "0.5.4"
+   ],
+   "jupyterlab": [
+    "4.6.5"
+   ],
+   "jupyterlab-pygments": [
+    "0.3.0"
+   ],
+   "jupyterlab-server": [
+    "2.28.1"
+   ],
+   "kiwisolver": [
+    "1.5.1"
+   ],
+   "lark": [
+    "1.3.1"
+   ],
+   "lifelines": [
+    "0.30.3"
+   ],
+   "markupsafe": [
+    "3.0.4"
+   ],
+   "matplotlib": [
+    "3.11.2"
+   ],
+   "matplotlib-inline": [
+    "0.2.2"
+   ],
+   "mistune": [
+    "3.4.0"
+   ],
+   "narwhals": [
+    "2.28.0"
+   ],
+   "nbclient": [
+    "0.11.0"
+   ],
+   "nbconvert": [
+    "7.17.2"
+   ],
+   "nbformat": [
+    "5.11.1"
+   ],
+   "nest-asyncio2": [
+    "1.7.4"
+   ],
+   "notebook-shim": [
+    "0.2.4"
+   ],
+   "numpy": [
+    "2.5.4"
+   ],
+   "openpyxl": [
+    "3.1.5"
+   ],
+   "packaging": [
+    "26.3"
+   ],
+   "pandas": [
+    "2.3.3"
+   ],
+   "pandocfilters": [
+    "1.5.1"
+   ],
+   "parso": [
+    "0.8.7"
+   ],
+   "pexpect": [
+    "4.9.0"
+   ],
+   "pillow": [
+    "13.0.0"
+   ],
+   "pip": [
+    "26.2.2"
+   ],
+   "platformdirs": [
+    "4.14.3"
+   ],
+   "pluggy": [
+    "1.7.0"
+   ],
+   "prometheus-client": [
+    "0.26.0"
+   ],
+   "prompt-toolkit": [
+    "3.0.53"
+   ],
+   "psutil": [
+    "7.2.2"
+   ],
+   "ptyprocess": [
+    "0.7.0"
+   ],
+   "pure-eval": [
+    "0.2.4"
+   ],
+   "pyarrow": [
+    "26.0.0"
+   ],
+   "pycparser": [
+    "3.12"
+   ],
+   "pygments": [
+    "2.21.0"
+   ],
+   "pyparsing": [
+    "3.3.3"
+   ],
+   "pytest": [
+    "9.2.0"
+   ],
+   "python-dateutil": [
+    "4.0.0"
+   ],
+   "python-json-logger": [
+    "4.2.0"
+   ],
+   "pytz": [
+    "2026.6"
+   ],
+   "pyyaml": [
+    "6.0.3"
+   ],
+   "pyzmq": [
+    "27.2.0"
+   ],
+   "referencing": [
+    "0.37.0"
+   ],
+   "requests": [
+    "2.34.2"
+   ],
+   "rfc3339-validator": [
+    "0.1.4"
+   ],
+   "rfc3986-validator": [
+    "0.1.1"
+   ],
+   "rfc3987-syntax": [
+    "1.1.0"
+   ],
+   "rpds-py": [
+    "2026.9.1"
+   ],
+   "scikit-learn": [
+    "1.9.1"
+   ],
+   "scipy": [
+    "1.18.1"
+   ],
+   "seaborn": [
+    "0.13.2"
+   ],
+   "send2trash": [
+    "2.1.0"
+   ],
+   "six": [
+    "1.17.0"
+   ],
+   "soupsieve": [
+    "3.0.4"
+   ],
+   "stack-data": [
+    "0.6.3"
+   ],
+   "terminado": [
+    "0.18.1"
+   ],
+   "threadpoolctl": [
+    "3.7.0"
+   ],
+   "tinycss2": [
+    "1.5.1"
+   ],
+   "tornado": [
+    "6.6"
+   ],
+   "tqdm": [
+    "4.70.1"
+   ],
+   "traitlets": [
+    "5.16.1"
+   ],
+   "typing-extensions": [
+    "4.16.0"
+   ],
+   "tzdata": [
+    "2026.6"
+   ],
+   "uri-template": [
+    "1.3.0"
+   ],
+   "urllib3": [
+    "2.8.0"
+   ],
+   "wcwidth": [
+    "0.9.4"
+   ],
+   "webcolors": [
+    "25.10.0"
+   ],
+   "webencodings": [
+    "0.6.1"
+   ],
+   "websocket-client": [
+    "1.9.2"
+   ],
+   "wrapt": [
+    "2.6.0.dev1"
+   ],
+   "xlrd": [
+    "2.0.2"
+   ]
+  },
+  "executable": {
+   "resolved_path": "/Users/kalki/miniforge3/bin/python3.13",
+   "sha256": "5eeb52af34dc028ae98cb0b5b85abb22cd81a046afe544648367cacc505a40aa"
+  },
+  "launch_flags": {
+   "dont_write_bytecode": true,
+   "isolated": true,
+   "pycache_prefix_set": true
+  },
+  "machine": "arm64",
+  "numpy_build": {
+   "blas": {
+    "detection method": "system",
+    "name": "accelerate",
+    "version": "unknown"
+   },
+   "lapack": {
+    "detection method": "system",
+    "name": "accelerate",
+    "version": "unknown"
+   }
+  },
+  "platform": {
+   "architecture": "64bit",
+   "machine": "arm64",
+   "system": "Darwin"
+  },
+  "prefix": "/Users/kalki/coad_transportability/.venv",
+  "python_implementation": "cpython",
+  "python_version": "3.13.13",
+  "sys_platform": "darwin",
+  "thread_env": {
+   "MKL_NUM_THREADS": null,
+   "OMP_NUM_THREADS": null,
+   "OPENBLAS_NUM_THREADS": null,
+   "VECLIB_MAXIMUM_THREADS": null
+  }
+ },
+ "environment_record_only": {
+  "jq_version": {
+   "argv": [
+    "/usr/bin/jq",
+    "--version"
+   ],
+   "returncode": 0,
+   "stdout": "jq-1.7.1-apple"
+  },
+  "macos_build": {
+   "argv": [
+    "/usr/bin/sw_vers"
+   ],
+   "returncode": 0,
+   "stdout": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434"
+  },
+  "platform_string": "macOS-27.0.1-arm64-arm-64bit-Mach-O"
+ },
+ "excludes": "the owner configuration and its hash (the owner config anchors this record, never the reverse)",
+ "generated": {
+  "by": "scripts/44_phase9_freeze_capture.py",
+  "utc": "2026-11-06T20:21:34.746586+00:00"
+ },
+ "launch": {
+  "flags": [
+   "-I",
+   "-B",
+   "-X",
+   "pycache_prefix=<fresh, empty, external directory>"
+  ],
+  "interpreter": ".venv/bin/python",
+  "launcher": "scripts/42_phase9_corrected_launch.sh"
+ },
+ "schema": "p9c-freeze-2",
+ "status": "CANDIDATE - NOT APPROVED. Not a trust anchor until the owner has independently re-hashed and reviewed it (Decision 13)."
+}

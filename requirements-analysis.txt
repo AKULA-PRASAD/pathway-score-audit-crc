@@ -10,6 +10,19 @@ pyarrow==26.0.0          # Parquet backend for the probe matrix cache
 pytest==9.2.0            # Phase 0 verification suite
 # transitive: iniconfig==2.3.1, pluggy==1.7.0
 
+# --- Phase 1 (installed) ---
+xlrd==2.0.2              # read-only parser for the legacy .xls supplementary
+                         #   table from the source publication (Marisa et al.
+                         #   2013, Table S1, per-patient annotation). Pure
+                         #   Python, no native dependencies. Used ONLY to
+                         #   cross-check GEO metadata against the published
+                         #   per-patient table in
+                         #   scripts/15_investigate_cohort_endpoint.py.
+                         #   Installed 2026-11-02 after `pip install --dry-run`
+                         #   confirmed compatibility (Python 3.13.13).
+                         #   Not required for Phase 0; the Phase 0 suite does
+                         #   not import it.
+
 # --- Deferred: install at the phase that needs it ---
 # Verified installable against this environment (Python 3.13.13,
 # numpy 2.5.4) by `pip install --dry-run` on 2026-11-02, but NOT installed,
