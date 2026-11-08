@@ -1,0 +1,129 @@
+PHASE 9 CORRECTED -- POST-RUN VERIFICATION (p9c-verify-2)
+verdict: FAIL    reporting permitted: False
+level B_out: 500    hard failure H5: False
+freeze_record_sha256: 618f20eb26d4142398f01620edc6e45bcf3d5a11bb1b9702f47366c559f1a790
+manifest_sha256: 1ff243874f16f9bca05d28de1d775b6b266dd74fc1384ae2ed5c4cbec14a3f27
+
+status counts: PASS=16, FAIL=1, NOT_APPLICABLE=0, NOT_COMPARABLE=36
+
+[PASS] gate-evidence run 0
+    invocation: 1
+    reason: "six-check PASS bound to the start record (not cryptographically authenticated)"
+[PASS] gate-evidence run 1
+    invocation: 1
+    reason: "six-check PASS bound to the start record (not cryptographically authenticated)"
+[PASS] gate-evidence run 2
+    invocation: 1
+    reason: "six-check PASS bound to the start record (not cryptographically authenticated)"
+[PASS] gate-evidence run 3
+    invocation: 1
+    reason: "six-check PASS bound to the start record (not cryptographically authenticated)"
+[PASS] gate-evidence run 4
+    invocation: 1
+    reason: "six-check PASS bound to the start record (not cryptographically authenticated)"
+[PASS] identity-binding run 0
+    n_invocations: 1
+[PASS] identity-binding run 1
+    n_invocations: 1
+[PASS] identity-binding run 2
+    n_invocations: 1
+[PASS] identity-binding run 3
+    n_invocations: 1
+[PASS] identity-binding run 4
+    n_invocations: 1
+[PASS] campaign-level
+    level: 500
+[PASS] StageB-eligibility run 0
+    n_reasons: 0
+[PASS] StageB-eligibility run 1
+    n_reasons: 0
+[PASS] StageB-eligibility run 2
+    n_reasons: 0
+[PASS] StageB-eligibility run 3
+    n_reasons: 0
+[PASS] StageB-eligibility run 4
+    n_reasons: 0
+[FAIL] sizing
+    level: 500
+    reason: "the recomputed decision requires a top-up to 750: the campaign is not complete"
+[NOT_COMPARABLE] V1-self run 0
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V1-outer-historical run 0
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V1-inner run 0
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V2-record run 0
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] D12-lambda run 0
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V3 run 0
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V4 run 0
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V1-self run 1
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V1-outer-historical run 1
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V1-inner run 1
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V2-record run 1
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] D12-lambda run 1
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V3 run 1
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V4 run 1
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V1-self run 2
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V1-outer-historical run 2
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V1-inner run 2
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V2-record run 2
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] D12-lambda run 2
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V3 run 2
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V4 run 2
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V1-self run 3
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V1-outer-historical run 3
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V1-inner run 3
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V2-record run 3
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] D12-lambda run 3
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V3 run 3
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V4 run 3
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V1-self run 4
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V1-outer-historical run 4
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V1-inner run 4
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V2-record run 4
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] D12-lambda run 4
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V3 run 4
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V4 run 4
+    reason: "not executed: a prerequisite check FAILED"
+[NOT_COMPARABLE] V5 run 0
+    reason: "not executed: a prerequisite check FAILED"
+
+non-finite values in this report (DEC-A1): 0
+
+policy D2_V4_skipped_records: owner-approved: V4 records inside the historical comparison domain (k < 500) that cannot be compared are NOT_COMPARABLE; k >= 500 is outside the domain
+
+record-only environment (never compared at launch):
+    freeze: {"jq_version": {"argv": ["/usr/bin/jq", "--version"], "returncode": 0, "stdout": "jq-1.7.1-apple"}, "macos_build": {"argv": ["/usr/bin/sw_vers"], "returncode": 0, "stdout": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434"}, "platform_string": "macOS-27.0.1-arm64-arm-64bit-Mach-O"}
+
+Synthetic software tests do not establish scientific validity; this report is valid only for the frozen package and data it names.
