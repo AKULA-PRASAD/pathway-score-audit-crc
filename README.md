@@ -3,8 +3,8 @@
 A pre-specified, audited analysis of whether four Hallmark pathway scores improve recurrence-risk discrimination beyond clinical covariates in stage II–III colon cancer (GEO GSE39582). The headline result is a nested-bootstrap confidence interval for the optimism-corrected gain in Harrell's C.
 
 **Status (8 November 2026):**
-- **Scientifically complete:** the frozen verification passed (60 of 60 checks), and an independent checkpoint-level audit reproduced every reported number.
-- **Repository disposition:** owner decisions approved, and the project committed locally. Push, the checkpoint-archive release, the code licence and the public-release review are pending (`docs/PROJECT_COMPLETION_INVENTORY.md`).
+- **Scientifically complete:** the frozen verification passed (60 of 60 checks), and an independent re-implementation within this project reproduced every reported number from the raw checkpoints (not an external replication).
+- **Repository disposition:** owner decisions approved and committed; branch `phase9-corrected-pipeline` pushed to the private GitHub repository, and the checkpoint archive published as the private GitHub Release `phase9-corrected-campaign-2026-11-08`. The code licence and the public-release review are pending (`docs/PROJECT_COMPLETION_INVENTORY.md`).
 
 ## Research question
 
@@ -23,7 +23,7 @@ Recurrence risk after surgery for stage II–III colon cancer varies widely, and
 |---|---|
 | Optimism-corrected C | M1 (clinical) **0.6016**; M2 (clinical + 4 pathways) **0.6059** |
 | ΔC_corrected (pre-specified point estimate) | **+0.0043** |
-| 95 % percentile intervals, five independent runs (B_out = 750, B_in = 100) | [−0.0086, +0.0519] · [−0.0090, +0.0469] · [−0.0093, +0.0484] · [−0.0091, +0.0518] · [−0.0091, +0.0494] |
+| 95 % percentile intervals, five runs differing only in random seed (B_out = 750, B_in = 100) | [−0.0086, +0.0519] · [−0.0090, +0.0469] · [−0.0093, +0.0484] · [−0.0091, +0.0518] · [−0.0091, +0.0494] |
 | Run-to-run SD of the interval endpoints | 0.00025 (lower), 0.00217 (upper) |
 | Pathway hazard ratios, primary four-set model (per SD of score) | E2F 0.91, EMT 1.07, Wnt 1.02, p53 1.00; every 95 % CI includes 1. In the five-set sensitivity model only, E2F is 0.86 (0.75–0.996), with correlated scores; not a primary finding |
 | Corrected calibration slope | M1 0.83, M2 0.86 (residual overfitting) |
@@ -32,13 +32,15 @@ Recurrence risk after surgery for stage II–III colon cancer varies widely, and
 **Interpretation:**
 - Adding the four pathway scores was **not shown** to improve discrimination. The data are compatible with no gain and with a gain of up to about 0.05 in C.
 - All percentile, basic and bias-corrected intervals include zero. That does not establish equivalence.
-- No pathway shows an independent association with recurrence in the primary model.
-- E2F (< 1) and EMT (> 1) keep consistent directions, which is biologically plausible (proliferation; mesenchymal/stromal programmes) but not demonstrated here. Pathway scores are averaged mRNA levels, not measures of pathway activation, protein activity or mutation status.
+- No pathway shows an independent association with recurrence in the primary model (hazard ratios measure association; added discrimination is the ΔC above).
+- E2F (< 1) and EMT (> 1) keep consistent directions, but neither is demonstrated here. EMT > 1 is consistent with reports that stromal/mesenchymal expression marks poor-prognosis colorectal cancer (Guinney 2015, whose subtype derivation included GSE39582; Calon 2015; Isella 2015); whether the Hallmark EMT score reflects stroma was not tested here. Evidence on proliferation and outcome is mixed (Anjomshoaa 2009; Luo 2019). Pathway scores are averaged mRNA levels, not measures of pathway activation, protein activity or mutation status. Full references: `docs/SCIENTIFIC_RESULTS_AND_FIGURES.md` §14.
 - The corrected ΔC is stable across Monte Carlo runs and expression representations. Molecular coefficients are not stable across processing batches: leaving out one batch at a time changes the sign of the Wnt and p53 coefficients. Batch effects are characterised, not resolved.
 - A historical "paired out-of-original" ΔC interval that narrowly excluded zero is a different quantity, not an interval for the corrected ΔC, and it included zero under the alternative expression representation.
 - There is no claim of clinical utility, absolute-risk prediction, external validity, transportability or causal mechanism.
 
-**Full report:** `docs/PHASE9_CORRECTED_FINAL_REPORT.md`.
+**Full report:** `docs/PHASE9_CORRECTED_FINAL_REPORT.md`. **Illustrated results (9 main and 2 supplementary figures):** `docs/SCIENTIFIC_RESULTS_AND_FIGURES.md`.
+
+![Corrected ΔC intervals](reports/figures/final/Fig8_corrected_deltaC.png)
 
 ## Data, cohort and endpoint
 
@@ -63,7 +65,7 @@ Recurrence risk after surgery for stage II–III colon cancer varies widely, and
       for b in 1..B_in:                    inner: bootstrap of D*_k, evaluated on D*_k
           fit M1, M2 (paired)              -> optimism(M, k, b)
       ΔC_corrected(k) = ΔC_app(k) − mean_b[opt(M2) − opt(M1)]
-  interval = 2.5th and 97.5th percentiles, in each of five independent runs
+  interval = 2.5th and 97.5th percentiles, in each of five runs (differing only in random seed)
   ```
 - **Monte Carlo control:** kernel quantile SE at three bandwidths. B_out grows along a fixed ladder until the endpoint SE is ≤ 5 % of the width (EP-1). Here 500 was topped up to 750.
 
@@ -154,6 +156,6 @@ The archive destination is pending the owner's decision.
 
 ## Data access and licensing
 
-- **GSE39582:** public GEO data. Cite Marisa L. et al., *PLoS Med* 2013;10:e1001453. Raw and processed data are not redistributed here: download them from GEO.
-- **Hallmark gene sets:** from MSigDB (Liberzon et al., *Cell Syst* 2015). Use is subject to MSigDB's terms. The panel files record set identifiers and resolved members.
+- **GSE39582:** public GEO data. Cite Marisa L. et al., *PLoS Med* 2013;10:e1001453, doi:10.1371/journal.pmed.1001453. Raw and processed data are not redistributed here: download them from GEO.
+- **Hallmark gene sets:** from MSigDB (Liberzon et al., *Cell Syst* 2015;1:417–425, doi:10.1016/j.cels.2015.12.004). Use is subject to MSigDB's terms. The panel files record set identifiers and resolved members.
 - **Code licence:** no licence file has been chosen yet.

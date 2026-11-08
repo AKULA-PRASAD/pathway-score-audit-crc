@@ -2,9 +2,25 @@
 
 **Date:** 8 November 2026. **Status:** final scientific report. It supersedes, for every finding, the provisional historical reports in `reports/phase9/final_project/documentation/`, which are kept unchanged.
 
+**Revision (8 November 2026):** wording and citations only, following `docs/BIOLOGICAL_EVIDENCE_AND_CITATION_AUDIT.md`. No number, model, endpoint or conclusion changed.
+
 **Evidence base.**
 - **Corrected ΔC results (sections 7–8):** `reports/phase9/corrected_rerun_report/corrected_interval_results.json` (SHA-256 `1c504b13…eb60`). It was produced by `scripts/46` only after the frozen post-run verification returned PASS with reporting permitted (`reports/phase9/corrected_rerun/verification/L00750.report.json`, `9558aaa5…ff25`).
-- **Independent reproduction:** `reports/phase9/independent_audit/INDEPENDENT_AUDIT_REPORT.md` reproduced every number from the raw checkpoints by a separate calculation path (maximum difference 2.2×10⁻¹⁶). Classification: **INDEPENDENTLY REPRODUCED**.
+- **Independent reproduction:** `reports/phase9/independent_audit/INDEPENDENT_AUDIT_REPORT.md` reproduced every number from the raw checkpoints by a separate calculation path (maximum difference 2.2×10⁻¹⁶). Classification: **INDEPENDENTLY REPRODUCED**. Here "independent" means a separate re-implementation within this project, run on the same raw checkpoints; it is not an external replication by another group or in another cohort.
+- **Figures:** `docs/SCIENTIFIC_RESULTS_AND_FIGURES.md` presents these results with 9 main and 2 supplementary figures (`reports/figures/final/`), drawn by `scripts/49_make_results_figures.py` from the frozen outputs only. Figure map:
+
+  | Section | Figure |
+  |---|---|
+  | §2 | Fig. 1, S2 |
+  | §3 | Fig. 2 |
+  | §4 | Fig. 4 |
+  | §7 | Fig. 7 |
+  | §8 | Fig. 8, S1 |
+  | §9 | Fig. 5, 6 |
+  | §10–12 | Fig. 9 |
+  | Exploratory structure | Fig. 3 |
+
+  The figures add no new result.
 - **Coefficients, calibration and sensitivity results (sections 9–12):** the Phase 9 primary and S-7 execution records (`reports/phase9/execution/phase9_execution_results.json`, `05d13b8b…`; `reports/phase9/execution_s7/phase9_s7_results.json`). They are labelled as such where they appear.
 
 > **Conditional on the observed 136 recurrence events and 316 censored observations in the 452-patient A-19 population.**
@@ -15,10 +31,10 @@
 |---|---|
 | Question | Does a frozen four-pathway transcriptomic score set improve optimism-corrected discrimination for recurrence beyond clinical covariates? |
 | Point estimate (pre-specified) | ΔC_corrected = **+0.0043** (C_corrected 0.6059 for M2 vs 0.6016 for M1) |
-| 95 % percentile intervals (primary; five independent runs, B_out = 750, B_in = 100) | [−0.0086, +0.0519] · [−0.0090, +0.0469] · [−0.0093, +0.0484] · [−0.0091, +0.0518] · [−0.0091, +0.0494] |
+| 95 % percentile intervals (primary; five runs differing only in random seed, B_out = 750, B_in = 100) | [−0.0086, +0.0519] · [−0.0090, +0.0469] · [−0.0093, +0.0484] · [−0.0091, +0.0518] · [−0.0091, +0.0494] |
 | Reproducibility across runs | endpoint SD 0.00025 (lower), 0.00217 (upper) |
 | Monte Carlo precision | EP-1 met: largest endpoint MC-SE is 4.2 % of width |
-| Verification | frozen verifier PASS, 60/60; independent audit reproduced all values |
+| Verification | frozen verifier PASS, 60/60; an independent re-implementation within the project reproduced all values (not external replication) |
 | Hard failures | none, so the interval is not labelled UNRELIABLE or IMPRECISE |
 | Warnings | A7/A8 in every run: the bootstrap distribution sits above θ̂ and the percentile and basic intervals diverge. W4 once |
 | Molecular coefficients | primary four-set model: all four pathway hazard-ratio intervals include 1 (historical, penalised fit). Five-set sensitivity model only: E2F HR 0.862 (0.746–0.996), with correlated scores, not a primary finding (§9.1) |
@@ -102,7 +118,7 @@
    - It estimates optimism from B_in = 100 inner resamples of D*ₖ, evaluated on D*ₖ, with M1 and M2 paired on the same resamples and dropped together on failure.
    - ΔC_corrected(k) = ΔC_app(k) − ΔOpt(k).
 
-**Primary interval:** the 95 % percentile interval in each of **five independent runs**.
+**Primary interval:** the 95 % percentile interval in each of **five runs that differ only in random seed** (Monte Carlo replicates of one analysis of one cohort, not independent cohorts or experiments).
 
 **Random numbers and sizing:**
 - Every random draw has its own stream: outer resample, inner resample, inner-CV and apparent-CV, all from NumPy `SeedSequence`.
@@ -145,6 +161,8 @@ Every interval quantity was recomputed from raw checkpoint bytes with a standard
 - 138 reported quantities reproduced within 2.2×10⁻¹⁶.
 
 Classification: **INDEPENDENTLY REPRODUCED**.
+
+This classification means the calculations were re-implemented separately within this project and reproduced from the same raw checkpoints. It is not an external replication: no other group, cohort or dataset was involved.
 
 ### 7.3 Corrected C by model
 **Full-data estimates** (Phase 9 primary; these define θ̂):
@@ -240,6 +258,7 @@ Hazard ratio per one training-fold SD of each score, from the ridge-penalised M2
 - **No independent association shown (primary model).** Every pathway interval in the primary four-set model includes 1, under both representations, so **no pathway shows an independent association** with recurrence after adjustment.
 - **Ridge shrinkage.** The penalty shrinks the coefficients towards zero, so the Wald intervals are approximate and descriptive. They are not valid post-selection inference.
 - **Direction.** E2F below 1 and EMT above 1 keep their direction under S-7, under batch stratification and in every leave-one-batch-out refit (§12). Their magnitudes do not stay stable, and neither is distinguishable from zero.
+- **Association, not discrimination.** Hazard ratios describe adjusted association. Added predictive discrimination is assessed by ΔC (§8), and the two need not agree.
 
 ### 9.1 Five-set sensitivity model (historical; sensitivity-only)
 Ridge-penalised, λ = 0.152 (`docs/PHASE9_EXECUTION_REPORT.md` §5):
@@ -261,17 +280,17 @@ Ridge-penalised, λ = 0.152 (`docs/PHASE9_EXECUTION_REPORT.md` §5):
 - The panel was fixed as sensitivity-only before any fit (Phase 6C), and its corrected C (0.6066) does not differ from the primary model (0.6059) beyond Monte Carlo error. It is not promoted.
 
 ### 9.2 Biological interpretation: plausibility versus evidence
-A Hallmark score here is the mean training-standardised **mRNA** abundance of a fixed gene set in bulk tumour tissue (§4). It is **not** a measure of pathway activation, protein activity, signalling flux or mutation status, and no causal mechanism can be inferred from it. The background column below summarises general colorectal-cancer literature as **plausibility only**. It was not tested in this project.
+A Hallmark score here is the mean training-standardised **mRNA** abundance of a fixed gene set in bulk tumour tissue (§4). It is **not** a measure of pathway activation, protein activity, signalling flux or mutation status, and no causal mechanism can be inferred from it. The background column below summarises published colorectal-cancer literature (references R1–R8 at the end of this report) as **plausibility only**. It was not tested in this project.
 
 | Pathway | Background (plausibility, not tested here) | Demonstrated by this dataset |
 |---|---|---|
-| EMT | Mesenchymal and stromal expression programmes characterise the poor-prognosis CMS4 consensus subtype (Guinney et al., *Nat Med* 2015). In bulk tissue, EMT gene expression also reflects stromal and fibroblast content | HR 1.07 (0.95–1.20), consistently > 1; not distinguishable from 1. The score cannot separate stroma from tumour-cell EMT |
-| E2F targets | Proliferation and cell-cycle genes. In colorectal cancer, higher proliferation signatures have been reported in several studies to accompany *better* outcome, unlike many other cancers | HR 0.91 (0.81–1.02), consistently < 1; includes 1 in the primary model. The single excluding interval is in the collinear five-set model (§9.1) |
-| Wnt/β-catenin | Pathway activation, usually through APC loss, is nearly universal in colorectal cancer, which limits between-tumour contrast; target-gene expression is an indirect proxy | HR 1.02 (0.91–1.14); changes sign under leave-one-batch-out; least representation-stable score (r = 0.857). No signal |
-| p53 pathway | The gene set captures p53 **transcriptional targets**. TP53 mutation is not equivalent to low target expression | HR 1.00 (0.88–1.12); changes sign twice under leave-one-batch-out. No signal, and nothing can be said about TP53 status |
-| PI3K/AKT/mTOR (sensitivity only) | PIK3CA mutations occur in a minority of colorectal cancers; gene expression is not pathway activity | HR 1.04 (0.89–1.22); collinear with p53; mainly destabilised other coefficients |
+| EMT | Mesenchymal and stromal expression programmes characterise the CMS4 consensus subtype, which had worse relapse-free survival (R1). GSE39582 was one of the data sets used to derive the CMS, so this is not independent evidence. Mesenchymal-subtype transcripts in bulk colorectal tumours are mostly of stromal origin (R2, R3); whether this holds for the Hallmark EMT score was not tested here | HR 1.07 (0.95–1.20), consistently > 1; not distinguishable from 1. The score cannot separate stroma from tumour-cell EMT |
+| E2F targets | Proliferation and cell-cycle genes. Evidence on proliferation and colorectal-cancer outcome is mixed: one gene-signature study found lower proliferation in relapsed primary tumours (R4), whereas a meta-analysis of Ki-67 staining associated high proliferation with poorer survival (R5). Neither measured E2F-target mRNA | HR 0.91 (0.81–1.02), consistently < 1; includes 1 in the primary model. The single excluding interval is in the collinear five-set model (§9.1) |
+| Wnt/β-catenin | Wnt-pathway genes are genomically altered in about 93 % of colorectal cancers, with APC or CTNNB1 alterations in about 80 % (R6). Genomic alteration is not the same as pathway activation, and Wnt-related expression varies between tumours (marked WNT/MYC activation characterises CMS2; R1). Target-gene expression is an indirect proxy | HR 1.02 (0.91–1.14); changes sign under leave-one-batch-out; least representation-stable score (r = 0.857). No signal |
+| p53 pathway | The gene set captures p53 **transcriptional targets**. TP53 is mutated in about 60 % of non-hypermutated colorectal cancers (R6), but TP53 mutation is not equivalent to low target expression, and TP53 status was not analysed here | HR 1.00 (0.88–1.12); changes sign twice under leave-one-batch-out. No signal, and nothing can be said about TP53 status |
+| PI3K/AKT/mTOR (sensitivity only) | PIK3CA is mutated in about 15 % of non-hypermutated colorectal cancers (R6); gene expression is not pathway activity | HR 1.04 (0.89–1.22); collinear with p53; mainly destabilised other coefficients |
 
-The consistent E2F (< 1) and EMT (> 1) directions are **biologically coherent hypotheses**. This dataset demonstrates neither an association nor a mechanism.
+The consistent E2F (< 1) and EMT (> 1) directions are **hypotheses consistent with part of the prior literature** (EMT/stroma: R1–R3; proliferation: mixed, R4 vs R5). This dataset demonstrates neither an association nor a mechanism.
 
 ## 10. Calibration and overfitting (historical, single-layer bootstrap)
 
@@ -346,7 +365,7 @@ The consistent E2F (< 1) and EMT (> 1) directions are **biologically coherent hy
 
 **Observed:**
 - The pre-specified optimism-corrected gain in C from adding four pathway scores is +0.0043.
-- Five independent, verified and independently reproduced 95 % percentile intervals span about −0.009 to +0.05, and all include zero.
+- Five verified 95 % percentile intervals, from runs that differ only in random seed and reproduced by an independent re-implementation within the project, span about −0.009 to +0.05, and all include zero.
 - No pathway coefficient in the primary model is distinguishable from no effect. The only excluding interval (E2F, 0.746–0.996) is in the collinear five-set sensitivity model.
 - Molecular coefficients are unstable across batches (§12).
 - Both models show residual overfitting.
@@ -364,13 +383,13 @@ The consistent E2F (< 1) and EMT (> 1) directions are **biologically coherent hy
 - Taken together, the evidence does not meet the standard of a stable, credible pathway contribution.
 
 **Biological hypothesis (not a finding):**
-- Proliferation (E2F) and EMT programmes are plausible recurrence correlates (§9.2).
+- EMT/stromal programmes are plausible recurrence correlates (R1–R3); evidence on proliferation (E2F) is mixed (R4, R5) (§9.2).
 - In this dataset their estimated effects are small, imprecise and not distinguishable from zero, and their magnitudes vary with batch composition.
 - Testing them would need larger, externally independent cohorts with documented endpoints, ideally with orthogonal measures such as stromal content, mutation data or protein assays.
 
 **Status of the open items listed in the historical execution report** (`docs/PHASE9_EXECUTION_REPORT.md` §15, "Ready for final interpretation? No"):
 1. **S-7 representation sensitivity:** since executed (`docs/PHASE9_S7_SENSITIVITY_REPORT.md`); the corrected ΔC is unchanged (§11).
-2. **No interval for the corrected ΔC:** resolved by the verified, independently reproduced nested bootstrap (§8).
+2. **No interval for the corrected ΔC:** resolved by the verified nested bootstrap, reproduced by an independent re-implementation within the project (§8).
 3. **Coefficient instability under batch perturbation:** characterised (§12), but **not explained or resolved**. It limits coefficient interpretation, not the ΔC interval.
 
 **Not claimed:**
@@ -405,3 +424,16 @@ The consistent E2F (< 1) and EMT (> 1) directions are **biologically coherent hy
 - Each run: 3.3–5.1 h at B_out = 500, plus 2.1–2.4 h for the top-up to 750, on 8 worker processes.
 - 153,000 model fits per run (750 × [2 apparent + 2 as-run apparent + 200 inner]); each M2 fit adds 60 cross-validation fits for λ.
 - Verification at 750: about 41 min.
+
+## References
+
+- R1. Guinney J, Dienstmann R, Wang X, et al. The consensus molecular subtypes of colorectal cancer. *Nat Med* 2015;21(11):1350–1356. doi:[10.1038/nm.3967](https://doi.org/10.1038/nm.3967)
+- R2. Calon A, Lonardo E, Berenguer-Llergo A, et al. Stromal gene expression defines poor-prognosis subtypes in colorectal cancer. *Nat Genet* 2015;47(4):320–329. doi:[10.1038/ng.3225](https://doi.org/10.1038/ng.3225)
+- R3. Isella C, Terrasi A, Bellomo SE, et al. Stromal contribution to the colorectal cancer transcriptome. *Nat Genet* 2015;47(4):312–319. doi:[10.1038/ng.3224](https://doi.org/10.1038/ng.3224)
+- R4. Anjomshoaa A, Nasri S, Humar B, et al. Slow proliferation as a biological feature of colorectal cancer metastasis. *Br J Cancer* 2009;101(5):822–828. doi:[10.1038/sj.bjc.6605229](https://doi.org/10.1038/sj.bjc.6605229)
+- R5. Luo ZW, Zhu MG, Zhang ZQ, et al. Increased expression of Ki-67 is a poor prognostic marker for colorectal cancer patients: a meta analysis. *BMC Cancer* 2019;19:123. doi:[10.1186/s12885-019-5324-y](https://doi.org/10.1186/s12885-019-5324-y)
+- R6. Cancer Genome Atlas Network. Comprehensive molecular characterization of human colon and rectal cancer. *Nature* 2012;487(7407):330–337. doi:[10.1038/nature11252](https://doi.org/10.1038/nature11252)
+- R7. Liberzon A, Birger C, Thorvaldsdóttir H, et al. The Molecular Signatures Database (MSigDB) hallmark gene set collection. *Cell Syst* 2015;1(6):417–425. doi:[10.1016/j.cels.2015.12.004](https://doi.org/10.1016/j.cels.2015.12.004)
+- R8. Marisa L, de Reyniès A, Duval A, et al. Gene expression classification of colon cancer into molecular subtypes: characterization, validation, and prognostic value. *PLoS Med* 2013;10(5):e1001453. doi:[10.1371/journal.pmed.1001453](https://doi.org/10.1371/journal.pmed.1001453)
+
+All references were verified on 8 November 2026 through Europe PMC (`docs/BIOLOGICAL_EVIDENCE_AND_CITATION_AUDIT.md` §1).
