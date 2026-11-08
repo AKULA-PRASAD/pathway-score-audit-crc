@@ -1,0 +1,269 @@
+{
+ "numpy": "2.5.4",
+ "cases": [
+  {
+   "k": 0,
+   "level": "apparent",
+   "spawn_key": [
+    0
+   ],
+   "outer_spawn_equivalent": true,
+   "executed_cv_state_equals_resample_state": true,
+   "planned_cv_state_equals_resample_state": false,
+   "first4_raw_resample": [
+    "1710708636935986523",
+    "17459335240402789465",
+    "4271559551269240921",
+    "15279439832394708190"
+   ],
+   "first4_raw_cv_executed": [
+    "1710708636935986523",
+    "17459335240402789465",
+    "4271559551269240921",
+    "15279439832394708190"
+   ],
+   "first4_raw_cv_planned": [
+    "12275464072138857609",
+    "7070011973245522162",
+    "16398484565012759738",
+    "15945302250048392713"
+   ]
+  },
+  {
+   "k": 0,
+   "level": "inner_b0",
+   "spawn_key": [
+    0,
+    0
+   ],
+   "outer_spawn_equivalent": true,
+   "executed_cv_state_equals_resample_state": true,
+   "planned_cv_state_equals_resample_state": false,
+   "first4_raw_resample": [
+    "12275464072138857609",
+    "7070011973245522162",
+    "16398484565012759738",
+    "15945302250048392713"
+   ],
+   "first4_raw_cv_executed": [
+    "12275464072138857609",
+    "7070011973245522162",
+    "16398484565012759738",
+    "15945302250048392713"
+   ],
+   "first4_raw_cv_planned": [
+    "5070398370141261833",
+    "4941475203673471867",
+    "17906865115708643082",
+    "7381703224142138010"
+   ]
+  },
+  {
+   "k": 0,
+   "level": "inner_b99",
+   "spawn_key": [
+    0,
+    99
+   ],
+   "outer_spawn_equivalent": true,
+   "executed_cv_state_equals_resample_state": true,
+   "planned_cv_state_equals_resample_state": false,
+   "first4_raw_resample": [
+    "7970640131889211460",
+    "17660557558449505213",
+    "13261257957094557856",
+    "312060936371610978"
+   ],
+   "first4_raw_cv_executed": [
+    "7970640131889211460",
+    "17660557558449505213",
+    "13261257957094557856",
+    "312060936371610978"
+   ],
+   "first4_raw_cv_planned": [
+    "16997440520023511888",
+    "11883146547055133562",
+    "15416776664755277897",
+    "12363823711419790448"
+   ]
+  },
+  {
+   "k": 25,
+   "level": "apparent",
+   "spawn_key": [
+    25
+   ],
+   "outer_spawn_equivalent": true,
+   "executed_cv_state_equals_resample_state": true,
+   "planned_cv_state_equals_resample_state": false,
+   "first4_raw_resample": [
+    "12352426518463569052",
+    "2491649690210185689",
+    "9285899067444052273",
+    "6319582330687107309"
+   ],
+   "first4_raw_cv_executed": [
+    "12352426518463569052",
+    "2491649690210185689",
+    "9285899067444052273",
+    "6319582330687107309"
+   ],
+   "first4_raw_cv_planned": [
+    "5610307441058368924",
+    "3529230111027410905",
+    "2202307345692339008",
+    "11274039329312465643"
+   ]
+  },
+  {
+   "k": 25,
+   "level": "inner_b0",
+   "spawn_key": [
+    25,
+    0
+   ],
+   "outer_spawn_equivalent": true,
+   "executed_cv_state_equals_resample_state": true,
+   "planned_cv_state_equals_resample_state": false,
+   "first4_raw_resample": [
+    "5610307441058368924",
+    "3529230111027410905",
+    "2202307345692339008",
+    "11274039329312465643"
+   ],
+   "first4_raw_cv_executed": [
+    "5610307441058368924",
+    "3529230111027410905",
+    "2202307345692339008",
+    "11274039329312465643"
+   ],
+   "first4_raw_cv_planned": [
+    "2497861502419489142",
+    "5469635241022108143",
+    "3244377888133179378",
+    "13203889227942394063"
+   ]
+  },
+  {
+   "k": 25,
+   "level": "inner_b99",
+   "spawn_key": [
+    25,
+    99
+   ],
+   "outer_spawn_equivalent": true,
+   "executed_cv_state_equals_resample_state": true,
+   "planned_cv_state_equals_resample_state": false,
+   "first4_raw_resample": [
+    "12332344022037345452",
+    "10713616307752849020",
+    "3361542205953598373",
+    "9722730344593194107"
+   ],
+   "first4_raw_cv_executed": [
+    "12332344022037345452",
+    "10713616307752849020",
+    "3361542205953598373",
+    "9722730344593194107"
+   ],
+   "first4_raw_cv_planned": [
+    "15863144023310609558",
+    "17060718290332996144",
+    "3215687059720141617",
+    "18062130548448195443"
+   ]
+  },
+  {
+   "k": 475,
+   "level": "apparent",
+   "spawn_key": [
+    475
+   ],
+   "outer_spawn_equivalent": true,
+   "executed_cv_state_equals_resample_state": true,
+   "planned_cv_state_equals_resample_state": false,
+   "first4_raw_resample": [
+    "42992050939708199",
+    "2205470766919618810",
+    "17737657739742108594",
+    "12813504433045253806"
+   ],
+   "first4_raw_cv_executed": [
+    "42992050939708199",
+    "2205470766919618810",
+    "17737657739742108594",
+    "12813504433045253806"
+   ],
+   "first4_raw_cv_planned": [
+    "8382224841502310914",
+    "530333965589690858",
+    "15726272858976110581",
+    "1703893516644428918"
+   ]
+  },
+  {
+   "k": 475,
+   "level": "inner_b0",
+   "spawn_key": [
+    475,
+    0
+   ],
+   "outer_spawn_equivalent": true,
+   "executed_cv_state_equals_resample_state": true,
+   "planned_cv_state_equals_resample_state": false,
+   "first4_raw_resample": [
+    "8382224841502310914",
+    "530333965589690858",
+    "15726272858976110581",
+    "1703893516644428918"
+   ],
+   "first4_raw_cv_executed": [
+    "8382224841502310914",
+    "530333965589690858",
+    "15726272858976110581",
+    "1703893516644428918"
+   ],
+   "first4_raw_cv_planned": [
+    "18384865137977145753",
+    "17257005902151112142",
+    "2392420617185188255",
+    "13996331759319124909"
+   ]
+  },
+  {
+   "k": 475,
+   "level": "inner_b99",
+   "spawn_key": [
+    475,
+    99
+   ],
+   "outer_spawn_equivalent": true,
+   "executed_cv_state_equals_resample_state": true,
+   "planned_cv_state_equals_resample_state": false,
+   "first4_raw_resample": [
+    "9497159830794948802",
+    "7436206436616895513",
+    "2047840326705186394",
+    "17765489639777861122"
+   ],
+   "first4_raw_cv_executed": [
+    "9497159830794948802",
+    "7436206436616895513",
+    "2047840326705186394",
+    "17765489639777861122"
+   ],
+   "first4_raw_cv_planned": [
+    "18044148260314829862",
+    "11332350176824868637",
+    "4916733579266232788",
+    "1250662610403018701"
+   ]
+  }
+ ],
+ "summary": {
+  "n_cases": 9,
+  "all_outer_spawn_equivalent": true,
+  "all_executed_cv_equals_resample": true,
+  "any_planned_cv_equals_resample": false
+ }
+}

@@ -1,0 +1,110 @@
+{
+  "internal_validation_design": {
+    "primary": "bootstrap optimism correction (Harrell), the ENTIRE pipeline repeated inside every replicate",
+    "cross_check": "repeated 10-fold cross-validation",
+    "external_validation": "NONE -- no suitable confirmatory cohort exists (Phase 4 G4 FAILED). No analysis here is external validation.",
+    "authority": "6B \u00a75"
+  },
+  "resampling_unit": {
+    "unit": "the PATIENT (one array per patient in S3)",
+    "justification": "Phase 8B established 0 declared dependent arrays in S3 (dependancy_sample), so array and patient coincide here",
+    "source": "reports/phase8b/phase8b_summary.json"
+  },
+  "stratification": {
+    "bootstrap": "stratified by EVENT STATUS, so every replicate carries a comparable number of events",
+    "cross_validation": "folds stratified by event status",
+    "outcome_blindness_note": "stratifying by event status REQUIRES the outcome and is therefore a MODEL-FITTING-TIME operation. It is specified here and executed only in Phase 9 execution; no fold used in Phases 8A-8C was outcome-stratified, and those folds were explicitly labelled illustrative",
+    "not_stratified_by": [
+      "batch",
+      "dataset partition",
+      "MMR"
+    ],
+    "why_not": "stratifying on a confounded covariate would make the replicates unrepresentative of the cohort the estimand refers to"
+  },
+  "hyperparameter_tuning": {
+    "boundary": "inner cross-validation INSIDE each training fold / bootstrap replicate; never on held-out data, never on the full cohort",
+    "parameters": [
+      "ridge/elastic-net lambda",
+      "elastic-net alpha (M3)"
+    ],
+    "authority": "B-07"
+  },
+  "monte_carlo_stability": {
+    "rules": "MC-1 running trace; MC-2 >=5 seeds; MC-3 MC-SE <= 10% of sampling SE; MC-4 report MC-SE alongside every corrected estimate",
+    "B_initial": 500,
+    "B_is_an_output": true,
+    "B_rule": "B increases (1000, 2000, ...) until MC-3 passes; it is NEVER lowered to suit a result",
+    "expected_hardest_case": "M3 nested selection",
+    "authority": "6B \u00a75.1"
+  },
+  "seed_policy": {
+    "declared_seeds": [
+      20261102,
+      20261103,
+      20261104,
+      20261105,
+      20261106
+    ],
+    "n_seeds": 5,
+    "rule": "seeds are declared HERE, before execution, and are never changed after seeing a result. The MC-2 spread across these five seeds IS the Monte-Carlo SE.",
+    "note": "20261102 is the project seed already used by Phases 8A-8C"
+  },
+  "monte_carlo_vs_sampling_uncertainty": {
+    "sampling_SE": "uncertainty from having 453 patients rather than infinitely many; estimated by the bootstrap distribution itself; does NOT shrink with more replicates",
+    "monte_carlo_SE": "uncertainty from having run B replicates rather than infinitely many; estimated as the SD of the corrected estimate across the 5 declared seeds; DOES shrink as B increases, roughly as 1/sqrt(B)",
+    "reporting_rule": "both are reported for every corrected estimate, labelled separately. They are never summed into one interval and never conflated.",
+    "criterion": "MC-SE <= 10% of sampling SE (MC-3)"
+  },
+  "optimism_correction": {
+    "estimator": "Harrell's bootstrap optimism correction",
+    "procedure": [
+      "1. fit the ENTIRE pipeline on the original sample; record apparent performance P_app",
+      "2. for b = 1..B: draw a bootstrap sample (stratified by event status), refit the ENTIRE pipeline on it -- including scoring parameters, any score standardisation, filtering, selection and tuning -- and record P_boot(b) on the bootstrap sample and P_orig(b) on the ORIGINAL sample using the bootstrap-fitted model",
+      "3. optimism(b) = P_boot(b) - P_orig(b)",
+      "4. corrected performance = P_app - mean_b optimism(b)"
+    ],
+    "reported_together": "apparent performance, mean optimism, and corrected performance are reported TOGETHER. Apparent performance is never reported alone (6B \u00a75).",
+    "shrinkage": "a uniform shrinkage factor is estimated from the bootstrap and reported whether or not it is applied"
+  },
+  "convergence_and_non_estimable_replicates": {
+    "convergence_criteria": {
+      "log_likelihood_change": "< 1e-9 between iterations",
+      "max_iterations": 100,
+      "separation_sentinel": "any |beta| > 10 or SE > 10 flags the fit"
+    },
+    "recording_rule": "every replicate that fails to converge, hits the iteration cap, trips the separation sentinel, or cannot be fitted (rank-deficient design, undefined scaling) is RECORDED with its seed, replicate index and failure reason in a per-model replicate log.",
+    "exclusion_rule": "a non-estimable replicate is EXCLUDED from the optimism average and COUNTED. The count and percentage are reported beside every corrected estimate.",
+    "pre_registered_threshold": "if more than 5% of replicates for a model are non-estimable, the corrected estimate for that model is reported as UNRELIABLE and the failure pattern is described. Replicates are never silently re-drawn to replace failures, which would bias the optimism estimate toward well-behaved samples.",
+    "threshold_fixed_now": true
+  },
+  "tuning_nesting": {
+    "structure": "inner cross-validation INSIDE each bootstrap replicate / outer training fold",
+    "inner_folds": 5,
+    "what_is_tuned": [
+      "ridge lambda (M2 pathway block)",
+      "elastic-net alpha and lambda (M3)"
+    ],
+    "what_is_never_tuned_outside": "no hyperparameter is ever selected using held-out data or the full cohort",
+    "score_standardisation_if_approved": "recomputed inside the INNER loop too, not only the outer split"
+  },
+  "quantities_estimated": [
+    "optimism-corrected Harrell C-index",
+    "calibration slope on the LOG-HAZARD scale (unit-free)",
+    "calibration-in-the-large on the log-hazard scale",
+    "cause-specific hazard ratios with CIs",
+    "delta-C vs M1 with CI and MC-SE",
+    "uniform shrinkage factor (reported whether or not applied)",
+    "effective degrees of freedom for penalised fits"
+  ],
+  "quantities_NOT_estimated": [
+    "t-year / fixed-horizon absolute risk (blocked by U1)",
+    "predicted survival or CIF curves (blocked by U1)",
+    "time-dependent AUC or Brier score (blocked by U1)",
+    "cloglog calibration at a horizon, i.e. Riley's estimator (blocked by U1)",
+    "any external-validation quantity (no cohort exists)"
+  ],
+  "phase5_status": {
+    "statement": "The Phase 5 simulation is an APPROXIMATION of the Riley et al. (2022) external-validation sample-size framework, NOT a faithful implementation of it. The ~338-event figure is an approximation and was explicitly NOT a cross-check of Riley's published ~365.",
+    "source": "docs/PHASE5_VALIDATION_PRECISION_ASSESSMENT.md \u00a70.1"
+  }
+}

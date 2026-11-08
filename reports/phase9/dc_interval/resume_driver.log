@@ -1,0 +1,63 @@
+=== RUN 0 start t+0.0 min ===
+[run 0] B_out=500 B_in=100 workers=8 resume: 144 done, 356 to do
+[run 0] 50/356  25.7 min  eta 157.1 min
+[run 0] 100/356  50.6 min  eta 129.4 min
+[run 0] 150/356  225.8 min  eta 310.1 min
+[run 0] 200/356  244.6 min  eta 190.8 min
+[run 0] 250/356  266.5 min  eta 113.0 min
+[run 0] 300/356  287.0 min  eta 53.6 min
+[run 0] 350/356  453.8 min  eta 7.8 min
+[run 0] COMPLETE in 455.9 min -> run0_outer.jsonl
+=== RUN 1 start t+456.0 min ===
+[run 1] B_out=500 B_in=100 workers=8 resume: 0 done, 500 to do
+[run 1] 50/500  27.6 min  eta 248.1 min
+[run 1] 100/500  53.5 min  eta 214.1 min
+[run 1] 150/500  81.3 min  eta 189.7 min
+[run 1] 200/500  109.7 min  eta 164.6 min
+[run 1] 250/500  139.6 min  eta 139.6 min
+[run 1] 300/500  164.4 min  eta 109.6 min
+[run 1] 350/500  188.2 min  eta 80.7 min
+[run 1] 400/500  212.7 min  eta 53.2 min
+[run 1] 450/500  239.5 min  eta 26.6 min
+[run 1] 500/500  264.3 min  eta 0.0 min
+[run 1] COMPLETE in 264.3 min -> run1_outer.jsonl
+=== RUN 2 start t+720.3 min ===
+[run 2] B_out=500 B_in=100 workers=8 resume: 0 done, 500 to do
+[run 2] 50/500  24.8 min  eta 223.4 min
+[run 2] 100/500  45.7 min  eta 183.0 min
+[run 2] 150/500  66.9 min  eta 156.1 min
+[run 2] 200/500  88.0 min  eta 132.0 min
+[run 2] 250/500  111.5 min  eta 111.5 min
+[run 2] 300/500  132.5 min  eta 88.4 min
+[run 2] 350/500  153.8 min  eta 65.9 min
+[run 2] 400/500  175.3 min  eta 43.8 min
+[run 2] 450/500  196.7 min  eta 21.9 min
+[run 2] 500/500  215.5 min  eta 0.0 min
+[run 2] COMPLETE in 215.5 min -> run2_outer.jsonl
+=== RUN 3 start t+935.8 min ===
+[run 3] B_out=500 B_in=100 workers=8 resume: 0 done, 500 to do
+[run 3] 50/500  22.0 min  eta 198.2 min
+[run 3] 100/500  41.0 min  eta 164.1 min
+[run 3] 150/500  60.2 min  eta 140.4 min
+[run 3] 200/500  79.8 min  eta 119.7 min
+[run 3] 250/500  100.9 min  eta 100.9 min
+[run 3] 300/500  120.3 min  eta 80.2 min
+[run 3] 350/500  140.3 min  eta 60.1 min
+[run 3] 400/500  160.2 min  eta 40.0 min
+[run 3] 450/500  180.4 min  eta 20.0 min
+[run 3] 500/500  199.0 min  eta 0.0 min
+[run 3] COMPLETE in 199.0 min -> run3_outer.jsonl
+=== RUN 4 start t+1134.8 min ===
+[run 4] B_out=500 B_in=100 workers=8 resume: 0 done, 500 to do
+[run 4] 50/500  21.9 min  eta 197.5 min
+[run 4] 100/500  41.1 min  eta 164.4 min
+[run 4] 150/500  61.7 min  eta 144.1 min
+[run 4] 200/500  85.5 min  eta 128.2 min
+[run 4] 250/500  109.6 min  eta 109.6 min
+[run 4] 300/500  132.9 min  eta 88.6 min
+[run 4] 350/500  156.4 min  eta 67.0 min
+[run 4] 400/500  180.5 min  eta 45.1 min
+[run 4] 450/500  206.2 min  eta 22.9 min
+[run 4] 500/500  228.7 min  eta 0.0 min
+[run 4] COMPLETE in 228.7 min -> run4_outer.jsonl
+=== ALL FIVE RUNS COMPLETE in 22.73 h ===

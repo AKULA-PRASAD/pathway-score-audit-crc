@@ -1,0 +1,43 @@
+{
+  "endpoint_columns": {
+    "event": "rfs_event_full",
+    "time": "rfs_time_full",
+    "basis": "Register A-07 -- cause-specific recurrence, full follow-up"
+  },
+  "s3_cohort": {
+    "n": 453,
+    "events": 136,
+    "censored": 317
+  },
+  "model_fitting_population": {
+    "n": 452,
+    "events": 136,
+    "censored": 316,
+    "basis": "A-19 complete-case over the five M1 covariates"
+  },
+  "exclusions": [
+    {
+      "sample_id": "GSM972262",
+      "reason": "missing chemotherapy.adjuvant",
+      "event": 0,
+      "time": 5.0,
+      "excluded_on_outcome": false
+    }
+  ],
+  "reconciles_with_a19": true,
+  "register_a01_events": 136,
+  "register_a01_match": true,
+  "phase9_predicted_bound": [
+    135,
+    136
+  ],
+  "bound_honoured": true,
+  "epv": {
+    "M1": 22.667,
+    "M2_primary": 15.111,
+    "M2_sensitivity": 13.6
+  },
+  "time_scale": "as deposited; U1 [PROVISIONAL: months] unresolved and unaltered",
+  "censoring": "cause-specific, competing death censored; U2 unresolved, deposited rule kept",
+  "s3_60unit_columns_present_but_unused": true
+}

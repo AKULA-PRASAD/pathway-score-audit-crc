@@ -1,0 +1,40 @@
+{
+  "audit": "PHASE9_DELTAC_INTERVAL",
+  "status": "RECOMMENDATION_ONLY_NOT_EXECUTED",
+  "date": "2026-11-03",
+  "estimand": "DeltaC_corrected = C_corrected(M2 four-set) - C_corrected(M1)",
+  "point_estimate": 0.0043,
+  "apparent_dC": 0.014,
+  "paired_out_of_original_dC": 0.0121,
+  "existing_interval_is_for": "paired out-of-original dC, centred +0.0121 -- NOT the estimand",
+  "centre_mismatch_factor": 2.8,
+  "existing_replicates_sufficient": false,
+  "reason": "the executed bootstrap estimates only the optimism BIAS term; the outer sampling layer was never run, and replicate-level arrays were not stored",
+  "recommended_method": "paired event-stratified nested (double) bootstrap",
+  "recommended_B_out": 500,
+  "recommended_B_in": 100,
+  "measured_seconds_per_inner_replicate": 0.852,
+  "estimated_hours_single_core": 11.8,
+  "estimated_hours_8_cores": 1.5,
+  "interval_types": [
+    "percentile (primary)",
+    "basic/reverse-percentile",
+    "bias-corrected z0-only"
+  ],
+  "BCa_full": "not proposed -- acceleration needs a jackknife that assumes smoothness the C-index lacks",
+  "rejected_methods": {
+    "jackknife": "C-index non-smooth; jackknife inconsistent",
+    "constant-optimism shift": "assumption untested; observed stability is Monte-Carlo on one dataset",
+    "0.632+": "different estimand",
+    "DeLong-type analytic": "no standard variance for an optimism-corrected difference with internal tuning"
+  },
+  "illegitimate_shortcut_refused": "transplanting the +/-0.0119 half-width onto +0.0043 -> [-0.0076,+0.0162]",
+  "decisions_required": [
+    "apply MC-3 to interval endpoints? (extension of the frozen rule)",
+    "outer-layer seed policy",
+    "accept conditional interval from event-stratified outer resampling"
+  ],
+  "executed": false,
+  "outputs_modified": "NONE",
+  "commits": 0
+}

@@ -1,0 +1,445 @@
+{
+ "stage": "S0 starting-state verification",
+ "captured_utc": "2026-11-04T16:45:02.755210+00:00",
+ "driver_check_frozen": "PASS",
+ "files_17": {
+  "docs/PHASE9_MODELING_PROTOCOL_DRAFT.md": {
+   "expected": "ab56708919f3746f",
+   "observed": "ab56708919f3746f",
+   "ok": true
+  },
+  "config/pathways/m2_panel_4set.json": {
+   "expected": "43ce15b2f0e06f75",
+   "observed": "43ce15b2f0e06f75",
+   "ok": true
+  },
+  "config/pathways/M2_FREEZE_RECORD.json": {
+   "expected": "64a86fa8ed0d6a8a",
+   "observed": "64a86fa8ed0d6a8a",
+   "ok": true
+  },
+  "config/analysis/A19_FREEZE_RECORD.json": {
+   "expected": "a77de7b37fe09eeb",
+   "observed": "a77de7b37fe09eeb",
+   "ok": true
+  },
+  "src/pathway_scoring.py": {
+   "expected": "38cac035c0b2d450",
+   "observed": "38cac035c0b2d450",
+   "ok": true
+  },
+  "src/score_standardisation.py": {
+   "expected": "41b5c091125e1b11",
+   "observed": "41b5c091125e1b11",
+   "ok": true
+  },
+  "src/phase9_execution.py": {
+   "expected": "571d0c233f367be6",
+   "observed": "571d0c233f367be6",
+   "ok": true
+  },
+  "data/processed/analysis/expression_median_S0.parquet": {
+   "expected": "a1ca41807c534584",
+   "observed": "a1ca41807c534584",
+   "ok": true
+  },
+  "data/processed/analysis/covariates.csv": {
+   "expected": "47b2d9829a4fccec",
+   "observed": "47b2d9829a4fccec",
+   "ok": true
+  },
+  "data/processed/analysis/endpoint.csv": {
+   "expected": "802a68575a34a3b6",
+   "observed": "802a68575a34a3b6",
+   "ok": true
+  },
+  "reports/phase9/execution/phase9_execution_results.json": {
+   "expected": "05d13b8b339fa7d4",
+   "observed": "05d13b8b339fa7d4",
+   "ok": true
+  },
+  "reports/phase9/execution_s7/phase9_s7_results.json": {
+   "expected": "b9202305bb6416e1",
+   "observed": "b9202305bb6416e1",
+   "ok": true
+  },
+  "data/processed/analysis/cohort_membership.csv": {
+   "expected": "bd3671f8df64c594",
+   "observed": "bd3671f8df64c594",
+   "ok": true
+  },
+  "scripts/40_phase9_dc_interval.py": {
+   "expected": "4b1738a4d0ee0e39",
+   "observed": "4b1738a4d0ee0e39",
+   "ok": true
+  },
+  "docs/PHASE9_DELTAC_INTERVAL_PLAN.md": {
+   "expected": "d27c52a29930a338",
+   "observed": "d27c52a29930a338",
+   "ok": true
+  },
+  "reports/phase9/dc_interval/HALT_RECORD.json": {
+   "expected": "c1b404309bd63744",
+   "observed": "c1b404309bd63744",
+   "ok": true
+  },
+  "reports/phase9/dc_interval/RESUME_AUTHORIZATION.json": {
+   "expected": "0571c10e02e9059d",
+   "observed": "0571c10e02e9059d",
+   "ok": true
+  }
+ },
+ "checkpoints": {
+  "0": {
+   "sha256_16": "885bbd1bd891b570",
+   "sha_ok": true,
+   "ends_with_newline": true,
+   "records": 500,
+   "unique_k": 500,
+   "k_complete_0_to_499": true,
+   "run_id": [
+    0
+   ],
+   "entropy": [
+    [
+     2026110300,
+     0
+    ]
+   ],
+   "entropy_ok": true,
+   "B_in_attempted": [
+    100
+   ],
+   "status": {
+    "ok": 500
+   },
+   "paired_complete_min": 100,
+   "inner_failures": 0,
+   "H1_unreliable": 0,
+   "H6_pair_count_mismatch": 0,
+   "events_outer": [
+    136
+   ],
+   "censored_outer": [
+    316
+   ],
+   "dC_corrected_all_finite": true,
+   "fields": [
+    "B_in_attempted",
+    "B_in_paired_complete",
+    "C_app",
+    "age_knots",
+    "censored_outer",
+    "dC_app",
+    "dC_corrected",
+    "dOpt",
+    "dOpt_per_replicate_max",
+    "dOpt_per_replicate_min",
+    "entropy",
+    "events_outer",
+    "failures",
+    "inner_C",
+    "k",
+    "lambda_apparent",
+    "multiplicity_sha",
+    "n_distinct_outer",
+    "opt_M1_mean",
+    "opt_M2_mean",
+    "run_id",
+    "status"
+   ]
+  },
+  "1": {
+   "sha256_16": "1bb27c56612a5f9d",
+   "sha_ok": true,
+   "ends_with_newline": true,
+   "records": 500,
+   "unique_k": 500,
+   "k_complete_0_to_499": true,
+   "run_id": [
+    1
+   ],
+   "entropy": [
+    [
+     2026110300,
+     1
+    ]
+   ],
+   "entropy_ok": true,
+   "B_in_attempted": [
+    100
+   ],
+   "status": {
+    "ok": 500
+   },
+   "paired_complete_min": 100,
+   "inner_failures": 0,
+   "H1_unreliable": 0,
+   "H6_pair_count_mismatch": 0,
+   "events_outer": [
+    136
+   ],
+   "censored_outer": [
+    316
+   ],
+   "dC_corrected_all_finite": true,
+   "fields": [
+    "B_in_attempted",
+    "B_in_paired_complete",
+    "C_app",
+    "age_knots",
+    "censored_outer",
+    "dC_app",
+    "dC_corrected",
+    "dOpt",
+    "dOpt_per_replicate_max",
+    "dOpt_per_replicate_min",
+    "entropy",
+    "events_outer",
+    "failures",
+    "inner_C",
+    "k",
+    "lambda_apparent",
+    "multiplicity_sha",
+    "n_distinct_outer",
+    "opt_M1_mean",
+    "opt_M2_mean",
+    "run_id",
+    "status"
+   ]
+  },
+  "2": {
+   "sha256_16": "0f12dce12bfce95e",
+   "sha_ok": true,
+   "ends_with_newline": true,
+   "records": 500,
+   "unique_k": 500,
+   "k_complete_0_to_499": true,
+   "run_id": [
+    2
+   ],
+   "entropy": [
+    [
+     2026110300,
+     2
+    ]
+   ],
+   "entropy_ok": true,
+   "B_in_attempted": [
+    100
+   ],
+   "status": {
+    "ok": 500
+   },
+   "paired_complete_min": 100,
+   "inner_failures": 0,
+   "H1_unreliable": 0,
+   "H6_pair_count_mismatch": 0,
+   "events_outer": [
+    136
+   ],
+   "censored_outer": [
+    316
+   ],
+   "dC_corrected_all_finite": true,
+   "fields": [
+    "B_in_attempted",
+    "B_in_paired_complete",
+    "C_app",
+    "age_knots",
+    "censored_outer",
+    "dC_app",
+    "dC_corrected",
+    "dOpt",
+    "dOpt_per_replicate_max",
+    "dOpt_per_replicate_min",
+    "entropy",
+    "events_outer",
+    "failures",
+    "inner_C",
+    "k",
+    "lambda_apparent",
+    "multiplicity_sha",
+    "n_distinct_outer",
+    "opt_M1_mean",
+    "opt_M2_mean",
+    "run_id",
+    "status"
+   ]
+  },
+  "3": {
+   "sha256_16": "4115bd4cd014d345",
+   "sha_ok": true,
+   "ends_with_newline": true,
+   "records": 500,
+   "unique_k": 500,
+   "k_complete_0_to_499": true,
+   "run_id": [
+    3
+   ],
+   "entropy": [
+    [
+     2026110300,
+     3
+    ]
+   ],
+   "entropy_ok": true,
+   "B_in_attempted": [
+    100
+   ],
+   "status": {
+    "ok": 500
+   },
+   "paired_complete_min": 100,
+   "inner_failures": 0,
+   "H1_unreliable": 0,
+   "H6_pair_count_mismatch": 0,
+   "events_outer": [
+    136
+   ],
+   "censored_outer": [
+    316
+   ],
+   "dC_corrected_all_finite": true,
+   "fields": [
+    "B_in_attempted",
+    "B_in_paired_complete",
+    "C_app",
+    "age_knots",
+    "censored_outer",
+    "dC_app",
+    "dC_corrected",
+    "dOpt",
+    "dOpt_per_replicate_max",
+    "dOpt_per_replicate_min",
+    "entropy",
+    "events_outer",
+    "failures",
+    "inner_C",
+    "k",
+    "lambda_apparent",
+    "multiplicity_sha",
+    "n_distinct_outer",
+    "opt_M1_mean",
+    "opt_M2_mean",
+    "run_id",
+    "status"
+   ]
+  },
+  "4": {
+   "sha256_16": "2202d559b0418392",
+   "sha_ok": true,
+   "ends_with_newline": true,
+   "records": 500,
+   "unique_k": 500,
+   "k_complete_0_to_499": true,
+   "run_id": [
+    4
+   ],
+   "entropy": [
+    [
+     2026110300,
+     4
+    ]
+   ],
+   "entropy_ok": true,
+   "B_in_attempted": [
+    100
+   ],
+   "status": {
+    "ok": 500
+   },
+   "paired_complete_min": 100,
+   "inner_failures": 0,
+   "H1_unreliable": 0,
+   "H6_pair_count_mismatch": 0,
+   "events_outer": [
+    136
+   ],
+   "censored_outer": [
+    316
+   ],
+   "dC_corrected_all_finite": true,
+   "fields": [
+    "B_in_attempted",
+    "B_in_paired_complete",
+    "C_app",
+    "age_knots",
+    "censored_outer",
+    "dC_app",
+    "dC_corrected",
+    "dOpt",
+    "dOpt_per_replicate_max",
+    "dOpt_per_replicate_min",
+    "entropy",
+    "events_outer",
+    "failures",
+    "inner_C",
+    "k",
+    "lambda_apparent",
+    "multiplicity_sha",
+    "n_distinct_outer",
+    "opt_M1_mean",
+    "opt_M2_mean",
+    "run_id",
+    "status"
+   ]
+  }
+ },
+ "record_arithmetic_max_abs_error": {
+  "dC_app": 0.0,
+  "dOpt_from_inner": 2.6766982415271645e-09,
+  "dC_corrected": 0.0
+ },
+ "h5_evidence": {
+  "h5_spotcheck.py": {
+   "expected": "41bb774de3cec0a6",
+   "observed": "41bb774de3cec0a6",
+   "ok": true
+  },
+  "recomputed_records.jsonl": {
+   "expected": "59266c194947158b",
+   "observed": "59266c194947158b",
+   "ok": true
+  },
+  "h5_comparison.json": {
+   "expected": "35e2ed1e8c271da5",
+   "observed": "35e2ed1e8c271da5",
+   "ok": true
+  },
+  "CV_SEED_DEVIATION_DRAFT.md": {
+   "expected": "2866571cecf471af",
+   "observed": "2866571cecf471af",
+   "ok": true
+  },
+  "verdict": "PASS",
+  "n_bit_identical": 20,
+  "recomputed_hash_in_comparison_ok": true,
+  "script_hash_in_comparison_ok": true,
+  "independent_recheck_bit_identical": 20,
+  "independent_recheck_full_record": 20,
+  "selected_k": [
+   0,
+   25,
+   50,
+   75,
+   100,
+   125,
+   150,
+   175,
+   200,
+   225,
+   250,
+   275,
+   300,
+   325,
+   350,
+   375,
+   400,
+   425,
+   450,
+   475
+  ]
+ },
+ "all_ok": true
+}

@@ -1,0 +1,419 @@
+{
+ "check": "H5 reproducibility spot-check (plan v2.1 section 8.4 / section 11 H5)",
+ "option": "A -- frozen driver, original seeding, outer_replicate((0, k, 100))",
+ "criterion": "dC_corrected bit-identical (float.hex equality) for all 20 selected k",
+ "completed_utc": "2026-11-04T16:19:00.439799+00:00",
+ "runtime_min": 7.79,
+ "n_selected": 20,
+ "n_bit_identical": 20,
+ "n_mismatch": 0,
+ "n_full_record_identical": 20,
+ "n_multiplicity_sha_match": 20,
+ "pre_all_ok": true,
+ "post_all_ok": true,
+ "script_sha256": "41bb774de3cec0a6dc7b4583aec6a205bd985e2a4abdf8a71555a8febcc34bf0",
+ "recomputed_records_sha256": "59266c194947158b8934633295219ff489b812ee47e8b90fc57c593880ae897b",
+ "H5_verdict": "PASS",
+ "comparisons": [
+  {
+   "k": 0,
+   "seed_entropy": [
+    2026110300,
+    0
+   ],
+   "spawn_key": [
+    0
+   ],
+   "dC_corrected_original": 0.03673025457668472,
+   "dC_corrected_recomputed": 0.03673025457668472,
+   "dC_corrected_original_hex": "0x1.2ce4ed45c7998p-5",
+   "dC_corrected_recomputed_hex": "0x1.2ce4ed45c7998p-5",
+   "dC_corrected_bit_identical": true,
+   "multiplicity_sha_match": true,
+   "full_record_identical": true,
+   "differing_fields": [],
+   "status_original": "ok",
+   "status_recomputed": "ok"
+  },
+  {
+   "k": 25,
+   "seed_entropy": [
+    2026110300,
+    0
+   ],
+   "spawn_key": [
+    25
+   ],
+   "dC_corrected_original": 0.039822512818348116,
+   "dC_corrected_recomputed": 0.039822512818348116,
+   "dC_corrected_original_hex": "0x1.4639dcc6610acp-5",
+   "dC_corrected_recomputed_hex": "0x1.4639dcc6610acp-5",
+   "dC_corrected_bit_identical": true,
+   "multiplicity_sha_match": true,
+   "full_record_identical": true,
+   "differing_fields": [],
+   "status_original": "ok",
+   "status_recomputed": "ok"
+  },
+  {
+   "k": 50,
+   "seed_entropy": [
+    2026110300,
+    0
+   ],
+   "spawn_key": [
+    50
+   ],
+   "dC_corrected_original": 0.04194216223291753,
+   "dC_corrected_recomputed": 0.04194216223291753,
+   "dC_corrected_original_hex": "0x1.579716e3a5209p-5",
+   "dC_corrected_recomputed_hex": "0x1.579716e3a5209p-5",
+   "dC_corrected_bit_identical": true,
+   "multiplicity_sha_match": true,
+   "full_record_identical": true,
+   "differing_fields": [],
+   "status_original": "ok",
+   "status_recomputed": "ok"
+  },
+  {
+   "k": 75,
+   "seed_entropy": [
+    2026110300,
+    0
+   ],
+   "spawn_key": [
+    75
+   ],
+   "dC_corrected_original": 0.020658274212695043,
+   "dC_corrected_recomputed": 0.020658274212695043,
+   "dC_corrected_original_hex": "0x1.52771508a92bbp-6",
+   "dC_corrected_recomputed_hex": "0x1.52771508a92bbp-6",
+   "dC_corrected_bit_identical": true,
+   "multiplicity_sha_match": true,
+   "full_record_identical": true,
+   "differing_fields": [],
+   "status_original": "ok",
+   "status_recomputed": "ok"
+  },
+  {
+   "k": 100,
+   "seed_entropy": [
+    2026110300,
+    0
+   ],
+   "spawn_key": [
+    100
+   ],
+   "dC_corrected_original": 0.03649914172743521,
+   "dC_corrected_recomputed": 0.03649914172743521,
+   "dC_corrected_original_hex": "0x1.2b003f81a5184p-5",
+   "dC_corrected_recomputed_hex": "0x1.2b003f81a5184p-5",
+   "dC_corrected_bit_identical": true,
+   "multiplicity_sha_match": true,
+   "full_record_identical": true,
+   "differing_fields": [],
+   "status_original": "ok",
+   "status_recomputed": "ok"
+  },
+  {
+   "k": 125,
+   "seed_entropy": [
+    2026110300,
+    0
+   ],
+   "spawn_key": [
+    125
+   ],
+   "dC_corrected_original": 0.004909216598907102,
+   "dC_corrected_recomputed": 0.004909216598907102,
+   "dC_corrected_original_hex": "0x1.41bafcbdc4f14p-8",
+   "dC_corrected_recomputed_hex": "0x1.41bafcbdc4f14p-8",
+   "dC_corrected_bit_identical": true,
+   "multiplicity_sha_match": true,
+   "full_record_identical": true,
+   "differing_fields": [],
+   "status_original": "ok",
+   "status_recomputed": "ok"
+  },
+  {
+   "k": 150,
+   "seed_entropy": [
+    2026110300,
+    0
+   ],
+   "spawn_key": [
+    150
+   ],
+   "dC_corrected_original": 0.010399183949082413,
+   "dC_corrected_recomputed": 0.010399183949082413,
+   "dC_corrected_original_hex": "0x1.54c2ad7bb2e66p-7",
+   "dC_corrected_recomputed_hex": "0x1.54c2ad7bb2e66p-7",
+   "dC_corrected_bit_identical": true,
+   "multiplicity_sha_match": true,
+   "full_record_identical": true,
+   "differing_fields": [],
+   "status_original": "ok",
+   "status_recomputed": "ok"
+  },
+  {
+   "k": 175,
+   "seed_entropy": [
+    2026110300,
+    0
+   ],
+   "spawn_key": [
+    175
+   ],
+   "dC_corrected_original": 0.004448169880104654,
+   "dC_corrected_recomputed": 0.004448169880104654,
+   "dC_corrected_original_hex": "0x1.2383e8297f7fcp-8",
+   "dC_corrected_recomputed_hex": "0x1.2383e8297f7fcp-8",
+   "dC_corrected_bit_identical": true,
+   "multiplicity_sha_match": true,
+   "full_record_identical": true,
+   "differing_fields": [],
+   "status_original": "ok",
+   "status_recomputed": "ok"
+  },
+  {
+   "k": 200,
+   "seed_entropy": [
+    2026110300,
+    0
+   ],
+   "spawn_key": [
+    200
+   ],
+   "dC_corrected_original": 0.009394059980849828,
+   "dC_corrected_recomputed": 0.009394059980849828,
+   "dC_corrected_original_hex": "0x1.33d316327c1b0p-7",
+   "dC_corrected_recomputed_hex": "0x1.33d316327c1b0p-7",
+   "dC_corrected_bit_identical": true,
+   "multiplicity_sha_match": true,
+   "full_record_identical": true,
+   "differing_fields": [],
+   "status_original": "ok",
+   "status_recomputed": "ok"
+  },
+  {
+   "k": 225,
+   "seed_entropy": [
+    2026110300,
+    0
+   ],
+   "spawn_key": [
+    225
+   ],
+   "dC_corrected_original": 0.06525267339564933,
+   "dC_corrected_recomputed": 0.06525267339564933,
+   "dC_corrected_original_hex": "0x1.0b4663235fc70p-4",
+   "dC_corrected_recomputed_hex": "0x1.0b4663235fc70p-4",
+   "dC_corrected_bit_identical": true,
+   "multiplicity_sha_match": true,
+   "full_record_identical": true,
+   "differing_fields": [],
+   "status_original": "ok",
+   "status_recomputed": "ok"
+  },
+  {
+   "k": 250,
+   "seed_entropy": [
+    2026110300,
+    0
+   ],
+   "spawn_key": [
+    250
+   ],
+   "dC_corrected_original": 0.005107475799631934,
+   "dC_corrected_recomputed": 0.005107475799631934,
+   "dC_corrected_original_hex": "0x1.4eb9398647a34p-8",
+   "dC_corrected_recomputed_hex": "0x1.4eb9398647a34p-8",
+   "dC_corrected_bit_identical": true,
+   "multiplicity_sha_match": true,
+   "full_record_identical": true,
+   "differing_fields": [],
+   "status_original": "ok",
+   "status_recomputed": "ok"
+  },
+  {
+   "k": 275,
+   "seed_entropy": [
+    2026110300,
+    0
+   ],
+   "spawn_key": [
+    275
+   ],
+   "dC_corrected_original": 0.03276938337632634,
+   "dC_corrected_recomputed": 0.03276938337632634,
+   "dC_corrected_original_hex": "0x1.0c7260bd2a407p-5",
+   "dC_corrected_recomputed_hex": "0x1.0c7260bd2a407p-5",
+   "dC_corrected_bit_identical": true,
+   "multiplicity_sha_match": true,
+   "full_record_identical": true,
+   "differing_fields": [],
+   "status_original": "ok",
+   "status_recomputed": "ok"
+  },
+  {
+   "k": 300,
+   "seed_entropy": [
+    2026110300,
+    0
+   ],
+   "spawn_key": [
+    300
+   ],
+   "dC_corrected_original": 0.004161960929910471,
+   "dC_corrected_recomputed": 0.004161960929910471,
+   "dC_corrected_original_hex": "0x1.10c21e14c935cp-8",
+   "dC_corrected_recomputed_hex": "0x1.10c21e14c935cp-8",
+   "dC_corrected_bit_identical": true,
+   "multiplicity_sha_match": true,
+   "full_record_identical": true,
+   "differing_fields": [],
+   "status_original": "ok",
+   "status_recomputed": "ok"
+  },
+  {
+   "k": 325,
+   "seed_entropy": [
+    2026110300,
+    0
+   ],
+   "spawn_key": [
+    325
+   ],
+   "dC_corrected_original": 0.014534221538277194,
+   "dC_corrected_recomputed": 0.014534221538277194,
+   "dC_corrected_original_hex": "0x1.dc41e317010b4p-7",
+   "dC_corrected_recomputed_hex": "0x1.dc41e317010b4p-7",
+   "dC_corrected_bit_identical": true,
+   "multiplicity_sha_match": true,
+   "full_record_identical": true,
+   "differing_fields": [],
+   "status_original": "ok",
+   "status_recomputed": "ok"
+  },
+  {
+   "k": 350,
+   "seed_entropy": [
+    2026110300,
+    0
+   ],
+   "spawn_key": [
+    350
+   ],
+   "dC_corrected_original": 0.026802890666036354,
+   "dC_corrected_recomputed": 0.026802890666036354,
+   "dC_corrected_original_hex": "0x1.b72378b65435ep-6",
+   "dC_corrected_recomputed_hex": "0x1.b72378b65435ep-6",
+   "dC_corrected_bit_identical": true,
+   "multiplicity_sha_match": true,
+   "full_record_identical": true,
+   "differing_fields": [],
+   "status_original": "ok",
+   "status_recomputed": "ok"
+  },
+  {
+   "k": 375,
+   "seed_entropy": [
+    2026110300,
+    0
+   ],
+   "spawn_key": [
+    375
+   ],
+   "dC_corrected_original": 0.005806369092772564,
+   "dC_corrected_recomputed": 0.005806369092772564,
+   "dC_corrected_original_hex": "0x1.7c86b55ca9a16p-8",
+   "dC_corrected_recomputed_hex": "0x1.7c86b55ca9a16p-8",
+   "dC_corrected_bit_identical": true,
+   "multiplicity_sha_match": true,
+   "full_record_identical": true,
+   "differing_fields": [],
+   "status_original": "ok",
+   "status_recomputed": "ok"
+  },
+  {
+   "k": 400,
+   "seed_entropy": [
+    2026110300,
+    0
+   ],
+   "spawn_key": [
+    400
+   ],
+   "dC_corrected_original": 0.009637472817147379,
+   "dC_corrected_recomputed": 0.009637472817147379,
+   "dC_corrected_original_hex": "0x1.3bccfb486a11cp-7",
+   "dC_corrected_recomputed_hex": "0x1.3bccfb486a11cp-7",
+   "dC_corrected_bit_identical": true,
+   "multiplicity_sha_match": true,
+   "full_record_identical": true,
+   "differing_fields": [],
+   "status_original": "ok",
+   "status_recomputed": "ok"
+  },
+  {
+   "k": 425,
+   "seed_entropy": [
+    2026110300,
+    0
+   ],
+   "spawn_key": [
+    425
+   ],
+   "dC_corrected_original": -0.0016746221987801735,
+   "dC_corrected_recomputed": -0.0016746221987801735,
+   "dC_corrected_original_hex": "-0x1.b6fdfe4ec3300p-10",
+   "dC_corrected_recomputed_hex": "-0x1.b6fdfe4ec3300p-10",
+   "dC_corrected_bit_identical": true,
+   "multiplicity_sha_match": true,
+   "full_record_identical": true,
+   "differing_fields": [],
+   "status_original": "ok",
+   "status_recomputed": "ok"
+  },
+  {
+   "k": 450,
+   "seed_entropy": [
+    2026110300,
+    0
+   ],
+   "spawn_key": [
+    450
+   ],
+   "dC_corrected_original": 0.015944071303540273,
+   "dC_corrected_recomputed": 0.015944071303540273,
+   "dC_corrected_original_hex": "0x1.053a483415426p-6",
+   "dC_corrected_recomputed_hex": "0x1.053a483415426p-6",
+   "dC_corrected_bit_identical": true,
+   "multiplicity_sha_match": true,
+   "full_record_identical": true,
+   "differing_fields": [],
+   "status_original": "ok",
+   "status_recomputed": "ok"
+  },
+  {
+   "k": 475,
+   "seed_entropy": [
+    2026110300,
+    0
+   ],
+   "spawn_key": [
+    475
+   ],
+   "dC_corrected_original": 0.030432770057488342,
+   "dC_corrected_recomputed": 0.030432770057488342,
+   "dC_corrected_original_hex": "0x1.f29c4a07e911fp-6",
+   "dC_corrected_recomputed_hex": "0x1.f29c4a07e911fp-6",
+   "dC_corrected_bit_identical": true,
+   "multiplicity_sha_match": true,
+   "full_record_identical": true,
+   "differing_fields": [],
+   "status_original": "ok",
+   "status_recomputed": "ok"
+  }
+ ]
+}

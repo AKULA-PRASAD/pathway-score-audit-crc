@@ -1,0 +1,5 @@
+model,description,predictors,n_parameters,complete_case_n,status,role_constraint
+M1,clinical baseline (benchmark),"age, sex, stage, location, adjuvant chemo",5,452,CONFIRMATORY benchmark,fixed first; never re-tuned afterwards
+M2 primary,M1 + frozen 4-set scores,"M1 + EMT, E2F, WNT, P53",9,452,PRIMARY pre-specified,"the reported primary result, whatever the sensitivity models show"
+M2 sensitivity,M1 + frozen 5-set scores,M2 primary + PI3K,10,452,SENSITIVITY only,never replaces the primary; a metric gain is not grounds to switch
+M3,transcriptome-wide,"M1 + nested-selected genes from 21,815",data-driven inside folds,452,EXPLORATORY only,hypothesis-generating; no confirmatory claim

@@ -1,0 +1,611 @@
+{
+  "audit": "PHASE 9 FINAL PROTOCOL AUDIT",
+  "audited_version": "2.0",
+  "issued_version": "2.1",
+  "date": "2026-11-03",
+  "models_fitted": 0,
+  "decisions_applied": 0,
+  "outcome_columns_opened": false,
+  "event_counts_read_or_inferred": false,
+  "samples_retained": 453,
+  "exclusions": 0,
+  "post_amendment_state": {
+    "amendments_applied": [
+      "M2-A2",
+      "P6B-A1",
+      "D8D-4-R1"
+    ],
+    "m2_specification_revision": 3,
+    "amendment_chain": [
+      "M2-A1",
+      "M2-A2"
+    ],
+    "decisions_still_pending": [],
+    "decisions_approved": [
+      "D8D-1",
+      "D8D-2",
+      "D8D-3",
+      "D8D-4",
+      "D9-1"
+    ],
+    "reporting_protocols_formalised": [
+      "D8D-2",
+      "D8D-3"
+    ],
+    "protocol_version": "3.1"
+  },
+  "finding_1_batch_reconciliation": {
+    "premise_in_the_audit_request": "that the A-19 complete-case cohort contains 453 samples",
+    "premise_status": "INCORRECT -- it conflates two different sets",
+    "s3_cohort_n": 453,
+    "a19_complete_case_n": 452,
+    "a19_dropped": [
+      "GSM972262"
+    ],
+    "a19_drop_reason": [
+      "chemotherapy.adjuvant"
+    ],
+    "derived_drop_matches_a19_record": true,
+    "join_integrity": {
+      "s3_ids_absent_from_batch_metadata": [],
+      "duplicate_sample_ids_in_batch_metadata": 0,
+      "s3_ids_with_blank_or_NA_batch": [],
+      "s3_ids_with_multiple_batch_rows": [],
+      "distinct_batch_labels_over_s3": 9
+    },
+    "bundle_batch_equals_sdrf_batch_for_all_453": true,
+    "counts_s3_453": {
+      "batch01": 33,
+      "batch02": 14,
+      "batch03": 102,
+      "batch04": 103,
+      "batch05": 49,
+      "batch07": 81,
+      "batch08": 41,
+      "batch09": 15,
+      "batch10": 15
+    },
+    "counts_complete_case_452": {
+      "batch01": 33,
+      "batch02": 14,
+      "batch03": 102,
+      "batch04": 103,
+      "batch05": 48,
+      "batch07": 81,
+      "batch08": 41,
+      "batch09": 15,
+      "batch10": 15
+    },
+    "batches_differing": [
+      "batch05"
+    ],
+    "dropped_sample_batch": "batch05",
+    "verdict": "NOT A DATA ERROR and NOT A REPORTING ERROR OF FACT. The nine counts are correct for the complete-case set, and Phase 9 v2.0 labelled them '(complete case, n = 452)'. No batch assignment is missing, duplicated or ambiguous; the bundle agrees with the SDRF for all 453 samples.",
+    "correction_issued": "CLARITY, not fact. v2.1 prints BOTH count columns side by side and states the cohort / complete-case distinction explicitly, because the v2.0 wording was evidently easy to misread.",
+    "cohort_unchanged": "all 453 S3 samples remain in the cohort; A-19 complete-case affects only which rows enter a model fit",
+    "event_status_of_dropped_sample": "NOT INSPECTED -- outcome data"
+  },
+  "finding_2_fifty_percent_rule": {
+    "rule_under_audit": "declare the batch-stratified Cox sensitivity model NOT ESTIMABLE if fewer than 50% of events lie in strata that contribute to the partial likelihood",
+    "verdict": "WITHDRAW. The rule is both logically ill-defined and statistically unfounded.",
+    "defect_1_logical": "As worded the criterion is very nearly VACUOUS. Every event lies, by construction, in a stratum that contains at least one event -- itself. If 'contributes to the partial likelihood' means 'has >= 1 event', the measured quantity is 100% always, and the threshold can never fire. The criterion therefore does not do what it appears to do.",
+    "defect_2_statistical": "50% has no statistical basis. It is not derived from power, from information, or from any property of the partial likelihood. A stratified fit with 40% of events in comparable risk sets can be perfectly well estimated; one with 60% can still be unstable. A binary threshold on a continuous information quantity is arbitrary, and here it is also misleading, because it uses the word 'estimable' for what is really a statement about PRECISION.",
+    "three_concepts_conflated": {
+      "mathematical_estimability": "beta is identified iff at least one stratum contains an event whose within-stratum risk set holds >= 2 subjects AND those subjects differ on at least one covariate. This is an extremely weak condition and is essentially always met in a cohort of this size. It is a property of the DESIGN plus the data, not of a percentage.",
+      "numerical_convergence": "a separate matter: Newton-Raphson can fail through monotone likelihood, separation, or a rank-deficient design even when beta is mathematically identified.",
+      "useful_information": "a CONTINUOUS quantity. Stratification can only remove between-stratum comparisons, never add any, so the stratified fit carries less information about beta than the unstratified fit. How much less is measurable, and is the thing worth reporting."
+    },
+    "how_strata_contribute": {
+      "zero_event_stratum": "contributes a likelihood factor of 1. It drops out entirely: no term, no score, no information. Its patients are not 'lost' in any estimability sense -- they simply never enter a comparison.",
+      "sparse_event_stratum": "contributes its own event terms. Each term is informative only to the extent that the within-stratum risk set at that event time contains other subjects who differ on the covariates.",
+      "event_with_a_degenerate_risk_set": "an event whose within-stratum risk set is itself alone contributes log(1) = 0 -- zero score and zero information. Such events are counted in any naive 'events per stratum' tally while contributing nothing, which is exactly the trap the withdrawn rule falls into.",
+      "consequence": "the informative quantity is NOT 'events per stratum' but the number of events whose within-stratum risk set yields a non-degenerate, covariate-varying comparison."
+    },
+    "proposed_replacement": {
+      "principle": "Declare non-estimability on MATHEMATICAL and NUMERICAL grounds only -- criteria whose DEFINITIONS are outcome-blind -- and report information loss as a continuous diagnostic rather than gating on it with an invented threshold.",
+      "declare_not_estimable_if_and_only_if": [
+        "the stratified fit fails to converge under the declared criteria (log-likelihood change < 1e-9, max 100 iterations), OR",
+        "the observed information matrix for beta is singular or not positive definite (numerical rank < number of coefficients), OR",
+        "the separation sentinel trips (any |beta| > 10 or SE > 10)"
+      ],
+      "report_always_never_gate_on": [
+        "per-stratum sample counts (available NOW, outcome-blind -- see Finding 1's table)",
+        "per-stratum event counts (at authorised execution)",
+        "per-stratum count of events with a non-degenerate within-stratum risk set -- the events that actually generate a comparison",
+        "the number of strata contributing at least one such event",
+        "convergence status, iteration count and the final gradient norm",
+        "the INFORMATION-RETENTION RATIO: median over coefficients of (SE_unstratified / SE_stratified)^2, a direct, interpretable measure of how much information stratification cost",
+        "an explicit statement of the limitation alongside the estimate"
+      ],
+      "no_threshold_on_the_ratio": "the information-retention ratio is REPORTED, not thresholded. Any cut-point on it would reintroduce the arbitrariness just removed.",
+      "unchanged_from_v2_0": [
+        "all nine ComBat batches remain individual strata",
+        "NO pooling, by count or otherwise",
+        "no post-outcome pooling and no redefinition of strata based on the observed event distribution",
+        "if the model is declared not estimable, that fact is REPORTED and the leave-one-batch-out diagnostic stands alone"
+      ],
+      "outcome_blindness": "the three estimability criteria are defined without reference to any outcome quantity. Their EVALUATION requires a fit, which happens only at authorised execution -- exactly as event-stratified fold construction does."
+    },
+    "status": "PENDING_USER_APPROVAL"
+  },
+  "finding_3_penalisation_scope": {
+    "recommendation_under_audit": "M1 unpenalised clinical Cox; M2 clinical unpenalised + pathway coefficients penalised; M3 clinical unpenalised + selected gene coefficients penalised",
+    "verdict": "SOUND. Retain, with two interpretive statements made explicit.",
+    "m1_m2_interpretability": "PRESERVED, and in fact improved. With the clinical block unpenalised in BOTH models, M1 is exactly the restriction of M2 obtained by setting the pathway coefficients to zero. The models are properly nested.",
+    "nesting_coherence": "COHERENT. Penalising only the molecular block means the penalty shrinks M2 TOWARD M1 as lambda grows: lambda -> infinity recovers M1 exactly. Had the clinical block been penalised with a separately tuned lambda in each model, M1 would NOT be the limit of M2 and the nesting would be broken -- so this choice is what MAKES the comparison coherent.",
+    "clinical_coefficient_comparability": "IMPROVED. Unpenalised in both models, the clinical coefficients differ between M1 and M2 only through genuine adjustment for the pathway block. Under a penalised clinical block with model-specific lambda, part of any difference would be a shrinkage artefact and the two sets would not be comparable at all.",
+    "interaction_with_scaling": {
+      "pathway_scores": "D8D-1 (training-fold standardisation) makes the penalty act equally per SD across the four scores.",
+      "clinical_block": "D9-1 removes the clinical scaling question entirely rather than answering it: an UNPENALISED coefficient is scale-equivariant, so the fit is invariant to any linear rescaling of that predictor.",
+      "age_spline": "leaving the 2-column basis unpenalised keeps the spline at its declared 2 df. Penalising it would shrink the NONLINEARITY -- an implicit smoothing with an effective df nobody specified.",
+      "joint_conclusion": "D8D-1 and D9-1 are COMPLEMENTARY and neither alone is sufficient. Together the penalty is scale-fair over everything it touches, and touches nothing whose scale it cannot fairly handle."
+    },
+    "effect_on_the_molecular_estimand": {
+      "changed": true,
+      "statement_required_whenever_deltaC_is_reported": "delta-C(M2 - M1) estimates the gain from adding a SHRUNK pathway block to an UNSHRUNK clinical model. Because the penalty pulls the pathway coefficients toward zero -- that is, toward M1 -- the comparison is CONSERVATIVE for the molecular block: it is biased against finding a molecular contribution, not toward one.",
+      "why_this_is_acceptable": "a conservative bias on the molecular side is the right direction of error for a study whose claim would be that molecular information adds something. It must still be stated, not relied on silently."
+    },
+    "phase6b_permission": {
+      "does_register_A_cover_it": false,
+      "detail": "A-11 fixes the predictor LIST, A-15 the model ROLES, A-17 the resampling scheme. Penalisation SCOPE is not a Register A item.",
+      "is_an_amendment_required": true,
+      "which_record": "docs/PHASE6B_MODELING_PROTOCOL_DRAFT.md section 3.1, whose table row reads 'Penalisation | ridge, lambda tuned inside resampling' without naming the predictors the penalty applies to",
+      "amendment_id": "P6B-A1",
+      "amendment_not_applied": true,
+      "proposed_row_text": "Penalisation | the clinical block (four binary covariates and the age spline basis) is FORCE-INCLUDED and UNPENALISED in M1, M2 and M3. The ridge penalty applies only to the M2 pathway scores and the elastic-net penalty only to the M3 candidate genes; lambda (and alpha for M3) are tuned by inner cross-validation inside each training fold. M1 therefore has no penalised term and no lambda to tune.",
+      "consequence_to_state": "M1 ceases to be a penalised model. Any comparison with the Phase 6B draft text must say so."
+    },
+    "residual_caveats": [
+      "M1's apparent performance is unshrunk and carries the usual optimism; the bootstrap correction estimates it and the uniform shrinkage factor is reported whether or not applied.",
+      "if a future protocol wished to penalise the clinical block, the scaling question returns and option A's consequences must be faced then."
+    ],
+    "status": "PENDING_USER_APPROVAL"
+  },
+  "finding_4_consistency": {
+    "checks": [
+      {
+        "area": "Register A",
+        "check": "A-01 cohort S3 = 453, 0 exclusions",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "Register A",
+        "check": "A-04/A-05 representation roles unchanged",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "Register A",
+        "check": "A-13 panel membership unchanged",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "Register A",
+        "check": "A-14/M2-A1 sigma_ddof = 1",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "Register A",
+        "check": "A-19 complete-case, no imputation",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "Model roles",
+        "check": "M1 benchmark / M2 primary / M2-sens sensitivity / M3 exploratory",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "Model roles",
+        "check": "panel roles PRIMARY / SENSITIVITY",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "Leakage",
+        "check": "every estimated quantity is INSIDE the fold",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "Leakage",
+        "check": "no permitted_location lost to NaN",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "Tuning",
+        "check": "inner CV nested inside training data",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "M2-A1 vs M2-A2",
+        "check": "amendment chain is M2-A1 then M2-A2, in order",
+        "consistent": true,
+        "detail": "M2-A1 -> M2-A2"
+      },
+      {
+        "area": "M2-A1 vs M2-A2",
+        "check": "score_standardisation is TRAINING-FOLD ONLY (M2-A2 applied)",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "M2-A1 vs M2-A2",
+        "check": "superseded NONE text retained in the amendment history",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "M2-A1 vs M2-A2",
+        "check": "M2-A1 sigma_ddof=1 survived M2-A2",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "Age spline",
+        "check": "3 knots, training-fold placement, per fold",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "Age spline",
+        "check": "reference age fixed, not per fold",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "Age spline",
+        "check": "degenerate-case fallbacks recorded, not silent",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "Batch",
+        "check": "nine strata, no pooling",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "Batch",
+        "check": "stratum sizes sum to the complete-case n",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "Batch",
+        "check": "combat_mod and extraction method excluded as covariates",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "Bootstrap/MC",
+        "check": "B is an output; never lowered",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "Bootstrap/MC",
+        "check": "MC-SE and sampling SE never conflated",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "Bootstrap/MC",
+        "check": "five declared seeds",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "Replicates",
+        "check": "non-estimable replicates recorded, counted, never re-drawn",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "U1/U2",
+        "check": "no fixed-time quantity in the estimated set",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "U1/U2",
+        "check": "blocked quantities explicitly listed as not estimated",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "Estimands",
+        "check": "primary / S-1 / S-2 / S-3 / S-7 kept distinct",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "Estimands",
+        "check": "S-3 conditional on U1",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "External validation",
+        "check": "no external validation claim",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "External validation",
+        "check": "Phase 5 labelled an approximation",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "Counts",
+        "check": "complete-case n = 452 and cohort n = 453 both stated",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "Counts",
+        "check": "complete-case EVENT count left undetermined",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "Counts",
+        "check": "event counts cited, never recomputed",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "Execution boundary",
+        "check": "0 models fitted",
+        "consistent": true,
+        "detail": ""
+      },
+      {
+        "area": "Execution boundary",
+        "check": "no decision left in an undocumented state",
+        "consistent": true,
+        "detail": "approved=['D8D-1', 'D8D-2', 'D8D-3', 'D8D-4', 'D9-1']"
+      },
+      {
+        "area": "Execution boundary",
+        "check": "D8D-2/D8D-3 required no specification amendment",
+        "consistent": true,
+        "detail": ""
+      }
+    ],
+    "n_checks": 36,
+    "n_inconsistent": 0,
+    "all_consistent": true
+  },
+  "new_amendments_proposed": [
+    {
+      "id": "M2-A2",
+      "status": "APPROVED 2026-11-03 AND APPLIED",
+      "applied": true,
+      "note": "score-level standardisation; spec revision 3"
+    },
+    {
+      "id": "P6B-A1",
+      "status": "APPROVED 2026-11-03 AND APPLIED",
+      "applied": true,
+      "note": "Phase 6B 3.1 penalisation-scope row"
+    },
+    {
+      "id": "D8D-4-R1",
+      "status": "APPROVED 2026-11-03 AND APPLIED",
+      "applied": true,
+      "note": "replaces the withdrawn 50% rule"
+    }
+  ],
+  "frozen_records_modified": "M2 panel specifications and M2 freeze record moved to revision 3 under the APPROVED amendment M2-A2, every superseded hash retained. A-19, QC records, Phase 2/3 artifacts, panel membership, cohort, endpoint and Phase 8 findings: NONE",
+  "read_only_artifact_hashes": {
+    "config/analysis/A19_FREEZE_RECORD.json": "a77de7b37fe09eeb9d9958ca012648e63fb349c19614b0c2dc99591da2cf561f",
+    "config/analysis/QC_DECISIONS_RECORD.json": "4e026fc547b801ba208d54bf589619075f61d6ecee49903aafd4de7e48401ec5",
+    "config/analysis/QC_SPECIFICATION.json": "d5d6f5b08ac6ab12f796cf7817624a7b0fb88564c7e3093d49abe1ebf5064115",
+    "data/processed/analysis/cohort_membership.csv": "bd3671f8df64c594d273a23abed80b83dd17742aee15bd83ac114211be5fcd01",
+    "data/processed/analysis/covariates.csv": "47b2d9829a4fccecf30663d0b0063d54664e72c1a9011938698c6c93a9441403",
+    "data/processed/analysis/endpoint.csv": "802a68575a34a3b60a50bd2452b9b09b62c1c40b90f34f4f60bb66691b0e7e0d",
+    "data/processed/analysis/partition_and_batch.csv": "57a45bab8efb81f96e838b9348edb13d4a3fbf09f2ea13f69f2d0f52700c49ed",
+    "docs/PHASE0_CHANGELOG.md": "de27647c939f7b5e684194d0ae2974295dfdae87feee42ab998e09eb2d444eda",
+    "docs/PHASE1_COHORT_ENDPOINT_INVESTIGATION.md": "fb8ceb11ddbe23a17d6f3fedba4d3f2722f31a8be0da317fef8573faf7d3bdcf",
+    "docs/PHASE2B_SELECTION_SENSITIVITY.md": "dfecec6e76ac36172309db2677706b500074b5a13ed505906157216445242f09",
+    "docs/PHASE2_GENE_REPRESENTATION.md": "08d6ddf90c00be53fa7a9a3b281a38c876d3de0536b7b5a6551f46d9dd2e0faf",
+    "docs/PHASE3_DATASET.md": "569eac0a8a1a5fb059c811f8c38b09d0b21062b3be82dc33db2e87e9545ac04c",
+    "docs/PHASE3_PLAN.md": "9a56b6ad9e49f6bfa05b0d11ff3c66ecbccdf6688ab5a1519f8d17165e211901",
+    "docs/PHASE4_FRMA_PILOT.md": "585e70b888cc4ee22469af9c3fe8d2ab61681c7f74827006234cbeab95134c00",
+    "docs/PHASE4_PLAN.md": "9709f34503ace8f9d79a7d05c49fb76b49e151dc638329aff91dd0a2e647b816",
+    "docs/PHASE4_PREACQUISITION.md": "75b94ade5667fcec8d873bc7f62e0af34069a931fe4376169bb5b81f9285679e",
+    "docs/PHASE5_VALIDATION_PRECISION_ASSESSMENT.md": "c43b5b474e6c79f8c82758ed085b615e7f2a73030a74a07a55674311d77b640e",
+    "docs/PHASE6A_ENDPOINT_RESOLUTION.md": "aca4adc4552da462186116adac8a143af189ee09869fe008e801f5ea02784d2c",
+    "docs/PHASE6B_MODELING_PROTOCOL_DRAFT.md": "755e44d3c00d4a591882f9da0c7128c081bc886f43888b27055a2d7a3315de3a",
+    "docs/PHASE6C_PATHWAY_PANEL_REVIEW.md": "90387f6c61476f166c9b20169a6361b57f61dd0b02631ea04f66c8c9524b7f92",
+    "docs/PHASE6D_MISSINGNESS_AUDIT.md": "144451a63e8a0d623ff278a439a89c7fd257a59c875546bbf910c9e89a585442",
+    "docs/PHASE7A_PREPROCESSING_FEASIBILITY.md": "aca9f1dbaa13ac5b6c7a8564d5cdf5f0da4826d7629b5e44d64d10b4d12f673a",
+    "docs/PHASE7B_QC_PROTOCOL.md": "2494a3089f9c1c6bddcc57e3bc085e47d1bd6a417ce3b6f709bef57c74905321",
+    "docs/PHASE7C_QC_REPORT.md": "6aa4939259a3502bbf0e4b236db2967bb7faee34e6cb1fa912c9ae8919972dac",
+    "docs/PHASE8A_EXPLORATORY_ANALYSIS.md": "00b9e7e0c19faa63aa5efd4f38968d5af243dd1d82f92995333fb8f4f119986b",
+    "docs/PHASE8B_PCA_BATCH_INVESTIGATION.md": "98c3056e82ef991f0c22326bd9baf8d4bce7e9abd30db5441d66b66840063d23",
+    "docs/PHASE8C_FROZEN_PATHWAY_SCORE_ANALYSIS.md": "dd40bbe2f8da4a229095b8f475e3472b80d483ef4ee8c898ef70cffe3fb5df73",
+    "docs/PHASE8D_CONSOLIDATED_EDA_REVIEW.md": "fa4fc8331512b18e024a20b81c40d6fb9226fcf77622d644062b3225b5902bcc",
+    "metadata/GSE39582_sample_metadata.csv": "37cef7feb767766f31bbe2100bb6185b578a2dd5d6236bb83b4ae971bdcb5291",
+    "reports/GSE39582_clinical_summary.json": "60a6832032d53d9bd3bd364f331f8c37ec3254adec2c0aa3b2551ce6c7d1c466",
+    "reports/GSE39582_missingness.csv": "9cb5a459e8006436455cfe251105bb0bca4fc23eb2abedeae7afd204845d77eb",
+    "reports/phase1/chemo_by_stage.csv": "3ada2a06bf2f53796275e77518180e0d488d37ed8eb2dce6f0e84a445cef8b0b",
+    "reports/phase1/cohort_counts.csv": "bdfd355fc772eb92f1ab58ad8afe48b8e21cdb3d9bf42478796a860c4dd1b0b8",
+    "reports/phase1/cohort_manifest.csv": "283e764835045d0cfeab236d0054a8f1bd44581a3e09d95b8694d6b173359511",
+    "reports/phase1/cohort_summary.json": "69f538e26df601a1d18628ad2588f0c0e2db7060eef2695f89874408e9147f11",
+    "reports/phase1/covariate_audit.csv": "6c1f15e4993f1f315307155b53eba6cc51aa3593608ee339b1c0700a6104e657",
+    "reports/phase1/endpoint_completeness.csv": "78c65afdba11c607791124d22f45820a441a1774582ee7a74d49b1a1dffd033a",
+    "reports/phase1/event_os_crosstab.csv": "cd5a9e5760b13dbc3e39284ede79798ef625676fe4e179cbcbbe43729d7aa7a6",
+    "reports/phase1/excluded_records.csv": "1ef21496fe6886edcd1868671a27f991e8814edd27c659f1f9903f7c1cb249f5",
+    "reports/phase1/five_year_reclassified.csv": "425fbfdcf8b07520c4e74be769052e61965fb8187d67fc5f2538ca92d54413be",
+    "reports/phase1/phase1_findings.json": "de7673dcd79de8456deb8abcbac42147a792aa65215d586465b733b5063a4d47",
+    "reports/phase1/zero_time_records.csv": "d702b51ba1884e5021a3a4b4767e766531f81eeace8cbf8d57f767ad3d1037c8",
+    "reports/phase1/zero_time_scenarios.csv": "d018389768ce0f8fc2c90c4327238d61ec3c79a965464e06a7d9d15fc2fa2a50",
+    "reports/phase1/zero_time_vs_tableS1.csv": "b179c7686255afcd4fca7d32a53b80df37ac434875bc9e09a834a1a40370be65",
+    "reports/phase2/candidate_comparison.json": "3ec36fe9111a902d647117e067350340d29a527015f6da2120ed3e064e7dbe02",
+    "reports/phase2/candidate_distributions.csv": "4af115fa421510956d4d8206b2108cd9e9ce60b07225d327dd7b5f4aea6dbb4e",
+    "reports/phase2/candidate_matrices_summary.json": "c37152b65bf06bc212dfe92d8b462508e3a641dc61ee5940bd408c24f485d590",
+    "reports/phase2/candidate_pairwise_agreement.csv": "9dc93ab7dcf0d9c474efec4a18c547ed6b080c3a38ca465298169d4c595e1dd6",
+    "reports/phase2/candidate_qc.csv": "0419e323e8eb49555968a3eaa61167cb07daf4869b89834a06238af41d318104",
+    "reports/phase2/phase2_mapping_audit.json": "4f04594e826d457991ca21e100f1db8be41fcdc0b4697aa7dce876742c0b2e30",
+    "reports/phase2/probe_mapping_table.csv": "82534790f7bd22772c49e16c3a63a3ca7abefabc40c882d01ab8b4f597895d6d",
+    "reports/phase2/probe_statistics.csv": "65d01abb65dec2c2c678e0930cf3eb21df0684d0fd6a5c5641338ac9f20eb4f3",
+    "reports/phase2/probes_ambiguous.csv": "f516d29456791c6191c5333f5723305d98c2c2dbd7f140f0e5572db5cf259ec1",
+    "reports/phase2/probes_unmapped.csv": "5b7e95466dab05a4101eb888c78cfea956d76827097743979b91ba1056fa4981",
+    "reports/phase2/representative_probes_representative_iqr.csv": "a560773ff921a9c88965c02cdfa452cc1e32c7eadbfac7ce52bb79a33acaf2ce",
+    "reports/phase2/representative_probes_representative_mean.csv": "153f3f6ee45775665af94c0a3cfbb46154083f8f4696b9a36ac47e1d68bed1c7",
+    "reports/phase2/strategy_disagreement_vs_probe_agreement.csv": "e47ca00643e1abdb6ebd4c3d761f35f83073b769d9b177b285f2c80bb0a55773",
+    "reports/phase2/within_gene_correlation_summary.csv": "730a97c9006f3275a87b005536d3d91ddadc69e1b42fbbd57d5d44dbfe178528",
+    "reports/phase2/within_gene_probe_correlations.csv": "273fe5d990122e721786ab83b22aea8ab149c609658870a195058d882cd90290",
+    "reports/phase2b/README.md": "d7fae0a3a658fbbbebf0d39f06a23ed1964c83281a11acfad23170e379d3dd5f",
+    "reports/phase2b/gene_probe_agreement_alpha.csv": "f060d965b48b6eb2ac704ef833e59e450d94c02eb5ffe322d4f9e3fd90c6bca1",
+    "reports/phase2b/gene_reliability_alpha.csv": "124c186eb0262aff895730c01f8da23629e2510ad9be2ea36aa0eb43e84ece8a",
+    "reports/phase2b/genes_affected_by_selection_set.csv": "498a8954cd599545cb043a52a9b9a3c5a048cbbea86e0b00db66300759588910",
+    "reports/phase2b/phase2b_part1.json": "0770d7198ff7de2f1e1eca3cfe7a36928a65987de44c373141c289e7c47646ae",
+    "reports/phase2b/phase2b_part2.json": "6fc5c3572da4173705af69a6e7d2f756cd9b718d5000a737f1d6c2335d4e2016",
+    "reports/phase2b/probe_accounting.csv": "cdffd3b587dfc3d07a8db35888e87c70607609addbb1cd072ede0416b1bd4837",
+    "reports/phase2b/probe_batch_eta2.csv": "cd4f7197fe6e0524adda28ce28d90ca27f76258f45d77a9547f60a07ce0a77b5",
+    "reports/phase2b/probe_quality_comparison.csv": "e2da2c350c15dc48e6d17d52ac9f28ec8b0f6f8c5a37b01457d9cc3c0a399135",
+    "reports/phase2b/probe_suffix_distribution.csv": "97e7695923c0eb7518ba704fea07a57ad209556deb3ecca59a1c6981e81c2955",
+    "reports/phase2b/representative_probe_by_selection_set.csv": "1e9c04267050c41af5b92a40f131a83b982192ad0e7daf9250b942efa1fa74b1",
+    "reports/phase2b/selection_set_differences.csv": "ca30d683bc85835a5ad4d217e5c58f3787e6f65cd352c5fa22175cfb25666600",
+    "reports/phase2b/transportability_comparison.csv": "a774497257e23704d018d8711e47d2ce744e48d448e82085ce3df6efda254120",
+    "reports/phase4/overlap_GSE14333_GSE17536_all.csv": "8f8c66be9f739e816be9db79122544758b8b71ff360ff2dc5d1ee36daeb61580",
+    "reports/phase4/overlap_GSE14333_GSE17536_ambiguous.csv": "8294362059a669dd741e1e50cae1bd64a01afb60a3db83321f1710da7620f416",
+    "reports/phase4/overlap_GSE14333_GSE17536_unambiguous.csv": "5d01dd68900f9b38d85300e167086439cf7f441a81e96d448504bad8fd42d3d4",
+    "reports/phase5/c_index_ci_audit.csv": "9134dae0b2e48e57f90da3dbed8ad98c15104248ec5a717fd6381a3f6967d65a",
+    "reports/phase5/event_fraction_sensitivity.csv": "424b7f78bfe7a3cc7cca01526e7ed5f7085bed7490228bb14bd232d2152579ff",
+    "reports/phase5/events_required.csv": "b318d12357ba8b4ea45c9ac0c4fe02d063de722aca90fd4907be00355d8f7cf6",
+    "reports/phase5/methodological_audit.json": "aa94b777d80773a0b1a6daab5485984b40a98ce54f8d5a16d8ac6e1b959222ff",
+    "reports/phase5/precision_simulation.csv": "9d3a0b6e61bb46f57c9dae99dfb2486bb0fb1b1f30e6c0c0d608c82db1383c16",
+    "reports/phase5/precision_simulation.json": "e1ecce3cdbdaf86b0aac2509a8ca8b9eee147a5bc89accfa69e85f165916d3c5",
+    "reports/phase5/selection_optimism_null.csv": "c52a7ef8f17b984f99b4044e6c26550809759355400ee2762d0cec5834ab6f2e",
+    "reports/phase6c/collinearity_4-set.csv": "f50214aa2b6ffae068a5a122e26563eb152a6d73c96719a813ae6ad6feb9e0e5",
+    "reports/phase6c/collinearity_5-set.csv": "9790c5c312863f1c23d1941db7e7516cd06e2f854628ba722e8ecdf2ead02e15",
+    "reports/phase6c/corrected_resolution.json": "8b45eb641d72be8108add2f594e166224c9207503939c3d2373c0e2f1ed811ff",
+    "reports/phase6c/h.all.v2026.2.Hs.entrez.gmt": "a26578a72aed3171fffce4d2cda8672c41783f4deb7a3743f16b3f5af82b355e",
+    "reports/phase6c/h.all.v2026.2.Hs.symbols.gmt": "56bba1300555fb6302844fc8cdca63406eb50fa1a2472ec86468747efb3fb89b",
+    "reports/phase6c/mapping_coverage.csv": "ce5e454d4fb85dc843108273a4dfc90052719269cd20fb9867ce5fa8081f66a3",
+    "reports/phase6c/panel_comparison.json": "63ea097ecbcac64dc73bcac23a886bc7a3ef939d71264a2917e72d664025eb46",
+    "reports/phase6c/pathway_overlap.csv": "bee4458cb2303b1922684cbda8944e69c7bb3af5dd153354eb52f7ee0f7e80ca",
+    "reports/phase6c/score_collinearity.csv": "05e558535e9f0136536147c3b76e2aea1c55b77b82ef39f09787dc994df1f953",
+    "reports/phase6c/source_provenance.json": "a512f66ca958f4219d662735e1536415556edcecf2a6d28e762fffc43d4bc3ab",
+    "reports/phase6c/true_unmatched.json": "d8a684ec4d610567e4b257b6063288785f67689db176022f120a82f1b62a3b2f",
+    "reports/phase6d/co_missingness.csv": "9406bb75b7cf25101ac8c2ff78089aa1880f09e252df2e60b785583d3062aa34",
+    "reports/phase6d/complete_case_exclusions.csv": "e827d9c69240f15fd558d44f5ce45097268650938a7c336644a84b67f84145dc",
+    "reports/phase6d/complete_case_exclusions.json": "52c1c1ae28c9d5892420e7ff92c9e3ef3c7e493bc2a4a5ce1e900fb70f52b20a",
+    "reports/phase6d/definitive_audit.json": "2cec95b5ab4a9730484a0093c4a91b991fad32928cd476b3d3c824976e5f947f",
+    "reports/phase6d/encoding_inventory.csv": "b58b3dec2796ea2929cc503727cb3a9e207a83b8411cfd545c128bf0a31f889f",
+    "reports/phase6d/missingness_by_batch.csv": "1964c0cb6032349b243f4bac2ea7947b7a610ff0781b58d735af96e6bd364c42",
+    "reports/phase6d/missingness_by_characteristic.csv": "80820dcbcfbbeb7a3e2ed8d39b7596ea0c8df3b148311a77b44bce79914478de",
+    "reports/phase6d/missingness_patterns.csv": "626db601c6719e853c79a3ea9e82f361639fe8e92a0b3562dd7ceb02797d8c3d",
+    "reports/phase6d/model_complete_case.csv": "c45e1c73af4cfddc61f4dcd13add0df70b8b426276eb12c1f449acce674256e3",
+    "reports/phase6d/preliminary_missingness_S3.csv": "668d82bd294b56246f34f099b493a8bf8975d79009380657446734b55d62021e",
+    "reports/phase6d/preliminary_missingness_summary.json": "448fcdf2c700537779e9c01341ff4ad2223da17aec5db56189501f1572ac1d2e",
+    "reports/phase6d/variable_missingness.csv": "fee6466d5652a9e4f8638f1cf69fb1150a155000a9eb7a9212d235a6f3bcf1bb",
+    "reports/phase7/frma_gate_checks.csv": "fd8ef47afce81befd56b3ba6f12420b5c2a317420830240e2fc772c935bfabec",
+    "reports/phase7/preprocessing_compatibility.json": "c859934b48bb796d748094a5aad593e39a26700e5dceac74108d1cfcc2cb4d5a",
+    "reports/phase7c/batch_composition.csv": "78bd0778f70d8e63e7990e53e1ade65ef439a70f665e0d5304e0a61d9bd301cf",
+    "reports/phase7c/degradation_ratios.csv": "a7740740c8fefc518524cd75316211f7871721c99046e8a83c0652887a51e69f",
+    "reports/phase7c/investigation_records.json": "be79bb5ad6493b31e51a8584cb064848bcbbdd808f7545327b8f1de9e187e78c",
+    "reports/phase7c/investigation_summary.csv": "50440a5ff1716cc19dfa29f39647662c879d5f7d8203a05e1d093643e45bb2a9",
+    "reports/phase7c/pca_scores.csv": "a1ab3a925b3ea0fd706056239c4486a523c4e6aca5f51c03990cb76d8a2acd66",
+    "reports/phase7c/qc_criteria_results.csv": "357af317ec624e4a0839b22a2f54e633606ec15194464c19c115da7cfc68b15b",
+    "reports/phase7c/qc_summary.json": "b079f864b9da85e7592b42bcd71e9195b838a23a5ad508c06a03f18da7be016b",
+    "reports/phase7c/sample_qc_metrics.csv": "272a137450018460c0f25cb1b70da1372209d84d5d82160cc612926448ff9dd7",
+    "reports/phase8a/batch_by_combat_mod.csv": "f42d45040fde8e6dfa0a8399fc5760246056b28c2852b2f16829a920b856da19",
+    "reports/phase8a/cluster_by_batch.csv": "3d5a40b4dcb7b22021afc8c931b703ea399b97d2a1b26709159e6bd5f184f4e1",
+    "reports/phase8a/combat_mod_vs_mmr.csv": "7673af6d478e07b3d22c67689d5fe605f3e0a47c696f0bbb5200d6eaed26357d",
+    "reports/phase8a/distributional_heterogeneity.csv": "4a00c2a7ce10bd6a460246b31aff28e9efd14cefcc82ec8e99bc0accc6122a11",
+    "reports/phase8a/figures/F1_expression_distributions.png": "de66c9fafdb1958cbc6e4822d7ac45efe5517cfd82fa51ef8fdb484530d23bc9",
+    "reports/phase8a/figures/F2_gene_variability.png": "6535eb8f60d0b9b9f1dea9b29efa084bf315db8d584c4700b6f36a50d2b7b210",
+    "reports/phase8a/figures/F3_sample_correlation.png": "ec97e13b0b19c761c4e0a2953faf4dd558b15c3431ef42552f1319b472b7c904",
+    "reports/phase8a/figures/F4_pca.png": "d0ad08008f00e928f5c9eb209f5d13d7df99639ff26df3ae003a960ea75bf140",
+    "reports/phase8a/figures/F5_pathway_scores.png": "fb22e15f0055b2135c1034bf9dba7019585603c68577be3d353ce4fd7b929696",
+    "reports/phase8a/figures/F6_pathway_vs_pca.png": "3b5f848ebbbc25f6b57502c0b1b14972bebf5e5be1deb8eabb315b7c7daa1f1f",
+    "reports/phase8a/fold_isolation_4set_primary.csv": "6411fce934eae3f93dd166396a90e362ca59e2c098a11aec3b2f98ed38be7328",
+    "reports/phase8a/fold_isolation_5set_sensitivity.csv": "93db8e8612dc3467af24820fd6625d9ed95ef180cb81b3d4a433c3c55f093cf5",
+    "reports/phase8a/gene_variability.csv": "b87c354d12bf992a4ab73a4f75fa300f0d0294e677828090e6ed3689818ca0e2",
+    "reports/phase8a/pathway_score_correlation_4set_primary.csv": "a487d44b6f7ba770c44138f29b1938984fe9810687d8a649674b89acc149c0bc",
+    "reports/phase8a/pathway_score_correlation_5set_sensitivity.csv": "2390b367a4193aca98f4c9cf08d1bf5834a19f47147b534c0120c2b48c59cc01",
+    "reports/phase8a/pathway_scores_4set_primary_EXPLORATORY_full_cohort.csv": "e3124e7e7fbc1da59a733397907011cd2a1d44e52405d0e6cba5bd8ad5572687",
+    "reports/phase8a/pathway_scores_5set_sensitivity_EXPLORATORY_full_cohort.csv": "f6fb4fe226ace21df4c8545f233474b2a82f74306f1711a0f9b7757e671b5534",
+    "reports/phase8a/pathway_vs_pc_and_batch.csv": "5fabdd1f52e2249f6f587400921a65ed505bf11799cddbd4e3cc5dc6f4420b86",
+    "reports/phase8a/pc_annotation_associations.csv": "77e93ca0abddbb72ccd92ddc825bc73333f0e8ed5cb4dbef21fd03d3bc390f25",
+    "reports/phase8a/pc_batch_conditional_on_combat_mod.csv": "b94f5b417a623a0ff477de2c9f580ad5455bb86ba9962842e154963ee626977c",
+    "reports/phase8a/pc_by_batch.csv": "c099deb3b02175ff0eb69000ec08bf129187fe8f93d02e91228b30aa67a1c916",
+    "reports/phase8a/pca_scores_gene_level.csv": "d85f7076f9371429e25ada32adee0e25ff2a3238e1d4e398f0e4029334c39d84",
+    "reports/phase8a/pca_variance_explained.csv": "1ed205e0a4ceeea91623eb2bd3f60528f79f1a69f964c6677f7d7ab534f9a2d7",
+    "reports/phase8a/phase8a_summary.json": "00035e5650b9bb3a9ac2e054404c757aabe8d021376602c3a303f4f175b4e462",
+    "reports/phase8a/sample_correlation_pearson.csv": "dcefa64f599a3774d888a1156c7bc5aa8aa672961851fa703fffd4e6ebd3e149",
+    "reports/phase8a/sample_distribution_summary.csv": "e45d0d62e8d9283ae54d5a24e9824569a0acc1906d4de26573ef20c36b422635",
+    "reports/phase8a/sample_mean_correlation.csv": "d68e9c31f103b22172128b855a505be7a53931556dadb324d608c772cf70a05c",
+    "reports/phase8a/sex_positive_control.csv": "fccfd8d6a2e9ae6e9f825d8844408ecb32a1c88a386a8a00ac2d7debf74a4bcc",
+    "reports/phase8b/affx_vs_expression_pcs.csv": "94982ba63a41a3ee441d2ebc7dd9672455c21d8f384f1ccd4caf693617ea8578",
+    "reports/phase8b/batch05_pc3_decomposition.csv": "33597055e22bfe95ebe9bf8dd9a1e31cc33dcdec8a4273e993bf3fbd49220d5b",
+    "reports/phase8b/batch_by_combat_mod_cells.csv": "ce0efb96bb62b74a74c3e6793a8e286273c2f87a5a5c27d1a9cffa451d0dc5d0",
+    "reports/phase8b/batch_detection_power.csv": "28ed1d3299739f437fb596764f2cf9c9200510c1b4d0b5c44b3e590f8f68b4de",
+    "reports/phase8b/combat_mod_vs_mmr_S3.csv": "7673af6d478e07b3d22c67689d5fe605f3e0a47c696f0bbb5200d6eaed26357d",
+    "reports/phase8b/extraction_method_by_batch.csv": "4b142df7772ba731494f2c05d0224cf5cc8c40c9b95a168cdee6a6ee1e6a3549",
+    "reports/phase8b/figures/G1_variance_and_power.png": "e27d380cb1d8c067ff55cf7f74420b8bd9c0fe3ae1d82f89139e6997eefec8f0",
+    "reports/phase8b/figures/G2_batch_mmr_structure.png": "b5e7831c06931e833e31446014eaa36af4401bc5f36cd441a3c1b00b232c00e9",
+    "reports/phase8b/figures/G3_sex_axes.png": "a9a1950840a4ec69c5196bc248be60cbd9fd58689ec81ed27944268a0348e9f9",
+    "reports/phase8b/mlh1_axis_by_mmr_group.csv": "cf1e47ac7725a601572a8da65635337aef45d046bf8ca6d434b97aff72a04846",
+    "reports/phase8b/new_findings_stratified_permutation.csv": "5d51e94291aff3938ba75a0f2aa415fd99b86dae4ca92ccfc3e1ea250bb9c6a9",
+    "reports/phase8b/pc_annotation_associations_pc1_20.csv": "a418557be115e7e7a8db6b64ca8d7305ea6b57044bcbcb52045ff3c1860f2fe3",
+    "reports/phase8b/pc_batch_stratified_permutation.csv": "278a52cff872ba66497480cd2f86880e058d7cb14bca8f12467134fc636a5c43",
+    "reports/phase8b/pc_batch_within_strata.csv": "086a6b0ec5716204ee6409a3b6c97399ee7d3bf2c38e0fe5881526b937292624",
+    "reports/phase8b/pc_variance_heterogeneity_by_batch.csv": "19fbac4c64a36f5a418d27271e68d394852cbd5283f256612ea9d4e92f3058e0",
+    "reports/phase8b/pca_variance_extended.csv": "d8ed2566d53d3230276bd0fe87d6dfc024f7b3e094fb7b3fbf9cc2e199c509d2",
+    "reports/phase8b/phase8b_summary.json": "9ac91b69f9ae5e50021eaf5823c293f61c3d0a55d27af9121fe8f414dcc9a22c",
+    "reports/phase8b/sex_discordant_eight_review.csv": "d84912f5076781450373a8c7c27567214c82911e74fde30d04c92ac0d97ef6c1",
+    "reports/phase8b/y_marker_separation.csv": "9a5fac072a5fe89fb0f6016d4c21f4aefee7dd20e24a6a2fe4c3b59b6f43975a",
+    "reports/phase8c/figures/H1_score_distributions.png": "c4ef3b9d3757060364108d5c722bb73cb5c5b0debf9c2a421452ec56acdac310",
+    "reports/phase8c/figures/H2_relationships.png": "fc08c4f0588cbb1969d6c06c6e318ed77f77a469cb7532f65d0a09dcd2d8d893",
+    "reports/phase8c/figures/H3_sensitivity.png": "8abdd1e0a4f546b8bce24b9329fccd7246d8de47642cf746cf1f3fb39c828227",
+    "reports/phase8c/fold_composition_sensitivity.csv": "d99206ad7e9ce9b6ea2af89f81e6e034c6d66d29691b873ddb1b4f3a3efbbeca",
+    "reports/phase8c/phase8c_summary.json": "f6b7d236432efd95e02286628492c740db116b1e84ec0df657fbec9692733f28",
+    "reports/phase8c/representation_sensitivity.csv": "e3ee06f4a5cfaf6f369bc64068d8122ef379c27a3c3f12e670fe8f9ded806c33",
+    "reports/phase8c/score_correlation_pearson_4set_primary.csv": "a487d44b6f7ba770c44138f29b1938984fe9810687d8a649674b89acc149c0bc",
+    "reports/phase8c/score_correlation_pearson_5set_sensitivity.csv": "2390b367a4193aca98f4c9cf08d1bf5834a19f47147b534c0120c2b48c59cc01",
+    "reports/phase8c/score_correlation_spearman_4set_primary.csv": "a8054ce17c6f153ce947281ce1958e49b76f9377858c20f097e886e0e909a141",
+    "reports/phase8c/score_correlation_spearman_5set_sensitivity.csv": "fbc25eda62f45f728322a2e58be04cbd7cb0ebd91226d2e2b8be89febc0d4445",
+    "reports/phase8c/score_distributions.csv": "ab7fe0578e15ca4ef5b3276b2a86bb8d86f1d1fef5bead75c6af89d163ff1ee0",
+    "reports/phase8c/score_influence_loo.csv": "d1a1edd34de23911969d4f4ffd9c39e0371cf6c8e84730396589b1575c7932b7",
+    "reports/phase8c/score_vs_annotation.csv": "08acb73dcafeffcf8ef967a8a8d0076a221811ce29f1b9b1ce8869816a7c0370",
+    "reports/phase8c/score_vs_annotation_stratified.csv": "21450a4ac829ff3a03b395cb3dbf3458e6acca3e6d57e003f0c252f3b33fa67a",
+    "reports/phase8c/scores_4set_primary_reproduced_full_cohort.csv": "170c70fa62140ef0f3287a19b08a3ac35197c2317ca15bcd173ceec43e2918cc",
+    "reports/phase8c/scores_5set_sensitivity_reproduced_full_cohort.csv": "e1da5aa9bf86a238669c208cfc6440ac300478f0d3cfb24262e3a10ac556a3bd",
+    "reports/phase8d/consolidated_claims.csv": "850187e31d873ae37803ce27759271d6763c34e60820beb49e5429d6e6b823c2",
+    "reports/phase8d/decision_register.json": "df7f60a47d510aed540b5a2898d2e421e583d4d5a8eb5af9f7e12c69568ceea8",
+    "reports/phase8d/evidence_table.csv": "dc7c41f6c7e173b30b78e47b255dac9888aaf25d80f2e0993aa2b612b1637c94",
+    "reports/phase8d/phase8d_summary.json": "5ff2983e3128199616e001e3e706747a816ab7a82cf52be58eadf0857f12639d",
+    "reports/phase8d/phase9_readiness_checklist.csv": "918c64ed6ed62ce36a469b327bbce9b4b0a50040275f2f9ed0be15582e71f4bb",
+    "src/pathway_scoring.py": "38cac035c0b2d4505e9d756893aac88f4fd5330d1a0c67521e1ed31e62e788a2"
+  },
+  "canonical_scorer_module": "src.pathway_scoring",
+  "environment": {
+    "captured_utc": "2026-11-03T05:27:07.906664+00:00",
+    "python_version": "3.13.13",
+    "python_executable": "/Users/kalki/coad_transportability/.venv/bin/python",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.5.4",
+      "pandas": "2.3.3",
+      "scipy": "1.18.1",
+      "sklearn": "1.9.1",
+      "lifelines": "0.30.3",
+      "pyarrow": "26.0.0",
+      "pytest": "9.2.0"
+    }
+  }
+}

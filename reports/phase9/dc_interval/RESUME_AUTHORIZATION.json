@@ -1,0 +1,34 @@
+{
+  "record_type": "user_authorized_exception",
+  "date_utc": "2026-11-03",
+  "scope": "runtime ceiling only",
+  "halt_reference": "reports/phase9/dc_interval/HALT_RECORD.json",
+  "stop_condition_waived": {
+    "source": "docs/PHASE9_DELTAC_INTERVAL_PLAN.md v2.1 section 9.5",
+    "text": "Projected runtime exceeds twice the budget, indicating a mis-specification.",
+    "budget_hours": 7.4,
+    "threshold_hours": 14.8,
+    "projected_hours_at_halt": 19.5,
+    "authorized_by": "user",
+    "authorization_text": "I explicitly authorize resuming the approved design despite the previously triggered 2x runtime-budget stop condition. Record this as a user-authorized exception to that runtime ceiling only."
+  },
+  "diagnosis_at_halt": "Budget estimate error, not mis-specification. The 0.852 s/inner-replicate probe was measured on the original 452-patient data; nested inner fits run on bootstrap samples of bootstrap samples. No thread oversubscription (each of 8 workers at ~100% CPU). All 144 completed outer replicates clean: status=ok, 0 inner failures, 100/100 paired-complete, 136/316 event/censor preserved.",
+  "conditions_remaining_in_force": [
+    "All other v2.1 hard-failure conditions",
+    "EP-1 endpoint stability criterion",
+    "Pairing-preserving exclusion rule and the 5% paired-complete warning boundary",
+    "No change to B_out (500), B_in (100), seeds (BASE=2026110300), model specifications, or resampling design",
+    "No silent redraws, replacement replicates, or selective exclusions"
+  ],
+  "design_unchanged": {
+    "runs": 5, "B_out": 500, "B_in": 100, "workers": 8,
+    "base_entropy": 2026110300,
+    "resampling": "event-stratified paired, positional indices with repeats",
+    "driver_sha256_16": "4b1738a4d0ee0e39"
+  },
+  "checkpoint_at_resume": {
+    "file": "run0_outer.jsonl", "sha256_16": "f0479bc2f02333e7",
+    "records": 144, "k_contiguous_0_to_143": true, "next_k": 144,
+    "all_status_ok": true, "inner_failures": 0
+  }
+}

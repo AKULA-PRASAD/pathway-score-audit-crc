@@ -1,0 +1,198 @@
+{
+  "plan": "PHASE9_DELTAC_INTERVAL",
+  "version": "2.1",
+  "supersedes": "2.0",
+  "status": "PLAN_ONLY_NOT_EXECUTED",
+  "date": "2026-11-03",
+  "estimand": "DeltaC_corrected = C_corrected(M2 four-set) - C_corrected(M1)",
+  "point_estimate": {
+    "median_primary": 0.0043,
+    "S7_sensitivity": 0.0043
+  },
+  "representation_roles": {
+    "median": "PRIMARY",
+    "representative_IQR": "SENSITIVITY-ONLY"
+  },
+  "approved_decisions": {
+    "EP1": {
+      "rule": "endpoint MC-SE <= 0.05 x final interval width, both endpoints",
+      "absolute_MC_SE_reported_separately": true,
+      "is_MC3_extension": false
+    },
+    "mc_design": {
+      "runs": 5,
+      "size": "full",
+      "B_out": 500,
+      "B_in": 100,
+      "hours_8core": 7.4,
+      "staged_design_C_withdrawn": true
+    },
+    "outer_resampling": {
+      "scheme": "event-stratified patient-level bootstrap",
+      "mandatory_description": "conditional on the observed 136 recurrence events and 316 censored observations in the 452-patient A-19 population"
+    },
+    "intervals": {
+      "primary": "percentile",
+      "diagnostic": [
+        "basic",
+        "z0"
+      ],
+      "BCa": "EXCLUDED unless an independently defensible acceleration estimate exists"
+    }
+  },
+  "revision_A_inner_failures": {
+    "v2_0_rule_withdrawn": "exclude failures below 5% and continue (assumed ignorable)",
+    "why": "fits fail on STRAINED resamples, plausibly those with the LARGEST optimism; excluding them biases optimism down and corrected C UP -- the optimistic direction. M2 is likelier to fail than M1, which would break the pairing.",
+    "pairing_preserving_exclusion": "if EITHER model fails at inner replicate b, BOTH are excluded; opt_M1 and opt_M2 are always averaged over the identical set",
+    "recorded_per_failure": [
+      "run_seed",
+      "outer_k",
+      "inner_b",
+      "model",
+      "reason",
+      "n_distinct_patients",
+      "min_binary_cell",
+      "n_events_inner",
+      "lambda_at_failure"
+    ],
+    "representativeness_test": "compare failed vs successful inner replicates on the recorded covariates; cross-tabulate failures by model and by outer replicate to detect concentration",
+    "bounding_analysis": "recompute DeltaC_corr(k) with missing paired optimism imputed at the observed MIN and MAX within that outer replicate; recompute the whole interval under both",
+    "decision_rule": "both endpoints move < endpoint MC-SE -> failures demonstrably non-influential, primary interval stands with bounds reported; otherwise interval labelled UNRELIABLE REGARDLESS of how far below 5% the failure rate is",
+    "five_percent_status": "WARNING BOUNDARY ONLY -- never licenses an ignorability assumption",
+    "silent_redraws": false,
+    "replacement_replicates": false,
+    "selective_exclusion": false,
+    "precedent": "0/7500 inner failures in both completed runs"
+  },
+  "revision_B_diagnostics_demoted": {
+    "A7": {
+      "name": "percentile vs basic",
+      "threshold": "25% of width",
+      "statistical_justification": "NONE -- a visibility heuristic; the direction of the comparison is informative, the cut-point is not",
+      "standing": "WARNING W6 -- investigate and report; neither validates nor invalidates"
+    },
+    "A8": {
+      "name": "|z0|",
+      "threshold": 0.25,
+      "statistical_justification": "PARTIAL -- SE(z0)=sqrt(p(1-p)/B)/phi(z0) = 0.056 at B_out=500 and 0.025 pooled over 5 runs, so 0.25 is ~4.5 SE (single) / ~10 SE (pooled); a LOOSE DETECTION boundary, not a validity criterion",
+      "passing_does_not_establish_absence_of_bias": true,
+      "standing": "WARNING W7 -- investigate and report"
+    }
+  },
+  "resampling_audit": {
+    "estimator_confirmed": true,
+    "optimism_evaluated_on": "D*_k (the outer sample), NOT the original D",
+    "apparent_recomputed_on_outer": true,
+    "pairing": "one index array per layer, shared by M1 and M2, multiplicities included",
+    "refit_every_fit_no_caching": [
+      "age spline knots (type-7 percentiles)",
+      "gene-level mu/sigma with sigma_ddof=1 (M2-A1)",
+      "M2-A2 score standardisation incl. zero-variance <=1e-12 and non-finite handling",
+      "ridge lambda via the frozen nested 5-fold CV (P6B-A1)",
+      "model fit, convergence and separation checks"
+    ],
+    "c_index": "Harrell via lifelines concordance_index, frozen -lp orientation, Efron ties",
+    "nesting_depth": 3
+  },
+  "rng_policy": {
+    "original_phase9_seeds_reused": false,
+    "why_not": "reusing [20261102..20261106] for the OUTER layer would make new outer resamples the same index sequences as the old inner resamples, creating unintended dependence",
+    "base_entropy": "20261103_00",
+    "run_ids": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "hierarchy": "SeedSequence([BASE, run_id]) -> spawn(B_out) -> spawn(B_in) -> spawn(2) for CV",
+    "properties": [
+      "independent across runs",
+      "independent across layers",
+      "scheduling-invariant (stream is a pure function of (BASE,run_id,k,b))",
+      "resumable and bit-reproducible"
+    ],
+    "multiplicities": "index arrays with repeats; full 452-length multiplicity vector stored per outer replicate",
+    "reproducibility_check": "20 fixed outer indices of run 0 recomputed; must match BIT-IDENTICALLY"
+  },
+  "endpoint_stability": {
+    "quantities_reported_separately": [
+      "sampling uncertainty (the interval)",
+      "within-run kernel endpoint MC-SE",
+      "between-run endpoint SD across 5 runs",
+      "kernel density detail",
+      "the five endpoint values listed"
+    ],
+    "never_summed": true,
+    "kernel_method": "Gaussian KDE, Silverman bandwidth, recomputed at bandwidth x {0.5,1.0,2.0}",
+    "expected_SE_over_width_at_B500": 0.03,
+    "five_run_limitation": "df=4, relative SE of the SD ~35%; agreement between kernel and empirical estimators is CONSISTENCY, not validation -- both assume within-run iid draws",
+    "EP1_failure_rule": {
+      "formula": "B_out' = 500 x (observed_ratio/0.05)^2, round up",
+      "ladder": [
+        750,
+        1000,
+        1500,
+        2000,
+        3000
+      ],
+      "method": "top up each run from the SAME SeedSequence spawn list at indices B_out..B_out'-1",
+      "never": "narrow, re-centre or re-quantile the interval to satisfy EP-1"
+    }
+  },
+  "computational_plan": {
+    "fits_total": 505000,
+    "hours_single_core": 59.2,
+    "hours_8_cores": 7.4,
+    "memory_peak_8_workers_GB": 3.4,
+    "matrix_loaded_before_fork": true,
+    "storage_total_MB": "<20 compressed",
+    "retained_inner_level_values": 1000000,
+    "checkpoint": "run{id}_outer.jsonl, one flushed line per completed outer replicate; resume skips completed k; resumed run is bit-identical",
+    "output_dir": "reports/phase9/dc_interval/",
+    "stop_conditions": [
+      "frozen hash change mid-run",
+      "outer non-estimable >5% at any checkpoint",
+      "bounding analysis shows failures influential",
+      "memory near limit",
+      "runtime >2x budget"
+    ]
+  },
+  "acceptance": {
+    "hard_failures": {
+      "H1": "outer excluded >5% -> UNRELIABLE",
+      "H2": "bounding moves an endpoint > endpoint MC-SE -> UNRELIABLE",
+      "H3": "EP-1 unmet after the B_out ladder -> label IMPRECISE",
+      "H4": "frozen hash changed -> abort",
+      "H5": "reproducibility not bit-identical -> abort",
+      "H6": "paired-complete inner counts differ between M1 and M2 -> abort (implementation defect)"
+    },
+    "warnings": {
+      "W1": "any inner failure -> representativeness + bounding",
+      "W2": "failures concentrated in one model or few outer replicates",
+      "W3": "inner SD inflation >5% -> raise B_in, never deconvolve",
+      "W4": "kernel vs empirical MC-SE disagree >2x",
+      "W5": "MC-1 endpoint trace spread > EP-1 bound -> raise B_out",
+      "W6": "A7 >25% width (NO justification)",
+      "W7": "|z0|>0.25 (partial justification)"
+    },
+    "no_threshold_relaxed_for_convenience": true,
+    "B_may_only_increase": true
+  },
+  "unresolved_limitations": [
+    "conditional on 136 events / 316 censored",
+    "bootstrap validity asymptotic at n=452, non-smooth statistic, internal tuning",
+    "distinct-patient dilution: inner fits see ~181/452 (40%) distinct patients; direction of the resulting bias is predicted (negative z0) but its magnitude is not estimable from this design",
+    "between-run SD rests on 5 observations (df=4, ~35% relative SE)",
+    "A7 threshold has no statistical justification",
+    "A8 passing does not establish absence of median bias",
+    "inner-noise SD inflation ~1.2% documented, not removed",
+    "Harrell C is censoring-distribution dependent, not transportable",
+    "molecular block penalised, clinical not -- conservative by design, NOT an unbiased estimate of the molecular contribution",
+    "internal validation only; U1 unresolved so no fixed-time or absolute-risk claim"
+  ],
+  "recommendation": "READY FOR EXECUTION pending explicit authorisation",
+  "executed": false,
+  "outputs_modified": "NONE",
+  "commits": 0
+}

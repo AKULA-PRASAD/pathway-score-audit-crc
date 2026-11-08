@@ -1,0 +1,1004 @@
+{
+ "n_checks": 166,
+ "n_ok": 166,
+ "all_ok": true,
+ "failed": [],
+ "checks": [
+  {
+   "check": "theta_hat",
+   "independent": 0.004316342804030704,
+   "reported": 0.004316342804030704,
+   "ok": true
+  },
+  {
+   "check": "run0 pct lower",
+   "independent": -0.008856406274441717,
+   "reported": -0.008856406274441717,
+   "ok": true
+  },
+  {
+   "check": "run0 pct upper",
+   "independent": 0.05162958744269991,
+   "reported": 0.05162958744269991,
+   "ok": true
+  },
+  {
+   "check": "run0 basic lower",
+   "independent": -0.0429969018346385,
+   "reported": -0.0429969018346385,
+   "ok": true
+  },
+  {
+   "check": "run0 basic upper",
+   "independent": 0.017489091882503124,
+   "reported": 0.017489091882503124,
+   "ok": true
+  },
+  {
+   "check": "run0 z0",
+   "independent": -0.4676987991145081,
+   "reported": -0.4676987991145081,
+   "ok": true
+  },
+  {
+   "check": "run0 z0 ties",
+   "independent": 0,
+   "reported": 0,
+   "ok": true
+  },
+  {
+   "check": "run0 BC lower",
+   "independent": -0.011150743639234052,
+   "reported": -0.011150743639234052,
+   "ok": true
+  },
+  {
+   "check": "run0 BC upper",
+   "independent": 0.030275939317675762,
+   "reported": 0.030275939317675762,
+   "ok": true
+  },
+  {
+   "check": "run0 silverman h",
+   "independent": 0.0041429594056032314,
+   "reported": 0.0041429594056032314,
+   "ok": true
+  },
+  {
+   "check": "run0 kernel SE lower bw x0.5",
+   "independent": 0.0004582085501713488,
+   "reported": 0.00045820855017134857,
+   "ok": true
+  },
+  {
+   "check": "run0 kernel SE lower bw x1.0",
+   "independent": 0.000559373965225171,
+   "reported": 0.0005593739652251711,
+   "ok": true
+  },
+  {
+   "check": "run0 kernel SE lower bw x2.0",
+   "independent": 0.0005738986197341538,
+   "reported": 0.0005738986197341535,
+   "ok": true
+  },
+  {
+   "check": "run0 kernel SE upper bw x0.5",
+   "independent": 0.002195243354719065,
+   "reported": 0.002195243354719064,
+   "ok": true
+  },
+  {
+   "check": "run0 kernel SE upper bw x1.0",
+   "independent": 0.0023653383093598344,
+   "reported": 0.0023653383093598336,
+   "ok": true
+  },
+  {
+   "check": "run0 kernel SE upper bw x2.0",
+   "independent": 0.002270399894255827,
+   "reported": 0.002270399894255826,
+   "ok": true
+  },
+  {
+   "check": "run0 W5 spread lower",
+   "independent": 0.0005257768524889392,
+   "reported": 0.0005257768524889392,
+   "ok": true
+  },
+  {
+   "check": "run0 W5 spread upper",
+   "independent": 0.0015980282469118048,
+   "reported": 0.0015980282469118048,
+   "ok": true
+  },
+  {
+   "check": "run0 W3 SD inflation",
+   "independent": 0.003452783577882146,
+   "reported": 0.003452783577882146,
+   "ok": true
+  },
+  {
+   "check": "run0 A7 lower",
+   "independent": 0.5644363837329406,
+   "reported": 0.5644363837329406,
+   "ok": true
+  },
+  {
+   "check": "run0 failures",
+   "independent": 0,
+   "reported": 0,
+   "ok": true
+  },
+  {
+   "check": "run0 frac negative",
+   "independent": 0.212,
+   "reported": 0.212,
+   "ok": true
+  },
+  {
+   "check": "run1 pct lower",
+   "independent": -0.009057720649703789,
+   "reported": -0.009057720649703789,
+   "ok": true
+  },
+  {
+   "check": "run1 pct upper",
+   "independent": 0.046865876098420495,
+   "reported": 0.046865876098420495,
+   "ok": true
+  },
+  {
+   "check": "run1 basic lower",
+   "independent": -0.03823319049035909,
+   "reported": -0.03823319049035909,
+   "ok": true
+  },
+  {
+   "check": "run1 basic upper",
+   "independent": 0.017690406257765197,
+   "reported": 0.017690406257765197,
+   "ok": true
+  },
+  {
+   "check": "run1 z0",
+   "independent": -0.518656932080391,
+   "reported": -0.518656932080391,
+   "ok": true
+  },
+  {
+   "check": "run1 z0 ties",
+   "independent": 0,
+   "reported": 0,
+   "ok": true
+  },
+  {
+   "check": "run1 BC lower",
+   "independent": -0.011463641858079831,
+   "reported": -0.011463641858079831,
+   "ok": true
+  },
+  {
+   "check": "run1 BC upper",
+   "independent": 0.027280005182007572,
+   "reported": 0.027280005182007572,
+   "ok": true
+  },
+  {
+   "check": "run1 silverman h",
+   "independent": 0.003919462966670501,
+   "reported": 0.003919462966670501,
+   "ok": true
+  },
+  {
+   "check": "run1 kernel SE lower bw x0.5",
+   "independent": 0.00043460168677803815,
+   "reported": 0.00043460168677803815,
+   "ok": true
+  },
+  {
+   "check": "run1 kernel SE lower bw x1.0",
+   "independent": 0.0005405291057406455,
+   "reported": 0.0005405291057406456,
+   "ok": true
+  },
+  {
+   "check": "run1 kernel SE lower bw x2.0",
+   "independent": 0.0005889540941795041,
+   "reported": 0.0005889540941795041,
+   "ok": true
+  },
+  {
+   "check": "run1 kernel SE upper bw x0.5",
+   "independent": 0.002992824279775889,
+   "reported": 0.002992824279775887,
+   "ok": true
+  },
+  {
+   "check": "run1 kernel SE upper bw x1.0",
+   "independent": 0.0026627061412359113,
+   "reported": 0.002662706141235908,
+   "ok": true
+  },
+  {
+   "check": "run1 kernel SE upper bw x2.0",
+   "independent": 0.001968756169936829,
+   "reported": 0.0019687561699368262,
+   "ok": true
+  },
+  {
+   "check": "run1 W5 spread lower",
+   "independent": 0.0002594683198510715,
+   "reported": 0.0002594683198510715,
+   "ok": true
+  },
+  {
+   "check": "run1 W5 spread upper",
+   "independent": 0.002985659583044066,
+   "reported": 0.002985659583044066,
+   "ok": true
+  },
+  {
+   "check": "run1 W3 SD inflation",
+   "independent": 0.0036309332281541096,
+   "reported": 0.0036309332281541096,
+   "ok": true
+  },
+  {
+   "check": "run1 A7 lower",
+   "independent": 0.5217023141780284,
+   "reported": 0.5217023141780284,
+   "ok": true
+  },
+  {
+   "check": "run1 failures",
+   "independent": 0,
+   "reported": 0,
+   "ok": true
+  },
+  {
+   "check": "run1 frac negative",
+   "independent": 0.2,
+   "reported": 0.2,
+   "ok": true
+  },
+  {
+   "check": "run2 pct lower",
+   "independent": -0.009272623907844392,
+   "reported": -0.009272623907844392,
+   "ok": true
+  },
+  {
+   "check": "run2 pct upper",
+   "independent": 0.04838362354818393,
+   "reported": 0.04838362354818393,
+   "ok": true
+  },
+  {
+   "check": "run2 basic lower",
+   "independent": -0.03975093794012252,
+   "reported": -0.03975093794012252,
+   "ok": true
+  },
+  {
+   "check": "run2 basic upper",
+   "independent": 0.0179053095159058,
+   "reported": 0.0179053095159058,
+   "ok": true
+  },
+  {
+   "check": "run2 z0",
+   "independent": -0.5709994731129875,
+   "reported": -0.5709994731129875,
+   "ok": true
+  },
+  {
+   "check": "run2 z0 ties",
+   "independent": 0,
+   "reported": 0,
+   "ok": true
+  },
+  {
+   "check": "run2 BC lower",
+   "independent": -0.01143333350622201,
+   "reported": -0.01143333350622201,
+   "ok": true
+  },
+  {
+   "check": "run2 BC upper",
+   "independent": 0.02586683455487896,
+   "reported": 0.02586683455487896,
+   "ok": true
+  },
+  {
+   "check": "run2 silverman h",
+   "independent": 0.0040018286264049295,
+   "reported": 0.0040018286264049295,
+   "ok": true
+  },
+  {
+   "check": "run2 kernel SE lower bw x0.5",
+   "independent": 0.0005106643444915402,
+   "reported": 0.0005106643444915403,
+   "ok": true
+  },
+  {
+   "check": "run2 kernel SE lower bw x1.0",
+   "independent": 0.0005815772154146731,
+   "reported": 0.0005815772154146729,
+   "ok": true
+  },
+  {
+   "check": "run2 kernel SE lower bw x2.0",
+   "independent": 0.0006295587069114861,
+   "reported": 0.0006295587069114858,
+   "ok": true
+  },
+  {
+   "check": "run2 kernel SE upper bw x0.5",
+   "independent": 0.0016845136605509487,
+   "reported": 0.0016845136605509493,
+   "ok": true
+  },
+  {
+   "check": "run2 kernel SE upper bw x1.0",
+   "independent": 0.002213516911806065,
+   "reported": 0.0022135169118060643,
+   "ok": true
+  },
+  {
+   "check": "run2 kernel SE upper bw x2.0",
+   "independent": 0.0020230903684352528,
+   "reported": 0.0020230903684352514,
+   "ok": true
+  },
+  {
+   "check": "run2 W5 spread lower",
+   "independent": 0.0008918943045749424,
+   "reported": 0.0008918943045749424,
+   "ok": true
+  },
+  {
+   "check": "run2 W5 spread upper",
+   "independent": 0.001067820595295331,
+   "reported": 0.001067820595295331,
+   "ok": true
+  },
+  {
+   "check": "run2 W3 SD inflation",
+   "independent": 0.0036261138509527946,
+   "reported": 0.0036261138509527946,
+   "ok": true
+  },
+  {
+   "check": "run2 A7 lower",
+   "independent": 0.528621188111878,
+   "reported": 0.528621188111878,
+   "ok": true
+  },
+  {
+   "check": "run2 failures",
+   "independent": 0,
+   "reported": 0,
+   "ok": true
+  },
+  {
+   "check": "run2 frac negative",
+   "independent": 0.192,
+   "reported": 0.192,
+   "ok": true
+  },
+  {
+   "check": "run3 pct lower",
+   "independent": -0.00975412364813611,
+   "reported": -0.00975412364813611,
+   "ok": true
+  },
+  {
+   "check": "run3 pct upper",
+   "independent": 0.051326699808060004,
+   "reported": 0.051326699808060004,
+   "ok": true
+  },
+  {
+   "check": "run3 basic lower",
+   "independent": -0.042694014199998596,
+   "reported": -0.042694014199998596,
+   "ok": true
+  },
+  {
+   "check": "run3 basic upper",
+   "independent": 0.01838680925619752,
+   "reported": 0.01838680925619752,
+   "ok": true
+  },
+  {
+   "check": "run3 z0",
+   "independent": -0.42889450407420154,
+   "reported": -0.42889450407420154,
+   "ok": true
+  },
+  {
+   "check": "run3 z0 ties",
+   "independent": 0,
+   "reported": 0,
+   "ok": true
+  },
+  {
+   "check": "run3 BC lower",
+   "independent": -0.01252452570978774,
+   "reported": -0.01252452570978774,
+   "ok": true
+  },
+  {
+   "check": "run3 BC upper",
+   "independent": 0.03269803096075513,
+   "reported": 0.03269803096075513,
+   "ok": true
+  },
+  {
+   "check": "run3 silverman h",
+   "independent": 0.004262265528756949,
+   "reported": 0.004262265528756949,
+   "ok": true
+  },
+  {
+   "check": "run3 kernel SE lower bw x0.5",
+   "independent": 0.00045874147872292326,
+   "reported": 0.00045874147872292353,
+   "ok": true
+  },
+  {
+   "check": "run3 kernel SE lower bw x1.0",
+   "independent": 0.0005216226858476544,
+   "reported": 0.0005216226858476541,
+   "ok": true
+  },
+  {
+   "check": "run3 kernel SE lower bw x2.0",
+   "independent": 0.0005764000874444712,
+   "reported": 0.0005764000874444716,
+   "ok": true
+  },
+  {
+   "check": "run3 kernel SE upper bw x0.5",
+   "independent": 0.0021648910437215346,
+   "reported": 0.002164891043721534,
+   "ok": true
+  },
+  {
+   "check": "run3 kernel SE upper bw x1.0",
+   "independent": 0.002504984346443314,
+   "reported": 0.0025049843464433133,
+   "ok": true
+  },
+  {
+   "check": "run3 kernel SE upper bw x2.0",
+   "independent": 0.0022651114316745353,
+   "reported": 0.002265111431674537,
+   "ok": true
+  },
+  {
+   "check": "run3 W5 spread lower",
+   "independent": 8.315057167944048e-06,
+   "reported": 8.315057167944048e-06,
+   "ok": true
+  },
+  {
+   "check": "run3 W5 spread upper",
+   "independent": 0.0013269204312496632,
+   "reported": 0.0013269204312496632,
+   "ok": true
+  },
+  {
+   "check": "run3 W3 SD inflation",
+   "independent": 0.0034068191723817254,
+   "reported": 0.0034068191723817254,
+   "ok": true
+  },
+  {
+   "check": "run3 A7 lower",
+   "independent": 0.5392836685557326,
+   "reported": 0.5392836685557326,
+   "ok": true
+  },
+  {
+   "check": "run3 failures",
+   "independent": 0,
+   "reported": 0,
+   "ok": true
+  },
+  {
+   "check": "run3 frac negative",
+   "independent": 0.232,
+   "reported": 0.232,
+   "ok": true
+  },
+  {
+   "check": "run4 pct lower",
+   "independent": -0.00920505758958498,
+   "reported": -0.00920505758958498,
+   "ok": true
+  },
+  {
+   "check": "run4 pct upper",
+   "independent": 0.05151036861809769,
+   "reported": 0.05151036861809769,
+   "ok": true
+  },
+  {
+   "check": "run4 basic lower",
+   "independent": -0.042877683010036284,
+   "reported": -0.042877683010036284,
+   "ok": true
+  },
+  {
+   "check": "run4 basic upper",
+   "independent": 0.01783774319764639,
+   "reported": 0.01783774319764639,
+   "ok": true
+  },
+  {
+   "check": "run4 z0",
+   "independent": -0.5769103773332716,
+   "reported": -0.5769103773332716,
+   "ok": true
+  },
+  {
+   "check": "run4 z0 ties",
+   "independent": 0,
+   "reported": 0,
+   "ok": true
+  },
+  {
+   "check": "run4 BC lower",
+   "independent": -0.011967134562489776,
+   "reported": -0.011967134562489776,
+   "ok": true
+  },
+  {
+   "check": "run4 BC upper",
+   "independent": 0.027875826128445264,
+   "reported": 0.027875826128445264,
+   "ok": true
+  },
+  {
+   "check": "run4 silverman h",
+   "independent": 0.00419492731726528,
+   "reported": 0.00419492731726528,
+   "ok": true
+  },
+  {
+   "check": "run4 kernel SE lower bw x0.5",
+   "independent": 0.00048716853345097963,
+   "reported": 0.00048716853345097985,
+   "ok": true
+  },
+  {
+   "check": "run4 kernel SE lower bw x1.0",
+   "independent": 0.0006026581922070315,
+   "reported": 0.0006026581922070315,
+   "ok": true
+  },
+  {
+   "check": "run4 kernel SE lower bw x2.0",
+   "independent": 0.0006531604020575724,
+   "reported": 0.000653160402057573,
+   "ok": true
+  },
+  {
+   "check": "run4 kernel SE upper bw x0.5",
+   "independent": 0.0015269359959473826,
+   "reported": 0.001526935995947383,
+   "ok": true
+  },
+  {
+   "check": "run4 kernel SE upper bw x1.0",
+   "independent": 0.00185308401550918,
+   "reported": 0.0018530840155091793,
+   "ok": true
+  },
+  {
+   "check": "run4 kernel SE upper bw x2.0",
+   "independent": 0.0018985845319484348,
+   "reported": 0.0018985845319484352,
+   "ok": true
+  },
+  {
+   "check": "run4 W5 spread lower",
+   "independent": 0.0004039004882300957,
+   "reported": 0.0004039004882300957,
+   "ok": true
+  },
+  {
+   "check": "run4 W5 spread upper",
+   "independent": 0.002908449270791931,
+   "reported": 0.002908449270791931,
+   "ok": true
+  },
+  {
+   "check": "run4 W3 SD inflation",
+   "independent": 0.003427844766358046,
+   "reported": 0.003427844766358046,
+   "ok": true
+  },
+  {
+   "check": "run4 A7 lower",
+   "independent": 0.5545975302103786,
+   "reported": 0.5545975302103786,
+   "ok": true
+  },
+  {
+   "check": "run4 failures",
+   "independent": 0,
+   "reported": 0,
+   "ok": true
+  },
+  {
+   "check": "run4 frac negative",
+   "independent": 0.178,
+   "reported": 0.178,
+   "ok": true
+  },
+  {
+   "check": "between-run SD lower",
+   "independent": 0.0003340634882011125,
+   "reported": 0.0003340634882011125,
+   "ok": true
+  },
+  {
+   "check": "between-run SD upper",
+   "independent": 0.0021861034343554596,
+   "reported": 0.0021861034343554596,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run0",
+   "independent": 0.060485993717141626,
+   "reported": 0.060485993717141626,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run0",
+   "independent": 0.060485993717141626,
+   "reported": 0.060485993717141626,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run0",
+   "independent": 0.060485993717141626,
+   "reported": 0.060485993717141626,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run0",
+   "independent": 0.060485993717141626,
+   "reported": 0.060485993717141626,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run0",
+   "independent": 0.060485993717141626,
+   "reported": 0.060485993717141626,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run0",
+   "independent": 0.060485993717141626,
+   "reported": 0.060485993717141626,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run0",
+   "independent": 0.060485993717141626,
+   "reported": 0.060485993717141626,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run0",
+   "independent": 0.060485993717141626,
+   "reported": 0.060485993717141626,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run1",
+   "independent": 0.055923596748124284,
+   "reported": 0.055923596748124284,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run1",
+   "independent": 0.055923596748124284,
+   "reported": 0.055923596748124284,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run1",
+   "independent": 0.055923596748124284,
+   "reported": 0.055923596748124284,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run1",
+   "independent": 0.055923596748124284,
+   "reported": 0.055923596748124284,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run1",
+   "independent": 0.055923596748124284,
+   "reported": 0.055923596748124284,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run1",
+   "independent": 0.055923596748124284,
+   "reported": 0.055923596748124284,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run1",
+   "independent": 0.055923596748124284,
+   "reported": 0.055923596748124284,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run1",
+   "independent": 0.055923596748124284,
+   "reported": 0.055923596748124284,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run2",
+   "independent": 0.05765624745602832,
+   "reported": 0.05765624745602832,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run2",
+   "independent": 0.05765624745602832,
+   "reported": 0.05765624745602832,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run2",
+   "independent": 0.05765624745602832,
+   "reported": 0.05765624745602832,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run2",
+   "independent": 0.05765624745602832,
+   "reported": 0.05765624745602832,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run2",
+   "independent": 0.05765624745602832,
+   "reported": 0.05765624745602832,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run2",
+   "independent": 0.05765624745602832,
+   "reported": 0.05765624745602832,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run2",
+   "independent": 0.05765624745602832,
+   "reported": 0.05765624745602832,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run2",
+   "independent": 0.05765624745602832,
+   "reported": 0.05765624745602832,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run3",
+   "independent": 0.061080823456196115,
+   "reported": 0.061080823456196115,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run3",
+   "independent": 0.061080823456196115,
+   "reported": 0.061080823456196115,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run3",
+   "independent": 0.061080823456196115,
+   "reported": 0.061080823456196115,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run3",
+   "independent": 0.061080823456196115,
+   "reported": 0.061080823456196115,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run3",
+   "independent": 0.061080823456196115,
+   "reported": 0.061080823456196115,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run3",
+   "independent": 0.061080823456196115,
+   "reported": 0.061080823456196115,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run3",
+   "independent": 0.061080823456196115,
+   "reported": 0.061080823456196115,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run3",
+   "independent": 0.061080823456196115,
+   "reported": 0.061080823456196115,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run4",
+   "independent": 0.06071542620768267,
+   "reported": 0.06071542620768267,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run4",
+   "independent": 0.06071542620768267,
+   "reported": 0.06071542620768267,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run4",
+   "independent": 0.06071542620768267,
+   "reported": 0.06071542620768267,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run4",
+   "independent": 0.06071542620768267,
+   "reported": 0.06071542620768267,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run4",
+   "independent": 0.06071542620768267,
+   "reported": 0.06071542620768267,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run4",
+   "independent": 0.06071542620768267,
+   "reported": 0.06071542620768267,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run4",
+   "independent": 0.06071542620768267,
+   "reported": 0.06071542620768267,
+   "ok": true
+  },
+  {
+   "check": "EP1 width run4",
+   "independent": 0.06071542620768267,
+   "reported": 0.06071542620768267,
+   "ok": true
+  },
+  {
+   "check": "EP1 n_pass",
+   "independent": 39,
+   "reported": 39,
+   "ok": true
+  },
+  {
+   "check": "T1 run0 pct_lower",
+   "independent": -0.008856406274441717,
+   "reported": -0.008856406274441717,
+   "ok": true
+  },
+  {
+   "check": "T1 run0 basic_upper",
+   "independent": 0.017489091882503124,
+   "reported": 0.017489091882503124,
+   "ok": true
+  },
+  {
+   "check": "T1 run0 z0",
+   "independent": -0.4676987991145081,
+   "reported": -0.4676987991145081,
+   "ok": true
+  },
+  {
+   "check": "T1 run1 pct_lower",
+   "independent": -0.009057720649703789,
+   "reported": -0.009057720649703789,
+   "ok": true
+  },
+  {
+   "check": "T1 run1 basic_upper",
+   "independent": 0.017690406257765197,
+   "reported": 0.017690406257765197,
+   "ok": true
+  },
+  {
+   "check": "T1 run1 z0",
+   "independent": -0.518656932080391,
+   "reported": -0.518656932080391,
+   "ok": true
+  },
+  {
+   "check": "T1 run2 pct_lower",
+   "independent": -0.009272623907844392,
+   "reported": -0.009272623907844392,
+   "ok": true
+  },
+  {
+   "check": "T1 run2 basic_upper",
+   "independent": 0.0179053095159058,
+   "reported": 0.0179053095159058,
+   "ok": true
+  },
+  {
+   "check": "T1 run2 z0",
+   "independent": -0.5709994731129875,
+   "reported": -0.5709994731129875,
+   "ok": true
+  },
+  {
+   "check": "T1 run3 pct_lower",
+   "independent": -0.00975412364813611,
+   "reported": -0.00975412364813611,
+   "ok": true
+  },
+  {
+   "check": "T1 run3 basic_upper",
+   "independent": 0.01838680925619752,
+   "reported": 0.01838680925619752,
+   "ok": true
+  },
+  {
+   "check": "T1 run3 z0",
+   "independent": -0.42889450407420154,
+   "reported": -0.42889450407420154,
+   "ok": true
+  },
+  {
+   "check": "T1 run4 pct_lower",
+   "independent": -0.00920505758958498,
+   "reported": -0.00920505758958498,
+   "ok": true
+  },
+  {
+   "check": "T1 run4 basic_upper",
+   "independent": 0.01783774319764639,
+   "reported": 0.01783774319764639,
+   "ok": true
+  },
+  {
+   "check": "T1 run4 z0",
+   "independent": -0.5769103773332716,
+   "reported": -0.5769103773332716,
+   "ok": true
+  },
+  {
+   "check": "T4 rows",
+   "independent": 40,
+   "reported": 40,
+   "ok": true
+  },
+  {
+   "check": "T4 n_pass",
+   "independent": 39,
+   "reported": 39,
+   "ok": true
+  }
+ ]
+}

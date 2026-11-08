@@ -1,0 +1,66 @@
+{
+  "document": "docs/PHASE9_MODELING_PROTOCOL_DRAFT.md",
+  "revisions": [
+    {
+      "version": "1.0",
+      "date": "2026-11-03",
+      "status": "superseded",
+      "summary": "initial Phase 9 planning draft: recommendations for D8D-1..4, leakage matrix, validation spec, estimand separation",
+      "frozen_records_modified": "NONE"
+    },
+    {
+      "version": "2.0",
+      "date": "2026-11-03",
+      "status": "superseded",
+      "changes": [
+        "D8D-1 EXPANDED: explicit zero-variance / non-finite scaling guards; an explicit answer that score standardisation does NOT settle clinical-predictor scaling; coefficient interpretation and the dispersion-vs-relevance distinction written out.",
+        "D8D-4 REVERSED: the v1.0 rule pooling strata below 20 samples is WITHDRAWN. Stratification consumes no degrees of freedom, so the threshold was a reflex imported from the covariate case; pooling would have concealed the very heterogeneity being probed. All nine batches are kept as individual strata, with a pre-registered non-estimability response instead of a fallback to pooling.",
+        "D8D-4: leave-one-batch-out caveat added -- batches differ ~7-fold in size, so the spread conflates batch identity with sample size.",
+        "D9-1 ADDED: penalisation scope. D8D-1 exposed that the clinical block would inherit the same scale-dependence; recommendation is to leave the clinical block unpenalised, which removes the question rather than answering it by convention.",
+        "AGE SPLINE FINALISED: knot rule, quantile definition, fixed reporting reference age (69), duplicate-knot and rank-deficiency fallbacks.",
+        "VALIDATION COMPLETED: optimism-correction procedure written out in four steps; convergence criteria; non-estimable replicate recording with a 5% pre-registered threshold and a no-silent-redraw rule; inner tuning loop nesting made explicit.",
+        "ARTIFACT RENAMED: modeling_readiness_checklist.csv -> phase9_readiness_checklist.csv (the name the brief specifies)."
+      ],
+      "frozen_records_modified": "NONE"
+    },
+    {
+      "version": "2.1",
+      "date": "2026-11-03",
+      "status": "superseded",
+      "issued_by": "Phase 9 Final Protocol Audit (docs/PHASE9_FINAL_AUDIT.md)",
+      "changes": [
+        "FINDING 1 -- batch counts: NO ERROR OF FACT. The nine counts were correct for the A-19 complete-case set (452); the audit request's premise conflated the S3 cohort (453) with that set. Join integrity verified against the Phase 3 bundle AND the ArrayExpress SDRF: 0 missing, 0 duplicated, 0 blank, 0 ambiguous. v2.1 now prints BOTH count columns side by side. All 453 remain in the cohort.",
+        "FINDING 2 -- the D8D-4 '50% of events' rule is WITHDRAWN. It was logically near-vacuous (every event lies in a stratum containing an event, itself) and statistically unfounded (50% has no basis, and labelled a precision statement as estimability). Replaced by D8D-4-R1: estimability declared on convergence, information-matrix rank and the separation sentinel only, with information loss REPORTED as a continuous ratio and never thresholded.",
+        "FINDING 3 -- D9-1 audited SOUND and retained. Nesting, clinical comparability and the conservative-deltaC statement recorded; amendment P6B-A1 drafted for Phase 6B 3.1 (NOT applied).",
+        "FINDING 4 -- 33/33 internal consistency checks pass against frozen Register A."
+      ],
+      "frozen_records_modified": "NONE"
+    },
+    {
+      "version": "3.0",
+      "date": "2026-11-03",
+      "status": "superseded",
+      "issued_by": "user authorisation to apply three pending amendments",
+      "changes": [
+        "M2-A2 APPLIED -- training-fold-only standardisation of the M2 pathway scores. Both panels and the freeze record move to specification revision 3; implementation added at src/score_standardisation.py. Panel MEMBERSHIP, ROLES and the gene-level sigma_ddof=1 are UNCHANGED, and src/pathway_scoring.py is unmodified.",
+        "P6B-A1 APPLIED -- Phase 6B section 3.1 penalisation row amended; the original wording is preserved verbatim in the document and in the new config/analysis/PHASE6B_AMENDMENT_RECORD.json. Register A is untouched. The binding delta-C interpretation (conservative, NOT an unbiased estimate of the molecular contribution) is recorded.",
+        "D8D-4-R1 APPLIED -- estimability declared on convergence, information-matrix rank and separation only. The v2.1 squared-SE information-retention ratio is REJECTED as not defensible for this model (estimand mismatch, non-nominal penalised SEs, no guaranteed direction) and REPLACED by risk-set comparison retention N_strat/N_unstrat -- model-free, bounded by construction, descriptive only, no threshold. The diagnostics are stated as NECESSARY but NOT SUFFICIENT for adequate precision.",
+        "D8D-2 and D8D-3 remain PENDING USER APPROVAL -- they were not part of this authorisation."
+      ],
+      "frozen_records_modified": "M2 panel specifications and M2 freeze record moved to revision 3 under the APPROVED amendment M2-A2, with every superseded hash retained in the amendment chain. A-19, QC records, Phase 2/3 artifacts, panel membership, cohort, endpoint and Phase 8 findings: NONE"
+    },
+    {
+      "version": "3.1",
+      "date": "2026-11-03",
+      "status": "current",
+      "issued_by": "user authorisation of D8D-2 and D8D-3",
+      "changes": [
+        "D8D-2 APPROVED -- four-set Hallmark panel formalised as the PRE-SPECIFIED PRIMARY M2 analysis (EMT, E2F_TARGETS, WNT_BETA_CATENIN, P53_PATHWAY); five-set panel remains SENSITIVITY-ONLY, adding PI3K_AKT_MTOR_SIGNALING. The reporting protocol now distinguishes the pre-specified analysis HIERARCHY from OBSERVED PERFORMANCE, mandates reporting the P53-PI3K correlation (r = 0.6314) and the collinearity diagnostics with any five-set result, and records that PI3K is sensitivity-only because of CONDITIONING, explicitly NOT because it is biologically irrelevant.",
+        "D8D-3 APPROVED -- median probe aggregation formalised as the PRIMARY gene representation; representative-IQR remains SENSITIVITY-ONLY (registered estimand S-7). WNT's weakest representation agreement (0.8577, the only score below 0.9) is acknowledged explicitly alongside E2F 0.9975, EMT 0.9920, P53 0.9720, PI3K 0.9096. Representation ROBUSTNESS and PREDICTIVE PERFORMANCE are recorded as different properties, never substituted for one another; agreement is explicitly NOT independent replication.",
+        "No specification amendment was required: both decisions formalise REPORTING protocol. Panel membership, gene mappings, scoring definitions, the frozen representations and the M2-A1/M2-A2 amendment chain are UNCHANGED.",
+        "All five Phase 9 decisions are now approved; none remains pending."
+      ],
+      "frozen_records_modified": "NONE"
+    }
+  ]
+}

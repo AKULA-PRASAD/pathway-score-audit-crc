@@ -1,0 +1,22 @@
+[h5] pre-verification all_ok=True  check_frozen=PASS  selected_present=True
+[h5] 1/20 recomputed k=175  2.5 min
+[h5] 2/20 recomputed k=0  2.6 min
+[h5] 3/20 recomputed k=100  2.6 min
+[h5] 4/20 recomputed k=25  2.6 min
+[h5] 5/20 recomputed k=75  2.6 min
+[h5] 6/20 recomputed k=50  2.7 min
+[h5] 7/20 recomputed k=125  2.7 min
+[h5] 8/20 recomputed k=150  2.8 min
+[h5] 9/20 recomputed k=200  5.3 min
+[h5] 10/20 recomputed k=225  5.4 min
+[h5] 11/20 recomputed k=300  5.4 min
+[h5] 12/20 recomputed k=275  5.4 min
+[h5] 13/20 recomputed k=250  5.4 min
+[h5] 14/20 recomputed k=325  5.5 min
+[h5] 15/20 recomputed k=350  5.6 min
+[h5] 16/20 recomputed k=375  5.7 min
+[h5] 17/20 recomputed k=400  7.7 min
+[h5] 18/20 recomputed k=425  7.7 min
+[h5] 19/20 recomputed k=475  7.7 min
+[h5] 20/20 recomputed k=450  7.8 min
+[h5] bit-identical 20/20  post all_ok=True  H5 PASS

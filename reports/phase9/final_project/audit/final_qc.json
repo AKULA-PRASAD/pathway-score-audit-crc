@@ -1,0 +1,43 @@
+{
+ "captured_utc": "2026-11-04T16:45:49.143732+00:00",
+ "checks": {
+  "driver_check_frozen": true,
+  "files_17_unchanged": true,
+  "checkpoints_5_unchanged": true,
+  "h5_evidence_unchanged": true,
+  "h5_directory_files": [
+   "CV_SEED_DEVIATION_DRAFT.md",
+   "h5_comparison.json",
+   "h5_run.log",
+   "h5_spotcheck.py",
+   "post_verification.json",
+   "pre_verification.json",
+   "recomputed_records.jsonl"
+  ],
+  "dc_interval_directory_files": [
+   "HALT_RECORD.json",
+   "RESUME_AUTHORIZATION.json",
+   "resume_driver.log",
+   "run0_outer.jsonl",
+   "run1_outer.jsonl",
+   "run2_outer.jsonl",
+   "run3_outer.jsonl",
+   "run4_outer.jsonl"
+  ],
+  "dc_interval_no_new_files": true,
+  "work_order_start_utc": "2026-11-04T16:24:03.655430+00:00",
+  "files_outside_final_project_modified_since_start": [],
+  "no_outside_modification": true,
+  "results_on_verified_checkpoints": true,
+  "independent_check": "166/166",
+  "independent_check_all_ok": true,
+  "deliverables_missing": [],
+  "docs_no_placeholders": true,
+  "docs_labelled_provisional": true,
+  "pytest_final_project_log": "40 passed in 0.67s",
+  "pytest_no_failures": true,
+  "project_regression_log": "======================= 526 passed, 1 warning in 41.34s ========================"
+ },
+ "all_ok": true,
+ "failed": []
+}

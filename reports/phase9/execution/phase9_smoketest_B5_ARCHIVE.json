@@ -1,0 +1,58 @@
+{
+  "label": "SMOKE TEST ONLY -- NOT AN AUTHORISED RESULT",
+  "purpose": "validate the execution pipeline end-to-end before the B=500 run",
+  "B": 5,
+  "seeds": [
+    20261102,
+    20261103,
+    20261104,
+    20261105,
+    20261106
+  ],
+  "runtime_seconds": 54.3,
+  "executed_utc": "2026-11-03T02:35:49.658587+00:00",
+  "original_file_status": "OVERWRITTEN by the B=500 run at the same path; these values are recovered from the smoke run's console output",
+  "apparent": {
+    "M1": {
+      "C": 0.6242,
+      "slope": 1.0,
+      "df": 6,
+      "lambda": 0
+    },
+    "M2_primary": {
+      "C": 0.6382,
+      "slope": 1.083,
+      "df": 10,
+      "lambda": 0.3511
+    },
+    "M2_sensitivity": {
+      "C": 0.6413,
+      "slope": 1.075,
+      "df": 11,
+      "lambda": 0.152
+    }
+  },
+  "corrected_C_mean": {
+    "M1": 0.5941,
+    "M2_primary": 0.6,
+    "M2_sensitivity": 0.6029
+  },
+  "MC3": {
+    "M1": {
+      "mc_se": 0.00738,
+      "ratio": 1.081,
+      "pass": false
+    },
+    "M2_primary": {
+      "mc_se": 0.01024,
+      "ratio": 1.327,
+      "pass": false
+    },
+    "M2_sensitivity": {
+      "mc_se": 0.00864,
+      "ratio": 1.149,
+      "pass": false
+    }
+  },
+  "note": "MC-3 FAILED at B=5 for all three models, as expected from 5 replicates. Superseded entirely by the B=500 run. Must never be cited as a result."
+}

@@ -1,0 +1,20 @@
+{
+ "all_ok": true,
+ "failed": [],
+ "driver_check_frozen": true,
+ "files_17_unchanged": true,
+ "checkpoints_5_unchanged": true,
+ "h5_evidence_unchanged": true,
+ "dc_interval_no_new_files": true,
+ "no_outside_modification": true,
+ "results_on_verified_checkpoints": true,
+ "independent_check_all_ok": true,
+ "docs_no_placeholders": true,
+ "docs_labelled_provisional": true,
+ "pytest_no_failures": true,
+ "touched": [],
+ "missing": [],
+ "independent_check": "166/166",
+ "pytest": "40 passed in 0.67s",
+ "regression": "======================= 526 passed, 1 warning in 41.34s ========================"
+}

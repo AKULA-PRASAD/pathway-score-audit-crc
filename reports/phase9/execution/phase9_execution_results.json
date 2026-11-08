@@ -1,0 +1,1019 @@
+{
+  "phase": "9",
+  "stage": "EXECUTION",
+  "protocol_version": "3.1",
+  "executed_utc": "2026-11-03T03:50:56.619217+00:00",
+  "runtime_seconds": 4494.5,
+  "authorised_analyses": [
+    "M1",
+    "M2_primary",
+    "M2_sensitivity"
+  ],
+  "M3_fitted": false,
+  "endpoint": {
+    "event_col": "rfs_event_full",
+    "time_col": "rfs_time_full",
+    "basis": "Register A-07 cause-specific recurrence, full follow-up"
+  },
+  "population": {
+    "n": 452,
+    "events": 136,
+    "censored": 316
+  },
+  "B": 500,
+  "seeds": [
+    20261102,
+    20261103,
+    20261104,
+    20261105,
+    20261106
+  ],
+  "lambda_grid": [
+    0.001,
+    0.0023101297000831605,
+    0.005336699231206312,
+    0.012328467394420659,
+    0.02848035868435802,
+    0.06579332246575682,
+    0.1519911082952933,
+    0.3511191734215131,
+    0.8111308307896873,
+    1.873817422860385,
+    4.328761281083062,
+    10.0
+  ],
+  "apparent": {
+    "M1": {
+      "C": 0.6242431994542509,
+      "calibration_slope": 0.9999997367605027,
+      "n_parameters_df": 6,
+      "lambda": 0.0,
+      "age_knots": [
+        49.0,
+        68.5,
+        82.90000000000003
+      ],
+      "age_linear_fallback": false,
+      "coefficients": {
+        "age_rcs1": 0.004767047596183933,
+        "age_rcs2": 0.01004567987028112,
+        "sex=Male": 0.32121060304818305,
+        "tnm.stage=3.0": 0.676071462304461,
+        "tumor.location=proximal": -0.21799414730939695,
+        "chemotherapy.adjuvant=Y": 0.1551659714710096
+      },
+      "se": {
+        "age_rcs1": 0.014000380930863787,
+        "age_rcs2": 0.01477023704849246,
+        "sex=Male": 0.18003334939148163,
+        "tnm.stage=3.0": 0.21250961763413376,
+        "tumor.location=proximal": 0.18535722301868113,
+        "chemotherapy.adjuvant=Y": 0.2185497048438292
+      },
+      "hazard_ratios": {
+        "age_rcs1": 1.0047784280441023,
+        "age_rcs2": 1.0100963070986049,
+        "sex=Male": 1.3787959289440466,
+        "tnm.stage=3.0": 1.9661384910569077,
+        "tumor.location=proximal": 0.8041301479777481,
+        "chemotherapy.adjuvant=Y": 1.1678517750979176
+      },
+      "hr_ci_lower": {
+        "age_rcs1": 0.97758191042885,
+        "age_rcs2": 0.9812740969479292,
+        "sex=Male": 0.9688472872822278,
+        "tnm.stage=3.0": 1.2963599069711669,
+        "tumor.location=proximal": 0.5591778893124614,
+        "chemotherapy.adjuvant=Y": 0.7609530799107032
+      },
+      "hr_ci_upper": {
+        "age_rcs1": 1.0327315580337306,
+        "age_rcs2": 1.0397650898843407,
+        "sex=Male": 1.9622062616343858,
+        "tnm.stage=3.0": 2.9819655369066536,
+        "tumor.location=proximal": 1.1563856641073107,
+        "chemotherapy.adjuvant=Y": 1.792328337457293
+      },
+      "log_likelihood": -777.6396108150823,
+      "score_diag": null,
+      "coverage": null
+    },
+    "M2_primary": {
+      "C": 0.6382067024814531,
+      "calibration_slope": 1.0833020994705223,
+      "n_parameters_df": 10,
+      "lambda": 0.3511191734215131,
+      "age_knots": [
+        49.0,
+        68.5,
+        82.90000000000003
+      ],
+      "age_linear_fallback": false,
+      "coefficients": {
+        "age_rcs1": 0.003825588487429264,
+        "age_rcs2": 0.011612915011392815,
+        "sex=Male": 0.3033712752382632,
+        "tnm.stage=3.0": 0.6620801999802177,
+        "tumor.location=proximal": -0.2290501662296021,
+        "chemotherapy.adjuvant=Y": 0.13652288871085044,
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": 0.06724532272955863,
+        "HALLMARK_E2F_TARGETS": -0.09908178371892654,
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": 0.015413741781836734,
+        "HALLMARK_P53_PATHWAY": -0.004741809071200648
+      },
+      "se": {
+        "age_rcs1": 0.013955013393251557,
+        "age_rcs2": 0.014746676573207723,
+        "sex=Male": 0.18060587276073128,
+        "tnm.stage=3.0": 0.21306101677670586,
+        "tumor.location=proximal": 0.1885939652188405,
+        "chemotherapy.adjuvant=Y": 0.21962029477420802,
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": 0.059691930517792084,
+        "HALLMARK_E2F_TARGETS": 0.058785554656397926,
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": 0.05804437688415543,
+        "HALLMARK_P53_PATHWAY": 0.06177454675550386
+      },
+      "hazard_ratios": {
+        "age_rcs1": 1.0038329153913272,
+        "age_rcs2": 1.0116806066877089,
+        "sex=Male": 1.3544172326845862,
+        "tnm.stage=3.0": 1.9388212784295753,
+        "tumor.location=proximal": 0.7952886358720384,
+        "chemotherapy.adjuvant=Y": 1.1462811143724854,
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": 1.0695578328394761,
+        "HALLMARK_E2F_TARGETS": 0.905668636045478,
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": 1.015533146200498,
+        "HALLMARK_P53_PATHWAY": 0.995269415556744
+      },
+      "hr_ci_lower": {
+        "age_rcs1": 0.9767488375508246,
+        "age_rcs2": 0.9828585750248415,
+        "sex=Male": 0.9506496074361491,
+        "tnm.stage=3.0": 1.2769676968265902,
+        "tumor.location=proximal": 0.5495323991335004,
+        "chemotherapy.adjuvant=Y": 0.7453324046892659,
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": 0.951468487786623,
+        "HALLMARK_E2F_TARGETS": 0.8071067385021017,
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": 0.9063305931307248,
+        "HALLMARK_P53_PATHWAY": 0.8817755834592022
+      },
+      "hr_ci_upper": {
+        "age_rcs1": 1.031668002339053,
+        "age_rcs2": 1.0413478357475203,
+        "sex=Male": 1.9296763243192987,
+        "tnm.stage=3.0": 2.943714205952825,
+        "tumor.location=proximal": 1.1509494532888414,
+        "chemotherapy.adjuvant=Y": 1.762918645291997,
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": 1.2023035680870817,
+        "HALLMARK_E2F_TARGETS": 1.0162666710461872,
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": 1.1378933678818577,
+        "HALLMARK_P53_PATHWAY": 1.123371102720598
+      },
+      "log_likelihood": -775.2708781900511,
+      "score_diag": {
+        "n_dropped": 0,
+        "dropped": []
+      },
+      "coverage": {
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": {
+          "n_source": 200,
+          "n_resolved_in_panel": 198,
+          "n_present_in_matrix": 198,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.99,
+          "n_zero_variance_dropped": 0,
+          "n_genes_used": 198,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_E2F_TARGETS": {
+          "n_source": 200,
+          "n_resolved_in_panel": 195,
+          "n_present_in_matrix": 195,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.975,
+          "n_zero_variance_dropped": 0,
+          "n_genes_used": 195,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": {
+          "n_source": 42,
+          "n_resolved_in_panel": 41,
+          "n_present_in_matrix": 41,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.97619,
+          "n_zero_variance_dropped": 0,
+          "n_genes_used": 41,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_P53_PATHWAY": {
+          "n_source": 200,
+          "n_resolved_in_panel": 194,
+          "n_present_in_matrix": 194,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.97,
+          "n_zero_variance_dropped": 0,
+          "n_genes_used": 194,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        }
+      }
+    },
+    "M2_sensitivity": {
+      "C": 0.6413191779653791,
+      "calibration_slope": 1.0749234444133187,
+      "n_parameters_df": 11,
+      "lambda": 0.1519911082952933,
+      "age_knots": [
+        49.0,
+        68.5,
+        82.90000000000003
+      ],
+      "age_linear_fallback": false,
+      "coefficients": {
+        "age_rcs1": 0.0034562666129281014,
+        "age_rcs2": 0.012376155709285032,
+        "sex=Male": 0.29874016840813133,
+        "tnm.stage=3.0": 0.654690547478789,
+        "tumor.location=proximal": -0.2339746426047894,
+        "chemotherapy.adjuvant=Y": 0.13866868774240612,
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": 0.08989827006180089,
+        "HALLMARK_E2F_TARGETS": -0.148517597688997,
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": 0.024348506967246338,
+        "HALLMARK_P53_PATHWAY": -0.02200898257292158,
+        "HALLMARK_PI3K_AKT_MTOR_SIGNALING": 0.041731064730944595
+      },
+      "se": {
+        "age_rcs1": 0.01388955144647134,
+        "age_rcs2": 0.014713816257334788,
+        "sex=Male": 0.18092260024430942,
+        "tnm.stage=3.0": 0.21313928452079092,
+        "tumor.location=proximal": 0.18992783150930714,
+        "chemotherapy.adjuvant=Y": 0.2204827855640374,
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": 0.07307103060646337,
+        "HALLMARK_E2F_TARGETS": 0.07372799361703147,
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": 0.06969529701146585,
+        "HALLMARK_P53_PATHWAY": 0.08278444189065766,
+        "HALLMARK_PI3K_AKT_MTOR_SIGNALING": 0.0804089395389596
+      },
+      "hazard_ratios": {
+        "age_rcs1": 1.0034622463896274,
+        "age_rcs2": 1.012453057245354,
+        "sex=Male": 1.3481592835874496,
+        "tnm.stage=3.0": 1.924546869337817,
+        "tumor.location=proximal": 0.7913818830243281,
+        "chemotherapy.adjuvant=Y": 1.148743444165232,
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": 1.094062979084552,
+        "HALLMARK_E2F_TARGETS": 0.8619848380959279,
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": 1.0246473524137851,
+        "HALLMARK_P53_PATHWAY": 0.9782314479764292,
+        "HALLMARK_PI3K_AKT_MTOR_SIGNALING": 1.0426140453544297
+      },
+      "hr_ci_lower": {
+        "age_rcs1": 0.9765134510694503,
+        "age_rcs2": 0.9836723704518207,
+        "sex=Male": 0.9456699961580842,
+        "tnm.stage=3.0": 1.267371697018214,
+        "tumor.location=proximal": 0.54540515762448,
+        "chemotherapy.adjuvant=Y": 0.7456718676993228,
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": 0.9480781738687039,
+        "HALLMARK_E2F_TARGETS": 0.7460058702580048,
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": 0.893819196720333,
+        "HALLMARK_P53_PATHWAY": 0.8317166116672717,
+        "HALLMARK_PI3K_AKT_MTOR_SIGNALING": 0.8905931649331186
+      },
+      "hr_ci_upper": {
+        "age_rcs1": 1.0311547463340607,
+        "age_rcs2": 1.042075821093392,
+        "sex=Male": 1.921953177437169,
+        "tnm.stage=3.0": 2.9224896381955117,
+        "tumor.location=proximal": 1.1482936602706981,
+        "chemotherapy.adjuvant=Y": 1.7696946306746093,
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": 1.2625264827256004,
+        "HALLMARK_E2F_TARGETS": 0.9959946573212507,
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": 1.1746248018178147,
+        "HALLMARK_P53_PATHWAY": 1.1505562740796669,
+        "HALLMARK_PI3K_AKT_MTOR_SIGNALING": 1.220584314333878
+      },
+      "log_likelihood": -774.2320013031615,
+      "score_diag": {
+        "n_dropped": 0,
+        "dropped": []
+      },
+      "coverage": {
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": {
+          "n_source": 200,
+          "n_resolved_in_panel": 198,
+          "n_present_in_matrix": 198,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.99,
+          "n_zero_variance_dropped": 0,
+          "n_genes_used": 198,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_E2F_TARGETS": {
+          "n_source": 200,
+          "n_resolved_in_panel": 195,
+          "n_present_in_matrix": 195,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.975,
+          "n_zero_variance_dropped": 0,
+          "n_genes_used": 195,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": {
+          "n_source": 42,
+          "n_resolved_in_panel": 41,
+          "n_present_in_matrix": 41,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.97619,
+          "n_zero_variance_dropped": 0,
+          "n_genes_used": 41,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_P53_PATHWAY": {
+          "n_source": 200,
+          "n_resolved_in_panel": 194,
+          "n_present_in_matrix": 194,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.97,
+          "n_zero_variance_dropped": 0,
+          "n_genes_used": 194,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_PI3K_AKT_MTOR_SIGNALING": {
+          "n_source": 105,
+          "n_resolved_in_panel": 104,
+          "n_present_in_matrix": 104,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.990476,
+          "n_zero_variance_dropped": 0,
+          "n_genes_used": 104,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        }
+      }
+    }
+  },
+  "monte_carlo": {
+    "M1": {
+      "corrected_C_mean": 0.6016131687304218,
+      "monte_carlo_SE": 0.0005847286327560491,
+      "sampling_SE_approx": 0.009443419859629711,
+      "MC3_ratio": 0.061919160796370346,
+      "MC3_pass": true,
+      "per_seed": [
+        {
+          "seed": 20261102,
+          "B_effective": 500,
+          "mean_optimism_C": 0.022936331182153324,
+          "corrected_C": 0.6013068682720976,
+          "mean_optimism_slope": 0.16783498806715091,
+          "corrected_slope": 0.8321647486933518,
+          "orig_C_p2.5": 0.584018717489554,
+          "orig_C_p97.5": 0.6246951479491771
+        },
+        {
+          "seed": 20261103,
+          "B_effective": 500,
+          "mean_optimism_C": 0.022563705627959632,
+          "corrected_C": 0.6016794938262913,
+          "mean_optimism_slope": 0.16794266573174332,
+          "corrected_slope": 0.8320570710287594,
+          "orig_C_p2.5": 0.592559904493903,
+          "orig_C_p97.5": 0.6241904365993007
+        },
+        {
+          "seed": 20261104,
+          "B_effective": 500,
+          "mean_optimism_C": 0.02246842888995747,
+          "corrected_C": 0.6017747705642934,
+          "mean_optimism_slope": 0.16915889361730485,
+          "corrected_slope": 0.8308408431431978,
+          "orig_C_p2.5": 0.5883052997356528,
+          "orig_C_p97.5": 0.6248475739745886
+        },
+        {
+          "seed": 20261105,
+          "B_effective": 500,
+          "mean_optimism_C": 0.02337831616509305,
+          "corrected_C": 0.6008648832891579,
+          "mean_optimism_slope": 0.17404522001626033,
+          "corrected_slope": 0.8259545167442424,
+          "orig_C_p2.5": 0.5862752622154004,
+          "orig_C_p97.5": 0.6238290909866121
+        },
+        {
+          "seed": 20261106,
+          "B_effective": 500,
+          "mean_optimism_C": 0.0218033717539817,
+          "corrected_C": 0.6024398277002692,
+          "mean_optimism_slope": 0.15745188355444112,
+          "corrected_slope": 0.8425478532060615,
+          "orig_C_p2.5": 0.5854944785537648,
+          "orig_C_p97.5": 0.6241824422273387
+        }
+      ],
+      "running_trace_MC1": {
+        "20261102": [
+          0.6053753270389963,
+          0.6012324061852958,
+          0.6011769249848447,
+          0.60097621719126,
+          0.6010297848384986,
+          0.6013068682720976
+        ],
+        "20261103": [
+          0.6052809064750265,
+          0.6046731847950296,
+          0.602302491641169,
+          0.6022382261381127,
+          0.602546533081629,
+          0.6016794938262913
+        ],
+        "20261104": [
+          0.5976346498130773,
+          0.6003435699732181,
+          0.6003883989479062,
+          0.601975800457867,
+          0.601506977163173,
+          0.6017747705642934
+        ],
+        "20261105": [
+          0.6028292381671864,
+          0.6022813293548516,
+          0.6009308323043299,
+          0.6001249649879554,
+          0.6011978259351181,
+          0.6008648832891579
+        ],
+        "20261106": [
+          0.6019715891865425,
+          0.5993821189237832,
+          0.5998233037843089,
+          0.6012111452757215,
+          0.6020130225843802,
+          0.6024398277002692
+        ]
+      }
+    },
+    "M2_primary": {
+      "corrected_C_mean": 0.6059295115344525,
+      "monte_carlo_SE": 0.0004651002588601096,
+      "sampling_SE_approx": 0.010148501713297255,
+      "MC3_ratio": 0.04582945069129798,
+      "MC3_pass": true,
+      "per_seed": [
+        {
+          "seed": 20261102,
+          "B_effective": 500,
+          "mean_optimism_C": 0.03205801316020525,
+          "corrected_C": 0.6061486893212478,
+          "mean_optimism_slope": 0.2156374371890098,
+          "corrected_slope": 0.8676646622815125,
+          "orig_C_p2.5": 0.5973064296068901,
+          "orig_C_p97.5": 0.6392971348170888
+        },
+        {
+          "seed": 20261103,
+          "B_effective": 500,
+          "mean_optimism_C": 0.032712053990490264,
+          "corrected_C": 0.6054946484909628,
+          "mean_optimism_slope": 0.22474631186023772,
+          "corrected_slope": 0.8585557876102845,
+          "orig_C_p2.5": 0.6012700392257184,
+          "orig_C_p97.5": 0.6390221284215912
+        },
+        {
+          "seed": 20261104,
+          "B_effective": 500,
+          "mean_optimism_C": 0.03233035585072709,
+          "corrected_C": 0.605876346630726,
+          "mean_optimism_slope": 0.22547230528778886,
+          "corrected_slope": 0.8578297941827334,
+          "orig_C_p2.5": 0.6004551462437111,
+          "orig_C_p97.5": 0.6398279611153748
+        },
+        {
+          "seed": 20261105,
+          "B_effective": 500,
+          "mean_optimism_C": 0.03268551881380269,
+          "corrected_C": 0.6055211836676504,
+          "mean_optimism_slope": 0.22857002501111973,
+          "corrected_slope": 0.8547320744594025,
+          "orig_C_p2.5": 0.6000527628549501,
+          "orig_C_p97.5": 0.6389672337341178
+        },
+        {
+          "seed": 20261106,
+          "B_effective": 500,
+          "mean_optimism_C": 0.03160001291977731,
+          "corrected_C": 0.6066066895616757,
+          "mean_optimism_slope": 0.21218693195845897,
+          "corrected_slope": 0.8711151675120633,
+          "orig_C_p2.5": 0.598499722861772,
+          "orig_C_p97.5": 0.639380276285495
+        }
+      ],
+      "running_trace_MC1": {
+        "20261102": [
+          0.6114978136383427,
+          0.607445847558093,
+          0.6071104487816608,
+          0.6062954049171925,
+          0.6063679473333029,
+          0.6061486893212478
+        ],
+        "20261103": [
+          0.6065845190335447,
+          0.6056983057834905,
+          0.6048869141510643,
+          0.6060607105942639,
+          0.6064194266119171,
+          0.6054946484909628
+        ],
+        "20261104": [
+          0.6020023158143741,
+          0.603729444256817,
+          0.6042965183168487,
+          0.6061006585778057,
+          0.6055714683648359,
+          0.605876346630726
+        ],
+        "20261105": [
+          0.6059027867084762,
+          0.6053462039533399,
+          0.6048945293978768,
+          0.6045301451688753,
+          0.6053007873954923,
+          0.6055211836676504
+        ],
+        "20261106": [
+          0.6057487720792987,
+          0.6042372448029515,
+          0.6037486772170368,
+          0.6055861322384869,
+          0.6059196583728377,
+          0.6066066895616757
+        ]
+      }
+    },
+    "M2_sensitivity": {
+      "corrected_C_mean": 0.6066388626645877,
+      "monte_carlo_SE": 0.0004061554982454661,
+      "sampling_SE_approx": 0.010419358649062068,
+      "MC3_ratio": 0.038980853997383755,
+      "MC3_pass": true,
+      "per_seed": [
+        {
+          "seed": 20261102,
+          "B_effective": 500,
+          "mean_optimism_C": 0.03431048186857517,
+          "corrected_C": 0.6070086960968039,
+          "mean_optimism_slope": 0.23209125412778106,
+          "corrected_slope": 0.8428321902855376,
+          "orig_C_p2.5": 0.5967910590943974,
+          "orig_C_p97.5": 0.641632024388164
+        },
+        {
+          "seed": 20261103,
+          "B_effective": 500,
+          "mean_optimism_C": 0.035130455170508654,
+          "corrected_C": 0.6061887227948705,
+          "mean_optimism_slope": 0.24066371162004072,
+          "corrected_slope": 0.8342597327932779,
+          "orig_C_p2.5": 0.6030527841732753,
+          "orig_C_p97.5": 0.6412035260509934
+        },
+        {
+          "seed": 20261104,
+          "B_effective": 500,
+          "mean_optimism_C": 0.035032357439731654,
+          "corrected_C": 0.6062868205256474,
+          "mean_optimism_slope": 0.24382833438558302,
+          "corrected_slope": 0.8310951100277356,
+          "orig_C_p2.5": 0.6004924533128677,
+          "orig_C_p97.5": 0.6409151957022257
+        },
+        {
+          "seed": 20261105,
+          "B_effective": 500,
+          "mean_optimism_C": 0.034691132390998414,
+          "corrected_C": 0.6066280455743807,
+          "mean_optimism_slope": 0.24378799488818265,
+          "corrected_slope": 0.831135449525136,
+          "orig_C_p2.5": 0.6008975014922827,
+          "orig_C_p97.5": 0.6410948025923083
+        },
+        {
+          "seed": 20261106,
+          "B_effective": 500,
+          "mean_optimism_C": 0.03423714963414285,
+          "corrected_C": 0.6070820283312363,
+          "mean_optimism_slope": 0.23224034738054256,
+          "corrected_slope": 0.8426830970327761,
+          "orig_C_p2.5": 0.600650741877718,
+          "orig_C_p97.5": 0.6412584207384668
+        }
+      ],
+      "running_trace_MC1": {
+        "20261102": [
+          0.6132146686131574,
+          0.6089435888470649,
+          0.6080222940879279,
+          0.6072740438585336,
+          0.607231339000115,
+          0.6070086960968039
+        ],
+        "20261103": [
+          0.6078519642438658,
+          0.6069445516750068,
+          0.605602845577006,
+          0.6067809385166021,
+          0.6070652372102211,
+          0.6061887227948705
+        ],
+        "20261104": [
+          0.6012733400804579,
+          0.60304006150713,
+          0.6043601776193983,
+          0.6063477863217271,
+          0.6058536327855585,
+          0.6062868205256474
+        ],
+        "20261105": [
+          0.6081598943001335,
+          0.6062809365899955,
+          0.6060916421110613,
+          0.605759241218208,
+          0.606417049999849,
+          0.6066280455743807
+        ],
+        "20261106": [
+          0.6073978649313984,
+          0.6045592810919912,
+          0.6039322823018642,
+          0.6060305835050636,
+          0.6064695952147308,
+          0.6070820283312363
+        ]
+      }
+    }
+  },
+  "delta_C": [
+    {
+      "seed": 20261102,
+      "dC_orig_mean": 0.012096358830050308,
+      "dC_orig_p2.5": 0.00013377249083310365,
+      "dC_orig_p97.5": 0.023238040419544668
+    },
+    {
+      "seed": 20261103,
+      "dC_orig_mean": 0.012098959665728668,
+      "dC_orig_p2.5": 0.00030751684147695976,
+      "dC_orig_p97.5": 0.023674533128677414
+    },
+    {
+      "seed": 20261104,
+      "dC_orig_mean": 0.012112646030527837,
+      "dC_orig_p2.5": 0.00020998550353887053,
+      "dC_orig_p97.5": 0.024244265370512493
+    },
+    {
+      "seed": 20261105,
+      "dC_orig_mean": 0.011925812228191354,
+      "dC_orig_p2.5": 0.00038266393792099347,
+      "dC_orig_p97.5": 0.02420056280378613
+    },
+    {
+      "seed": 20261106,
+      "dC_orig_mean": 0.012198175151360107,
+      "dC_orig_p2.5": 0.00019186492709133418,
+      "dC_orig_p97.5": 0.024881683294960297
+    }
+  ],
+  "non_estimable_replicates": {
+    "records": [],
+    "n_total_replicates_per_model": 2500,
+    "rate": {
+      "M1": 0.0,
+      "M2_primary": 0.0,
+      "M2_sensitivity": 0.0
+    },
+    "threshold": 0.05,
+    "any_model_unreliable": false,
+    "redrawn": false
+  },
+  "batch_sensitivity": {
+    "strata": "combat_batch, nine individual strata, NO pooling",
+    "stratified_fit": {
+      "converged": true,
+      "coefficients": {
+        "age_rcs1": -0.0012351940472086081,
+        "age_rcs2": 0.02433126797548515,
+        "sex=Male": 0.36332473338414645,
+        "tnm.stage=3.0": 0.5200292116993694,
+        "tumor.location=proximal": -0.13116182290607775,
+        "chemotherapy.adjuvant=Y": 0.028969652722402088,
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": 0.07016283642858588,
+        "HALLMARK_E2F_TARGETS": -0.09192030244463222,
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": 0.004068774441645624,
+        "HALLMARK_P53_PATHWAY": 0.021837923255118318
+      },
+      "se": {
+        "age_rcs1": 0.015203225431187612,
+        "age_rcs2": 0.01607154350195769,
+        "sex=Male": 0.1854017453787428,
+        "tnm.stage=3.0": 0.23219891050826133,
+        "tumor.location=proximal": 0.19339673602613014,
+        "chemotherapy.adjuvant=Y": 0.24204970047031368,
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": 0.06075172244389845,
+        "HALLMARK_E2F_TARGETS": 0.059732920567312046,
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": 0.058954605892062834,
+        "HALLMARK_P53_PATHWAY": 0.06244023610569187
+      },
+      "covariance_min_eigenvalue": 2.800716693388724e-05,
+      "covariance_positive_definite": true,
+      "max_abs_beta": 0.5200292116993694,
+      "max_se": 0.24204970047031368,
+      "separation_sentinel_tripped": false
+    },
+    "leave_one_batch_out": [
+      {
+        "omitted_batch": "batch01",
+        "n_omitted": 33,
+        "n_fit": 419,
+        "events_fit": 128,
+        "C_apparent": 0.6437228167912818,
+        "coefficients": {
+          "age_rcs1": 0.0032445059737677287,
+          "age_rcs2": 0.011092900305388726,
+          "sex=Male": 0.3723304174219024,
+          "tnm.stage=3.0": 0.8261435679913343,
+          "tumor.location=proximal": -0.270867675487033,
+          "chemotherapy.adjuvant=Y": -0.02157966712446917,
+          "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": 0.04759413444431082,
+          "HALLMARK_E2F_TARGETS": -0.06852277133337967,
+          "HALLMARK_WNT_BETA_CATENIN_SIGNALING": 0.014526313213373034,
+          "HALLMARK_P53_PATHWAY": -9.021759527505656e-05
+        }
+      },
+      {
+        "omitted_batch": "batch02",
+        "n_omitted": 14,
+        "n_fit": 438,
+        "events_fit": 130,
+        "C_apparent": 0.6509047377871909,
+        "coefficients": {
+          "age_rcs1": 0.00422915483434135,
+          "age_rcs2": 0.01261244544707567,
+          "sex=Male": 0.2689341239508894,
+          "tnm.stage=3.0": 0.6425755134641336,
+          "tumor.location=proximal": -0.16509992720528247,
+          "chemotherapy.adjuvant=Y": 0.12215060618548515,
+          "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": 0.0941058559984458,
+          "HALLMARK_E2F_TARGETS": -0.2488480761845125,
+          "HALLMARK_WNT_BETA_CATENIN_SIGNALING": 0.06691310434441157,
+          "HALLMARK_P53_PATHWAY": -0.01798295079769261
+        }
+      },
+      {
+        "omitted_batch": "batch03",
+        "n_omitted": 102,
+        "n_fit": 350,
+        "events_fit": 112,
+        "C_apparent": 0.6143001686340641,
+        "coefficients": {
+          "age_rcs1": -0.009177496038462121,
+          "age_rcs2": 0.025511092683384976,
+          "sex=Male": 0.31496017080551963,
+          "tnm.stage=3.0": 0.4976218591827223,
+          "tumor.location=proximal": -0.22153500627181705,
+          "chemotherapy.adjuvant=Y": -0.10457545642693025,
+          "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": 0.20366159088335636,
+          "HALLMARK_E2F_TARGETS": -0.11158393929547834,
+          "HALLMARK_WNT_BETA_CATENIN_SIGNALING": 0.05936642149040585,
+          "HALLMARK_P53_PATHWAY": -0.11327404180306605
+        }
+      },
+      {
+        "omitted_batch": "batch04",
+        "n_omitted": 103,
+        "n_fit": 349,
+        "events_fit": 84,
+        "C_apparent": 0.6592071037761235,
+        "coefficients": {
+          "age_rcs1": 0.005133444003174342,
+          "age_rcs2": 0.00399800930233015,
+          "sex=Male": 0.3162310525135277,
+          "tnm.stage=3.0": 0.8203438476696133,
+          "tumor.location=proximal": -0.1053661949890397,
+          "chemotherapy.adjuvant=Y": 0.3887474716213945,
+          "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": 0.015317688732581833,
+          "HALLMARK_E2F_TARGETS": -0.01922789634778418,
+          "HALLMARK_WNT_BETA_CATENIN_SIGNALING": 0.004956873732995267,
+          "HALLMARK_P53_PATHWAY": 0.013898406012569819
+        }
+      },
+      {
+        "omitted_batch": "batch05",
+        "n_omitted": 48,
+        "n_fit": 404,
+        "events_fit": 130,
+        "C_apparent": 0.6283616179973966,
+        "coefficients": {
+          "age_rcs1": 0.001750743738916301,
+          "age_rcs2": 0.01039990193007354,
+          "sex=Male": 0.2756309273062435,
+          "tnm.stage=3.0": 0.6320234795582416,
+          "tumor.location=proximal": -0.19184264088942815,
+          "chemotherapy.adjuvant=Y": 0.12660465987345718,
+          "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": 0.06026525974899744,
+          "HALLMARK_E2F_TARGETS": -0.0939465646861038,
+          "HALLMARK_WNT_BETA_CATENIN_SIGNALING": 0.0010349713023106578,
+          "HALLMARK_P53_PATHWAY": -0.0165270266387377
+        }
+      },
+      {
+        "omitted_batch": "batch07",
+        "n_omitted": 81,
+        "n_fit": 371,
+        "events_fit": 123,
+        "C_apparent": 0.638823699840649,
+        "coefficients": {
+          "age_rcs1": 0.011216902309973681,
+          "age_rcs2": 0.008087601677562279,
+          "sex=Male": 0.2702706122216085,
+          "tnm.stage=3.0": 0.5616974109772613,
+          "tumor.location=proximal": -0.17279435378676344,
+          "chemotherapy.adjuvant=Y": 0.15507179499829699,
+          "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": 0.1012929313133727,
+          "HALLMARK_E2F_TARGETS": -0.15116903283313604,
+          "HALLMARK_WNT_BETA_CATENIN_SIGNALING": 0.005667956721699486,
+          "HALLMARK_P53_PATHWAY": -0.005743081321989744
+        }
+      },
+      {
+        "omitted_batch": "batch08",
+        "n_omitted": 41,
+        "n_fit": 411,
+        "events_fit": 120,
+        "C_apparent": 0.6437917152240703,
+        "coefficients": {
+          "age_rcs1": 0.0037513655158822714,
+          "age_rcs2": 0.014803542588360582,
+          "sex=Male": 0.2899083509207299,
+          "tnm.stage=3.0": 0.7044912860642498,
+          "tumor.location=proximal": -0.3138766699785208,
+          "chemotherapy.adjuvant=Y": 0.17721227801701994,
+          "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": 0.023400604097386007,
+          "HALLMARK_E2F_TARGETS": -0.030380801987068735,
+          "HALLMARK_WNT_BETA_CATENIN_SIGNALING": 0.009955190264688175,
+          "HALLMARK_P53_PATHWAY": 0.0032144776015751273
+        }
+      },
+      {
+        "omitted_batch": "batch09",
+        "n_omitted": 15,
+        "n_fit": 437,
+        "events_fit": 132,
+        "C_apparent": 0.6332078055460458,
+        "coefficients": {
+          "age_rcs1": 0.004595191121222931,
+          "age_rcs2": 0.010437032920396296,
+          "sex=Male": 0.29074787513901,
+          "tnm.stage=3.0": 0.6229272270662692,
+          "tumor.location=proximal": -0.25861041511821686,
+          "chemotherapy.adjuvant=Y": 0.12610489140483716,
+          "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": 0.0601350413727345,
+          "HALLMARK_E2F_TARGETS": -0.10234965119477275,
+          "HALLMARK_WNT_BETA_CATENIN_SIGNALING": 0.013851719104654558,
+          "HALLMARK_P53_PATHWAY": -0.0070143565599995635
+        }
+      },
+      {
+        "omitted_batch": "batch10",
+        "n_omitted": 15,
+        "n_fit": 437,
+        "events_fit": 129,
+        "C_apparent": 0.6325689675241531,
+        "coefficients": {
+          "age_rcs1": 0.004370461583674227,
+          "age_rcs2": 0.010092100633763163,
+          "sex=Male": 0.284051545073437,
+          "tnm.stage=3.0": 0.6546541392860153,
+          "tumor.location=proximal": -0.2954402695119534,
+          "chemotherapy.adjuvant=Y": 0.26015508279845045,
+          "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": 0.008958466844247037,
+          "HALLMARK_E2F_TARGETS": -0.013929153819987567,
+          "HALLMARK_WNT_BETA_CATENIN_SIGNALING": -0.0022276486337533138,
+          "HALLMARK_P53_PATHWAY": -0.0018375013752513708
+        }
+      }
+    ],
+    "risk_set_comparisons": {
+      "N_unstratified": 47368,
+      "N_stratified": 7802,
+      "retention": 0.16471035298091538,
+      "per_stratum": {
+        "batch01": {
+          "events": 8,
+          "comparisons": 195,
+          "events_with_comparator": 7,
+          "n": 33
+        },
+        "batch02": {
+          "events": 6,
+          "comparisons": 62,
+          "events_with_comparator": 6,
+          "n": 14
+        },
+        "batch03": {
+          "events": 24,
+          "comparisons": 1923,
+          "events_with_comparator": 24,
+          "n": 102
+        },
+        "batch04": {
+          "events": 52,
+          "comparisons": 3983,
+          "events_with_comparator": 52,
+          "n": 103
+        },
+        "batch05": {
+          "events": 6,
+          "comparisons": 217,
+          "events_with_comparator": 6,
+          "n": 48
+        },
+        "batch07": {
+          "events": 13,
+          "comparisons": 796,
+          "events_with_comparator": 13,
+          "n": 81
+        },
+        "batch08": {
+          "events": 16,
+          "comparisons": 498,
+          "events_with_comparator": 16,
+          "n": 41
+        },
+        "batch10": {
+          "events": 7,
+          "comparisons": 78,
+          "events_with_comparator": 7,
+          "n": 15
+        },
+        "batch09": {
+          "events": 4,
+          "comparisons": 50,
+          "events_with_comparator": 4,
+          "n": 15
+        }
+      },
+      "interpretation": "descriptive only; counts COMPARISONS, not Fisher information; no threshold applied"
+    }
+  },
+  "prohibited_quantities_not_computed": [
+    "t-year / fixed-horizon absolute risk",
+    "CIF at named years",
+    "time-dependent AUC",
+    "Brier at a fixed horizon",
+    "fixed-horizon cloglog calibration"
+  ],
+  "input_hashes": {
+    "data/processed/analysis/expression_median_S0.parquet": "a1ca41807c53458489617e677f2bdb3f0a72b2c9a71d8ded59b4eeef60c73676",
+    "data/processed/analysis/covariates.csv": "47b2d9829a4fccecf30663d0b0063d54664e72c1a9011938698c6c93a9441403",
+    "data/processed/analysis/endpoint.csv": "802a68575a34a3b60a50bd2452b9b09b62c1c40b90f34f4f60bb66691b0e7e0d",
+    "data/processed/analysis/cohort_membership.csv": "bd3671f8df64c594d273a23abed80b83dd17742aee15bd83ac114211be5fcd01",
+    "data/processed/analysis/partition_and_batch.csv": "57a45bab8efb81f96e838b9348edb13d4a3fbf09f2ea13f69f2d0f52700c49ed",
+    "config/pathways/m2_panel_4set.json": "43ce15b2f0e06f7530ac91ca76ed0c67d487519d388ddc9069194b8a9a16713e",
+    "config/pathways/m2_panel_5set.json": "d792368a85b1f3c00d61433217a64e2ea60438a6ee562ba2eac9729f64afba37",
+    "config/pathways/M2_FREEZE_RECORD.json": "64a86fa8ed0d6a8a2329058bf56116d838ab21aa0d20f8910d080cb4557b849d",
+    "src/pathway_scoring.py": "38cac035c0b2d4505e9d756893aac88f4fd5330d1a0c67521e1ed31e62e788a2",
+    "src/score_standardisation.py": "41b5c091125e1b1120a7954f17af89b9d981455abc38643bc731f02fbf6ad2cf",
+    "src/phase9_execution.py": "571d0c233f367be66b32ba0675e9e7496acf918fc0f04d70b6c08fa203345966"
+  },
+  "environment": {
+    "captured_utc": "2026-11-03T03:50:56.684347+00:00",
+    "python_version": "3.13.13",
+    "python_executable": "/Users/kalki/coad_transportability/.venv/bin/python",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.5.4",
+      "pandas": "2.3.3",
+      "scipy": "1.18.1",
+      "sklearn": "1.9.1",
+      "lifelines": "0.30.3",
+      "pyarrow": "26.0.0",
+      "pytest": "9.2.0"
+    }
+  }
+}

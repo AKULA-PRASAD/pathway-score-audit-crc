@@ -1,0 +1,125 @@
+{
+ "stage": "post",
+ "captured_utc": "2026-11-04T16:19:00.305180+00:00",
+ "driver_check_frozen": "PASS",
+ "files_17": {
+  "docs/PHASE9_MODELING_PROTOCOL_DRAFT.md": {
+   "expected_16": "ab56708919f3746f",
+   "sha256": "ab56708919f3746fc0a9c5a7b976635c3e3d7d4dd273469ea3ad5931a51506b5",
+   "ok": true
+  },
+  "config/pathways/m2_panel_4set.json": {
+   "expected_16": "43ce15b2f0e06f75",
+   "sha256": "43ce15b2f0e06f7530ac91ca76ed0c67d487519d388ddc9069194b8a9a16713e",
+   "ok": true
+  },
+  "config/pathways/M2_FREEZE_RECORD.json": {
+   "expected_16": "64a86fa8ed0d6a8a",
+   "sha256": "64a86fa8ed0d6a8a2329058bf56116d838ab21aa0d20f8910d080cb4557b849d",
+   "ok": true
+  },
+  "config/analysis/A19_FREEZE_RECORD.json": {
+   "expected_16": "a77de7b37fe09eeb",
+   "sha256": "a77de7b37fe09eeb9d9958ca012648e63fb349c19614b0c2dc99591da2cf561f",
+   "ok": true
+  },
+  "src/pathway_scoring.py": {
+   "expected_16": "38cac035c0b2d450",
+   "sha256": "38cac035c0b2d4505e9d756893aac88f4fd5330d1a0c67521e1ed31e62e788a2",
+   "ok": true
+  },
+  "src/score_standardisation.py": {
+   "expected_16": "41b5c091125e1b11",
+   "sha256": "41b5c091125e1b1120a7954f17af89b9d981455abc38643bc731f02fbf6ad2cf",
+   "ok": true
+  },
+  "src/phase9_execution.py": {
+   "expected_16": "571d0c233f367be6",
+   "sha256": "571d0c233f367be66b32ba0675e9e7496acf918fc0f04d70b6c08fa203345966",
+   "ok": true
+  },
+  "data/processed/analysis/expression_median_S0.parquet": {
+   "expected_16": "a1ca41807c534584",
+   "sha256": "a1ca41807c53458489617e677f2bdb3f0a72b2c9a71d8ded59b4eeef60c73676",
+   "ok": true
+  },
+  "data/processed/analysis/covariates.csv": {
+   "expected_16": "47b2d9829a4fccec",
+   "sha256": "47b2d9829a4fccecf30663d0b0063d54664e72c1a9011938698c6c93a9441403",
+   "ok": true
+  },
+  "data/processed/analysis/endpoint.csv": {
+   "expected_16": "802a68575a34a3b6",
+   "sha256": "802a68575a34a3b60a50bd2452b9b09b62c1c40b90f34f4f60bb66691b0e7e0d",
+   "ok": true
+  },
+  "reports/phase9/execution/phase9_execution_results.json": {
+   "expected_16": "05d13b8b339fa7d4",
+   "sha256": "05d13b8b339fa7d4e60307a58e8af914cf9688963e35d3b5b63501c35f684ac3",
+   "ok": true
+  },
+  "reports/phase9/execution_s7/phase9_s7_results.json": {
+   "expected_16": "b9202305bb6416e1",
+   "sha256": "b9202305bb6416e1d1c468a7c05b297573e1910e17b61d04369b29f25c766c76",
+   "ok": true
+  },
+  "data/processed/analysis/cohort_membership.csv": {
+   "expected_16": "bd3671f8df64c594",
+   "sha256": "bd3671f8df64c594d273a23abed80b83dd17742aee15bd83ac114211be5fcd01",
+   "ok": true
+  },
+  "scripts/40_phase9_dc_interval.py": {
+   "expected_16": "4b1738a4d0ee0e39",
+   "sha256": "4b1738a4d0ee0e398b35b91be37ab6afdef06e429a662ae09a0c052be74594bd",
+   "ok": true
+  },
+  "docs/PHASE9_DELTAC_INTERVAL_PLAN.md": {
+   "expected_16": "d27c52a29930a338",
+   "sha256": "d27c52a29930a33802c3450b0fb12dd6322606735607dc92a1d78b253dc62732",
+   "ok": true
+  },
+  "reports/phase9/dc_interval/HALT_RECORD.json": {
+   "expected_16": "c1b404309bd63744",
+   "sha256": "c1b404309bd637441c5a956b5c3884f3a200b682bc0ff8c761285161b2ef983f",
+   "ok": true
+  },
+  "reports/phase9/dc_interval/RESUME_AUTHORIZATION.json": {
+   "expected_16": "0571c10e02e9059d",
+   "sha256": "0571c10e02e9059d3ccaeb658d3a7d85ad0d6633c72ac0778c7f846417d08094",
+   "ok": true
+  }
+ },
+ "checkpoints_5": {
+  "run0_outer.jsonl": {
+   "expected_16": "885bbd1bd891b570",
+   "sha256": "885bbd1bd891b57074fab142b48f3e3bfbb9522301c944f850dfd17aa2ae123f",
+   "records": 500,
+   "ok": true
+  },
+  "run1_outer.jsonl": {
+   "expected_16": "1bb27c56612a5f9d",
+   "sha256": "1bb27c56612a5f9d63b0a6d85f2b1c3e2cd3a04f5a5989c4b19fa306c4ea46a9",
+   "records": 500,
+   "ok": true
+  },
+  "run2_outer.jsonl": {
+   "expected_16": "0f12dce12bfce95e",
+   "sha256": "0f12dce12bfce95e3871632c032b175dd675b511b362b516f655d6e6ff63c502",
+   "records": 500,
+   "ok": true
+  },
+  "run3_outer.jsonl": {
+   "expected_16": "4115bd4cd014d345",
+   "sha256": "4115bd4cd014d3458922165d579728d13686a771488ffa0674e3c7826bb51dce",
+   "records": 500,
+   "ok": true
+  },
+  "run4_outer.jsonl": {
+   "expected_16": "2202d559b0418392",
+   "sha256": "2202d559b0418392a48865593d4de844edb5898f951a952dc0c628433daf77ca",
+   "records": 500,
+   "ok": true
+  }
+ },
+ "all_ok": true
+}

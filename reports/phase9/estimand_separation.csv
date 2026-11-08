@@ -1,0 +1,6 @@
+id,estimand,events,quantity,distinctness,authority
+PRIMARY,cause-specific recurrence hazard,136,cause-specific hazard ratio + discrimination,censors competing death; answers 'rate among those still at risk',A-07/A-09
+S-1,Fine-Gray subdistribution / CIF,46 competing,absolute recurrence probability in the presence of death,DIFFERENT estimand; coefficients are NOT comparable with the primary,A-08
+S-2,composite DFS (recurrence or death),182,recurrence-or-death hazard,DIFFERENT event definition; a larger event count is not more power for the primary question,A-08
+S-3,60-unit administrative horizon,130,"same as primary, truncated",CONDITIONAL on U1 -- '60 units' has no defined length while the unit is unresolved,A-08/A-10
+S-7,representative-IQR representation,136,same as primary,aggregation-choice sensitivity; the vehicle for D8D-3,A-08

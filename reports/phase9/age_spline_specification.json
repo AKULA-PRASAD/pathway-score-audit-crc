@@ -1,0 +1,45 @@
+{
+  "variable": "age.at.diagnosis_(year)",
+  "form": "restricted cubic spline, 3 knots (2 df)",
+  "why_3_knots": "with 6 df total against 135-136 events (EPV ~22), 3 knots buys curvature without spending the budget; 4-5 knots would be justified only at a far larger event count",
+  "knot_rule": {
+    "placement": "10th, 50th and 90th percentiles of age AMONG THE TRAINING SAMPLES OF THAT FOLD",
+    "quantile_definition": "numpy.percentile default (linear interpolation, type 7) -- named so two implementations agree",
+    "recomputed_per_fold": true,
+    "outcome_blind": "knots depend on the age distribution only; the outcome is never inspected to place a knot or to choose the form"
+  },
+  "cohort_reference_values_outcome_blind": {
+    "n_with_age": 453,
+    "n_unique_ages": 89,
+    "p10": 49.0,
+    "median": 69.0,
+    "p90": 83.0,
+    "min": 22.0,
+    "max": 97.0,
+    "smallest_gap_between_knots_in_full_cohort_years": 14.0,
+    "note": "quoted to show duplicate knots are implausible here, NOT to place the knots -- placement is per training fold"
+  },
+  "reference_age_for_reporting": {
+    "value": 69,
+    "basis": "the cohort median age, an outcome-blind covariate summary",
+    "fixed_now": true,
+    "why_fixed_rather_than_per_fold": "the Cox model has no intercept, so the reference does not affect the FIT. It affects only the REPORTED hazard ratio HR(age = a vs a_ref). A per-fold reference would make reported HRs non-comparable across folds, so the reference is a single constant declared here and never changed.",
+    "held_out_samples": "held-out ages are mapped through the TRAINING fold's knots, unchanged; the reference is the same fixed constant everywhere"
+  },
+  "degenerate_cases": {
+    "duplicate_knots": "if two knots coincide (equal to within 1e-6), the distinct knot values are used; if fewer than 3 distinct knots remain, that fold FALLS BACK TO LINEAR AGE and the fallback is recorded per fold",
+    "rank_deficient_basis": "if the training-fold design matrix is rank-deficient (a basis column constant, or collinear to tolerance 1e-10), that fold falls back to linear age and records the fallback",
+    "fallback_is_recorded_not_silent": true,
+    "expected_frequency": "none expected: 89 distinct ages and 14- and 20-year gaps between the full-cohort knots"
+  },
+  "prespecified_alternative": "a linear age term, compared by likelihood ratio WITHIN the training fold. The comparison is reported; it never selects the form using held-out data or outcomes",
+  "all_transformations_inside_the_training_fold": true,
+  "covariate_set_unchanged": [
+    "age",
+    "sex",
+    "stage",
+    "tumour location",
+    "adjuvant chemotherapy"
+  ],
+  "optional_covariates_not_added": "T, N, MMR and molecular covariates are NOT added; doing so needs approval (A-11)"
+}

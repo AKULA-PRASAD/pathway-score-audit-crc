@@ -1,0 +1,16 @@
+{
+ "captured_utc": "2026-11-04T16:45:19.973218+00:00",
+ "python_version": "3.13.13",
+ "python_executable": "/Users/kalki/coad_transportability/.venv/bin/python",
+ "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+ "machine": "arm64",
+ "packages": {
+  "numpy": "2.5.4",
+  "pandas": "2.3.3",
+  "scipy": "1.18.1",
+  "sklearn": "1.9.1",
+  "lifelines": "0.30.3",
+  "pyarrow": "26.0.0",
+  "pytest": "9.2.0"
+ }
+}

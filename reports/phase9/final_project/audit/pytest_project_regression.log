@@ -1,0 +1,15 @@
+..........                                                               [ 74%]
+tests/test_phase8d_consolidation.py .................................... [ 81%]
+..                                                                       [ 81%]
+tests/test_phase9_audit.py ......................                        [ 85%]
+tests/test_phase9_execution.py ........................                  [ 90%]
+tests/test_phase9_protocol.py .......................................... [ 98%]
+........                                                                 [100%]
+
+=============================== warnings summary ===============================
+tests/test_amendments_applied.py::test_X12_non_finite_marks_replicate_non_estimable
+  /Users/kalki/coad_transportability/.venv/lib/python3.13/site-packages/numpy/_core/_methods.py:188: RuntimeWarning: invalid value encountered in subtract
+    x = um.subtract(arr, arrmean, out=...)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================= 526 passed, 1 warning in 41.34s ========================

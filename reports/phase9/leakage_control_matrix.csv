@@ -1,0 +1,18 @@
+operation,permitted_location,constraint,authority
+frozen panel membership (which genes),OUTSIDE,frozen metadata; fixed before any outcome contact,A-13
+gene->probe representation map,OUTSIDE,"frozen in Phase 2B; selection used dataset membership only, never outcome",A-04/A-06
+cohort membership (S3),OUTSIDE,frozen in Phase 1,A-01
+QC exclusions,OUTSIDE,none performed; all 453 retained,7C D2
+gene-level mu/sigma for pathway scoring,INSIDE,"training fold only, sigma_ddof=1 from spec",A-14 / M2-A1
+zero-variance gene exclusion,INSIDE,"per fold, recorded per fold",A-14
+pathway-score standardisation,INSIDE (IF D8D-1 APPROVED),training fold only; unstandardised scores retained,D8D-1 PENDING_USER_APPROVAL
+expression/variance filter cut-point (M3),INSIDE,value recomputed per training fold; the rule is frozen,B-02
+univariate screening (M3),INSIDE,training fold only; NO full-cohort screening at any point,M3 spec
+feature selection (M3),INSIDE,strictly nested within the training fold,M3 spec
+"penalty tuning (lambda, alpha)",INSIDE,inner CV within the training fold,B-07
+imputation,NOT_APPLICABLE,complete-case; no imputation performed,A-19
+"PCA rotation, if ever used as a predictor",INSIDE,re-estimated per training fold; Phase 8A/8B rotations are descriptive only,6B 3.2.2
+batch stratum definition (if D8D-4 approved),OUTSIDE,pooling rule fixed from sample counts before unblinding,D8D-4 PENDING_USER_APPROVAL
+choice of B for the bootstrap,OUTSIDE,driven by MC-1..MC-4; never lowered to suit a result,B-06
+random seeds,OUTSIDE,declared in advance; >=5 seeds for MC-2,A-17
+outcome column join,INSIDE the analysis only,joined at model-fitting time; never during preprocessing or scoring,A-16

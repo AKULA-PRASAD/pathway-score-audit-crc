@@ -1,0 +1,47 @@
+{
+  "event": "EXECUTION_HALTED_ON_STOP_CONDITION",
+  "date": "2026-11-03",
+  "analysis": "Phase 9 nested bootstrap CI for optimism-corrected Delta-C",
+  "plan": "docs/PHASE9_DELTAC_INTERVAL_PLAN.md v2.1",
+  "stop_condition_triggered": {
+    "source": "v2.1 section 9.5 -- 'Projected runtime exceeds twice the budget'",
+    "budget_hours_8_cores": 7.4,
+    "threshold_hours": 14.8,
+    "observed_rate_per_min": 2.13,
+    "projected_per_run_hours": 3.91,
+    "projected_total_hours": 19.5,
+    "exceeds_threshold": true
+  },
+  "diagnosis": {
+    "is_this_a_mis_specification": false,
+    "detail": "The stop condition's stated rationale was that a runtime blow-up would INDICATE a mis-specification. No mis-specification is present: every completed replicate is valid, 0 failures, event/censor composition preserved, pairing intact. The cause is a budgeting error -- the 0.852 s/inner-replicate probe was measured on the original 452-patient data, whereas nested inner fits run on bootstrap samples OF bootstrap samples, with more tied event times and more strained designs, so the ridge inner-CV takes more iterations.",
+    "not_thread_oversubscription": "each of the 8 workers ran at ~100% CPU = ~800% on 8 cores; no oversubscription to recover"
+  },
+  "state_preserved": {
+    "checkpoint": "reports/phase9/dc_interval/run0_outer.jsonl",
+    "complete_records": 144,
+    "k_range": [
+      0,
+      143
+    ],
+    "all_status_ok": true,
+    "all_paired_complete": true,
+    "inner_failures": 0,
+    "resume_is_bit_identical": "verified before launch (smoke test, run_id 99)",
+    "work_lost_on_halt": "only in-flight replicates; records are written only when complete"
+  },
+  "partial_values_are_not_a_result": {
+    "n": 144,
+    "of": 500,
+    "note": "partial outer draws are NOT an interval and are not reported as one"
+  },
+  "options_for_the_decision_maker": [
+    "A. RESUME as approved -- 5 runs x B_out 500; ~18.4 h remaining; resume is free and bit-identical; no design change",
+    "B. REDUCE the number of runs or B_out -- CHANGES THE APPROVED DESIGN, needs explicit approval, and would weaken the between-run endpoint MC-SE that five runs were chosen to provide",
+    "C. ABANDON -- the corrected-Delta-C interval remains unquantified"
+  ],
+  "recommendation": "A -- resume unchanged. The computation is correct; only my budget estimate was wrong, and a wrong estimate is not a reason to weaken an approved design.",
+  "no_threshold_relaxed": true,
+  "no_design_changed": true,
+  "commits": 0
+}

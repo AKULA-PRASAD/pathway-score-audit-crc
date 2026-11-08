@@ -1,0 +1,27 @@
+item,status,reference
+"cohort frozen (S3, 453, no exclusions)",READY,A-01 / 7C D2
+endpoint + estimand set frozen,READY,A-07/A-08/A-09
+representation frozen (median primary),READY,A-04/A-05
+"M2 panels, roles, sigma_ddof=1 frozen",READY,A-13/A-14/M2-A1
+canonical scorer in src/,READY,8C rec. 4
+missing-data strategy frozen,READY,A-19 complete-case
+leakage rules specified,READY,6B §4 + this matrix
+resampling + MC stability rules frozen,READY,A-17 / 6B §5.1
+resampling unit + stratification specified,READY,Phase 9 §5
+seed policy declared,READY,Phase 9 §5
+performance measures restricted to U1-compatible set,READY,A-10 / 6A §3.1
+M1 parameter budget,READY,"6 df, EPV ~22"
+M3 nested-selection specification,READY,Phase 9 §4
+D8D-1 score standardisation,APPROVED - APPLIED,"amendment M2-A2, spec revision 3"
+D8D-2 4-set/5-set reporting framework,APPROVED - FORMALISED,"4-set primary, 5-set sensitivity-only"
+D8D-3 representation reporting,APPROVED - FORMALISED,"median primary, rep-IQR sensitivity (S-7)"
+D8D-4 batch sensitivity design,APPROVED - APPLIED,"9 strata, no pooling; D8D-4-R1"
+D9-1 penalisation scope / clinical scaling,APPROVED - APPLIED,amendment P6B-A1
+M1 age functional form,READY,"3-knot RCS, training-fold knots, ref age 69"
+convergence + non-estimable replicate policy,READY,"5% threshold, fixed now"
+optimism-correction procedure,READY,"Harrell bootstrap, 4 steps"
+complete-case EVENT count,CONFIRM AT EXECUTION,"in [135, 136]; not read here"
+U1 time unit,CONSTRAINS fixed-time analyses,A-10
+U2 competing risks,CONSTRAINS censoring assumption; S-1/S-2 registered,A-08
+external confirmatory validation,NOT AVAILABLE,Phase 4 G4 FAILED
+protocol approval,AWAITING USER,this document

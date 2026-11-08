@@ -1,0 +1,115 @@
+{
+  "plan": "PHASE9_DELTAC_INTERVAL",
+  "version": "2.0",
+  "status": "PLAN_ONLY_NOT_EXECUTED",
+  "date": "2026-11-03",
+  "estimand": "DeltaC_corrected = C_corrected(M2 four-set) - C_corrected(M1)",
+  "point_estimate": 0.0043,
+  "inner_mc": {
+    "paired_sd_across_seeds_at_B500": 0.000422,
+    "implied_rho_between_model_optimisms": 0.681,
+    "sigma_per_replicate_paired": 0.00943,
+    "relative_SE_of_this_estimate": 0.354,
+    "mc_se_at_B_in_100": 0.00094,
+    "sd_inflation_at_B_in_100": 0.012,
+    "deconvolution": "NOT PERFORMED -- percentile quantiles are not a variance; inflation is controlled by sizing and reported as a known conservative bias"
+  },
+  "endpoint_criterion": {
+    "id": "EP-1",
+    "rule": "MC-SE(endpoint) <= 0.05 x interval width, both endpoints",
+    "is_MC3_extension": false,
+    "estimators": [
+      "kernel quantile SE (within-run)",
+      "SD across repeated runs (empirical)"
+    ],
+    "expected_ratio_at_B_out_500": 0.03
+  },
+  "resampling": {
+    "outer": "event-stratified patient bootstrap, ONE index set shared by M1 and M2",
+    "inner": "event-stratified bootstrap of the OUTER sample, ONE index set shared by M1 and M2",
+    "optimism_evaluated_on": "the outer pseudo-dataset D*_k, not the original D",
+    "refitted_every_fit": [
+      "age spline knots",
+      "gene-level mu/sigma (sigma_ddof=1, M2-A1)",
+      "M2-A2 score standardisation",
+      "ridge lambda by inner 5-fold CV (P6B-A1)"
+    ],
+    "nesting_depth": 3
+  },
+  "event_stratification": {
+    "retained": true,
+    "interval_is": "CONDITIONAL on 136 events",
+    "unconditional_event_sd": 9.75,
+    "unconditional_95pct_range": [
+      117,
+      155
+    ],
+    "expected_effect": "conditional interval a few per cent narrower",
+    "scheme_change_proposed": false
+  },
+  "mc_plan": {
+    "recommended": "C (staged)",
+    "stages": [
+      {
+        "stage": 1,
+        "B_out": 200,
+        "B_in": 100,
+        "hours_8core": 0.6
+      },
+      {
+        "stage": 2,
+        "B_out": 500,
+        "B_in": 100,
+        "hours_8core": 1.5
+      },
+      {
+        "stage": 3,
+        "B_out": 250,
+        "B_in": 100,
+        "runs": 4,
+        "hours_8core": 2.9
+      }
+    ],
+    "total_hours_8core": 5.0,
+    "alternatives": {
+      "A_5x_full": 7.4,
+      "B_1full_4half": 4.4,
+      "D_1full_only": 1.5
+    }
+  },
+  "non_estimable": {
+    "inner_rule": "record, exclude from that outer optimism mean, count",
+    "outer_rule": ">5% inner failures -> outer replicate excluded and recorded",
+    "overall_rule": ">5% outer excluded -> interval labelled UNRELIABLE",
+    "silent_redraws": false,
+    "selective_exclusion": false,
+    "precedent": "0/7500 inner failures in both completed runs"
+  },
+  "intervals": {
+    "primary": "percentile",
+    "diagnostics": [
+      "basic/reverse-percentile",
+      "z0 median bias"
+    ],
+    "BCa": "EXCLUDED -- acceleration needs a jackknife assuming smoothness the C-index lacks"
+  },
+  "acceptance_criteria": [
+    "A1 outer non-est <=5%",
+    "A2 inner non-est <=5% per outer",
+    "A3 EP-1 <=0.05 x width",
+    "A4 kernel vs empirical MC-SE within 2x",
+    "A5 SD inflation <=5% else raise B_in",
+    "A6 MC-1 endpoint trace stable",
+    "A7 |percentile-basic| <=25% width",
+    "A8 |z0| <=0.25"
+  ],
+  "decisions_required": [
+    "approve EP-1",
+    "approve staged design C",
+    "confirm conditional interval accepted",
+    "approve percentile primary, BCa excluded"
+  ],
+  "executed": false,
+  "outputs_modified": "NONE",
+  "commits": 0
+}

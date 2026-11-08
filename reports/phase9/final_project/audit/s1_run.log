@@ -1,0 +1,17 @@
+theta_hat = 0.004316342804030704
+run0: pct [-0.00886, 0.05163] w=0.06049 | basic [-0.04300, 0.01749] | z0=-0.4677 (p=0.320, ties=0) | BC [-0.01115, 0.03028] | kSE lo 0.00056 hi 0.00237
+run1: pct [-0.00906, 0.04687] w=0.05592 | basic [-0.03823, 0.01769] | z0=-0.5187 (p=0.302, ties=0) | BC [-0.01146, 0.02728] | kSE lo 0.00054 hi 0.00266
+run2: pct [-0.00927, 0.04838] w=0.05766 | basic [-0.03975, 0.01791] | z0=-0.5710 (p=0.284, ties=0) | BC [-0.01143, 0.02587] | kSE lo 0.00058 hi 0.00221
+run3: pct [-0.00975, 0.05133] w=0.06108 | basic [-0.04269, 0.01839] | z0=-0.4289 (p=0.334, ties=0) | BC [-0.01252, 0.03270] | kSE lo 0.00052 hi 0.00250
+run4: pct [-0.00921, 0.05151] w=0.06072 | basic [-0.04288, 0.01784] | z0=-0.5769 (p=0.282, ties=0) | BC [-0.01197, 0.02788] | kSE lo 0.00060 hi 0.00185
+between-run percentile_lower: mean -0.00923 sd 0.000334
+between-run percentile_upper: mean 0.04994 sd 0.002186
+EP-1: 39/40 pass, max ratio 0.0535 -> MIXED
+EP-1 by estimator: {'kernel_bw_x0.5': (9, 10, 0.0535), 'kernel_bw_x1.0': (10, 10, 0.0476), 'kernel_bw_x2.0': (10, 10, 0.0375), 'between_run_SD': (10, 10, 0.0391)}
+EP-1 status: UNRESOLVED (decision required) -- PASS under the plan's named Silverman bandwidth and under the between-run SD; FAIL in 1/40 evaluations at a bandwidth-sensitivity multiplier. The plan does not state which estimator governs EP-1.
+ladder if strict: 572.7989876372417 -> 750
+bias decomposition: {'dC_app_D': 0.013963503027202173, 'mean_dC_app_k': 0.022242178364550082, 'shift_dC_app': 0.00827867533734791, 'dOpt_D': 0.009647160223171485, 'mean_dOpt_k': 0.008222287189024085, 'shift_dOpt': -0.0014248730341474003, 'theta_hat': 0.004316342804030704, 'mean_dC_corrected_k': 0.014019891175525998, 'shift_dC_corrected': 0.009703548371495294}
+z0 sensitivity: {0: {'-2SE': -0.47891373411225574, '+0SE': -0.4676987991145081, '+2SE': -0.44544250629171966}, 1: {'-2SE': -0.5301614450555193, '+0SE': -0.518656932080391, '+2SE': -0.4845437824410791}, 2: {'-2SE': -0.5769103773332716, '+0SE': -0.5709994731129875, '+2SE': -0.5533847195556728}, 3: {'-2SE': -0.4732988254324369, '+0SE': -0.42889450407420154, '+2SE': -0.41792767166948175}, 4: {'-2SE': -0.606775363514265, '+0SE': -0.5769103773332716, '+2SE': -0.5533847195556728}}
+hard failures: {'H1': False, 'H2': False, 'H3': "NOT TRIGGERED -- H3 is 'EP-1 unmet after exhausting the B_out ladder'; the ladder has not been run. EP-1 status: UNRESOLVED (decision required) -- PASS under the plan's named Silverman bandwidth and under the between-run SD; FAIL in 1/40 evaluations at a bandwidth-sensitivity multiplier. The plan does not state which estimator governs EP-1.", 'H4': 'evaluated separately (pre/post hash verification)', 'H5': 'PASS (reports/phase9/h5_spotcheck/h5_comparison.json)', 'H6': False, 'H6_records_with_unequal_pair_counts': 0}
+warnings: {0: {'W3_breach': False, 'W5_breach': False, 'W6_breach': True, 'W7_breach': True}, 1: {'W3_breach': False, 'W5_breach': True, 'W6_breach': True, 'W7_breach': True}, 2: {'W3_breach': False, 'W5_breach': False, 'W6_breach': True, 'W7_breach': True}, 3: {'W3_breach': False, 'W5_breach': False, 'W6_breach': True, 'W7_breach': True}, 4: {'W3_breach': False, 'W5_breach': False, 'W6_breach': True, 'W7_breach': True}}
+W4 breaches: 0

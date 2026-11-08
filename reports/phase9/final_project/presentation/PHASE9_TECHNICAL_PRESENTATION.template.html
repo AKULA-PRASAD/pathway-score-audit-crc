@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phase 9 Nested Bootstrap</title>
+<style>
+:root { --surface:#fcfcfb; --surface-2:#f3f2ee; --ink:#0b0b0b; --ink-2:#52514e; --rule:#e6e5e0;
+        --accent:#2a78d6; --warn:#b26b00; --crit:#d03b3b; --ok:#007a3d; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+        --surface:#1a1a19; --surface-2:#242422; --ink:#f0efec; --ink-2:#c3c2b7; --rule:#3a3936;
+        --accent:#3987e5; --warn:#e0a030; --crit:#e66767; --ok:#3fbf7f; } }
+:root[data-theme="dark"] { --surface:#1a1a19; --surface-2:#242422; --ink:#f0efec; --ink-2:#c3c2b7;
+        --rule:#3a3936; --accent:#3987e5; --warn:#e0a030; --crit:#e66767; --ok:#3fbf7f; }
+* { box-sizing:border-box; }
+html,body { margin:0; height:100%; background:var(--surface); color:var(--ink);
+  font:16px/1.45 -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+.deck { height:100%; overflow:hidden; }
+section { display:none; height:100%; padding:44px 64px 64px; flex-direction:column; gap:14px; overflow:auto; }
+section.on { display:flex; }
+h1 { font-size:34px; margin:0 0 6px; } h2 { font-size:26px; margin:0 0 4px; } h3 { font-size:18px; margin:8px 0 2px; }
+.kicker { font-size:13px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-2); }
+.prov { font-size:12px; color:var(--ink-2); border-top:1px solid var(--rule); padding-top:6px; margin-top:auto; }
+ul { margin:4px 0; padding-left:22px; } li { margin:4px 0; }
+table { border-collapse:collapse; font-size:14px; font-variant-numeric:tabular-nums; }
+th,td { border-bottom:1px solid var(--rule); padding:5px 10px; text-align:left; }
+th { color:var(--ink-2); font-weight:600; }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:start; }
+.fig { max-width:100%; max-height:62vh; background:#fcfcfb; border-radius:6px; }
+.tag { display:inline-block; padding:1px 8px; border-radius:10px; font-size:13px; font-weight:600;
+       border:1px solid currentColor; }
+.ok { color:var(--ok); } .warn { color:var(--warn); } .crit { color:var(--crit); }
+.big { font-size:44px; font-weight:700; font-variant-numeric:tabular-nums; }
+.nav { position:fixed; bottom:14px; right:20px; font-size:13px; color:var(--ink-2); }
+.nav button { background:var(--surface-2); color:var(--ink); border:1px solid var(--rule); border-radius:6px;
+              padding:4px 10px; margin-left:4px; cursor:pointer; }
+code { font-size:.92em; }
+@media (max-width:760px) { section { padding:24px 16px 64px; } .grid2 { grid-template-columns:1fr; } h1 { font-size:26px; } }
+@media print { section { display:flex !important; page-break-after:always; height:auto; } .nav { display:none; } }
+</style>
+</head>
+<body>
+<div class="deck">
+
+<section class="on">
+  <div class="kicker">Phase 9 · technical presentation · {{ R['generated_utc'][:10] }}</div>
+  <h1>A nested-bootstrap confidence interval for the optimism-corrected ΔC</h1>
+  <p>Does adding four frozen pathway scores (M2) to the clinical Cox model (M1) improve optimism-corrected discrimination of relapse-free survival in the A-19 cohort (n = 452, 136 events)?</p>
+  <p><span class="tag warn">PROVISIONAL</span> Every ΔC_corr-derived result was calculated with the as-run implementation. The CV-seed protocol deviation has not yet been adjudicated.</p>
+  <p class="prov">Conditional on the observed 136 recurrence events and 316 censored observations in the 452-patient A-19 population.</p>
+</section>
+
+<section>
+  <h2>1 · Scientific problem and objective</h2>
+  <ul>
+    <li>Phase 9 primary: ΔC_app = {{ TH['dC_app_D'] | +.4f }}, ΔOpt = {{ TH['dOpt_D'] | +.4f }}, so <b>ΔC_corr = θ̂ = {{ TH['value'] | +.4f }}</b>.</li>
+    <li><b>No interval existed for ΔC_corr.</b> The replicate-level arrays from Phase 9 primary were not kept, so its percentile spread of the uncorrected ΔC does not propagate the uncertainty of the optimism estimate.</li>
+    <li><b>Objective:</b> the plan v2.1 percentile interval (primary), with basic and z₀ diagnostics; endpoint Monte-Carlo error reported separately; EP-1, H1–H6 and W1–W7 evaluated as written.</li>
+  </ul>
+  <p class="prov">Plan: docs/PHASE9_DELTAC_INTERVAL_PLAN.md v2.1</p>
+</section>
+
+<section>
+  <h2>2 · Why a nested bootstrap</h2>
+  <ul>
+    <li>θ̂(D) = ΔC_app(D) − ΔOpt(D). The nested bootstrap applies <b>the same functional</b> to each outer resample D*ₖ, so the spread of θ̂(D*) carries both the sampling and the optimism-estimation uncertainty.</li>
+    <li>The optimism is evaluated <b>on D*ₖ, not on D</b>, so the original sample does not leak into the outer layer.</li>
+    <li>Alternatives were rejected in the audit: the uncorrected percentile spread doesn't propagate optimism uncertainty; the jackknife needs smoothness that the C-index lacks; BCa needs a jackknife for the acceleration.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>3 · Architecture</h2>
+  <div class="grid2"><div>
+  <h3>Per outer replicate k (B_out = 500)</h3>
+  <ul><li>Event-stratified patient bootstrap D*ₖ (136 / 316 fixed)</li>
+      <li>M1 and M2 fully refitted on D*ₖ, giving ΔC_app(k)</li>
+      <li>100 inner event-stratified bootstraps of D*ₖ; optimism evaluated on D*ₖ; pairing-preserving exclusion</li>
+      <li>ΔC_corr(k) = ΔC_app(k) − ΔOpt(k)</li></ul>
+  </div><div>
+  <h3>Refitted in every fit</h3>
+  <ul><li>Age-spline knots; gene-level μ/σ (ddof 1); pathway-score standardisation; ridge λ by 5-fold CV (molecular block only)</li>
+      <li>500 000 model fits in total; nothing cached across layers</li></ul>
+  </div></div>
+</section>
+
+<section>
+  <h2>4 · Random-seed structure and the five-run design</h2>
+  <ul>
+    <li><code>SeedSequence([2026110300, run_id]).spawn(k+1)[k]</code> for outer k; <code>.spawn(100)[b]</code> for inner b. The draws are a pure function of (BASE, run_id, k, b).</li>
+    <li>Five independent full-size runs that differ <b>only</b> in seed. They measure between-run endpoint variability directly at B_out = 500. That SD rests on df = 4 (≈ 35 % relative SE).</li>
+    <li><span class="tag crit">Deviation</span> Plan §8.2 gives the CV its own seed, <code>cvseed = inner[b].spawn(2)[0]</code>. The driver passes a fresh <code>default_rng(ss_inner[b])</code>, which starts in the <b>same state</b> as the resample generator (9 / 9 cases).</li>
+  </ul>
+</section>
+
+<section>
+  <h2>5 · Execution and integrity</h2>
+  <table>
+    <tr><th>Check</th><th>Result</th></tr>
+    <tr><td>Records</td><td>5 × 500, all unique, k = 0–499, all <code>ok</code></td></tr>
+    <tr><td>Inner failures</td><td>0 / 250 000 (W1, W2 not applicable)</td></tr>
+    <tr><td>H1 unreliable outer</td><td><span class="tag ok">PASS</span> 0 / 2 500</td></tr>
+    <tr><td>H4 frozen hashes</td><td><span class="tag ok">PASS</span> 17 / 17 files, 5 / 5 checkpoints</td></tr>
+    <tr><td>H6 pair counts</td><td><span class="tag ok">PASS</span> M1 = M2 in all records</td></tr>
+    <tr><td>Independent re-computation</td><td>{{ IC['n_ok'] }} / {{ IC['n_checks'] }} values agree</td></tr>
+  </table>
+  <p>Run 0 halted under the runtime stop condition and was resumed under a user-authorised exception that covers <b>only</b> the runtime ceiling. It later paused in place while the Mac slept. No record was lost or redrawn.</p>
+</section>
+
+<section>
+  <h2>6 · Reproducibility validation (H5)</h2>
+  <div class="grid2"><div>
+    <div class="big">{{ H5['n_bit_identical'] }} / 20</div>
+    <p>Run-0 replicates k = 0, 25, …, 475 recomputed with the frozen driver: ΔC_corr is bit-identical (<code>float.hex</code>), and {{ H5['n_full_record_identical'] }} / 20 full records are identical.</p>
+  </div><div>
+    <h3>What H5 establishes</h3><ul><li>The as-run implementation is deterministic and resumable, across the halt, resume and sleep segments.</li></ul>
+    <h3>What it does not establish</h3><ul><li>Conformance with plan §8.2, or correctness.</li></ul>
+  </div></div>
+</section>
+
+<section>
+  <h2>7 · Statistical methodology</h2>
+  <table>
+    <tr><th>Quantity</th><th>Definition</th></tr>
+    <tr><td>Percentile (primary)</td><td>[q.025, q.975] of 500 ΔC_corr(k), type-7 quantiles</td></tr>
+    <tr><td>Basic (diagnostic)</td><td>[2θ̂ − q.975, 2θ̂ − q.025]</td></tr>
+    <tr><td>z₀ (diagnostic)</td><td>Φ⁻¹(#{ΔC_corr(k) &lt; θ̂}/500); BC z₀-only interval with a = 0</td></tr>
+    <tr><td>Endpoint MC-SE</td><td>√(p(1−p)/B)/f̂(q), Gaussian KDE, Silverman h × {0.5, 1, 2}; between-run SD (ddof 1)</td></tr>
+    <tr><td>EP-1</td><td>MC-SE ≤ 0.05 × width, both endpoints, every prescribed estimator</td></tr>
+  </table>
+  <p class="prov">Conventions where the plan is silent (95 % level, Silverman 1986 rule, type 7): documentation/STATISTICAL_CONVENTIONS.md</p>
+</section>
+
+<section>
+  <h2>8 · Main result: outer distributions</h2>
+  <img class="fig" src="{{ img64('F1_outer_distributions') }}" alt="Histograms of 500 outer-replicate corrected Delta-C values in each of five runs, with percentile endpoints, theta-hat and zero marked">
+  <p>Medians {{ rng(None, "x['distribution']['dC_corrected']['median']", "+.4f") }} · right skew · {{ rng(None, "100*x['distribution']['dC_corrected']['frac_negative']", ".1f") }} % below zero · centred <b>above</b> θ̂ = {{ TH['value'] | +.4f }}.</p>
+  <p class="prov">PROVISIONAL: as-run implementation; CV-seed deviation not adjudicated.</p>
+</section>
+
+<section>
+  <h2>9 · Confidence-interval comparison</h2>
+  <img class="fig" src="{{ img64('F2_interval_comparison') }}" alt="Percentile, basic and bias-corrected intervals for each run; all include zero">
+  <table>
+    <tr><th>Mean over runs</th><th>Lower</th><th>Upper</th></tr>
+    <tr><td>Percentile (primary)</td><td>{{ BR['percentile_lower']['mean'] | +.4f }}</td><td>{{ BR['percentile_upper']['mean'] | +.4f }}</td></tr>
+    <tr><td>Basic</td><td>{{ BR['basic_lower']['mean'] | +.4f }}</td><td>{{ BR['basic_upper']['mean'] | +.4f }}</td></tr>
+    <tr><td>BC z₀-only</td><td>{{ BR['bc_z0_lower']['mean'] | +.4f }}</td><td>{{ BR['bc_z0_upper']['mean'] | +.4f }}</td></tr>
+  </table>
+  <p><b>All 15 intervals include 0.</b> Method choice shifts the upper limit a great deal; no method is preferred because of its result.</p>
+</section>
+
+<section>
+  <h2>10 · Monte-Carlo precision</h2>
+  <img class="fig" src="{{ img64('F3_endpoint_variability') }}" alt="Per-run percentile endpoints with kernel MC-SE bars and the between-run SD band">
+  <ul><li>Between-run SD: lower {{ BR['percentile_lower']['sd_ddof1'] | .5f }}, upper {{ BR['percentile_upper']['sd_ddof1'] | .5f }}. The kernel and between-run estimates agree within 2× (W4: no breach).</li>
+      <li>Inner-noise SD inflation is {{ rng(None, "100*x['warnings']['W3_SD_inflation']", ".2f") }} %. Monte-Carlo error is small next to the sampling width of ≈ {{ BR['percentile_width']['mean'] | .3f }}, and it is never added to it.</li></ul>
+</section>
+
+<section>
+  <h2>11 · EP-1 evaluation</h2>
+  <img class="fig" src="{{ img64('F5_EP1_grid') }}" alt="EP-1 ratio of MC-SE to interval width for 40 evaluations; one exceeds 0.05">
+  <p><span class="tag warn">UNRESOLVED</span> {{ EP['n_pass'] }} / {{ EP['n_evaluations'] }} pass. Every evaluation passes at the Silverman bandwidth and with the between-run SD. The one failure is run 1, upper endpoint, at h × 0.5 (ratio {{ EP['max_ratio'] | .4f }}). The plan doesn't say which estimator governs. If all estimators must pass, §2.4 requires a top-up to B_out = {{ EP['plan_2_4_ladder_if_strict']['ladder_rung'] }} (not run). H3 is not triggered.</p>
+</section>
+
+<section>
+  <h2>12 · Robustness findings</h2>
+  <div class="grid2"><div>
+  <table>
+    <tr><th>Item</th><th>Result</th></tr>
+    <tr><td>H2 bounding (§6.4)</td><td><span class="tag ok">PASS</span> vacuous, 0 failures</td></tr>
+    <tr><td>W3 inner noise</td><td><span class="tag ok">no breach</span></td></tr>
+    <tr><td>W4 kernel vs between-run</td><td><span class="tag ok">no breach</span></td></tr>
+    <tr><td>W5 MC-1 trace</td><td><span class="tag warn">breach</span> run 1 upper</td></tr>
+    <tr><td>W6 / A7 percentile vs basic</td><td><span class="tag warn">breach</span> all runs ({{ rng(None, "100*x['warnings']['W6_A7_fraction_of_width']['lower']", ".0f") }} % of width)</td></tr>
+    <tr><td>W7 / A8 |z₀|</td><td><span class="tag warn">breach</span> all runs ({{ rng(None, "x['z0_diagnostic']['z0']", "+.2f") }})</td></tr>
+  </table></div><div>
+  <img class="fig" src="{{ img64('F4_MC1_running_trace') }}" alt="Running trace of percentile endpoints; run 1 upper endpoint highlighted">
+  </div></div>
+</section>
+
+<section>
+  <h2>13 · Where the shift comes from</h2>
+  <img class="fig" src="{{ img64('F6_shift_decomposition') }}" alt="Histograms of apparent Delta-C, Delta-optimism and corrected Delta-C over outer replicates against the original-data values">
+  <ul><li>The outer mean of ΔC_corr exceeds θ̂ by {{ BD['shift_dC_corrected'] | +.4f }}: {{ BD['shift_dC_app'] | +.4f }} from a larger apparent ΔC on D*ₖ, and {{ -BD['shift_dOpt'] | +.4f }} from a smaller ΔOpt.</li>
+      <li>θ̂'s Monte-Carlo error ({{ TH['MC_SE_of_mean'] | .5f }}) cannot explain z₀. Plan §7.2 predicted the opposite direction.</li>
+      <li>Possible explanations (duplicate rows favouring M2; optimism evaluated on D*ₖ) are <b>inferential</b> and untested.</li></ul>
+</section>
+
+<section>
+  <h2>14 · Protocol deviation (unadjudicated)</h2>
+  <ul>
+    <li><b>Plan:</b> the λ-tuning CV gets its own stream, <code>inner[b].spawn(2)[0]</code>.</li>
+    <li><b>Driver:</b> the CV generator starts in the same PCG64 state as the resample generator, at both the apparent and the inner level.</li>
+    <li><b>Affected:</b> M2 λ selection, and so every ΔC_corr-derived result. <b>Unaffected:</b> M1 (λ = 0 in all 2 500 stored apparent fits; the inner level follows from the code path).</li>
+    <li>θ̂ comes from Phase 9 primary, which used a <b>third</b> convention (one advancing generator).</li>
+    <li>The effect size and direction are unknown. Nothing in these results is attributed to the deviation.</li>
+  </ul>
+  <p class="prov">documentation/CV_SEED_DEVIATION_DRAFT_v2.md: DRAFT, NOT YET ADJUDICATED</p>
+</section>
+
+<section>
+  <h2>15 · Limitations</h2>
+  <ul>
+    <li>The CV-seed deviation; θ̂ from a different implementation; EP-1's governing estimator is unspecified.</li>
+    <li>A7 and A8 breach in every run. Under plan §7, a material divergence warns that <b>neither</b> interval should be trusted.</li>
+    <li>The interval is conditional on 136 events; bootstrap validity is asymptotic at n = 452; distinct-patient dilution (≈ {{ RUNS[0]['distribution']['n_distinct_outer']['mean'] | .0f }} / 452 per outer sample).</li>
+    <li>Asymmetric penalisation makes the comparison conservative by design. The validation is internal only, and Harrell's C depends on the censoring distribution.</li>
+    <li>An interval quantifies uncertainty only. It establishes no clinical utility, mechanism, external validity or transportability.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>16 · Conclusions</h2>
+  <ul>
+    <li><span class="tag ok">Computationally complete</span> 5 × 500 × 100 replicates; H1, H2, H4, H5 and H6 pass; independent checks agree.</li>
+    <li><span class="tag warn">Provisional result</span> Every 95 % interval for ΔC_corr includes 0. The percentile interval averages [{{ BR['percentile_lower']['mean'] | +.4f }}, {{ BR['percentile_upper']['mean'] | +.4f }}]. There is <b>no evidence</b> that M2 improves on M1.</li>
+    <li><span class="tag warn">Interval validity questioned</span> by the plan's own A7 and A8 diagnostics: a bootstrap distribution centred well above θ̂.</li>
+    <li><b>Open decisions:</b> CV-seed adjudication · the EP-1 estimator and B_out top-up · how to report an interval the diagnostics flag · θ̂ centring.</li>
+  </ul>
+  <p class="prov">Every number on these slides is rendered from results/s1_interval_results.json by analysis/s3_build_docs.py.</p>
+</section>
+
+</div>
+<div class="nav"><span id="pos"></span><button id="prev" aria-label="Previous slide">←</button><button id="next" aria-label="Next slide">→</button></div>
+<script>
+(function () {
+  var s = document.querySelectorAll("section"), i = 0, pos = document.getElementById("pos");
+  function show(n) { s[i].classList.remove("on"); i = Math.max(0, Math.min(s.length - 1, n)); s[i].classList.add("on");
+    pos.textContent = (i + 1) + " / " + s.length; }
+  document.getElementById("prev").onclick = function () { show(i - 1); };
+  document.getElementById("next").onclick = function () { show(i + 1); };
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") show(i + 1);
+    if (e.key === "ArrowLeft" || e.key === "PageUp") show(i - 1); });
+  show(0);
+})();
+</script>
+</body>
+</html>
