@@ -1,0 +1,7 @@
+model,n_predictors,complete_cases,pct,lost,disc_cc,val_cc
+M1 primary (clinical only),5,452,99.8,1,353,99
+M1 + optional TNM/MMR,9,390,86.1,63,310,80
+M1 + all molecular (NOT PROPOSED),14,203,44.8,250,139,64
+M2 primary (4-set) + M1,9,452,99.8,1,353,99
+M2 sensitivity (5-set) + M1,10,452,99.8,1,353,99
+"M3 exploratory (21,815 genes) + M1",21820,452,99.8,1,353,99

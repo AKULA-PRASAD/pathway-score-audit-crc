@@ -1,0 +1,4 @@
+comparison,genes_differing,pct_all_genes,pct_multi_probe
+all_585 vs discovery_443,542,2.48,5.04
+all_585 vs s3_discovery_354,735,3.37,6.84
+discovery_443 vs s3_discovery_354,523,2.4,4.86

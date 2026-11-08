@@ -1,0 +1,151 @@
+{
+  "phase": "8D",
+  "decisions": [
+    {
+      "id": "D8D-1",
+      "title": "Score-level standardisation before penalised Cox",
+      "current_frozen_state": "NONE before the Cox model (penalisation handles scale). If added later it is training-fold-only.",
+      "blocking": "blocks_specific_analysis",
+      "blocks_what": "the penalised Cox specification in Phase 6B \u00a73.2; nothing else",
+      "evidence": [
+        "8C \u00a73.1 implied coherence r\u0304",
+        "reports/phase8c/score_distributions.csv"
+      ],
+      "implication": "The five scores sit on very different scales: SD 0.554 (E2F) down to 0.185 (PI3K), because averaging k standardised genes shrinks dispersion by roughly 1/sqrt(k) times the set's coherence. A ridge or elastic-net penalty applies the SAME penalty per unit coefficient, so on unstandardised scores a low-dispersion predictor needs a LARGER coefficient to express the same effect and is therefore shrunk harder. Leaving the scores on their current scales is a defensible choice, but it is a CHOICE with consequences for relative shrinkage, not a neutral default.",
+      "options_not_chosen": [
+        "leave as frozen (no score-level standardisation)",
+        "standardise scores inside each training fold only",
+        "standardise and report both as a prespecified sensitivity analysis"
+      ],
+      "constraint": "any standardisation must be training-fold-only; a full-cohort score standardisation would reintroduce the leakage the frozen rule exists to prevent",
+      "decision": "AWAITING_APPROVAL"
+    },
+    {
+      "id": "D8D-2",
+      "title": "Four-set primary vs five-set sensitivity reporting",
+      "current_frozen_state": "4-set PRIMARY, 5-set SENSITIVITY-only; PI3K may not be promoted or removed on observed performance (M2-A1)",
+      "blocking": "documented_limitation",
+      "blocks_what": "nothing; it is a reporting-framework decision",
+      "evidence": [
+        "8C \u00a74",
+        "reports/phase8c/score_correlation_pearson_5set_sensitivity.csv"
+      ],
+      "implication": "Adding PI3K raises the condition number 2.95 -> 7.03 and introduces the only |r| > 0.5 pair (P53-PI3K, 0.631). A divergence between the primary and sensitivity results is therefore FORESEEABLE and should have a reading rule fixed BEFORE any outcome is seen, or the choice between them becomes a post-hoc selection.",
+      "proposed_reporting_framework_not_a_change": [
+        "report the 4-set result as primary ALWAYS, whatever the 5-set shows",
+        "report the 5-set alongside it, never instead of it",
+        "state in advance that a divergence is interpreted as evidence about the STABILITY of the primary estimate, not as a reason to switch panels",
+        "pre-specify the divergence metric before unblinding"
+      ],
+      "decision": "AWAITING_APPROVAL"
+    },
+    {
+      "id": "D8D-3",
+      "title": "WNT representation sensitivity",
+      "current_frozen_state": "median aggregation is primary; representative-IQR is the frozen sensitivity representation (Phase 2B)",
+      "blocking": "blocks_specific_analysis",
+      "blocks_what": "only the interpretation of a WNT coefficient, if one is reported",
+      "evidence": [
+        "8C \u00a76.2",
+        "reports/phase8c/representation_sensitivity.csv"
+      ],
+      "implication": "Between the two frozen representations the scores correlate E2F 0.998, EMT 0.992, P53 0.972, PI3K 0.910, WNT 0.858. WNT is the smallest set (41 genes) and the least internally coherent of the primary four, so each gene's probe choice matters more. A WNT result that does not hold under the sensitivity representation would be a representation artefact as much as a finding.",
+      "options_not_chosen": [
+        "no representation sensitivity analysis (status quo)",
+        "prespecify a full re-fit under the representative-IQR representation",
+        "prespecify re-fit for WNT only"
+      ],
+      "decision": "AWAITING_APPROVAL"
+    },
+    {
+      "id": "D8D-4",
+      "title": "Prespecified batch sensitivity analysis",
+      "current_frozen_state": "no batch covariate in M1/M2/M3; no batch adjustment",
+      "blocking": "documented_limitation",
+      "blocks_what": "nothing; the primary model is unaffected either way",
+      "evidence": [
+        "8B \u00a78.2",
+        "reports/phase8b/new_findings_stratified_permutation.csv",
+        "reports/phase8b/pc_variance_heterogeneity_by_batch.csv"
+      ],
+      "implication": "Batch LOCATION effects on PCs and on scores are fully explained by MMR composition (0/10 score tests survive stratification). Two signals do survive: AFFX control-probe PC1 ~ batch (p=0.0016) and PC2 DISPERSION ~ batch (p=0.0001). Neither is a location effect, so adding a batch covariate would not address them. Note also that batch, RNA extraction method and MMR are mutually confounded in this deposit, so no analysis here can separate them. ComBat was applied before deposit, so these are residuals in an already-corrected matrix - their absence elsewhere is not evidence that batch effects are absent.",
+      "options_not_chosen": [
+        "no batch sensitivity analysis (status quo)",
+        "prespecify a batch-stratified Cox as a sensitivity analysis",
+        "prespecify a leave-one-batch-out stability check"
+      ],
+      "decision": "AWAITING_APPROVAL"
+    },
+    {
+      "id": "D8D-5",
+      "title": "combat_mod identity and the ComBat model matrix",
+      "current_frozen_state": "UNRESOLVED (Phase 7A Q1). Not used to impute MMR.",
+      "blocking": "documented_limitation",
+      "blocks_what": "nothing in the primary analysis; it limits provenance claims and any statement about what ComBat protected",
+      "evidence": [
+        "8B \u00a72 and \u00a75.5",
+        "reports/phase8b/combat_mod_vs_mmr.csv"
+      ],
+      "implication": "combat_mod is perfectly concordant with recorded MMR across 519 SDRF tumour arrays (0 discordant). That is consistent with the depositors having used mmr.status in the ComBat model matrix, and equally with any variable that partitions these arrays identically. It is NOT proof of identity. The 43 S3 samples with MMR unrecorded are NOT imputed from it; A-19 complete-case remains frozen.",
+      "outstanding_route": "author correspondence with the CIT/GSE39582 depositors",
+      "options_not_chosen": [
+        "leave unresolved and state the limitation",
+        "attempt author correspondence"
+      ],
+      "decision": "AWAITING_APPROVAL"
+    },
+    {
+      "id": "D8D-6",
+      "title": "Eight sex-axis-discordant samples",
+      "current_frozen_state": "RETAINED. Phase 7C D2 retains all 453; no relabelling.",
+      "blocking": "documented_limitation",
+      "blocks_what": "nothing",
+      "evidence": [
+        "8A \u00a71.5",
+        "8B \u00a77",
+        "reports/phase8b/sex_discordant_eight_review.csv"
+      ],
+      "implication": "Eight of 453 samples are discordant with recorded sex on both the Y-linked and the XIST axis, consistently across an 11-marker panel, spread over five batches. 3/8 carry a Phase 7C soft flag against 29/453 cohort-wide (OR 9.67, p=0.011), but a soft flag reports array quality, not identity. Expression markers cannot distinguish a sample or annotation mix-up from loss of Y or XIST silencing. GENOTYPE-LEVEL EVIDENCE IS UNAVAILABLE to this project.",
+      "options_not_chosen": [
+        "retain and document (status quo)",
+        "prespecify a leave-these-eight-out stability check"
+      ],
+      "decision": "AWAITING_APPROVAL"
+    },
+    {
+      "id": "D8D-7",
+      "title": "Endpoint limitations U1 and U2 (Phase 6A numbering)",
+      "current_frozen_state": "U1 `[PROVISIONAL: months]`; U2 published rule UNRESOLVED, deposited encoding is censoring-at-death and that censoring is demonstrably informative",
+      "blocking": "blocks_specific_analysis",
+      "blocks_what": "U1 blocks every FIXED-TIME absolute-risk analysis - t-year risk, predicted survival/CIF curves, cloglog calibration at a horizon, time-dependent AUC/Brier, and the 60-unit endpoint - unless explicitly labelled conditional (Phase 6A \u00a73.1). Relative-risk analyses are unaffected. U2 constrains any analysis that treats death without recurrence as non-informative censoring, and motivates a competing-risks sensitivity analysis.",
+      "evidence": [
+        "docs/PHASE6A_ENDPOINT_RESOLUTION.md \u00a71, \u00a72, \u00a73.1"
+      ],
+      "naming_hazard": "Phase 1 uses the labels U1 and U2 for DIFFERENT items (CIT446 stage vs M1; CIT106/CIT250 zero times). The Phase 6A numbering is the one used here and in the Phase 8A-8D reports. The collision is recorded, not resolved, because renumbering a historical report is out of scope.",
+      "options_not_chosen": [
+        "proceed with relative-risk claims only (Phase 6A position)",
+        "attempt documentary resolution of the time unit"
+      ],
+      "decision": "AWAITING_APPROVAL"
+    },
+    {
+      "id": "D8D-8",
+      "title": "External validation",
+      "current_frozen_state": "NO-GO for CEL acquisition (Phase 4 \u00a76.2). No external expression data downloaded.",
+      "blocking": "blocks_specific_analysis",
+      "blocks_what": "any confirmatory external-validation claim. Internal validation by bootstrap optimism correction is unaffected.",
+      "evidence": [
+        "docs/PHASE4_PREACQUISITION.md \u00a76.1-6.3",
+        "docs/PHASE5_VALIDATION_PRECISION_ASSESSMENT.md \u00a79"
+      ],
+      "implication": "Gate G4 FAILED on pre-specified criteria: GSE14333 has 48 events and GSE33113 has 18, against roughly 338 required at C=0.65 under an APPROXIMATION of the Riley framework (14% and 5% of requirement). Both remain EXPLORATORY candidates and their counts MUST NOT be combined. GSE33113 is a separate estimand - stage II only, a metastasis-or-recurrence composite, time in days. GSE17536 is excluded for established patient overlap with GSE14333. No suitable confirmatory cohort has been identified.",
+      "options_not_chosen": [
+        "proceed with internal validation only and state the limitation",
+        "revisit the four D5 unlock conditions"
+      ],
+      "decision": "AWAITING_APPROVAL"
+    }
+  ],
+  "decisions_made_by_phase8d": 0,
+  "note": "Phase 8D decides nothing. Every entry awaits the project owner's approval."
+}

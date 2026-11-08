@@ -1,0 +1,7 @@
+pair,median_r,frac_r<0.9,frac_r<0.7,median_abs_diff,p95_abs_diff,identical_genes
+representative_iqr vs representative_mean,1.0,0.411,0.2808,0.0,3.3047,5801
+representative_iqr vs median,0.8883,0.5363,0.2031,0.5951,2.9722,118
+representative_iqr vs mean,0.9004,0.4987,0.0464,0.707,2.6325,0
+representative_mean vs median,0.832,0.6734,0.3096,0.8325,3.385,0
+representative_mean vs mean,0.8837,0.5648,0.1007,0.934,2.9962,0
+median vs mean,0.9908,0.253,0.0513,0.0085,0.947,5256

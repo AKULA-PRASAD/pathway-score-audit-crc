@@ -1,0 +1,910 @@
+{
+  "phase": "8A",
+  "title": "outcome-blind exploratory data analysis",
+  "cohort": "S3",
+  "n_samples": 453,
+  "n_genes": 21815,
+  "representation": "frozen median aggregation (Phase 2B)",
+  "matrix_used_as_deposited": true,
+  "normalization_applied": "none",
+  "batch_correction_applied": "none",
+  "samples_excluded": 0,
+  "outcome_columns_opened": false,
+  "survival_modelling_performed": false,
+  "recurrence_association_tested": false,
+  "feature_selection_performed": false,
+  "seed": 20261102,
+  "expression": {
+    "sample_median": {
+      "min": 4.974420115,
+      "max": 5.2760925765,
+      "sd_across_samples": 0.03446983507122729
+    },
+    "sample_iqr": {
+      "min": 2.492522352750001,
+      "max": 3.40748494825,
+      "sd_across_samples": 0.1320128072014371
+    },
+    "global": {
+      "min": 1.4651886150000002,
+      "max": 16.11154945,
+      "mean": 5.383123390504915,
+      "sd": 2.0073342929523186
+    }
+  },
+  "gene_variability": {
+    "n_genes": 21815,
+    "n_zero_variance": 0,
+    "sd_deciles": [
+      0.07919830496544479,
+      0.18148622749456653,
+      0.21975603346790376,
+      0.255391817213438,
+      0.2993792207871626,
+      0.3509487805633075,
+      0.4081672369733027,
+      0.47124483709480136,
+      0.5611779904963938,
+      0.7121288307003714,
+      3.1101144880717295
+    ],
+    "sd_median": 0.3509487805633075,
+    "spearman_mean_vs_sd": 0.6332639948939079,
+    "note": "reported for ALL genes; no gene is filtered or carried forward"
+  },
+  "gene_mean_distribution": {
+    "deciles": [
+      2.29245548874393,
+      3.0736219363452517,
+      3.561267630001327,
+      4.042349025092274,
+      4.5622767072432655,
+      5.100472687794704,
+      5.6697723399092705,
+      6.302966374799994,
+      7.036762322528039,
+      8.082129206943932,
+      13.992649672980125
+    ],
+    "histogram_counts": [
+      31,
+      234,
+      451,
+      617,
+      639,
+      662,
+      612,
+      651,
+      681,
+      685,
+      671,
+      638,
+      615,
+      596,
+      625,
+      610,
+      632,
+      583,
+      563,
+      553,
+      576,
+      541,
+      567,
+      554,
+      462,
+      512,
+      521,
+      462,
+      466,
+      475,
+      402,
+      407,
+      365,
+      366,
+      365,
+      311,
+      310,
+      254,
+      234,
+      234,
+      243,
+      202,
+      194,
+      166,
+      153,
+      128,
+      105,
+      112,
+      93,
+      65,
+      70,
+      67,
+      67,
+      52,
+      45,
+      31,
+      34,
+      28,
+      37,
+      28,
+      25,
+      17,
+      18,
+      11,
+      8,
+      4,
+      8,
+      6,
+      7,
+      4,
+      7,
+      11,
+      5,
+      11,
+      4,
+      4,
+      3,
+      3,
+      2,
+      4
+    ],
+    "histogram_edges": [
+      2.29245548874393,
+      2.4387079160468828,
+      2.584960343349835,
+      2.7312127706527876,
+      2.8774651979557397,
+      3.0237176252586924,
+      3.169970052561645,
+      3.3162224798645976,
+      3.46247490716755,
+      3.608727334470502,
+      3.7549797617734546,
+      3.9012321890764072,
+      4.04748461637936,
+      4.193737043682312,
+      4.339989470985264,
+      4.486241898288217,
+      4.6324943255911695,
+      4.778746752894122,
+      4.924999180197075,
+      5.071251607500027,
+      5.217504034802979,
+      5.363756462105932,
+      5.510008889408884,
+      5.656261316711836,
+      5.802513744014789,
+      5.948766171317741,
+      6.095018598620694,
+      6.241271025923647,
+      6.387523453226599,
+      6.533775880529552,
+      6.680028307832504,
+      6.826280735135456,
+      6.972533162438409,
+      7.118785589741361,
+      7.265038017044314,
+      7.411290444347266,
+      7.557542871650218,
+      7.703795298953171,
+      7.850047726256124,
+      7.996300153559076,
+      8.142552580862027,
+      8.288805008164982,
+      8.435057435467932,
+      8.581309862770887,
+      8.727562290073838,
+      8.873814717376792,
+      9.020067144679743,
+      9.166319571982696,
+      9.312571999285648,
+      9.4588244265886,
+      9.605076853891553,
+      9.751329281194504,
+      9.897581708497459,
+      10.04383413580041,
+      10.190086563103364,
+      10.336338990406315,
+      10.48259141770927,
+      10.62884384501222,
+      10.775096272315174,
+      10.921348699618125,
+      11.067601126921076,
+      11.21385355422403,
+      11.360105981526981,
+      11.506358408829936,
+      11.652610836132887,
+      11.798863263435841,
+      11.945115690738792,
+      12.091368118041746,
+      12.237620545344697,
+      12.383872972647652,
+      12.530125399950602,
+      12.676377827253553,
+      12.822630254556508,
+      12.968882681859458,
+      13.115135109162413,
+      13.261387536465364,
+      13.407639963768318,
+      13.553892391071269,
+      13.700144818374223,
+      13.846397245677174,
+      13.992649672980125
+    ]
+  },
+  "sample_correlation": {
+    "pearson": {
+      "min": 0.7980253887665038,
+      "p1": 0.88260325585727,
+      "q1": 0.9331506530256085,
+      "median": 0.944666206153275,
+      "q3": 0.9537496035975918,
+      "max": 0.9856631445447372,
+      "mean": 0.9415224844465147
+    },
+    "spearman": {
+      "min": 0.8176007246013157,
+      "p1": 0.8898898430963654,
+      "q1": 0.9369500034682526,
+      "median": 0.9470829374724956,
+      "q3": 0.9551247280363283,
+      "max": 0.9845842402072089,
+      "mean": 0.9442729130726502
+    }
+  },
+  "distributional_heterogeneity": {
+    "statistic": "sup-norm between a sample's quantile function (percentiles 1-99) and the cohort-median quantile function, log2 units",
+    "min": 0.0233472919000004,
+    "median": 0.10783290679999347,
+    "max": 0.5157023656500002,
+    "sd_across_quantile_grid_of_cohort": 0.0631693599354834
+  },
+  "sex_positive_control": {
+    "y_markers_used": [
+      "RPS4Y1",
+      "DDX3Y",
+      "KDM5D",
+      "EIF1AY",
+      "USP9Y",
+      "UTY"
+    ],
+    "thresholds": {
+      "y_score": 4.9298082733411945,
+      "y_cluster_centres": [
+        3.6689659196677487,
+        6.19065062701464
+      ],
+      "xist": 5.953577103675563,
+      "xist_cluster_centres": [
+        3.608587993363322,
+        8.298566213987804
+      ],
+      "derivation": "midpoint of 1-D 2-means centres, deterministic init at the quartiles of the range"
+    },
+    "n_with_recorded_sex": 453,
+    "n_concordant_both_axes": 376,
+    "concordance_both_axes": 0.830022,
+    "discordant_both_axes": [
+      "GSM972036",
+      "GSM972111",
+      "GSM972113",
+      "GSM972174",
+      "GSM972248",
+      "GSM972283",
+      "GSM972479",
+      "GSM972495"
+    ],
+    "discordant_y_axis_only": [
+      "GSM971992",
+      "GSM972041",
+      "GSM972049",
+      "GSM972057",
+      "GSM972060",
+      "GSM972069",
+      "GSM972099",
+      "GSM972119",
+      "GSM972126",
+      "GSM972169",
+      "GSM972182",
+      "GSM972190",
+      "GSM972194",
+      "GSM972207",
+      "GSM972230",
+      "GSM972243",
+      "GSM972264",
+      "GSM972271",
+      "GSM972306",
+      "GSM972312",
+      "GSM972328",
+      "GSM972333",
+      "GSM972336",
+      "GSM972373",
+      "GSM972415",
+      "GSM972417",
+      "GSM972420",
+      "GSM972450",
+      "GSM972468",
+      "GSM972477",
+      "GSM972490"
+    ],
+    "discordant_xist_axis_only": [
+      "GSM971976",
+      "GSM972033",
+      "GSM972055",
+      "GSM972056",
+      "GSM972059",
+      "GSM972061",
+      "GSM972071",
+      "GSM972077",
+      "GSM972083",
+      "GSM972135",
+      "GSM972143",
+      "GSM972180",
+      "GSM972184",
+      "GSM972195",
+      "GSM972196",
+      "GSM972203",
+      "GSM972215",
+      "GSM972221",
+      "GSM972222",
+      "GSM972257",
+      "GSM972265",
+      "GSM972277",
+      "GSM972292",
+      "GSM972298",
+      "GSM972308",
+      "GSM972316",
+      "GSM972318",
+      "GSM972319",
+      "GSM972330",
+      "GSM972332",
+      "GSM972360",
+      "GSM972363",
+      "GSM972397",
+      "GSM972399",
+      "GSM972403",
+      "GSM972406",
+      "GSM972410",
+      "GSM972501"
+    ],
+    "interpretation": {
+      "both_axes": "female-like on BOTH axes when Male is recorded (or the reverse) -- the pattern a sample or annotation mix-up would produce; also reachable by LOY plus XIST re-expression in the same tumour",
+      "y_axis_only": "consistent with loss of Y (LOY), common in male solid tumours and in ageing male tissue",
+      "xist_axis_only": "consistent with XIST silencing / loss of the inactive X, documented in several carcinomas"
+    },
+    "adjudication": "NOT ADJUDICATED. Array expression alone cannot separate a mix-up from LOY / XIST loss; genotype-level data would be required. No sample is excluded or relabelled.",
+    "caveat": "the deposited matrix is ComBat-corrected with a 2-level mod covariate that does not encode sex, so any confounding between sex and ComBat batch was not protected during correction",
+    "action": "REPORT ONLY -- never triggers exclusion"
+  },
+  "pca": {
+    "method": "gene-wise centring, no scaling; thin SVD (numpy.linalg.svd, full_matrices=False) of the 21815 x 453 centred matrix; deterministic, no RNG; sign fixed by largest-|loading| positive",
+    "variance_explained_pc1_20": [
+      0.1031520499923517,
+      0.07678664587411732,
+      0.06363290936025716,
+      0.05920701580643056,
+      0.0320714981963314,
+      0.023610945639936813,
+      0.019593493399434298,
+      0.018625994177640333,
+      0.015094938700305236,
+      0.013762182476567006,
+      0.01295875610311141,
+      0.012718574680034588,
+      0.011612878605899003,
+      0.011140000186653997,
+      0.009645290036780076,
+      0.009460418034675618,
+      0.00899927692519205,
+      0.007977034546843998,
+      0.007568185122121701,
+      0.007252592405311368
+    ],
+    "cumulative_pc5": 0.33485011922948815,
+    "cumulative_pc10": 0.42553767362337186,
+    "cumulative_pc20": 0.5248706802699956,
+    "n_pcs_for_50pct": 17,
+    "n_pcs_for_80pct": 127,
+    "sensitivity_gene_standardised_pc1_5": [
+      0.11583214914034638,
+      0.05912293522173987,
+      0.05262089540198215,
+      0.03208958215038394,
+      0.024546292481859605
+    ],
+    "qc_phase7c_probe_level_pc1_5": [
+      0.09726447463666461,
+      0.08085061104061134,
+      0.06755747764633219,
+      0.04953452972118323,
+      0.0381817276108352
+    ],
+    "full_cohort_rotation_is_descriptive_only": true,
+    "note": "this full-cohort rotation is EXPLORATORY. Phase 6B s3.2.2 requires any PCA rotation used as a model input to be re-estimated inside each training fold. It is not a model input."
+  },
+  "pc_associations_top": [
+    {
+      "annotation": "cimp.status",
+      "pc": "PC3",
+      "epsilon_squared": 0.20650691387210904,
+      "p_value": 3.2188811126277347e-19,
+      "n": 386
+    },
+    {
+      "annotation": "mmr.status",
+      "pc": "PC3",
+      "epsilon_squared": 0.19880449746808698,
+      "p_value": 1.2857423048788512e-19,
+      "n": 410
+    },
+    {
+      "annotation": "cin.status",
+      "pc": "PC3",
+      "epsilon_squared": 0.1979091804312329,
+      "p_value": 1.553472385886417e-17,
+      "n": 364
+    },
+    {
+      "annotation": "combat_mod",
+      "pc": "PC3",
+      "epsilon_squared": 0.19537036288965587,
+      "p_value": 3.730746743422678e-21,
+      "n": 453
+    },
+    {
+      "annotation": "mmr.status",
+      "pc": "PC1",
+      "epsilon_squared": 0.1826441282108951,
+      "p_value": 3.61943426294362e-18,
+      "n": 410
+    },
+    {
+      "annotation": "combat_mod",
+      "pc": "PC1",
+      "epsilon_squared": 0.16359195607948648,
+      "p_value": 5.2620816543035424e-18,
+      "n": 453
+    },
+    {
+      "annotation": "cimp.status",
+      "pc": "PC1",
+      "epsilon_squared": 0.1378256810639069,
+      "p_value": 2.0828396772747952e-13,
+      "n": 386
+    },
+    {
+      "annotation": "braf.mutation",
+      "pc": "PC3",
+      "epsilon_squared": 0.13533423444944728,
+      "p_value": 1.3844182642170502e-13,
+      "n": 399
+    }
+  ],
+  "clustering": {
+    "method": "average linkage on 1 - Pearson sample correlation",
+    "cluster_sizes": {
+      "2": [
+        452,
+        1
+      ],
+      "3": [
+        451,
+        1,
+        1
+      ],
+      "4": [
+        2,
+        449,
+        1,
+        1
+      ],
+      "5": [
+        2,
+        3,
+        446,
+        1,
+        1
+      ],
+      "6": [
+        2,
+        3,
+        445,
+        1,
+        1,
+        1
+      ]
+    }
+  },
+  "technical_vs_biological": {
+    "combat_mod_meaning": {
+      "phase7a_status": "UNDOCUMENTED (open question Q1)",
+      "s3_table": {
+        "dMMR": {
+          "modcan1": 60,
+          "modcan2": 0
+        },
+        "pMMR": {
+          "modcan1": 0,
+          "modcan2": 350
+        }
+      },
+      "s3_n_with_mmr_recorded": 410,
+      "s3_discordant": 0,
+      "full_series": {
+        "n_arrays_with_mmr": 519,
+        "table": {
+          "dMMR": {
+            "modcan1": 75,
+            "modcan2": 0
+          },
+          "pMMR": {
+            "modcan1": 0,
+            "modcan2": 444
+          }
+        },
+        "discordant": 0
+      },
+      "observation": "combat_mod is perfectly concordant with deposited MMR status; zero discordant arrays",
+      "inference_status": "HYPOTHESIS -- concordance does not prove the depositors' mod matrix WAS mmr.status; it is consistent with it and with any variable that partitions these arrays identically",
+      "not_used_to_impute": "the 43 S3 samples with MMR unrecorded are NOT imputed from combat_mod; A-19 complete-case is frozen"
+    },
+    "batch_composition": {
+      "chi2": 136.0027354539941,
+      "df": 8,
+      "p_value": 1.6072346418284743e-25,
+      "batch05_pct_modcan1": 63.27,
+      "cohort_pct_modcan1": 14.348785871964681
+    },
+    "pc_batch_conditional": [
+      {
+        "stratum": "modcan2",
+        "n": 388,
+        "pc": "PC1",
+        "n_batches": 9,
+        "statistic_H": 1.3066047722322764,
+        "p_value": 0.9954727915532817,
+        "epsilon_squared": -0.017660673424189244
+      },
+      {
+        "stratum": "modcan2",
+        "n": 388,
+        "pc": "PC2",
+        "n_batches": 9,
+        "statistic_H": 3.5367701494358244,
+        "p_value": 0.8963172576668091,
+        "epsilon_squared": -0.011776332059536083
+      },
+      {
+        "stratum": "modcan2",
+        "n": 388,
+        "pc": "PC3",
+        "n_batches": 9,
+        "statistic_H": 3.5610280151038296,
+        "p_value": 0.8944019991934734,
+        "epsilon_squared": -0.011712327136929209
+      },
+      {
+        "stratum": "modcan2",
+        "n": 388,
+        "pc": "PC4",
+        "n_batches": 9,
+        "statistic_H": 4.306090009604077,
+        "p_value": 0.828505112014901,
+        "epsilon_squared": -0.009746464354606658
+      },
+      {
+        "stratum": "modcan2",
+        "n": 388,
+        "pc": "PC5",
+        "n_batches": 9,
+        "statistic_H": 3.476498265607688,
+        "p_value": 0.9010059448198545,
+        "epsilon_squared": -0.011935360776760717
+      },
+      {
+        "stratum": "modcan1",
+        "n": 64,
+        "pc": "PC1",
+        "n_batches": 6,
+        "statistic_H": 4.463880815214594,
+        "p_value": 0.48473055794131414,
+        "epsilon_squared": -0.009243434220438032
+      },
+      {
+        "stratum": "modcan1",
+        "n": 64,
+        "pc": "PC2",
+        "n_batches": 6,
+        "statistic_H": 18.37060898158913,
+        "p_value": 0.0025160575574052963,
+        "epsilon_squared": 0.23052774106188154
+      },
+      {
+        "stratum": "modcan1",
+        "n": 64,
+        "pc": "PC3",
+        "n_batches": 6,
+        "statistic_H": 12.554623366707744,
+        "p_value": 0.027929798954828878,
+        "epsilon_squared": 0.13025212701220248
+      },
+      {
+        "stratum": "modcan1",
+        "n": 64,
+        "pc": "PC4",
+        "n_batches": 6,
+        "statistic_H": 7.069523113363061,
+        "p_value": 0.2155209254923829,
+        "epsilon_squared": 0.0356814329890183
+      },
+      {
+        "stratum": "modcan1",
+        "n": 64,
+        "pc": "PC5",
+        "n_batches": 6,
+        "statistic_H": 7.511354699890717,
+        "p_value": 0.18530169789711037,
+        "epsilon_squared": 0.04329921896363305
+      }
+    ],
+    "interpretation": "the marginal PC1/PC3 batch association does not survive stratification by combat_mod. This is consistent with composition, not residual technical batch structure. It does NOT prove absence of batch effect: ComBat was already applied to the deposit, so batch variance was removed by construction and this analysis cannot recover it."
+  },
+  "pathways": {
+    "4set_primary": {
+      "n_sets": 4,
+      "coverage": {
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": {
+          "n_source": 200,
+          "n_resolved_in_panel": 198,
+          "n_present_in_matrix": 198,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.99,
+          "n_zero_variance_dropped": 0,
+          "n_genes_used": 198,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_E2F_TARGETS": {
+          "n_source": 200,
+          "n_resolved_in_panel": 195,
+          "n_present_in_matrix": 195,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.975,
+          "n_zero_variance_dropped": 0,
+          "n_genes_used": 195,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": {
+          "n_source": 42,
+          "n_resolved_in_panel": 41,
+          "n_present_in_matrix": 41,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.97619,
+          "n_zero_variance_dropped": 0,
+          "n_genes_used": 41,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_P53_PATHWAY": {
+          "n_source": 200,
+          "n_resolved_in_panel": 194,
+          "n_present_in_matrix": 194,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.97,
+          "n_zero_variance_dropped": 0,
+          "n_genes_used": 194,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        }
+      },
+      "all_coverage_rules_met": true,
+      "scores_dropped": [],
+      "full_cohort_scores_are_exploratory_only": true,
+      "full_cohort_scores_used_as_model_input": false,
+      "inter_score_correlation": {
+        "max_abs_r": 0.3155763792513359,
+        "median_abs_r": 0.18630916644038464,
+        "n_gt_0.5": 0,
+        "n_gt_0.7": 0,
+        "condition_number": 2.9491183214993772,
+        "min_eigenvalue": 0.4811073181512875
+      },
+      "score_distribution": {
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": {
+          "mean": -2.0390851136603317e-16,
+          "sd": 0.4949552082359261,
+          "min": -1.1054353849287628,
+          "max": 2.156344169557485
+        },
+        "HALLMARK_E2F_TARGETS": {
+          "mean": -5.646697237828611e-16,
+          "sd": 0.5543474292056848,
+          "min": -2.4787508402848566,
+          "max": 1.3057357860213608
+        },
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": {
+          "mean": -2.6949254699289672e-15,
+          "sd": 0.2530770323885888,
+          "min": -0.652764024809489,
+          "max": 0.8543397742314334
+        },
+        "HALLMARK_P53_PATHWAY": {
+          "mean": -2.901774969439703e-16,
+          "sd": 0.19490262025395355,
+          "min": -0.5551950558024422,
+          "max": 0.7614481232814242
+        }
+      },
+      "fold_isolation": {
+        "splits": "5 outcome-blind deterministic splits, seed 20261102",
+        "is_phase6b_resampling_scheme": false,
+        "all_folds_bit_identical_when_heldout_deleted": true,
+        "max_abs_score_shift_vs_full_cohort_fit": 0.07223832293388321
+      },
+      "ddof_sensitivity": {
+        "freeze_record_pins_ddof": true,
+        "pinned_sigma_ddof": 1,
+        "pinned_by_amendment": "M2-A1",
+        "read_from_specification_not_library_default": true,
+        "ratio_ddof0_over_ddof1_max": 1.001105583532818,
+        "expected_constant_factor_sqrt_n_over_n_minus_1": 1.0011055835327916,
+        "effect": "a single constant rescaling of every score within a fold; rank order and correlations unchanged, numeric values are not",
+        "amendment_resolves_phase8a_U5": true
+      }
+    },
+    "5set_sensitivity": {
+      "n_sets": 5,
+      "coverage": {
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": {
+          "n_source": 200,
+          "n_resolved_in_panel": 198,
+          "n_present_in_matrix": 198,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.99,
+          "n_zero_variance_dropped": 0,
+          "n_genes_used": 198,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_E2F_TARGETS": {
+          "n_source": 200,
+          "n_resolved_in_panel": 195,
+          "n_present_in_matrix": 195,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.975,
+          "n_zero_variance_dropped": 0,
+          "n_genes_used": 195,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": {
+          "n_source": 42,
+          "n_resolved_in_panel": 41,
+          "n_present_in_matrix": 41,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.97619,
+          "n_zero_variance_dropped": 0,
+          "n_genes_used": 41,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_P53_PATHWAY": {
+          "n_source": 200,
+          "n_resolved_in_panel": 194,
+          "n_present_in_matrix": 194,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.97,
+          "n_zero_variance_dropped": 0,
+          "n_genes_used": 194,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_PI3K_AKT_MTOR_SIGNALING": {
+          "n_source": 105,
+          "n_resolved_in_panel": 104,
+          "n_present_in_matrix": 104,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.990476,
+          "n_zero_variance_dropped": 0,
+          "n_genes_used": 104,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        }
+      },
+      "all_coverage_rules_met": true,
+      "scores_dropped": [],
+      "full_cohort_scores_are_exploratory_only": true,
+      "full_cohort_scores_used_as_model_input": false,
+      "inter_score_correlation": {
+        "max_abs_r": 0.6314326428372892,
+        "median_abs_r": 0.18630916644038464,
+        "n_gt_0.5": 1,
+        "n_gt_0.7": 0,
+        "condition_number": 7.032019217929106,
+        "min_eigenvalue": 0.2777243124722031
+      },
+      "score_distribution": {
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": {
+          "mean": -2.0390851136603317e-16,
+          "sd": 0.4949552082359261,
+          "min": -1.1054353849287628,
+          "max": 2.156344169557485
+        },
+        "HALLMARK_E2F_TARGETS": {
+          "mean": -5.646697237828611e-16,
+          "sd": 0.5543474292056848,
+          "min": -2.4787508402848566,
+          "max": 1.3057357860213608
+        },
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": {
+          "mean": -2.6949254699289672e-15,
+          "sd": 0.2530770323885888,
+          "min": -0.652764024809489,
+          "max": 0.8543397742314334
+        },
+        "HALLMARK_P53_PATHWAY": {
+          "mean": -2.901774969439703e-16,
+          "sd": 0.19490262025395355,
+          "min": -0.5551950558024422,
+          "max": 0.7614481232814242
+        },
+        "HALLMARK_PI3K_AKT_MTOR_SIGNALING": {
+          "mean": -1.4381432027594742e-15,
+          "sd": 0.18508137967472627,
+          "min": -0.5458418821287571,
+          "max": 0.6484432265809659
+        }
+      },
+      "fold_isolation": {
+        "splits": "5 outcome-blind deterministic splits, seed 20261102",
+        "is_phase6b_resampling_scheme": false,
+        "all_folds_bit_identical_when_heldout_deleted": true,
+        "max_abs_score_shift_vs_full_cohort_fit": 0.07223832293388321
+      },
+      "ddof_sensitivity": {
+        "freeze_record_pins_ddof": true,
+        "pinned_sigma_ddof": 1,
+        "pinned_by_amendment": "M2-A1",
+        "read_from_specification_not_library_default": true,
+        "ratio_ddof0_over_ddof1_max": 1.0011055835329852,
+        "expected_constant_factor_sqrt_n_over_n_minus_1": 1.0011055835327916,
+        "effect": "a single constant rescaling of every score within a fold; rank order and correlations unchanged, numeric values are not",
+        "amendment_resolves_phase8a_U5": true
+      }
+    }
+  },
+  "frozen_artifact_hashes": {
+    "frozen_gene_to_probeset_median.csv": "08f8715fb7eca5a0cad9516e66343bdd3edf48b1e68535e10b8da59dc054e237",
+    "frozen_gene_to_probe_discovery443.csv": "c386d5f11cc511dc240ad7f1cd47124e7687266ba4807d6be3dc80d7abd857bc",
+    "frozen_representation.json": "d5ec63736d87425864d37fd63250f5fa2269884bd0702b677f36c09d32a03570",
+    "selection_population_discovery443.txt": "9490d2264ebd32cfa9063a94c0f5f95f9207f9603be6090caba9307e9dc25c53",
+    "expression_median_S0.parquet": "a1ca41807c53458489617e677f2bdb3f0a72b2c9a71d8ded59b4eeef60c73676",
+    "expression_repiqr_disc443_S0.parquet": "e636e259b4feabfaf4154366b3570dfa4ec4832995dd7cc51a4f40e86c2531da",
+    "cohort_membership.csv": "bd3671f8df64c594d273a23abed80b83dd17742aee15bd83ac114211be5fcd01",
+    "partition_and_batch.csv": "57a45bab8efb81f96e838b9348edb13d4a3fbf09f2ea13f69f2d0f52700c49ed",
+    "covariates.csv": "47b2d9829a4fccecf30663d0b0063d54664e72c1a9011938698c6c93a9441403",
+    "endpoint.csv": "802a68575a34a3b60a50bd2452b9b09b62c1c40b90f34f4f60bb66691b0e7e0d",
+    "m2_panel_4set.json": "cb4de071e2f64a6b6d401015ea70b22705e9a4149f71de6f6795845e1ce47b11",
+    "m2_panel_5set.json": "10dae4874a918160c50dd050fb267fca26474827d8215d53bd56b7f89ddd5275",
+    "M2_FREEZE_RECORD.json": "c2b31f3340b3635595457fcb0e33460c6032c66f6712a0afc4b7b2c65c0287dc",
+    "A19_FREEZE_RECORD.json": "a77de7b37fe09eeb9d9958ca012648e63fb349c19614b0c2dc99591da2cf561f"
+  },
+  "frozen_artifacts_modified": false,
+  "environment": {
+    "captured_utc": "2026-11-03T00:56:08.978046+00:00",
+    "python_version": "3.13.13",
+    "python_executable": "/Users/kalki/coad_transportability/.venv/bin/python",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.5.4",
+      "pandas": "2.3.3",
+      "scipy": "1.18.1",
+      "sklearn": "1.9.1",
+      "lifelines": "0.30.3",
+      "pyarrow": "26.0.0",
+      "pytest": "9.2.0"
+    }
+  }
+}

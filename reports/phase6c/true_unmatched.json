@@ -1,0 +1,57 @@
+{
+  "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": {
+    "n_source": 200,
+    "n_resolved": 198,
+    "true_unmatched_n": 2,
+    "true_unmatched": [
+      "FZD8 (Entrez 8325)",
+      "MATN2 (Entrez 4147)"
+    ],
+    "previously_reported_unmatched_n": 5
+  },
+  "HALLMARK_E2F_TARGETS": {
+    "n_source": 200,
+    "n_resolved": 195,
+    "true_unmatched_n": 5,
+    "true_unmatched": [
+      "CIT (Entrez 11113)",
+      "MMS22L (Entrez 253714)",
+      "NOP56 (Entrez 10528)",
+      "PMS2 (Entrez 5395)",
+      "SRSF2 (Entrez 6427)"
+    ],
+    "previously_reported_unmatched_n": 11
+  },
+  "HALLMARK_WNT_BETA_CATENIN_SIGNALING": {
+    "n_source": 42,
+    "n_resolved": 41,
+    "true_unmatched_n": 1,
+    "true_unmatched": [
+      "FZD8 (Entrez 8325)"
+    ],
+    "previously_reported_unmatched_n": 1
+  },
+  "HALLMARK_P53_PATHWAY": {
+    "n_source": 200,
+    "n_resolved": 194,
+    "true_unmatched_n": 6,
+    "true_unmatched": [
+      "IFI30 (Entrez 10437)",
+      "KRT17 (Entrez 3872)",
+      "MXD4 (Entrez 10608)",
+      "PVT1 (Entrez 5820)",
+      "RACK1 (Entrez 10399)",
+      "TAX1BP3 (Entrez 30851)"
+    ],
+    "previously_reported_unmatched_n": 12
+  },
+  "HALLMARK_PI3K_AKT_MTOR_SIGNALING": {
+    "n_source": 105,
+    "n_resolved": 104,
+    "true_unmatched_n": 1,
+    "true_unmatched": [
+      "MAP2K3 (Entrez 5606)"
+    ],
+    "previously_reported_unmatched_n": 2
+  }
+}

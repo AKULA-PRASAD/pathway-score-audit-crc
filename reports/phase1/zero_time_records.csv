@@ -1,0 +1,9 @@
+sample_id,title,dataset,tnm.stage,tnm.t,tnm.n,tnm.m,rfs.event,rfs.delay,os.event,os.delay_(months),chemotherapy.adjuvant,age.at.diagnosis_(year),sex,mmr.status,cit.molecularsubtype
+GSM972062,CIT106,discovery,2.0,T4,N0,M0,1.0,0.0,1.0,23.0,Y,43.0,Female,pMMR,C6
+GSM972206,CIT250,discovery,2.0,,,,1.0,0.0,0.0,42.0,N,74.0,Male,pMMR,C6
+GSM972229,CIT273,discovery,2.0,T3,N0,M0,0.0,0.0,0.0,0.0,N,81.0,Female,dMMR,C2
+GSM972246,CIT290,discovery,3.0,T3,N1,M0,0.0,0.0,0.0,0.0,N,92.0,Female,pMMR,C5
+GSM972258,CIT302,discovery,2.0,T4,N0,M0,0.0,0.0,1.0,0.0,N,77.0,Female,pMMR,C1
+GSM972401,CIT445,validation,2.0,T3,N0,M0,0.0,0.0,1.0,0.0,N,69.0,Male,pMMR,C4
+GSM972402,CIT446,validation,2.0,T3,N0,M1,1.0,0.0,1.0,31.0,Y,71.0,Male,,C5
+GSM972456,CIT500,validation,2.0,T3,N0,M0,0.0,0.0,1.0,0.0,N,82.0,Female,pMMR,C5

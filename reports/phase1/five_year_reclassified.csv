@@ -1,0 +1,7 @@
+sample_id,title,tnm.stage,rfs.event,rfs.delay,os.event,os.delay_(months),chemotherapy.adjuvant
+GSM971968,CIT012,2.0,1.0,93.0,0.0,112.0,N
+GSM972082,CIT126,2.0,1.0,119.0,1.0,132.0,Y
+GSM972136,CIT180,3.0,1.0,61.0,0.0,130.0,Y
+GSM972322,CIT366,2.0,1.0,66.0,1.0,86.0,Y
+GSM972328,CIT372,3.0,1.0,78.0,0.0,82.0,Y
+GSM972352,CIT396,3.0,1.0,74.0,0.0,139.0,Y

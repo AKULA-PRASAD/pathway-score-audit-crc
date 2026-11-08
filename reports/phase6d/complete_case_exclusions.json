@@ -1,0 +1,19 @@
+{
+  "n_excluded": 1,
+  "n_retained": 452,
+  "n_total": 453,
+  "excluded": [
+    {
+      "sample_id": "GSM972262",
+      "title": "CIT306",
+      "dataset": "discovery",
+      "combat_batch": "batch05",
+      "missing_variables": [
+        "chemotherapy.adjuvant"
+      ],
+      "raw_values": {
+        "chemotherapy.adjuvant": "N/A"
+      }
+    }
+  ]
+}

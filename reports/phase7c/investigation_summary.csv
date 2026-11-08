@@ -1,0 +1,30 @@
+sample_id,flags,batch,dataset,cit_subtype,independent_technical_evidence,proposed_action
+GSM971986,S-S1+S-S3,batch01,discovery,C5,NONE FOUND,NO EXCLUSION - investigation only
+GSM971993,S-S1,batch01,discovery,C3,NONE FOUND,NO EXCLUSION - investigation only
+GSM972059,S-S1+S-S2+S-S3,batch03,discovery,C2,PARTIAL: extreme PCA score |z|>4,NO EXCLUSION - investigation only
+GSM972061,S-S2,batch03,discovery,C1,NONE FOUND,NO EXCLUSION - investigation only
+GSM972077,S-S3,batch03,discovery,C6,PARTIAL: extreme PCA score |z|>4,NO EXCLUSION - investigation only
+GSM972079,S-S3,batch03,discovery,C2,NONE FOUND,NO EXCLUSION - investigation only
+GSM972089,S-S3,batch03,discovery,C4,NONE FOUND,NO EXCLUSION - investigation only
+GSM972097,S-S1+S-S3,batch03,discovery,C4,NONE FOUND,NO EXCLUSION - investigation only
+GSM972105,S-S1+S-S2+S-S3,batch03,discovery,C5,PARTIAL: degradation ratio deviates >1 log2 from the unflagged median,NO EXCLUSION - investigation only
+GSM972113,S-S3,batch03,discovery,C4,NONE FOUND,NO EXCLUSION - investigation only
+GSM972149,S-S1,batch04,discovery,C1,NONE FOUND,NO EXCLUSION - investigation only
+GSM972177,S-S2,batch04,discovery,C6,NONE FOUND,NO EXCLUSION - investigation only
+GSM972220,S-S1,batch05,discovery,C2,NONE FOUND,NO EXCLUSION - investigation only
+GSM972221,S-S2,batch05,discovery,C2,NONE FOUND,NO EXCLUSION - investigation only
+GSM972257,S-S2,batch05,discovery,C1,NONE FOUND,NO EXCLUSION - investigation only
+GSM972264,S-S2,batch05,discovery,C2,NONE FOUND,NO EXCLUSION - investigation only
+GSM972274,S-S2,batch05,discovery,C2,NONE FOUND,NO EXCLUSION - investigation only
+GSM972275,S-S2+S-S3,batch05,discovery,C4,NONE FOUND,NO EXCLUSION - investigation only
+GSM972283,S-S2,batch05,discovery,C2,NONE FOUND,NO EXCLUSION - investigation only
+GSM972295,S-S2,batch05,discovery,C3,NONE FOUND,NO EXCLUSION - investigation only
+GSM972305,S-S1,batch07,discovery,C2,NONE FOUND,NO EXCLUSION - investigation only
+GSM972311,S-S3,batch07,discovery,C5,NONE FOUND,NO EXCLUSION - investigation only
+GSM972357,S-S3,batch08,discovery,C6,NONE FOUND,NO EXCLUSION - investigation only
+GSM972361,S-S3,batch08,discovery,C4,NONE FOUND,NO EXCLUSION - investigation only
+GSM972444,S-S2+S-S3,batch05,validation,C4,NONE FOUND,NO EXCLUSION - investigation only
+GSM972445,S-S2,batch05,validation,C2,NONE FOUND,NO EXCLUSION - investigation only
+GSM972467,S-S3,batch07,validation,C4,NONE FOUND,NO EXCLUSION - investigation only
+GSM972479,S-S3,batch07,validation,C4,NONE FOUND,NO EXCLUSION - investigation only
+GSM972499,S-S1,batch08,validation,C2,NONE FOUND,NO EXCLUSION - investigation only

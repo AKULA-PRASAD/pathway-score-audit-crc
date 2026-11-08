@@ -1,0 +1,16 @@
+,value
+expression_probe_ids,54675
+annotation_probe_ids,54675
+identical_sets,True
+match_standard_affy_grammar,54662
+pct_standard_grammar,99.98
+affx_control_probesets,62
+frozen_median_probes,43163
+frozen_median_subset_of_platform,True
+frozen_repiqr_probes,21815
+frozen_repiqr_subset_of_platform,True
+suffix_distribution,"{'s_at': 11295, 'x_at': 4207, 'a_at': 1720, 'g_at': 13, 'r_at': 12, 'i_at': 9, 'f_at': 5}"
+non_plain_suffix_probesets,17261
+entrezg_cdf_excluded_because,"an ENTREZG CDF has ~20k probe sets, all plain '_at', and no AFFX controls; this set has 54,675 probe sets, 17,261 with non-plain suffixes, and 62 AFFX controls"
+documented_vector_objects,"{'source': 'hgu133plus2frmavecs reference manual (Bioconductor, Oct 2026)', 'standard_cdf_object': 'hgu133plus2frmavecs', 'entrez_altcdf_object': 'hgu133plus2hsentrezgfrmavecs', 'format': ['normVec', 'probeVec', 'probeVarWithin', 'probeVarBetween', 'probesetSD', 'medianSE', 'version (the Entrez Gene alternative CDF version IF APPLICABLE)'], 'resolution': ""The package ships TWO separate vector objects. The 'hgu133ahsentrezgcdf' string in the DESCRIPTION refers to how the ALTERNATIVE Entrez object was built; the 'version' element is documented as present only 'if applicable'. The standard object is therefore standard-CDF keyed."", 'verified_level': 'DOCUMENTATION (reference manual), not the loaded object'}"
+verdict,"CONDITIONAL GO - identifier compatibility is established for our side (100% standard Affy grammar, frozen probe sets are strict subsets of the GPL570 platform) and the CDF ambiguity is resolved from the reference manual. The residual check - that the LOADED standard object yields exactly our 54,675 identifiers - requires installation and remains outstanding."

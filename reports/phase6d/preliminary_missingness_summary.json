@@ -1,0 +1,28 @@
+{
+  "status": "PRELIMINARY - pre-QC, provisional",
+  "cohort": "S3",
+  "n": 453,
+  "complete_variables": [
+    "age.at.diagnosis_(year)",
+    "sex",
+    "tnm.stage",
+    "tumor.location",
+    "flag_stage_m_conflict"
+  ],
+  "M1_primary_predictors": [
+    "age.at.diagnosis_(year)",
+    "sex",
+    "tnm.stage",
+    "tumor.location",
+    "chemotherapy.adjuvant"
+  ],
+  "M1_complete_case_retained": 452,
+  "M1_complete_case_pct": 99.8,
+  "all_variable_complete_case_retained": 203,
+  "all_variable_complete_case_pct": 44.8,
+  "max_discovery_validation_differential": {
+    "variable": "tp53.mutation",
+    "diff_pp": -30.4
+  },
+  "endpoint_missing_in_S3": 0
+}

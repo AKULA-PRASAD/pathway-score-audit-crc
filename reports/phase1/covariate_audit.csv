@@ -1,0 +1,18 @@
+covariate,complete,missing,missing %,levels,events with data
+age.at.diagnosis_(year),461,0,0.0,89,139
+sex,461,0,0.0,2,139
+tnm.stage,461,0,0.0,2,139
+tnm.t,441,20,4.3,4,119
+tnm.n,441,20,4.3,5,119
+tnm.m,441,20,4.3,3,119
+tumor.location,461,0,0.0,2,139
+chemotherapy.adjuvant,460,1,0.2,2,139
+chemotherapy.adjuvant.type,143,318,69.0,5,51
+mmr.status,417,44,9.5,2,131
+cimp.status,394,67,14.5,2,105
+cin.status,372,89,19.3,2,94
+kras.mutation,440,21,4.6,2,131
+braf.mutation,407,54,11.7,2,112
+tp53.mutation,288,173,37.5,2,101
+cit.molecularsubtype,461,0,0.0,6,139
+rna.extraction.method,461,0,0.0,6,139

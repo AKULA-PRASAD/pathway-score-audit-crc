@@ -1,0 +1,28 @@
+{
+  "5-set": {
+    "k": 5,
+    "max_abs_r": 0.6317153926108399,
+    "median_abs_r": 0.18123687714436285,
+    "n_gt_0.5": 1,
+    "n_gt_0.7": 0,
+    "condition_number": 6.950113351908527,
+    "min_eigenvalue": 0.28011421050582647,
+    "pcs_80": 3,
+    "pcs_90": 4,
+    "kaiser": 2,
+    "union_genes": 702
+  },
+  "4-set": {
+    "k": 4,
+    "max_abs_r": 0.3180455175888618,
+    "median_abs_r": 0.18123687714436285,
+    "n_gt_0.5": 0,
+    "n_gt_0.7": 0,
+    "condition_number": 2.9499892688432796,
+    "min_eigenvalue": 0.4798084627562787,
+    "pcs_80": 3,
+    "pcs_90": 4,
+    "kaiser": 2,
+    "union_genes": 607
+  }
+}

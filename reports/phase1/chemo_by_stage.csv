@@ -1,0 +1,6 @@
+chemotherapy.adjuvant,tnm.stage,n,events,event %
+MISSING,2.0,1,0.0,0.0
+N,2.0,203,40.0,19.7
+N,3.0,55,22.0,40.0
+Y,2.0,56,19.0,33.9
+Y,3.0,146,58.0,39.7

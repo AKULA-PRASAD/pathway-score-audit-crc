@@ -1,0 +1,100 @@
+{
+  "probe_matrix": {
+    "probes": 54675,
+    "samples": 585
+  },
+  "mapping": {
+    "n_probes_total": 54675,
+    "n_unmapped": 8893,
+    "n_unique": 43163,
+    "n_ambiguous": 2619,
+    "n_genes_unique": 21815,
+    "n_genes_single_probe": 11064,
+    "n_genes_multi_probe": 10751,
+    "n_probes_in_multi_probe_genes": 32099,
+    "max_probes_per_gene": 15
+  },
+  "source_cache_sha256": "afeaa4a33378c082bf213d2e7351c483e005d8cde30a39da0e1bc6433df1b77d",
+  "normalization_applied": "none",
+  "batch_correction_applied": "none",
+  "expression_filter_applied": "none",
+  "cohort_filter_applied": "none (all 585 samples retained)",
+  "outcome_data_used": false,
+  "deposited_provenance": "RMA + ComBat applied by the depositors; this phase adds no normalization or batch adjustment",
+  "environment": {
+    "captured_utc": "2026-11-02T18:13:58.084534+00:00",
+    "python_version": "3.13.13",
+    "python_executable": "/Users/kalki/coad_transportability/.venv/bin/python",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.5.4",
+      "pandas": "2.3.3",
+      "scipy": "1.18.1",
+      "sklearn": "1.9.1",
+      "lifelines": "0.30.3",
+      "pyarrow": "26.0.0",
+      "pytest": "9.2.0"
+    }
+  },
+  "candidates": {
+    "representative_iqr": {
+      "n_genes": 21815,
+      "n_samples": 585,
+      "n_probes_used": 21815,
+      "all_finite": true,
+      "value_min": 0.843404248,
+      "value_max": 16.11154945,
+      "mean_of_means": 5.607841671114633,
+      "file": "data/processed/candidates/gene_matrix_representative_iqr.parquet",
+      "file_mb": 126.6,
+      "diagnostics": {
+        "criterion": "iqr",
+        "n_genes_with_tied_score": 0
+      }
+    },
+    "representative_mean": {
+      "n_genes": 21815,
+      "n_samples": 585,
+      "n_probes_used": 21815,
+      "all_finite": true,
+      "value_min": 0.843404248,
+      "value_max": 16.11154945,
+      "mean_of_means": 5.945954882986556,
+      "file": "data/processed/candidates/gene_matrix_representative_mean.parquet",
+      "file_mb": 126.6,
+      "diagnostics": {
+        "criterion": "mean",
+        "n_genes_with_tied_score": 0
+      }
+    },
+    "median": {
+      "n_genes": 21815,
+      "n_samples": 585,
+      "n_probes_used": 43163,
+      "all_finite": true,
+      "value_min": 1.345960137,
+      "value_max": 16.11154945,
+      "mean_of_means": 5.38231094418207,
+      "file": "data/processed/candidates/gene_matrix_median.parquet",
+      "file_mb": 126.6,
+      "diagnostics": {
+        "note": "median across all probes of each gene"
+      }
+    },
+    "mean": {
+      "n_genes": 21815,
+      "n_samples": 585,
+      "n_probes_used": 43163,
+      "all_finite": true,
+      "value_min": 1.345960137,
+      "value_max": 16.11154945,
+      "mean_of_means": 5.380515256816692,
+      "file": "data/processed/candidates/gene_matrix_mean.parquet",
+      "file_mb": 126.6,
+      "diagnostics": {
+        "note": "mean across all probes of each gene"
+      }
+    }
+  }
+}

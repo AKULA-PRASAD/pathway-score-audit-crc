@@ -1,0 +1,65 @@
+{
+  "selection_sets": {
+    "all_585": 585,
+    "discovery_443": 443,
+    "s3_discovery_354": 354
+  },
+  "selection_differences": [
+    {
+      "comparison": "all_585 vs discovery_443",
+      "genes_differing": 542,
+      "pct_all_genes": 2.48,
+      "pct_multi_probe": 5.04
+    },
+    {
+      "comparison": "all_585 vs s3_discovery_354",
+      "genes_differing": 735,
+      "pct_all_genes": 3.37,
+      "pct_multi_probe": 6.84
+    },
+    {
+      "comparison": "discovery_443 vs s3_discovery_354",
+      "genes_differing": 523,
+      "pct_all_genes": 2.4,
+      "pct_multi_probe": 4.86
+    }
+  ],
+  "affected_genes": {
+    "n_changed_585_vs_354": 735,
+    "median_rho_affected": 0.4063168127670544,
+    "median_rho_unaffected": 0.32752636286939496,
+    "top_affected": [
+      "CAPN9",
+      "AFF4",
+      "ETS2",
+      "RBMS1",
+      "CEPT1",
+      "TMED4",
+      "ECT2",
+      "SMAD1",
+      "YBX3",
+      "LYRM7",
+      "SLC39A8",
+      "PAPSS2",
+      "LOC100190986",
+      "FRK",
+      "GGCX",
+      "NUDCD1",
+      "LRRC58",
+      "GALNT12",
+      "NSD1",
+      "ZNF12"
+    ]
+  },
+  "batch": {
+    "status": "ok",
+    "n_samples_with_batch": 566,
+    "n_batches": 9,
+    "median_eta2_selected": 0.004956661394527589,
+    "median_eta2_not_selected": 0.004043304118949655,
+    "spearman_iqr_eta2": 0.34215467751573253,
+    "spearman_mean_eta2": 0.2570416867170031,
+    "frac_selected_eta2_gt_025": 0.0,
+    "frac_not_selected_eta2_gt_025": 0.0
+  }
+}

@@ -1,0 +1,230 @@
+{
+  "cohort_flow": {
+    "deposited samples": 585,
+    "primary tumours": 566,
+    "stage II-III primary tumours": 469,
+    "with documented RFS (event and time)": 461,
+    "  of those, rfs.delay > 0": 453
+  },
+  "publication_crosscheck": {
+    "our_discovery_count": 359,
+    "published": 359,
+    "match": true
+  },
+  "time_unit": {
+    "n": 560,
+    "violations_rfs_gt_os": 0,
+    "equal": 387,
+    "rfs_max": 201.0,
+    "os_max": 201.0
+  },
+  "death_without_recurrence": {
+    "n_died_no_recurrence": 49,
+    "n_time_equals_os": 49,
+    "inference": "censoring",
+    "source": "data pattern, not publication"
+  },
+  "zero_time": {
+    "n": 8,
+    "pattern_a_event_at_zero": 3,
+    "pattern_b_zero_followup": 5,
+    "sample_ids": [
+      "GSM972062",
+      "GSM972206",
+      "GSM972229",
+      "GSM972246",
+      "GSM972258",
+      "GSM972401",
+      "GSM972402",
+      "GSM972456"
+    ],
+    "stage4_total": 60,
+    "stage4_rfs_delay_zero": 30,
+    "stage4_zero_with_event": 29,
+    "os_delay_value_counts_low": {
+      "0.0": 6,
+      "1.0": 6,
+      "2.0": 6,
+      "3.0": 1
+    }
+  },
+  "tnm_consistency": {
+    "m1_not_stage4": [
+      "GSM972402"
+    ],
+    "missing_m_stage23": 20
+  },
+  "paired_normals": {
+    "n_non_tumoural": 19,
+    "n_linked": 17,
+    "links_resolve": 17
+  },
+  "completeness": [
+    {
+      "subset": "discovery",
+      "stage II-III": 362,
+      "documented RFS": 359,
+      "events": 109,
+      "censored": 250,
+      "event rate %": 30.4,
+      "zero-time": 5,
+      "median FU (mo)": 46.0,
+      "events <=60mo": 103
+    },
+    {
+      "subset": "validation",
+      "stage II-III": 107,
+      "documented RFS": 102,
+      "events": 30,
+      "censored": 72,
+      "event rate %": 29.4,
+      "zero-time": 3,
+      "median FU (mo)": 53.5,
+      "events <=60mo": 30
+    }
+  ],
+  "covariates": {
+    "n_events": 139,
+    "epv10_budget": 13
+  },
+  "chemo_by_stage": [
+    {
+      "chemotherapy.adjuvant": "MISSING",
+      "tnm.stage": 2.0,
+      "n": 1,
+      "events": 0.0,
+      "event %": 0.0
+    },
+    {
+      "chemotherapy.adjuvant": "N",
+      "tnm.stage": 2.0,
+      "n": 203,
+      "events": 40.0,
+      "event %": 19.7
+    },
+    {
+      "chemotherapy.adjuvant": "N",
+      "tnm.stage": 3.0,
+      "n": 55,
+      "events": 22.0,
+      "event %": 40.0
+    },
+    {
+      "chemotherapy.adjuvant": "Y",
+      "tnm.stage": 2.0,
+      "n": 56,
+      "events": 19.0,
+      "event %": 33.9
+    },
+    {
+      "chemotherapy.adjuvant": "Y",
+      "tnm.stage": 3.0,
+      "n": 146,
+      "events": 58.0,
+      "event %": 39.7
+    }
+  ],
+  "table_s1": {
+    "status": "ok",
+    "rows": 566,
+    "matched": 566,
+    "has_tnm_mnm": false,
+    "has_os": false,
+    "stage_disagreements": [
+      "CIT029",
+      "CIT317",
+      "CIT340",
+      "CIT344"
+    ],
+    "rfs_event_disagreements": 0,
+    "rfs_delay_disagreements": 0
+  },
+  "five_year_censoring": {
+    "discovery": {
+      "events_uncensored": 109,
+      "events_within_60": 103,
+      "times_truncated": 134
+    },
+    "validation": {
+      "events_uncensored": 30,
+      "events_within_60": 30,
+      "times_truncated": 46
+    }
+  },
+  "five_year_reclassified": [
+    "GSM971968",
+    "GSM972082",
+    "GSM972136",
+    "GSM972322",
+    "GSM972328",
+    "GSM972352"
+  ],
+  "zero_time_scenarios": [
+    {
+      "scenario": "S0 retain all 8",
+      "n": 461,
+      "events": 139,
+      "censored": 322,
+      "disc n": 359,
+      "disc events": 109,
+      "val n": 102,
+      "val events": 30
+    },
+    {
+      "scenario": "S1 exclude Group A only",
+      "n": 458,
+      "events": 136,
+      "censored": 322,
+      "disc n": 357,
+      "disc events": 107,
+      "val n": 101,
+      "val events": 29
+    },
+    {
+      "scenario": "S2 exclude Group B only",
+      "n": 456,
+      "events": 139,
+      "censored": 317,
+      "disc n": 356,
+      "disc events": 109,
+      "val n": 100,
+      "val events": 30
+    },
+    {
+      "scenario": "S3 exclude both (A+B)",
+      "n": 453,
+      "events": 136,
+      "censored": 317,
+      "disc n": 354,
+      "disc events": 107,
+      "val n": 99,
+      "val events": 29
+    }
+  ],
+  "time_unit_search": [
+    {
+      "source": "GEO SOFT !Sample_characteristics_ch1",
+      "result": "rfs.delay has NO unit label; os.delay IS labelled '(months)'"
+    },
+    {
+      "source": "Publication main text (PLoS Med)",
+      "result": "no unit statement for the column"
+    },
+    {
+      "source": "Text S1 supplementary methods",
+      "result": "'five years/60 months' -- the ANALYSIS HORIZON, not the column"
+    },
+    {
+      "source": "Table S1 per-patient annotation",
+      "result": "single sheet, no legend, no units, RFS.delay unlabelled"
+    },
+    {
+      "source": "ArrayExpress E-GEOD-39582 SDRF",
+      "result": "Characteristics [rfs.delay] present; NO Unit[] column anywhere; no overall-survival column at all"
+    },
+    {
+      "source": "GEO SuperSeries GSE40967",
+      "result": "no RFS metadata whatsoever"
+    }
+  ]
+}

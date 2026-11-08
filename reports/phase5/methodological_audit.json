@@ -1,0 +1,83 @@
+{
+  "c_index_audit": {
+    "estimator": "Harrell's C",
+    "censoring_robust": false,
+    "alternative_not_implemented": "Uno's IPCW C",
+    "ci_method_script25": "1.96 x empirical SD across replications (Monte-Carlo sampling SD)",
+    "riley_reports": "mean within-dataset 95% CI width",
+    "equivalent": false,
+    "replicates_script25": 400,
+    "comparison": [
+      {
+        "events": 48,
+        "monte_carlo_width": 0.1512,
+        "bootstrap_within_dataset_width": 0.1389,
+        "ratio": 0.919
+      },
+      {
+        "events": 136,
+        "monte_carlo_width": 0.0945,
+        "bootstrap_within_dataset_width": 0.0941,
+        "ratio": 0.997
+      },
+      {
+        "events": 365,
+        "monte_carlo_width": 0.0566,
+        "bootstrap_within_dataset_width": 0.0547,
+        "ratio": 0.967
+      }
+    ]
+  },
+  "selection_risk": {
+    "n": 453,
+    "events_approx": 136,
+    "genes": 21815,
+    "all_predictors_null": true,
+    "reps": 30,
+    "results": [
+      {
+        "genes_selected": 5,
+        "apparent_C_mean": 0.7011,
+        "apparent_C_sd": 0.0098,
+        "true_C": 0.5,
+        "optimism": 0.2011
+      },
+      {
+        "genes_selected": 10,
+        "apparent_C_mean": 0.758,
+        "apparent_C_sd": 0.0088,
+        "true_C": 0.5,
+        "optimism": 0.258
+      },
+      {
+        "genes_selected": 25,
+        "apparent_C_mean": 0.836,
+        "apparent_C_sd": 0.0078,
+        "true_C": 0.5,
+        "optimism": 0.336
+      },
+      {
+        "genes_selected": 50,
+        "apparent_C_mean": 0.8862,
+        "apparent_C_sd": 0.0078,
+        "true_C": 0.5,
+        "optimism": 0.3862
+      },
+      {
+        "genes_selected": 100,
+        "apparent_C_mean": 0.9173,
+        "apparent_C_sd": 0.0053,
+        "true_C": 0.5,
+        "optimism": 0.4173
+      }
+    ]
+  },
+  "null_max_z": {
+    "median": 0.666844426080876,
+    "pct95": 1.9703758209986355,
+    "pct999": 3.2692322284145745,
+    "max": 4.266836274385167,
+    "n_above_1.96": 1121,
+    "n_above_3": 54
+  }
+}

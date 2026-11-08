@@ -1,0 +1,64 @@
+{
+  "probe_quality": {
+    "rows": [
+      {
+        "measure": "mean",
+        "selected_median": 6.0619,
+        "not_selected_median": 4.8944,
+        "selected_p25_p75": "4.735-7.261",
+        "not_sel_p25_p75": "3.616-6.782"
+      },
+      {
+        "measure": "iqr",
+        "selected_median": 0.6879,
+        "not_selected_median": 0.433,
+        "selected_p25_p75": "0.489-0.915",
+        "not_sel_p25_p75": "0.303-0.621"
+      },
+      {
+        "measure": "var",
+        "selected_median": 0.2902,
+        "not_selected_median": 0.1201,
+        "selected_p25_p75": "0.153-0.503",
+        "not_sel_p25_p75": "0.060-0.243"
+      },
+      {
+        "measure": "mean_sibling_rho",
+        "selected_median": 0.3951,
+        "not_selected_median": 0.3475,
+        "selected_p25_p75": "0.205-0.626",
+        "not_sel_p25_p75": "0.168-0.562"
+      }
+    ],
+    "x_at_selected_pct": 5.645986419867919,
+    "x_at_not_selected_pct": 9.94004122166011,
+    "low_expr_selected_pct_lt5": 29.383313180169285,
+    "low_expr_not_selected_pct_lt5": 51.798763350196744
+  },
+  "probe_agreement_alpha": {
+    "interpretation": "DESCRIPTIVE internal consistency only; not an accuracy measure and not an aggregation decision rule",
+    "assumption_violations": [
+      "correlated measurement error across probes (shared array, sample prep, hybridisation, joint RMA + ComBat)",
+      "single-latent-construct assumption unverifiable",
+      "no reference measurement available to assess accuracy"
+    ],
+    "n_genes": 10751,
+    "median_alpha": 0.6534977236179141,
+    "alpha_rises_with_k_while_implied_r_falls": true,
+    "reliability_gain_claim": "WITHDRAWN -- was an algebraic restatement of alpha and k, not an independent measurement"
+  },
+  "reconciliation": {
+    "raw_rows": 54676,
+    "control_records": 1,
+    "real_probes": 54675,
+    "unmapped_correct": 8893,
+    "unmapped_script11": 8894,
+    "cause": "'!platform_table_end' retained by dropna(subset=['ID'])"
+  },
+  "transportability": {
+    "representative_probes_required": 21815,
+    "aggregate_probes_required": 43163,
+    "representative_frozen_object": "gene->probe_id list",
+    "aggregate_frozen_object": "gene->probe-set groupings"
+  }
+}

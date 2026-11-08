@@ -1,0 +1,2 @@
+sample_id,title,dataset,combat_batch,missing_variables,raw_values
+GSM972262,CIT306,discovery,batch05,['chemotherapy.adjuvant'],{'chemotherapy.adjuvant': 'N/A'}

@@ -1,0 +1,3 @@
+strategy,frozen object,depends on target cohort data?,depends on annotation version?,re-derivation needed?
+representative_iqr / _mean,"list of 21,815 (gene -> probe_id) pairs",NO,only to name genes,none
+median / mean,"gene -> {probe_id,...} groupings (43,163 probes)",NO (if all probes present),YES - groupings change with it,recompute per cohort

@@ -1,0 +1,5 @@
+scenario,description,n,events_full,censored_full,events_5y,median_fu_full,disc_n,disc_ev_full,disc_ev_5y,vali_n,vali_ev_full,vali_ev_5y
+S3,PRIMARY (C1+C2 applied),453,136,317,130,49.0,354,107,101,99,29,29
+S0,sensitivity: retain all 8,461,139,322,133,48.0,359,109,103,102,30,30
+S1,sensitivity: C1 only,458,136,322,130,48.0,357,107,101,101,29,29
+S2,sensitivity: C2 only,456,139,317,133,48.5,356,109,103,100,30,30

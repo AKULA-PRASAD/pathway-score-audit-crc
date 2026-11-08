@@ -1,0 +1,90 @@
+{
+  "approved_primary_scenario": "S3",
+  "criteria": {
+    "criterion_1": "recurrence-free at time origin (excludes Group A)",
+    "criterion_2": "> 0 units of recorded follow-up (excludes Group B)"
+  },
+  "horizon_months": 60,
+  "horizon_status": "CONDITIONAL on provisional months assumption",
+  "flow": {
+    "deposited samples": 585,
+    "primary tumours": 566,
+    "stage II-III primary tumours": 469,
+    "with documented RFS (event and time)": 461,
+    "minus Criterion 1 failures (Group A, n=3)": 458,
+    "minus Criterion 2 failures (Group B, n=5)": 453
+  },
+  "counts": [
+    {
+      "scenario": "S3",
+      "description": "PRIMARY (C1+C2 applied)",
+      "n": 453,
+      "events_full": 136,
+      "censored_full": 317,
+      "events_5y": 130,
+      "median_fu_full": 49.0,
+      "disc_n": 354,
+      "disc_ev_full": 107,
+      "disc_ev_5y": 101,
+      "vali_n": 99,
+      "vali_ev_full": 29,
+      "vali_ev_5y": 29
+    },
+    {
+      "scenario": "S0",
+      "description": "sensitivity: retain all 8",
+      "n": 461,
+      "events_full": 139,
+      "censored_full": 322,
+      "events_5y": 133,
+      "median_fu_full": 48.0,
+      "disc_n": 359,
+      "disc_ev_full": 109,
+      "disc_ev_5y": 103,
+      "vali_n": 102,
+      "vali_ev_full": 30,
+      "vali_ev_5y": 30
+    },
+    {
+      "scenario": "S1",
+      "description": "sensitivity: C1 only",
+      "n": 458,
+      "events_full": 136,
+      "censored_full": 322,
+      "events_5y": 130,
+      "median_fu_full": 48.0,
+      "disc_n": 357,
+      "disc_ev_full": 107,
+      "disc_ev_5y": 101,
+      "vali_n": 101,
+      "vali_ev_full": 29,
+      "vali_ev_5y": 29
+    },
+    {
+      "scenario": "S2",
+      "description": "sensitivity: C2 only",
+      "n": 456,
+      "events_full": 139,
+      "censored_full": 317,
+      "events_5y": 133,
+      "median_fu_full": 48.5,
+      "disc_n": 356,
+      "disc_ev_full": 109,
+      "disc_ev_5y": 103,
+      "vali_n": 100,
+      "vali_ev_full": 30,
+      "vali_ev_5y": 30
+    }
+  ],
+  "excluded_sample_ids": [
+    "GSM972062",
+    "GSM972206",
+    "GSM972229",
+    "GSM972246",
+    "GSM972258",
+    "GSM972401",
+    "GSM972402",
+    "GSM972456"
+  ],
+  "source_values_modified": false
+}

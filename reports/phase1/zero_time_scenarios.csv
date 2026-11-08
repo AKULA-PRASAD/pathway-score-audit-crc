@@ -1,0 +1,5 @@
+scenario,n,events,censored,disc n,disc events,val n,val events
+S0 retain all 8,461,139,322,359,109,102,30
+S1 exclude Group A only,458,136,322,357,107,101,29
+S2 exclude Group B only,456,139,317,356,109,100,30
+S3 exclude both (A+B),453,136,317,354,107,99,29

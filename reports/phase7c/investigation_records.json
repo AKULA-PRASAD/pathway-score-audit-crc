@@ -1,0 +1,1553 @@
+[
+  {
+    "sample_id": "GSM971986",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S1",
+        "metric": "per-array median",
+        "value": 4.8835,
+        "fence": [
+          4.6907,
+          4.8532
+        ]
+      },
+      {
+        "criterion": "S-S3",
+        "metric": "sum(1 - Spearman rho)",
+        "value": 45.364,
+        "fence": [
+          14.701,
+          32.098
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT030",
+      "dataset": "discovery",
+      "combat_batch": "batch01",
+      "tnm_stage": "2",
+      "sex": "Male",
+      "age_at_diagnosis": "66.3",
+      "tumor_location": "proximal",
+      "rna_extraction_method": "Manual-Trizol",
+      "cit_molecular_subtype": "C5"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 0.592,
+      "gapdh_3p5p_log2_diff": 0.233,
+      "assessment": "NONE FOUND",
+      "actb_vs_unflagged_median": -0.18,
+      "gapdh_vs_unflagged_median": 0.045,
+      "pc1_z": -0.13,
+      "pc2_z": -2.87,
+      "pc3_z": -2.23,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C5",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 6.1%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 6.1
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM971993",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S1",
+        "metric": "per-array median",
+        "value": 4.987,
+        "fence": [
+          4.6907,
+          4.8532
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT037",
+      "dataset": "discovery",
+      "combat_batch": "batch01",
+      "tnm_stage": "2",
+      "sex": "Male",
+      "age_at_diagnosis": "67.5",
+      "tumor_location": "distal",
+      "rna_extraction_method": "Manual-Trizol",
+      "cit_molecular_subtype": "C3"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 0.572,
+      "gapdh_3p5p_log2_diff": -0.286,
+      "assessment": "NONE FOUND",
+      "actb_vs_unflagged_median": -0.2,
+      "gapdh_vs_unflagged_median": -0.473,
+      "pc1_z": 0.01,
+      "pc2_z": 0.68,
+      "pc3_z": 1.15,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C3",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 6.1%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 6.1
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM972059",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S1",
+        "metric": "per-array median",
+        "value": 4.883,
+        "fence": [
+          4.6907,
+          4.8532
+        ]
+      },
+      {
+        "criterion": "S-S2",
+        "metric": "per-array IQR",
+        "value": 2.7359,
+        "fence": [
+          2.8033,
+          3.4216
+        ]
+      },
+      {
+        "criterion": "S-S3",
+        "metric": "sum(1 - Spearman rho)",
+        "value": 44.976,
+        "fence": [
+          14.701,
+          32.098
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT103",
+      "dataset": "discovery",
+      "combat_batch": "batch03",
+      "tnm_stage": "2",
+      "sex": "Female",
+      "age_at_diagnosis": "76",
+      "tumor_location": "distal",
+      "rna_extraction_method": "Manual-Rneasy Mini (Qiagen)",
+      "cit_molecular_subtype": "C2"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 0.272,
+      "gapdh_3p5p_log2_diff": 0.107,
+      "assessment": "PARTIAL: extreme PCA score |z|>4",
+      "actb_vs_unflagged_median": -0.5,
+      "gapdh_vs_unflagged_median": -0.081,
+      "pc1_z": -1.88,
+      "pc2_z": -4.07,
+      "pc3_z": 0.12,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C2",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 7.8%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 7.8
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM972061",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S2",
+        "metric": "per-array IQR",
+        "value": 2.8032,
+        "fence": [
+          2.8033,
+          3.4216
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT105",
+      "dataset": "discovery",
+      "combat_batch": "batch03",
+      "tnm_stage": "2",
+      "sex": "Female",
+      "age_at_diagnosis": "78",
+      "tumor_location": "distal",
+      "rna_extraction_method": "Manual-Rneasy Mini (Qiagen)",
+      "cit_molecular_subtype": "C1"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 0.835,
+      "gapdh_3p5p_log2_diff": 0.167,
+      "assessment": "NONE FOUND",
+      "actb_vs_unflagged_median": 0.063,
+      "gapdh_vs_unflagged_median": -0.021,
+      "pc1_z": 0.67,
+      "pc2_z": -3.0,
+      "pc3_z": -0.78,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C1",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 7.8%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 7.8
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM972077",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S3",
+        "metric": "sum(1 - Spearman rho)",
+        "value": 36.175,
+        "fence": [
+          14.701,
+          32.098
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT121",
+      "dataset": "discovery",
+      "combat_batch": "batch03",
+      "tnm_stage": "2",
+      "sex": "Female",
+      "age_at_diagnosis": "58",
+      "tumor_location": "distal",
+      "rna_extraction_method": "Manual-Rneasy Mini (Qiagen)",
+      "cit_molecular_subtype": "C6"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 0.368,
+      "gapdh_3p5p_log2_diff": 0.032,
+      "assessment": "PARTIAL: extreme PCA score |z|>4",
+      "actb_vs_unflagged_median": -0.404,
+      "gapdh_vs_unflagged_median": -0.156,
+      "pc1_z": -1.12,
+      "pc2_z": -4.08,
+      "pc3_z": -0.39,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C6",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 7.8%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 7.8
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM972079",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S3",
+        "metric": "sum(1 - Spearman rho)",
+        "value": 33.395,
+        "fence": [
+          14.701,
+          32.098
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT123",
+      "dataset": "discovery",
+      "combat_batch": "batch03",
+      "tnm_stage": "2",
+      "sex": "Male",
+      "age_at_diagnosis": "44",
+      "tumor_location": "distal",
+      "rna_extraction_method": "Manual-Rneasy Mini (Qiagen)",
+      "cit_molecular_subtype": "C2"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 0.257,
+      "gapdh_3p5p_log2_diff": 0.046,
+      "assessment": "NONE FOUND",
+      "actb_vs_unflagged_median": -0.516,
+      "gapdh_vs_unflagged_median": -0.142,
+      "pc1_z": -1.64,
+      "pc2_z": -3.69,
+      "pc3_z": 0.27,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C2",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 7.8%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 7.8
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM972089",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S3",
+        "metric": "sum(1 - Spearman rho)",
+        "value": 32.873,
+        "fence": [
+          14.701,
+          32.098
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT133",
+      "dataset": "discovery",
+      "combat_batch": "batch03",
+      "tnm_stage": "2",
+      "sex": "Female",
+      "age_at_diagnosis": "68",
+      "tumor_location": "proximal",
+      "rna_extraction_method": "Manual-Rneasy Mini (Qiagen)",
+      "cit_molecular_subtype": "C4"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 0.763,
+      "gapdh_3p5p_log2_diff": 0.305,
+      "assessment": "NONE FOUND",
+      "actb_vs_unflagged_median": -0.009,
+      "gapdh_vs_unflagged_median": 0.117,
+      "pc1_z": -1.91,
+      "pc2_z": 1.37,
+      "pc3_z": -1.9,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C4",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 7.8%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 7.8
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM972097",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S1",
+        "metric": "per-array median",
+        "value": 4.8804,
+        "fence": [
+          4.6907,
+          4.8532
+        ]
+      },
+      {
+        "criterion": "S-S3",
+        "metric": "sum(1 - Spearman rho)",
+        "value": 37.026,
+        "fence": [
+          14.701,
+          32.098
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT141",
+      "dataset": "discovery",
+      "combat_batch": "batch03",
+      "tnm_stage": "3",
+      "sex": "Male",
+      "age_at_diagnosis": "64",
+      "tumor_location": "proximal",
+      "rna_extraction_method": "Manual-Rneasy Mini (Qiagen)",
+      "cit_molecular_subtype": "C4"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 1.109,
+      "gapdh_3p5p_log2_diff": 0.706,
+      "assessment": "NONE FOUND",
+      "actb_vs_unflagged_median": 0.336,
+      "gapdh_vs_unflagged_median": 0.518,
+      "pc1_z": -1.1,
+      "pc2_z": -0.97,
+      "pc3_z": -3.8,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C4",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 7.8%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 7.8
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM972105",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S1",
+        "metric": "per-array median",
+        "value": 4.9111,
+        "fence": [
+          4.6907,
+          4.8532
+        ]
+      },
+      {
+        "criterion": "S-S2",
+        "metric": "per-array IQR",
+        "value": 2.7283,
+        "fence": [
+          2.8033,
+          3.4216
+        ]
+      },
+      {
+        "criterion": "S-S3",
+        "metric": "sum(1 - Spearman rho)",
+        "value": 38.151,
+        "fence": [
+          14.701,
+          32.098
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT149",
+      "dataset": "discovery",
+      "combat_batch": "batch03",
+      "tnm_stage": "3",
+      "sex": "Male",
+      "age_at_diagnosis": "53",
+      "tumor_location": "distal",
+      "rna_extraction_method": "Manual-Rneasy Mini (Qiagen)",
+      "cit_molecular_subtype": "C5"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 2.204,
+      "gapdh_3p5p_log2_diff": 1.534,
+      "assessment": "PARTIAL: degradation ratio deviates >1 log2 from the unflagged median",
+      "actb_vs_unflagged_median": 1.432,
+      "gapdh_vs_unflagged_median": 1.346,
+      "pc1_z": 1.15,
+      "pc2_z": -2.07,
+      "pc3_z": -2.75,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C5",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 7.8%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 7.8
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM972113",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S3",
+        "metric": "sum(1 - Spearman rho)",
+        "value": 32.489,
+        "fence": [
+          14.701,
+          32.098
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT157",
+      "dataset": "discovery",
+      "combat_batch": "batch03",
+      "tnm_stage": "3",
+      "sex": "Female",
+      "age_at_diagnosis": "63",
+      "tumor_location": "proximal",
+      "rna_extraction_method": "Manual-Rneasy Mini (Qiagen)",
+      "cit_molecular_subtype": "C4"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 0.969,
+      "gapdh_3p5p_log2_diff": 0.456,
+      "assessment": "NONE FOUND",
+      "actb_vs_unflagged_median": 0.197,
+      "gapdh_vs_unflagged_median": 0.268,
+      "pc1_z": -1.39,
+      "pc2_z": 0.12,
+      "pc3_z": -2.62,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C4",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 7.8%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 7.8
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM972149",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S1",
+        "metric": "per-array median",
+        "value": 4.8944,
+        "fence": [
+          4.6907,
+          4.8532
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT193",
+      "dataset": "discovery",
+      "combat_batch": "batch04",
+      "tnm_stage": "2",
+      "sex": "Male",
+      "age_at_diagnosis": "64",
+      "tumor_location": "distal",
+      "rna_extraction_method": "TriReagent & Manual-Rneasy Mini (Qiagen)",
+      "cit_molecular_subtype": "C1"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 1.142,
+      "gapdh_3p5p_log2_diff": 0.333,
+      "assessment": "NONE FOUND",
+      "actb_vs_unflagged_median": 0.369,
+      "gapdh_vs_unflagged_median": 0.145,
+      "pc1_z": 1.23,
+      "pc2_z": -1.2,
+      "pc3_z": -0.62,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C1",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 1.9%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 1.9
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM972177",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S2",
+        "metric": "per-array IQR",
+        "value": 2.7679,
+        "fence": [
+          2.8033,
+          3.4216
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT221",
+      "dataset": "discovery",
+      "combat_batch": "batch04",
+      "tnm_stage": "2",
+      "sex": "Male",
+      "age_at_diagnosis": "71",
+      "tumor_location": "proximal",
+      "rna_extraction_method": "TriReagent & Manual-Rneasy Mini (Qiagen)",
+      "cit_molecular_subtype": "C6"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 0.464,
+      "gapdh_3p5p_log2_diff": 0.214,
+      "assessment": "NONE FOUND",
+      "actb_vs_unflagged_median": -0.309,
+      "gapdh_vs_unflagged_median": 0.026,
+      "pc1_z": 0.44,
+      "pc2_z": -2.99,
+      "pc3_z": -0.41,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C6",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 1.9%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 1.9
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM972220",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S1",
+        "metric": "per-array median",
+        "value": 4.6809,
+        "fence": [
+          4.6907,
+          4.8532
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT264",
+      "dataset": "discovery",
+      "combat_batch": "batch05",
+      "tnm_stage": "3",
+      "sex": "Male",
+      "age_at_diagnosis": "81",
+      "tumor_location": "proximal",
+      "rna_extraction_method": "Manual-Trizol",
+      "cit_molecular_subtype": "C2"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 1.023,
+      "gapdh_3p5p_log2_diff": 0.259,
+      "assessment": "NONE FOUND",
+      "actb_vs_unflagged_median": 0.25,
+      "gapdh_vs_unflagged_median": 0.071,
+      "pc1_z": -1.59,
+      "pc2_z": 0.65,
+      "pc3_z": 1.07,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C2",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 20.4%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 20.4
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM972221",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S2",
+        "metric": "per-array IQR",
+        "value": 3.4993,
+        "fence": [
+          2.8033,
+          3.4216
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT265",
+      "dataset": "discovery",
+      "combat_batch": "batch05",
+      "tnm_stage": "2",
+      "sex": "Female",
+      "age_at_diagnosis": "75",
+      "tumor_location": "proximal",
+      "rna_extraction_method": "Manual-Trizol",
+      "cit_molecular_subtype": "C2"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 0.36,
+      "gapdh_3p5p_log2_diff": 0.1,
+      "assessment": "NONE FOUND",
+      "actb_vs_unflagged_median": -0.412,
+      "gapdh_vs_unflagged_median": -0.088,
+      "pc1_z": -0.25,
+      "pc2_z": 1.2,
+      "pc3_z": 2.37,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C2",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 20.4%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 20.4
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM972257",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S2",
+        "metric": "per-array IQR",
+        "value": 2.7962,
+        "fence": [
+          2.8033,
+          3.4216
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT301",
+      "dataset": "discovery",
+      "combat_batch": "batch05",
+      "tnm_stage": "2",
+      "sex": "Female",
+      "age_at_diagnosis": "88",
+      "tumor_location": "distal",
+      "rna_extraction_method": "Manual-Trizol",
+      "cit_molecular_subtype": "C1"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 0.892,
+      "gapdh_3p5p_log2_diff": 0.049,
+      "assessment": "NONE FOUND",
+      "actb_vs_unflagged_median": 0.12,
+      "gapdh_vs_unflagged_median": -0.139,
+      "pc1_z": 0.33,
+      "pc2_z": -2.41,
+      "pc3_z": 0.78,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C1",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 20.4%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 20.4
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM972264",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S2",
+        "metric": "per-array IQR",
+        "value": 3.5151,
+        "fence": [
+          2.8033,
+          3.4216
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT308",
+      "dataset": "discovery",
+      "combat_batch": "batch05",
+      "tnm_stage": "2",
+      "sex": "Male",
+      "age_at_diagnosis": "46",
+      "tumor_location": "proximal",
+      "rna_extraction_method": "Manual-Trizol",
+      "cit_molecular_subtype": "C2"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 0.271,
+      "gapdh_3p5p_log2_diff": 0.158,
+      "assessment": "NONE FOUND",
+      "actb_vs_unflagged_median": -0.502,
+      "gapdh_vs_unflagged_median": -0.03,
+      "pc1_z": -0.51,
+      "pc2_z": 1.13,
+      "pc3_z": 2.27,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C2",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 20.4%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 20.4
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM972274",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S2",
+        "metric": "per-array IQR",
+        "value": 3.5037,
+        "fence": [
+          2.8033,
+          3.4216
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT318",
+      "dataset": "discovery",
+      "combat_batch": "batch05",
+      "tnm_stage": "3",
+      "sex": "Female",
+      "age_at_diagnosis": "91",
+      "tumor_location": "proximal",
+      "rna_extraction_method": "Manual-Trizol",
+      "cit_molecular_subtype": "C2"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 1.063,
+      "gapdh_3p5p_log2_diff": 0.677,
+      "assessment": "NONE FOUND",
+      "actb_vs_unflagged_median": 0.291,
+      "gapdh_vs_unflagged_median": 0.489,
+      "pc1_z": -1.53,
+      "pc2_z": 1.09,
+      "pc3_z": 0.26,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C2",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 20.4%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 20.4
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM972275",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S2",
+        "metric": "per-array IQR",
+        "value": 3.4627,
+        "fence": [
+          2.8033,
+          3.4216
+        ]
+      },
+      {
+        "criterion": "S-S3",
+        "metric": "sum(1 - Spearman rho)",
+        "value": 35.575,
+        "fence": [
+          14.701,
+          32.098
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT319",
+      "dataset": "discovery",
+      "combat_batch": "batch05",
+      "tnm_stage": "2",
+      "sex": "Male",
+      "age_at_diagnosis": "76",
+      "tumor_location": "proximal",
+      "rna_extraction_method": "Manual-Trizol",
+      "cit_molecular_subtype": "C4"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 1.513,
+      "gapdh_3p5p_log2_diff": 1.002,
+      "assessment": "NONE FOUND",
+      "actb_vs_unflagged_median": 0.741,
+      "gapdh_vs_unflagged_median": 0.814,
+      "pc1_z": -2.74,
+      "pc2_z": 0.76,
+      "pc3_z": 0.13,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C4",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 20.4%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 20.4
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM972283",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S2",
+        "metric": "per-array IQR",
+        "value": 3.4487,
+        "fence": [
+          2.8033,
+          3.4216
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT327",
+      "dataset": "discovery",
+      "combat_batch": "batch05",
+      "tnm_stage": "2",
+      "sex": "Male",
+      "age_at_diagnosis": "65",
+      "tumor_location": "proximal",
+      "rna_extraction_method": "Manual-Trizol",
+      "cit_molecular_subtype": "C2"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 1.111,
+      "gapdh_3p5p_log2_diff": 0.67,
+      "assessment": "NONE FOUND",
+      "actb_vs_unflagged_median": 0.338,
+      "gapdh_vs_unflagged_median": 0.482,
+      "pc1_z": -1.24,
+      "pc2_z": 0.39,
+      "pc3_z": 0.61,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C2",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 20.4%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 20.4
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM972295",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S2",
+        "metric": "per-array IQR",
+        "value": 2.7897,
+        "fence": [
+          2.8033,
+          3.4216
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT339",
+      "dataset": "discovery",
+      "combat_batch": "batch05",
+      "tnm_stage": "3",
+      "sex": "Male",
+      "age_at_diagnosis": "68",
+      "tumor_location": "proximal",
+      "rna_extraction_method": "Manual-Trizol",
+      "cit_molecular_subtype": "C3"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 0.741,
+      "gapdh_3p5p_log2_diff": 0.253,
+      "assessment": "NONE FOUND",
+      "actb_vs_unflagged_median": -0.032,
+      "gapdh_vs_unflagged_median": 0.065,
+      "pc1_z": 1.03,
+      "pc2_z": -1.21,
+      "pc3_z": -0.38,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C3",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 20.4%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 20.4
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM972305",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S1",
+        "metric": "per-array median",
+        "value": 4.8582,
+        "fence": [
+          4.6907,
+          4.8532
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT349",
+      "dataset": "discovery",
+      "combat_batch": "batch07",
+      "tnm_stage": "3",
+      "sex": "Female",
+      "age_at_diagnosis": "82",
+      "tumor_location": "proximal",
+      "rna_extraction_method": "Manual-Rneasy Micro (Qiagen)",
+      "cit_molecular_subtype": "C2"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 0.815,
+      "gapdh_3p5p_log2_diff": 0.373,
+      "assessment": "NONE FOUND",
+      "actb_vs_unflagged_median": 0.042,
+      "gapdh_vs_unflagged_median": 0.185,
+      "pc1_z": -0.72,
+      "pc2_z": -0.93,
+      "pc3_z": -1.21,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C2",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 4.9%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 4.9
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM972311",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S3",
+        "metric": "sum(1 - Spearman rho)",
+        "value": 57.722,
+        "fence": [
+          14.701,
+          32.098
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT355",
+      "dataset": "discovery",
+      "combat_batch": "batch07",
+      "tnm_stage": "2",
+      "sex": "Male",
+      "age_at_diagnosis": "55",
+      "tumor_location": "distal",
+      "rna_extraction_method": "Manual-Rneasy Micro (Qiagen)",
+      "cit_molecular_subtype": "C5"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 1.295,
+      "gapdh_3p5p_log2_diff": 0.566,
+      "assessment": "NONE FOUND",
+      "actb_vs_unflagged_median": 0.522,
+      "gapdh_vs_unflagged_median": 0.378,
+      "pc1_z": -0.48,
+      "pc2_z": -2.19,
+      "pc3_z": -0.84,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C5",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 4.9%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 4.9
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM972357",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S3",
+        "metric": "sum(1 - Spearman rho)",
+        "value": 35.273,
+        "fence": [
+          14.701,
+          32.098
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT401",
+      "dataset": "discovery",
+      "combat_batch": "batch08",
+      "tnm_stage": "2",
+      "sex": "Female",
+      "age_at_diagnosis": "88",
+      "tumor_location": "distal",
+      "rna_extraction_method": "Manual-Rneasy Mini (Qiagen)",
+      "cit_molecular_subtype": "C6"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 0.792,
+      "gapdh_3p5p_log2_diff": 0.855,
+      "assessment": "NONE FOUND",
+      "actb_vs_unflagged_median": 0.019,
+      "gapdh_vs_unflagged_median": 0.667,
+      "pc1_z": 0.2,
+      "pc2_z": -1.11,
+      "pc3_z": -1.32,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C6",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 7.3%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 7.3
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM972361",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S3",
+        "metric": "sum(1 - Spearman rho)",
+        "value": 34.739,
+        "fence": [
+          14.701,
+          32.098
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT405",
+      "dataset": "discovery",
+      "combat_batch": "batch08",
+      "tnm_stage": "3",
+      "sex": "Female",
+      "age_at_diagnosis": "72",
+      "tumor_location": "distal",
+      "rna_extraction_method": "Manual-Rneasy Mini (Qiagen)",
+      "cit_molecular_subtype": "C4"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 0.496,
+      "gapdh_3p5p_log2_diff": 0.004,
+      "assessment": "NONE FOUND",
+      "actb_vs_unflagged_median": -0.276,
+      "gapdh_vs_unflagged_median": -0.184,
+      "pc1_z": -2.82,
+      "pc2_z": 0.54,
+      "pc3_z": -0.24,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C4",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 7.3%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 7.3
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM972444",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S2",
+        "metric": "per-array IQR",
+        "value": 3.5507,
+        "fence": [
+          2.8033,
+          3.4216
+        ]
+      },
+      {
+        "criterion": "S-S3",
+        "metric": "sum(1 - Spearman rho)",
+        "value": 32.443,
+        "fence": [
+          14.701,
+          32.098
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT488",
+      "dataset": "validation",
+      "combat_batch": "batch05",
+      "tnm_stage": "3",
+      "sex": "Male",
+      "age_at_diagnosis": "73",
+      "tumor_location": "proximal",
+      "rna_extraction_method": "Manual-Trizol",
+      "cit_molecular_subtype": "C4"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 1.027,
+      "gapdh_3p5p_log2_diff": 0.469,
+      "assessment": "NONE FOUND",
+      "actb_vs_unflagged_median": 0.255,
+      "gapdh_vs_unflagged_median": 0.281,
+      "pc1_z": -2.57,
+      "pc2_z": 1.16,
+      "pc3_z": -0.13,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C4",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 20.4%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 20.4
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM972445",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S2",
+        "metric": "per-array IQR",
+        "value": 3.4421,
+        "fence": [
+          2.8033,
+          3.4216
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT489",
+      "dataset": "validation",
+      "combat_batch": "batch05",
+      "tnm_stage": "2",
+      "sex": "Male",
+      "age_at_diagnosis": "48",
+      "tumor_location": "proximal",
+      "rna_extraction_method": "Manual-Trizol",
+      "cit_molecular_subtype": "C2"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 0.958,
+      "gapdh_3p5p_log2_diff": 0.568,
+      "assessment": "NONE FOUND",
+      "actb_vs_unflagged_median": 0.185,
+      "gapdh_vs_unflagged_median": 0.38,
+      "pc1_z": -0.87,
+      "pc2_z": 0.99,
+      "pc3_z": 0.83,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C2",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 20.4%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 20.4
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM972467",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S3",
+        "metric": "sum(1 - Spearman rho)",
+        "value": 33.857,
+        "fence": [
+          14.701,
+          32.098
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT511",
+      "dataset": "validation",
+      "combat_batch": "batch07",
+      "tnm_stage": "3",
+      "sex": "Male",
+      "age_at_diagnosis": "54",
+      "tumor_location": "distal",
+      "rna_extraction_method": "Manual-Rneasy Micro (Qiagen)",
+      "cit_molecular_subtype": "C4"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 0.485,
+      "gapdh_3p5p_log2_diff": 0.301,
+      "assessment": "NONE FOUND",
+      "actb_vs_unflagged_median": -0.288,
+      "gapdh_vs_unflagged_median": 0.113,
+      "pc1_z": -1.94,
+      "pc2_z": 0.24,
+      "pc3_z": -3.5,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C4",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 4.9%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 4.9
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM972479",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S3",
+        "metric": "sum(1 - Spearman rho)",
+        "value": 36.115,
+        "fence": [
+          14.701,
+          32.098
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT523",
+      "dataset": "validation",
+      "combat_batch": "batch07",
+      "tnm_stage": "3",
+      "sex": "Male",
+      "age_at_diagnosis": "79",
+      "tumor_location": "proximal",
+      "rna_extraction_method": "Manual-Rneasy Micro (Qiagen)",
+      "cit_molecular_subtype": "C4"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 0.587,
+      "gapdh_3p5p_log2_diff": 0.108,
+      "assessment": "NONE FOUND",
+      "actb_vs_unflagged_median": -0.186,
+      "gapdh_vs_unflagged_median": -0.08,
+      "pc1_z": -3.02,
+      "pc2_z": 0.83,
+      "pc3_z": -2.06,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C4",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 4.9%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 4.9
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  },
+  {
+    "sample_id": "GSM972499",
+    "flagged_metric_and_value": [
+      {
+        "criterion": "S-S1",
+        "metric": "per-array median",
+        "value": 4.6874,
+        "fence": [
+          4.6907,
+          4.8532
+        ]
+      }
+    ],
+    "metadata_and_batch": {
+      "title": "CIT543",
+      "dataset": "validation",
+      "combat_batch": "batch08",
+      "tnm_stage": "3",
+      "sex": "Male",
+      "age_at_diagnosis": "82",
+      "tumor_location": "proximal",
+      "rna_extraction_method": "Manual-Rneasy Mini (Qiagen)",
+      "cit_molecular_subtype": "C2"
+    },
+    "independent_technical_evidence": {
+      "non_finite_values": 0,
+      "duplicate_column": false,
+      "actb_3p5p_log2_diff": 0.553,
+      "gapdh_3p5p_log2_diff": -0.133,
+      "assessment": "NONE FOUND",
+      "actb_vs_unflagged_median": -0.219,
+      "gapdh_vs_unflagged_median": -0.321,
+      "pc1_z": -1.01,
+      "pc2_z": 1.4,
+      "pc3_z": 3.02,
+      "degradation_controls_discriminate_flagged_samples": false
+    },
+    "biological_plausibility": {
+      "cit_subtype": "C2",
+      "note": "HYPOTHESIS, not evidence: CMS4/stromal phenotypes shift global expression distributions for biological reasons. Flag rate varies by processing batch (this sample's batch: 7.3%; overall 6.4%; chi2 p=0.003, Cramer's V=0.226), so a batch contribution is also plausible. Neither hypothesis is established by these data.",
+      "batch_flag_rate_pct": 7.3
+    },
+    "effect_on_cohort": {
+      "n_if_excluded": 452,
+      "event_counts": "NOT COMPUTED - outcome columns were not opened; outcome-guided selection is prohibited"
+    },
+    "proposed_action_and_justification": {
+      "proposed_action": "NO EXCLUSION - investigation only",
+      "justification": "Phase 7B C3: a sample may not be excluded solely for crossing a Tukey fence. Exclusion requires explicit approval."
+    }
+  }
+]

@@ -1,0 +1,1211 @@
+{
+  "phase": "8B",
+  "cohort": "S3",
+  "n_samples": 453,
+  "n_genes": 21815,
+  "seed": 20261102,
+  "matrix_used_as_deposited": true,
+  "normalization_applied": "none",
+  "batch_correction_applied": "none",
+  "samples_excluded": 0,
+  "outcome_columns_opened": false,
+  "outcome_columns_dropped_at_read": [
+    "rfs.event",
+    "rfs.delay",
+    "os.event",
+    "os.delay_(months)"
+  ],
+  "outcome_files_blocked": [
+    "endpoint.csv"
+  ],
+  "modelling_performed": false,
+  "feature_selection_performed": false,
+  "recurrence_association_tested": false,
+  "reproduction_of_phase8a": {
+    "method": "eigendecomposition of the 453x453 sample covariance, vs Phase 8A's thin SVD of the 21815x453 centred matrix",
+    "max_abs_diff_variance_explained_pc1_20": 4.87787829746289e-09,
+    "min_signed_correlation_scores_pc1_20": 0.9999999999999988,
+    "max_relative_diff_scores_pc1_20": 5.266079261607868e-09,
+    "score_scale_note": "cov eigenvalue = s^2/(n_genes-1); scores rescaled by sqrt(ev*(n_genes-1)) so PC values are on Phase 8A's SVD scale and directly comparable",
+    "tolerance_note": "forming the sample covariance squares the condition number, so ~1e-8 agreement on variance fractions is the float64 limit, not a discrepancy",
+    "reproduced": true
+  },
+  "variance_structure": {
+    "variance_explained_pc1_50": [
+      0.1031520499923517,
+      0.0767866458741173,
+      0.06363290936025706,
+      0.059207015806430445,
+      0.032071498196331406,
+      0.023610945639936806,
+      0.019593493399434333,
+      0.018625994177640326,
+      0.015094938700305238,
+      0.01376218247656701,
+      0.012958756103111415,
+      0.0127185746800346,
+      0.011612878605899038,
+      0.011140000186654007,
+      0.009645290036780083,
+      0.00946041803467562,
+      0.008999276925192054,
+      0.007977034546843993,
+      0.007568185122121702,
+      0.007252592405311364,
+      0.006837446706912807,
+      0.006447619308096044,
+      0.006283815885688755,
+      0.006026287112898739,
+      0.005852174297197973,
+      0.005588483440629097,
+      0.00552473815035382,
+      0.005315152151639511,
+      0.0049805186567702464,
+      0.004938718914510438,
+      0.004822279157444014,
+      0.004677021682479533,
+      0.004460420411142327,
+      0.0043418685281529906,
+      0.004338377801103966,
+      0.004208681036583268,
+      0.004080823497478401,
+      0.004032997881346604,
+      0.0039415568126062025,
+      0.003817780805916085,
+      0.0037185583828635007,
+      0.0036695193275735794,
+      0.003606298857409222,
+      0.0034936537756921006,
+      0.0033596915159574805,
+      0.0032677770029860523,
+      0.003221287097477552,
+      0.0031492295233063014,
+      0.003080967326260274,
+      0.0030225615919093384
+    ],
+    "n_pcs_50pct": 17,
+    "n_pcs_80pct": 127,
+    "n_pcs_90pct": 237,
+    "horn_n_pcs_above_permuted_p95": 48,
+    "horn_replicates": 25,
+    "broken_stick_n_pcs": 97,
+    "note": "Horn's criterion counts components exceeding what gene-wise permutation produces; it bounds how many PCs carry joint structure, and says nothing about whether that structure is biological or technical"
+  },
+  "pc_associations": {
+    "n_tests": 360,
+    "pcs_tested": 20,
+    "multiple_testing": "Benjamini-Hochberg across all tests",
+    "top": [
+      {
+        "annotation": "cit.molecularsubtype",
+        "kind": "categorical",
+        "new_in_8B": 1.0,
+        "pc": "PC3",
+        "n_available": 453.0,
+        "n_levels": 6.0,
+        "statistic": 312.910780699983,
+        "p_value": 1.6764629574090895e-65,
+        "effect_size": 0.6888384355704317,
+        "effect_measure": "epsilon_squared",
+        "q_value_BH": 6.035266646672722e-63
+      },
+      {
+        "annotation": "cit.molecularsubtype",
+        "kind": "categorical",
+        "new_in_8B": 1.0,
+        "pc": "PC1",
+        "n_available": 453.0,
+        "n_levels": 6.0,
+        "statistic": 269.1276460306053,
+        "p_value": 4.307869642509739e-56,
+        "effect_size": 0.5908895884353587,
+        "effect_measure": "epsilon_squared",
+        "q_value_BH": 7.75416535651753e-54
+      },
+      {
+        "annotation": "cit.molecularsubtype",
+        "kind": "categorical",
+        "new_in_8B": 1.0,
+        "pc": "PC4",
+        "n_available": 453.0,
+        "n_levels": 6.0,
+        "statistic": 133.27399665008488,
+        "p_value": 4.803912105507695e-27,
+        "effect_size": 0.28696643545880285,
+        "effect_measure": "epsilon_squared",
+        "q_value_BH": 5.764694526609234e-25
+      },
+      {
+        "annotation": "cimp.status",
+        "kind": "categorical",
+        "new_in_8B": 0.0,
+        "pc": "PC3",
+        "n_available": 386.0,
+        "n_levels": 2.0,
+        "statistic": 80.29865492688987,
+        "p_value": 3.2188811126277347e-19,
+        "effect_size": 0.20650691387210904,
+        "effect_measure": "epsilon_squared",
+        "q_value_BH": 1.9313286675766408e-17
+      },
+      {
+        "annotation": "mmr.status",
+        "kind": "categorical",
+        "new_in_8B": 0.0,
+        "pc": "PC3",
+        "n_available": 410.0,
+        "n_levels": 2.0,
+        "statistic": 82.11223496697949,
+        "p_value": 1.2857423048788512e-19,
+        "effect_size": 0.19880449746808698,
+        "effect_measure": "epsilon_squared",
+        "q_value_BH": 9.257344595127729e-18
+      },
+      {
+        "annotation": "cit.molecularsubtype",
+        "kind": "categorical",
+        "new_in_8B": 1.0,
+        "pc": "PC5",
+        "n_available": 453.0,
+        "n_levels": 6.0,
+        "statistic": 93.53510682265323,
+        "p_value": 1.2140702213683231e-18,
+        "effect_size": 0.19806511593434728,
+        "effect_measure": "epsilon_squared",
+        "q_value_BH": 6.243789709894233e-17
+      },
+      {
+        "annotation": "cin.status",
+        "kind": "categorical",
+        "new_in_8B": 0.0,
+        "pc": "PC3",
+        "n_available": 364.0,
+        "n_levels": 2.0,
+        "statistic": 72.64312331610631,
+        "p_value": 1.553472385886417e-17,
+        "effect_size": 0.1979091804312329,
+        "effect_measure": "epsilon_squared",
+        "q_value_BH": 5.592500589191101e-16
+      },
+      {
+        "annotation": "combat_mod",
+        "kind": "categorical",
+        "new_in_8B": 0.0,
+        "pc": "PC3",
+        "n_available": 453.0,
+        "n_levels": 2.0,
+        "statistic": 89.1120336632348,
+        "p_value": 3.730746743422678e-21,
+        "effect_size": 0.19537036288965587,
+        "effect_measure": "epsilon_squared",
+        "q_value_BH": 3.35767206908041e-19
+      },
+      {
+        "annotation": "age.at.diagnosis",
+        "kind": "continuous",
+        "new_in_8B": 0.0,
+        "pc": "PC5",
+        "n_available": 453.0,
+        "n_levels": NaN,
+        "statistic": -0.19484052501714272,
+        "p_value": 2.9723686372290618e-05,
+        "effect_size": 0.19484052501714272,
+        "effect_measure": "abs_spearman_rho",
+        "q_value_BH": 0.00029723686372290617
+      },
+      {
+        "annotation": "mmr.status",
+        "kind": "categorical",
+        "new_in_8B": 0.0,
+        "pc": "PC1",
+        "n_available": 410.0,
+        "n_levels": 2.0,
+        "statistic": 75.5188043100452,
+        "p_value": 3.61943426294362e-18,
+        "effect_size": 0.1826441282108951,
+        "effect_measure": "epsilon_squared",
+        "q_value_BH": 1.6287454183246289e-16
+      },
+      {
+        "annotation": "combat_mod",
+        "kind": "categorical",
+        "new_in_8B": 0.0,
+        "pc": "PC1",
+        "n_available": 453.0,
+        "n_levels": 2.0,
+        "statistic": 74.7799721918484,
+        "p_value": 5.2620816543035424e-18,
+        "effect_size": 0.16359195607948648,
+        "effect_measure": "epsilon_squared",
+        "q_value_BH": 2.1048326617214172e-16
+      },
+      {
+        "annotation": "age.at.diagnosis",
+        "kind": "continuous",
+        "new_in_8B": 0.0,
+        "pc": "PC17",
+        "n_available": 453.0,
+        "n_levels": NaN,
+        "statistic": -0.15247429146649888,
+        "p_value": 0.0011326495751985298,
+        "effect_size": 0.15247429146649888,
+        "effect_measure": "abs_spearman_rho",
+        "q_value_BH": 0.007465494323145727
+      }
+    ],
+    "new_variables_examined_in_8B": [
+      "cit.molecularsubtype",
+      "cit_index_processing_order",
+      "rna.extraction.method",
+      "source_name"
+    ],
+    "circularity_warning_cit_molecularsubtype": "cit.molecularsubtype (C1-C6) is the depositors' own EXPRESSION-DERIVED clustering of this same array data. Its very large PC associations are therefore near-tautological and are NOT independent evidence about structure. It is included to show where the published subtypes sit in this PCA, not as a validation."
+  },
+  "combat_mod_vs_mmr": {
+    "s3_table": {
+      "dMMR": {
+        "modcan1": 60,
+        "modcan2": 0
+      },
+      "pMMR": {
+        "modcan1": 0,
+        "modcan2": 350
+      }
+    },
+    "s3_n_with_mmr": 410,
+    "s3_discordant": 0,
+    "sdrf_n_with_mmr": 519,
+    "sdrf_discordant": 0,
+    "s0_bundle_n_with_mmr": 417,
+    "s0_bundle_discordant": 0,
+    "reproduces_phase8a": true,
+    "denominator_note": "Phase 8A quoted 519 = SDRF tumour arrays with MMR recorded. The S0 analysis bundle contains fewer; both are reported so the figures are not conflated.",
+    "claim_limit": "concordance is NOT identity. Any variable partitioning these arrays identically fits equally well. The depositors' mod matrix is not documented; this remains unresolved pending author correspondence.",
+    "mmr_unrecorded_expression_probe": {
+      "genes": [
+        "MLH1",
+        "EPM2AIP1"
+      ],
+      "by_group": {
+        "dMMR|modcan1": {
+          "mean_z": -1.343,
+          "n": 60
+        },
+        "pMMR|modcan2": {
+          "mean_z": 0.249,
+          "n": 350
+        },
+        "unrecorded|modcan1": {
+          "mean_z": -0.754,
+          "n": 5
+        },
+        "unrecorded|modcan2": {
+          "mean_z": -0.078,
+          "n": 38
+        }
+      },
+      "n_unrecorded": 43,
+      "used_to_impute": false,
+      "interpretation_status": "HYPOTHESIS-GENERATING ONLY"
+    }
+  },
+  "batch_within_mmr_strata": {
+    "per_stratum": [
+      {
+        "strata_variable": "combat_mod",
+        "stratum": "modcan1",
+        "pc": "PC1",
+        "n": 64,
+        "n_batches_usable": 6,
+        "min_cell": 2,
+        "statistic_H": 4.463880815214594,
+        "p_value": 0.48473055794131414,
+        "epsilon_squared": -0.009243434220438032
+      },
+      {
+        "strata_variable": "combat_mod",
+        "stratum": "modcan1",
+        "pc": "PC2",
+        "n": 64,
+        "n_batches_usable": 6,
+        "min_cell": 2,
+        "statistic_H": 18.37060898158913,
+        "p_value": 0.0025160575574052963,
+        "epsilon_squared": 0.23052774106188154
+      },
+      {
+        "strata_variable": "combat_mod",
+        "stratum": "modcan1",
+        "pc": "PC3",
+        "n": 64,
+        "n_batches_usable": 6,
+        "min_cell": 2,
+        "statistic_H": 12.554623366707744,
+        "p_value": 0.027929798954828878,
+        "epsilon_squared": 0.13025212701220248
+      },
+      {
+        "strata_variable": "combat_mod",
+        "stratum": "modcan1",
+        "pc": "PC4",
+        "n": 64,
+        "n_batches_usable": 6,
+        "min_cell": 2,
+        "statistic_H": 7.069523113363061,
+        "p_value": 0.2155209254923829,
+        "epsilon_squared": 0.0356814329890183
+      },
+      {
+        "strata_variable": "combat_mod",
+        "stratum": "modcan1",
+        "pc": "PC5",
+        "n": 64,
+        "n_batches_usable": 6,
+        "min_cell": 2,
+        "statistic_H": 7.511354699890717,
+        "p_value": 0.18530169789711037,
+        "epsilon_squared": 0.04329921896363305
+      },
+      {
+        "strata_variable": "combat_mod",
+        "stratum": "modcan2",
+        "pc": "PC1",
+        "n": 388,
+        "n_batches_usable": 9,
+        "min_cell": 13,
+        "statistic_H": 1.3066047722322764,
+        "p_value": 0.9954727915532817,
+        "epsilon_squared": -0.017660673424189244
+      },
+      {
+        "strata_variable": "combat_mod",
+        "stratum": "modcan2",
+        "pc": "PC2",
+        "n": 388,
+        "n_batches_usable": 9,
+        "min_cell": 13,
+        "statistic_H": 3.5367701494358244,
+        "p_value": 0.8963172576668091,
+        "epsilon_squared": -0.011776332059536083
+      },
+      {
+        "strata_variable": "combat_mod",
+        "stratum": "modcan2",
+        "pc": "PC3",
+        "n": 388,
+        "n_batches_usable": 9,
+        "min_cell": 13,
+        "statistic_H": 3.5610280151038296,
+        "p_value": 0.8944019991934734,
+        "epsilon_squared": -0.011712327136929209
+      },
+      {
+        "strata_variable": "combat_mod",
+        "stratum": "modcan2",
+        "pc": "PC4",
+        "n": 388,
+        "n_batches_usable": 9,
+        "min_cell": 13,
+        "statistic_H": 4.306090009604077,
+        "p_value": 0.828505112014901,
+        "epsilon_squared": -0.009746464354606658
+      },
+      {
+        "strata_variable": "combat_mod",
+        "stratum": "modcan2",
+        "pc": "PC5",
+        "n": 388,
+        "n_batches_usable": 9,
+        "min_cell": 13,
+        "statistic_H": 3.476498265607688,
+        "p_value": 0.9010059448198545,
+        "epsilon_squared": -0.011935360776760717
+      },
+      {
+        "strata_variable": "mmr.status_recorded",
+        "stratum": "dMMR",
+        "pc": "PC1",
+        "n": 59,
+        "n_batches_usable": 5,
+        "min_cell": 2,
+        "statistic_H": 4.332608288376463,
+        "p_value": 0.3628596634308817,
+        "epsilon_squared": 0.006159412747712273
+      },
+      {
+        "strata_variable": "mmr.status_recorded",
+        "stratum": "dMMR",
+        "pc": "PC2",
+        "n": 59,
+        "n_batches_usable": 5,
+        "min_cell": 2,
+        "statistic_H": 17.413422444149603,
+        "p_value": 0.0016061846463613714,
+        "epsilon_squared": 0.24839671192869636
+      },
+      {
+        "strata_variable": "mmr.status_recorded",
+        "stratum": "dMMR",
+        "pc": "PC3",
+        "n": 59,
+        "n_batches_usable": 5,
+        "min_cell": 2,
+        "statistic_H": 9.487639315304705,
+        "p_value": 0.0500018525596394,
+        "epsilon_squared": 0.10162295028342046
+      },
+      {
+        "strata_variable": "mmr.status_recorded",
+        "stratum": "dMMR",
+        "pc": "PC4",
+        "n": 59,
+        "n_batches_usable": 5,
+        "min_cell": 2,
+        "statistic_H": 6.125255499011644,
+        "p_value": 0.18998735601752953,
+        "epsilon_squared": 0.03935658331503044
+      },
+      {
+        "strata_variable": "mmr.status_recorded",
+        "stratum": "dMMR",
+        "pc": "PC5",
+        "n": 59,
+        "n_batches_usable": 5,
+        "min_cell": 2,
+        "statistic_H": 1.4432098246204248,
+        "p_value": 0.8366512449801669,
+        "epsilon_squared": -0.047347966210732874
+      },
+      {
+        "strata_variable": "mmr.status_recorded",
+        "stratum": "pMMR",
+        "pc": "PC1",
+        "n": 350,
+        "n_batches_usable": 9,
+        "min_cell": 13,
+        "statistic_H": 5.512638059976325,
+        "p_value": 0.7016394044574734,
+        "epsilon_squared": -0.007294316539658871
+      },
+      {
+        "strata_variable": "mmr.status_recorded",
+        "stratum": "pMMR",
+        "pc": "PC2",
+        "n": 350,
+        "n_batches_usable": 9,
+        "min_cell": 13,
+        "statistic_H": 3.485827730281244,
+        "p_value": 0.9002867717052877,
+        "epsilon_squared": -0.013238041846682569
+      },
+      {
+        "strata_variable": "mmr.status_recorded",
+        "stratum": "pMMR",
+        "pc": "PC3",
+        "n": 350,
+        "n_batches_usable": 9,
+        "min_cell": 13,
+        "statistic_H": 4.451169150784153,
+        "p_value": 0.8142983700936783,
+        "epsilon_squared": -0.010407128590075797
+      },
+      {
+        "strata_variable": "mmr.status_recorded",
+        "stratum": "pMMR",
+        "pc": "PC4",
+        "n": 350,
+        "n_batches_usable": 9,
+        "min_cell": 13,
+        "statistic_H": 6.0321313071569875,
+        "p_value": 0.6436325621870506,
+        "epsilon_squared": -0.005770875932090946
+      },
+      {
+        "strata_variable": "mmr.status_recorded",
+        "stratum": "pMMR",
+        "pc": "PC5",
+        "n": 350,
+        "n_batches_usable": 9,
+        "min_cell": 13,
+        "statistic_H": 15.212400884509407,
+        "p_value": 0.05514468144373736,
+        "epsilon_squared": 0.02115073573169914
+      }
+    ],
+    "stratified_permutation": [
+      {
+        "strata_variable": "combat_mod",
+        "pc": "PC1",
+        "n": 453,
+        "observed_H": 20.864833065106268,
+        "null_median_H": 28.33596289274351,
+        "null_p95_H": 42.10764193944772,
+        "p_permutation": 0.8615138486151385,
+        "n_permutations": 10000
+      },
+      {
+        "strata_variable": "combat_mod",
+        "pc": "PC2",
+        "n": 453,
+        "observed_H": 17.426204400279175,
+        "null_median_H": 15.744223744860392,
+        "null_p95_H": 27.053078782851895,
+        "p_permutation": 0.39306069393060694,
+        "n_permutations": 10000
+      },
+      {
+        "strata_variable": "combat_mod",
+        "pc": "PC3",
+        "n": 453,
+        "observed_H": 34.91224949960542,
+        "null_median_H": 32.561234096520366,
+        "null_p95_H": 47.20084947858165,
+        "p_permutation": 0.38096190380961903,
+        "n_permutations": 10000
+      },
+      {
+        "strata_variable": "combat_mod",
+        "pc": "PC4",
+        "n": 453,
+        "observed_H": 5.510334452555071,
+        "null_median_H": 8.310140638680991,
+        "null_p95_H": 16.857334441470705,
+        "p_permutation": 0.7813218678132187,
+        "n_permutations": 10000
+      },
+      {
+        "strata_variable": "combat_mod",
+        "pc": "PC5",
+        "n": 453,
+        "observed_H": 7.706790668118856,
+        "null_median_H": 10.343711985044592,
+        "null_p95_H": 19.46950445506006,
+        "p_permutation": 0.7374262573742626,
+        "n_permutations": 10000
+      },
+      {
+        "strata_variable": "mmr.status_recorded",
+        "pc": "PC1",
+        "n": 410,
+        "observed_H": 31.795191094714937,
+        "null_median_H": 31.497706079773025,
+        "null_p95_H": 45.647948695600455,
+        "p_permutation": 0.4841515848415158,
+        "n_permutations": 10000
+      },
+      {
+        "strata_variable": "mmr.status_recorded",
+        "pc": "PC2",
+        "n": 410,
+        "observed_H": 16.926489203649,
+        "null_median_H": 15.496204988856562,
+        "null_p95_H": 26.553824289008215,
+        "p_permutation": 0.40815918408159185,
+        "n_permutations": 10000
+      },
+      {
+        "strata_variable": "mmr.status_recorded",
+        "pc": "PC3",
+        "n": 410,
+        "observed_H": 39.96228019245814,
+        "null_median_H": 33.672605099101816,
+        "null_p95_H": 48.208379957569385,
+        "p_permutation": 0.2263773622637736,
+        "n_permutations": 10000
+      },
+      {
+        "strata_variable": "mmr.status_recorded",
+        "pc": "PC4",
+        "n": 410,
+        "observed_H": 8.397499231589563,
+        "null_median_H": 8.525498678108534,
+        "null_p95_H": 17.37253162206049,
+        "p_permutation": 0.5130486951304869,
+        "n_permutations": 10000
+      },
+      {
+        "strata_variable": "mmr.status_recorded",
+        "pc": "PC5",
+        "n": 410,
+        "observed_H": 14.333306119950521,
+        "null_median_H": 10.09568015890818,
+        "null_p95_H": 19.32143682274217,
+        "p_permutation": 0.2024797520247975,
+        "n_permutations": 10000
+      }
+    ],
+    "permutation_null_meaning": "batch labels permuted WITHIN MMR strata, so the null preserves batch x MMR composition. The test asks whether batch structure exists BEYOND composition.",
+    "detection_sensitivity": [
+      {
+        "delta_in_pc3_sd": 0.0,
+        "delta_absolute": 0.0,
+        "power_at_alpha_0.05": 0.0,
+        "n_simulations": 300,
+        "n_permutations_each": 500
+      },
+      {
+        "delta_in_pc3_sd": 0.1,
+        "delta_absolute": 1.8187713689666851,
+        "power_at_alpha_0.05": 0.0,
+        "n_simulations": 300,
+        "n_permutations_each": 500
+      },
+      {
+        "delta_in_pc3_sd": 0.2,
+        "delta_absolute": 3.6375427379333702,
+        "power_at_alpha_0.05": 0.0,
+        "n_simulations": 300,
+        "n_permutations_each": 500
+      },
+      {
+        "delta_in_pc3_sd": 0.3,
+        "delta_absolute": 5.456314106900055,
+        "power_at_alpha_0.05": 0.9733333333333334,
+        "n_simulations": 300,
+        "n_permutations_each": 500
+      },
+      {
+        "delta_in_pc3_sd": 0.5,
+        "delta_absolute": 9.093856844833425,
+        "power_at_alpha_0.05": 1.0,
+        "n_simulations": 300,
+        "n_permutations_each": 500
+      },
+      {
+        "delta_in_pc3_sd": 0.75,
+        "delta_absolute": 13.640785267250138,
+        "power_at_alpha_0.05": 1.0,
+        "n_simulations": 300,
+        "n_permutations_each": 500
+      },
+      {
+        "delta_in_pc3_sd": 1.0,
+        "delta_absolute": 18.18771368966685,
+        "power_at_alpha_0.05": 1.0,
+        "n_simulations": 300,
+        "n_permutations_each": 500
+      }
+    ],
+    "min_detectable_batch05_shift_pc3_sd_at_80pct_power": 0.3,
+    "limitation": "a null result is NOT evidence that batch effects are absent. ComBat was applied to this deposit before release, so between-batch variance was removed by construction and cannot be recovered from these data. The dMMR stratum is additionally small and unevenly distributed across batches."
+  },
+  "batch05_pc3": {
+    "observation": [
+      {
+        "combat_mod": "modcan1",
+        "group": "batch05",
+        "n": 31,
+        "mean_pc3": 22.387573108677604,
+        "sd_pc3": 11.79639558486891,
+        "ci95_lo": 18.209045278414106,
+        "ci95_hi": 26.4406654145473
+      },
+      {
+        "combat_mod": "modcan1",
+        "group": "other batches",
+        "n": 34,
+        "mean_pc3": 18.14585277843564,
+        "sd_pc3": 14.753353383770012,
+        "ci95_lo": 13.265583010698093,
+        "ci95_hi": 22.833778301821056
+      },
+      {
+        "combat_mod": "modcan2",
+        "group": "batch05",
+        "n": 18,
+        "mean_pc3": -2.5493984041055575,
+        "sd_pc3": 15.818148021997231,
+        "ci95_lo": -9.251790655474133,
+        "ci95_hi": 4.843466052326534
+      },
+      {
+        "combat_mod": "modcan2",
+        "group": "other batches",
+        "n": 370,
+        "mean_pc3": -3.419147539356532,
+        "sd_pc3": 16.68553723638792,
+        "ci95_lo": -5.071424554182376,
+        "ci95_hi": -1.7384540751635416
+      }
+    ],
+    "batch05_overall_mean_pc3": 13.227052961124599,
+    "batch05_pct_modcan1": 63.26530612244898,
+    "cohort_pct_modcan1": 14.348785871964681,
+    "separation_of_observation_and_explanation": "OBSERVATION: batch05's elevated mean PC3 is carried by its modcan1 members; its modcan2 members sit with every other batch. EXPLANATION (not established): composition. The data cannot distinguish 'batch05 contains more dMMR tumours' from 'something about batch05 processing affects dMMR arrays specifically', because the two are perfectly confounded in this deposit."
+  },
+  "sex_discordance_review": {
+    "n": 8,
+    "samples": [
+      {
+        "sample_id": "GSM972036",
+        "recorded_sex": "Female",
+        "combat_batch": "batch03",
+        "y_score_6gene": 6.284397,
+        "xist": 4.781873,
+        "y_markers_consistent_n": 10,
+        "n_y_markers": 11,
+        "qc_flag_S_S1": false,
+        "qc_flag_S_S2": false,
+        "qc_flag_S_S3": false,
+        "n_non_finite": 0,
+        "actb_3p5p": 1.4356,
+        "gapdh_3p5p": 0.6488,
+        "mean_correlation": 0.946132,
+        "max_quantile_deviation": 0.294572
+      },
+      {
+        "sample_id": "GSM972111",
+        "recorded_sex": "Male",
+        "combat_batch": "batch03",
+        "y_score_6gene": 3.644057,
+        "xist": 6.850781,
+        "y_markers_consistent_n": 10,
+        "n_y_markers": 11,
+        "qc_flag_S_S1": false,
+        "qc_flag_S_S2": false,
+        "qc_flag_S_S3": false,
+        "n_non_finite": 0,
+        "actb_3p5p": 0.6678,
+        "gapdh_3p5p": 0.2129,
+        "mean_correlation": 0.942403,
+        "max_quantile_deviation": 0.100163
+      },
+      {
+        "sample_id": "GSM972113",
+        "recorded_sex": "Female",
+        "combat_batch": "batch03",
+        "y_score_6gene": 6.533412,
+        "xist": 3.269798,
+        "y_markers_consistent_n": 10,
+        "n_y_markers": 11,
+        "qc_flag_S_S1": false,
+        "qc_flag_S_S2": false,
+        "qc_flag_S_S3": true,
+        "n_non_finite": 0,
+        "actb_3p5p": 0.9694,
+        "gapdh_3p5p": 0.456,
+        "mean_correlation": 0.927179,
+        "max_quantile_deviation": 0.193427
+      },
+      {
+        "sample_id": "GSM972174",
+        "recorded_sex": "Male",
+        "combat_batch": "batch04",
+        "y_score_6gene": 3.598285,
+        "xist": 8.20511,
+        "y_markers_consistent_n": 11,
+        "n_y_markers": 11,
+        "qc_flag_S_S1": false,
+        "qc_flag_S_S2": false,
+        "qc_flag_S_S3": false,
+        "n_non_finite": 0,
+        "actb_3p5p": 0.9887,
+        "gapdh_3p5p": 0.1727,
+        "mean_correlation": 0.943033,
+        "max_quantile_deviation": 0.206945
+      },
+      {
+        "sample_id": "GSM972248",
+        "recorded_sex": "Male",
+        "combat_batch": "batch05",
+        "y_score_6gene": 4.321708,
+        "xist": 8.443089,
+        "y_markers_consistent_n": 11,
+        "n_y_markers": 11,
+        "qc_flag_S_S1": false,
+        "qc_flag_S_S2": false,
+        "qc_flag_S_S3": false,
+        "n_non_finite": 0,
+        "actb_3p5p": 0.5743,
+        "gapdh_3p5p": 0.0583,
+        "mean_correlation": 0.959073,
+        "max_quantile_deviation": 0.238463
+      },
+      {
+        "sample_id": "GSM972283",
+        "recorded_sex": "Male",
+        "combat_batch": "batch05",
+        "y_score_6gene": 3.262524,
+        "xist": 8.839627,
+        "y_markers_consistent_n": 11,
+        "n_y_markers": 11,
+        "qc_flag_S_S1": false,
+        "qc_flag_S_S2": true,
+        "qc_flag_S_S3": false,
+        "n_non_finite": 0,
+        "actb_3p5p": 1.1106,
+        "gapdh_3p5p": 0.6702,
+        "mean_correlation": 0.929755,
+        "max_quantile_deviation": 0.2589
+      },
+      {
+        "sample_id": "GSM972479",
+        "recorded_sex": "Male",
+        "combat_batch": "batch07",
+        "y_score_6gene": 3.30659,
+        "xist": 9.560539,
+        "y_markers_consistent_n": 11,
+        "n_y_markers": 11,
+        "qc_flag_S_S1": false,
+        "qc_flag_S_S2": false,
+        "qc_flag_S_S3": true,
+        "n_non_finite": 0,
+        "actb_3p5p": 0.5866,
+        "gapdh_3p5p": 0.1081,
+        "mean_correlation": 0.896979,
+        "max_quantile_deviation": 0.169689
+      },
+      {
+        "sample_id": "GSM972495",
+        "recorded_sex": "Female",
+        "combat_batch": "batch08",
+        "y_score_6gene": 6.199737,
+        "xist": 2.538667,
+        "y_markers_consistent_n": 10,
+        "n_y_markers": 11,
+        "qc_flag_S_S1": false,
+        "qc_flag_S_S2": false,
+        "qc_flag_S_S3": false,
+        "n_non_finite": 0,
+        "actb_3p5p": 1.0816,
+        "gapdh_3p5p": 0.1023,
+        "mean_correlation": 0.933016,
+        "max_quantile_deviation": 0.090895
+      }
+    ],
+    "batches": [
+      "batch03",
+      "batch04",
+      "batch05",
+      "batch07",
+      "batch08"
+    ],
+    "y_marker_panel": [
+      "RPS4Y1",
+      "DDX3Y",
+      "KDM5D",
+      "EIF1AY",
+      "USP9Y",
+      "UTY",
+      "ZFY",
+      "NLGN4Y",
+      "TXLNGY",
+      "TMSB4Y",
+      "PRKY"
+    ],
+    "x_inactivation_panel": [
+      "XIST",
+      "TSIX"
+    ],
+    "phase8a_panel_size": 6,
+    "phase8b_panel_size": 11,
+    "n_with_any_phase7c_soft_flag": 3,
+    "cohort_soft_flag_rate": {
+      "n_flagged": 29,
+      "n_total": 453
+    },
+    "soft_flag_enrichment_fisher": {
+      "odds_ratio": 9.669230769230769,
+      "p_value": 0.01065998753364664
+    },
+    "independent_technical_evidence_found": true,
+    "evidence_limit": "a Phase 7C soft flag reports array QUALITY, not array IDENTITY. An enrichment of soft flags among these samples is consistent with degraded arrays producing unreliable marker calls, and equally with nothing at all; it is not evidence of a mix-up either way.",
+    "adjudication": "NOT ADJUDICATED. Expression markers alone cannot distinguish a sample or annotation mix-up from loss of Y / XIST silencing. Genotype-level data would be required. No sample is excluded or relabelled; the Phase 7C decision to retain all 453 stands.",
+    "status": "UNRESOLVED QC OBSERVATION"
+  },
+  "new_technical_structure": {
+    "rna_extraction_method": {
+      "levels": 6,
+      "counts": {
+        "Manual-Rneasy Mini (Qiagen)": 143,
+        "TriReagent & Manual-Rneasy Mini (Qiagen)": 118,
+        "Manual-Trizol": 82,
+        "Manual-Rneasy Micro (Qiagen)": 81,
+        "RNA NOW": 15,
+        "Manual-Cesium Chloride": 14
+      },
+      "top_pc_associations": [
+        {
+          "annotation": "rna.extraction.method",
+          "kind": "categorical",
+          "new_in_8B": true,
+          "pc": "PC3",
+          "n_available": 453,
+          "n_levels": 6.0,
+          "statistic": 28.346119980165213,
+          "p_value": 3.11447343227075e-05,
+          "effect_size": 0.0522284563314658,
+          "effect_measure": "epsilon_squared",
+          "q_value_BH": 0.0003030298474641811
+        },
+        {
+          "annotation": "rna.extraction.method",
+          "kind": "categorical",
+          "new_in_8B": true,
+          "pc": "PC1",
+          "n_available": 453,
+          "n_levels": 6.0,
+          "statistic": 19.256762667866496,
+          "p_value": 0.0017215188147652878,
+          "effect_size": 0.0318943236417595,
+          "effect_measure": "epsilon_squared",
+          "q_value_BH": 0.009995915698637156
+        },
+        {
+          "annotation": "rna.extraction.method",
+          "kind": "categorical",
+          "new_in_8B": true,
+          "pc": "PC2",
+          "n_available": 453,
+          "n_levels": 6.0,
+          "statistic": 15.728201199582145,
+          "p_value": 0.007664473849512463,
+          "effect_size": 0.024000450110922025,
+          "effect_measure": "epsilon_squared",
+          "q_value_BH": 0.03583390371200632
+        }
+      ],
+      "confounding_with_batch": {
+        "chi2": 2265.0,
+        "df": 40,
+        "p_value": 0.0
+      },
+      "new_in_phase8b": true
+    },
+    "processing_order_proxy": {
+      "variable": "numeric CIT index parsed from the sample title",
+      "caveat": "accession order is a PROXY for processing order, not a record of it. No scan or hybridisation date is deposited.",
+      "top": [
+        {
+          "annotation": "cit_index_processing_order",
+          "kind": "continuous",
+          "new_in_8B": true,
+          "pc": "PC8",
+          "n_available": 453,
+          "n_levels": NaN,
+          "statistic": 0.09322074375319657,
+          "p_value": 0.04737533192371381,
+          "effect_size": 0.09322074375319657,
+          "effect_measure": "abs_spearman_rho",
+          "q_value_BH": 0.14830538689162587
+        },
+        {
+          "annotation": "cit_index_processing_order",
+          "kind": "continuous",
+          "new_in_8B": true,
+          "pc": "PC13",
+          "n_available": 453,
+          "n_levels": NaN,
+          "statistic": 0.08243704788241349,
+          "p_value": 0.07965180898186754,
+          "effect_size": 0.08243704788241349,
+          "effect_measure": "abs_spearman_rho",
+          "q_value_BH": 0.21240482395164678
+        },
+        {
+          "annotation": "cit_index_processing_order",
+          "kind": "continuous",
+          "new_in_8B": true,
+          "pc": "PC2",
+          "n_available": 453,
+          "n_levels": NaN,
+          "statistic": -0.07516159988598874,
+          "p_value": 0.11013987526041674,
+          "effect_size": 0.07516159988598874,
+          "effect_measure": "abs_spearman_rho",
+          "q_value_BH": 0.26973030676020426
+        }
+      ],
+      "new_in_phase8b": true
+    },
+    "affx_control_probes": {
+      "n_controls": 62,
+      "variance_explained_pc1_3": [
+        0.5197487002382356,
+        0.15125902904279392,
+        0.10852745645794334
+      ],
+      "affx_pc1_vs_batch": {
+        "epsilon_squared": 0.03794144768341984,
+        "p_value": 0.0016507504028151075
+      },
+      "max_abs_spearman_with_expression_pc1_5": 0.44010728833106444,
+      "note": "AFFX spike-in and housekeeping controls are a technical readout independent of the biological gene index, but they were subject to the SAME deposited RMA+ComBat processing, so they cannot serve as an uncorrected technical reference.",
+      "new_in_phase8b": true
+    },
+    "variance_heterogeneity": {
+      "test": "Brown-Forsythe (Levene, median-centred), PC ~ batch",
+      "results": [
+        {
+          "pc": "PC1",
+          "statistic_W": 1.069227279657923,
+          "p_value": 0.38352426499805237,
+          "sd_by_batch": {
+            "batch01": 24.988193367094844,
+            "batch02": 22.46544736534024,
+            "batch03": 24.036308392822367,
+            "batch04": 21.35239985632497,
+            "batch05": 21.997165413416948,
+            "batch07": 24.013788920272116,
+            "batch08": 24.681600263451504,
+            "batch09": 14.684396885893886,
+            "batch10": 15.621143257794554
+          }
+        },
+        {
+          "pc": "PC2",
+          "statistic_W": 4.9476499250319765,
+          "p_value": 7.005525351608605e-06,
+          "sd_by_batch": {
+            "batch01": 17.11267757848919,
+            "batch02": 18.36748181392845,
+            "batch03": 21.85356753040811,
+            "batch04": 22.43523654943786,
+            "batch05": 16.5652185852767,
+            "batch07": 12.033215946150174,
+            "batch08": 19.604766349559924,
+            "batch09": 27.896547420548295,
+            "batch10": 25.658371898794698
+          }
+        },
+        {
+          "pc": "PC3",
+          "statistic_W": 0.672073966604742,
+          "p_value": 0.7162620295960447,
+          "sd_by_batch": {
+            "batch01": 18.06760821420396,
+            "batch02": 10.916521547831634,
+            "batch03": 18.79718955093855,
+            "batch04": 17.054415478486174,
+            "batch05": 17.975554992032617,
+            "batch07": 17.87142131435351,
+            "batch08": 16.85986510308701,
+            "batch09": 15.617415771369478,
+            "batch10": 17.130172473187873
+          }
+        },
+        {
+          "pc": "PC4",
+          "statistic_W": 0.7201404117766779,
+          "p_value": 0.6738011610120733,
+          "sd_by_batch": {
+            "batch01": 19.977603846261438,
+            "batch02": 16.30527732856689,
+            "batch03": 19.098733104692005,
+            "batch04": 15.643952946078322,
+            "batch05": 13.120711547543104,
+            "batch07": 18.15158259701563,
+            "batch08": 20.677843590992474,
+            "batch09": 17.424145816612768,
+            "batch10": 17.205403842605914
+          }
+        },
+        {
+          "pc": "PC5",
+          "statistic_W": 2.431541048477759,
+          "p_value": 0.013995646424446383,
+          "sd_by_batch": {
+            "batch01": 10.42158697500876,
+            "batch02": 12.289120756263863,
+            "batch03": 15.956135609002772,
+            "batch04": 12.334401320137038,
+            "batch05": 10.925073135754849,
+            "batch07": 11.553935257185021,
+            "batch08": 11.182509941767213,
+            "batch09": 16.95137732009228,
+            "batch10": 13.46994686702771
+          }
+        }
+      ],
+      "rationale": "a batch effect can be a DISPERSION effect with equal means; Phase 8A tested location only",
+      "new_in_phase8b": true
+    },
+    "dependent_samples": {
+      "n_in_S3": 0,
+      "meaning": "the deposit flags related arrays via `dependancy_sample`. None are present in S3, so the independence assumption a future resampling scheme relies on is not violated by declared sample dependency.",
+      "new_in_phase8b": true
+    },
+    "stratified_recheck_of_new_findings": [
+      {
+        "test": "rna.extraction.method ~ PC3",
+        "observed_H": 28.346119980165213,
+        "null_p95_H": 41.059401056248106,
+        "p_stratified_permutation": 0.42725727427257276,
+        "strata": "combat_mod",
+        "n_permutations": 10000
+      },
+      {
+        "test": "rna.extraction.method ~ PC1",
+        "observed_H": 19.256762667866496,
+        "null_p95_H": 36.70040159177613,
+        "p_stratified_permutation": 0.7246275372462754,
+        "strata": "combat_mod",
+        "n_permutations": 10000
+      },
+      {
+        "test": "AFFX_PC1 ~ batch",
+        "observed_H": 24.846002771438407,
+        "null_p95_H": 15.497334114029137,
+        "p_stratified_permutation": 0.0015998400159984002,
+        "strata": "combat_mod",
+        "n_permutations": 10000
+      },
+      {
+        "test": "expression PC2 |dev| ~ batch",
+        "observed_H": 41.93686196300064,
+        "null_p95_H": 15.41273768350279,
+        "p_stratified_permutation": 9.999000099990002e-05,
+        "strata": "combat_mod",
+        "n_permutations": 10000
+      }
+    ]
+  },
+  "m2_status": {
+    "sigma_ddof_pinned": 1,
+    "read_from_specification": true,
+    "primary_panel_n_sets": 4,
+    "sensitivity_panel_n_sets": 5,
+    "membership_changed_by_phase8b": false,
+    "roles_changed_by_phase8b": false,
+    "scores_recomputed_in_phase8b": false
+  },
+  "frozen_artifact_hashes": {
+    "frozen_gene_to_probeset_median.csv": "08f8715fb7eca5a0cad9516e66343bdd3edf48b1e68535e10b8da59dc054e237",
+    "frozen_gene_to_probe_discovery443.csv": "c386d5f11cc511dc240ad7f1cd47124e7687266ba4807d6be3dc80d7abd857bc",
+    "frozen_representation.json": "d5ec63736d87425864d37fd63250f5fa2269884bd0702b677f36c09d32a03570",
+    "expression_median_S0.parquet": "a1ca41807c53458489617e677f2bdb3f0a72b2c9a71d8ded59b4eeef60c73676",
+    "cohort_membership.csv": "bd3671f8df64c594d273a23abed80b83dd17742aee15bd83ac114211be5fcd01",
+    "partition_and_batch.csv": "57a45bab8efb81f96e838b9348edb13d4a3fbf09f2ea13f69f2d0f52700c49ed",
+    "covariates.csv": "47b2d9829a4fccecf30663d0b0063d54664e72c1a9011938698c6c93a9441403",
+    "endpoint.csv": "802a68575a34a3b60a50bd2452b9b09b62c1c40b90f34f4f60bb66691b0e7e0d",
+    "m2_panel_4set.json": "cb4de071e2f64a6b6d401015ea70b22705e9a4149f71de6f6795845e1ce47b11",
+    "m2_panel_5set.json": "10dae4874a918160c50dd050fb267fca26474827d8215d53bd56b7f89ddd5275",
+    "M2_FREEZE_RECORD.json": "c2b31f3340b3635595457fcb0e33460c6032c66f6712a0afc4b7b2c65c0287dc",
+    "A19_FREEZE_RECORD.json": "a77de7b37fe09eeb9d9958ca012648e63fb349c19614b0c2dc99591da2cf561f",
+    "QC_DECISIONS_RECORD.json": "4e026fc547b801ba208d54bf589619075f61d6ecee49903aafd4de7e48401ec5",
+    "GSE39582_sample_metadata.csv": "37cef7feb767766f31bbe2100bb6185b578a2dd5d6236bb83b4ae971bdcb5291"
+  },
+  "phase8a_score_artifact_hashes": {
+    "pathway_score_correlation_4set_primary.csv": "a487d44b6f7ba770c44138f29b1938984fe9810687d8a649674b89acc149c0bc",
+    "pathway_score_correlation_5set_sensitivity.csv": "2390b367a4193aca98f4c9cf08d1bf5834a19f47147b534c0120c2b48c59cc01",
+    "pathway_scores_4set_primary_EXPLORATORY_full_cohort.csv": "e3124e7e7fbc1da59a733397907011cd2a1d44e52405d0e6cba5bd8ad5572687",
+    "pathway_scores_5set_sensitivity_EXPLORATORY_full_cohort.csv": "f6fb4fe226ace21df4c8545f233474b2a82f74306f1711a0f9b7757e671b5534"
+  },
+  "frozen_artifacts_modified": false,
+  "environment": {
+    "captured_utc": "2026-11-03T00:31:07.188257+00:00",
+    "python_version": "3.13.13",
+    "python_executable": "/Users/kalki/coad_transportability/.venv/bin/python",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.5.4",
+      "pandas": "2.3.3",
+      "scipy": "1.18.1",
+      "sklearn": "1.9.1",
+      "lifelines": "0.30.3",
+      "pyarrow": "26.0.0",
+      "pytest": "9.2.0"
+    }
+  }
+}

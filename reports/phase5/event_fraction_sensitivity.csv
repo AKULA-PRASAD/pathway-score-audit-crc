@@ -1,0 +1,7 @@
+event_fraction,cohort,events,n,slope_SE,CI_width,meets_relaxed
+0.2,GSE14333,48,240,0.27,1.058,False
+0.2,GSE39582 S3,136,680,0.1589,0.623,False
+0.3,GSE14333,48,160,0.273,1.07,False
+0.3,GSE39582 S3,136,453,0.1605,0.629,False
+0.4,GSE14333,48,120,0.2759,1.082,False
+0.4,GSE39582 S3,136,340,0.1623,0.636,False

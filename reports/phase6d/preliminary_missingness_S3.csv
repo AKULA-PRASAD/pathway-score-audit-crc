@@ -1,0 +1,16 @@
+variable,missing,pct,disc_pct,val_pct,diff_pp,complete,in_M1_primary
+tp53.mutation,167,36.9,43.5,13.1,-30.4,False,False
+cin.status,89,19.6,21.5,13.1,-8.3,False,False
+cimp.status,67,14.8,17.2,6.1,-11.2,False,False
+braf.mutation,54,11.9,14.4,3.0,-11.4,False,False
+mmr.status,43,9.5,9.0,11.1,2.1,False,False
+kras.mutation,21,4.6,5.4,2.0,-3.3,False,False
+tnm.t,19,4.2,3.1,8.1,5.0,False,False
+tnm.n,19,4.2,3.1,8.1,5.0,False,False
+tnm.m,19,4.2,3.1,8.1,5.0,False,False
+chemotherapy.adjuvant,1,0.2,0.3,0.0,-0.3,False,True
+age.at.diagnosis_(year),0,0.0,0.0,0.0,0.0,True,True
+sex,0,0.0,0.0,0.0,0.0,True,True
+tnm.stage,0,0.0,0.0,0.0,0.0,True,True
+tumor.location,0,0.0,0.0,0.0,0.0,True,True
+flag_stage_m_conflict,0,0.0,0.0,0.0,0.0,True,False

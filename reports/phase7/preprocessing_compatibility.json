@@ -1,0 +1,91 @@
+{
+  "outcome_data_used": false,
+  "normalization_performed": "none",
+  "combat_performed": "none",
+  "frma_executed": false,
+  "packages_installed": "none",
+  "cel_files_downloaded": 0,
+  "deposited_matrix": {
+    "dimensions": {
+      "probes": 54675,
+      "samples": 585
+    },
+    "sample_coverage": {
+      "primary_tumours": 566,
+      "non_tumoural": 19
+    },
+    "scale": "log2",
+    "value_min": -0.398697396,
+    "value_max": 16.11154945,
+    "non_finite": 0,
+    "documented_processing": "RMA normalisation (affy) + ComBat (sva)",
+    "fitting_population_documented": false,
+    "forensic_evidence": {
+      "per_array_median_sd": 0.034383040944138986,
+      "per_array_p10_sd": 0.03746662946778127,
+      "per_array_p90_sd": 0.10086171409437186,
+      "sorted_vectors_exactly_identical": false,
+      "interpretation": "near-constant per-array quantiles indicate quantile normalisation; sorted vectors NOT exactly identical, indicating a post-normalisation adjustment (ComBat) was applied on top",
+      "within_tumour_max_sorted_diff": 0.5247347100000006,
+      "within_nontumour_max_sorted_diff": 0.19014933000000056,
+      "cross_group_max_sorted_diff": 2.15224173,
+      "cross_vs_within_ratio": 4.1
+    }
+  },
+  "frma_gate": {
+    "expression_probe_ids": 54675,
+    "annotation_probe_ids": 54675,
+    "identical_sets": true,
+    "match_standard_affy_grammar": 54662,
+    "pct_standard_grammar": 99.98,
+    "affx_control_probesets": 62,
+    "frozen_median_probes": 43163,
+    "frozen_median_subset_of_platform": true,
+    "frozen_repiqr_probes": 21815,
+    "frozen_repiqr_subset_of_platform": true,
+    "suffix_distribution": {
+      "s_at": 11295,
+      "x_at": 4207,
+      "a_at": 1720,
+      "g_at": 13,
+      "r_at": 12,
+      "i_at": 9,
+      "f_at": 5
+    },
+    "non_plain_suffix_probesets": 17261,
+    "entrezg_cdf_excluded_because": "an ENTREZG CDF has ~20k probe sets, all plain '_at', and no AFFX controls; this set has 54,675 probe sets, 17,261 with non-plain suffixes, and 62 AFFX controls",
+    "documented_vector_objects": {
+      "source": "hgu133plus2frmavecs reference manual (Bioconductor, Oct 2026)",
+      "standard_cdf_object": "hgu133plus2frmavecs",
+      "entrez_altcdf_object": "hgu133plus2hsentrezgfrmavecs",
+      "format": [
+        "normVec",
+        "probeVec",
+        "probeVarWithin",
+        "probeVarBetween",
+        "probesetSD",
+        "medianSE",
+        "version (the Entrez Gene alternative CDF version IF APPLICABLE)"
+      ],
+      "resolution": "The package ships TWO separate vector objects. The 'hgu133ahsentrezgcdf' string in the DESCRIPTION refers to how the ALTERNATIVE Entrez object was built; the 'version' element is documented as present only 'if applicable'. The standard object is therefore standard-CDF keyed.",
+      "verified_level": "DOCUMENTATION (reference manual), not the loaded object"
+    },
+    "verdict": "CONDITIONAL GO - identifier compatibility is established for our side (100% standard Affy grammar, frozen probe sets are strict subsets of the GPL570 platform) and the CDF ambiguity is resolved from the reference manual. The residual check - that the LOADED standard object yields exactly our 54,675 identifiers - requires installation and remains outstanding."
+  },
+  "environment": {
+    "captured_utc": "2026-11-02T21:56:26.762056+00:00",
+    "python_version": "3.13.13",
+    "python_executable": "/Users/kalki/coad_transportability/.venv/bin/python",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.5.4",
+      "pandas": "2.3.3",
+      "scipy": "1.18.1",
+      "sklearn": "1.9.1",
+      "lifelines": "0.30.3",
+      "pyarrow": "26.0.0",
+      "pytest": "9.2.0"
+    }
+  }
+}

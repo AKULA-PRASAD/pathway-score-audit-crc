@@ -1,0 +1,330 @@
+{
+  "executed_utc": "2026-11-02T22:21:49.142023+00:00",
+  "specification_status": "APPROVED WITH CLARIFICATIONS - thresholds immutable - QC NOT YET EXECUTED",
+  "criteria_run": 20,
+  "hard_failures": 0,
+  "hard_passed": 9,
+  "soft_flags_criteria": 3,
+  "descriptive_reported": 8,
+  "samples_soft_flagged": 29,
+  "sample_ids_requiring_investigation": [
+    "GSM971986",
+    "GSM971993",
+    "GSM972059",
+    "GSM972061",
+    "GSM972077",
+    "GSM972079",
+    "GSM972089",
+    "GSM972097",
+    "GSM972105",
+    "GSM972113",
+    "GSM972149",
+    "GSM972177",
+    "GSM972220",
+    "GSM972221",
+    "GSM972257",
+    "GSM972264",
+    "GSM972274",
+    "GSM972275",
+    "GSM972283",
+    "GSM972295",
+    "GSM972305",
+    "GSM972311",
+    "GSM972357",
+    "GSM972361",
+    "GSM972444",
+    "GSM972445",
+    "GSM972467",
+    "GSM972479",
+    "GSM972499"
+  ],
+  "samples_excluded": 0,
+  "exclusions_performed": false,
+  "outcome_columns_opened": false,
+  "event_counts_computed": false,
+  "normalization_applied": "none",
+  "batch_correction_applied": "none",
+  "frozen_artifacts_modified": false,
+  "results": {
+    "H-C1": {
+      "id": "H-C1",
+      "tier": "HARD_EXCLUSION",
+      "level": "cohort",
+      "metric": "sample-ID set equality between the expression matrix and the frozen Phase 3 bundle",
+      "status": "PASS",
+      "detail": "SPECIFICATION DEFECT: as-written set equality = False (585 vs 461, never achievable by design). Integrity property that matters -- frozen bundle is a subset of the matrix with 0 missing IDs -- = True",
+      "as_written_equality": false,
+      "bundle_subset_of_matrix": true,
+      "ids_missing_from_matrix": [],
+      "matrix_only_samples": 124,
+      "defect": "H-C1 compares artifacts of different scope; requires approval to amend",
+      "requires_approval": true
+    },
+    "H-C2": {
+      "id": "H-C2",
+      "tier": "HARD_EXCLUSION",
+      "level": "cohort",
+      "metric": "discovery/validation membership matches partition_and_batch.csv",
+      "status": "PASS",
+      "detail": "partition membership complete: discovery=354 validation=99"
+    },
+    "H-C3": {
+      "id": "H-C3",
+      "tier": "HARD_EXCLUSION",
+      "level": "cohort",
+      "metric": "S3 membership equals the frozen cohort_membership.csv (n=453)",
+      "status": "PASS",
+      "detail": "S3 membership == frozen n=453: True"
+    },
+    "H-C4": {
+      "id": "H-C4",
+      "tier": "HARD_EXCLUSION",
+      "level": "cohort",
+      "metric": "GSM972262 is excluded under the frozen complete-case strategy",
+      "status": "PASS",
+      "detail": "complete-case exclusion is exactly GSM972262: True",
+      "excluded_sample": "GSM972262"
+    },
+    "H-S1": {
+      "id": "H-S1",
+      "tier": "HARD_EXCLUSION",
+      "level": "sample",
+      "metric": "count of non-finite values in the sample's column",
+      "status": "PASS",
+      "detail": "samples with non-finite values: 0",
+      "samples": []
+    },
+    "H-S2": {
+      "id": "H-S2",
+      "tier": "HARD_EXCLUSION",
+      "level": "sample",
+      "metric": "sample_id present in the frozen Phase 3 cohort_membership.csv",
+      "status": "PASS",
+      "detail": "samples absent from frozen manifest: 0"
+    },
+    "H-S3": {
+      "id": "H-S3",
+      "tier": "HARD_EXCLUSION",
+      "level": "sample",
+      "metric": "exactly-duplicated sample columns (bitwise identical vectors)",
+      "status": "PASS",
+      "detail": "exactly-duplicated sample columns: 0 group(s)",
+      "groups": []
+    },
+    "H-S4": {
+      "id": "H-S4",
+      "tier": "HARD_EXCLUSION",
+      "level": "sample",
+      "metric": "non-tumoural sample present in the analysis cohort",
+      "status": "PASS",
+      "detail": "non-tumoural samples in analysis cohort: 0"
+    },
+    "S-S1": {
+      "id": "S-S1",
+      "tier": "SOFT_INVESTIGATION",
+      "level": "sample",
+      "metric": "per-array median of log2 expression",
+      "status": "FLAG",
+      "detail": "per-array median outside [4.6907, 4.8532]: 9",
+      "fence": [
+        4.690743754499999,
+        4.853165102500001
+      ],
+      "flagged": {
+        "GSM971986": 4.8835,
+        "GSM971993": 4.987,
+        "GSM972059": 4.883,
+        "GSM972097": 4.8804,
+        "GSM972105": 4.9111,
+        "GSM972149": 4.8944,
+        "GSM972220": 4.6809,
+        "GSM972305": 4.8582,
+        "GSM972499": 4.6874
+      }
+    },
+    "S-S2": {
+      "id": "S-S2",
+      "tier": "SOFT_INVESTIGATION",
+      "level": "sample",
+      "metric": "per-array interquartile range of log2 expression",
+      "status": "FLAG",
+      "detail": "per-array IQR outside [2.8033, 3.4216]: 13",
+      "fence": [
+        2.8033361037500013,
+        3.4216297537499996
+      ],
+      "flagged": {
+        "GSM972059": 2.7359,
+        "GSM972061": 2.8032,
+        "GSM972105": 2.7283,
+        "GSM972177": 2.7679,
+        "GSM972221": 3.4993,
+        "GSM972257": 2.7962,
+        "GSM972264": 3.5151,
+        "GSM972274": 3.5037,
+        "GSM972275": 3.4627,
+        "GSM972283": 3.4487,
+        "GSM972295": 2.7897,
+        "GSM972444": 3.5507,
+        "GSM972445": 3.4421
+      }
+    },
+    "S-S3": {
+      "id": "S-S3",
+      "tier": "SOFT_INVESTIGATION",
+      "level": "sample",
+      "metric": "sum of 1 - Spearman correlation to every other array in the analysis cohort",
+      "status": "FLAG",
+      "detail": "sum(1-rho) outside [14.701, 32.098]: 15",
+      "fence": [
+        14.701042874468909,
+        32.097568111788235
+      ],
+      "flagged": {
+        "GSM971986": 45.364,
+        "GSM972059": 44.976,
+        "GSM972077": 36.175,
+        "GSM972079": 33.395,
+        "GSM972089": 32.873,
+        "GSM972097": 37.026,
+        "GSM972105": 38.151,
+        "GSM972113": 32.489,
+        "GSM972275": 35.575,
+        "GSM972311": 57.722,
+        "GSM972357": 35.273,
+        "GSM972361": 34.739,
+        "GSM972444": 32.443,
+        "GSM972467": 33.857,
+        "GSM972479": 36.115
+      }
+    },
+    "D-S1": {
+      "id": "D-S1",
+      "tier": "DESCRIPTIVE",
+      "level": "sample",
+      "metric": "PCA on the analysis cohort (centred, not scaled); PC1-PC5 scores and variance explained",
+      "status": "REPORT",
+      "detail": "PCA variance explained PC1-PC5: 9.7%, 8.1%, 6.8%, 5.0%, 3.8% (no outlier rule)",
+      "variance_explained": [
+        0.09726447463666461,
+        0.08085061104061134,
+        0.06755747764633219,
+        0.04953452972118323,
+        0.0381817276108352
+      ]
+    },
+    "D-S2": {
+      "id": "D-S2",
+      "tier": "DESCRIPTIVE",
+      "level": "sample",
+      "metric": "hierarchical clustering dendrogram (correlation distance, average linkage)",
+      "status": "REPORT",
+      "detail": "hierarchical clustering (correlation, average linkage); 2-cluster split sizes [452, 1] (no cut-height rule)"
+    },
+    "D-S3": {
+      "id": "D-S3",
+      "tier": "DESCRIPTIVE",
+      "level": "sample",
+      "metric": "batch composition tables and PC-vs-batch association for the 9 recovered ComBat batches",
+      "status": "REPORT",
+      "detail": "batch composition over 9 batches; SD of batch-mean PC1=0.041 (NO batch correction applied)",
+      "batch_pc_sd": {
+        "PC1": 0.04050415671881511,
+        "PC2": 0.020436590114787344,
+        "PC3": 0.03766609626907507
+      }
+    },
+    "D-S4": {
+      "id": "D-S4",
+      "tier": "DESCRIPTIVE",
+      "level": "sample",
+      "metric": "3'/5' log2 difference for ACTB (AFFX-HSAC07/X00351) and GAPDH (AFFX-HUMGAPDH/M33197)",
+      "status": "REPORT",
+      "detail": "3'/5' log2 difference ACTB median 0.773 (range 0.15..2.63), GAPDH median 0.190 -- Affymetrix <3 threshold NOT applied (scale mismatch)",
+      "actb_median": 0.7734816200000001,
+      "gapdh_median": 0.19027056999999914
+    },
+    "H-G1": {
+      "id": "H-G1",
+      "tier": "HARD_EXCLUSION",
+      "level": "gene",
+      "metric": "non-finite values in a probe set / gene row",
+      "status": "PASS",
+      "detail": "non-finite values in gene matrix: 0 (escalate, never drop)"
+    },
+    "D-G1": {
+      "id": "D-G1",
+      "tier": "DESCRIPTIVE",
+      "level": "gene",
+      "metric": "count of zero-variance genes in the analysis cohort",
+      "status": "REPORT",
+      "detail": "zero-variance genes in S3: 0 (frozen per-fold M2 rule governs; no cohort-level exclusion)",
+      "zero_variance": 0
+    },
+    "D-G2": {
+      "id": "D-G2",
+      "tier": "DESCRIPTIVE",
+      "level": "gene",
+      "metric": "distribution of per-gene mean and SD; count below candidate low-expression cutoffs",
+      "status": "REPORT",
+      "detail": "low-expression counts {'mean_lt_4.0': 6370, 'mean_lt_5.0': 10509, 'mean_lt_6.0': 14224, 'sd_lt_0.2': 3175, 'sd_lt_0.3': 8756, 'sd_lt_0.5': 16031} -- NO filter applied",
+      "counts": {
+        "mean_lt_4.0": 6370,
+        "mean_lt_5.0": 10509,
+        "mean_lt_6.0": 14224,
+        "sd_lt_0.2": 3175,
+        "sd_lt_0.3": 8756,
+        "sd_lt_0.5": 16031
+      }
+    },
+    "D-G3": {
+      "id": "D-G3",
+      "tier": "DESCRIPTIVE",
+      "level": "gene",
+      "metric": "inventory of AFFX control probe sets inside the frozen representations",
+      "status": "REPORT",
+      "detail": "AFFX control probe sets in frozen median representation: 10 across 3 genes (ACTB, GAPDH, STAT1) -- NOT removed",
+      "affx_probes": 10,
+      "affx_genes": [
+        "ACTB",
+        "GAPDH",
+        "STAT1"
+      ]
+    },
+    "D-G4": {
+      "id": "D-G4",
+      "tier": "DESCRIPTIVE",
+      "level": "gene",
+      "metric": "probe-to-gene mapping summary (unique / ambiguous / unmapped)",
+      "status": "REPORT",
+      "detail": "mapping: unique 43163 / ambiguous 2619 / unmapped 8893 (frozen Phase 2)",
+      "mapping": {
+        "n_probes_total": 54675,
+        "n_unmapped": 8893,
+        "n_unique": 43163,
+        "n_ambiguous": 2619,
+        "n_genes_unique": 21815,
+        "n_genes_single_probe": 11064,
+        "n_genes_multi_probe": 10751,
+        "n_probes_in_multi_probe_genes": 32099,
+        "max_probes_per_gene": 15
+      }
+    }
+  },
+  "environment": {
+    "captured_utc": "2026-11-02T22:21:49.659656+00:00",
+    "python_version": "3.13.13",
+    "python_executable": "/Users/kalki/coad_transportability/.venv/bin/python",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.5.4",
+      "pandas": "2.3.3",
+      "scipy": "1.18.1",
+      "sklearn": "1.9.1",
+      "lifelines": "0.30.3",
+      "pyarrow": "26.0.0",
+      "pytest": "9.2.0"
+    }
+  }
+}

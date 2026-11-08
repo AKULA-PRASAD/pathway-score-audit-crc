@@ -1,0 +1,51 @@
+{
+  "provenance": {
+    "deposited_processing": "RMA + ComBat (by depositors)",
+    "phase2_normalization_applied": "none",
+    "phase2_batch_correction_applied": "none"
+  },
+  "reconciliation": {
+    "annotation_probes": 54675,
+    "expression_probes": 54675,
+    "in_both": 54675,
+    "annotation_only": [],
+    "expression_only": [],
+    "identical_sets": true
+  },
+  "mapping": {
+    "n_probes_total": 54675,
+    "n_unmapped": 8893,
+    "n_unique": 43163,
+    "n_ambiguous": 2619,
+    "n_genes_unique": 21815,
+    "n_genes_single_probe": 11064,
+    "n_genes_multi_probe": 10751,
+    "n_probes_in_multi_probe_genes": 32099,
+    "max_probes_per_gene": 15
+  },
+  "reproduces_script12_gene_count": true,
+  "expression_distribution": {
+    "mean_median": 4.803958036991455,
+    "sd_median": 0.35818958039839066,
+    "iqr_median": 0.4436690900000002,
+    "non_finite": 0
+  },
+  "low_expression_counts": {
+    "mean_lt_4.0": 19021,
+    "mean_lt_5.0": 29102,
+    "mean_lt_6.0": 37031,
+    "mean_lt_7.0": 43471,
+    "sd_lt_0.2": 7927,
+    "sd_lt_0.3": 21911,
+    "sd_lt_0.5": 38447
+  },
+  "within_gene": {
+    "n_genes": 10751,
+    "n_pairs": 41616,
+    "median_of_gene_medians": 0.33353173390108265,
+    "median_of_gene_medians_566_tumours": 0.3318027763855871,
+    "reproduces_script12_exactly": true,
+    "median_rho_expressed_variable": 0.8201693657535446,
+    "n_pairs_expressed_variable": 3619
+  }
+}

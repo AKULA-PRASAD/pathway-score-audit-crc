@@ -1,0 +1,5 @@
+strategy,genes,samples,non_finite,n_missing,min,max,mean,median,sd
+representative_iqr,21815,585,0,0,0.843,16.112,5.6078,5.3501,2.0728
+representative_mean,21815,585,0,0,0.843,16.112,5.946,5.7185,2.2715
+median,21815,585,0,0,1.346,16.112,5.3823,5.059,2.0064
+mean,21815,585,0,0,1.346,16.112,5.3805,5.1115,1.9543

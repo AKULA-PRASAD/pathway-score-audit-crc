@@ -1,0 +1,4 @@
+events,monte_carlo_width,bootstrap_within_dataset_width,ratio
+48,0.1512,0.1389,0.919
+136,0.0945,0.0941,0.997
+365,0.0566,0.0547,0.967

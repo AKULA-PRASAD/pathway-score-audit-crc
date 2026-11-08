@@ -1,0 +1,713 @@
+{
+  "phase": "8D",
+  "version": "1.0",
+  "purpose": "consolidation of Phases 8A, 8B and 8C; no new analysis",
+  "n_samples": 453,
+  "samples_excluded": 0,
+  "outcome_columns_opened": false,
+  "outcome_files_blocked": [
+    "endpoint.csv"
+  ],
+  "outcome_columns_never_read": [
+    "rfs.event",
+    "rfs.delay",
+    "os.event",
+    "os.delay_(months)"
+  ],
+  "modelling_performed": false,
+  "recurrence_association_tested": false,
+  "feature_selection_performed": false,
+  "new_analysis_performed": false,
+  "normalization_applied": "none",
+  "batch_correction_applied": "none",
+  "claims_resolved_from_artifacts": 48,
+  "claims_transcribed": 0,
+  "cross_phase_checks": [
+    {
+      "check": "cohort size identical across 8A/8B/8C",
+      "agrees": true,
+      "detail": "453/453/453"
+    },
+    {
+      "check": "zero exclusions across 8A/8B/8C",
+      "agrees": true,
+      "detail": "0/0/0"
+    },
+    {
+      "check": "PC1 variance agrees 8A vs 8B",
+      "agrees": true,
+      "detail": "0.10315205 vs 0.10315205"
+    },
+    {
+      "check": "8B reproduces 8A PCA scores",
+      "agrees": true,
+      "detail": "min signed r = 1.000000000000"
+    },
+    {
+      "check": "sex both-axes count agrees 8A vs 8B",
+      "agrees": true,
+      "detail": "8A concordant 376/453, 8B both-axes 8"
+    },
+    {
+      "check": "the eight are the same samples in 8A and 8B",
+      "agrees": true,
+      "detail": "|8A\u22298B| = 8"
+    },
+    {
+      "check": "pathway coverage agrees 8A vs 8C",
+      "agrees": true,
+      "detail": "[41, 104, 194, 195, 198]"
+    },
+    {
+      "check": "4-set max|r| agrees 8A vs 8C",
+      "agrees": true,
+      "detail": "0.315576"
+    },
+    {
+      "check": "4-set max|r| corroborates the 6C record (n=461 vs 453)",
+      "agrees": true,
+      "detail": "6C 0.3180 vs 8C 0.3156"
+    },
+    {
+      "check": "8A clustering shows a persistent singleton",
+      "agrees": true,
+      "detail": "k=2..6 sizes [452, 1]..[2, 3, 445, 1, 1, 1]"
+    },
+    {
+      "check": "ddof pinned to 1 in both panels",
+      "agrees": true,
+      "detail": "1 / 1"
+    },
+    {
+      "check": "panel sizes 4 and 5",
+      "agrees": true,
+      "detail": "4 / 5"
+    },
+    {
+      "check": "panel roles unchanged",
+      "agrees": true,
+      "detail": "PRIMARY / SENSITIVITY (pre-specified)"
+    },
+    {
+      "check": "canonical scorer is src/pathway_scoring.py",
+      "agrees": true,
+      "detail": "src.pathway_scoring"
+    },
+    {
+      "check": "no phase opened an outcome column",
+      "agrees": true,
+      "detail": "8A/8B/8C all False"
+    }
+  ],
+  "all_cross_phase_checks_agree": true,
+  "evidence_table": [
+    {
+      "finding": "Matrix complete: 0 non-finite, 0 zero-variance genes, no sample pair below r=0.80",
+      "source_phase": "8A",
+      "evidence_type": "observation",
+      "reproducibility_or_corroboration": "single-phase; re-read in 8C audit",
+      "limitation_or_alternative_explanation": "property of deposited RMA output, not of biology",
+      "implication_for_modelling": "no imputation or array-level repair needed",
+      "decision_status": "frozen"
+    },
+    {
+      "finding": "Per-sample location tightly controlled (median range 0.302 log2)",
+      "source_phase": "8A",
+      "evidence_type": "observation",
+      "reproducibility_or_corroboration": "single-phase",
+      "limitation_or_alternative_explanation": "expected signature of quantile-normalised RMA; says nothing about validity",
+      "implication_for_modelling": "supports using the deposit as-is for relative-risk modelling",
+      "decision_status": "frozen"
+    },
+    {
+      "finding": "Intensity-dependent heteroscedasticity (Spearman mean vs SD = +0.633)",
+      "source_phase": "8A",
+      "evidence_type": "association",
+      "reproducibility_or_corroboration": "single-phase",
+      "limitation_or_alternative_explanation": "residual of log2 RMA; low-expressed genes compressed",
+      "implication_for_modelling": "argues against naive variance filtering",
+      "decision_status": "documented limitation"
+    },
+    {
+      "finding": "PCA spectrum shallow and high-dimensional (PC1 10.3%; 17/127 PCs for 50/80%)",
+      "source_phase": "8A+8B",
+      "evidence_type": "observation",
+      "reproducibility_or_corroboration": "REPRODUCED by an independent algorithm (signed r = 1.0 to 1e-12)",
+      "limitation_or_alternative_explanation": "Horn gives 48 PCs, broken-stick 97 - the criteria disagree on how many matter",
+      "implication_for_modelling": "no single dominant technical gradient to adjust for",
+      "decision_status": "frozen"
+    },
+    {
+      "finding": "Leading PCs track MMR/CIMP/CIN/BRAF/location, not stage or partition",
+      "source_phase": "8A+8B",
+      "evidence_type": "association",
+      "reproducibility_or_corroboration": "both phases, same effect sizes",
+      "limitation_or_alternative_explanation": "all annotations are correlated with each other; not causal",
+      "implication_for_modelling": "the dominant axis is molecular subtype, not the clinical covariates in M1",
+      "decision_status": "documented limitation"
+    },
+    {
+      "finding": "combat_mod perfectly concordant with recorded MMR (0/410 S3, 0/519 SDRF)",
+      "source_phase": "8B",
+      "evidence_type": "observation",
+      "reproducibility_or_corroboration": "REPRODUCED in 8D from the 8B artifact",
+      "limitation_or_alternative_explanation": "concordance is NOT identity; any identically-partitioning variable fits",
+      "implication_for_modelling": "if MMR was protected in ComBat, MMR-associated variance is preserved by construction",
+      "decision_status": "unresolved - requires author correspondence"
+    },
+    {
+      "finding": "Batch-PC location association vanishes under MMR stratification",
+      "source_phase": "8B",
+      "evidence_type": "association",
+      "reproducibility_or_corroboration": "pMMR stratum and a 10,000-permutation conditional test",
+      "limitation_or_alternative_explanation": "ComBat already removed batch variance; the test's floor is ~0.3 SD of PC3",
+      "implication_for_modelling": "no evidence for a batch location covariate in the primary model",
+      "decision_status": "documented limitation"
+    },
+    {
+      "finding": "Nominal PC3 x batch association WITHIN the dMMR stratum (eps2=0.130, p=0.028)",
+      "source_phase": "8B",
+      "evidence_type": "association",
+      "reproducibility_or_corroboration": "NOT corroborated - the better-powered conditional test is null (p=0.38)",
+      "limitation_or_alternative_explanation": "n=64, 6 batches, min cell 2, uncorrected for multiplicity",
+      "implication_for_modelling": "too fragile to act on; motivates a batch sensitivity analysis at most",
+      "decision_status": "unresolved"
+    },
+    {
+      "finding": "AFFX control-probe PC1 ~ batch SURVIVES MMR stratification (p=0.0016)",
+      "source_phase": "8B",
+      "evidence_type": "association",
+      "reproducibility_or_corroboration": "NEW in 8B; not testable in 8A",
+      "limitation_or_alternative_explanation": "AFFX probes went through the same deposited RMA+ComBat - not an uncorrected reference",
+      "implication_for_modelling": "residual batch structure exists; candidate for a prespecified sensitivity analysis",
+      "decision_status": "requires approval"
+    },
+    {
+      "finding": "PC2 DISPERSION differs across batches and survives stratification (p=0.0001)",
+      "source_phase": "8B",
+      "evidence_type": "association",
+      "reproducibility_or_corroboration": "NEW in 8B; 8A compared means only",
+      "limitation_or_alternative_explanation": "location-and-scale correction removes means more completely than higher moments",
+      "implication_for_modelling": "a dispersion effect is not addressed by a location covariate",
+      "decision_status": "requires approval"
+    },
+    {
+      "finding": "batch05 is 63.3% dMMR vs 14.3% cohort-wide; its PC3 elevation is carried by that share",
+      "source_phase": "8B",
+      "evidence_type": "observation",
+      "reproducibility_or_corroboration": "REPRODUCES the Phase 7C OBS-1 observation with a mechanism",
+      "limitation_or_alternative_explanation": "composition and batch-specific processing are PERFECTLY CONFOUNDED here; CIs overlap within stratum",
+      "implication_for_modelling": "strengthens Phase 7C D3 (observation, not exclusion grounds)",
+      "decision_status": "frozen"
+    },
+    {
+      "finding": "Eight samples discordant on BOTH sex axes, across five batches",
+      "source_phase": "8A+8B",
+      "evidence_type": "observation",
+      "reproducibility_or_corroboration": "same eight samples in both phases (set equality checked in 8D)",
+      "limitation_or_alternative_explanation": "expression markers cannot separate a mix-up from LOY / XIST silencing; no genotype data",
+      "implication_for_modelling": "none - samples retained",
+      "decision_status": "unresolved - genotype evidence unavailable"
+    },
+    {
+      "finding": "Soft-flag enrichment among the eight (3/8 vs 29/453, OR 9.67, p=0.011)",
+      "source_phase": "8B",
+      "evidence_type": "association",
+      "reproducibility_or_corroboration": "single test",
+      "limitation_or_alternative_explanation": "a soft flag reports array QUALITY, not IDENTITY; derived from the same matrix",
+      "implication_for_modelling": "none - not an exclusion criterion",
+      "decision_status": "frozen (D2 retains all 453)"
+    },
+    {
+      "finding": "No dependent/related arrays in S3 (dependancy_sample = 0/453)",
+      "source_phase": "8B",
+      "evidence_type": "observation",
+      "reproducibility_or_corroboration": "NEW in 8B",
+      "limitation_or_alternative_explanation": "absence of a DECLARED dependency, not proof of independence",
+      "implication_for_modelling": "declared sample dependency does not violate a resampling scheme's assumption",
+      "decision_status": "documented limitation"
+    },
+    {
+      "finding": "Frozen coverage met for all five sets (198/195/41/194/104), 0 zero-variance",
+      "source_phase": "8A+8C",
+      "evidence_type": "observation",
+      "reproducibility_or_corroboration": "identical in both phases (checked in 8D)",
+      "limitation_or_alternative_explanation": "none",
+      "implication_for_modelling": "no score is dropped in any fold",
+      "decision_status": "frozen"
+    },
+    {
+      "finding": "Production scorer agrees with an independent re-implementation to 3e-15",
+      "source_phase": "8C",
+      "evidence_type": "observation",
+      "reproducibility_or_corroboration": "NEW in 8C",
+      "limitation_or_alternative_explanation": "agreement of two implementations, not of two data sources",
+      "implication_for_modelling": "the scoring code is not the weak link",
+      "decision_status": "frozen"
+    },
+    {
+      "finding": "Two coherence regimes: E2F 0.304 / EMT 0.241 vs WNT 0.041 / P53 0.033 / PI3K 0.025",
+      "source_phase": "8C",
+      "evidence_type": "observation",
+      "reproducibility_or_corroboration": "NEW in 8C",
+      "limitation_or_alternative_explanation": "a property of the gene sets and the averaging transform, NOT of relevance",
+      "implication_for_modelling": "low-dispersion scores are shrunk harder under penalisation - motivates decision 1",
+      "decision_status": "requires approval"
+    },
+    {
+      "finding": "4-set well-conditioned (max|r| 0.316, cond 2.95); 5-set adds one pair >0.5 (P53-PI3K 0.631)",
+      "source_phase": "6C+8A+8C",
+      "evidence_type": "observation",
+      "reproducibility_or_corroboration": "REPRODUCED across three phases and two cohort sizes",
+      "limitation_or_alternative_explanation": "descriptive collinearity among scores; no outcome involved",
+      "implication_for_modelling": "informs how a 4-set/5-set divergence should be read - decision 2",
+      "decision_status": "frozen"
+    },
+    {
+      "finding": "PI3K: R2 = 0.540 on the four primary scores (46% not linearly captured)",
+      "source_phase": "8C",
+      "evidence_type": "association",
+      "reproducibility_or_corroboration": "NEW in 8C",
+      "limitation_or_alternative_explanation": "a redundancy measure among scores only; no recurrence relevance",
+      "implication_for_modelling": "NOT grounds to promote or remove PI3K; it stays sensitivity-only",
+      "decision_status": "frozen"
+    },
+    {
+      "finding": "Representation stability: E2F 0.998, EMT 0.992, P53 0.972, PI3K 0.910, WNT 0.858",
+      "source_phase": "8C",
+      "evidence_type": "observation",
+      "reproducibility_or_corroboration": "NEW in 8C (sensitivity-only)",
+      "limitation_or_alternative_explanation": "difference in probe->gene summarisation, NOT biological difference",
+      "implication_for_modelling": "WNT is the one score materially dependent on the representation - decision 3",
+      "decision_status": "requires approval"
+    },
+    {
+      "finding": "Scores stable to fold composition (min r 0.9996) but shift is non-zero (max 0.072 SD)",
+      "source_phase": "8A+8C",
+      "evidence_type": "observation",
+      "reproducibility_or_corroboration": "same figure in both phases",
+      "limitation_or_alternative_explanation": "none",
+      "implication_for_modelling": "confirms standardisation must stay inside the resampling loop",
+      "decision_status": "frozen"
+    },
+    {
+      "finding": "All batch and extraction-method associations with scores vanish under MMR stratification (0/10)",
+      "source_phase": "8C",
+      "evidence_type": "association",
+      "reproducibility_or_corroboration": "consistent with the 8B PC result for location",
+      "limitation_or_alternative_explanation": "same ComBat floor; sparse strata (min cell 14)",
+      "implication_for_modelling": "no batch covariate indicated for the score model",
+      "decision_status": "documented limitation"
+    },
+    {
+      "finding": "QC soft-flag DISPERSION associations with scores survive stratification",
+      "source_phase": "8C",
+      "evidence_type": "association",
+      "reproducibility_or_corroboration": "NEW in 8C",
+      "limitation_or_alternative_explanation": "MATRIX-DERIVED: the flags are Tukey rules on this same matrix, so partly mechanical",
+      "implication_for_modelling": "not independent evidence of array failure; no action",
+      "decision_status": "frozen"
+    },
+    {
+      "finding": "cit.molecularsubtype has the largest PC and score associations",
+      "source_phase": "8B+8C",
+      "evidence_type": "association",
+      "reproducibility_or_corroboration": "both phases",
+      "limitation_or_alternative_explanation": "CIRCULAR: it is the depositors' own expression-derived clustering of this matrix",
+      "implication_for_modelling": "must never be used as validation",
+      "decision_status": "frozen"
+    }
+  ],
+  "evidence_classification": {
+    "reproduced_across_phases": [
+      "PCA spectrum shallow and high-dimensional (PC1 10.3%; 17/127 PCs for 50/80%)",
+      "Leading PCs track MMR/CIMP/CIN/BRAF/location, not stage or partition",
+      "combat_mod perfectly concordant with recorded MMR (0/410 S3, 0/519 SDRF)",
+      "batch05 is 63.3% dMMR vs 14.3% cohort-wide; its PC3 elevation is carried by that share",
+      "Eight samples discordant on BOTH sex axes, across five batches",
+      "Frozen coverage met for all five sets (198/195/41/194/104), 0 zero-variance",
+      "4-set well-conditioned (max|r| 0.316, cond 2.95); 5-set adds one pair >0.5 (P53-PI3K 0.631)",
+      "Scores stable to fold composition (min r 0.9996) but shift is non-zero (max 0.072 SD)",
+      "cit.molecularsubtype has the largest PC and score associations"
+    ],
+    "new_in_8B_or_8C": [
+      "AFFX control-probe PC1 ~ batch SURVIVES MMR stratification (p=0.0016)",
+      "PC2 DISPERSION differs across batches and survives stratification (p=0.0001)",
+      "No dependent/related arrays in S3 (dependancy_sample = 0/453)",
+      "Production scorer agrees with an independent re-implementation to 3e-15",
+      "Two coherence regimes: E2F 0.304 / EMT 0.241 vs WNT 0.041 / P53 0.033 / PI3K 0.025",
+      "PI3K: R2 = 0.540 on the four primary scores (46% not linearly captured)",
+      "Representation stability: E2F 0.998, EMT 0.992, P53 0.972, PI3K 0.910, WNT 0.858",
+      "QC soft-flag DISPERSION associations with scores survive stratification"
+    ],
+    "unresolved": [
+      "combat_mod perfectly concordant with recorded MMR (0/410 S3, 0/519 SDRF)",
+      "Nominal PC3 x batch association WITHIN the dMMR stratum (eps2=0.130, p=0.028)",
+      "Eight samples discordant on BOTH sex axes, across five batches"
+    ],
+    "not_independent_same_matrix_or_qc_rules": [
+      "AFFX control-probe PC1 ~ batch SURVIVES MMR stratification (p=0.0016)",
+      "Soft-flag enrichment among the eight (3/8 vs 29/453, OR 9.67, p=0.011)",
+      "QC soft-flag DISPERSION associations with scores survive stratification",
+      "cit.molecularsubtype has the largest PC and score associations"
+    ]
+  },
+  "decision_register": [
+    {
+      "id": "D8D-1",
+      "title": "Score-level standardisation before penalised Cox",
+      "current_frozen_state": "NONE before the Cox model (penalisation handles scale). If added later it is training-fold-only.",
+      "blocking": "blocks_specific_analysis",
+      "blocks_what": "the penalised Cox specification in Phase 6B \u00a73.2; nothing else",
+      "evidence": [
+        "8C \u00a73.1 implied coherence r\u0304",
+        "reports/phase8c/score_distributions.csv"
+      ],
+      "implication": "The five scores sit on very different scales: SD 0.554 (E2F) down to 0.185 (PI3K), because averaging k standardised genes shrinks dispersion by roughly 1/sqrt(k) times the set's coherence. A ridge or elastic-net penalty applies the SAME penalty per unit coefficient, so on unstandardised scores a low-dispersion predictor needs a LARGER coefficient to express the same effect and is therefore shrunk harder. Leaving the scores on their current scales is a defensible choice, but it is a CHOICE with consequences for relative shrinkage, not a neutral default.",
+      "options_not_chosen": [
+        "leave as frozen (no score-level standardisation)",
+        "standardise scores inside each training fold only",
+        "standardise and report both as a prespecified sensitivity analysis"
+      ],
+      "constraint": "any standardisation must be training-fold-only; a full-cohort score standardisation would reintroduce the leakage the frozen rule exists to prevent",
+      "decision": "AWAITING_APPROVAL"
+    },
+    {
+      "id": "D8D-2",
+      "title": "Four-set primary vs five-set sensitivity reporting",
+      "current_frozen_state": "4-set PRIMARY, 5-set SENSITIVITY-only; PI3K may not be promoted or removed on observed performance (M2-A1)",
+      "blocking": "documented_limitation",
+      "blocks_what": "nothing; it is a reporting-framework decision",
+      "evidence": [
+        "8C \u00a74",
+        "reports/phase8c/score_correlation_pearson_5set_sensitivity.csv"
+      ],
+      "implication": "Adding PI3K raises the condition number 2.95 -> 7.03 and introduces the only |r| > 0.5 pair (P53-PI3K, 0.631). A divergence between the primary and sensitivity results is therefore FORESEEABLE and should have a reading rule fixed BEFORE any outcome is seen, or the choice between them becomes a post-hoc selection.",
+      "proposed_reporting_framework_not_a_change": [
+        "report the 4-set result as primary ALWAYS, whatever the 5-set shows",
+        "report the 5-set alongside it, never instead of it",
+        "state in advance that a divergence is interpreted as evidence about the STABILITY of the primary estimate, not as a reason to switch panels",
+        "pre-specify the divergence metric before unblinding"
+      ],
+      "decision": "AWAITING_APPROVAL"
+    },
+    {
+      "id": "D8D-3",
+      "title": "WNT representation sensitivity",
+      "current_frozen_state": "median aggregation is primary; representative-IQR is the frozen sensitivity representation (Phase 2B)",
+      "blocking": "blocks_specific_analysis",
+      "blocks_what": "only the interpretation of a WNT coefficient, if one is reported",
+      "evidence": [
+        "8C \u00a76.2",
+        "reports/phase8c/representation_sensitivity.csv"
+      ],
+      "implication": "Between the two frozen representations the scores correlate E2F 0.998, EMT 0.992, P53 0.972, PI3K 0.910, WNT 0.858. WNT is the smallest set (41 genes) and the least internally coherent of the primary four, so each gene's probe choice matters more. A WNT result that does not hold under the sensitivity representation would be a representation artefact as much as a finding.",
+      "options_not_chosen": [
+        "no representation sensitivity analysis (status quo)",
+        "prespecify a full re-fit under the representative-IQR representation",
+        "prespecify re-fit for WNT only"
+      ],
+      "decision": "AWAITING_APPROVAL"
+    },
+    {
+      "id": "D8D-4",
+      "title": "Prespecified batch sensitivity analysis",
+      "current_frozen_state": "no batch covariate in M1/M2/M3; no batch adjustment",
+      "blocking": "documented_limitation",
+      "blocks_what": "nothing; the primary model is unaffected either way",
+      "evidence": [
+        "8B \u00a78.2",
+        "reports/phase8b/new_findings_stratified_permutation.csv",
+        "reports/phase8b/pc_variance_heterogeneity_by_batch.csv"
+      ],
+      "implication": "Batch LOCATION effects on PCs and on scores are fully explained by MMR composition (0/10 score tests survive stratification). Two signals do survive: AFFX control-probe PC1 ~ batch (p=0.0016) and PC2 DISPERSION ~ batch (p=0.0001). Neither is a location effect, so adding a batch covariate would not address them. Note also that batch, RNA extraction method and MMR are mutually confounded in this deposit, so no analysis here can separate them. ComBat was applied before deposit, so these are residuals in an already-corrected matrix - their absence elsewhere is not evidence that batch effects are absent.",
+      "options_not_chosen": [
+        "no batch sensitivity analysis (status quo)",
+        "prespecify a batch-stratified Cox as a sensitivity analysis",
+        "prespecify a leave-one-batch-out stability check"
+      ],
+      "decision": "AWAITING_APPROVAL"
+    },
+    {
+      "id": "D8D-5",
+      "title": "combat_mod identity and the ComBat model matrix",
+      "current_frozen_state": "UNRESOLVED (Phase 7A Q1). Not used to impute MMR.",
+      "blocking": "documented_limitation",
+      "blocks_what": "nothing in the primary analysis; it limits provenance claims and any statement about what ComBat protected",
+      "evidence": [
+        "8B \u00a72 and \u00a75.5",
+        "reports/phase8b/combat_mod_vs_mmr.csv"
+      ],
+      "implication": "combat_mod is perfectly concordant with recorded MMR across 519 SDRF tumour arrays (0 discordant). That is consistent with the depositors having used mmr.status in the ComBat model matrix, and equally with any variable that partitions these arrays identically. It is NOT proof of identity. The 43 S3 samples with MMR unrecorded are NOT imputed from it; A-19 complete-case remains frozen.",
+      "outstanding_route": "author correspondence with the CIT/GSE39582 depositors",
+      "options_not_chosen": [
+        "leave unresolved and state the limitation",
+        "attempt author correspondence"
+      ],
+      "decision": "AWAITING_APPROVAL"
+    },
+    {
+      "id": "D8D-6",
+      "title": "Eight sex-axis-discordant samples",
+      "current_frozen_state": "RETAINED. Phase 7C D2 retains all 453; no relabelling.",
+      "blocking": "documented_limitation",
+      "blocks_what": "nothing",
+      "evidence": [
+        "8A \u00a71.5",
+        "8B \u00a77",
+        "reports/phase8b/sex_discordant_eight_review.csv"
+      ],
+      "implication": "Eight of 453 samples are discordant with recorded sex on both the Y-linked and the XIST axis, consistently across an 11-marker panel, spread over five batches. 3/8 carry a Phase 7C soft flag against 29/453 cohort-wide (OR 9.67, p=0.011), but a soft flag reports array quality, not identity. Expression markers cannot distinguish a sample or annotation mix-up from loss of Y or XIST silencing. GENOTYPE-LEVEL EVIDENCE IS UNAVAILABLE to this project.",
+      "options_not_chosen": [
+        "retain and document (status quo)",
+        "prespecify a leave-these-eight-out stability check"
+      ],
+      "decision": "AWAITING_APPROVAL"
+    },
+    {
+      "id": "D8D-7",
+      "title": "Endpoint limitations U1 and U2 (Phase 6A numbering)",
+      "current_frozen_state": "U1 `[PROVISIONAL: months]`; U2 published rule UNRESOLVED, deposited encoding is censoring-at-death and that censoring is demonstrably informative",
+      "blocking": "blocks_specific_analysis",
+      "blocks_what": "U1 blocks every FIXED-TIME absolute-risk analysis - t-year risk, predicted survival/CIF curves, cloglog calibration at a horizon, time-dependent AUC/Brier, and the 60-unit endpoint - unless explicitly labelled conditional (Phase 6A \u00a73.1). Relative-risk analyses are unaffected. U2 constrains any analysis that treats death without recurrence as non-informative censoring, and motivates a competing-risks sensitivity analysis.",
+      "evidence": [
+        "docs/PHASE6A_ENDPOINT_RESOLUTION.md \u00a71, \u00a72, \u00a73.1"
+      ],
+      "naming_hazard": "Phase 1 uses the labels U1 and U2 for DIFFERENT items (CIT446 stage vs M1; CIT106/CIT250 zero times). The Phase 6A numbering is the one used here and in the Phase 8A-8D reports. The collision is recorded, not resolved, because renumbering a historical report is out of scope.",
+      "options_not_chosen": [
+        "proceed with relative-risk claims only (Phase 6A position)",
+        "attempt documentary resolution of the time unit"
+      ],
+      "decision": "AWAITING_APPROVAL"
+    },
+    {
+      "id": "D8D-8",
+      "title": "External validation",
+      "current_frozen_state": "NO-GO for CEL acquisition (Phase 4 \u00a76.2). No external expression data downloaded.",
+      "blocking": "blocks_specific_analysis",
+      "blocks_what": "any confirmatory external-validation claim. Internal validation by bootstrap optimism correction is unaffected.",
+      "evidence": [
+        "docs/PHASE4_PREACQUISITION.md \u00a76.1-6.3",
+        "docs/PHASE5_VALIDATION_PRECISION_ASSESSMENT.md \u00a79"
+      ],
+      "implication": "Gate G4 FAILED on pre-specified criteria: GSE14333 has 48 events and GSE33113 has 18, against roughly 338 required at C=0.65 under an APPROXIMATION of the Riley framework (14% and 5% of requirement). Both remain EXPLORATORY candidates and their counts MUST NOT be combined. GSE33113 is a separate estimand - stage II only, a metastasis-or-recurrence composite, time in days. GSE17536 is excluded for established patient overlap with GSE14333. No suitable confirmatory cohort has been identified.",
+      "options_not_chosen": [
+        "proceed with internal validation only and state the limitation",
+        "revisit the four D5 unlock conditions"
+      ],
+      "decision": "AWAITING_APPROVAL"
+    }
+  ],
+  "decisions_awaiting_approval": 8,
+  "decisions_made_by_phase8d": 0,
+  "blocking_profile": {
+    "blocks_specific_analysis": 4,
+    "documented_limitation": 4
+  },
+  "phase9_readiness": [
+    {
+      "item": "analysis cohort frozen and retained (453)",
+      "status": "READY",
+      "reference": "Phase 7C D2"
+    },
+    {
+      "item": "expression representation frozen",
+      "status": "READY",
+      "reference": "Phase 2B"
+    },
+    {
+      "item": "analysis bundle verified",
+      "status": "READY",
+      "reference": "scripts/24"
+    },
+    {
+      "item": "M2 panels frozen, roles fixed, ddof pinned",
+      "status": "READY",
+      "reference": "M2-A1"
+    },
+    {
+      "item": "canonical scorer single implementation in src/",
+      "status": "READY",
+      "reference": "Phase 8C rec. 4"
+    },
+    {
+      "item": "fold-isolation machinery verified",
+      "status": "READY",
+      "reference": "8A, 8C (deletion + poisoning)"
+    },
+    {
+      "item": "missing-data strategy frozen",
+      "status": "READY",
+      "reference": "A-19 complete-case"
+    },
+    {
+      "item": "QC executed, decisions recorded",
+      "status": "READY",
+      "reference": "Phase 7C rev. 3"
+    },
+    {
+      "item": "EDA complete and consolidated",
+      "status": "READY",
+      "reference": "Phase 8A-8D"
+    },
+    {
+      "item": "score-level standardisation policy",
+      "status": "DECISION REQUIRED",
+      "reference": "D8D-1"
+    },
+    {
+      "item": "4-set/5-set reporting framework",
+      "status": "DECISION REQUIRED",
+      "reference": "D8D-2"
+    },
+    {
+      "item": "representation sensitivity policy",
+      "status": "DECISION REQUIRED",
+      "reference": "D8D-3"
+    },
+    {
+      "item": "batch sensitivity policy",
+      "status": "DECISION REQUIRED",
+      "reference": "D8D-4"
+    },
+    {
+      "item": "combat_mod provenance",
+      "status": "OPEN - documented limitation",
+      "reference": "D8D-5"
+    },
+    {
+      "item": "sex-axis discordance",
+      "status": "OPEN - documented limitation",
+      "reference": "D8D-6"
+    },
+    {
+      "item": "U1 time unit",
+      "status": "CONSTRAINS fixed-time analyses",
+      "reference": "D8D-7"
+    },
+    {
+      "item": "U2 competing risks",
+      "status": "CONSTRAINS censoring assumption",
+      "reference": "D8D-7"
+    },
+    {
+      "item": "external confirmatory validation",
+      "status": "NOT AVAILABLE",
+      "reference": "D8D-8"
+    },
+    {
+      "item": "Phase 6B protocol finalised (resampling, MC stability)",
+      "status": "NOT STARTED",
+      "reference": "Phase 6B draft"
+    }
+  ],
+  "phase8c_recommendations_implemented_here": [],
+  "frozen_state": {
+    "panel_primary": "PRIMARY",
+    "panel_sensitivity": "SENSITIVITY (pre-specified)",
+    "sigma_ddof": 1,
+    "score_standardisation": "NONE before the Cox model (penalisation handles scale). If added later it is training-fold-only.",
+    "canonical_scorer_module": "src.pathway_scoring"
+  },
+  "read_only_artifact_hashes": {
+    "reports/phase8a/batch_by_combat_mod.csv": "f42d45040fde8e6dfa0a8399fc5760246056b28c2852b2f16829a920b856da19",
+    "reports/phase8a/cluster_by_batch.csv": "3d5a40b4dcb7b22021afc8c931b703ea399b97d2a1b26709159e6bd5f184f4e1",
+    "reports/phase8a/combat_mod_vs_mmr.csv": "7673af6d478e07b3d22c67689d5fe605f3e0a47c696f0bbb5200d6eaed26357d",
+    "reports/phase8a/distributional_heterogeneity.csv": "4a00c2a7ce10bd6a460246b31aff28e9efd14cefcc82ec8e99bc0accc6122a11",
+    "reports/phase8a/figures/F1_expression_distributions.png": "de66c9fafdb1958cbc6e4822d7ac45efe5517cfd82fa51ef8fdb484530d23bc9",
+    "reports/phase8a/figures/F2_gene_variability.png": "6535eb8f60d0b9b9f1dea9b29efa084bf315db8d584c4700b6f36a50d2b7b210",
+    "reports/phase8a/figures/F3_sample_correlation.png": "ec97e13b0b19c761c4e0a2953faf4dd558b15c3431ef42552f1319b472b7c904",
+    "reports/phase8a/figures/F4_pca.png": "d0ad08008f00e928f5c9eb209f5d13d7df99639ff26df3ae003a960ea75bf140",
+    "reports/phase8a/figures/F5_pathway_scores.png": "fb22e15f0055b2135c1034bf9dba7019585603c68577be3d353ce4fd7b929696",
+    "reports/phase8a/figures/F6_pathway_vs_pca.png": "3b5f848ebbbc25f6b57502c0b1b14972bebf5e5be1deb8eabb315b7c7daa1f1f",
+    "reports/phase8a/fold_isolation_4set_primary.csv": "6411fce934eae3f93dd166396a90e362ca59e2c098a11aec3b2f98ed38be7328",
+    "reports/phase8a/fold_isolation_5set_sensitivity.csv": "93db8e8612dc3467af24820fd6625d9ed95ef180cb81b3d4a433c3c55f093cf5",
+    "reports/phase8a/gene_variability.csv": "b87c354d12bf992a4ab73a4f75fa300f0d0294e677828090e6ed3689818ca0e2",
+    "reports/phase8a/pathway_score_correlation_4set_primary.csv": "a487d44b6f7ba770c44138f29b1938984fe9810687d8a649674b89acc149c0bc",
+    "reports/phase8a/pathway_score_correlation_5set_sensitivity.csv": "2390b367a4193aca98f4c9cf08d1bf5834a19f47147b534c0120c2b48c59cc01",
+    "reports/phase8a/pathway_scores_4set_primary_EXPLORATORY_full_cohort.csv": "e3124e7e7fbc1da59a733397907011cd2a1d44e52405d0e6cba5bd8ad5572687",
+    "reports/phase8a/pathway_scores_5set_sensitivity_EXPLORATORY_full_cohort.csv": "f6fb4fe226ace21df4c8545f233474b2a82f74306f1711a0f9b7757e671b5534",
+    "reports/phase8a/pathway_vs_pc_and_batch.csv": "5fabdd1f52e2249f6f587400921a65ed505bf11799cddbd4e3cc5dc6f4420b86",
+    "reports/phase8a/pc_annotation_associations.csv": "77e93ca0abddbb72ccd92ddc825bc73333f0e8ed5cb4dbef21fd03d3bc390f25",
+    "reports/phase8a/pc_batch_conditional_on_combat_mod.csv": "b94f5b417a623a0ff477de2c9f580ad5455bb86ba9962842e154963ee626977c",
+    "reports/phase8a/pc_by_batch.csv": "c099deb3b02175ff0eb69000ec08bf129187fe8f93d02e91228b30aa67a1c916",
+    "reports/phase8a/pca_scores_gene_level.csv": "d85f7076f9371429e25ada32adee0e25ff2a3238e1d4e398f0e4029334c39d84",
+    "reports/phase8a/pca_variance_explained.csv": "1ed205e0a4ceeea91623eb2bd3f60528f79f1a69f964c6677f7d7ab534f9a2d7",
+    "reports/phase8a/phase8a_summary.json": "00035e5650b9bb3a9ac2e054404c757aabe8d021376602c3a303f4f175b4e462",
+    "reports/phase8a/sample_correlation_pearson.csv": "dcefa64f599a3774d888a1156c7bc5aa8aa672961851fa703fffd4e6ebd3e149",
+    "reports/phase8a/sample_distribution_summary.csv": "e45d0d62e8d9283ae54d5a24e9824569a0acc1906d4de26573ef20c36b422635",
+    "reports/phase8a/sample_mean_correlation.csv": "d68e9c31f103b22172128b855a505be7a53931556dadb324d608c772cf70a05c",
+    "reports/phase8a/sex_positive_control.csv": "fccfd8d6a2e9ae6e9f825d8844408ecb32a1c88a386a8a00ac2d7debf74a4bcc",
+    "reports/phase8b/affx_vs_expression_pcs.csv": "94982ba63a41a3ee441d2ebc7dd9672455c21d8f384f1ccd4caf693617ea8578",
+    "reports/phase8b/batch05_pc3_decomposition.csv": "33597055e22bfe95ebe9bf8dd9a1e31cc33dcdec8a4273e993bf3fbd49220d5b",
+    "reports/phase8b/batch_by_combat_mod_cells.csv": "ce0efb96bb62b74a74c3e6793a8e286273c2f87a5a5c27d1a9cffa451d0dc5d0",
+    "reports/phase8b/batch_detection_power.csv": "28ed1d3299739f437fb596764f2cf9c9200510c1b4d0b5c44b3e590f8f68b4de",
+    "reports/phase8b/combat_mod_vs_mmr_S3.csv": "7673af6d478e07b3d22c67689d5fe605f3e0a47c696f0bbb5200d6eaed26357d",
+    "reports/phase8b/extraction_method_by_batch.csv": "4b142df7772ba731494f2c05d0224cf5cc8c40c9b95a168cdee6a6ee1e6a3549",
+    "reports/phase8b/figures/G1_variance_and_power.png": "e27d380cb1d8c067ff55cf7f74420b8bd9c0fe3ae1d82f89139e6997eefec8f0",
+    "reports/phase8b/figures/G2_batch_mmr_structure.png": "b5e7831c06931e833e31446014eaa36af4401bc5f36cd441a3c1b00b232c00e9",
+    "reports/phase8b/figures/G3_sex_axes.png": "a9a1950840a4ec69c5196bc248be60cbd9fd58689ec81ed27944268a0348e9f9",
+    "reports/phase8b/mlh1_axis_by_mmr_group.csv": "cf1e47ac7725a601572a8da65635337aef45d046bf8ca6d434b97aff72a04846",
+    "reports/phase8b/new_findings_stratified_permutation.csv": "5d51e94291aff3938ba75a0f2aa415fd99b86dae4ca92ccfc3e1ea250bb9c6a9",
+    "reports/phase8b/pc_annotation_associations_pc1_20.csv": "a418557be115e7e7a8db6b64ca8d7305ea6b57044bcbcb52045ff3c1860f2fe3",
+    "reports/phase8b/pc_batch_stratified_permutation.csv": "278a52cff872ba66497480cd2f86880e058d7cb14bca8f12467134fc636a5c43",
+    "reports/phase8b/pc_batch_within_strata.csv": "086a6b0ec5716204ee6409a3b6c97399ee7d3bf2c38e0fe5881526b937292624",
+    "reports/phase8b/pc_variance_heterogeneity_by_batch.csv": "19fbac4c64a36f5a418d27271e68d394852cbd5283f256612ea9d4e92f3058e0",
+    "reports/phase8b/pca_variance_extended.csv": "d8ed2566d53d3230276bd0fe87d6dfc024f7b3e094fb7b3fbf9cc2e199c509d2",
+    "reports/phase8b/phase8b_summary.json": "9ac91b69f9ae5e50021eaf5823c293f61c3d0a55d27af9121fe8f414dcc9a22c",
+    "reports/phase8b/sex_discordant_eight_review.csv": "d84912f5076781450373a8c7c27567214c82911e74fde30d04c92ac0d97ef6c1",
+    "reports/phase8b/y_marker_separation.csv": "9a5fac072a5fe89fb0f6016d4c21f4aefee7dd20e24a6a2fe4c3b59b6f43975a",
+    "reports/phase8c/figures/H1_score_distributions.png": "c4ef3b9d3757060364108d5c722bb73cb5c5b0debf9c2a421452ec56acdac310",
+    "reports/phase8c/figures/H2_relationships.png": "fc08c4f0588cbb1969d6c06c6e318ed77f77a469cb7532f65d0a09dcd2d8d893",
+    "reports/phase8c/figures/H3_sensitivity.png": "8abdd1e0a4f546b8bce24b9329fccd7246d8de47642cf746cf1f3fb39c828227",
+    "reports/phase8c/fold_composition_sensitivity.csv": "d99206ad7e9ce9b6ea2af89f81e6e034c6d66d29691b873ddb1b4f3a3efbbeca",
+    "reports/phase8c/phase8c_summary.json": "f6b7d236432efd95e02286628492c740db116b1e84ec0df657fbec9692733f28",
+    "reports/phase8c/representation_sensitivity.csv": "e3ee06f4a5cfaf6f369bc64068d8122ef379c27a3c3f12e670fe8f9ded806c33",
+    "reports/phase8c/score_correlation_pearson_4set_primary.csv": "a487d44b6f7ba770c44138f29b1938984fe9810687d8a649674b89acc149c0bc",
+    "reports/phase8c/score_correlation_pearson_5set_sensitivity.csv": "2390b367a4193aca98f4c9cf08d1bf5834a19f47147b534c0120c2b48c59cc01",
+    "reports/phase8c/score_correlation_spearman_4set_primary.csv": "a8054ce17c6f153ce947281ce1958e49b76f9377858c20f097e886e0e909a141",
+    "reports/phase8c/score_correlation_spearman_5set_sensitivity.csv": "fbc25eda62f45f728322a2e58be04cbd7cb0ebd91226d2e2b8be89febc0d4445",
+    "reports/phase8c/score_distributions.csv": "ab7fe0578e15ca4ef5b3276b2a86bb8d86f1d1fef5bead75c6af89d163ff1ee0",
+    "reports/phase8c/score_influence_loo.csv": "d1a1edd34de23911969d4f4ffd9c39e0371cf6c8e84730396589b1575c7932b7",
+    "reports/phase8c/score_vs_annotation.csv": "08acb73dcafeffcf8ef967a8a8d0076a221811ce29f1b9b1ce8869816a7c0370",
+    "reports/phase8c/score_vs_annotation_stratified.csv": "21450a4ac829ff3a03b395cb3dbf3458e6acca3e6d57e003f0c252f3b33fa67a",
+    "reports/phase8c/scores_4set_primary_reproduced_full_cohort.csv": "170c70fa62140ef0f3287a19b08a3ac35197c2317ca15bcd173ceec43e2918cc",
+    "reports/phase8c/scores_5set_sensitivity_reproduced_full_cohort.csv": "e1da5aa9bf86a238669c208cfc6440ac300478f0d3cfb24262e3a10ac556a3bd",
+    "config/pathways/m2_panel_4set.json": "cb4de071e2f64a6b6d401015ea70b22705e9a4149f71de6f6795845e1ce47b11",
+    "config/pathways/m2_panel_5set.json": "10dae4874a918160c50dd050fb267fca26474827d8215d53bd56b7f89ddd5275",
+    "config/pathways/M2_FREEZE_RECORD.json": "c2b31f3340b3635595457fcb0e33460c6032c66f6712a0afc4b7b2c65c0287dc",
+    "config/analysis/A19_FREEZE_RECORD.json": "a77de7b37fe09eeb9d9958ca012648e63fb349c19614b0c2dc99591da2cf561f",
+    "config/analysis/QC_DECISIONS_RECORD.json": "4e026fc547b801ba208d54bf589619075f61d6ecee49903aafd4de7e48401ec5",
+    "config/analysis/QC_SPECIFICATION.json": "d5d6f5b08ac6ab12f796cf7817624a7b0fb88564c7e3093d49abe1ebf5064115",
+    "src/pathway_scoring.py": "38cac035c0b2d4505e9d756893aac88f4fd5330d1a0c67521e1ed31e62e788a2",
+    "data/processed/frozen/frozen_gene_to_probeset_median.csv": "08f8715fb7eca5a0cad9516e66343bdd3edf48b1e68535e10b8da59dc054e237",
+    "data/processed/frozen/frozen_gene_to_probe_discovery443.csv": "c386d5f11cc511dc240ad7f1cd47124e7687266ba4807d6be3dc80d7abd857bc",
+    "data/processed/frozen/frozen_representation.json": "d5ec63736d87425864d37fd63250f5fa2269884bd0702b677f36c09d32a03570",
+    "data/processed/analysis/expression_median_S0.parquet": "a1ca41807c53458489617e677f2bdb3f0a72b2c9a71d8ded59b4eeef60c73676",
+    "data/processed/analysis/expression_repiqr_disc443_S0.parquet": "e636e259b4feabfaf4154366b3570dfa4ec4832995dd7cc51a4f40e86c2531da",
+    "data/processed/analysis/cohort_membership.csv": "bd3671f8df64c594d273a23abed80b83dd17742aee15bd83ac114211be5fcd01",
+    "data/processed/analysis/partition_and_batch.csv": "57a45bab8efb81f96e838b9348edb13d4a3fbf09f2ea13f69f2d0f52700c49ed",
+    "data/processed/analysis/covariates.csv": "47b2d9829a4fccecf30663d0b0063d54664e72c1a9011938698c6c93a9441403",
+    "data/processed/analysis/endpoint.csv": "802a68575a34a3b60a50bd2452b9b09b62c1c40b90f34f4f60bb66691b0e7e0d",
+    "docs/PHASE8A_EXPLORATORY_ANALYSIS.md": "00b9e7e0c19faa63aa5efd4f38968d5af243dd1d82f92995333fb8f4f119986b",
+    "docs/PHASE8B_PCA_BATCH_INVESTIGATION.md": "98c3056e82ef991f0c22326bd9baf8d4bce7e9abd30db5441d66b66840063d23",
+    "docs/PHASE8C_FROZEN_PATHWAY_SCORE_ANALYSIS.md": "dd40bbe2f8da4a229095b8f475e3472b80d483ef4ee8c898ef70cffe3fb5df73"
+  },
+  "read_only_artifacts_modified": false,
+  "environment": {
+    "captured_utc": "2026-11-03T01:02:44.034551+00:00",
+    "python_version": "3.13.13",
+    "python_executable": "/Users/kalki/coad_transportability/.venv/bin/python",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.5.4",
+      "pandas": "2.3.3",
+      "scipy": "1.18.1",
+      "sklearn": "1.9.1",
+      "lifelines": "0.30.3",
+      "pyarrow": "26.0.0",
+      "pytest": "9.2.0"
+    }
+  }
+}

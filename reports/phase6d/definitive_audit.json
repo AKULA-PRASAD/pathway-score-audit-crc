@@ -1,0 +1,385 @@
+{
+  "encoding": {
+    "ND_occurrences_total": 0,
+    "ND_documented_but_unused": true,
+    "na_code_in_use": "N/A",
+    "codes_conflated": [
+      "not determined",
+      "not applicable"
+    ]
+  },
+  "structural": {
+    "chemo_type_structural": 252,
+    "chemo_type_true_missing": 59
+  },
+  "variables": [
+    {
+      "variable": "mmr.status",
+      "group": "M1_optional",
+      "observed": 410,
+      "missing": 43,
+      "pct": 9.49,
+      "disc_missing": 32,
+      "disc_pct": 9.04,
+      "val_missing": 11,
+      "val_pct": 11.11,
+      "diff_pp": 2.07,
+      "complete": false
+    },
+    {
+      "variable": "tnm.t",
+      "group": "M1_optional",
+      "observed": 434,
+      "missing": 19,
+      "pct": 4.19,
+      "disc_missing": 11,
+      "disc_pct": 3.11,
+      "val_missing": 8,
+      "val_pct": 8.08,
+      "diff_pp": 4.97,
+      "complete": false
+    },
+    {
+      "variable": "tnm.n",
+      "group": "M1_optional",
+      "observed": 434,
+      "missing": 19,
+      "pct": 4.19,
+      "disc_missing": 11,
+      "disc_pct": 3.11,
+      "val_missing": 8,
+      "val_pct": 8.08,
+      "diff_pp": 4.97,
+      "complete": false
+    },
+    {
+      "variable": "tnm.m",
+      "group": "M1_optional",
+      "observed": 434,
+      "missing": 19,
+      "pct": 4.19,
+      "disc_missing": 11,
+      "disc_pct": 3.11,
+      "val_missing": 8,
+      "val_pct": 8.08,
+      "diff_pp": 4.97,
+      "complete": false
+    },
+    {
+      "variable": "chemotherapy.adjuvant",
+      "group": "M1_primary",
+      "observed": 452,
+      "missing": 1,
+      "pct": 0.22,
+      "disc_missing": 1,
+      "disc_pct": 0.28,
+      "val_missing": 0,
+      "val_pct": 0.0,
+      "diff_pp": -0.28,
+      "complete": false
+    },
+    {
+      "variable": "age.at.diagnosis_(year)",
+      "group": "M1_primary",
+      "observed": 453,
+      "missing": 0,
+      "pct": 0.0,
+      "disc_missing": 0,
+      "disc_pct": 0.0,
+      "val_missing": 0,
+      "val_pct": 0.0,
+      "diff_pp": 0.0,
+      "complete": true
+    },
+    {
+      "variable": "sex",
+      "group": "M1_primary",
+      "observed": 453,
+      "missing": 0,
+      "pct": 0.0,
+      "disc_missing": 0,
+      "disc_pct": 0.0,
+      "val_missing": 0,
+      "val_pct": 0.0,
+      "diff_pp": 0.0,
+      "complete": true
+    },
+    {
+      "variable": "tnm.stage",
+      "group": "M1_primary",
+      "observed": 453,
+      "missing": 0,
+      "pct": 0.0,
+      "disc_missing": 0,
+      "disc_pct": 0.0,
+      "val_missing": 0,
+      "val_pct": 0.0,
+      "diff_pp": 0.0,
+      "complete": true
+    },
+    {
+      "variable": "tumor.location",
+      "group": "M1_primary",
+      "observed": 453,
+      "missing": 0,
+      "pct": 0.0,
+      "disc_missing": 0,
+      "disc_pct": 0.0,
+      "val_missing": 0,
+      "val_pct": 0.0,
+      "diff_pp": 0.0,
+      "complete": true
+    },
+    {
+      "variable": "chemotherapy.adjuvant.type",
+      "group": "excluded_phase1",
+      "observed": 141,
+      "missing": 312,
+      "pct": 68.87,
+      "disc_missing": 237,
+      "disc_pct": 66.95,
+      "val_missing": 75,
+      "val_pct": 75.76,
+      "diff_pp": 8.81,
+      "complete": false
+    },
+    {
+      "variable": "cit.molecularsubtype",
+      "group": "excluded_phase1",
+      "observed": 453,
+      "missing": 0,
+      "pct": 0.0,
+      "disc_missing": 0,
+      "disc_pct": 0.0,
+      "val_missing": 0,
+      "val_pct": 0.0,
+      "diff_pp": 0.0,
+      "complete": true
+    },
+    {
+      "variable": "rna.extraction.method",
+      "group": "excluded_phase1",
+      "observed": 453,
+      "missing": 0,
+      "pct": 0.0,
+      "disc_missing": 0,
+      "disc_pct": 0.0,
+      "val_missing": 0,
+      "val_pct": 0.0,
+      "diff_pp": 0.0,
+      "complete": true
+    },
+    {
+      "variable": "tp53.mutation",
+      "group": "molecular_optional",
+      "observed": 286,
+      "missing": 167,
+      "pct": 36.87,
+      "disc_missing": 154,
+      "disc_pct": 43.5,
+      "val_missing": 13,
+      "val_pct": 13.13,
+      "diff_pp": -30.37,
+      "complete": false
+    },
+    {
+      "variable": "cin.status",
+      "group": "molecular_optional",
+      "observed": 364,
+      "missing": 89,
+      "pct": 19.65,
+      "disc_missing": 76,
+      "disc_pct": 21.47,
+      "val_missing": 13,
+      "val_pct": 13.13,
+      "diff_pp": -8.34,
+      "complete": false
+    },
+    {
+      "variable": "cimp.status",
+      "group": "molecular_optional",
+      "observed": 386,
+      "missing": 67,
+      "pct": 14.79,
+      "disc_missing": 61,
+      "disc_pct": 17.23,
+      "val_missing": 6,
+      "val_pct": 6.06,
+      "diff_pp": -11.17,
+      "complete": false
+    },
+    {
+      "variable": "braf.mutation",
+      "group": "molecular_optional",
+      "observed": 399,
+      "missing": 54,
+      "pct": 11.92,
+      "disc_missing": 51,
+      "disc_pct": 14.41,
+      "val_missing": 3,
+      "val_pct": 3.03,
+      "diff_pp": -11.38,
+      "complete": false
+    },
+    {
+      "variable": "kras.mutation",
+      "group": "molecular_optional",
+      "observed": 432,
+      "missing": 21,
+      "pct": 4.64,
+      "disc_missing": 19,
+      "disc_pct": 5.37,
+      "val_missing": 2,
+      "val_pct": 2.02,
+      "diff_pp": -3.35,
+      "complete": false
+    }
+  ],
+  "models": [
+    {
+      "model": "M1 primary (clinical only)",
+      "n_predictors": 5,
+      "complete_cases": 452,
+      "pct": 99.8,
+      "lost": 1,
+      "disc_cc": 353,
+      "val_cc": 99
+    },
+    {
+      "model": "M1 + optional TNM/MMR",
+      "n_predictors": 9,
+      "complete_cases": 390,
+      "pct": 86.1,
+      "lost": 63,
+      "disc_cc": 310,
+      "val_cc": 80
+    },
+    {
+      "model": "M1 + all molecular (NOT PROPOSED)",
+      "n_predictors": 14,
+      "complete_cases": 203,
+      "pct": 44.8,
+      "lost": 250,
+      "disc_cc": 139,
+      "val_cc": 64
+    },
+    {
+      "model": "M2 primary (4-set) + M1",
+      "n_predictors": 9,
+      "complete_cases": 452,
+      "pct": 99.8,
+      "lost": 1,
+      "disc_cc": 353,
+      "val_cc": 99
+    },
+    {
+      "model": "M2 sensitivity (5-set) + M1",
+      "n_predictors": 10,
+      "complete_cases": 452,
+      "pct": 99.8,
+      "lost": 1,
+      "disc_cc": 353,
+      "val_cc": 99
+    },
+    {
+      "model": "M3 exploratory (21,815 genes) + M1",
+      "n_predictors": 21820,
+      "complete_cases": 452,
+      "pct": 99.8,
+      "lost": 1,
+      "disc_cc": 353,
+      "val_cc": 99
+    }
+  ],
+  "expression": {
+    "nan_values": 0,
+    "zero_variance_genes": 0
+  },
+  "by_batch": [
+    {
+      "combat_batch": "batch01",
+      "n": 33.0,
+      "tp53_miss_pct": 0.0,
+      "cin_miss_pct": 15.2,
+      "cimp_miss_pct": 0.0
+    },
+    {
+      "combat_batch": "batch02",
+      "n": 14.0,
+      "tp53_miss_pct": 100.0,
+      "cin_miss_pct": 0.0,
+      "cimp_miss_pct": 0.0
+    },
+    {
+      "combat_batch": "batch03",
+      "n": 102.0,
+      "tp53_miss_pct": 100.0,
+      "cin_miss_pct": 19.6,
+      "cimp_miss_pct": 16.7
+    },
+    {
+      "combat_batch": "batch04",
+      "n": 103.0,
+      "tp53_miss_pct": 0.0,
+      "cin_miss_pct": 55.3,
+      "cimp_miss_pct": 43.7
+    },
+    {
+      "combat_batch": "batch05",
+      "n": 49.0,
+      "tp53_miss_pct": 100.0,
+      "cin_miss_pct": 2.0,
+      "cimp_miss_pct": 8.2
+    },
+    {
+      "combat_batch": "batch07",
+      "n": 81.0,
+      "tp53_miss_pct": 1.2,
+      "cin_miss_pct": 2.5,
+      "cimp_miss_pct": 0.0
+    },
+    {
+      "combat_batch": "batch08",
+      "n": 41.0,
+      "tp53_miss_pct": 2.4,
+      "cin_miss_pct": 0.0,
+      "cimp_miss_pct": 0.0
+    },
+    {
+      "combat_batch": "batch09",
+      "n": 15.0,
+      "tp53_miss_pct": 0.0,
+      "cin_miss_pct": 26.7,
+      "cimp_miss_pct": 0.0
+    },
+    {
+      "combat_batch": "batch10",
+      "n": 15.0,
+      "tp53_miss_pct": 0.0,
+      "cin_miss_pct": 0.0,
+      "cimp_miss_pct": 6.7
+    }
+  ],
+  "cohort": {
+    "n": 453,
+    "discovery": 354,
+    "validation": 99
+  },
+  "outcome_columns_opened": false,
+  "environment": {
+    "captured_utc": "2026-11-02T21:25:06.141078+00:00",
+    "python_version": "3.13.13",
+    "python_executable": "/Users/kalki/coad_transportability/.venv/bin/python",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.5.4",
+      "pandas": "2.3.3",
+      "scipy": "1.18.1",
+      "sklearn": "1.9.1",
+      "lifelines": "0.30.3",
+      "pyarrow": "26.0.0",
+      "pytest": "9.2.0"
+    }
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "qc": [
+    {
+      "strategy": "representative_iqr",
+      "genes": 21815,
+      "samples": 585,
+      "non_finite": 0,
+      "n_missing": 0,
+      "min": 0.843,
+      "max": 16.112,
+      "mean": 5.6078,
+      "median": 5.3501,
+      "sd": 2.0728
+    },
+    {
+      "strategy": "representative_mean",
+      "genes": 21815,
+      "samples": 585,
+      "non_finite": 0,
+      "n_missing": 0,
+      "min": 0.843,
+      "max": 16.112,
+      "mean": 5.946,
+      "median": 5.7185,
+      "sd": 2.2715
+    },
+    {
+      "strategy": "median",
+      "genes": 21815,
+      "samples": 585,
+      "non_finite": 0,
+      "n_missing": 0,
+      "min": 1.346,
+      "max": 16.112,
+      "mean": 5.3823,
+      "median": 5.059,
+      "sd": 2.0064
+    },
+    {
+      "strategy": "mean",
+      "genes": 21815,
+      "samples": 585,
+      "non_finite": 0,
+      "n_missing": 0,
+      "min": 1.346,
+      "max": 16.112,
+      "mean": 5.3805,
+      "median": 5.1115,
+      "sd": 1.9543
+    }
+  ],
+  "genes": {
+    "total": 21815,
+    "single_probe": 11064,
+    "multi_probe": 10751
+  },
+  "pairwise": [
+    {
+      "pair": "representative_iqr vs representative_mean",
+      "median_r": 1.0,
+      "frac_r<0.9": 0.411,
+      "frac_r<0.7": 0.2808,
+      "median_abs_diff": 0.0,
+      "p95_abs_diff": 3.3047,
+      "identical_genes": 5801
+    },
+    {
+      "pair": "representative_iqr vs median",
+      "median_r": 0.8883,
+      "frac_r<0.9": 0.5363,
+      "frac_r<0.7": 0.2031,
+      "median_abs_diff": 0.5951,
+      "p95_abs_diff": 2.9722,
+      "identical_genes": 118
+    },
+    {
+      "pair": "representative_iqr vs mean",
+      "median_r": 0.9004,
+      "frac_r<0.9": 0.4987,
+      "frac_r<0.7": 0.0464,
+      "median_abs_diff": 0.707,
+      "p95_abs_diff": 2.6325,
+      "identical_genes": 0
+    },
+    {
+      "pair": "representative_mean vs median",
+      "median_r": 0.832,
+      "frac_r<0.9": 0.6734,
+      "frac_r<0.7": 0.3096,
+      "median_abs_diff": 0.8325,
+      "p95_abs_diff": 3.385,
+      "identical_genes": 0
+    },
+    {
+      "pair": "representative_mean vs mean",
+      "median_r": 0.8837,
+      "frac_r<0.9": 0.5648,
+      "frac_r<0.7": 0.1007,
+      "median_abs_diff": 0.934,
+      "p95_abs_diff": 2.9962,
+      "identical_genes": 0
+    },
+    {
+      "pair": "median vs mean",
+      "median_r": 0.9908,
+      "frac_r<0.9": 0.253,
+      "frac_r<0.7": 0.0513,
+      "median_abs_diff": 0.0085,
+      "p95_abs_diff": 0.947,
+      "identical_genes": 5256
+    }
+  ],
+  "disagreement_vs_agreement": {
+    "low_rho_genes": 4979,
+    "low_rho_median_strategy_agreement": 0.8478115391832666,
+    "high_rho_genes": 1874,
+    "high_rho_median_strategy_agreement": 0.968209707583068
+  },
+  "representative_agreement": {
+    "same_overall": 16865,
+    "differ": 4950,
+    "same_multi_probe": 5801,
+    "multi_probe": 10751
+  },
+  "reproducible": {
+    "representative_iqr": true,
+    "representative_mean": true,
+    "median": true,
+    "mean": true
+  }
+}

@@ -1,0 +1,21 @@
+pattern,n,variables_missing
+00000000000000,203,
+00000000000001,100,tp53.mutation
+00000000100001,38,"mmr.status, tp53.mutation"
+00000000011010,34,"cimp.status, cin.status, braf.mutation"
+00000000001000,17,cin.status
+00000000011111,16,"cimp.status, cin.status, kras.mutation, braf.mutation, tp53.mutation"
+00000111001000,7,"tnm.t, tnm.n, tnm.m, cin.status"
+00000111000000,7,"tnm.t, tnm.n, tnm.m"
+00000000011000,5,"cimp.status, cin.status"
+00000111011000,5,"tnm.t, tnm.n, tnm.m, cimp.status, cin.status"
+00000000001001,4,"cin.status, tp53.mutation"
+00000000100000,4,mmr.status
+00000000010001,3,"cimp.status, tp53.mutation"
+00000000010000,2,cimp.status
+00000000010111,2,"cimp.status, kras.mutation, braf.mutation, tp53.mutation"
+00000000000100,2,kras.mutation
+00000000000011,1,"braf.mutation, tp53.mutation"
+00000000101001,1,"mmr.status, cin.status, tp53.mutation"
+00000000000111,1,"kras.mutation, braf.mutation, tp53.mutation"
+00001000000001,1,"chemotherapy.adjuvant, tp53.mutation"

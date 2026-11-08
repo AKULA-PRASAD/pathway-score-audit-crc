@@ -1,0 +1,20 @@
+item,status,reference
+analysis cohort frozen and retained (453),READY,Phase 7C D2
+expression representation frozen,READY,Phase 2B
+analysis bundle verified,READY,scripts/24
+"M2 panels frozen, roles fixed, ddof pinned",READY,M2-A1
+canonical scorer single implementation in src/,READY,Phase 8C rec. 4
+fold-isolation machinery verified,READY,"8A, 8C (deletion + poisoning)"
+missing-data strategy frozen,READY,A-19 complete-case
+"QC executed, decisions recorded",READY,Phase 7C rev. 3
+EDA complete and consolidated,READY,Phase 8A-8D
+score-level standardisation policy,DECISION REQUIRED,D8D-1
+4-set/5-set reporting framework,DECISION REQUIRED,D8D-2
+representation sensitivity policy,DECISION REQUIRED,D8D-3
+batch sensitivity policy,DECISION REQUIRED,D8D-4
+combat_mod provenance,OPEN - documented limitation,D8D-5
+sex-axis discordance,OPEN - documented limitation,D8D-6
+U1 time unit,CONSTRAINS fixed-time analyses,D8D-7
+U2 competing risks,CONSTRAINS censoring assumption,D8D-7
+external confirmatory validation,NOT AVAILABLE,D8D-8
+"Phase 6B protocol finalised (resampling, MC stability)",NOT STARTED,Phase 6B draft

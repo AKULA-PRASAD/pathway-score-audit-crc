@@ -1,0 +1,1265 @@
+{
+  "phase": "8C",
+  "version": "1.0",
+  "cohort": "S3",
+  "n_samples": 453,
+  "seed": 20261102,
+  "samples_excluded": 0,
+  "outcome_columns_opened": false,
+  "outcome_columns_dropped_at_read": [
+    "rfs.event",
+    "rfs.delay",
+    "os.event",
+    "os.delay_(months)"
+  ],
+  "outcome_files_blocked": [
+    "endpoint.csv"
+  ],
+  "modelling_performed": false,
+  "recurrence_association_tested": false,
+  "feature_selection_performed": false,
+  "performance_evaluation_performed": false,
+  "normalization_applied": "none",
+  "batch_correction_applied": "none",
+  "folds_newly_created": false,
+  "folds_source": "the Phase 8A outcome-blind 5-way split, regenerated from seed 20261102; no new folds were chosen",
+  "audit": {
+    "4set_primary": {
+      "specification_revision": 2,
+      "role": "PRIMARY",
+      "sigma_ddof": 1,
+      "membership_matches_freeze_record": true,
+      "coverage": {
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": {
+          "n_source": 200,
+          "n_resolved_in_panel": 198,
+          "n_present_in_matrix": 198,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.99,
+          "n_zero_variance_dropped": 0,
+          "n_genes_used": 198,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_E2F_TARGETS": {
+          "n_source": 200,
+          "n_resolved_in_panel": 195,
+          "n_present_in_matrix": 195,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.975,
+          "n_zero_variance_dropped": 0,
+          "n_genes_used": 195,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": {
+          "n_source": 42,
+          "n_resolved_in_panel": 41,
+          "n_present_in_matrix": 41,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.97619,
+          "n_zero_variance_dropped": 0,
+          "n_genes_used": 41,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_P53_PATHWAY": {
+          "n_source": 200,
+          "n_resolved_in_panel": 194,
+          "n_present_in_matrix": 194,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.97,
+          "n_zero_variance_dropped": 0,
+          "n_genes_used": 194,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        }
+      },
+      "max_abs_diff_production_vs_independent": 2.9976021664879227e-15,
+      "max_abs_diff_vs_phase8a_artifact": 4.996517734001671e-07,
+      "phase8a_artifact_reproduced": true,
+      "ddof0_over_ddof1_ratio": 1.001105583532818,
+      "expected_ratio_sqrt_n_over_n_minus_1": 1.0011055835327916,
+      "fold_isolation": [
+        {
+          "fold": 1,
+          "n_train": 362,
+          "n_test": 91,
+          "bit_identical_when_heldout_deleted": true,
+          "bit_identical_when_heldout_poisoned": true,
+          "heldout_scores_do_move_when_poisoned": true,
+          "max_abs_shift_vs_full_cohort_fit": 0.0439767832161686
+        },
+        {
+          "fold": 2,
+          "n_train": 362,
+          "n_test": 91,
+          "bit_identical_when_heldout_deleted": true,
+          "bit_identical_when_heldout_poisoned": true,
+          "heldout_scores_do_move_when_poisoned": true,
+          "max_abs_shift_vs_full_cohort_fit": 0.019160483162520947
+        },
+        {
+          "fold": 3,
+          "n_train": 362,
+          "n_test": 91,
+          "bit_identical_when_heldout_deleted": true,
+          "bit_identical_when_heldout_poisoned": true,
+          "heldout_scores_do_move_when_poisoned": true,
+          "max_abs_shift_vs_full_cohort_fit": 0.07223832293388321
+        },
+        {
+          "fold": 4,
+          "n_train": 363,
+          "n_test": 90,
+          "bit_identical_when_heldout_deleted": true,
+          "bit_identical_when_heldout_poisoned": true,
+          "heldout_scores_do_move_when_poisoned": true,
+          "max_abs_shift_vs_full_cohort_fit": 0.04396527272489159
+        },
+        {
+          "fold": 5,
+          "n_train": 363,
+          "n_test": 90,
+          "bit_identical_when_heldout_deleted": true,
+          "bit_identical_when_heldout_poisoned": true,
+          "heldout_scores_do_move_when_poisoned": true,
+          "max_abs_shift_vs_full_cohort_fit": 0.042464034091653335
+        }
+      ],
+      "zero_variance_path_exercised": {
+        "injected": 1,
+        "dropped": 1,
+        "observed_in_real_data": 0
+      },
+      "per_sample_missingness": 0,
+      "non_finite_in_matrix": 0
+    },
+    "5set_sensitivity": {
+      "specification_revision": 2,
+      "role": "SENSITIVITY (pre-specified)",
+      "sigma_ddof": 1,
+      "membership_matches_freeze_record": true,
+      "coverage": {
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": {
+          "n_source": 200,
+          "n_resolved_in_panel": 198,
+          "n_present_in_matrix": 198,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.99,
+          "n_zero_variance_dropped": 0,
+          "n_genes_used": 198,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_E2F_TARGETS": {
+          "n_source": 200,
+          "n_resolved_in_panel": 195,
+          "n_present_in_matrix": 195,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.975,
+          "n_zero_variance_dropped": 0,
+          "n_genes_used": 195,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": {
+          "n_source": 42,
+          "n_resolved_in_panel": 41,
+          "n_present_in_matrix": 41,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.97619,
+          "n_zero_variance_dropped": 0,
+          "n_genes_used": 41,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_P53_PATHWAY": {
+          "n_source": 200,
+          "n_resolved_in_panel": 194,
+          "n_present_in_matrix": 194,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.97,
+          "n_zero_variance_dropped": 0,
+          "n_genes_used": 194,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        },
+        "HALLMARK_PI3K_AKT_MTOR_SIGNALING": {
+          "n_source": 105,
+          "n_resolved_in_panel": 104,
+          "n_present_in_matrix": 104,
+          "n_absent_from_matrix": 0,
+          "frac_of_source_resolved": 0.990476,
+          "n_zero_variance_dropped": 0,
+          "n_genes_used": 104,
+          "coverage_rule_met": true,
+          "score_dropped_for_this_fold": false
+        }
+      },
+      "max_abs_diff_production_vs_independent": 2.9976021664879227e-15,
+      "max_abs_diff_vs_phase8a_artifact": 4.996517734001671e-07,
+      "phase8a_artifact_reproduced": true,
+      "ddof0_over_ddof1_ratio": 1.0011055835329852,
+      "expected_ratio_sqrt_n_over_n_minus_1": 1.0011055835327916,
+      "fold_isolation": [
+        {
+          "fold": 1,
+          "n_train": 362,
+          "n_test": 91,
+          "bit_identical_when_heldout_deleted": true,
+          "bit_identical_when_heldout_poisoned": true,
+          "heldout_scores_do_move_when_poisoned": true,
+          "max_abs_shift_vs_full_cohort_fit": 0.0439767832161686
+        },
+        {
+          "fold": 2,
+          "n_train": 362,
+          "n_test": 91,
+          "bit_identical_when_heldout_deleted": true,
+          "bit_identical_when_heldout_poisoned": true,
+          "heldout_scores_do_move_when_poisoned": true,
+          "max_abs_shift_vs_full_cohort_fit": 0.019160483162520947
+        },
+        {
+          "fold": 3,
+          "n_train": 362,
+          "n_test": 91,
+          "bit_identical_when_heldout_deleted": true,
+          "bit_identical_when_heldout_poisoned": true,
+          "heldout_scores_do_move_when_poisoned": true,
+          "max_abs_shift_vs_full_cohort_fit": 0.07223832293388321
+        },
+        {
+          "fold": 4,
+          "n_train": 363,
+          "n_test": 90,
+          "bit_identical_when_heldout_deleted": true,
+          "bit_identical_when_heldout_poisoned": true,
+          "heldout_scores_do_move_when_poisoned": true,
+          "max_abs_shift_vs_full_cohort_fit": 0.04396527272489159
+        },
+        {
+          "fold": 5,
+          "n_train": 363,
+          "n_test": 90,
+          "bit_identical_when_heldout_deleted": true,
+          "bit_identical_when_heldout_poisoned": true,
+          "heldout_scores_do_move_when_poisoned": true,
+          "max_abs_shift_vs_full_cohort_fit": 0.042464034091653335
+        }
+      ],
+      "zero_variance_path_exercised": {
+        "injected": 1,
+        "dropped": 1,
+        "observed_in_real_data": 0
+      },
+      "per_sample_missingness": 0,
+      "non_finite_in_matrix": 0
+    }
+  },
+  "panel_independence_of_shared_scores": {
+    "max_abs_diff": 0.0
+  },
+  "distributions": {
+    "table": [
+      {
+        "pathway": "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION",
+        "n_genes_used": 198,
+        "mean": -2.0390851136603317e-16,
+        "sd": 0.4949552082359261,
+        "var": 0.24498065815986894,
+        "skew": 0.5850750166503839,
+        "kurtosis": 0.5646572253399604,
+        "iqr": 0.6403987906124977,
+        "implied_mean_inter_gene_r": 0.2411480726682947,
+        "sd_if_members_independent": 0.07106690545187015,
+        "n_missing": 0,
+        "p0": -1.1054353849287628,
+        "p1": -0.9448835943932203,
+        "p5": -0.7072524872402286,
+        "p25": -0.34281617455710284,
+        "p50": -0.03993269649380456,
+        "p75": 0.29758261605539493,
+        "p95": 0.9348738045769831,
+        "p99": 1.2205256313386212,
+        "p100": 2.156344169557485
+      },
+      {
+        "pathway": "HALLMARK_E2F_TARGETS",
+        "n_genes_used": 195,
+        "mean": -5.646697237828611e-16,
+        "sd": 0.5543474292056848,
+        "var": 0.3073010722669517,
+        "skew": -0.6927595854119383,
+        "kurtosis": 1.0934424390052255,
+        "iqr": 0.7207442431649423,
+        "implied_mean_inter_gene_r": 0.3037304592373999,
+        "sd_if_members_independent": 0.0716114874039433,
+        "n_missing": 0,
+        "p0": -2.4787508402848566,
+        "p1": -1.5176517223399792,
+        "p5": -0.9901535351103423,
+        "p25": -0.354548906424207,
+        "p50": 0.10601960074278075,
+        "p75": 0.36619533674073534,
+        "p95": 0.7821639266982626,
+        "p99": 1.1437626652797677,
+        "p100": 1.3057357860213608
+      },
+      {
+        "pathway": "HALLMARK_WNT_BETA_CATENIN_SIGNALING",
+        "n_genes_used": 41,
+        "mean": -2.6949254699289672e-15,
+        "sd": 0.2530770323885888,
+        "var": 0.06404798432261484,
+        "skew": 0.2203822668713408,
+        "kurtosis": -0.04450096317516472,
+        "iqr": 0.33565024274562505,
+        "implied_mean_inter_gene_r": 0.04064918393068021,
+        "sd_if_members_independent": 0.15617376188860607,
+        "n_missing": 0,
+        "p0": -0.652764024809489,
+        "p1": -0.5300608537308928,
+        "p5": -0.4113560609412503,
+        "p25": -0.17498162645468504,
+        "p50": -0.020568592028887233,
+        "p75": 0.16066861629094,
+        "p95": 0.43469736212382665,
+        "p99": 0.5905575349534092,
+        "p100": 0.8543397742314334
+      },
+      {
+        "pathway": "HALLMARK_P53_PATHWAY",
+        "n_genes_used": 194,
+        "mean": -2.901774969439703e-16,
+        "sd": 0.19490262025395355,
+        "var": 0.03798703138185683,
+        "skew": 0.45350409932610447,
+        "kurtosis": 0.971673022244679,
+        "iqr": 0.23961434053639924,
+        "implied_mean_inter_gene_r": 0.03300250822839495,
+        "sd_if_members_independent": 0.07179581586177382,
+        "n_missing": 0,
+        "p0": -0.5551950558024422,
+        "p1": -0.3958845393303192,
+        "p5": -0.3009285328076181,
+        "p25": -0.12448012071852739,
+        "p50": -0.006433224119101239,
+        "p75": 0.11513421981787185,
+        "p95": 0.3225771764571192,
+        "p99": 0.5591646506710515,
+        "p100": 0.7614481232814242
+      },
+      {
+        "pathway": "HALLMARK_PI3K_AKT_MTOR_SIGNALING",
+        "n_genes_used": 104,
+        "mean": -1.4381432027594742e-15,
+        "sd": 0.18508137967472627,
+        "var": 0.03425511710230018,
+        "skew": 0.08934379161778791,
+        "kurtosis": 0.5336864402357482,
+        "iqr": 0.2356656473920466,
+        "implied_mean_inter_gene_r": 0.024878953190672026,
+        "sd_if_members_independent": 0.09805806756909202,
+        "n_missing": 0,
+        "p0": -0.5458418821287571,
+        "p1": -0.4579776876171089,
+        "p5": -0.2924842129556841,
+        "p25": -0.1181930461880334,
+        "p50": 0.0026800965206085384,
+        "p75": 0.11747260120401318,
+        "p95": 0.30619546811466003,
+        "p99": 0.47890947415259205,
+        "p100": 0.6484432265809659
+      }
+    ],
+    "influence_loo": [
+      {
+        "pathway": "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION",
+        "max_abs_delta_sd": 0.00999024025090367,
+        "relative_to_sd": 0.020184129967052912,
+        "sample_id": "GSM972479",
+        "sample_score": 2.156344169557485,
+        "sample_z": 4.356645073486405
+      },
+      {
+        "pathway": "HALLMARK_E2F_TARGETS",
+        "max_abs_delta_sd": 0.011826652812689353,
+        "relative_to_sd": 0.021334369367664547,
+        "sample_id": "GSM972357",
+        "sample_score": -2.4787508402848566,
+        "sample_z": -4.471475305363311
+      },
+      {
+        "pathway": "HALLMARK_WNT_BETA_CATENIN_SIGNALING",
+        "max_abs_delta_sd": 0.002941026595121521,
+        "relative_to_sd": 0.011621072711986372,
+        "sample_id": "GSM972371",
+        "sample_score": 0.8543397742314334,
+        "sample_z": 3.375809199942073
+      },
+      {
+        "pathway": "HALLMARK_P53_PATHWAY",
+        "max_abs_delta_sd": 0.003114140882710753,
+        "relative_to_sd": 0.01597793235746703,
+        "sample_id": "GSM972275",
+        "sample_score": 0.7614481232814242,
+        "sample_z": 3.906813167977298
+      },
+      {
+        "pathway": "HALLMARK_PI3K_AKT_MTOR_SIGNALING",
+        "max_abs_delta_sd": 0.002333785881936834,
+        "relative_to_sd": 0.012609512021351781,
+        "sample_id": "GSM971993",
+        "sample_score": 0.6484432265809659,
+        "sample_z": 3.5035573417519497
+      }
+    ],
+    "transformation_vs_data": "score SD is a property of the TRANSFORMATION as much as the data: averaging k unit-variance z-scores gives SD 1/sqrt(k) if members were independent. The implied mean inter-gene correlation r\u0304 inverts Var = (1+(k-1)r\u0304)/k and separates set coherence from the shrinkage that averaging necessarily produces.",
+    "variation_sufficiency": "all five scores have non-zero, non-degenerate dispersion across 453 samples. Whether that dispersion is SUFFICIENT for a model is an outcome-dependent question and is NOT answered here."
+  },
+  "relationships": {
+    "4set_primary": {
+      "max_abs_r": 0.3155763792513359,
+      "median_abs_r": 0.18630916644038464,
+      "n_gt_0.5": 0,
+      "n_gt_0.7": 0,
+      "condition_number": 2.9491183214993772,
+      "min_eigenvalue": 0.4811073181512875,
+      "eigenvalues": [
+        1.418842406567392,
+        1.2434961749193698,
+        0.8565541003619513,
+        0.4811073181512875
+      ],
+      "pcs_80": 3,
+      "kaiser": 2,
+      "phase6c_recorded_n461": {
+        "max_abs_r": 0.3180455175888618,
+        "condition_number": 2.9499892688432796,
+        "min_eigenvalue": 0.4798084627562787,
+        "n_gt_0.5": 0,
+        "pcs_80": 3,
+        "kaiser": 2
+      }
+    },
+    "5set_sensitivity": {
+      "max_abs_r": 0.6314326428372892,
+      "median_abs_r": 0.18630916644038464,
+      "n_gt_0.5": 1,
+      "n_gt_0.7": 0,
+      "condition_number": 7.032019217929106,
+      "min_eigenvalue": 0.2777243124722031,
+      "eigenvalues": [
+        1.9529627025906802,
+        1.3371211281661874,
+        0.942982710882428,
+        0.48920914588849984,
+        0.2777243124722031
+      ],
+      "pcs_80": 3,
+      "kaiser": 2,
+      "phase6c_recorded_n461": {
+        "max_abs_r": 0.6317153926108399,
+        "condition_number": 6.950113351908527,
+        "min_eigenvalue": 0.28011421050582647,
+        "n_gt_0.5": 1,
+        "pcs_80": 3,
+        "kaiser": 2
+      }
+    },
+    "pi3k_increment": {
+      "r2_on_primary_four": 0.539847778137621,
+      "residual_variance_fraction": 0.46015222186237903,
+      "residual_sd": 0.12554906708048214,
+      "condition_number_4set": 2.9491183214993772,
+      "condition_number_5set": 7.032019217929106,
+      "min_eigenvalue_4set": 0.4811073181512875,
+      "min_eigenvalue_5set": 0.2777243124722031,
+      "interpretation_limit": "a DESCRIPTIVE redundancy measure computed among scores only. It says nothing about recurrence relevance, and is NOT grounds to promote, remove or reorder any pathway -- the M2-A1 immutability clause stands."
+    }
+  },
+  "technical_structure": {
+    "n_tests": 40,
+    "variables": [
+      "cit.molecularsubtype",
+      "combat_batch",
+      "combat_mod",
+      "dataset",
+      "mmr.status",
+      "qc_any_soft_flag",
+      "rna.extraction.method",
+      "tumor.location"
+    ],
+    "circular_variables": [
+      "cit.molecularsubtype"
+    ],
+    "matrix_derived_variables": [
+      "qc_any_soft_flag"
+    ],
+    "circularity_note": "cit.molecularsubtype is the depositors' own EXPRESSION-DERIVED clustering of this same matrix. An M2 score is also a function of that matrix, so any association between them is near-tautological and is NOT independent biological validation.",
+    "matrix_derived_note": "qc_any_soft_flag is a Tukey rule on the sample median, IQR and mean inter-sample correlation OF THIS SAME MATRIX (Phase 7B S-S1/S-S2/S-S3). A sample flagged for an unusual IQR has unusual z-scores by construction, so a DISPERSION association between the flags and the scores is partly mechanical, not an independent discovery of array failure. It is reported, and it is explicitly NOT grounds for exclusion -- Phase 7C D2 retains all 453.",
+    "location_hits_q05_noncircular": 17,
+    "dispersion_hits_q05_noncircular": 2,
+    "matrix_derived_dispersion_hits_q05": 3,
+    "matrix_derived_detail": [
+      {
+        "annotation": "qc_any_soft_flag",
+        "pathway": "HALLMARK_E2F_TARGETS",
+        "circular": false,
+        "matrix_derived": true,
+        "n": 453,
+        "n_levels": 2,
+        "min_cell": 29,
+        "location_H": 4.575853613796653,
+        "location_p": 0.032425586924967206,
+        "location_epsilon_squared": 0.00792872198181076,
+        "dispersion_W": 36.83921657294858,
+        "dispersion_p": 2.722514763061431e-09,
+        "location_q_BH": 0.051880939079947536,
+        "dispersion_q_BH": 5.445029526122862e-08
+      },
+      {
+        "annotation": "qc_any_soft_flag",
+        "pathway": "HALLMARK_P53_PATHWAY",
+        "circular": false,
+        "matrix_derived": true,
+        "n": 453,
+        "n_levels": 2,
+        "min_cell": 29,
+        "location_H": 1.4348471907342173,
+        "location_p": 0.2309750004961563,
+        "location_epsilon_squared": 0.0009641844583907258,
+        "dispersion_W": 51.32107459957096,
+        "dispersion_p": 3.2166665891901383e-12,
+        "location_q_BH": 0.28871875062019536,
+        "dispersion_q_BH": 1.2866666356760552e-10
+      },
+      {
+        "annotation": "qc_any_soft_flag",
+        "pathway": "HALLMARK_PI3K_AKT_MTOR_SIGNALING",
+        "circular": false,
+        "matrix_derived": true,
+        "n": 453,
+        "n_levels": 2,
+        "min_cell": 29,
+        "location_H": 0.4105106348827121,
+        "location_p": 0.5217104410056154,
+        "location_epsilon_squared": -0.0013070717630095075,
+        "dispersion_W": 27.12009733740545,
+        "dispersion_p": 2.9124167236517923e-07,
+        "location_q_BH": 0.5962405040064175,
+        "dispersion_q_BH": 3.88322229820239e-06
+      }
+    ],
+    "top_noncircular": [
+      {
+        "annotation": "mmr.status",
+        "pathway": "HALLMARK_P53_PATHWAY",
+        "circular": false,
+        "matrix_derived": false,
+        "n": 410,
+        "n_levels": 2,
+        "min_cell": 60,
+        "location_H": 71.01787834549873,
+        "location_p": 3.5400243168026346e-17,
+        "location_epsilon_squared": 0.171612446925242,
+        "dispersion_W": 0.5334926971797346,
+        "dispersion_p": 0.46556133698535024,
+        "location_q_BH": 4.720032422403513e-16,
+        "dispersion_q_BH": 0.5033095534976759
+      },
+      {
+        "annotation": "combat_mod",
+        "pathway": "HALLMARK_P53_PATHWAY",
+        "circular": false,
+        "matrix_derived": false,
+        "n": 453,
+        "n_levels": 2,
+        "min_cell": 65,
+        "location_H": 68.98318829542313,
+        "location_p": 9.930636878734148e-17,
+        "location_epsilon_squared": 0.15073877670825528,
+        "dispersion_W": 0.6948436520918837,
+        "dispersion_p": 0.40496299409399333,
+        "location_q_BH": 9.930636878734147e-16,
+        "dispersion_q_BH": 0.4554584391954437
+      },
+      {
+        "annotation": "tumor.location",
+        "pathway": "HALLMARK_P53_PATHWAY",
+        "circular": false,
+        "matrix_derived": false,
+        "n": 453,
+        "n_levels": 2,
+        "min_cell": 185,
+        "location_H": 30.85743896306053,
+        "location_p": 2.776956067485709e-08,
+        "location_epsilon_squared": 0.06620274714647569,
+        "dispersion_W": 1.671270145075552,
+        "dispersion_p": 0.196750374803003,
+        "location_q_BH": 1.8513040449904728e-07,
+        "dispersion_q_BH": 0.31480059968480484
+      },
+      {
+        "annotation": "mmr.status",
+        "pathway": "HALLMARK_PI3K_AKT_MTOR_SIGNALING",
+        "circular": false,
+        "matrix_derived": false,
+        "n": 410,
+        "n_levels": 2,
+        "min_cell": 60,
+        "location_H": 18.219534237052585,
+        "location_p": 1.968494911617931e-05,
+        "location_epsilon_squared": 0.04220474077708967,
+        "dispersion_W": 0.814627447629945,
+        "dispersion_p": 0.3672882035144214,
+        "location_q_BH": 7.873979646471724e-05,
+        "dispersion_q_BH": 0.43210376884049573
+      },
+      {
+        "annotation": "combat_mod",
+        "pathway": "HALLMARK_PI3K_AKT_MTOR_SIGNALING",
+        "circular": false,
+        "matrix_derived": false,
+        "n": 453,
+        "n_levels": 2,
+        "min_cell": 65,
+        "location_H": 19.135776794167214,
+        "location_p": 1.2174131795206492e-05,
+        "location_epsilon_squared": 0.040212365397266546,
+        "dispersion_W": 1.1887333404446099,
+        "dispersion_p": 0.27616738295924603,
+        "location_q_BH": 5.410725242313996e-05,
+        "dispersion_q_BH": 0.3809205282196497
+      },
+      {
+        "annotation": "mmr.status",
+        "pathway": "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION",
+        "circular": false,
+        "matrix_derived": false,
+        "n": 410,
+        "n_levels": 2,
+        "min_cell": 60,
+        "location_H": 17.090074383037745,
+        "location_p": 3.5648125102433934e-05,
+        "location_epsilon_squared": 0.039436456821170945,
+        "dispersion_W": 4.571166928424081,
+        "dispersion_p": 0.03310797284933543,
+        "location_q_BH": 0.0001296295458270325,
+        "dispersion_q_BH": 0.1324318913973417
+      },
+      {
+        "annotation": "rna.extraction.method",
+        "pathway": "HALLMARK_P53_PATHWAY",
+        "circular": false,
+        "matrix_derived": false,
+        "n": 453,
+        "n_levels": 6,
+        "min_cell": 14,
+        "location_H": 21.491900998874144,
+        "location_p": 0.0006537903140330025,
+        "location_epsilon_squared": 0.03689463310710099,
+        "dispersion_W": 4.1743734596284146,
+        "dispersion_p": 0.001020880496506668,
+        "location_q_BH": 0.0018679723258085785,
+        "dispersion_q_BH": 0.008167043972053345
+      },
+      {
+        "annotation": "combat_batch",
+        "pathway": "HALLMARK_P53_PATHWAY",
+        "circular": false,
+        "matrix_derived": false,
+        "n": 453,
+        "n_levels": 9,
+        "min_cell": 14,
+        "location_H": 22.474485387964478,
+        "location_p": 0.004108712786710609,
+        "location_epsilon_squared": 0.03260019231523531,
+        "dispersion_W": 3.9590403521732007,
+        "dispersion_p": 0.00015256991191583944,
+        "location_q_BH": 0.008217425573421217,
+        "dispersion_q_BH": 0.0015256991191583945
+      }
+    ],
+    "stratified": [
+      {
+        "annotation": "combat_batch",
+        "pathway": "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION",
+        "strata": "combat_mod",
+        "location_H": 4.016693185747499,
+        "location_null_p95": 21.1054223848275,
+        "location_p_strat": 0.9761023897610239,
+        "dispersion_H": 9.45159750656444,
+        "dispersion_null_p95": 16.812738515682994,
+        "dispersion_p_strat": 0.3955604439556044,
+        "n_permutations": 10000
+      },
+      {
+        "annotation": "combat_batch",
+        "pathway": "HALLMARK_E2F_TARGETS",
+        "strata": "combat_mod",
+        "location_H": 12.76478804723024,
+        "location_null_p95": 20.57528171259099,
+        "location_p_strat": 0.3755624437556244,
+        "dispersion_H": 12.443911330702122,
+        "dispersion_null_p95": 15.11734216655875,
+        "dispersion_p_strat": 0.12448755124487551,
+        "n_permutations": 10000
+      },
+      {
+        "annotation": "combat_batch",
+        "pathway": "HALLMARK_WNT_BETA_CATENIN_SIGNALING",
+        "strata": "combat_mod",
+        "location_H": 7.179294360804079,
+        "location_null_p95": 19.5936189547108,
+        "location_p_strat": 0.7459254074592541,
+        "dispersion_H": 6.569982573286779,
+        "dispersion_null_p95": 15.293207002332013,
+        "dispersion_p_strat": 0.5675432456754325,
+        "n_permutations": 10000
+      },
+      {
+        "annotation": "combat_batch",
+        "pathway": "HALLMARK_P53_PATHWAY",
+        "strata": "combat_mod",
+        "location_H": 22.474485387964705,
+        "location_null_p95": 40.4799287763096,
+        "location_p_strat": 0.7223277672232776,
+        "dispersion_H": 12.864560743206994,
+        "dispersion_null_p95": 19.413408849582357,
+        "dispersion_p_strat": 0.2783721627837216,
+        "n_permutations": 10000
+      },
+      {
+        "annotation": "combat_batch",
+        "pathway": "HALLMARK_PI3K_AKT_MTOR_SIGNALING",
+        "strata": "combat_mod",
+        "location_H": 11.277632005919259,
+        "location_null_p95": 22.985146076018378,
+        "location_p_strat": 0.6015398460153984,
+        "dispersion_H": 9.49323667852832,
+        "dispersion_null_p95": 15.48953138443503,
+        "dispersion_p_strat": 0.30896910308969106,
+        "n_permutations": 10000
+      },
+      {
+        "annotation": "rna.extraction.method",
+        "pathway": "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION",
+        "strata": "combat_mod",
+        "location_H": 3.6124453126474236,
+        "location_null_p95": 16.9830509471491,
+        "location_p_strat": 0.8926107389261074,
+        "dispersion_H": 7.849558728102693,
+        "dispersion_null_p95": 12.446646282801304,
+        "dispersion_p_strat": 0.23897610238976102,
+        "n_permutations": 10000
+      },
+      {
+        "annotation": "rna.extraction.method",
+        "pathway": "HALLMARK_E2F_TARGETS",
+        "strata": "combat_mod",
+        "location_H": 12.212361343684279,
+        "location_null_p95": 16.39850770215401,
+        "location_p_strat": 0.17128287171282872,
+        "dispersion_H": 7.6442429384669595,
+        "dispersion_null_p95": 10.897342311279635,
+        "dispersion_p_strat": 0.1698830116988301,
+        "n_permutations": 10000
+      },
+      {
+        "annotation": "rna.extraction.method",
+        "pathway": "HALLMARK_WNT_BETA_CATENIN_SIGNALING",
+        "strata": "combat_mod",
+        "location_H": 3.8565008876073534,
+        "location_null_p95": 15.149932317663408,
+        "location_p_strat": 0.8029197080291971,
+        "dispersion_H": 5.437335894983789,
+        "dispersion_null_p95": 10.745714932781562,
+        "dispersion_p_strat": 0.34806519348065196,
+        "n_permutations": 10000
+      },
+      {
+        "annotation": "rna.extraction.method",
+        "pathway": "HALLMARK_P53_PATHWAY",
+        "strata": "combat_mod",
+        "location_H": 21.491900998874144,
+        "location_null_p95": 34.9713549496797,
+        "location_p_strat": 0.519048095190481,
+        "dispersion_H": 9.146092479440085,
+        "dispersion_null_p95": 14.778672747404311,
+        "dispersion_p_strat": 0.27847215278472154,
+        "n_permutations": 10000
+      },
+      {
+        "annotation": "rna.extraction.method",
+        "pathway": "HALLMARK_PI3K_AKT_MTOR_SIGNALING",
+        "strata": "combat_mod",
+        "location_H": 10.505039065357096,
+        "location_null_p95": 18.34136902557659,
+        "location_p_strat": 0.3802619738026197,
+        "dispersion_H": 5.481944761853583,
+        "dispersion_null_p95": 11.022753553869416,
+        "dispersion_p_strat": 0.37246275372462756,
+        "n_permutations": 10000
+      },
+      {
+        "annotation": "qc_any_soft_flag",
+        "pathway": "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION",
+        "strata": "combat_mod",
+        "location_H": 5.859434248879779,
+        "location_null_p95": 4.569583174500394,
+        "location_p_strat": 0.026697330266973303,
+        "dispersion_H": 3.1057784631082086,
+        "dispersion_null_p95": 4.029321522847582,
+        "dispersion_p_strat": 0.08809119088091191,
+        "n_permutations": 10000
+      },
+      {
+        "annotation": "qc_any_soft_flag",
+        "pathway": "HALLMARK_E2F_TARGETS",
+        "strata": "combat_mod",
+        "location_H": 4.575853613796653,
+        "location_null_p95": 4.613881560279692,
+        "location_p_strat": 0.051294870512948704,
+        "dispersion_H": 17.991128521434575,
+        "dispersion_null_p95": 3.700234165188249,
+        "dispersion_p_strat": 9.999000099990002e-05,
+        "n_permutations": 10000
+      },
+      {
+        "annotation": "qc_any_soft_flag",
+        "pathway": "HALLMARK_WNT_BETA_CATENIN_SIGNALING",
+        "strata": "combat_mod",
+        "location_H": 1.7489388046394652,
+        "location_null_p95": 4.563317034442662,
+        "location_p_strat": 0.2233776622337766,
+        "dispersion_H": 2.6105061923362882,
+        "dispersion_null_p95": 3.5830071524997,
+        "dispersion_p_strat": 0.0927907209279072,
+        "n_permutations": 10000
+      },
+      {
+        "annotation": "qc_any_soft_flag",
+        "pathway": "HALLMARK_P53_PATHWAY",
+        "strata": "combat_mod",
+        "location_H": 1.4348471907342173,
+        "location_null_p95": 7.003901308114877,
+        "location_p_strat": 0.5226477352264773,
+        "dispersion_H": 18.466865052637104,
+        "dispersion_null_p95": 4.576167350723376,
+        "dispersion_p_strat": 9.999000099990002e-05,
+        "n_permutations": 10000
+      },
+      {
+        "annotation": "qc_any_soft_flag",
+        "pathway": "HALLMARK_PI3K_AKT_MTOR_SIGNALING",
+        "strata": "combat_mod",
+        "location_H": 0.4105106348827121,
+        "location_null_p95": 4.868941298197797,
+        "location_p_strat": 0.5965403459654035,
+        "dispersion_H": 10.113014797978622,
+        "dispersion_null_p95": 3.883223619156156,
+        "dispersion_p_strat": 0.0012998700129987,
+        "n_permutations": 10000
+      }
+    ],
+    "n_surviving_stratification": 4,
+    "limitation": "ComBat was applied to this deposit before release, so batch variance was removed by construction; a null batch result bounds what remains detectable and is not evidence that batch effects are absent. Sparse strata and multiplicity make single nominal p-values weak evidence."
+  },
+  "sensitivity": {
+    "panel_4set_vs_5set": {
+      "shared_scores_max_abs_diff": 0.0,
+      "finding": "identical by construction"
+    },
+    "representation": {
+      "comparison": "frozen median aggregation vs frozen representative-IQR (discovery_443 selection); both are 21,815-gene indices over the same 453 samples, so the panels resolve identically and only the probe->gene rule differs",
+      "per_pathway": [
+        {
+          "pathway": "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION",
+          "pearson_median_vs_repiqr": 0.9919734766594059,
+          "spearman": 0.9911499261224471,
+          "sd_median": 0.4949552082359261,
+          "sd_repiqr": 0.5314320079062562,
+          "mean_abs_difference": 0.059815171434685684
+        },
+        {
+          "pathway": "HALLMARK_E2F_TARGETS",
+          "pearson_median_vs_repiqr": 0.997467445216978,
+          "spearman": 0.99687798598663,
+          "sd_median": 0.5543474292056848,
+          "sd_repiqr": 0.5647635425602124,
+          "mean_abs_difference": 0.03227470116566485
+        },
+        {
+          "pathway": "HALLMARK_WNT_BETA_CATENIN_SIGNALING",
+          "pearson_median_vs_repiqr": 0.8577141647527023,
+          "spearman": 0.8413055169221293,
+          "sd_median": 0.2530770323885888,
+          "sd_repiqr": 0.2459568194915344,
+          "mean_abs_difference": 0.10531631212518547
+        },
+        {
+          "pathway": "HALLMARK_P53_PATHWAY",
+          "pearson_median_vs_repiqr": 0.9720278804090507,
+          "spearman": 0.9655313387727936,
+          "sd_median": 0.19490262025395355,
+          "sd_repiqr": 0.20279079957778087,
+          "mean_abs_difference": 0.037979900167210714
+        },
+        {
+          "pathway": "HALLMARK_PI3K_AKT_MTOR_SIGNALING",
+          "pearson_median_vs_repiqr": 0.9096420299014434,
+          "spearman": 0.9002551053997612,
+          "sd_median": 0.18508137967472627,
+          "sd_repiqr": 0.1891822901293053,
+          "mean_abs_difference": 0.06018345091429339
+        }
+      ],
+      "max_abs_delta_correlation_matrix": 0.10610688145570163,
+      "condition_number_median": 7.032019217929106,
+      "condition_number_repiqr": 9.529990845468408,
+      "scope_limit": "a representation sensitivity check only. Differences are differences in the probe->gene summarisation, not biological differences.",
+      "sensitivity_only": true
+    },
+    "fold_composition": {
+      "folds": "Phase 8A outcome-blind 5-way split, regenerated from seed 20261102; NOT newly created and NOT tuned",
+      "per_fold": [
+        {
+          "fold": 1,
+          "pathway": "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION",
+          "n_train": 362,
+          "n_test": 91,
+          "heldout_mean": -0.04109752381351826,
+          "heldout_sd": 0.44617858006799127,
+          "max_abs_shift_vs_full_cohort": 0.02360677039123793,
+          "corr_with_full_cohort_fit": 0.9999933903480059
+        },
+        {
+          "fold": 1,
+          "pathway": "HALLMARK_E2F_TARGETS",
+          "n_train": 362,
+          "n_test": 91,
+          "heldout_mean": 0.12013761730678861,
+          "heldout_sd": 0.47871502347136535,
+          "max_abs_shift_vs_full_cohort": 0.0439767832161686,
+          "corr_with_full_cohort_fit": 0.9999966395079027
+        },
+        {
+          "fold": 1,
+          "pathway": "HALLMARK_WNT_BETA_CATENIN_SIGNALING",
+          "n_train": 362,
+          "n_test": 91,
+          "heldout_mean": 0.01267109004120213,
+          "heldout_sd": 0.2228810893217157,
+          "max_abs_shift_vs_full_cohort": 0.01282526933510788,
+          "corr_with_full_cohort_fit": 0.999896265124379
+        },
+        {
+          "fold": 1,
+          "pathway": "HALLMARK_P53_PATHWAY",
+          "n_train": 362,
+          "n_test": 91,
+          "heldout_mean": -0.01592383397955293,
+          "heldout_sd": 0.2021323020802192,
+          "max_abs_shift_vs_full_cohort": 0.005900343314788961,
+          "corr_with_full_cohort_fit": 0.9999568414672689
+        },
+        {
+          "fold": 1,
+          "pathway": "HALLMARK_PI3K_AKT_MTOR_SIGNALING",
+          "n_train": 362,
+          "n_test": 91,
+          "heldout_mean": 0.015194198840185446,
+          "heldout_sd": 0.1876698050380821,
+          "max_abs_shift_vs_full_cohort": 0.00947881665033598,
+          "corr_with_full_cohort_fit": 0.9999406984787996
+        },
+        {
+          "fold": 2,
+          "pathway": "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION",
+          "n_train": 362,
+          "n_test": 91,
+          "heldout_mean": 0.05247752639924436,
+          "heldout_sd": 0.461346251041826,
+          "max_abs_shift_vs_full_cohort": 0.019160483162520947,
+          "corr_with_full_cohort_fit": 0.9999946063331662
+        },
+        {
+          "fold": 2,
+          "pathway": "HALLMARK_E2F_TARGETS",
+          "n_train": 362,
+          "n_test": 91,
+          "heldout_mean": -0.019300141581065095,
+          "heldout_sd": 0.4875393585735349,
+          "max_abs_shift_vs_full_cohort": 0.01703509129984182,
+          "corr_with_full_cohort_fit": 0.9999961489196763
+        },
+        {
+          "fold": 2,
+          "pathway": "HALLMARK_WNT_BETA_CATENIN_SIGNALING",
+          "n_train": 362,
+          "n_test": 91,
+          "heldout_mean": -0.016958398731648054,
+          "heldout_sd": 0.21588762153276508,
+          "max_abs_shift_vs_full_cohort": 0.011375810742854875,
+          "corr_with_full_cohort_fit": 0.9999430042617636
+        },
+        {
+          "fold": 2,
+          "pathway": "HALLMARK_P53_PATHWAY",
+          "n_train": 362,
+          "n_test": 91,
+          "heldout_mean": -0.0016125871621055139,
+          "heldout_sd": 0.19885609324641643,
+          "max_abs_shift_vs_full_cohort": 0.005434017031131333,
+          "corr_with_full_cohort_fit": 0.9999653863495069
+        },
+        {
+          "fold": 2,
+          "pathway": "HALLMARK_PI3K_AKT_MTOR_SIGNALING",
+          "n_train": 362,
+          "n_test": 91,
+          "heldout_mean": -0.024061462124854518,
+          "heldout_sd": 0.18915644306541662,
+          "max_abs_shift_vs_full_cohort": 0.008472086317572819,
+          "corr_with_full_cohort_fit": 0.9999556979185448
+        },
+        {
+          "fold": 3,
+          "pathway": "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION",
+          "n_train": 362,
+          "n_test": 91,
+          "heldout_mean": 0.1396061997868069,
+          "heldout_sd": 0.5381682231547259,
+          "max_abs_shift_vs_full_cohort": 0.07223832293388321,
+          "corr_with_full_cohort_fit": 0.9999852130755846
+        },
+        {
+          "fold": 3,
+          "pathway": "HALLMARK_E2F_TARGETS",
+          "n_train": 362,
+          "n_test": 91,
+          "heldout_mean": -0.032596118326002926,
+          "heldout_sd": 0.5801965634723562,
+          "max_abs_shift_vs_full_cohort": 0.012547078395370281,
+          "corr_with_full_cohort_fit": 0.999995820805859
+        },
+        {
+          "fold": 3,
+          "pathway": "HALLMARK_WNT_BETA_CATENIN_SIGNALING",
+          "n_train": 362,
+          "n_test": 91,
+          "heldout_mean": 0.013241838723089561,
+          "heldout_sd": 0.2692503175713812,
+          "max_abs_shift_vs_full_cohort": 0.020112950773928162,
+          "corr_with_full_cohort_fit": 0.9998571991593564
+        },
+        {
+          "fold": 3,
+          "pathway": "HALLMARK_P53_PATHWAY",
+          "n_train": 362,
+          "n_test": 91,
+          "heldout_mean": 0.03733429165633826,
+          "heldout_sd": 0.19774047470626469,
+          "max_abs_shift_vs_full_cohort": 0.030889617049744578,
+          "corr_with_full_cohort_fit": 0.9998049991721775
+        },
+        {
+          "fold": 3,
+          "pathway": "HALLMARK_PI3K_AKT_MTOR_SIGNALING",
+          "n_train": 362,
+          "n_test": 91,
+          "heldout_mean": 0.03228394549358175,
+          "heldout_sd": 0.18396460211195656,
+          "max_abs_shift_vs_full_cohort": 0.015630470368673405,
+          "corr_with_full_cohort_fit": 0.9999555380847793
+        },
+        {
+          "fold": 4,
+          "pathway": "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION",
+          "n_train": 363,
+          "n_test": 90,
+          "heldout_mean": -0.10049885269545748,
+          "heldout_sd": 0.5367158507481713,
+          "max_abs_shift_vs_full_cohort": 0.03601570799202769,
+          "corr_with_full_cohort_fit": 0.9999929175796026
+        },
+        {
+          "fold": 4,
+          "pathway": "HALLMARK_E2F_TARGETS",
+          "n_train": 363,
+          "n_test": 90,
+          "heldout_mean": 0.04162553169846009,
+          "heldout_sd": 0.6435322043331435,
+          "max_abs_shift_vs_full_cohort": 0.04396527272489159,
+          "corr_with_full_cohort_fit": 0.9999963784031939
+        },
+        {
+          "fold": 4,
+          "pathway": "HALLMARK_WNT_BETA_CATENIN_SIGNALING",
+          "n_train": 363,
+          "n_test": 90,
+          "heldout_mean": -0.002020771354125676,
+          "heldout_sd": 0.288194603773985,
+          "max_abs_shift_vs_full_cohort": 0.017583735238679954,
+          "corr_with_full_cohort_fit": 0.9998560918528262
+        },
+        {
+          "fold": 4,
+          "pathway": "HALLMARK_P53_PATHWAY",
+          "n_train": 363,
+          "n_test": 90,
+          "heldout_mean": -0.017767608900870733,
+          "heldout_sd": 0.20645240443911567,
+          "max_abs_shift_vs_full_cohort": 0.012749699095335437,
+          "corr_with_full_cohort_fit": 0.9999451419243481
+        },
+        {
+          "fold": 4,
+          "pathway": "HALLMARK_PI3K_AKT_MTOR_SIGNALING",
+          "n_train": 363,
+          "n_test": 90,
+          "heldout_mean": -0.01245257069425191,
+          "heldout_sd": 0.18604762316845508,
+          "max_abs_shift_vs_full_cohort": 0.009522583382908845,
+          "corr_with_full_cohort_fit": 0.9999405190723893
+        },
+        {
+          "fold": 5,
+          "pathway": "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION",
+          "n_train": 363,
+          "n_test": 90,
+          "heldout_mean": -0.04905337847552296,
+          "heldout_sd": 0.4832896991760685,
+          "max_abs_shift_vs_full_cohort": 0.013537247191373725,
+          "corr_with_full_cohort_fit": 0.9999930425203928
+        },
+        {
+          "fold": 5,
+          "pathway": "HALLMARK_E2F_TARGETS",
+          "n_train": 363,
+          "n_test": 90,
+          "heldout_mean": -0.11287546966085481,
+          "heldout_sd": 0.571906535008689,
+          "max_abs_shift_vs_full_cohort": 0.042464034091653335,
+          "corr_with_full_cohort_fit": 0.999981477277068
+        },
+        {
+          "fold": 5,
+          "pathway": "HALLMARK_WNT_BETA_CATENIN_SIGNALING",
+          "n_train": 363,
+          "n_test": 90,
+          "heldout_mean": -0.0050233840790634855,
+          "heldout_sd": 0.2724173295102018,
+          "max_abs_shift_vs_full_cohort": 0.011010993647503575,
+          "corr_with_full_cohort_fit": 0.9999282675318878
+        },
+        {
+          "fold": 5,
+          "pathway": "HALLMARK_P53_PATHWAY",
+          "n_train": 363,
+          "n_test": 90,
+          "heldout_mean": 7.105124510613545e-06,
+          "heldout_sd": 0.1714689765696233,
+          "max_abs_shift_vs_full_cohort": 0.012371916201210698,
+          "corr_with_full_cohort_fit": 0.9998126174410109
+        },
+        {
+          "fold": 5,
+          "pathway": "HALLMARK_PI3K_AKT_MTOR_SIGNALING",
+          "n_train": 363,
+          "n_test": 90,
+          "heldout_mean": -0.011234939023176188,
+          "heldout_sd": 0.18104172247167344,
+          "max_abs_shift_vs_full_cohort": 0.019880492910290044,
+          "corr_with_full_cohort_fit": 0.999610283730778
+        }
+      ],
+      "summary": {
+        "HALLMARK_E2F_TARGETS": {
+          "max_abs_shift": 0.0439767832161686,
+          "min_corr_with_full_cohort": 0.999981477277068
+        },
+        "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION": {
+          "max_abs_shift": 0.07223832293388321,
+          "min_corr_with_full_cohort": 0.9999852130755846
+        },
+        "HALLMARK_P53_PATHWAY": {
+          "max_abs_shift": 0.030889617049744578,
+          "min_corr_with_full_cohort": 0.9998049991721775
+        },
+        "HALLMARK_PI3K_AKT_MTOR_SIGNALING": {
+          "max_abs_shift": 0.019880492910290044,
+          "min_corr_with_full_cohort": 0.999610283730778
+        },
+        "HALLMARK_WNT_BETA_CATENIN_SIGNALING": {
+          "max_abs_shift": 0.020112950773928162,
+          "min_corr_with_full_cohort": 0.9998560918528262
+        }
+      }
+    }
+  },
+  "frozen_artifact_hashes": {
+    "frozen_gene_to_probeset_median.csv": "08f8715fb7eca5a0cad9516e66343bdd3edf48b1e68535e10b8da59dc054e237",
+    "frozen_gene_to_probe_discovery443.csv": "c386d5f11cc511dc240ad7f1cd47124e7687266ba4807d6be3dc80d7abd857bc",
+    "frozen_representation.json": "d5ec63736d87425864d37fd63250f5fa2269884bd0702b677f36c09d32a03570",
+    "expression_median_S0.parquet": "a1ca41807c53458489617e677f2bdb3f0a72b2c9a71d8ded59b4eeef60c73676",
+    "expression_repiqr_disc443_S0.parquet": "e636e259b4feabfaf4154366b3570dfa4ec4832995dd7cc51a4f40e86c2531da",
+    "cohort_membership.csv": "bd3671f8df64c594d273a23abed80b83dd17742aee15bd83ac114211be5fcd01",
+    "partition_and_batch.csv": "57a45bab8efb81f96e838b9348edb13d4a3fbf09f2ea13f69f2d0f52700c49ed",
+    "covariates.csv": "47b2d9829a4fccecf30663d0b0063d54664e72c1a9011938698c6c93a9441403",
+    "endpoint.csv": "802a68575a34a3b60a50bd2452b9b09b62c1c40b90f34f4f60bb66691b0e7e0d",
+    "m2_panel_4set.json": "cb4de071e2f64a6b6d401015ea70b22705e9a4149f71de6f6795845e1ce47b11",
+    "m2_panel_5set.json": "10dae4874a918160c50dd050fb267fca26474827d8215d53bd56b7f89ddd5275",
+    "M2_FREEZE_RECORD.json": "c2b31f3340b3635595457fcb0e33460c6032c66f6712a0afc4b7b2c65c0287dc",
+    "A19_FREEZE_RECORD.json": "a77de7b37fe09eeb9d9958ca012648e63fb349c19614b0c2dc99591da2cf561f",
+    "QC_DECISIONS_RECORD.json": "4e026fc547b801ba208d54bf589619075f61d6ecee49903aafd4de7e48401ec5",
+    "QC_SPECIFICATION.json": "d5d6f5b08ac6ab12f796cf7817624a7b0fb88564c7e3093d49abe1ebf5064115",
+    "GSE39582_sample_metadata.csv": "37cef7feb767766f31bbe2100bb6185b578a2dd5d6236bb83b4ae971bdcb5291"
+  },
+  "prior_phase_artifact_hashes": {
+    "reports/phase8a/pathway_score_correlation_4set_primary.csv": "a487d44b6f7ba770c44138f29b1938984fe9810687d8a649674b89acc149c0bc",
+    "reports/phase8a/pathway_score_correlation_5set_sensitivity.csv": "2390b367a4193aca98f4c9cf08d1bf5834a19f47147b534c0120c2b48c59cc01",
+    "reports/phase8a/pathway_scores_4set_primary_EXPLORATORY_full_cohort.csv": "e3124e7e7fbc1da59a733397907011cd2a1d44e52405d0e6cba5bd8ad5572687",
+    "reports/phase8a/pathway_scores_5set_sensitivity_EXPLORATORY_full_cohort.csv": "f6fb4fe226ace21df4c8545f233474b2a82f74306f1711a0f9b7757e671b5534",
+    "reports/phase8a/pca_scores_gene_level.csv": "d85f7076f9371429e25ada32adee0e25ff2a3238e1d4e398f0e4029334c39d84",
+    "reports/phase8a/pca_variance_explained.csv": "1ed205e0a4ceeea91623eb2bd3f60528f79f1a69f964c6677f7d7ab534f9a2d7",
+    "reports/phase8b/affx_vs_expression_pcs.csv": "94982ba63a41a3ee441d2ebc7dd9672455c21d8f384f1ccd4caf693617ea8578",
+    "reports/phase8b/batch05_pc3_decomposition.csv": "33597055e22bfe95ebe9bf8dd9a1e31cc33dcdec8a4273e993bf3fbd49220d5b",
+    "reports/phase8b/batch_by_combat_mod_cells.csv": "ce0efb96bb62b74a74c3e6793a8e286273c2f87a5a5c27d1a9cffa451d0dc5d0",
+    "reports/phase8b/batch_detection_power.csv": "28ed1d3299739f437fb596764f2cf9c9200510c1b4d0b5c44b3e590f8f68b4de",
+    "reports/phase8b/combat_mod_vs_mmr_S3.csv": "7673af6d478e07b3d22c67689d5fe605f3e0a47c696f0bbb5200d6eaed26357d",
+    "reports/phase8b/extraction_method_by_batch.csv": "4b142df7772ba731494f2c05d0224cf5cc8c40c9b95a168cdee6a6ee1e6a3549",
+    "reports/phase8b/mlh1_axis_by_mmr_group.csv": "cf1e47ac7725a601572a8da65635337aef45d046bf8ca6d434b97aff72a04846",
+    "reports/phase8b/new_findings_stratified_permutation.csv": "5d51e94291aff3938ba75a0f2aa415fd99b86dae4ca92ccfc3e1ea250bb9c6a9",
+    "reports/phase8b/pc_annotation_associations_pc1_20.csv": "a418557be115e7e7a8db6b64ca8d7305ea6b57044bcbcb52045ff3c1860f2fe3",
+    "reports/phase8b/pc_batch_stratified_permutation.csv": "278a52cff872ba66497480cd2f86880e058d7cb14bca8f12467134fc636a5c43",
+    "reports/phase8b/pc_batch_within_strata.csv": "086a6b0ec5716204ee6409a3b6c97399ee7d3bf2c38e0fe5881526b937292624",
+    "reports/phase8b/pc_variance_heterogeneity_by_batch.csv": "19fbac4c64a36f5a418d27271e68d394852cbd5283f256612ea9d4e92f3058e0",
+    "reports/phase8b/pca_variance_extended.csv": "d8ed2566d53d3230276bd0fe87d6dfc024f7b3e094fb7b3fbf9cc2e199c509d2",
+    "reports/phase8b/sex_discordant_eight_review.csv": "d84912f5076781450373a8c7c27567214c82911e74fde30d04c92ac0d97ef6c1",
+    "reports/phase8b/y_marker_separation.csv": "9a5fac072a5fe89fb0f6016d4c21f4aefee7dd20e24a6a2fe4c3b59b6f43975a",
+    "reports/phase8b/phase8b_summary.json": "9ac91b69f9ae5e50021eaf5823c293f61c3d0a55d27af9121fe8f414dcc9a22c"
+  },
+  "frozen_artifacts_modified": false,
+  "panel_membership_changed": false,
+  "panel_roles_changed": false,
+  "environment": {
+    "captured_utc": "2026-11-03T00:56:12.630696+00:00",
+    "python_version": "3.13.13",
+    "python_executable": "/Users/kalki/coad_transportability/.venv/bin/python",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.5.4",
+      "pandas": "2.3.3",
+      "scipy": "1.18.1",
+      "sklearn": "1.9.1",
+      "lifelines": "0.30.3",
+      "pyarrow": "26.0.0",
+      "pytest": "9.2.0"
+    }
+  }
+}

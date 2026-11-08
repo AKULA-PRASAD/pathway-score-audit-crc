@@ -1,0 +1,18 @@
+column,distinct_values,na_like_codes,n_na_like,empty_string,literal_NA,literal_N_slash_A,literal_ND
+age.at.diagnosis_(year),89,{},0,0,0,0,0
+sex,2,{},0,0,0,0,0
+tnm.stage,2,{},0,0,0,0,0
+tumor.location,2,{},0,0,0,0,0
+chemotherapy.adjuvant,3,"{""N/A"": 1}",1,0,0,1,0
+tnm.t,5,"{""N/A"": 19}",19,0,0,19,0
+tnm.n,6,"{""N/A"": 19}",19,0,0,19,0
+tnm.m,3,"{""N/A"": 19}",19,0,0,19,0
+mmr.status,3,"{""N/A"": 43}",43,0,0,43,0
+cimp.status,3,"{""N/A"": 67}",67,0,0,67,0
+cin.status,3,"{""N/A"": 89}",89,0,0,89,0
+kras.mutation,3,"{""N/A"": 21}",21,0,0,21,0
+braf.mutation,3,"{""N/A"": 54}",54,0,0,54,0
+tp53.mutation,3,"{""N/A"": 167}",167,0,0,167,0
+chemotherapy.adjuvant.type,6,"{""N/A"": 312}",312,0,0,312,0
+cit.molecularsubtype,6,{},0,0,0,0,0
+rna.extraction.method,6,{},0,0,0,0,0
