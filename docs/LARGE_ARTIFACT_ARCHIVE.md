@@ -66,9 +66,9 @@ reports/phase9/dc_interval/              8 files   historical as-run checkpoints
 ```
 `reports/phase9/independent_audit/` was created after the manifest. It is small and is committed normally, not archived.
 
-**Recommended destination:** a GitHub Release asset on the private repository (`phase9_campaign_artifacts.tar`, about 0.6 GB, uncompressed and deterministic), with an optional Zenodo deposit for a citable DOI. **Not created; owner approval required.**
+**Recommended destination:** a GitHub Release asset on the private repository (`phase9_campaign_artifacts.tar`, about 0.6 GB, uncompressed and deterministic), with an optional Zenodo deposit for a citable DOI. **Destination approved (owner decision D2); the archive is not yet built or uploaded, which requires separate authorisation.**
 
-**`.gitignore` policy (proposed, not applied):** ignore only `reports/phase9/corrected_rerun/runs/*.jsonl` and `*.lock`, with the comment shown in step 4 above. Everything else, including the manifest, is tracked.
+**`.gitignore` policy (approved as owner decision D2 and applied in commit `7e0df40`):** ignore only `reports/phase9/corrected_rerun/runs/*.jsonl` and `*.lock`, with the comment shown in step 4 above. Everything else, including the manifest, is tracked.
 
 **Restore and verify:**
 ```bash
@@ -90,5 +90,5 @@ python3 -I -B scripts/48_phase9_independent_audit.py /tmp/p9_audit_check   # rec
 ## Status
 
 - **Manifest generated (8 November 2026), after the PASS verification at B_out = 750:** `reports/phase9/ARCHIVE_MANIFEST_SHA256.txt`, 52 files, about 590 MB in total. Its SHA-256 is `c45bb806…6b6f`, and `shasum -a 256 -c` reports all 52 OK. The five checkpoint hashes in it equal the `checkpoint_sha256` values in the runs' final end records.
-- **Not done (owner decision):** the tar has not been built and nothing has been published or pushed. The `.gitignore` entry has not been added.
-- **Owner decision required:** approve the Release-asset approach (or choose Git LFS) and the `.gitignore` entry above.
+- **Owner decision D2 (8 November 2026):** Release-asset approach approved. The `.gitignore` entry is applied (commit `7e0df40`), and the checkpoints are excluded from Git.
+- **Not done (separate authorisation required):** the tar has not been built, and nothing has been uploaded, published or pushed.

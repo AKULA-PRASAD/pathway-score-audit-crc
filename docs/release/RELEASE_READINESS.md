@@ -1,8 +1,21 @@
 # Release-readiness package
 
-**Prepared:** 8 November 2026, from inspection of the working tree (branch `phase9-corrected-pipeline`, HEAD `c432eee314c00dc174ded6c95e976eb41dbbe66d`). Nothing has been committed, pushed, tagged, uploaded, moved or deleted. No release version or tag is proposed; that is the owner's choice.
+**Prepared:** 8 November 2026, from inspection of the working tree at HEAD `c432eee314c00dc174ded6c95e976eb41dbbe66d`. **Updated the same day** after the owner approved decisions A–E and the eight commit groups were committed locally (section 1.0). Nothing has been pushed, tagged, uploaded, moved or deleted, and the repository is **not publicly released**. No release version or tag is proposed; that is the owner's choice.
 
-## 1. Verified current state
+## 1.0 Repository state after the approved local commits (fresh inspection, 8 Nov 2026)
+
+| Item | State |
+|---|---|
+| Branch | `phase9-corrected-pipeline`, tracking `origin/phase9-corrected-pipeline` |
+| Remote tip | `6bb3f2673bed09fb1f516cb7f84a1d538abccce9`: **unchanged, nothing pushed** |
+| Local commits on top of the remote | `c432eee` (kept, decision A), then G1 `7e0df408`, G2 `1c3bcaf`, G3 `5169b9f`, G4 `6300e39`, G5 `f35346d`, G6 `4ae202c`, G7 `3924526`, G8 `97ed2a04` (HEAD `97ed2a048a506e08bbdf30a3ace8e4620507173b` before this record), then one documentation-only follow-up commit containing this update |
+| Working tree | clean: no modified or untracked files |
+| Tracked files | 487 after G8 |
+| Checkpoints | `reports/phase9/corrected_rerun/runs/run0–4.jsonl` on disk and unchanged; excluded by `.gitignore`; none in Git; archive manifest 52/52 OK |
+| Largest tracked file | 6.3 MB (`reports/phase2/probe_statistics.csv`) |
+| Still pending (separate authorisation) | push; building and publishing the checkpoint archive as a GitHub Release; code licence; public-release review, including per-sample tables |
+
+## 1. Pre-commit state (as inspected before the commits; retained as the record the commit plan was based on)
 
 | Item | State (checked on 8 Nov 2026) |
 |---|---|
@@ -19,31 +32,46 @@
 
 ### Discrepancies found during this inspection, and their handling
 1. **θ̂ RNG-link "bound".** Earlier text described the ≈ 2×10⁻⁵ figure as a bound. It is a typical-size (five-SD) figure. The strict analytical worst case is 4/2500 = 1.6×10⁻³. **Corrected** in the alignment audit, final report, inventory and register. Neither figure is an empirical measurement.
-2. **Untracked count.** An earlier document said 407; the actual count was 401 before the closure documents were added, and is 405 now. **Corrected.**
+2. **Untracked count.** An earlier document said 407; the actual count was 401 before the closure documents were added, and 405 immediately before the commits. **Corrected.** All of those files except the five checkpoints are now committed.
 3. **"Every pathway CI includes 1."** This is true for the primary four-set model only. The five-set sensitivity model's E2F interval is 0.746–0.996 (`docs/PHASE9_EXECUTION_REPORT.md` §5). **Corrected** after owner approval of G1–G13 (8 Nov 2026) in the final report, README and handover.
 4. **Run-3 lower endpoint rounding** (−0.0091, not −0.0092). Already corrected on 8 Nov. Every quoted interval now matches the results file.
 
 ## 2. Package contents
 
-| # | Item | Path | SHA-256 (first 16) |
+| # | Item | Path | SHA-256 (first 16, current) |
 |---|---|---|---|
-| 1 | Final scientific report | `docs/PHASE9_CORRECTED_FINAL_REPORT.md` | `11a7f5136010643d` |
+| 1 | Final scientific report | `docs/PHASE9_CORRECTED_FINAL_REPORT.md` | `dc96b61029f2e670` |
 | 2 | Independent audit report and results | `reports/phase9/independent_audit/INDEPENDENT_AUDIT_REPORT.md`, `independent_audit_results.json` | `abdea3df82285d8e`, `b67560a824182c45` |
-| 3 | Final project handover | `docs/FINAL_PROJECT_HANDOVER.md` | `76d3668415bc6660` |
-| 4 | README | `README.md` | `af61f3d7324bd02d` |
+| 3 | Final project handover | `docs/FINAL_PROJECT_HANDOVER.md` | `a71a2fbf236f2a37` |
+| 4 | README | `README.md` | `e2862c0efbb35afa` |
 | 5 | Reproduction instructions | `README.md` §Reproduction; `docs/PHASE9_DECISION13_FREEZE_PROCEDURE.md` | `c0ac2982cfd9ec8b` (procedure) |
-| 6 | Project completion inventory | `docs/PROJECT_COMPLETION_INVENTORY.md` | `4d74ca10544a7fa0` |
-| 7 | Owner decision register | `docs/OWNER_DECISION_REGISTER.md` | `5102dc76f859833c` |
-| 8 | Archive manifest and restoration | `reports/phase9/ARCHIVE_MANIFEST_SHA256.txt`; `docs/LARGE_ARTIFACT_ARCHIVE.md` | `c45bb806ce844346`, `02d32f40e1916b5a` |
+| 6 | Project completion inventory | `docs/PROJECT_COMPLETION_INVENTORY.md` | `10734aff4496bbe2` |
+| 7 | Owner decision register | `docs/OWNER_DECISION_REGISTER.md` | `847ac3be997f3cba` |
+| 8 | Archive manifest and restoration | `reports/phase9/ARCHIVE_MANIFEST_SHA256.txt`; `docs/LARGE_ARTIFACT_ARCHIVE.md` | `c45bb806ce844346`, `174102f48d2740f7` |
 | 9 | Final test report | section 1 above | — |
-| 10 | Commit plan (exact files) | `docs/release/COMMIT_PLAN_FILES.txt` | `5ae8ca46015b8fed` |
-| — | Scientific interpretation review (gaps G1–G13, applied) | `docs/PHASE9_SCIENTIFIC_INTERPRETATION_REVIEW.md` | `3f7a4b5eb9f02c55` |
+| 10 | Commit plan (exact files) | `docs/release/COMMIT_PLAN_FILES.txt` | `29fec1bc71bdbb97` |
+| — | Scientific interpretation review (gaps G1–G13, applied) | `docs/PHASE9_SCIENTIFIC_INTERPRETATION_REVIEW.md` | `6b502b79008ca264` |
 | — | θ̂ alignment audit | `docs/PHASE9_THETA_ALIGNMENT_AUDIT.md` | `8d6e319a3833f8db` |
 | — | Frozen verification at 750 | `reports/phase9/corrected_rerun/verification/L00750.report.json` | `9558aaa5dba467fb` |
 | — | Official interval results | `reports/phase9/corrected_rerun_report/corrected_interval_results.json` | `1c504b137b177f2e` |
 | — | Freeze record / interval plan v2.1 / modelling protocol v3.1 | `config/analysis/PHASE9_CORRECTED_FREEZE_RECORD.json`, `docs/PHASE9_DELTAC_INTERVAL_PLAN.md`, `docs/PHASE9_MODELING_PROTOCOL_DRAFT.md` | `618f20eb26d41423`, `d27c52a29930a338`, `ab56708919f3746f` |
 
-Hashes in this table predate the G1–G13 corrections for the final report, README, handover and this file; current hashes are listed in the G1–G13 implementation record (`docs/release/G1_G13_IMPLEMENTATION.md`).
+All hashes in this table were recomputed on 8 November 2026 after the G1–G13 corrections and the post-commit documentation update. This file is not listed, because a file cannot record its own hash.
+
+**Superseded documentation hashes** (values in the first version of this table, before the G1–G13 corrections and the post-commit update; kept for traceability):
+
+| File | Previous | Current |
+|---|---|---|
+| `docs/PHASE9_CORRECTED_FINAL_REPORT.md` | `11a7f5136010643d` | `dc96b61029f2e670` |
+| `docs/FINAL_PROJECT_HANDOVER.md` | `76d3668415bc6660` | `a71a2fbf236f2a37` |
+| `README.md` | `af61f3d7324bd02d` | `e2862c0efbb35afa` |
+| `docs/PROJECT_COMPLETION_INVENTORY.md` | `4d74ca10544a7fa0` | `10734aff4496bbe2` |
+| `docs/OWNER_DECISION_REGISTER.md` | `5102dc76f859833c` | `847ac3be997f3cba` |
+| `docs/LARGE_ARTIFACT_ARCHIVE.md` | `02d32f40e1916b5a` | `174102f48d2740f7` |
+| `docs/release/COMMIT_PLAN_FILES.txt` | `5ae8ca46015b8fed` | `29fec1bc71bdbb97` |
+| `docs/PHASE9_SCIENTIFIC_INTERPRETATION_REVIEW.md` | `3f7a4b5eb9f02c55` | `6b502b79008ca264` |
+
+Unchanged and not touched: the frozen code and freeze record, input manifest, configuration anchor, verification report, interval results, independent audit, θ̂ alignment audit, protocols, archive manifest and checkpoints.
 
 ## 3. Owner decisions A–E (summary; full evidence in `docs/OWNER_DECISION_REGISTER.md`)
 
@@ -135,5 +163,5 @@ Commit messages should be professional English, with no tool attribution.
 | Final report interpretation complete | ✅ G1–G13 applied after owner approval (8 Nov 2026) |
 | Owner decisions A–E | ✅ approved 8 Nov 2026 (recorded in the decision register) |
 | Licence | ⏳ open |
-| Local commits | ✅ authorised 8 Nov 2026 |
+| Local commits | ✅ G1–G8 committed 8 Nov 2026 (`7e0df408`…`97ed2a04`), plus a documentation-only follow-up |
 | Push, GitHub Release, archive upload | ⏳ not authorised |

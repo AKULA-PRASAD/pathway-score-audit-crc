@@ -1,6 +1,6 @@
 # Owner decision register — project closure
 
-**Prepared:** 8 November 2026. These decisions belong to the project owner. None has been taken; nothing has been committed, pushed, amended, reset, published or uploaded.
+**Prepared:** 8 November 2026. These decisions belong to the project owner. The "Current state" rows describe the repository when the register was prepared, before any decision. The outcomes are recorded under "Owner approvals recorded" at the end. Since then the approved groups have been committed locally; nothing has been pushed, amended, reset, published or uploaded.
 
 **Cross-cutting constraint.**
 - The configuration hash `bf939a4e…6a56` covers the whole run configuration except `n_workers`, and every checkpoint header, invocation record and verification report is bound to it.

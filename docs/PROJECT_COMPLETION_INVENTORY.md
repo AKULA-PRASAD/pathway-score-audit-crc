@@ -7,19 +7,21 @@
 **Owner approvals (8 November 2026):** decisions D1–D5 approved as recommended and the local commit plan authorised (`docs/OWNER_DECISION_REGISTER.md`, "Owner approvals recorded"). Push, release, archive upload and the licence remain open; items in section 5 that refer to D1–D5 are resolved accordingly.
 
 **Scientific status:** the corrected campaign is complete. Five runs × 750 outer replicates passed the frozen verification at 750 (PASS, 60 of 60). Reporting was permitted, and the final interval is computed and reported in `docs/PHASE9_CORRECTED_FINAL_REPORT.md`. What remains are owner decisions on version control and archiving (section 5).
-**Status of this file:** a review document for the project owner. Nothing listed here has been committed, deleted or moved.
+**Status of this file:** a review document for the project owner. Section 1 gives the repository state after the approved local commits on 8 November 2026. Sections 2–5 are retained as the pre-commit inventory on which the commit plan was based. Nothing has been deleted or moved, and nothing has been pushed.
 
 ## 1. Repository state
 
 | Item | State |
 |---|---|
 | Branch | `phase9-corrected-pipeline`, tracking `origin/phase9-corrected-pipeline` (private GitHub repository) |
-| Local commits not pushed | **1**: `c432eee` "Add Path C sizing-decision writer and document its use" (author Prasad Akula, 7 Nov 2026 12:19 −0500). It adds `scripts/45_phase9_sizing_decision.py` (143 lines) and `tests/test_phase9_corrected_sizing_writer.py` (74 lines), and edits `docs/PHASE9_DECISION13_FREEZE_PROCEDURE.md` (+21/−4, section 7 and section 8). It was made before the instruction not to commit. It is not pushed, and history has not been changed. |
+| Local commits not pushed | **10** on top of `origin` (`6bb3f26`): `c432eee` (Path C sizing-decision writer, 7 Nov 2026; kept unchanged, owner decision D1), then the eight approved commit groups (G1 `7e0df40`, G2 `1c3bcaf`, G3 `5169b9f`, G4 `6300e39`, G5 `f35346d`, G6 `4ae202c`, G7 `3924526`, G8 `97ed2a0`), then a documentation-only follow-up commit that records this state. Nothing has been pushed; the remote is unchanged |
 | Local `main` | still at `1b8c1c2` (original Phase 0 commit, with the earlier co-author trailer); not pushed, not changed |
-| Modified, uncommitted | `.gitignore` (adds `data/external/`); `requirements-analysis.txt` (records the Phase 1 `xlrd` install); `config/analysis/PHASE9_CORRECTED_RUN_CONFIG_OWNER_BLANK.json` (Decision 13 approval and Decision 14 authorisation, 4 lines); `README.md` (verified result, status, corrected cohort and model descriptions); two test files (section 3) |
-| Tracked files | 88 (Phase 0 infrastructure, the corrected Phase 9 package, launcher, verifier, freeze tooling, 4 docs, 22 test files) |
+| Working tree | clean after the commits: no modified or untracked files. The five checkpoints `reports/phase9/corrected_rerun/runs/run0–4.jsonl` remain on disk, unchanged, and excluded from Git by `.gitignore` (owner decision D2) |
+| Tracked files | 487 after commit G8 (88 before the commit plan) |
 
-## 2. What is missing from version control
+## 2. What was missing from version control (pre-commit inventory)
+
+**Status (8 November 2026):** everything in this section except the five checkpoints has since been committed in groups G1–G8. The section is retained as the record the commit plan was based on.
 
 Every file the corrected pipeline imports is tracked: no tracked module imports an untracked one, and all 27 frozen files are tracked. What is missing is the **evidence and history of Phases 1–9**, which exists only in the working tree.
 
@@ -80,7 +82,7 @@ Some tests read the locally held study inputs and historical outputs, which are 
 ## 5. Unresolved decisions and technical debt
 
 1. **Decision 12** (`lambda_at_failure`): the configuration entry is null and unapproved, although Option C was chosen and implemented (frozen `fitting.py`). It has no effect on this campaign, which had 0 fit failures, and the pipeline does not read it. Editing the configuration would break its hash binding, so record it separately (owner decision D3).
-2. **Commit `c432eee`**: needs the owner's review (keep, amend or drop). Not pushed.
+2. **Commit `c432eee`**: kept unchanged (owner decision D1, 8 Nov 2026). Not pushed.
 3. **Large checkpoints**: choose how they are archived (section 2.2). The SHA-256 manifest is generated; the tar, the release and the `.gitignore` entry await approval.
 4. **Two obsolete test expectations**: updated to the approved post-freeze state, and the suite passes in full (section 3). Only the review of the diff remains.
 5. **Scripts 45 and 46 sit outside the Decision 13 freeze** by design. A future freeze could include them and give the launcher `size` and `report` commands.

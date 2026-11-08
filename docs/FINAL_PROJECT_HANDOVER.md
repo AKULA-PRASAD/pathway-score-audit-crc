@@ -98,13 +98,13 @@ Full report: `docs/PHASE9_CORRECTED_FINAL_REPORT.md`.
 
 | | |
 |---|---|
-| Branch | `phase9-corrected-pipeline`, tracking `origin`; **ahead 1** (`c432eee`, unpushed, unapproved; see owner decision D1) |
-| Modified, tracked | `.gitignore` (`data/external/`), `README.md`, run configuration (4-line Decision 13/14 record; already bound into the config hash), `requirements-analysis.txt`, two test files (obsolete expectations updated) |
-| Untracked | 401 files: Phase 1–9 docs, scripts 15–39 and 46–48, `src` modules, tests, configuration records, freeze record, all `reports/` outputs, closure documents |
-| Large files | five checkpoints of 113 MB, which must stay outside Git (D2) |
+| Branch | `phase9-corrected-pipeline`, tracking `origin/phase9-corrected-pipeline` (`6bb3f26`). **10 local commits not pushed**: `c432eee` (kept, decision D1), the eight approved groups `7e0df40`…`97ed2a0`, and a documentation-only follow-up commit |
+| Working tree | clean: no modified or untracked files after the commits |
+| Committed content | all project source, documentation, configuration records, the freeze record and `reports/` outputs (487 tracked files after G8), excluding the five checkpoints |
+| Large files | five checkpoints of 113 MB, excluded by `.gitignore` and pinned by the archive manifest. The archive is not yet built or uploaded |
 | Local paths | `/Users/kalki/…` appears in frozen or historical JSON and in three historical script docstrings. Not sensitive. The frozen and historical files are left unchanged |
 | Secrets | none found |
-| Outstanding owner decisions | `docs/OWNER_DECISION_REGISTER.md`: D1 commit `c432eee`; D2 archive destination and `.gitignore`; D3 Decision 12 record; D4 committing the untracked files; D5 θ̂ disclosure and reporting-format approval. Optional: a licence |
+| Owner decisions | D1–D5 approved on 8 Nov 2026 and recorded in `docs/OWNER_DECISION_REGISTER.md`. **Still pending (separate authorisation):** push to the remote, building and publishing the checkpoint archive as a GitHub Release, choice of a code licence, and the public-release review (including per-sample tables). The repository is not publicly released |
 
 ## 5. Portfolio readiness
 

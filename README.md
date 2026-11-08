@@ -4,7 +4,7 @@ A pre-specified, audited analysis of whether four Hallmark pathway scores improv
 
 **Status (8 November 2026):**
 - **Scientifically complete:** the frozen verification passed (60 of 60 checks), and an independent checkpoint-level audit reproduced every reported number.
-- **Repository disposition:** pending owner sign-off (`docs/PROJECT_COMPLETION_INVENTORY.md`).
+- **Repository disposition:** owner decisions approved, and the project committed locally. Push, the checkpoint-archive release, the code licence and the public-release review are pending (`docs/PROJECT_COMPLETION_INVENTORY.md`).
 
 ## Research question
 
