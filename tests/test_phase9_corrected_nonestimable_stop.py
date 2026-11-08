@@ -1010,9 +1010,15 @@ def test_optional_distribution_record_check(tmp_path):
         REAL_VERIFY(cfg_for(root2, anchor2))
 
 
-def test_real_freeze_is_absent_and_verification_fails_closed():
-    assert not (ROOT / orch.FREEZE_RECORD_RELPATH).exists()
-    with pytest.raises(orch.CodeIdentityRefusal, match="missing or unreadable"):
+def test_real_freeze_is_the_approved_anchor_and_verification_fails_closed():
+    """Updated after Decision 13 (approved 2026-11-06). Before approval the real freeze record
+    was absent and a configuration anchored to any hash failed as 'missing or unreadable'. Now
+    the approved record is installed: it must match the approved anchor, and a configuration
+    anchored to any other hash must still be refused."""
+    cfg = json.loads((ROOT / "config/analysis/PHASE9_CORRECTED_RUN_CONFIG_OWNER_BLANK.json").read_text())
+    anchor = cfg["owner_decisions_outside_schema"]["D13_driver_freeze"]["freeze_record_sha256"]
+    assert hashlib.sha256((ROOT / orch.FREEZE_RECORD_RELPATH).read_bytes()).hexdigest() == anchor
+    with pytest.raises(orch.CodeIdentityRefusal, match="does not match the approved Decision 13 hash"):
         REAL_VERIFY(cfg_for(ROOT, "a" * 64))
     with pytest.raises(orch.CodeIdentityRefusal, match="not approved"):
         REAL_VERIFY(CorrectedConfig(approved_test_config(ROOT, "scratch_unused"), ROOT))

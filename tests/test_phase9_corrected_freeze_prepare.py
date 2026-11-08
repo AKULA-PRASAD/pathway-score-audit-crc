@@ -334,7 +334,16 @@ def test_capture_refuses_without_launch_flags_and_relative_output(prep_repo):
 
 
 def test_prepare_never_touches_the_real_repository():
-    assert not (ROOT / orch.FREEZE_RECORD_RELPATH).exists()
+    """Updated after Decision 13 (approved 2026-11-06): the real freeze record is now the
+    owner-installed trust anchor, so it must exist and still hash to the approved Decision 13
+    value. Before approval this test asserted the file was absent; either way, no test or
+    prepare run may create or alter it."""
+    cfg = json.loads((ROOT / "config/analysis/PHASE9_CORRECTED_RUN_CONFIG_OWNER_BLANK.json").read_text())
+    d13 = cfg["owner_decisions_outside_schema"]["D13_driver_freeze"]
+    p = ROOT / orch.FREEZE_RECORD_RELPATH
+    assert d13["approved"] is True
+    assert p.is_file() and not p.is_symlink()
+    assert hashlib.sha256(p.read_bytes()).hexdigest() == d13["freeze_record_sha256"]
 
 
 
