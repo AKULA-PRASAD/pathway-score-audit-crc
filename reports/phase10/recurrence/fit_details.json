@@ -1,0 +1,1352 @@
+[
+  {
+    "repeat": 0,
+    "fold": 0,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.3511191734215131,
+      "inner_c": 0.613961151621061
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 7.896522868499726,
+      "inner_c": 0.6071330803030873,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 0,
+    "fold": 1,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.001,
+      "inner_c": 0.6189900478264985
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 7.896522868499726,
+      "inner_c": 0.5949199839374918,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 0,
+    "fold": 2,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 1.873817422860385,
+      "inner_c": 0.60707533126749
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.6044660771014343,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 0,
+    "fold": 3,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.001,
+      "inner_c": 0.6117354790281198
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.5970100524273716,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 0,
+    "fold": 4,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.1519911082952933,
+      "inner_c": 0.5828103241335781
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.5741457062660252,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 1,
+    "fold": 0,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.1519911082952933,
+      "inner_c": 0.6125468489270093
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 7.896522868499726,
+      "inner_c": 0.5898403710967446,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 1,
+    "fold": 1,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.012328467394420659,
+      "inner_c": 0.6047991872942722
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.5853313208196231,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 1,
+    "fold": 2,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.012328467394420659,
+      "inner_c": 0.6071807598407467
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 4.923882631706739,
+      "inner_c": 0.5963525297923884,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 1,
+    "fold": 3,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.06579332246575682,
+      "inner_c": 0.611794881719254
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.594304562028824,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 1,
+    "fold": 4,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 1.873817422860385,
+      "inner_c": 0.5984679544907985
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.5988179669029036,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 2,
+    "fold": 0,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.3511191734215131,
+      "inner_c": 0.6150730738419579
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.6083194013362649,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 2,
+    "fold": 1,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.1519911082952933,
+      "inner_c": 0.5845720434362447
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 3.07029062975785,
+      "inner_c": 0.577270407901799,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 2,
+    "fold": 2,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.8111308307896873,
+      "inner_c": 0.6225979868476526
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.61891720901211,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 2,
+    "fold": 3,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.0023101297000831605,
+      "inner_c": 0.5838258392021298
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.5746620642470638,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 2,
+    "fold": 4,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 10.0,
+      "inner_c": 0.5865406781046785
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 7.896522868499726,
+      "inner_c": 0.5866175411130514,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 3,
+    "fold": 0,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.1519911082952933,
+      "inner_c": 0.6279795876963556
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.6178344523315406,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 3,
+    "fold": 1,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.1519911082952933,
+      "inner_c": 0.5785332648543187
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.5783331434222182,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 3,
+    "fold": 2,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.8111308307896873,
+      "inner_c": 0.6070658059149712
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 4.923882631706739,
+      "inner_c": 0.6050825276304591,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 3,
+    "fold": 3,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.3511191734215131,
+      "inner_c": 0.5942821070661518
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.5836454697899217,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 3,
+    "fold": 4,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.1519911082952933,
+      "inner_c": 0.5991136909888526
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 6.235507341273915,
+      "inner_c": 0.594874082908772,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 4,
+    "fold": 0,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.8111308307896873,
+      "inner_c": 0.6140718197663486
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.6115997407392169,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 4,
+    "fold": 1,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.3511191734215131,
+      "inner_c": 0.6032669031734814
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.584243915998883,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 4,
+    "fold": 2,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.1519911082952933,
+      "inner_c": 0.60224727135141
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 7.896522868499726,
+      "inner_c": 0.5909125943218595,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 4,
+    "fold": 3,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.005336699231206312,
+      "inner_c": 0.6347903594333102
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 4.923882631706739,
+      "inner_c": 0.616028089800009,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 4,
+    "fold": 4,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.1519911082952933,
+      "inner_c": 0.566218287681975
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.5632246557168841,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 5,
+    "fold": 0,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 4.328761281083062,
+      "inner_c": 0.6145836848138317
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 7.896522868499726,
+      "inner_c": 0.615109813928554,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 5,
+    "fold": 1,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 1.873817422860385,
+      "inner_c": 0.6167038923712301
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.6154597283419259,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 5,
+    "fold": 2,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.8111308307896873,
+      "inner_c": 0.6086844568532432
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 6.235507341273915,
+      "inner_c": 0.6049054795745925,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 5,
+    "fold": 3,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.8111308307896873,
+      "inner_c": 0.5839864297195265
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 6.235507341273915,
+      "inner_c": 0.5746643357549452,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 5,
+    "fold": 4,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.02848035868435802,
+      "inner_c": 0.6040148381418924
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 3.07029062975785,
+      "inner_c": 0.5837597875901335,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 6,
+    "fold": 0,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.012328467394420659,
+      "inner_c": 0.6189007688269552
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 7.896522868499726,
+      "inner_c": 0.6095859923842472,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 6,
+    "fold": 1,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.1519911082952933,
+      "inner_c": 0.6308375206409187
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.6237160663627789,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 6,
+    "fold": 2,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.3511191734215131,
+      "inner_c": 0.6103217402957681
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 4.923882631706739,
+      "inner_c": 0.5855996148927858,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 6,
+    "fold": 3,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 4.328761281083062,
+      "inner_c": 0.5670440614888175
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 3.8881551803080883,
+      "inner_c": 0.5673286799654071,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 6,
+    "fold": 4,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.06579332246575682,
+      "inner_c": 0.6293285198140062
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.6073568353901779,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 7,
+    "fold": 0,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.3511191734215131,
+      "inner_c": 0.587000044673286
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 3.8881551803080883,
+      "inner_c": 0.5766085034996947,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 7,
+    "fold": 1,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.3511191734215131,
+      "inner_c": 0.6279845722842983
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.616070272467182,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 7,
+    "fold": 2,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.1519911082952933,
+      "inner_c": 0.6168205135695088
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 4.923882631706739,
+      "inner_c": 0.6048569909250177,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 7,
+    "fold": 3,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.3511191734215131,
+      "inner_c": 0.5896247926421394
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.5877082105868547,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 7,
+    "fold": 4,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.06579332246575682,
+      "inner_c": 0.6275044754912322
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.6144801701883863,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 8,
+    "fold": 0,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.8111308307896873,
+      "inner_c": 0.5817778451124449
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.5758641687536656,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 8,
+    "fold": 1,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.1519911082952933,
+      "inner_c": 0.5850827148804049
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 7.896522868499726,
+      "inner_c": 0.5707438871627846,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 8,
+    "fold": 2,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.02848035868435802,
+      "inner_c": 0.6058253900160344
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.5907148247498355,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 8,
+    "fold": 3,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 10.0,
+      "inner_c": 0.6314779287888092
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.6333578241606795,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 8,
+    "fold": 4,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.02848035868435802,
+      "inner_c": 0.6275383031747568
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 6.235507341273915,
+      "inner_c": 0.609589064561774,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 9,
+    "fold": 0,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.3511191734215131,
+      "inner_c": 0.6233766803388745
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 3.07029062975785,
+      "inner_c": 0.6138945623782142,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 9,
+    "fold": 1,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 0.001,
+      "inner_c": 0.5628165622801347
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 4.923882631706739,
+      "inner_c": 0.552973414084829,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 9,
+    "fold": 2,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 1.873817422860385,
+      "inner_c": 0.5979181429545533
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 4.923882631706739,
+      "inner_c": 0.5944820752428155,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 9,
+    "fold": 3,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 1.873817422860385,
+      "inner_c": 0.6085305741345512
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 3.8881551803080883,
+      "inner_c": 0.6016897444075252,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 9,
+    "fold": 4,
+    "null_seed": null,
+    "M1": {},
+    "M1_breslow": {},
+    "M2_strict": {
+      "lambda": 10.0,
+      "inner_c": 0.6147224839290726
+    },
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 6.235507341273915,
+      "inner_c": 0.6161216186517483,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 0,
+    "fold": 0,
+    "null_seed": 3113564841,
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 6.235507341273915,
+      "inner_c": 0.5356391904656446,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 0,
+    "fold": 1,
+    "null_seed": 3113564841,
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 4.923882631706739,
+      "inner_c": 0.5311219019893763,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 0,
+    "fold": 2,
+    "null_seed": 3113564841,
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.510429350481634,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 0,
+    "fold": 3,
+    "null_seed": 3113564841,
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 3.8881551803080883,
+      "inner_c": 0.5364558077421121,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 0,
+    "fold": 4,
+    "null_seed": 3113564841,
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.5955271889813799,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 1,
+    "fold": 0,
+    "null_seed": 3959111234,
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 3.8881551803080883,
+      "inner_c": 0.5484003742236486,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 1,
+    "fold": 1,
+    "null_seed": 3959111234,
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 7.896522868499726,
+      "inner_c": 0.5047421738789376,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 1,
+    "fold": 2,
+    "null_seed": 3959111234,
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 4.923882631706739,
+      "inner_c": 0.5537698125728294,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 1,
+    "fold": 3,
+    "null_seed": 3959111234,
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.49114383234029935,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 1,
+    "fold": 4,
+    "null_seed": 3959111234,
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 3.07029062975785,
+      "inner_c": 0.4982237532569485,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 2,
+    "fold": 0,
+    "null_seed": 1815955911,
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.525829078631366,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 2,
+    "fold": 1,
+    "null_seed": 1815955911,
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.5341310598858856,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 2,
+    "fold": 2,
+    "null_seed": 1815955911,
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 3.8881551803080883,
+      "inner_c": 0.43294666640411633,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 2,
+    "fold": 3,
+    "null_seed": 1815955911,
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.4954827271637618,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 2,
+    "fold": 4,
+    "null_seed": 1815955911,
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 3.07029062975785,
+      "inner_c": 0.5210634586611128,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 3,
+    "fold": 0,
+    "null_seed": 925135348,
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 6.235507341273915,
+      "inner_c": 0.5547183251639574,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 3,
+    "fold": 1,
+    "null_seed": 925135348,
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 3.07029062975785,
+      "inner_c": 0.5150531013618543,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 3,
+    "fold": 2,
+    "null_seed": 925135348,
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.540760896580033,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 3,
+    "fold": 3,
+    "null_seed": 925135348,
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.5104269837543849,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 3,
+    "fold": 4,
+    "null_seed": 925135348,
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 7.896522868499726,
+      "inner_c": 0.49593558898859813,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 4,
+    "fold": 0,
+    "null_seed": 2350098013,
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.4602199621704658,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 4,
+    "fold": 1,
+    "null_seed": 2350098013,
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 3.8881551803080883,
+      "inner_c": 0.45105003071693917,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 4,
+    "fold": 2,
+    "null_seed": 2350098013,
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.5427944989937912,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 4,
+    "fold": 3,
+    "null_seed": 2350098013,
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 4.923882631706739,
+      "inner_c": 0.5453191425626227,
+      "alpha_at_grid_edge": false,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  },
+  {
+    "repeat": 4,
+    "fold": 4,
+    "null_seed": 2350098013,
+    "M3_enet_cox": {
+      "l1_ratio": 0.9,
+      "alpha": 10.0,
+      "inner_c": 0.4816435025822038,
+      "alpha_at_grid_edge": true,
+      "n_genes_selected": 0,
+      "selected": {},
+      "inner_failures": []
+    }
+  }
+]
