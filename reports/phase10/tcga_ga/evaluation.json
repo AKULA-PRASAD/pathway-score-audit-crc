@@ -1,0 +1,125 @@
+{
+  "title": "Independent-cohort, cross-platform evaluation of MMR/MSI-associated expression classification (TCGA-COAD, GA RNA-seq; deviation 2)",
+  "labels": "GSE39582 mmr.status (PCR MSI, 5 Bethesda markers) vs TCGA MSI_updated_Oct62011, MSI-H vs MSS+MSI-L (PCR panels; related, not identical)",
+  "normalisation": "unsupervised target-cohort adaptation (per-gene z-score on this TCGA population; label-free); not a single-patient pipeline",
+  "registration_sha256": "89ecfa23c2d28507bc90ce88e436aabe6ca8a8376c37a91fe22a9eda863675d6",
+  "n": 97,
+  "msi_h": 20,
+  "excluded_missing_label": 27,
+  "bootstrap": {
+    "resamples": 2000,
+    "type": "stratified patient bootstrap"
+  },
+  "models": {
+    "enet_logistic": {
+      "auroc": 0.9896103896103896,
+      "auprc": 0.9318987314285303,
+      "prevalence": 0.20618556701030927,
+      "brier": 0.03850896538785452,
+      "scaled_brier": 0.764720223808881,
+      "calibration_intercept": -0.1089183225290528,
+      "calibration_slope": 2.345584471752115,
+      "ci95": {
+        "auroc": [
+          0.964935064935065,
+          1.0
+        ],
+        "auprc": [
+          0.8105337904848775,
+          1.0000000000000002
+        ],
+        "brier": [
+          0.02305102967478909,
+          0.05981173016955678
+        ]
+      }
+    },
+    "random_forest": {
+      "auroc": 0.9795454545454545,
+      "auprc": 0.9066922517599141,
+      "prevalence": 0.20618556701030927,
+      "brier": 0.08319736082474227,
+      "scaled_brier": 0.49168573506493507,
+      "calibration_intercept": 0.45726920191238557,
+      "calibration_slope": 3.272038268562279,
+      "ci95": {
+        "auroc": [
+          0.9503246753246753,
+          1.0
+        ],
+        "auprc": [
+          0.7890702611951099,
+          1.0
+        ],
+        "brier": [
+          0.06863483814432988,
+          0.09916170515463918
+        ]
+      }
+    },
+    "mlh1_only": {
+      "auroc": 0.8857142857142857,
+      "auprc": 0.6761063601001682,
+      "prevalence": 0.20618556701030927,
+      "brier": 0.11295382121410212,
+      "scaled_brier": 0.30988149103669693,
+      "calibration_intercept": 0.8188510649192089,
+      "calibration_slope": 0.8646605877940872,
+      "ci95": {
+        "auroc": [
+          0.7726785714285714,
+          0.974025974025974
+        ],
+        "auprc": [
+          0.519058197941091,
+          0.9349013157894736
+        ],
+        "brier": [
+          0.08080867135684724,
+          0.15112444085052135
+        ]
+      }
+    },
+    "clinical_only": {
+      "auroc": 0.7727272727272727,
+      "auprc": 0.36570761258899315,
+      "prevalence": 0.20618556701030927,
+      "brier": 0.13440975287353032,
+      "scaled_brier": 0.17879132156685273,
+      "calibration_intercept": 0.1432328207113117,
+      "calibration_slope": 1.62117130744271,
+      "ci95": {
+        "auroc": [
+          0.6788717532467532,
+          0.8571428571428571
+        ],
+        "auprc": [
+          0.29023454807664983,
+          0.5449602967458662
+        ],
+        "brier": [
+          0.12421505327476341,
+          0.14492673133104883
+        ]
+      }
+    }
+  },
+  "enet_minus_mlh1_auroc": {
+    "point": 0.10389610389610393,
+    "ci95_paired_bootstrap": [
+      0.020779220779220786,
+      0.21819805194805184
+    ]
+  },
+  "adaptation_notes": {
+    "enet_logistic": {
+      "genes_zero_sd": 0
+    },
+    "random_forest": {
+      "genes_zero_sd": 0
+    },
+    "mlh1_only": {
+      "genes_zero_sd": 0
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "label_free": true,
+  "primary_tumour_samples": 286,
+  "stage_counts": {
+    "II": 110,
+    "III": 80,
+    "I": 45,
+    "IV": 39,
+    "null": 12
+  },
+  "location_unmapped": [
+    "[Discrepancy]"
+  ],
+  "primary_population_n": 182,
+  "all_stage_population_n": 274,
+  "excluded_from_primary": {
+    "stage_not_II_III_or_missing": 96,
+    "incomplete_clinical_among_stage_II_III": 8
+  },
+  "shared_genes": 16322,
+  "genes_all_zero_in_primary": 87,
+  "genes_over_half_zero_in_primary": 1477,
+  "expression_value_range": [
+    0.0,
+    19.6524
+  ]
+}

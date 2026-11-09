@@ -1,0 +1,149 @@
+{
+  "track": "A: survival ML for cause-specific recurrence, GSE39582 (exploratory, post hoc)",
+  "cohort": {
+    "n": 452,
+    "events": 136,
+    "censored": 316
+  },
+  "endpoint_caveats": [
+    "rfs.delay time unit undocumented: no fixed-time metrics",
+    "deaths without recurrence (46) censored: cause-specific hazard, not cumulative incidence"
+  ],
+  "design": {
+    "outer": "10 repeats x 5-fold, stratified by event",
+    "inner": "5-fold",
+    "folds_sha256": "ab73d096f5920e16d52f4b44fb317522720c15289e95dae9f92d5c10ce99c507",
+    "strict_nesting": true,
+    "variance_top_k": 2000
+  },
+  "metric_note": "Harrell C (lifelines rules), within-fold pooled; paired deltas use identical comparable pairs. SD/MC SE = partition variability only.",
+  "models": {
+    "M1": {
+      "mean": 0.5997679849294137,
+      "sd_across_repeats": 0.006492328359108557,
+      "mc_se": 0.002053054493248662,
+      "min": 0.588134687332977,
+      "max": 0.6087259100642398,
+      "n_repeats": 10
+    },
+    "M1_breslow": {
+      "mean": 0.6000679804737082,
+      "sd_across_repeats": 0.006533307122426023,
+      "mc_se": 0.0020660131160266768,
+      "min": 0.5886691608765366,
+      "max": 0.6087259100642398,
+      "n_repeats": 10
+    },
+    "M2_strict": {
+      "mean": 0.6025623105967466,
+      "sd_across_repeats": 0.009393236668986851,
+      "mc_se": 0.002970402247501156,
+      "min": 0.5870657402458578,
+      "max": 0.6161518661518661,
+      "n_repeats": 10
+    },
+    "M3_enet_cox": {
+      "mean": 0.6000251238682364,
+      "sd_across_repeats": 0.006505925038016695,
+      "mc_se": 0.0020573541406450307,
+      "min": 0.5885622661678247,
+      "max": 0.6087259100642398,
+      "n_repeats": 10
+    }
+  },
+  "paired_delta_c": {
+    "M1_breslow_minus_M1": {
+      "mean": 0.0002999955442945021,
+      "sd_across_repeats": 0.0003225891503362978,
+      "mc_se": 0.00010201164635211733,
+      "min": -0.00032085561497326203,
+      "max": 0.000643845906213113,
+      "n_repeats": 10
+    },
+    "M2_strict_minus_M1": {
+      "mean": 0.002794325667332858,
+      "sd_across_repeats": 0.005358319043740387,
+      "mc_se": 0.0016944492608075017,
+      "min": -0.0072696172760316445,
+      "max": 0.009591683635194513,
+      "n_repeats": 10
+    },
+    "M3_enet_cox_minus_M1": {
+      "mean": 0.0002571389388226878,
+      "sd_across_repeats": 0.0002634649848880369,
+      "mc_se": 8.331494359480386e-05,
+      "min": -0.000213903743315508,
+      "max": 0.0006435006435006435,
+      "n_repeats": 10
+    },
+    "M3_enet_cox_minus_M1_breslow": {
+      "mean": -4.2856605471814325e-05,
+      "sd_across_repeats": 0.00017651895097967914,
+      "mc_se": 5.5820193527939656e-05,
+      "min": -0.00042909246942716153,
+      "max": 0.0002143852502947797,
+      "n_repeats": 10
+    }
+  },
+  "m2_lambda_counts": {
+    "0.1519911082952933": 11,
+    "0.3511191734215131": 9,
+    "0.8111308307896873": 6,
+    "1.873817422860385": 5,
+    "0.001": 3,
+    "0.012328467394420659": 3,
+    "0.06579332246575682": 3,
+    "10.0": 3,
+    "0.02848035868435802": 3,
+    "4.328761281083062": 2,
+    "0.0023101297000831605": 1,
+    "0.005336699231206312": 1
+  },
+  "m3_tuning": {
+    "l1_ratio_counts": {
+      "0.9": 50
+    },
+    "alpha_at_grid_edge": 24,
+    "genes_selected_per_fit": {
+      "mean": 0.0,
+      "sd_across_repeats": 0.0,
+      "mc_se": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "n_repeats": 50
+    },
+    "inner_failures": 0
+  },
+  "n1_null": {
+    "replicates": 5,
+    "summary": {
+      "mean": 0.5034094293488411,
+      "sd_across_repeats": 0.05238667074524219,
+      "mc_se": 0.02342803138025222,
+      "min": 0.4510234701532526,
+      "max": 0.5817210048102619,
+      "n_repeats": 5
+    },
+    "alarm_rule": "mean > 0.52 and > 0.5 + 2*MC SE",
+    "alarm": false
+  },
+  "failed_outer_fits": [],
+  "phase9_reference_not_comparable": {
+    "estimand": "bootstrap optimism-corrected Harrell C on the full cohort (Phase 9, frozen)",
+    "M1": 0.6016131687304218,
+    "M2_four_set": 0.6059295115344525,
+    "delta": 0.004316342804,
+    "source": "reports/phase9/corrected_rerun_report/corrected_interval_results.json"
+  },
+  "runtime_seconds": 71.0,
+  "environment": {
+    "python": "3.13.13",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.9.1",
+    "lifelines": "0.30.3",
+    "scikit-survival": "0.28.0"
+  },
+  "git_head": "9cba5867b3241557417ff7dd7952ca89af5b23ea"
+}

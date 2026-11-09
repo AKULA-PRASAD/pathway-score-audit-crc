@@ -1,0 +1,45 @@
+# Phase 10 run configuration (post-hoc, exploratory; see docs/PHASE10_METHODS_AND_MODEL_CARD.md).
+# Every value below was fixed before any Phase 10 outcome evaluation.
+seed_base: 2026111000          # distinct from Phase 9's 2026110300
+outer_folds: 5
+inner_folds: 5
+repeats: 5                     # benchmark decides whether 10 is affordable
+variance_top_k: 2000           # B-02 rule: top-K genes by training-fold variance, outcome-free
+
+mmr:                           # Track B (classification)
+  label_column: mmr.status
+  positive: dMMR
+  negative: pMMR
+  clinical: [age, male, stage3, proximal]   # chemotherapy excluded (treatment depends on MMR)
+  single_gene: MLH1
+  enet:
+    l1_ratio: [0.1, 0.5, 0.9]
+    C: {logspace: [-3, 1, 10]}
+    max_iter: 5000
+    tol: 0.001
+  rf:
+    n_estimators: 500
+    max_features: [sqrt, 0.1]
+    min_samples_leaf: [1, 5]
+  class_weight: null           # no reweighting: stratified folds, threshold-free primary metrics, calibration preserved
+  prob_clip: 1.0e-6            # for calibration logits only
+
+tcga:
+  label_column: MSI_updated_Oct62011
+  positive: [MSI-H]
+  negative: [MSS, MSI-L]
+  sample_type_code: "01"       # primary tumour
+  clinical_allow_list: [sampleID, age_at_initial_pathologic_diagnosis, gender, pathologic_stage, anatomic_neoplasm_subdivision]
+  primary_stages: [II, III]
+  proximal_sites: [Cecum, Ascending Colon, Hepatic Flexure, Transverse Colon]
+  distal_sites: [Splenic Flexure, Descending Colon, Sigmoid Colon, Rectosigmoid Junction]
+  bootstrap_resamples: 2000
+
+recurrence:                    # Track A (survival)
+  enet_cox:
+    l1_ratio: [0.1, 0.5, 0.9]
+    # fixed absolute grid, shared by all folds. Originally geomspace(1.0, 0.001, 30); the one-fold
+    # benchmark's INNER-CV optimum sat at the top edge (alpha=1.0), so the pre-declared one-time
+    # contingency extended it by one decade (same 10 points/decade) before the campaign.
+    alphas: {geomspace: [10.0, 0.001, 40]}
+  null_replicates: 5           # training-fold (time, event) permutation diagnostic
