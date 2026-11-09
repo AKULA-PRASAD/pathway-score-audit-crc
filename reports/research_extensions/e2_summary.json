@@ -1,0 +1,14 @@
+{
+  "extension": "E2",
+  "label": "post-hoc extension, outcome-free; estimation only",
+  "n": 452,
+  "bootstrap": {
+    "B": 2000,
+    "seed": 20261108
+  },
+  "within_subtype_rule": {
+    "criterion": "rho(EMT, MCP fibroblasts) >= 0.7 in >= 5 of 6 CIT subtypes",
+    "n_subtypes_meeting": 6,
+    "met": true
+  }
+}

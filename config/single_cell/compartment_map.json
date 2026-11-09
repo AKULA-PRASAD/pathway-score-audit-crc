@@ -1,0 +1,44 @@
+{
+  "description": "Mapping of the original authors' cell annotations to the four compartments of docs/SINGLE_CELL_EXTENSION_PLAN.md. Written after reading the annotation files only and before reading any expression value.",
+  "date": "2026-11-08",
+  "compartments": ["epithelial", "stromal", "immune", "endothelial"],
+  "datasets": {
+    "GSE132465": {
+      "role": "discovery",
+      "annotation_file": "GSE132465_GEO_processed_CRC_10X_cell_annotation.txt.gz",
+      "patient_column": "Patient", "sample_class_column": "Class", "tumour_class": "Tumor", "normal_class": "Normal",
+      "type_column": "Cell_type", "subtype_column": "Cell_subtype",
+      "rules": [
+        {"Cell_type": "Epithelial cells", "compartment": "epithelial"},
+        {"Cell_type": ["B cells", "T cells", "Myeloids", "Mast cells"], "compartment": "immune"},
+        {"Cell_type": "Stromal cells", "Cell_subtype": ["Tip-like ECs", "Stalk-like ECs", "Lymphatic ECs", "Proliferative ECs"], "compartment": "endothelial"},
+        {"Cell_type": "Stromal cells", "Cell_subtype": ["Stromal 1", "Stromal 2", "Stromal 3", "Myofibroblasts", "Pericytes", "Smooth muscle cells"], "compartment": "stromal"},
+        {"Cell_type": "Stromal cells", "Cell_subtype": ["Enteric glial cells"], "compartment": "excluded"}
+      ],
+      "malignant_epithelial": "Epithelial cells in Tumor samples with Cell_subtype CMS1-CMS4 (the authors' tumour-epithelial labels)"
+    },
+    "GSE144735": {
+      "role": "replication 1",
+      "annotation_file": "GSE144735_processed_KUL3_CRC_10X_annotation.txt.gz",
+      "patient_column": "Patient", "sample_class_column": "Class", "tumour_class": "Tumor", "normal_class": "Normal",
+      "note": "Border samples are not used (the plan specifies tumour samples); tumour core only.",
+      "type_column": "Cell_type", "subtype_column": "Cell_subtype",
+      "rules": "same as GSE132465",
+      "malignant_epithelial": "Epithelial cells in Tumor samples with Cell_subtype CMS1-CMS4"
+    },
+    "GSE178341": {
+      "role": "replication 2",
+      "annotation_files": ["GSE178341_crc10x_full_c295v4_submit_cluster.csv.gz", "GSE178341_crc10x_full_c295v4_submit_metatables.csv.gz"],
+      "patient_column": "PID", "sample_class_column": "SPECIMEN_TYPE", "tumour_class": "T", "normal_class": "N",
+      "type_column": "clTopLevel", "subtype_column": "clMidwayPr",
+      "rules": [
+        {"clTopLevel": "Epi", "compartment": "epithelial"},
+        {"clTopLevel": ["B", "Plasma", "Myeloid", "Mast", "TNKILC"], "compartment": "immune"},
+        {"clTopLevel": "Strom", "clMidwayPr": ["Endo"], "compartment": "endothelial"},
+        {"clTopLevel": "Strom", "clMidwayPr": ["Fibro", "Peri", "SmoothMuscle"], "compartment": "stromal"},
+        {"clTopLevel": "Strom", "clMidwayPr": ["Schwann"], "compartment": "excluded"}
+      ],
+      "malignant_epithelial": "Epithelial cells from tumour (T) specimens. The released cluster labels do not separate malignant from normal epithelium, so this set may include some normal epithelial cells; declared before analysis as a limitation of this cohort for S3."
+    }
+  }
+}

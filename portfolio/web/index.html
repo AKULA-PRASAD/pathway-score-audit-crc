@@ -1,0 +1,980 @@
+<title>Colon Cancer Recurrence Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Hanken+Grotesk:wght@400;500;600;700&family=Martian+Mono:wght@300;400;500&display=swap">
+<style>
+/* Layout: a pathology case file. Label rail names each part; one reading column; scientific figures span the full measure.
+   Colour roles (never mixed): eosin = the answer and brand accents; pathway identity = EMT magenta, E2F violet, Wnt teal, p53 ochre;
+   model estimates = blue (primary) and orange (S-7) with grey for apparent values; evidence status = shape + text, never colour alone. */
+:root{
+  --paper:#f7f5f9; --sheet:#ffffff; --ink:#1d1729; --ink-2:#51495f; --ink-3:#6c637d; --line:#e2dce9; --faint:#efeaf3;
+  --eosin:#c2366c; --eosin-wash:#f8e3ec; --haem:#6650c4;
+  --emt:#c2366c; --e2f:#6650c4; --wnt:#00907e; --p53:#a86b12;
+  --primary:#2a78d6; --primary-wash:#dbe8f8; --s7:#eb6834; --apparent:#9aa5b1; --amber:#b7791f; --lit:#7b5ea7; --char:#8a5a10; --on-chip:#ffffff;
+  --cell-epi:#e3a0b8; --cell-epi-n:#4b3a8c; --cell-fib:#d4ad86; --cell-fib-n:#6b4a2b; --cell-imm:#5d6db8; --cell-endo:#9a7fc7; --rbc:#d9534f; --matrix:#f6e7ee;
+  --glass:#eef3f6; --glass-edge:#cfdbe2;
+  --display:"Gloock","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --text:"Hanken Grotesk","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --data:"Martian Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#14101b; --sheet:#1c1726; --ink:#efeaf5; --ink-2:#bbb2c9; --ink-3:#8a8199; --line:#2e2739; --faint:#231d2e;
+  --eosin:#e46a95; --eosin-wash:#3a1f2d; --haem:#8e7ae6; --emt:#d4527f; --e2f:#8771e3; --wnt:#139e8e; --p53:#bb8126;
+  --primary:#5b9cec; --primary-wash:#1c3550; --s7:#f08a5c; --apparent:#6f7b88; --amber:#d9a441; --lit:#a48ae0; --char:#d9a441; --on-chip:#14101b;
+  --cell-epi:#a85b78; --cell-epi-n:#d8ccff; --cell-fib:#9c7a57; --cell-fib-n:#f1dcc4; --cell-imm:#7f8fe0; --cell-endo:#a58ad6; --rbc:#e06b67; --matrix:#2a1f2b;
+  --glass:#1f2a31; --glass-edge:#34444e; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#14101b; --sheet:#1c1726; --ink:#efeaf5; --ink-2:#bbb2c9; --ink-3:#8a8199; --line:#2e2739; --faint:#231d2e;
+  --eosin:#e46a95; --eosin-wash:#3a1f2d; --haem:#8e7ae6; --emt:#d4527f; --e2f:#8771e3; --wnt:#139e8e; --p53:#bb8126;
+  --primary:#5b9cec; --primary-wash:#1c3550; --s7:#f08a5c; --apparent:#6f7b88; --amber:#d9a441; --lit:#a48ae0; --char:#d9a441; --on-chip:#14101b;
+  --cell-epi:#a85b78; --cell-epi-n:#d8ccff; --cell-fib:#9c7a57; --cell-fib-n:#f1dcc4; --cell-imm:#7f8fe0; --cell-endo:#a58ad6; --rbc:#e06b67; --matrix:#2a1f2b;
+  --glass:#1f2a31; --glass-edge:#34444e; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--text);font-size:17px;line-height:1.62;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:0 120px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:20;background:var(--paper)}
+.page{max-width:1120px;margin:0 auto}
+h1,h2{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(2.3rem,5.6vw,4.2rem);line-height:1.03}
+h2{font-size:clamp(1.65rem,3.3vw,2.45rem);line-height:1.1}
+h3{font-family:var(--text);font-weight:700;font-size:1.02rem;margin:0;line-height:1.3}
+p{margin:0}
+a{color:var(--eosin)}
+button{font:inherit;color:inherit}
+.data{font-family:var(--data);font-variant-numeric:tabular-nums}
+.measure{max-width:68ch;color:var(--ink-2)}
+.measure strong{color:var(--ink)}
+.small{font-size:.8rem;color:var(--ink-3);line-height:1.5}
+:focus-visible{outline:2px solid var(--eosin);outline-offset:3px;border-radius:3px}
+[data-depth="overview"] .tech{display:none}
+
+/* nav */
+.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:15;background:color-mix(in srgb,var(--paper) 93%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.toc .in{display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:none}
+.toc .in::-webkit-scrollbar{display:none}
+.toc a{font-family:var(--data);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);text-decoration:none;padding:13px 9px;white-space:nowrap;border-bottom:2px solid transparent}
+.toc a:hover{color:var(--ink)}
+.toc a[aria-current="true"]{color:var(--eosin);border-bottom-color:var(--eosin)}
+.toc .mark{font-family:var(--display);font-size:1rem;padding:9px 12px 9px 0;white-space:nowrap}
+.toc .sp{flex:1}
+.toggle{display:flex;align-items:center;gap:8px;font-family:var(--data);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);white-space:nowrap;padding-left:10px;background:none;border:0;cursor:pointer}
+.toggle .sw{width:30px;height:16px;border-radius:9px;background:var(--line);position:relative;transition:background .15s}
+.toggle .sw::after{content:"";position:absolute;left:2px;top:2px;width:12px;height:12px;border-radius:50%;background:var(--sheet);transition:transform .15s}
+.toggle[aria-pressed="true"] .sw{background:var(--eosin)}
+.toggle[aria-pressed="true"] .sw::after{transform:translateX(14px)}
+
+/* rail */
+.part{display:grid;grid-template-columns:160px minmax(0,1fr);gap:34px;padding-block:80px 6px;scroll-margin-top:60px}
+.rail{font-family:var(--data);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding-top:12px;line-height:1.75}
+.rail b{display:block;color:var(--eosin);font-weight:500}
+.rail .num{display:block;font-family:var(--display);font-size:2rem;letter-spacing:0;color:var(--line);line-height:1;margin-bottom:6px;text-transform:none}
+.part.tour-on .rail .num{color:var(--eosin)}
+.body{display:grid;gap:26px;min-width:0}
+@media (max-width:800px){.part{grid-template-columns:1fr;gap:10px;padding-block:56px 4px}.rail{padding-top:0}.rail .num{display:inline;font-size:1.2rem;margin-right:8px}}
+
+/* chips */
+.chip{display:inline-flex;align-items:center;gap:5px;font-family:var(--data);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:3px;font-weight:500;white-space:nowrap;line-height:1.6}
+.chip.tb{background:var(--ink-2);color:var(--paper)}
+.chip.lit{background:var(--lit);color:var(--on-chip)}
+.chip.obs{background:var(--ink);color:var(--paper)}
+.chip.obs::before{content:"●";font-size:.6rem}
+.chip.char{background:var(--char);color:var(--on-chip)}
+.chip.char::before{content:"◐";font-size:.7rem}
+.chip.nm{border:1px dashed var(--ink-3);color:var(--ink-2)}
+.chip.nm::before{content:"○";font-size:.7rem}
+.chip.ns{background:repeating-linear-gradient(135deg,var(--faint) 0 4px,var(--line) 4px 6px);color:var(--ink);border:1px solid var(--line)}
+.chip.ns::before{content:"◌";font-size:.7rem}
+.chip.ne{border:1px solid var(--ink-2);color:var(--ink)}
+.chip.ne::before{content:"✕";font-size:.6rem}
+.chip.part{background:var(--primary-wash);color:var(--ink)}
+.chip.part::before{content:"◐";font-size:.7rem}
+.chip.rep{background:var(--primary);color:var(--on-chip)}
+.chip.rep::before{content:"●";font-size:.6rem}
+.next-up{margin-top:40px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.next-up .card{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--sheet)}
+.next-up .card .big{font-family:var(--display);font-size:1.9rem;line-height:1;color:var(--ink)}
+.next-up .card p{font-size:.9rem;color:var(--ink-2);margin:.4em 0 0}
+.next-up .k{font-family:var(--data);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+@media (max-width:760px){.next-up{grid-template-columns:1fr}}
+.pipe{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:14px 0}
+.pipe .st{border:1px solid var(--line);border-radius:8px;padding:10px;background:var(--sheet);font-size:.85rem;color:var(--ink-2)}
+.pipe .st strong{display:block;color:var(--ink);font-size:.9rem;margin-bottom:3px}
+@media (max-width:1000px){.pipe{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:620px){.pipe{grid-template-columns:1fr 1fr}}
+.stats.s3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:700px){.stats.s3{grid-template-columns:1fr}}
+@media (max-width:520px){.pipe{grid-template-columns:1fr}}
+.cli{font-family:var(--data);font-size:.74rem;line-height:1.6;background:var(--faint);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:12px 14px;overflow-x:auto;max-width:100%;white-space:pre}
+.vt{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:8px}
+.vt th,.vt td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.vt th{font-family:var(--data);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:500}
+.chip.fut{border:1px solid var(--haem);color:var(--haem)}
+.chip.fut::before{content:"→";font-size:.65rem}
+.chip.concept{border:1px solid var(--ink-3);color:var(--ink-3)}
+
+/* hero */
+.hero{padding-block:52px 0;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:46px;align-items:end}
+.kicker{font-family:var(--data);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:18px}
+.lede{margin-top:20px;font-size:1.13rem;color:var(--ink-2);max-width:47ch}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:10px 18px;font-weight:600;font-size:.92rem;cursor:pointer;border:1px solid var(--ink);background:var(--ink);color:var(--paper);text-decoration:none}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn:hover{filter:brightness(1.1)}
+.btn:disabled{opacity:.35;cursor:default}
+@media (max-width:880px){.hero{grid-template-columns:1fr;gap:30px}}
+.slide{position:relative;background:var(--glass);border:1px solid var(--glass-edge);border-radius:6px;aspect-ratio:3/1.1;max-width:100%;display:grid;grid-template-columns:34% 1fr;overflow:hidden;box-shadow:0 1px 0 var(--glass-edge),0 22px 44px -30px rgba(40,20,60,.5)}
+.slide .label{background:var(--sheet);border-right:1px solid var(--glass-edge);padding:12px;display:grid;align-content:space-between;gap:6px;font-family:var(--data);font-size:.6rem;line-height:1.55;color:var(--ink-2)}
+.slide .label .id{font-size:.82rem;color:var(--ink);font-weight:500}
+.slide .label .bar{height:14px;margin-top:4px;background:repeating-linear-gradient(90deg,var(--ink) 0 1px,transparent 1px 3px,var(--ink) 3px 5px,transparent 5px 6px,var(--ink) 6px 7px,transparent 7px 10px);opacity:.75}
+.slide .tissue{position:relative}.slide canvas{position:absolute;inset:0;width:100%;height:100%}
+.slide-cap{display:flex;justify-content:space-between;gap:12px;font-family:var(--data);font-size:.6rem;color:var(--ink-3);margin-top:8px}
+.answer{margin-top:52px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:30px;align-items:center;padding:28px 0;border-top:2px solid var(--ink);border-bottom:1px solid var(--line)}
+.answer .n{font-family:var(--display);font-size:clamp(3.4rem,9vw,5.8rem);line-height:.9;color:var(--eosin)}
+.answer .n span{display:block;font-family:var(--data);font-size:.62rem;color:var(--ink-3);letter-spacing:.1em;text-transform:uppercase;margin-top:10px}
+.answer p{font-size:1.06rem;color:var(--ink-2);max-width:60ch}
+.answer p strong{color:var(--ink)}
+.facts{display:flex;flex-wrap:wrap;gap:8px 26px;font-size:.88rem;color:var(--ink-2);padding-top:14px}
+.facts .data{color:var(--ink);margin-right:6px}
+@media (max-width:620px){.answer{grid-template-columns:1fr;gap:14px}}
+
+/* generic figure */
+figure{margin:0;display:grid;gap:10px;min-width:0}
+svg{display:block}
+figure svg{width:100%;height:auto}
+figcaption{font-size:.86rem;color:var(--ink-2);max-width:74ch;line-height:1.5}
+svg text{font-family:var(--data);font-size:10.5px}
+svg .tk{fill:var(--ink-3)} svg .nm{font-family:var(--text);font-size:13px;fill:var(--ink)} svg .lb{font-family:var(--text);font-size:12px;fill:var(--ink-2)}
+svg .gl{stroke:var(--faint);stroke-width:1} svg .zl{stroke:var(--ink);stroke-width:1.25;stroke-dasharray:3 4}
+svg .hit{fill:transparent}
+.key{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.8rem;color:var(--ink-2);align-items:center}
+.key i{display:inline-block;width:14px;height:10px;margin-right:6px;border-radius:1px}
+.wide{overflow-x:auto;-webkit-overflow-scrolling:touch}
+@media (max-width:700px){.wide svg{min-width:640px}}
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
+@media (max-width:880px){.pair{grid-template-columns:1fr;gap:44px}}
+.panel{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:20px;min-width:0}
+.conclude{font-family:var(--display);font-size:clamp(1.25rem,2.4vw,1.7rem);line-height:1.25;border-left:3px solid var(--eosin);padding:4px 0 4px 18px;max-width:40ch;color:var(--ink)}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);font-size:.78rem;padding:7px 10px;border-radius:3px;max-width:270px;line-height:1.45;z-index:40;opacity:0;transition:opacity .1s}
+.tip.on{opacity:1}
+
+/* segmented control */
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px;background:var(--sheet)}
+.seg button{border:0;background:none;padding:7px 14px;border-radius:999px;font-size:.84rem;font-weight:600;color:var(--ink-2);cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.seg button[aria-pressed="true"],.seg button[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+.dotc{display:inline-block;width:9px;height:9px;border-radius:50%}
+
+/* pathway explorer */
+.tabs{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.tabs button{background:none;border:0;border-bottom:3px solid transparent;color:var(--ink-2);padding:10px 16px;cursor:pointer;margin-bottom:-1px;font-weight:600;display:inline-flex;gap:8px;align-items:center}
+.tabs button[aria-selected="true"]{color:var(--ink)}
+.explorer{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:30px;padding-top:24px}
+@media (max-width:900px){.explorer{grid-template-columns:1fr}}
+.mech{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:14px 14px 8px}
+.mech svg{width:100%;height:auto}
+.mech .cap{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:6px;flex-wrap:wrap}
+.ex-cols{display:grid;gap:14px;align-content:start}
+.ex-cols .ttl{font-family:var(--display);font-size:2rem;line-height:1}
+.ex-row{display:grid;grid-template-columns:150px minmax(0,1fr);gap:12px;align-items:start;padding-top:12px;border-top:1px solid var(--line)}
+.ex-row .k{font-family:var(--data);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);padding-top:3px}
+.ex-row p{font-size:.92rem;color:var(--ink-2)}
+@media (max-width:520px){.ex-row{grid-template-columns:1fr;gap:4px}}
+.numgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.numgrid div{background:var(--sheet);padding:10px 12px;display:grid;gap:2px}
+.numgrid .v{font-family:var(--data);font-size:.82rem;color:var(--ink)}
+.numgrid .l{font-size:.72rem;color:var(--ink-3)}
+.interp{font-size:.95rem;color:var(--ink);border-left:3px solid var(--line);padding-left:14px}
+
+/* flow */
+.flowi{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--sheet)}
+.flowi button{text-align:left;background:none;border:0;border-right:1px solid var(--line);padding:16px 14px 14px;cursor:pointer;display:grid;gap:4px;position:relative;min-width:0}
+.flowi button:last-child{border-right:0}
+.flowi .n{font-family:var(--display);font-size:clamp(1.4rem,2.6vw,2rem);line-height:1}
+.flowi .l{font-size:.8rem;color:var(--ink-2)}
+.flowi button[aria-selected="true"]{background:var(--primary-wash)}
+.flowi button[aria-selected="true"]::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--primary)}
+.flowi button:not(:last-child)::before{content:"→";position:absolute;right:-7px;top:50%;transform:translateY(-50%);font-size:.8rem;color:var(--ink-3);background:var(--sheet);z-index:1;line-height:1}
+@media (max-width:760px){.flowi{grid-template-columns:1fr}.flowi button{border-right:0;border-bottom:1px solid var(--line)}.flowi button:not(:last-child)::before{content:none}}
+.detail{border-left:3px solid var(--primary);padding:4px 0 4px 16px;color:var(--ink-2);font-size:.95rem;max-width:74ch;min-height:3.2em}
+.detail strong{color:var(--ink)}
+
+/* result story */
+.story{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:30px;align-items:start}
+@media (max-width:900px){.story{grid-template-columns:1fr}}
+.story-text{display:grid;gap:12px;align-content:start}
+.story-text .stage{font-family:var(--data);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--eosin)}
+.story-text h3{font-family:var(--display);font-weight:400;font-size:1.6rem}
+.story-text p{color:var(--ink-2);font-size:.95rem}
+.stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.stats div{background:var(--sheet);padding:14px;display:grid;gap:2px}
+.stats .v{font-family:var(--display);font-size:1.5rem;line-height:1.05}
+.stats .l{font-size:.76rem;color:var(--ink-2)}
+@media (max-width:820px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* tissue */
+.tissue-wrap{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:26px;align-items:start}
+@media (max-width:960px){.tissue-wrap{grid-template-columns:1fr}}
+.tissue-fig{position:relative;background:var(--sheet);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.tissue-fig svg{width:100%;height:auto}
+.badge{position:absolute;left:12px;top:12px;font-family:var(--data);font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;background:var(--sheet);color:var(--ink-2);border:1px solid var(--line);border-radius:4px;padding:4px 8px;max-width:calc(100% - 24px)}
+.pops{display:flex;flex-wrap:wrap;gap:8px}
+.pops button{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--sheet);border-radius:999px;padding:7px 13px;font-size:.84rem;font-weight:600;cursor:pointer}
+.pops button[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.pops .sw{width:12px;height:12px;border-radius:50%;border:1px solid var(--line)}
+.popcard{display:grid;gap:12px}
+.popcard h3{font-family:var(--display);font-weight:400;font-size:1.5rem}
+.popcard dl{margin:0;display:grid;gap:10px}
+.popcard dt{font-family:var(--data);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.popcard dd{margin:2px 0 0;font-size:.9rem;color:var(--ink-2)}
+.cellg{transition:opacity .25s}
+.dim .cellg{opacity:.14}
+.dim .cellg.on{opacity:1}
+.mix{display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:.84rem;color:var(--ink-2)}
+.mix .b{border:1px solid var(--line);background:var(--sheet);border-radius:8px;padding:8px 12px}
+.mix .b strong{display:block;color:var(--ink);font-size:.9rem}
+.mix .ar{color:var(--ink-3)}
+
+/* EMT comparison */
+.emt{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:18px;align-items:center}
+@media (max-width:860px){.emt{grid-template-columns:1fr}}
+.emt .case{background:var(--sheet);border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:8px;transition:opacity .25s,border-color .25s}
+.emt .case.off{opacity:.35}
+.emt .case.on{border-color:var(--emt)}
+.emt .case h3{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.emt .case h3 span{font-family:var(--data);font-size:.62rem;color:var(--emt);letter-spacing:.08em;text-transform:uppercase}
+.emt .case p{font-size:.86rem;color:var(--ink-2)}
+.emt .case svg{width:100%;height:auto}
+.emt .mid{display:grid;justify-items:center;gap:8px;text-align:center}
+.emt .score{width:160px;border:2px solid var(--emt);border-radius:10px;padding:12px;display:grid;gap:4px;background:var(--sheet)}
+.emt .score strong{font-family:var(--display);font-weight:400;font-size:1.25rem}
+.emt .score span{font-size:.74rem;color:var(--ink-2)}
+.emt .arrows{font-size:1.4rem;color:var(--emt);line-height:1}
+
+/* matrix */
+.matrix{display:grid;border-top:2px solid var(--ink)}
+.matrix .head,.matrix summary{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1.3fr) 210px 22px;gap:14px;align-items:center;padding:12px 0}
+.matrix .head{font-family:var(--data);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);border-bottom:1px solid var(--line)}
+.matrix details{border-bottom:1px solid var(--line)}
+.matrix summary{cursor:pointer;list-style:none}
+.matrix summary::-webkit-details-marker{display:none}
+.matrix summary .q{font-weight:600}
+.matrix summary .e{font-size:.88rem;color:var(--ink-2)}
+.matrix summary .plus{font-family:var(--data);color:var(--ink-3);transition:transform .2s;text-align:center}
+.matrix details[open] summary .plus{transform:rotate(45deg)}
+.matrix .more{padding:0 0 16px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;font-size:.88rem;color:var(--ink-2)}
+.matrix .more b{display:block;font-family:var(--data);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:400;margin-bottom:2px}
+@media (max-width:760px){.matrix .head{display:none}.matrix summary{grid-template-columns:minmax(0,1fr) 22px;gap:6px}.matrix summary .plus{grid-row:1;grid-column:2}.matrix summary .e,.matrix summary .s{grid-column:1}.matrix .more{grid-template-columns:1fr}}
+
+/* journey */
+.journey{display:grid;gap:18px}
+.track{position:relative;display:grid;grid-template-columns:repeat(9,minmax(0,1fr))}
+.track .bar{position:absolute;left:calc(100%/18);right:calc(100%/18);top:15px;height:3px;background:var(--line);border-radius:2px}
+.track .fill{position:absolute;left:calc(100%/18);top:15px;height:3px;width:0;background:var(--eosin);border-radius:2px;transition:width .35s}
+.track button{background:none;border:0;cursor:pointer;display:grid;justify-items:center;gap:8px;padding:0 3px 6px;position:relative;z-index:1;min-width:0}
+.track .dot{width:32px;height:32px;border-radius:50%;background:var(--sheet);border:2px solid var(--ink-3);display:grid;place-items:center;font-family:var(--data);font-size:.66rem;color:var(--ink-2);transition:all .2s}
+.track button.done .dot{border-color:var(--eosin);color:var(--eosin)}
+.track button[aria-selected="true"] .dot{background:var(--eosin);border-color:var(--eosin);color:#fff;transform:scale(1.08)}
+.track button.hasdec .dot{box-shadow:0 0 0 3px var(--paper),0 0 0 5px var(--haem)}
+.track .lab{font-size:.72rem;line-height:1.25;text-align:center;color:var(--ink-2)}
+.track button[aria-selected="true"] .lab{color:var(--ink);font-weight:600}
+@media (max-width:880px){.track{grid-template-columns:1fr;gap:4px}.track .bar,.track .fill{display:none}.track button{grid-template-columns:32px 1fr;justify-items:start;align-items:center;gap:12px;padding:3px 0}.track .lab{text-align:left}}
+.stage-card{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.stage-card > div{background:var(--sheet);padding:16px;display:grid;gap:6px;align-content:start}
+.stage-card .k{font-family:var(--data);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.stage-card p{font-size:.9rem;color:var(--ink-2)}
+.stage-card .head{grid-column:1/-1;display:flex;justify-content:space-between;gap:14px;align-items:baseline;flex-wrap:wrap}
+.stage-card .head h3{font-family:var(--display);font-weight:400;font-size:1.6rem}
+.stage-card .head .big{font-family:var(--display);font-size:1.8rem;color:var(--eosin)}
+.stage-card .decb{box-shadow:inset 3px 0 0 var(--haem)}
+.stage-card .decb p{color:var(--ink)}
+.stage-card .nav{grid-column:1/-1;display:flex;justify-content:space-between;gap:10px;padding:10px 16px}
+@media (max-width:820px){.stage-card{grid-template-columns:1fr}}
+
+/* lessons */
+.scroll{overflow-x:auto}
+.versus{width:100%;border-collapse:collapse;font-size:.92rem}
+.versus th{font-family:var(--data);font-weight:400;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);text-align:left;padding:0 14px 10px 0;border-bottom:2px solid var(--ink)}
+.versus td{padding:13px 14px 13px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-2)}
+.versus td:first-child{color:var(--ink);font-weight:600;width:22%}
+.versus td:last-child{color:var(--ink)}
+@media (max-width:640px){.versus,.versus tbody,.versus tr,.versus td{display:block;width:100%!important}.versus thead{display:none}.versus tr{border-bottom:1px solid var(--line);padding:12px 0}.versus td{border:0;padding:3px 0}.versus td:nth-child(2)::before{content:"Quick analysis: ";color:var(--ink-3)}.versus td:nth-child(3)::before{content:"This study: ";color:var(--eosin)}}
+
+/* decisions */
+.decisions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px}
+.dec{display:grid;grid-template-columns:46px minmax(0,1fr);gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.dec .k{font-family:var(--data);font-size:.72rem;color:var(--haem);padding-top:3px}
+.dec p{font-size:.92rem;color:var(--ink-2)}
+.dec strong{color:var(--ink)}
+@media (max-width:720px){.decisions{grid-template-columns:1fr}}
+
+/* roadmap */
+.road{display:grid;gap:16px}
+.road .row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--sheet)}
+.road .cell{padding:16px;display:grid;gap:6px;align-content:start;position:relative;border-right:1px solid var(--line)}
+.road .cell:last-child{border-right:0}
+.road .cell:not(:last-child)::after{content:"→";position:absolute;right:-8px;top:18px;background:var(--sheet);color:var(--haem);font-size:.9rem;z-index:1;line-height:1}
+.road .k{font-family:var(--data);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.road .cell:first-child{background:color-mix(in srgb,var(--haem) 7%,var(--sheet))}
+.road .cell:first-child h3{font-family:var(--display);font-weight:400;font-size:1.2rem}
+.road ul{margin:0;padding-left:16px;font-size:.86rem;color:var(--ink-2);display:grid;gap:3px}
+.road p{font-size:.86rem;color:var(--ink-2)}
+@media (max-width:880px){.road .row{grid-template-columns:1fr}.road .cell{border-right:0;border-bottom:1px solid var(--line)}.road .cell:not(:last-child)::after{content:"↓";right:auto;left:16px;top:auto;bottom:-9px}}
+
+.stack{font-size:.95rem;color:var(--ink-2);line-height:1.95;max-width:76ch}
+.stack span{color:var(--ink);white-space:nowrap}
+.stack .sep{color:var(--line);margin:0 8px}
+.refs{margin:0;padding-left:1.4em;display:grid;gap:4px;font-size:.84rem;color:var(--ink-2)}
+footer{margin-top:72px;padding-top:18px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;font-family:var(--data);font-size:.6rem;color:var(--ink-3)}
+
+/* tour */
+.tour{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:30;width:min(720px,calc(100% - 32px - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px)));background:var(--ink);color:var(--paper);border-radius:14px;padding:12px 14px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;box-shadow:0 18px 40px -18px rgba(0,0,0,.5)}
+.tour .pg{font-family:var(--data);font-size:.66rem;opacity:.75;white-space:nowrap}
+.tour .t{font-size:.9rem;line-height:1.35}
+.tour .t strong{display:block;font-size:.95rem}
+.tour .ctl{display:flex;gap:6px}
+.tour button{border:1px solid color-mix(in srgb,var(--paper) 35%,transparent);background:transparent;color:var(--paper);border-radius:999px;padding:6px 12px;font-size:.8rem;font-weight:600;cursor:pointer}
+.tour button:disabled{opacity:.35}
+.tour button.go{background:var(--paper);color:var(--ink)}
+.tour .dots{display:flex;gap:4px;margin-top:6px}
+.tour .dots i{width:16px;height:3px;border-radius:2px;background:color-mix(in srgb,var(--paper) 30%,transparent)}
+.tour .dots i.on{background:var(--paper)}
+@media (max-width:560px){.tour{grid-template-columns:1fr}.tour .pg{display:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+<div class="page" id="page">
+<nav class="toc" aria-label="Sections"><div class="in"><span class="mark">GSE39582</span>
+<a href="#sec-q" data-sec="sec-q">Question</a><a href="#sec-bio" data-sec="sec-bio">Pathways</a><a href="#sec-m" data-sec="sec-m">Method</a><a href="#sec-r" data-sec="sec-r">Result</a><a href="#sec-tissue" data-sec="sec-tissue">Bulk tissue</a><a href="#sec-evidence" data-sec="sec-evidence">Evidence</a><a href="#sec-tool" data-sec="sec-tool">Tool</a><a href="#sec-mmr" data-sec="sec-mmr">Subtype &amp; batch</a><a href="#sec-journey" data-sec="sec-journey">Journey</a><a href="#sec-role" data-sec="sec-role">My role</a><a href="#sec-future" data-sec="sec-future">Next</a>
+<span class="sp"></span><button class="toggle" id="depthBtn" aria-pressed="false" title="Show technical detail for computational biology readers"><span class="sw"></span>Technical depth</button></div></nav>
+
+<header class="hero">
+  <div>
+    <div class="kicker">Computational biology · Colorectal cancer · Bulk transcriptomics · Python tool</div>
+    <h1>What do cancer pathway scores really measure in a bulk tumour?</h1>
+    <p class="lede">Pathway scores such as "EMT" or "p53 activity" are read as tumour biology, but a bulk sample mixes cancer cells with stroma and immune cells, molecular subtypes and processing batches. This project shows when such scores mislead, provides a tool that checks them, confirms the main finding in single-cell data, and tests whether they predict recurrence in 452 stage II–III colon cancers.</p>
+    <div class="cta"><button class="btn" id="tourStart">Explore in 3 minutes</button><button class="btn ghost" id="deepStart">Full technical walkthrough</button></div>
+  </div>
+  <div>
+    <div class="slide" role="img" aria-label="Illustration of a glass microscope slide labelled with the study cohort">
+      <div class="label"><div><div class="id">GSE39582</div>Colon adenocarcinoma<br>Stage II–III · n 452<br>136 recurrences</div><div>Panel: EMT · E2F<br>Wnt · p53<div class="bar" aria-hidden="true"></div></div></div>
+      <div class="tissue"><canvas id="slideCanvas" aria-hidden="true"></canvas></div>
+    </div>
+    <div class="slide-cap"><span>Affymetrix HG-U133 Plus 2.0</span><span>585 arrays · 54,675 probes</span></div>
+  </div>
+</header>
+
+<div class="next-up" aria-label="What the project delivered">
+  <div class="card"><span class="k">1 · A reusable tool</span><div class="big">pathway-audit</div><p>A tested Python package and command-line tool that checks what a pathway score measures before it is interpreted: data quality, gene drivers, tissue composition, covariate-adjusted genotype effects and, in single-cell data, which cell types supply the signal. 13 tests, CI and a working Docker image.</p></div>
+  <div class="card"><span class="k">2 · Cross-cohort biology</span><div class="big">4 + 3 cohorts</div><p>The Hallmark EMT score tracks fibroblast markers in four bulk cohorts (gene-disjoint ρ 0.94–0.98, each above its cohort's random baseline), and single cells in three more show why: its transcripts come mainly from stromal cells. The p53 score tracks TP53 mutation, replicated in two independent cohorts.</p></div>
+  <div class="card"><span class="k">3 · Data-quality catch</span><div class="big">1 of 5</div><p>One public cohort (GSE103479) failed a positive-control check: its values appear misaligned to probe labels. It would otherwise have produced a false "does not replicate".</p></div>
+</div>
+<div class="answer">
+  <div class="n">+0.004<span>4 · Prediction: corrected gain in C</span></div>
+  <div>
+    <p><strong>A rigorous predictive test: the four pathway scores did not demonstrate a reproducible improvement in recurrence discrimination beyond clinical variables.</strong> The apparent gain of +0.014 was mostly optimism; corrected, it is +0.004316, and all five corrected 95 % intervals include zero. That does not prove the effect is zero, or that these pathways have no role in recurrence.</p>
+    <div class="facts"><span><span class="data">765,000</span>Cox model fits</span><span><span class="data">60 / 60</span>verification checks</span><span><span class="data">1,097</span>automated tests</span><span><span class="data">607</span>pathway genes, chosen outcome-blind</span></div>
+  </div>
+</div>
+
+
+<section class="part" id="sec-q" aria-labelledby="h-q">
+  <div class="rail"><span class="num">01</span><b>Question</b>Why it matters</div>
+  <div class="body">
+    <h2 id="h-q">Many expression signatures look predictive. Few survive honest validation.</h2>
+    <p class="measure">After surgery for stage II–III colon cancer, a substantial minority of patients recur, and stage alone sorts that risk imperfectly. Gene-expression signatures are often reported to do better, but part of any apparent gain is optimism: a larger model always fits its own patients better than new ones. <strong>Fixed before any outcome was examined: do four biologically selected tumour-expression pathway scores add reproducible recurrence-discrimination information beyond established clinical variables in GSE39582?</strong></p>
+  </div>
+</section>
+
+<section class="part" id="sec-bio" aria-labelledby="h-bio">
+  <div class="rail"><span class="num">02</span><b>Pathways</b>Four axes of<br>colorectal cancer</div>
+  <div class="body">
+    <h2 id="h-bio">Four biological programmes, and what a bulk score can and cannot say about each</h2>
+    <p class="measure">Each score is the mean standardised mRNA of a fixed Hallmark gene set in bulk tumour tissue. Choose a pathway to see a simplified mechanism, the evidence behind it, and its result in this cohort.</p>
+    <div>
+      <div class="tabs" role="tablist" aria-label="Pathway" id="ptabs"></div>
+      <div class="explorer" id="pexplorer" role="tabpanel"></div>
+    </div>
+    <figure class="panel">
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline"><h3>All four pathways, primary model and S-7 sensitivity</h3><div class="key"><span><i style="background:var(--primary)"></i>Primary (median probes)</span><span><i style="background:var(--s7)"></i>S-7 (representative probe)</span></div></div>
+      <div class="wide"><svg id="forestAll" viewBox="0 0 760 250" role="img" aria-label="Forest plot of hazard ratios for four pathways, primary and S-7"></svg></div>
+      <figcaption>Hazard ratio per training-fold SD, log scale, reference line at 1. <b>Every interval includes 1</b>, so no pathway shows a demonstrated association in the primary model. S-7 re-summarises the same arrays, so it is a sensitivity check, not replication. Wald intervals are approximate under ridge penalisation. Select a pathway name to open it above.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="part" id="sec-m" aria-labelledby="h-m">
+  <div class="rail"><span class="num">03</span><b>Method</b>From probes<br>to scores</div>
+  <div class="body">
+    <h2 id="h-m">A constrained, leakage-controlled design, fixed before outcomes</h2>
+    <p class="measure">With 136 recurrences, selecting genes from the whole transcriptome would overfit: a null simulation gave an apparent C of 0.92 when the true value was 0.50. So the molecular question was limited to four pre-specified scores. Select a step to follow the data.</p>
+    <div class="flowi" role="tablist" aria-label="Processing steps" id="flow"></div>
+    <div class="detail" id="flowDetail" role="tabpanel" aria-live="polite"></div>
+    <div class="pair">
+      <figure>
+        <h3>Why four sets, not ten</h3>
+        <svg id="cond" viewBox="0 0 440 170" role="img" aria-label="Condition numbers of the ten-set, five-set and four-set score matrices"></svg>
+        <figcaption>Condition number of the descriptive full-cohort score matrix, log scale; lower is better conditioned. Ten candidates formed correlation clusters, six on one mesenchymal axis (r 0.60–0.91 with EMT). One representative per cluster was chosen on biology and literature, without outcome data.</figcaption>
+      </figure>
+      <div style="display:grid;gap:12px;align-content:start">
+        <h3>Models and validation</h3>
+        <p class="measure"><strong>M1, clinical:</strong> age (spline), sex, stage II/III, tumour location and adjuvant chemotherapy, unpenalised.</p>
+        <p class="measure"><strong>M2, primary:</strong> M1 plus the four scores, with a ridge penalty on the molecular block only. A five-set model adding PI3K/AKT/mTOR was fixed in advance as a sensitivity analysis and never promoted.</p>
+        <p class="measure"><strong>Validation:</strong> an optimism-corrected nested bootstrap, five runs of 750 outer × 100 inner resamples, with the two models paired on the same resamples. The runs differ only in random seed: Monte Carlo replicates of one analysis, not independent experiments.</p>
+        <p class="measure tech"><strong>Technical:</strong> ridge λ is tuned by five-fold event-stratified cross-validation inside each training set (λ = 0.351 on the full data). Leaving the clinical block unpenalised keeps M1 exactly nested in M2 and the comparison scale-equivariant; shrinking the molecular block makes ΔC conservative. Each random draw has its own SeedSequence stream; checkpoints are append-only and hash-linked; reporting was gated on a frozen verifier.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="part" id="sec-r" aria-labelledby="h-r">
+  <div class="rail"><span class="num">04</span><b>Result</b>The central<br>finding</div>
+  <div class="body">
+    <h2 id="h-r">From an apparent gain to an honest interval</h2>
+    <div class="seg" role="group" aria-label="Explain the result step by step" id="storySeg"></div>
+    <div class="story">
+      <figure class="panel"><svg id="storySvg" viewBox="0 0 560 300" role="img" aria-label="Result explanation chart"></svg></figure>
+      <div class="story-text" id="storyText" aria-live="polite"></div>
+    </div>
+    <div class="stats">
+      <div><span class="v data">0.6016</span><span class="l">M1 corrected C</span></div>
+      <div><span class="v data">0.6059</span><span class="l">M2 four-set corrected C</span></div>
+      <div><span class="v data" style="color:var(--eosin)">+0.004316</span><span class="l">corrected ΔC</span></div>
+      <div><span class="v data">5 / 5</span><span class="l">intervals include zero</span></div>
+      <div><span class="v data">0.833 / 0.862</span><span class="l">corrected calibration slopes: residual overfitting</span></div>
+    </div>
+    <p class="measure"><strong>A different quantity is not this interval.</strong> An earlier "paired out-of-original" bootstrap interval, [+0.0002, +0.0240] under the median representation and [−0.0001, +0.0224] under S-7, mixes in-sample and out-of-sample fits. It is not a confidence interval for the corrected ΔC and was not used for the conclusion.</p>
+    <p class="conclude">The study did not demonstrate a reproducible improvement in recurrence discrimination from adding the four pathway scores.</p>
+  </div>
+</section>
+
+<section class="part" id="sec-tissue" aria-labelledby="h-tissue">
+  <div class="rail"><span class="num">05</span><b>Bulk tissue</b>What an array<br>actually measures</div>
+  <div class="body">
+    <h2 id="h-tissue">One array, many cell types: a bulk score is a mixture</h2>
+    <p class="measure">Every expression array in this study was made from a piece of tumour tissue, not from isolated cancer cells. The mRNA of every cell in that piece is pooled into one measurement per gene, and a pathway score averages those measurements. Select a population, in the buttons or the illustration, to see how it could enter the score and what was and was not measured.</p>
+    <div class="pops" id="pops" role="group" aria-label="Cell populations"></div>
+    <div class="tissue-wrap">
+      <div class="tissue-fig" id="tissueFig">
+        <svg id="tissueSvg" viewBox="0 0 800 470" role="img" aria-label="Conceptual cross-section of a bulk tumour sample with tumour glands, fibroblasts, immune cells and blood vessels"></svg>
+        <span class="badge">Conceptual illustration · not a reconstruction of GSE39582 samples · cell counts drawn are arbitrary</span>
+      </div>
+      <div class="panel popcard" id="popcard" aria-live="polite"></div>
+    </div>
+    <div class="mix" aria-label="From tissue to score"><div class="b"><strong>Mixed tissue</strong>every cell type together</div><span class="ar" aria-hidden="true">→</span><div class="b"><strong>One array</strong>pooled mRNA, one value per gene</div><span class="ar" aria-hidden="true">→</span><div class="b"><strong>One score per patient</strong>mean of member-gene z-scores</div></div>
+
+    <h3 style="margin-top:14px">The EMT example: two biological stories, one number</h3>
+    <div class="seg" role="group" aria-label="Show EMT possibility" id="emtSeg"></div>
+    <div class="emt">
+      <div class="case" id="emt1"><h3><span>Possibility 1</span>Tumour cells in transition</h3><svg id="emtSvg1" viewBox="0 0 320 170" aria-hidden="true"></svg><p>Some tumour epithelial cells lose E-cadherin junctions and switch on mesenchymal genes such as vimentin and fibronectin.</p></div>
+      <div class="mid"><div class="arrows" aria-hidden="true">→ ←</div><div class="score"><strong>Bulk EMT score</strong><span>the same single number in both cases</span></div><span class="chip concept">conceptual</span></div>
+      <div class="case" id="emt2"><h3><span>Possibility 2</span>Stromal cells</h3><svg id="emtSvg2" viewBox="0 0 320 170" aria-hidden="true"></svg><p>Cancer-associated fibroblasts already express many of the same mesenchymal genes, so more stroma raises the score without any tumour-cell change.</p></div>
+    </div>
+    <p class="conclude">An elevated bulk EMT-associated score does not establish tumour-cell EMT.</p>
+    <p class="measure">In this cohort the EMT hazard ratio was 1.070 (0.951–1.202): above 1 in every fit, never distinguishable from 1. Published work attributes much bulk mesenchymal signal to stroma (Calon 2015; Isella 2015). Cell composition was not measured in GSE39582, but registered follow-up analyses estimated it computationally (ESTIMATE, MCP-counter): the EMT score correlates 0.95 with the fibroblast estimate, 0.94 with shared genes removed, within every molecular subtype, and the same holds in three independent cohorts. Public single-cell data from three further cohorts (different patients) then measured it directly: EMT-set transcripts come mainly from stromal cells, and malignant epithelial cells showed no coherent EMT programme in any of 61 patients (section 07). The evidence therefore strongly favours Possibility 2 for the bulk signal; rare or partial tumour-cell EMT states are not ruled out.</p>
+  </div>
+</section>
+
+<section class="part" id="sec-evidence" aria-labelledby="h-ev">
+  <div class="rail"><span class="num">06</span><b>Evidence</b>Measured vs<br>unresolved</div>
+  <div class="body">
+    <h2 id="h-ev">What was measured, and what remains open</h2>
+    <p class="measure">An observed association and an untested biological explanation are different kinds of evidence. Statuses are updated with registered follow-up analyses (post-hoc, outcome-free; none is classified resolved). Expand a row for the detail.</p>
+    <div class="matrix" id="matrix"><div class="head"><span>Biological or technical question</span><span>Project evidence</span><span>Status</span><span></span></div></div>
+  </div>
+</section>
+
+<section class="part" id="sec-tool" aria-labelledby="h-tool">
+  <div class="rail"><span class="num">07</span><b>Replication &amp; tool</b>From finding<br>to solution</div>
+  <div class="body">
+    <h2 id="h-tool">A replicated stromal reading of EMT, confirmed in single cells, and a tool that checks any pathway score</h2>
+    <p class="measure">The prediction answer stayed negative, so the follow-up asked a question that the data can answer well: what do these scores measure in bulk tissue, and which cells produce them? Analyses were registered before they ran and used no outcome data; key results, including TCGA, were re-checked with independently written code.</p>
+    <figure>
+      <h3>EMT score versus fibroblast markers, with shared genes removed</h3>
+      <div class="wide"><svg id="repChart" viewBox="0 0 760 230" role="img" aria-label="Gene-disjoint Spearman correlation between the EMT score and fibroblast markers: GSE39582 0.94, GSE41258 0.95, GSE143985 0.94, TCGA-COAD 0.98; GSE103479 failed quality control"></svg></div>
+      <figcaption>Spearman ρ with bootstrap 95 % intervals; 6 genes shared between Hallmark EMT and the MCP-counter fibroblast markers were removed. Grey bands: 95 % range of 200 random gene sets of the same size in each cohort (upper bounds 0.05, −0.15, 0.26 and 0.76); every EMT value exceeds its cohort's band, though in TCGA RNA-seq random sets already reach about 0.64. GSE103479 is excluded after failing a positive-control co-expression check (median r 0.07 against 0.78–0.94 elsewhere). TCGA-COAD includes all stages.</figcaption>
+    </figure>
+    <figure>
+      <h3>Measured in single cells: which cells supply the EMT-set transcripts</h3>
+      <div class="wide"><svg id="scChart" viewBox="0 0 760 240" role="img" aria-label="Median enrichment of EMT-set transcripts by cell compartment in three single-cell cohorts. Discovery GSE132465: stromal 5.08, endothelial 1.59, immune 0.92, epithelial 0.45. GSE144735: 2.84, 1.01, 0.33, 0.19. GSE178341: 9.80, 3.85, 1.65, 0.66."></svg></div>
+      <figcaption>Median per-patient enrichment of Hallmark EMT transcripts in each compartment, relative to 1,000 random gene sets matched on expression; 1× is the share expected from matched random genes; log scale. Public scRNA-seq with the authors' cell annotations, tumour samples of quality-passing patients: GSE132465 (discovery, 18 patients), GSE144735 (4) and GSE178341 (39). These are different patients from GSE39582. Plan and cell-type mapping committed before any expression value was read; outcome-free; mRNA only.</figcaption>
+    </figure>
+    <div class="stats s3">
+      <div><span class="v data">5.1 vs 0.45</span><span class="l">times the expected share of EMT-set transcripts, stromal vs epithelial cells (discovery; paired p 7.6×10⁻⁶; same direction in both replications)</span></div>
+      <div><span class="v data">0 of 61</span><span class="l">patients whose malignant cells co-express EMT genes beyond random genes: a tumour-cell programme was not detected (not ruled out)</span></div>
+      <div><span class="v data">ρ 0.97</span><span class="l">pseudo-bulk EMT score vs counted stromal fraction (random-gene-set 97.5th percentile 0.69; 0.67 in GSE178341)</span></div>
+    </div>
+    <h3>pathway-audit: what it checks</h3>
+    <div class="pipe">
+      <div class="st"><strong>1 · Data-quality gate</strong>Do genes that co-express in almost every tumour co-express here?</div>
+      <div class="st"><strong>2 · Gene drivers</strong>Coherence, leave-one-gene-out, stable modules</div>
+      <div class="st"><strong>3 · Composition</strong>Stromal and immune estimates, gene-disjoint test, random-gene-set baseline</div>
+      <div class="st"><strong>4 · Genotype effects</strong>Robust to, or explained by, composition and MMR?</div>
+      <div class="st"><strong>5 · Survival screen</strong>Optimism-corrected gain over clinical variables</div>
+      <div class="st"><strong>6 · Single-cell sources</strong>Which annotated cell types supply each set's transcripts?</div>
+    </div>
+<pre class="cli">pathway-audit fetch-references --cache refs/
+pathway-audit run --expr expression.tsv --gene-sets sets.gmt --out audit/ \
+    --annotations samples.csv --binary "TP53 mutant=tp53:M:WT" --adjust mmr=dMMR \
+    --references refs/
+pathway-audit sc-sources --counts matrix.mtx --genes features.tsv --cells cells.csv \
+    --gene-sets sets.gmt --group-column patient --out sc/</pre>
+    <h3>What it reported on five colorectal cohorts</h3>
+    <div class="wide"><table class="vt">
+      <thead><tr><th>Cohort</th><th>Quality gate</th><th>EMT score</th><th>Selected genotype result</th></tr></thead>
+      <tbody>
+        <tr><td>GSE39582 (452)</td><td>Pass (0.84)</td><td>Composition-dominated, holds without shared genes</td><td>BRAF → p53 score explained by MMR and composition; BRAF → lower Wnt score robust</td></tr>
+        <tr><td>GSE41258 (183)</td><td>Pass (0.79)</td><td>Composition-dominated</td><td>TP53 → lower p53 score</td></tr>
+        <tr><td>GSE143985 (91)</td><td>Pass (0.78)</td><td>Composition-dominated</td><td>TP53 → p53 score not detected</td></tr>
+        <tr><td>GSE103479 (156)</td><td><strong>Fail (0.07)</strong></td><td>Not interpretable</td><td>Not interpretable</td></tr>
+        <tr><td>TCGA-COAD (286)</td><td>Pass (0.94)</td><td>Composition-dominated</td><td>TP53 → lower p53 score, robust to composition and mutation burden; BRAF effects explained by hypermutation</td></tr>
+      </tbody></table></div>
+    <p class="measure">Its built-in survival screen gives a corrected gain of +0.0048 for the four scores on GSE39582, close to the frozen nested-bootstrap estimate of +0.0043. On the discovery single-cell cohort, <span class="data">sc-sources</span> reproduces the registered analysis (stromal 5.10× vs 5.08×; epithelial 0.45× vs 0.45×). The tool is tested (13 unit tests, including planted-structure checks; ESTIMATE re-implementation matches the original package to 10⁻¹⁴), runs in continuous integration on Python 3.10 and 3.12, has a working Docker image, and lives in the repository under <span class="data">tools/pathway-audit/</span>. Scores are bulk mRNA averages and composition values are estimates; the tool reports that in every audit.</p>
+  </div>
+</section>
+
+<section class="part" id="sec-mmr" aria-labelledby="h-mmr">
+  <div class="rail"><span class="num">08</span><b>Subtype &amp; batch</b>Two sources of<br>score variation</div>
+  <div class="body">
+    <h2 id="h-mmr">Scores track molecular subtype, and coefficients move with processing batch</h2>
+    <div class="pair">
+      <figure>
+        <h3>Association with mismatch-repair status</h3>
+        <svg id="mmrSvg" viewBox="0 0 440 230" role="img" aria-label="Effect size of the association between each score and MMR status"></svg>
+        <figcaption>ε² from exploratory, outcome-free Kruskal–Wallis tests in the <b>410 patients</b> with recorded MMR status; all four BH-adjusted q &lt; 0.05. ε² describes association strength in this analysis. It is not a hazard ratio or a causal effect: p53 has the strongest MMR association, yet its recurrence hazard ratio is 0.995 (0.882–1.123).</figcaption>
+      </figure>
+      <figure>
+        <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center"><h3>Leave one processing batch out</h3><div class="seg" role="group" aria-label="Pathway for the batch chart" id="batchSeg"></div></div>
+        <svg id="batchSvg" viewBox="0 0 440 250" role="img" aria-label="Coefficient when each processing batch is omitted, against the size of that batch"></svg>
+        <figcaption>Each point is one refit with one of the nine processing batches removed; horizontal position is the size of the omitted batch (14–103 patients), and the solid line is the all-patient estimate; an open circle marks a refit whose sign differs from it. Removing a large batch removes more data as well as a batch, so the spread cannot be attributed to batch identity alone.</figcaption>
+      </figure>
+    </div>
+    <p class="measure tech"><strong>Technical:</strong> batch and RNA-extraction location effects on the scores did not survive a permutation test stratified by the ComBat covariate <span class="data">combat_mod</span> (0 of 10). That covariate matches recorded MMR status in all 410 samples, but its provenance is unresolved, so it is not an MMR variable. Four QC-flag dispersion effects survived; residual batch-associated structure remains on PC3 (ε² 0.061). A batch-stratified refit gave molecular HRs of 1.073, 0.912, 1.004 and 1.022 (point estimates).</p>
+    <p class="conclude">Batch effects were characterised, not resolved.</p>
+  </div>
+</section>
+
+<section class="part" id="sec-journey" aria-labelledby="h-j">
+  <div class="rail"><span class="num">09</span><b>Journey</b>Decisions in<br>sequence</div>
+  <div class="body">
+    <h2 id="h-j">Nine stages of scientific decision-making</h2>
+    <p class="measure">Each stage asked a question that had to be answered before moving on. Stages with a violet ring include a recorded decision.</p>
+    <div class="journey">
+      <div class="track" role="tablist" aria-label="Research stages" id="track"><div class="bar"></div><div class="fill" id="trackFill"></div></div>
+      <div class="stage-card" role="tabpanel" id="stageCard" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section class="part" id="sec-lessons" aria-labelledby="h-l">
+  <div class="rail"><span class="num">10</span><b>Lessons</b>What rigour<br>changed</div>
+  <div class="body">
+    <h2 id="h-l">What a quick analysis would have reported</h2>
+    <div class="scroll"><table class="versus">
+      <thead><tr><th>Question</th><th>Quick analysis</th><th>This study</th></tr></thead>
+      <tbody>
+        <tr><td>Size of the gain</td><td>Apparent ΔC <span class="data">+0.014</span></td><td>Corrected ΔC <span class="data">+0.004316</span>; most of the gain was optimism</td></tr>
+        <tr><td>Is it significant?</td><td>A bootstrap interval <span class="data">[+0.0002, +0.024]</span> just above zero</td><td>That interval belongs to a different quantity; the corrected intervals include zero in every run</td></tr>
+        <tr><td>Which pathway matters?</td><td>E2F, HR <span class="data">0.862</span>, interval excludes 1</td><td>Only in a collinear five-set sensitivity model; no primary interval excludes 1</td></tr>
+        <tr><td>Are effects stable?</td><td>One fit, one set of coefficients</td><td>Dropping one processing batch flips two coefficients</td></tr>
+        <tr><td>Does it generalise?</td><td>A holdout labelled "validation"</td><td>External validation shown infeasible before modelling; the CIT partition kept internal</td></tr>
+      </tbody></table></div>
+  </div>
+</section>
+
+<section class="part" id="sec-role" aria-labelledby="h-role">
+  <div class="rail"><span class="num">11</span><b>My role</b>Decisions on record</div>
+  <div class="body">
+    <h2 id="h-role">The decisions that shaped the result</h2>
+    <p class="measure">My contribution was scientific direction and methodological judgement. Each decision below is recorded in the project's decision records.</p>
+    <div class="decisions">
+      <div class="dec"><span class="k">DC1</span><p><strong>Directed</strong> the project to fix every analytic choice before outcomes were examined.</p></div>
+      <div class="dec"><span class="k">DC2</span><p><strong>Approved</strong> leaving clinical terms unpenalised, with ridge only on pathway scores, so the comparison is scale-equivariant.</p></div>
+      <div class="dec"><span class="k">DC3</span><p><strong>Decided</strong> the CIT partition is internal validation only.</p></div>
+      <div class="dec"><span class="k">DC4</span><p><strong>Adjudicated</strong> the random-seed deviation and authorised the full corrected re-run.</p></div>
+      <div class="dec"><span class="k">DC5</span><p><strong>Chose</strong> to complete the pre-specified 500 → 750 precision top-up rather than report early.</p></div>
+      <div class="dec"><span class="k">DC6</span><p><strong>Kept</strong> the collinear five-set result and the wrong-estimand interval out of the conclusions.</p></div>
+      <div class="dec"><span class="k">DC7</span><p><strong>Commissioned and reviewed</strong> the audits, and approved their corrections.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="part" id="sec-future" aria-labelledby="h-f">
+  <div class="rail"><span class="num">12</span><b>Next</b>From limitation<br>to experiment</div>
+  <div class="body">
+    <h2 id="h-f">Each open question, connected to the evidence that would answer it</h2>
+    <p class="measure">Each row links an unresolved question to the data it needs, a method, and what a convincing answer would look like. The registered follow-up narrowed each question (noted in the row); none is answered.</p>
+    <div class="road" id="road"></div>
+    <figure>
+      <h3>Why external validation had to wait</h3>
+      <div class="wide"><svg id="events" viewBox="0 0 760 170" role="img" aria-label="Recurrence events in this cohort and candidate external cohorts compared with the number needed"></svg></div>
+      <figcaption>Required events are an indicative simulation approximation at an assumed C of 0.65. Counts are not combined across cohorts with different endpoints. GSE17536 was excluded because it shares 129 unambiguous patient pairs with GSE14333.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="part" id="sec-k" aria-labelledby="h-k">
+  <div class="rail"><span class="num">13</span><b>Toolkit</b>Methods and stack</div>
+  <div class="body">
+    <h2 id="h-k">What the work used</h2>
+    <p class="stack"><span>Python 3.13</span> <span class="sep">/</span> <span>pathway-audit (own package, CLI, tests)</span> <span class="sep">/</span> <span>Single-cell RNA-seq (h5py streaming, 370,000 cells)</span> <span class="sep">/</span> <span>GitHub Actions CI</span> <span class="sep">/</span> <span>Docker</span> <span class="sep">/</span> <span>R survival (Fine–Gray, frailty)</span> <span class="sep">/</span> <span>ESTIMATE, MCP-counter</span> <span class="sep">/</span> <span>TCGA-COAD via UCSC Xena</span> <span class="sep">/</span> <span>NumPy, pandas, SciPy</span> <span class="sep">/</span> <span>lifelines</span> <span class="sep">/</span> <span>pytest</span> <span class="sep">/</span> <span>matplotlib</span> <span class="sep">/</span> <span>Git and GitHub Releases</span> <span class="sep">/</span> <span>Affymetrix probe mapping</span> <span class="sep">/</span> <span>MSigDB Hallmark gene sets</span> <span class="sep">/</span> <span>Penalised Cox regression</span> <span class="sep">/</span> <span>Fold-internal standardisation</span> <span class="sep">/</span> <span>Nested bootstrap optimism correction</span> <span class="sep">/</span> <span>Batch-effect diagnostics</span> <span class="sep">/</span> <span>Competing-risk reasoning</span> <span class="sep">/</span> <span>Hash-verified reproducible pipelines</span></p>
+    <details><summary style="cursor:pointer;font-weight:600">References</summary>
+      <ol class="refs" style="margin-top:10px">
+        <li>Guinney J et al. <i>Nat Med</i> 2015;21:1350–1356. doi:10.1038/nm.3967</li>
+        <li>Calon A et al. <i>Nat Genet</i> 2015;47:320–329. doi:10.1038/ng.3225</li>
+        <li>Isella C et al. <i>Nat Genet</i> 2015;47:312–319. doi:10.1038/ng.3224</li>
+        <li>Anjomshoaa A et al. <i>Br J Cancer</i> 2009;101:822–828. doi:10.1038/sj.bjc.6605229</li>
+        <li>Luo ZW et al. <i>BMC Cancer</i> 2019;19:123. doi:10.1186/s12885-019-5324-y</li>
+        <li>Cancer Genome Atlas Network. <i>Nature</i> 2012;487:330–337. doi:10.1038/nature11252</li>
+        <li>Liberzon A et al. <i>Cell Syst</i> 2015;1:417–425. doi:10.1016/j.cels.2015.12.004</li>
+        <li>Marisa L et al. <i>PLoS Med</i> 2013;10:e1001453. doi:10.1371/journal.pmed.1001453</li>
+        <li>Yoshihara K et al. <i>Nat Commun</i> 2013;4:2612. doi:10.1038/ncomms3612</li>
+        <li>Becht E et al. <i>Genome Biol</i> 2016;17:218. doi:10.1186/s13059-016-1070-5</li>
+        <li>Lee HO et al. <i>Nat Genet</i> 2020;52:594–603. doi:10.1038/s41588-020-0636-z</li>
+        <li>Pelka K et al. <i>Cell</i> 2021;184:4734–4752. doi:10.1016/j.cell.2021.08.003</li>
+      </ol></details>
+  </div>
+</section>
+
+<footer>
+  <span>Prasad Akula · GSE39582 colon-cancer recurrence study · November 2026</span>
+  <span>Aggregate results from frozen outputs · internal validation only · no clinical claims</span>
+</footer>
+</div>
+
+<div class="tour" id="tour" hidden role="dialog" aria-label="Three-minute tour">
+  <span class="pg" id="tourPg"></span>
+  <div class="t"><div id="tourT"></div><div class="dots" id="tourDots"></div></div>
+  <div class="ctl"><button id="tourPrev">Back</button><button class="go" id="tourNext">Next</button><button id="tourClose" aria-label="Close tour">✕</button></div>
+</div>
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+const NS="http://www.w3.org/2000/svg",tip=document.getElementById("tip"),V=n=>"var("+n+")",root=document.documentElement;
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function el(tag,a,p,txt){const e=document.createElementNS(NS,tag);for(const k in a){const v=String(a[k]);if(v.startsWith("var("))e.style.setProperty(k,v);else e.setAttribute(k,v);}if(txt!=null)e.textContent=txt;if(p)p.appendChild(e);return e;}
+function hover(t,html){t.setAttribute("tabindex","0");
+  const show=(x,y)=>{tip.innerHTML=html;tip.classList.add("on");const w=tip.offsetWidth,h=tip.offsetHeight;tip.style.left=Math.min(innerWidth-w-8,Math.max(8,x+12))+"px";tip.style.top=Math.max(8,y-h-12)+"px";};
+  t.addEventListener("mousemove",e=>show(e.clientX,e.clientY));t.addEventListener("mouseleave",()=>tip.classList.remove("on"));
+  t.addEventListener("focus",()=>{const r=t.getBoundingClientRect();show(r.left+r.width/2,r.top);});t.addEventListener("blur",()=>tip.classList.remove("on"));}
+function axis(svg,X,ticks,fmt,y0,y1,label,mid){ticks.forEach(v=>{el("line",{x1:X(v),x2:X(v),y1:y0,y2:y1,class:"gl"},svg);el("text",{x:X(v),y:y1+15,"text-anchor":"middle",class:"tk"},svg,fmt(v));});if(label)el("text",{x:mid,y:y1+32,"text-anchor":"middle",class:"tk"},svg,label);}
+function clear(svg){while(svg.firstChild)svg.removeChild(svg.firstChild);}
+function tablist(container,items,render,opts={}){
+  const btns=items.map((it,i)=>{const b=document.createElement("button");b.type="button";b.setAttribute("role",opts.role||"tab");b.innerHTML=it.label;
+    b.addEventListener("click",()=>sel(i));b.addEventListener("keydown",e=>{const n=items.length;if(["ArrowRight","ArrowDown"].includes(e.key)){e.preventDefault();sel((i+1)%n,true);}if(["ArrowLeft","ArrowUp"].includes(e.key)){e.preventDefault();sel((i+n-1)%n,true);}});container.appendChild(b);return b;});
+  function sel(i,f){btns.forEach((b,j)=>{b.setAttribute(opts.attr||"aria-selected",j===i);if(!opts.role)b.tabIndex=j===i?0:-1;});render(i);if(f)btns[i].focus();}
+  return sel;}
+
+/* data from frozen outputs */
+const PW=[
+ {id:"emt",name:"EMT",col:"--emt",axis:"Mesenchymal / stromal state",genes:198,coh:0.241,hr:[1.070,0.951,1.202],s7:[1.084,0.937,1.254],strat:1.073,e2:0.0394,q:"1.3×10⁻⁴",
+  rel:"The mesenchymal CMS4 subtype had worse relapse-free survival (Guinney 2015; GSE39582 contributed to that classification, so this is not independent). Much bulk mesenchymal signal is stromal (Calon 2015; Isella 2015).",
+  set:"198 genes of the Hallmark epithelial–mesenchymal transition set: extracellular-matrix, adhesion and mesenchymal-identity genes.",
+  can:"How strongly mesenchymal-type genes are expressed in the tissue sample as a whole.",
+  cannot:"Whether tumour cells themselves underwent EMT, or how much of the signal comes from fibroblasts and other stroma.",
+  interp:"Point estimate above 1 in every reported fit, but no interval excludes 1. Compatible with stromal poor-prognosis biology; not a demonstrated association."},
+ {id:"e2f",name:"E2F targets",col:"--e2f",axis:"Proliferation",genes:195,coh:0.304,hr:[0.906,0.807,1.016],s7:[0.872,0.758,1.003],strat:0.912,e2:0.0251,q:"0.0021",
+  rel:"Evidence on proliferation and outcome is mixed: lower proliferation signatures in relapsed primaries (Anjomshoaa 2009), but high Ki-67 with poorer survival in a meta-analysis (Luo 2019).",
+  set:"195 genes switched on by E2F transcription factors at the G1/S transition: DNA replication, mitosis and cell-cycle checkpoints.",
+  can:"The overall level of cell-cycle gene expression in the sample, a proxy for how proliferative the tissue is.",
+  cannot:"Which cells are dividing, or whether proliferation causes or protects against recurrence.",
+  interp:"Point estimate below 1 in every reported fit; no primary-model interval excludes 1. The five-set model's 0.862 (0.746–0.996) coincided with added collinearity and is sensitivity only."},
+ {id:"wnt",name:"Wnt/β-catenin",col:"--wnt",axis:"Initiating driver pathway",genes:41,coh:0.041,hr:[1.016,0.906,1.138],s7:[1.011,0.879,1.162],strat:1.004,e2:0.0187,q:"0.0070",
+  rel:"Wnt-pathway genes are genomically altered in 93 % of colorectal cancers (TCGA 2012), and marked WNT/MYC activation characterises CMS2 (Guinney 2015).",
+  set:"41 genes upregulated by Wnt/β-catenin signalling, a small and loosely co-expressed set in this tissue (r̄ 0.041).",
+  can:"Average expression of these 41 target genes across the sample.",
+  cannot:"Pathway activation, or the APC/CTNNB1 mutation status that drives it; genomic alteration is not measured activation.",
+  interp:"Near zero, the least representation-stable score (median vs representative-probe r 0.858), with one sign change under leave-one-batch-out. No explanation is offered for the null."},
+ {id:"p53",name:"p53 pathway",col:"--p53",axis:"DNA-damage checkpoint",genes:194,coh:0.033,hr:[0.995,0.882,1.123],s7:[0.993,0.852,1.158],strat:1.022,e2:0.1716,q:"4.7×10⁻¹⁶",
+  rel:"TP53 is mutated in about 60 % of non-hypermutated and about 20 % of hypermutated colorectal cancers (TCGA 2012).",
+  set:"194 genes described as p53 transcriptional targets: cell-cycle arrest, apoptosis and feedback genes.",
+  can:"Average expression of these target genes, which in this cohort varies strongly with mismatch-repair status.",
+  cannot:"TP53 mutation status or p53 protein function; the score is not a mutation or function assay.",
+  interp:"Near zero, with two sign changes under leave-one-batch-out, and the strongest MMR association of the four scores. Association with subtype is not association with recurrence."}];
+const LOBO=[{b:"01",n:33,c:[0.0476,-0.0685,0.0145,-0.0001]},{b:"02",n:14,c:[0.0941,-0.2488,0.0669,-0.018]},{b:"03",n:102,c:[0.2037,-0.1116,0.0594,-0.1133]},{b:"04",n:103,c:[0.0153,-0.0192,0.005,0.0139]},{b:"05",n:48,c:[0.0603,-0.0939,0.001,-0.0165]},{b:"07",n:81,c:[0.1013,-0.1512,0.0057,-0.0057]},{b:"08",n:41,c:[0.0234,-0.0304,0.01,0.0032]},{b:"09",n:15,c:[0.0601,-0.1023,0.0139,-0.007]},{b:"10",n:15,c:[0.009,-0.0139,-0.0022,-0.0018]}];
+const ALLC=[0.0672,-0.0991,0.0154,-0.0047];
+const RUNS=[[-.0086,.0519],[-.0090,.0469],[-.0093,.0484],[-.0091,.0518],[-.0091,.0494]];
+
+/* depth + nav */
+const depthBtn=document.getElementById("depthBtn");
+function setDepth(on){root.dataset.depth=on?"technical":"overview";depthBtn.setAttribute("aria-pressed",on);try{localStorage.setItem("gse_depth",on?"1":"0");}catch(e){}}
+let saved=false;try{saved=localStorage.getItem("gse_depth")==="1";}catch(e){}setDepth(saved);
+depthBtn.addEventListener("click",()=>setDepth(root.dataset.depth!=="technical"));
+document.getElementById("deepStart").addEventListener("click",()=>{setDepth(true);document.getElementById("sec-bio").scrollIntoView({behavior:reduce?"auto":"smooth"});});
+(function(){const links=[...document.querySelectorAll(".toc a[data-sec]")],map=new Map(links.map(a=>[a.dataset.sec,a]));if(!("IntersectionObserver" in window))return;
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.removeAttribute("aria-current"));const a=map.get(e.target.id);if(a){a.setAttribute("aria-current","true");a.scrollIntoView({block:"nearest",inline:"nearest"});}}}),{rootMargin:"-45% 0px -50% 0px"});
+  map.forEach((a,id)=>{const s=document.getElementById(id);if(s)io.observe(s);});})();
+
+/* hero slide */
+(function(){const c=document.getElementById("slideCanvas");
+  function draw(){const r=c.getBoundingClientRect(),dpr=Math.min(2,devicePixelRatio||1);if(!r.width)return;c.width=r.width*dpr;c.height=r.height*dpr;const g=c.getContext("2d");g.scale(dpr,dpr);
+    const st=getComputedStyle(root),eo=st.getPropertyValue("--eosin").trim(),ha=st.getPropertyValue("--haem").trim();let s=39582;const rnd=()=>(s=(s*16807)%2147483647)/2147483647;const W=r.width,H=r.height;
+    g.globalAlpha=.16;g.fillStyle=eo;g.beginPath();g.ellipse(W*.52,H*.52,W*.42,H*.4,-.25,0,7);g.fill();g.globalAlpha=.12;for(let i=0;i<26;i++){g.beginPath();g.ellipse(W*(.18+rnd()*.68),H*(.18+rnd()*.66),6+rnd()*22,4+rnd()*12,rnd()*3,0,7);g.fill();}
+    g.fillStyle=ha;for(let i=0;i<520;i++){const a=rnd()*6.283,d=Math.sqrt(rnd());g.globalAlpha=.35+rnd()*.45;g.beginPath();g.ellipse(W*.52+Math.cos(a)*d*W*.41,H*.52+Math.sin(a)*d*H*.38,1+rnd()*1.8,.8+rnd()*1.3,rnd()*3,0,7);g.fill();}g.globalAlpha=1;}
+  draw();let t;addEventListener("resize",()=>{clearTimeout(t);t=setTimeout(draw,150);});try{matchMedia("(prefers-color-scheme: dark)").addEventListener("change",draw);}catch(e){}
+  new MutationObserver(draw).observe(root,{attributes:true,attributeFilter:["data-theme"]});})();
+
+/* mechanism diagrams (textbook, simplified) */
+function mech(p){const svg=document.createElementNS(NS,"svg");svg.setAttribute("viewBox","0 0 460 210");svg.setAttribute("aria-hidden","true");const col=V(p.col);
+  el("defs",{},svg).innerHTML=`<marker id="ah-${p.id}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--ink-3)"/></marker>`;
+  const node=(x,y,w,h,t,fill,stroke,dash)=>{el("rect",{x,y,width:w,height:h,rx:8,fill:fill||V("--sheet"),stroke:stroke||V("--line"),"stroke-width":1.4,"stroke-dasharray":dash||"none"},svg);
+    t.split("\n").forEach((ln,i,a)=>el("text",{x:x+w/2,y:y+h/2+4+(i-(a.length-1)/2)*14,"text-anchor":"middle",class:"lb"},svg,ln));};
+  const arr=(x1,y1,x2,y2)=>el("line",{x1,y1,x2,y2,stroke:V("--ink-3"),"stroke-width":1.4,"marker-end":`url(#ah-${p.id})`},svg);
+  const cap=(x,y,t)=>el("text",{x,y,class:"tk"},svg,t);
+  if(p.id==="wnt"){cap(14,20,"WITHOUT WNT SIGNAL, APC INTACT");node(14,30,140,46,"APC · AXIN · GSK3β\ndestruction complex");arr(154,53,190,53);node(192,30,110,46,"β-catenin\ndegraded");
+    cap(14,120,"IN MOST COLORECTAL CANCERS");node(14,130,140,46,"APC lost or\nCTNNB1 mutated",V("--sheet"),col,"4 3");arr(154,153,190,153);node(192,130,110,46,"β-catenin\naccumulates");arr(302,153,326,153);
+    el("ellipse",{cx:390,cy:153,rx:62,ry:44,fill:"none",stroke:col,"stroke-width":1.6},svg);el("text",{x:390,y:146,"text-anchor":"middle",class:"lb"},svg,"nucleus: TCF/LEF");el("text",{x:390,y:162,"text-anchor":"middle",class:"lb"},svg,"MYC, AXIN2 …");}
+  if(p.id==="e2f"){cap(10,40,"CELL-CYCLE ENTRY");node(8,80,112,50,"Cyclin D–CDK4/6\nCyclin E–CDK2");arr(120,105,150,105);node(152,80,90,50,"RB\nphosphorylated");arr(242,105,272,105);node(274,80,80,50,"E2F\nreleased",V("--sheet"),col);arr(354,105,380,105);node(382,62,72,86,"G1/S and\nreplication\ngenes\n(MCM, PCNA)");cap(8,190,"Unphosphorylated RB holds E2F inactive; CDK activity frees it.");}
+  if(p.id==="p53"){cap(10,30,"STRESS RESPONSE");node(10,82,100,46,"DNA damage /\noncogenic stress");arr(110,105,150,105);node(152,82,90,46,"p53\nstabilised",V("--sheet"),col);
+    arr(242,95,300,50);arr(242,105,300,105);arr(242,115,300,160);node(302,28,150,40,"CDKN1A (p21): arrest");node(302,85,150,40,"BAX, PUMA: apoptosis");node(302,142,150,40,"MDM2: feedback");
+    el("path",{d:"M376 184 C 300 206, 200 202, 197 130",fill:"none",stroke:V("--ink-3"),"stroke-width":1.2,"stroke-dasharray":"3 3","marker-end":`url(#ah-${p.id})`},svg);cap(130,204,"MDM2 targets p53 for degradation");}
+  if(p.id==="emt"){cap(10,24,"EPITHELIAL → MESENCHYMAL");
+    for(let i=0;i<4;i++)el("rect",{x:14+i*26,y:84,width:24,height:40,rx:3,fill:V("--cell-epi"),stroke:V("--sheet"),"stroke-width":1.5},svg);
+    el("text",{x:66,y:146,"text-anchor":"middle",class:"lb"},svg,"E-cadherin junctions");
+    arr(146,104,244,104);el("text",{x:195,y:90,"text-anchor":"middle",class:"tk"},svg,"SNAIL · ZEB · TWIST");el("text",{x:195,y:124,"text-anchor":"middle",class:"tk"},svg,"often TGF-β");
+    el("ellipse",{cx:300,cy:110,rx:44,ry:12,fill:"none",stroke:col,"stroke-width":1.6,transform:"rotate(-12 300 110)"},svg);el("ellipse",{cx:378,cy:86,rx:40,ry:11,fill:"none",stroke:col,"stroke-width":1.6,transform:"rotate(18 378 86)"},svg);
+    el("text",{x:340,y:150,"text-anchor":"middle",class:"lb"},svg,"vimentin, fibronectin, collagens");el("text",{x:20,y:190,class:"tk"},svg,"Fibroblasts express many of the same mesenchymal genes.");}
+  return svg;}
+
+/* pathway explorer + forest */
+const ptabs=document.getElementById("ptabs"),pex=document.getElementById("pexplorer");let curP=0;
+const selP=tablist(ptabs,PW.map(p=>({label:`<span class="dotc" style="background:var(${p.col})"></span>${p.name}`})),i=>{curP=i;const p=PW[i];
+  [...ptabs.children].forEach((b,j)=>b.style.borderBottomColor=j===i?`var(${p.col})`:"transparent");
+  pex.innerHTML=`<div style="display:grid;gap:14px;align-content:start"><div class="mech"><div class="cap"><span class="chip tb">Textbook mechanism</span><span class="chip concept">simplified schematic</span></div><div id="mechHost"></div></div>
+    <div class="numgrid"><div><span class="v">${p.hr[0].toFixed(3)} (${p.hr[1].toFixed(3)}–${p.hr[2].toFixed(3)})</span><span class="l">Primary HR (median representation)</span></div><div><span class="v">${p.s7[0].toFixed(3)} (${p.s7[1].toFixed(3)}–${p.s7[2].toFixed(3)})</span><span class="l">S-7 HR (sensitivity)</span></div><div><span class="v">${p.strat.toFixed(3)}</span><span class="l">Batch-stratified HR, point estimate</span></div><div><span class="v">ε² ${p.e2.toFixed(4)}</span><span class="l">MMR association, BH q ${p.q}</span></div></div></div>
+    <div class="ex-cols"><div><div style="text-transform:uppercase;letter-spacing:.08em;font-family:var(--data);font-size:.62rem;color:var(--ink-3)">${p.axis} · ${p.genes} genes · coherence r̄ ${p.coh.toFixed(3)}</div><div class="ttl" style="color:var(${p.col})">${p.name}</div></div>
+    <div class="ex-row"><span class="k"><span class="chip lit">Literature</span></span><p>${p.rel}</p></div>
+    <div class="ex-row"><span class="k">Hallmark set</span><p>${p.set}</p></div>
+    <div class="ex-row"><span class="k">Score can tell us</span><p>${p.can}</p></div>
+    <div class="ex-row"><span class="k"><span class="chip ne">Cannot establish</span></span><p>${p.cannot}</p></div>
+    <div class="ex-row"><span class="k"><span class="chip obs">Observed</span></span><p class="interp" style="border-left-color:var(${p.col})">${p.interp}</p></div>
+    <p class="small tech">HR per training-fold SD from the ridge Cox model (λ 0.351 primary); Wald intervals approximate. Coherence r̄ is the implied mean inter-gene correlation (Phase 8C), a description of co-expression, not activation. MMR ε²: exploratory Kruskal–Wallis, n = 410, BH q.</p></div>`;
+  pex.querySelector("#mechHost").appendChild(mech(p));drawForest();});
+function drawForest(){const svg=document.getElementById("forestAll");clear(svg);const L=150,R=740,T=16,rh=50,a=Math.log(.7),b=Math.log(1.35),X=v=>L+(Math.log(v)-a)/(b-a)*(R-L),B=T+rh*4;
+  axis(svg,X,[.7,.8,.9,1,1.1,1.2,1.3],v=>v.toFixed(1),T-4,B,"Hazard ratio per SD (log scale)",(L+R)/2);
+  el("line",{x1:X(1),x2:X(1),y1:T-10,y2:B,class:"zl"},svg);el("text",{x:X(1)+4,y:T-4,class:"tk"},svg,"HR = 1");
+  PW.forEach((p,i)=>{const y0=T+rh*i+rh/2,on=i===curP,op=on?1:.4;
+    if(on)el("rect",{x:4,y:y0-rh/2+3,width:R,height:rh-6,rx:6,fill:V("--faint")},svg);
+    el("circle",{cx:16,cy:y0,r:5,fill:V(p.col),opacity:op},svg);el("text",{x:28,y:y0+4,class:"nm",opacity:op},svg,p.name);
+    [["Primary",p.hr,"--primary",-8,"o"],["S-7",p.s7,"--s7",8,"s"]].forEach(([lab,v,c,dy,sh])=>{const y=y0+dy;
+      el("line",{x1:X(v[1]),x2:X(v[2]),y1:y,y2:y,stroke:V(c),"stroke-width":2.2,"stroke-linecap":"round",opacity:op},svg);
+      if(sh==="o")el("circle",{cx:X(v[0]),cy:y,r:5,fill:V(c),stroke:V("--sheet"),"stroke-width":1.5,opacity:op},svg);else el("rect",{x:X(v[0])-4.5,y:y-4.5,width:9,height:9,fill:V(c),stroke:V("--sheet"),"stroke-width":1.5,opacity:op},svg);
+      hover(el("rect",{x:X(v[1])-8,y:y-8,width:X(v[2])-X(v[1])+16,height:16,class:"hit"},svg),`<b>${p.name} · ${lab}</b><br>HR ${v[0].toFixed(3)} (${v[1].toFixed(3)}–${v[2].toFixed(3)})<br>Interval includes 1`);});
+    const hit=el("rect",{x:4,y:y0-rh/2+3,width:140,height:rh-6,class:"hit",style:"cursor:pointer"},svg);hit.setAttribute("aria-label","Open "+p.name);hit.setAttribute("role","button");hit.addEventListener("click",()=>selP(i));hit.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();selP(i);}});hit.setAttribute("tabindex","0");});}
+selP(0);
+
+/* method flow + condition numbers */
+(function(){const F=[
+  {n:"54,675",l:"probe sets",d:"<strong>Affymetrix HG-U133 Plus 2.0</strong>, deposited as RMA + ComBat. Used as deposited, with no re-normalisation or batch correction, so nothing fitted here could leak outcome information."},
+  {n:"43,163",l:"single-gene probes",d:"<strong>8,893 unmapped and 2,619 ambiguous probe sets excluded</strong>, so every probe used maps to exactly one gene symbol."},
+  {n:"21,815",l:"unique genes",d:"<strong>Genes with several probes (10,751) are summarised by the median.</strong> A representative-probe rule (S-7) was frozen as a sensitivity analysis of the same arrays."},
+  {n:"607",l:"pathway-member genes",d:"<strong>EMT 198 · E2F 195 · Wnt 41 · p53 194</strong> (MSigDB Hallmark v2026.2.Hs), chosen without outcome data and frozen before any association analysis."},
+  {n:"4",l:"scores per patient",d:"<strong>Each member gene is standardised with training-fold constants only</strong>; each score is the mean of its member z-scores. Held-out patients never shape the features."}];
+  const det=document.getElementById("flowDetail");tablist(document.getElementById("flow"),F.map(s=>({label:`<span class="n">${s.n}</span><span class="l">${s.l}</span>`})),i=>{det.innerHTML=F[i].d;})(0);
+  const svg=document.getElementById("cond"),L=140,R=420,T=8,rh=38,X=v=>L+Math.log10(v)/2*(R-L);
+  const rows=[["10 candidate sets",77,"--apparent","All ten candidates; six on one mesenchymal axis"],["5-set (sensitivity)",6.95,"--s7","Adds PI3K/AKT/mTOR; p53 ↔ PI3K r 0.63"],["4-set (primary)",2.95,"--primary","EMT, E2F, Wnt, p53; no pair with |r| above 0.5"]],B=T+rh*3;
+  axis(svg,X,[1,3,10,30,100],v=>String(v),T,B,"Condition number (log scale)",(L+R)/2);
+  rows.forEach((r,i)=>{const y=T+rh*i+rh/2;el("text",{x:L-10,y:y+4,"text-anchor":"end",class:"nm"},svg,r[0]);el("rect",{x:L,y:y-9,width:X(r[1])-L,height:18,rx:2,fill:V(r[2])},svg);el("text",{x:X(r[1])+6,y:y+4,class:"tk"},svg,r[1]);
+    hover(el("rect",{x:L,y:y-13,width:R-L,height:26,class:"hit"},svg),`<b>${r[0]}</b><br>Condition number ${r[1]}<br>${r[3]}`);});})();
+
+/* result story */
+(function(){const svg=document.getElementById("storySvg"),txt=document.getElementById("storyText");
+  const S=[
+   {b:"Apparent",h:"The apparent improvement",p:"Fitted and tested on the same 452 patients, the pathway model ranks patients slightly better than the clinical model: apparent C 0.6382 vs 0.6242, a gap of +0.0140. Any model looks best on its own data."},
+   {b:"Optimism",h:"How much is optimism",p:"A bootstrap estimates how much each model flatters itself. Optimism is about 0.023 for the clinical model and 0.032 for the pathway model: the bigger model gains more from fitting noise."},
+   {b:"Corrected",h:"The corrected improvement",p:"After removing optimism, corrected C is 0.6016 (clinical) vs 0.6059 (pathway model). The gain shrinks from +0.0140 to +0.004316, about a third of what a quick analysis would report."},
+   {b:"Uncertainty",h:"Uncertainty around the corrected gain",p:"Five nested-bootstrap runs of 750 × 100 resamples, differing only in random seed, give 95 % intervals from about −0.009 to +0.05. Every one includes zero: a small loss and a modest gain are both compatible with the data."}];
+  const Xc=v=>120+(v-.59)/.06*410;
+  function cAxis(){axis(svg,Xc,[.59,.60,.61,.62,.63,.64,.65],v=>v.toFixed(2),30,230,"Harrell's C (0.5 = chance)",325);}
+  function row(y,lab){el("text",{x:110,y:y+4,"text-anchor":"end",class:"nm"},svg,lab);}
+  function dot(x,y,c,hollow,t){const d=el("circle",{cx:x,cy:y,r:7,fill:hollow?V("--sheet"):V(c),stroke:V(c),"stroke-width":2},svg);if(!reduce){d.style.opacity=0;requestAnimationFrame(()=>{d.style.transition="opacity .4s";d.style.opacity=1;});}if(t)hover(d,t);return d;}
+  function bracket(x1,x2,y,label,c){el("path",{d:`M${x1} ${y} v-8 H${x2} v8`,fill:"none",stroke:V(c),"stroke-width":1.5},svg);el("text",{x:(x1+x2)/2,y:y-14,"text-anchor":"middle",class:"tk",style:"font-size:12px"},svg,label);}
+  function render(i){clear(svg);const s=S[i];txt.innerHTML=`<span class="stage">Step ${i+1} of 4 · ${s.b}</span><h3>${s.h}</h3><p>${s.p}</p>`;
+    if(i<3){cAxis();row(100,"Clinical (M1)");row(180,"+ 4 pathways");const A=[.6242,.6382],C=[.6016,.6059];
+      if(i===0){dot(Xc(A[0]),100,"--apparent",true,"<b>M1 apparent</b><br>C 0.6242");dot(Xc(A[1]),180,"--apparent",true,"<b>M2 apparent</b><br>C 0.6382");bracket(Xc(A[0]),Xc(A[1]),66,"apparent gap +0.0140","--apparent");}
+      if(i===1){[0,1].forEach(k=>{const y=k?180:100;el("line",{x1:Xc(A[k])-8,x2:Xc(C[k])+9,y1:y,y2:y,stroke:V("--s7"),"stroke-width":2,"stroke-dasharray":"4 3"},svg);dot(Xc(A[k]),y,"--apparent",true);dot(Xc(C[k]),y,"--primary",false);
+        el("text",{x:(Xc(A[k])+Xc(C[k]))/2,y:y-14,"text-anchor":"middle",class:"tk",style:"font-size:12px"},svg,"optimism "+(k?"0.032":"0.023"));});}
+      if(i===2){dot(Xc(A[0]),100,"--apparent",true);dot(Xc(A[1]),180,"--apparent",true);dot(Xc(C[0]),100,"--primary",false,"<b>M1 corrected</b><br>C 0.6016");dot(Xc(C[1]),180,"--primary",false,"<b>M2 corrected</b><br>C 0.6059");bracket(Xc(C[0]),Xc(C[1]),66,"corrected gap +0.0043","--primary");}
+    } else {const L=110,R=530,T=34,rh=38,X=v=>L+(v+.02)/.08*(R-L),B=T+rh*5;axis(svg,X,[-.02,0,.02,.04,.06],v=>(v>0?"+":"")+v.toFixed(2),T-6,B,"Corrected ΔC, 95 % percentile intervals",320);
+      el("line",{x1:X(0),x2:X(0),y1:T-12,y2:B,class:"zl"},svg);el("text",{x:X(0)-4,y:T-14,"text-anchor":"end",class:"tk"},svg,"no gain");
+      RUNS.forEach((r,k)=>{const y=T+rh*k+rh/2;el("text",{x:L-10,y:y+4,"text-anchor":"end",class:"nm"},svg,"Run "+k);const ln=el("line",{x1:X(r[0]),x2:X(r[1]),y1:y,y2:y,stroke:V("--primary"),"stroke-width":7,"stroke-linecap":"round"},svg);
+        if(!reduce){ln.style.opacity=0;setTimeout(()=>{ln.style.transition="opacity .35s";ln.style.opacity=1;},60*k);}
+        hover(el("rect",{x:X(r[0])-6,y:y-13,width:X(r[1])-X(r[0])+12,height:26,class:"hit"},svg),`<b>Run ${k}</b><br>95 % interval [${r[0].toFixed(4)}, +${r[1].toFixed(4)}]<br>750 outer × 100 inner resamples`);});
+      el("line",{x1:X(.004316),x2:X(.004316),y1:T-6,y2:B,stroke:V("--ink"),"stroke-width":2},svg);el("text",{x:X(.004316)+6,y:T-14,class:"tk"},svg,"θ̂ = +0.004316");}}
+  tablist(document.getElementById("storySeg"),S.map((s,i)=>({label:`${i+1} · ${s.b}`})),render,{role:"button",attr:"aria-pressed"})(0);})();
+
+/* tissue illustration (conceptual) */
+const POPS=[
+ {id:"epi",name:"Tumour epithelial cells",sw:"--cell-epi",st:["ns","NOT SEPARATED"],
+  what:"The cancer cells themselves, drawn here as malformed glands around a lumen.",
+  how:"They contribute their own mRNA, including proliferation, Wnt-target and p53-target transcripts, to the pooled sample.",
+  why:"A score is easily read as tumour-cell biology, but tumour transcripts are mixed with those of every other cell in the piece.",
+  meas:"Present in every GSE39582 sample but never isolated: the arrays cannot separate tumour-cell expression from the rest. In public single-cell data from other patients, malignant epithelial cells supplied less than their expected share of EMT-set transcripts (0.45×) and showed no coherent EMT programme in any of 61 patients.",
+  next:"Spatial transcriptomics or protein staining on tumours with recurrence data, to look for rare or partial EMT states that single-cell RNA data can miss."},
+ {id:"fib",name:"Fibroblasts and stroma",sw:"--cell-fib",st:["part","ESTIMATED"],
+  what:"Cancer-associated fibroblasts and the connective tissue between glands.",
+  how:"They express many extracellular-matrix and mesenchymal genes, the same kind of genes that dominate the Hallmark EMT set.",
+  why:"More stroma can raise the EMT score without any change in tumour cells, so EMT-score differences could reflect stromal content.",
+  meas:"Estimated computationally from the GSE39582 arrays (ESTIMATE stromal score, MCP-counter fibroblasts), not measured. In three public single-cell cohorts (other patients), stromal cells supplied EMT-set transcripts at 5.1× their expression-matched share, and a pseudo-bulk EMT score tracked the counted stromal fraction (ρ 0.97).",
+  next:"Matched histology review or spatial transcriptomics in tumours that also have recurrence data."},
+ {id:"imm",name:"Immune cells",sw:"--cell-imm",st:["part","ESTIMATED"],
+  what:"Lymphocytes and other immune cells infiltrating the tumour and stroma.",
+  how:"They add immune and inflammatory transcripts, and some cell-cycle transcripts when activated.",
+  why:"Immune infiltration differs between colorectal-cancer subtypes and could shift several scores at once.",
+  meas:"Estimated computationally from the same arrays (ESTIMATE immune score; MCP-counter lymphocyte and monocytic estimates), not measured. In single-cell data, immune cells supplied close to their expected share of EMT-set transcripts (0.92× in the discovery cohort).",
+  next:"Immune-cell deconvolution, immunohistochemistry, or single-cell profiling."},
+ {id:"endo",name:"Endothelial cells and vessels",sw:"--cell-endo",st:["part","ESTIMATED"],
+  what:"Cells lining the blood vessels that supply the tumour, with red cells in the lumen.",
+  how:"They contribute vascular and angiogenesis-related transcripts, some of which overlap with mesenchymal programmes.",
+  why:"Vascular content varies between samples and adds variation that is not tumour-cell biology.",
+  meas:"Estimated computationally from the same arrays (MCP-counter endothelial markers), not measured. In single-cell data, endothelial cells were mildly enriched for EMT-set transcripts (1.59× in the discovery cohort), consistent with vessels also expressing matrix genes.",
+  next:"Endothelial-fraction estimates by deconvolution or spatial methods."}];
+(function(){const svg=document.getElementById("tissueSvg");let s=20250;const rnd=()=>(s=(s*16807)%2147483647)/2147483647;
+  el("rect",{x:0,y:0,width:800,height:470,fill:V("--matrix")},svg);
+  const groups={};POPS.forEach(p=>{groups[p.id]=el("g",{class:"cellg"},svg);});
+  for(let i=0;i<34;i++){const x=rnd()*800,y=rnd()*470;el("path",{d:`M${x} ${y} q ${30+rnd()*40} ${-10+rnd()*20} ${70+rnd()*60} ${-6+rnd()*12}`,fill:"none",stroke:V("--cell-fib"),"stroke-width":1.2,opacity:.45},groups.fib);}
+  const glands=[[200,160,78],[470,130,64],[330,335,72],[620,320,66]];
+  glands.forEach(([cx,cy,r])=>{el("ellipse",{cx,cy,rx:r*.48,ry:r*.36,fill:V("--sheet"),opacity:.85},groups.epi);
+    const n=Math.round(r/4.2);for(let k=0;k<n;k++){const a=k/n*6.283,x=cx+Math.cos(a)*r*.72,y=cy+Math.sin(a)*r*.58,rot=a*57.3+90;
+      const g=el("g",{transform:`translate(${x} ${y}) rotate(${rot})`},groups.epi);el("rect",{x:-7,y:-12,width:14,height:24,rx:3,fill:V("--cell-epi"),stroke:V("--matrix"),"stroke-width":1},g);el("ellipse",{cx:0,cy:5,rx:3.6,ry:4.4,fill:V("--cell-epi-n")},g);}});
+  const inGland=(x,y)=>glands.some(([cx,cy,r])=>((x-cx)/(r*.95))**2+((y-cy)/(r*.8))**2<1);
+  const vessels=[[90,370,46,22],[700,110,40,20],[560,435,36,16]];
+  vessels.forEach(([cx,cy,rx,ry])=>{el("ellipse",{cx,cy,rx,ry,fill:V("--sheet"),stroke:V("--cell-endo"),"stroke-width":5},groups.endo);
+    for(let k=0;k<5;k++)el("ellipse",{cx:cx-rx*.5+k*rx*.25,cy:cy+(k%2?3:-3),rx:5,ry:3.5,fill:V("--rbc")},groups.endo);
+    for(let k=0;k<6;k++){const a=k/6*6.283,px=cx+Math.cos(a)*rx,py=cy+Math.sin(a)*ry;el("ellipse",{cx:px,cy:py,rx:5,ry:2,fill:V("--cell-epi-n"),transform:`rotate(${a*57.3+90} ${px} ${py})`},groups.endo);}});
+  const inVessel=(x,y)=>vessels.some(([cx,cy,rx,ry])=>((x-cx)/(rx+12))**2+((y-cy)/(ry+12))**2<1);
+  let placed=0,guard=0;while(placed<46&&guard<4000){guard++;const x=20+rnd()*760,y=48+rnd()*405;if(inGland(x,y)||inVessel(x,y))continue;const rot=-30+rnd()*60;
+    const g=el("g",{transform:`translate(${x} ${y}) rotate(${rot})`},groups.fib);el("ellipse",{cx:0,cy:0,rx:17,ry:3.6,fill:V("--cell-fib")},g);el("ellipse",{cx:0,cy:0,rx:6,ry:2.2,fill:V("--cell-fib-n")},g);placed++;}
+  placed=0;guard=0;while(placed<40&&guard<4000){guard++;const x=20+rnd()*760,y=48+rnd()*405;if(inGland(x,y)||inVessel(x,y))continue;el("circle",{cx:x,cy:y,r:5.2,fill:V("--cell-imm")},groups.imm);el("circle",{cx:x,cy:y,r:3.1,fill:V("--cell-epi-n"),opacity:.75},groups.imm);placed++;}
+  const fig=document.getElementById("tissueFig"),card=document.getElementById("popcard"),pops=document.getElementById("pops"),btns=[];
+  function render(i){fig.classList.toggle("dim",i>=0);POPS.forEach((p,j)=>groups[p.id].classList.toggle("on",j===i));all.setAttribute("aria-pressed",i<0);btns.forEach((b,j)=>b.setAttribute("aria-pressed",j===i));
+    if(i<0){card.innerHTML=`<span class="chip concept">conceptual</span><h3>Every cell contributes</h3><p class="measure">Select a population to see what it represents, how it could enter a bulk score, and what was measured.</p><dl><dt>Measured in this project</dt><dd>In GSE39582, only the pooled mixture: one expression value per gene per array. Composition was estimated computationally, not measured. Cell-level sources were measured separately, in public single-cell data from other patients (section 07).</dd></dl>`;return;}
+    const p=POPS[i];card.innerHTML=`<span><span class="chip ${p.st[0]}">${p.st[1]}</span></span><h3>${p.name}</h3><dl>
+      <dt>What it represents</dt><dd>${p.what}</dd><dt>How it enters a bulk measurement</dt><dd>${p.how}</dd><dt>Why it matters for pathway scores</dt><dd>${p.why}</dd>
+      <dt>Measured in this project?</dt><dd>${p.meas}</dd><dt><span class="chip fut">FUTURE INVESTIGATION</span></dt><dd>${p.next}</dd></dl>`;}
+  const all=document.createElement("button");all.type="button";all.textContent="All cells";all.addEventListener("click",()=>render(-1));pops.appendChild(all);
+  POPS.forEach((p,i)=>{const b=document.createElement("button");b.type="button";b.innerHTML=`<span class="sw" style="background:var(${p.sw})"></span>${p.name}`;b.addEventListener("click",()=>render(i));pops.appendChild(b);btns.push(b);
+    groups[p.id].style.cursor="pointer";groups[p.id].addEventListener("click",()=>render(i));});
+  render(-1);})();
+
+/* EMT comparison (conceptual) */
+(function(){function draw(svg,mode){el("rect",{x:0,y:0,width:320,height:170,rx:8,fill:V("--matrix")},svg);
+    for(let k=0;k<12;k++){const a=k/12*6.283,x=110+Math.cos(a)*52,y=82+Math.sin(a)*42;const trans=mode===1&&(k===0||k===1||k===11);
+      const gg=el("g",{transform:`translate(${x+(trans?20:0)} ${y}) rotate(${a*57.3+90+(trans?60:0)})`},svg);
+      if(trans){el("ellipse",{cx:0,cy:0,rx:16,ry:4,fill:V("--emt")},gg);}else{el("rect",{x:-6,y:-10,width:12,height:20,rx:3,fill:V("--cell-epi")},gg);el("ellipse",{cx:0,cy:4,rx:3,ry:3.6,fill:V("--cell-epi-n")},gg);}}
+    let s=mode*7+3;const rnd=()=>(s=(s*16807)%2147483647)/2147483647;
+    for(let k=0;k<(mode===2?16:5);k++){const x=205+rnd()*100,y=14+rnd()*125;el("ellipse",{cx:x,cy:y,rx:15,ry:3.4,fill:V(mode===2?"--emt":"--cell-fib"),transform:`rotate(${-30+rnd()*60} ${x} ${y})`},svg);}
+    el("text",{x:10,y:160,class:"tk"},svg,mode===1?"tumour cells turning mesenchymal":"more fibroblasts in the sample");}
+  draw(document.getElementById("emtSvg1"),1);draw(document.getElementById("emtSvg2"),2);
+  const c1=document.getElementById("emt1"),c2=document.getElementById("emt2");
+  tablist(document.getElementById("emtSeg"),[{label:"Possibility 1"},{label:"Possibility 2"},{label:"Both"}],i=>{c1.className="case "+(i===1?"off":"on");c2.className="case "+(i===0?"off":"on");},{role:"button",attr:"aria-pressed"})(2);})();
+
+/* evidence matrix */
+(function(){const M=[
+ ["Four pathway-expression scores","Scores for 452 patients; molecular anchoring added","part","Partially addressed","p53 target score lower in TP53-mutant tumours (−0.45 SD; also within pMMR), replicated in GSE41258 and TCGA-COAD.","Scores summarise bulk mRNA; they are not measurements of pathway activity."],
+ ["Association with MMR status","Robust for p53 within subtype; ComBat covariate aligned with MMR","char","Characterised, not resolved","ε²: EMT 0.0394, E2F 0.0251, Wnt 0.0187, p53 0.1716 (410 patients, exploratory). Only the p53 association persists within the MSI-rich CIT C2 subtype.","ComBat protected a covariate aligned with MMR, so group differences may be inflated; provenance of that covariate is undocumented."],
+ ["Batch-related heterogeneity","Frailty model, leave-one-batch-out diagnostics","part","Partially addressed","Batches differ in baseline recurrence hazard (frailty variance 0.13, about 0.03–0.50), but pathway hazard ratios are unchanged when it is modelled; 34 of 36 leave-one-batch-out shifts lie within 1.96 SE.","The source of the baseline heterogeneity (technical, centre, era) is unknown. Batch effects were characterised, not resolved."],
+ ["Tumour-cell-specific expression","Bulk arrays here; single cells in three public cohorts","part","Partially addressed","GSE39582: ESTIMATE purity median 0.74 (computational estimate from the same arrays). Public single-cell cohorts (18, 4 and 39 patients) measured malignant epithelial expression directly.","The GSE39582 patients' own tumour-cell expression was not measured; that would need microdissection or spatial data on these tumours."],
+ ["Stromal, immune and endothelial content","ESTIMATE and MCP-counter estimates","part","Partially addressed","Two estimators agree (ρ 0.93). The EMT score behaves as a stromal index; E2F is higher in tumour-rich samples. In single-cell data, a pseudo-bulk EMT score tracks the counted stromal fraction (ρ 0.97 discovery; 0.67 in GSE178341).","In GSE39582 these are computational estimates, not measured fractions; the single-cell patients are different people."],
+ ["Direct pathway activation","Genomic links only","ne","Not established","Target-gene scores track genotype (TP53 → p53 score; BRAF → lower Wnt targets in GSE39582 and TCGA-COAD).","Would need protein, phospho-signalling or reporter-type measurements."],
+ ["Tumour-cell EMT","Bulk score tracks stroma; not detected in single tumour cells","ne","Not established","EMT HR 1.070 (0.951–1.202). EMT score ρ 0.94–0.98 with fibroblast markers, gene-disjoint, in four bulk cohorts. In single cells, EMT-gene coherence in malignant epithelium exceeded the random 95th percentile in 0 of 61 patients.","Not detected is not absent: rare or partial EMT states, transcripts lost to 3′ capture, or protein-level change would be missed."],
+ ["Independent replication of the biology","Pre-registered in three external cohorts","rep","Replicated (2 of 6)","EMT–stroma and TP53 → p53 replicated (TP53 robust to hypermutation). BRAF effects in TCGA were explained by hypermutation on independent re-check, so not replicated; TP53 → E2F and MSI → p53 not replicated. EMT–stroma was also confirmed at single-cell resolution in three further cohorts.","Outcome-free replication of associations, not validation of the recurrence model."],
+ ["External predictive validation","Systematic search: 554 GEO hits, 14 cohorts assessed","ne","Not feasible","No independent cohort has a compatible endpoint, all five clinical predictors and enough events (largest 124; about 337 needed).","The CIT partition of GSE39582 is internal, never external validation."]];
+  const host=document.getElementById("matrix");M.forEach(r=>{const d=document.createElement("details");d.innerHTML=`<summary><span class="q">${r[0]}</span><span class="e">${r[1]}</span><span class="s"><span class="chip ${r[2]}">${r[3]}</span></span><span class="plus" aria-hidden="true">+</span></summary><div class="more"><div><b>What the record shows</b>${r[4]}</div><div><b>What it does not show</b>${r[5]}</div></div>`;host.appendChild(d);});})();
+
+/* MMR + batch */
+(function(){const svg=document.getElementById("mmrSvg"),L=120,R=400,T=12,rh=44,X=v=>L+v/.2*(R-L),B=T+rh*4;
+  axis(svg,X,[0,.05,.1,.15,.2],v=>v.toFixed(2),T,B,"ε², association with MMR status (common scale)",(L+R)/2);
+  PW.forEach((p,i)=>{const y=T+rh*i+rh/2;el("circle",{cx:14,cy:y,r:5,fill:V(p.col)},svg);el("text",{x:26,y:y+4,class:"nm"},svg,p.name);
+    el("rect",{x:L,y:y-10,width:X(p.e2)-L,height:20,rx:2,fill:V(p.col),opacity:i===3?1:.7},svg);
+    el("text",{x:X(p.e2)+6,y:y+4,class:"tk",style:i===3?"font-weight:600;fill:var(--ink)":""},svg,p.e2.toFixed(4));
+    hover(el("rect",{x:L,y:y-14,width:R-L+30,height:28,class:"hit"},svg),`<b>${p.name}</b><br>ε² ${p.e2.toFixed(4)} · BH q ${p.q}<br>Recurrence HR ${p.hr[0].toFixed(3)} (${p.hr[1].toFixed(3)}–${p.hr[2].toFixed(3)})`);});
+  el("text",{x:X(.1716),y:T+rh*3+6,"text-anchor":"end",class:"tk",style:"fill:var(--ink)"},svg,"strongest MMR association ↓");
+  const bs=document.getElementById("batchSvg");
+  function drawB(k){clear(bs);const L=64,R=420,T=16,B=196,Xn=n=>L+n/110*(R-L);const vals=LOBO.map(d=>d.c[k]).concat([ALLC[k],0]);let lo=Math.min(...vals),hi=Math.max(...vals);const pad=(hi-lo)*.15||.02;lo-=pad;hi+=pad;const Y=v=>B-(v-lo)/(hi-lo)*(B-T);
+    [0,25,50,75,100].forEach(n=>{el("line",{x1:Xn(n),x2:Xn(n),y1:T,y2:B,class:"gl"},bs);el("text",{x:Xn(n),y:B+15,"text-anchor":"middle",class:"tk"},bs,n);});
+    el("text",{x:(L+R)/2,y:B+32,"text-anchor":"middle",class:"tk"},bs,"Patients in the omitted batch");
+    for(let t=0;t<=4;t++){const v=lo+(hi-lo)*t/4;el("text",{x:L-8,y:Y(v)+4,"text-anchor":"end",class:"tk"},bs,(v>0?"+":"")+v.toFixed(2));}
+    el("text",{x:12,y:(T+B)/2,"text-anchor":"middle",class:"tk",transform:`rotate(-90 12 ${(T+B)/2})`},bs,"log-HR when omitted");
+    el("line",{x1:L,x2:R,y1:Y(0),y2:Y(0),class:"zl"},bs);el("line",{x1:L,x2:R,y1:Y(ALLC[k]),y2:Y(ALLC[k]),stroke:V(PW[k].col),"stroke-width":1.6},bs);
+    el("text",{x:R,y:Y(ALLC[k])-6,"text-anchor":"end",class:"tk"},bs,"all patients "+(ALLC[k]>0?"+":"")+ALLC[k].toFixed(3));
+    LOBO.forEach(d=>{const v=d.c[k],flip=(v>0)!==(ALLC[k]>0);const c=el("circle",{cx:Xn(d.n),cy:Y(v),r:6,fill:flip?V("--sheet"):V(PW[k].col),stroke:V(PW[k].col),"stroke-width":2},bs);
+      hover(c,`<b>Batch ${d.b} omitted</b><br>${d.n} patients removed<br>log-HR ${(v>0?"+":"")+v.toFixed(4)}${flip?"<br>sign differs from the all-patient estimate":""}`);});
+  }
+  tablist(document.getElementById("batchSeg"),PW.map(p=>({label:`<span class="dotc" style="background:var(${p.col})"></span>${p.id==="e2f"?"E2F":p.id==="wnt"?"Wnt":p.id==="p53"?"p53":"EMT"}`})),drawB,{role:"button",attr:"aria-pressed"})(2);})();
+
+/* journey */
+(function(){const ST=[
+ {l:"Foundation",big:"585 arrays",q:"Can the deposited data be read faithfully and reproducibly?",did:"One parser and a cached expression matrix checked value by value against the deposit, with hash tracking for every raw file.",why:"Every later result depends on reading the data correctly; computational fidelity had to be kept separate from biological validity.",ev:"Cache bit-identical to the deposit; first automated tests passing.",rec:"Phase 0 changelog",lim:"Fidelity says nothing about whether the deposited normalisation is biologically valid."},
+ {l:"Cohort and endpoint",big:"452 patients",q:"Which patients, and which recurrence endpoint, can be defended?",did:"Stage II–III cohort defined without altering source data; recurrence-time unit and death handling flagged as undocumented.",why:"An endpoint error silently invalidates a survival model.",ev:"Cohort counts reproduced; 46 deaths without recurrence identified as informatively censored.",rec:"Phase 1 decisions. DC3: CIT partition internal only",lim:"Cause-specific hazard only; no absolute risk or cumulative incidence.",dec:true},
+ {l:"Gene mapping",big:"21,815 genes",q:"How should 54,675 probes become genes?",did:"Probes mapped to one gene each; multi-probe genes summarised by the median, with a representative-probe rule frozen as sensitivity (S-7).",why:"Aggregation choices change scores, so the alternative had to be fixed in advance, not chosen after results.",ev:"43,163 single-gene probes; both representations frozen and reproducible.",rec:"Phase 2 and 2B records",lim:"No independent measurement says which aggregation is biologically better."},
+ {l:"Feasibility",big:"7–40× short",q:"Can a model built here be validated in another cohort?",did:"Candidate external cohorts screened for events, endpoints and patient overlap; precision-based sample-size assessment.",why:"Validating on too few events, or on overlapping patients, would produce misleading confirmation.",ev:"48 and 18 events available against about 338 needed; 129 overlapping patient pairs between two public cohorts.",rec:"Phase 4 decision record; Phase 5 assessment",lim:"Validation stays internal; transportability cannot be assessed.",dec:true},
+ {l:"Protocol and panel",big:"607 genes",q:"Which molecular features, chosen how?",did:"Ten candidate Hallmark sets reduced to one per correlation cluster, without outcome data, then frozen with leakage rules.",why:"Genome-wide selection at 136 events gave apparent C 0.92 under a null, so features had to be constrained and pre-specified.",ev:"Four-set panel condition number 2.95 vs 77 for all ten.",rec:"Phase 6 protocol. DC1 pre-specification; DC2 penalty scope",lim:"Pathway scores are bulk-expression summaries, not activity measures.",dec:true},
+ {l:"QC and exploration",big:"29 flagged",q:"Are arrays sound, and what structure exists before outcomes are opened?",did:"Soft quality flags only; outcome-free exploration of expression structure, batch and subtype.",why:"Removing arrays on weak evidence, or exploring with outcomes, would bias the test.",ev:"No array excluded; dominant axis is MMR/CIMP/BRAF/location; residual batch structure found.",rec:"Phase 7 and 8 reports",lim:"Batch structure was characterised, not corrected."},
+ {l:"Model construction",big:"+0.014 apparent",q:"Does M2 improve on M1?",did:"Clinical and pathway Cox models fitted with single-layer optimism correction.",why:"The corrected point estimate needed an interval before any interpretation.",ev:"Corrected gain +0.0043, but no interval existed for that headline quantity.",rec:"Phase 9 execution report; interval plan approved",lim:"Coefficients, calibration and S-7 remain single-layer estimates without nested intervals.",dec:true},
+ {l:"Nested bootstrap",big:"765,000 fits",q:"How uncertain is the corrected gain?",did:"Five runs of 750 outer × 100 inner resamples, paired models, per-replicate random streams and resumable hash-linked checkpoints.",why:"An optimism-corrected quantity needs optimism re-estimated inside each resample for a valid interval.",ev:"Monte Carlo error under 5 % of interval width after the pre-specified top-up.",rec:"DC4 random-seed deviation adjudicated, corrected re-run. DC5 500 → 750 top-up",lim:"Intervals are conditional on 136 events; the five runs bound simulation noise only.",dec:true},
+ {l:"Verification and audit",big:"60 / 60",q:"Can every reported number be trusted and traced?",did:"Frozen post-run verifier; separate re-implementation recomputing reported quantities from checkpoints; citation audit of biological claims.",why:"Reporting had to be gated on verification, and biological wording held to verified evidence.",ev:"60/60 checks passed; 138 quantities matched within 2.2×10⁻¹⁶.",rec:"DC6 tempting results excluded. DC7 audits commissioned and reviewed",lim:"The re-computation used the recorded checkpoints; it is not external replication or model refitting.",dec:true}];
+  const track=document.getElementById("track"),card=document.getElementById("stageCard"),fill=document.getElementById("trackFill");let cur=0;
+  const btns=ST.map((s,i)=>{const b=document.createElement("button");b.type="button";b.setAttribute("role","tab");if(s.dec)b.classList.add("hasdec");b.setAttribute("aria-label",`Stage ${i+1}: ${s.l}${s.dec?", includes a recorded decision":""}`);
+    b.innerHTML=`<span class="dot">${i+1}</span><span class="lab">${s.l}</span>`;b.addEventListener("click",()=>sel(i));
+    b.addEventListener("keydown",e=>{if(["ArrowRight","ArrowDown"].includes(e.key)){e.preventDefault();sel((i+1)%9,true);}if(["ArrowLeft","ArrowUp"].includes(e.key)){e.preventDefault();sel((i+8)%9,true);}});track.appendChild(b);return b;});
+  function sel(i,f){cur=i;btns.forEach((b,j)=>{b.setAttribute("aria-selected",j===i);b.tabIndex=j===i?0:-1;b.classList.toggle("done",j<i);});fill.style.width=`calc((100% - 100%/9) * ${i/8})`;const s=ST[i];
+    card.innerHTML=`<div class="head"><h3>${i+1}. ${s.l}</h3><span class="big">${s.big}</span></div>
+      <div><span class="k">Scientific question</span><p>${s.q}</p></div><div><span class="k">What was done</span><p>${s.did}</p></div><div><span class="k">Why it was necessary</span><p>${s.why}</p></div>
+      <div><span class="k">Evidence to move forward</span><p>${s.ev}</p></div><div class="${s.dec?"decb":""}"><span class="k">Decision record</span><p>${s.rec}</p></div><div><span class="k">Resulting limitation</span><p>${s.lim}</p></div>
+      <div class="nav"><button type="button" class="btn ghost" ${i===0?"disabled":""} data-go="-1">← Previous</button><button type="button" class="btn" ${i===8?"disabled":""} data-go="1">Next stage →</button></div>`;
+    card.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>sel(cur+Number(b.dataset.go))));if(f)btns[i].focus();}
+  sel(0);})();
+
+/* single-cell sources */
+(function(){const svg=document.getElementById("scChart");if(!svg)return;
+  const rows=[["Stromal cells",[5.08,2.84,9.80]],["Endothelial cells",[1.59,1.01,3.85]],["Immune cells",[0.92,0.33,1.65]],["Epithelial cells",[0.45,0.19,0.66]]];
+  const C=[["GSE132465 (discovery, 18)","d"],["GSE144735 (4)","o"],["GSE178341 (39)","s"]];
+  const L=170,R=660,T=40,rh=38,B=T+rh*4,lo=Math.log10(0.1),hi=Math.log10(20),X=v=>L+(Math.log10(v)-lo)/(hi-lo)*(R-L);
+  axis(svg,X,[0.1,0.3,1,3,10],v=>v+"×",T-6,B,"enrichment vs expression-matched random genes (log scale)",(L+R)/2);
+  el("line",{x1:X(1),x2:X(1),y1:T-6,y2:B,class:"zl"},svg);el("text",{x:X(1)+5,y:T-10,class:"tk"},svg,"1× = expected share");
+  const mark=(k,x,y,g)=>k==="d"?el("circle",{cx:x,cy:y,r:6.5,fill:V("--ink")},g):k==="o"?el("circle",{cx:x,cy:y,r:5,fill:V("--sheet"),stroke:V("--ink-2"),"stroke-width":2},g):el("rect",{x:x-5,y:y-5,width:10,height:10,fill:V("--primary"),transform:`rotate(45 ${x} ${y})`},g);
+  let lx=L;C.forEach(([n,k])=>{mark(k,lx+6,12,svg);const t=el("text",{x:lx+18,y:16,class:"lb"},svg,n);lx+=t.getComputedTextLength?Math.max(150,t.getComputedTextLength()+40):170;});
+  rows.forEach(([n,v],i)=>{const y=T+rh*i+rh/2,g=el("g",{},svg);el("text",{x:L-12,y:y+4,"text-anchor":"end",class:"nm"},g,n);
+    el("line",{x1:X(Math.min(...v)),x2:X(Math.max(...v)),y1:y,y2:y,stroke:V("--line"),"stroke-width":3,"stroke-linecap":"round"},g);
+    [1,2,0].forEach(j=>mark(C[j][1],X(v[j]),y,g));
+    el("text",{x:740,y:y+4,"text-anchor":"end",class:"tk",style:"fill:var(--ink)"},g,v[0].toFixed(2)+"×");
+    hover(el("rect",{x:20,y:y-rh/2,width:730,height:rh,class:"hit"},svg),`<b>${n}</b><br>GSE132465 ${v[0].toFixed(2)}×<br>GSE144735 ${v[1].toFixed(2)}×<br>GSE178341 ${v[2].toFixed(2)}×`);});
+  el("text",{x:740,y:T-10,"text-anchor":"end",class:"tk"},svg,"discovery");})();
+/* roadmap */
+(function(){const D=[["GSE39582",0.943,0.927,0.956,true,-0.35,0.05],["GSE41258",0.950,0.921,0.966,true,-0.72,-0.15],["GSE143985",0.939,0.898,0.961,true,-0.26,0.26],["TCGA-COAD",0.979,0.972,0.982,true,0.46,0.76],["GSE103479",null,null,null,false]];
+  const svg=document.getElementById("repChart");if(!svg)return;const NS="http://www.w3.org/2000/svg";const x0=170,x1=720,X=v=>x0+(x1-x0)*v;
+  const el=(t,a,txt)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(txt!==undefined)e.textContent=txt;svg.appendChild(e);return e;};
+  [0,0.25,0.5,0.75,1].forEach(v=>{el("line",{x1:X(v),x2:X(v),y1:14,y2:190,stroke:"var(--line)"});el("text",{x:X(v),y:208,"text-anchor":"middle","font-size":11,fill:"var(--ink-3)","font-family":"var(--data)"},v.toFixed(2));});
+  el("text",{x:x0,y:20,"font-size":11,fill:"var(--ink-3)"},"grey band: random gene sets, 95 % range in that cohort");
+  D.forEach((d,i)=>{const y=40+i*34;el("text",{x:x0-12,y:y+4,"text-anchor":"end","font-size":13,fill:"var(--ink)"},d[0]);
+    if(d[4]){if(d[6]>0)el("rect",{x:X(Math.max(d[5],0)),y:y-12,width:X(d[6])-X(Math.max(d[5],0)),height:24,fill:"var(--apparent)",opacity:.35});el("rect",{x:x0,y:y-8,width:X(d[1])-x0,height:16,rx:3,fill:"var(--emt)",opacity:.85});el("line",{x1:X(d[2]),x2:X(d[3]),y1:y,y2:y,stroke:"var(--ink)","stroke-width":2});el("text",{x:X(d[3])+8,y:y+4,"font-size":12,fill:"var(--ink)","font-family":"var(--data)"},"ρ "+d[1].toFixed(2));}
+    else{el("text",{x:x0+6,y:y+4,"font-size":12,fill:"var(--ink-2)"},"failed quality gate (control-pair median r 0.07): not interpretable");}});})();
+(function(){const R=[
+ {q:"Do tumour cells carry rare or partial EMT states? (single cells: stroma supplies the signal; no coherent tumour-cell programme in 61 patients)",data:["Spatial transcriptomics on tumours with recurrence data","Or cytokeratin / vimentin dual staining on matched blocks"],m:"Spatial or protein-level measurement at the invasive front, where partial EMT is expected, scored separately in epithelial and stromal cells.",ev:"Mesenchymal programmes localised to tumour cells in a reproducible subset of tumours, beyond what matched random genes show, would support tumour-intrinsic EMT."},
+ {q:"Does the pathway signal persist within molecular subtypes? (only 10 recurrences in dMMR here)",data:["A dMMR cohort with at least about 50 recurrences","CMS labels where appropriate","Enough events per subgroup"],m:"Pre-specified analyses stratified by MMR status, CMS-aware models where appropriate, with event counts checked before fitting.",ev:"A consistent corrected gain within adequately powered subgroups would show the signal is not just subtype structure."},
+ {q:"Is the recurrence model reproducible externally? (14 public cohorts assessed; none eligible)",data:["A cohort with a compatible recurrence endpoint","Documented recurrence-time units","Roughly 340 or more recurrence events"],m:"Uniform preprocessing, then validation of the frozen M1 and M2 models unchanged, including calibration.",ev:"A corrected discrimination gain whose interval excludes zero in an independent cohort; absent that, the null result stands."}];
+  const host=document.getElementById("road");R.forEach(r=>{const d=document.createElement("div");d.className="row";
+    d.innerHTML=`<div class="cell"><span><span class="chip fut">FUTURE INVESTIGATION</span></span><span class="k">Unresolved question</span><h3>${r.q}</h3></div><div class="cell"><span class="k">Data required</span><ul>${r.data.map(x=>`<li>${x}</li>`).join("")}</ul></div><div class="cell"><span class="k">Proposed method</span><p>${r.m}</p></div><div class="cell"><span class="k">Evidence that would answer it</span><p>${r.ev}</p></div>`;host.appendChild(d);});})();
+
+/* events */
+(function(){const svg=document.getElementById("events"),L=200,R=700,T=8,rh=36,X=v=>L+v/360*(R-L);
+  const rows=[["GSE39582 (this cohort)",136,"--primary","Analysis population, stage II–III"],["GSE14333 (exploratory)",48,"--apparent","Exploratory only"],["GSE33113 (exploratory)",18,"--apparent","Stage II only; different endpoint"],["Needed (indicative)",338,null,"Simulation approximation at assumed C = 0.65"]],B=T+rh*4;
+  axis(svg,X,[0,100,200,300],v=>String(v),T,B,"Recurrence events",(L+R)/2);
+  rows.forEach((r,i)=>{const y=T+rh*i+rh/2;el("text",{x:L-10,y:y+4,"text-anchor":"end",class:"nm"},svg,r[0]);
+    el("rect",r[2]?{x:L,y:y-9,width:X(r[1])-L,height:18,rx:2,fill:V(r[2])}:{x:L,y:y-9,width:X(r[1])-L,height:18,rx:2,fill:"none",stroke:V("--ink-3"),"stroke-dasharray":"4 3","stroke-width":1.2},svg);
+    el("text",{x:X(r[1])+6,y:y+4,class:"tk"},svg,(r[2]?"":"≈")+r[1]);hover(el("rect",{x:L,y:y-13,width:R-L,height:26,class:"hit"},svg),`<b>${r[0]}</b><br>${r[2]?"":"≈ "}${r[1]} events<br>${r[3]}`);});})();
+
+/* 3-minute tour */
+(function(){const T=[["sec-q","The biological question","Does pathway expression add anything beyond clinical variables?"],["sec-bio","The four pathway features","Select a pathway: mechanism, evidence and result."],["sec-m","The analytical approach","Constrained, outcome-blind features and a nested bootstrap."],["sec-r","The corrected result","Step through apparent, optimism, corrected and uncertainty."],["sec-tissue","The scientific limits","Why a bulk score is a mixture, and the EMT example."],["sec-tool","Replication, single cells and the tool","EMT reads stroma in four bulk and three single-cell cohorts; pathway-audit checks any score."],["sec-role","My methodological decisions","Seven decisions on record."],["sec-future","Future research","Each open question linked to the evidence that would answer it."]];
+  const bar=document.getElementById("tour"),pg=document.getElementById("tourPg"),tt=document.getElementById("tourT"),dots=document.getElementById("tourDots"),prev=document.getElementById("tourPrev"),next=document.getElementById("tourNext");let i=0;
+  T.forEach(()=>dots.appendChild(document.createElement("i")));
+  function go(k){i=Math.max(0,Math.min(T.length-1,k));document.querySelectorAll(".part").forEach(s=>s.classList.remove("tour-on"));const s=document.getElementById(T[i][0]);s.classList.add("tour-on");s.scrollIntoView({behavior:reduce?"auto":"smooth"});
+    pg.textContent=`${i+1} / ${T.length}`;tt.innerHTML=`<strong>${T[i][1]}</strong>${T[i][2]}`;[...dots.children].forEach((d,j)=>d.classList.toggle("on",j<=i));prev.disabled=i===0;next.textContent=i===T.length-1?"Finish":"Next";}
+  function close(){bar.hidden=true;document.querySelectorAll(".part").forEach(s=>s.classList.remove("tour-on"));document.getElementById("tourStart").focus();}
+  document.getElementById("tourStart").addEventListener("click",()=>{bar.hidden=false;go(0);next.focus();});
+  prev.addEventListener("click",()=>go(i-1));next.addEventListener("click",()=>{if(i===T.length-1)close();else go(i+1);});
+  document.getElementById("tourClose").addEventListener("click",close);document.addEventListener("keydown",e=>{if(!bar.hidden&&e.key==="Escape")close();});})();
+})();
+</script>

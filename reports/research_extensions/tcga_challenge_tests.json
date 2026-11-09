@@ -1,0 +1,107 @@
+{
+  "label": "post-review challenge tests (declared deviation); outcome-free",
+  "C5_tcga_hypermutation": {
+    "rule": "hypermutated = > 300 non-silent mutated genes (MC3)",
+    "n_with_mc3": 267,
+    "n_hypermutated": 53,
+    "median_burden": 113.0,
+    "R1": {
+      "excluding_hypermutated": {
+        "n_pos": 147,
+        "n_neg": 67,
+        "rank_biserial": [
+          -0.3680576708295258,
+          -0.5270991978881104,
+          -0.20393440958472964
+        ]
+      },
+      "ols_adjusted_log_burden": [
+        -0.635414532070792,
+        -0.8764396707590265,
+        -0.3943893933825575
+      ],
+      "n_pos_hypermutated": 15,
+      "n_pos_total": 162
+    },
+    "R2": {
+      "excluding_hypermutated": {
+        "n_pos": 147,
+        "n_neg": 67,
+        "rank_biserial": [
+          0.19809117676921506,
+          0.035404609605036046,
+          0.36603208447558117
+        ]
+      },
+      "ols_adjusted_log_burden": [
+        0.2655646562467295,
+        0.014886629175254407,
+        0.5162426833182046
+      ],
+      "n_pos_hypermutated": 15,
+      "n_pos_total": 162
+    },
+    "R3": {
+      "excluding_hypermutated": {
+        "n_pos": 13,
+        "n_neg": 201,
+        "rank_biserial": [
+          -0.11442786069651745,
+          -0.44050899349406814,
+          0.21012246460007647
+        ]
+      },
+      "ols_adjusted_log_burden": [
+        -0.17317317011492142,
+        -0.5405004865015406,
+        0.19415414627169778
+      ],
+      "n_pos_hypermutated": 31,
+      "n_pos_total": 44
+    },
+    "R4": {
+      "excluding_hypermutated": {
+        "n_pos": 13,
+        "n_neg": 201,
+        "rank_biserial": [
+          0.11902028319938762,
+          -0.26528893991580554,
+          0.4887676999617296
+        ]
+      },
+      "ols_adjusted_log_burden": [
+        0.10385296065816581,
+        -0.2908541035082652,
+        0.49856002482459677
+      ],
+      "n_pos_hypermutated": 31,
+      "n_pos_total": 44
+    }
+  },
+  "C6_random_baseline_R6": {
+    "GSE39582": {
+      "median": -0.1386094547492123,
+      "p2_5": -0.3495092466122351,
+      "p97_5": 0.05410302215098792,
+      "set_size": 192
+    },
+    "TCGA-COAD": {
+      "median": 0.6350306945942376,
+      "p2_5": 0.4589428414973986,
+      "p97_5": 0.7615661103979461,
+      "set_size": 189
+    },
+    "GSE41258": {
+      "median": -0.49624642755572546,
+      "p2_5": -0.7153964072749652,
+      "p97_5": -0.15175118537547375,
+      "set_size": 186
+    },
+    "GSE143985": {
+      "median": -5.574136008918622e-05,
+      "p2_5": -0.26146639592291765,
+      "p97_5": 0.26446966077400874,
+      "set_size": 192
+    }
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "plan_section": "X5",
+  "label": "computational estimates, not measurements",
+  "estimate_validation_gate": {
+    "registered_gate": "sample_estimate.gct scores within 1e-6 relative error",
+    "max_rel_err_scores": 1.4175579929422241e-14,
+    "passed": true,
+    "observation_purity_file": {
+      "max_rel_diff_vs_bundled_sample_purity_gct": 0.04518141953320019,
+      "note": "The bundled sample_purity.gct disagrees with the package's own purity formula cos(0.6049872018 + 0.0001467884*ESTIMATEScore), which is identical in estimateScore.R and plotPurity.R of v1.0.13; the file appears to predate that formula. Purity here follows the package code. Purity is a monotone transform of ESTIMATEScore, so rank-based results are unaffected."
+    }
+  },
+  "estimate_coverage": {
+    "genes_after_common_filter": 10035,
+    "overlap": {
+      "StromalSignature": 136,
+      "ImmuneSignature": 137
+    }
+  },
+  "mcp_probe_mode_coverage": {
+    "T cells": {
+      "n_markers": 24,
+      "n_present": 24
+    },
+    "CD8 T cells": {
+      "n_markers": 2,
+      "n_present": 2
+    },
+    "Cytotoxic lymphocytes": {
+      "n_markers": 12,
+      "n_present": 12
+    },
+    "B lineage": {
+      "n_markers": 20,
+      "n_present": 20
+    },
+    "NK cells": {
+      "n_markers": 16,
+      "n_present": 16
+    },
+    "Monocytic lineage": {
+      "n_markers": 10,
+      "n_present": 10
+    },
+    "Myeloid dendritic cells": {
+      "n_markers": 7,
+      "n_present": 7
+    },
+    "Neutrophils": {
+      "n_markers": 19,
+      "n_present": 19
+    },
+    "Endothelial cells": {
+      "n_markers": 49,
+      "n_present": 49
+    },
+    "Fibroblasts": {
+      "n_markers": 18,
+      "n_present": 18
+    }
+  },
+  "mcp_gene_mode_coverage": {
+    "T cells": {
+      "n_markers": 16,
+      "n_present": 16
+    },
+    "CD8 T cells": {
+      "n_markers": 1,
+      "n_present": 1
+    },
+    "Cytotoxic lymphocytes": {
+      "n_markers": 7,
+      "n_present": 7
+    },
+    "B lineage": {
+      "n_markers": 9,
+      "n_present": 9
+    },
+    "NK cells": {
+      "n_markers": 9,
+      "n_present": 9
+    },
+    "Monocytic lineage": {
+      "n_markers": 7,
+      "n_present": 7
+    },
+    "Myeloid dendritic cells": {
+      "n_markers": 6,
+      "n_present": 6
+    },
+    "Neutrophils": {
+      "n_markers": 15,
+      "n_present": 15
+    },
+    "Endothelial cells": {
+      "n_markers": 33,
+      "n_present": 30
+    },
+    "Fibroblasts": {
+      "n_markers": 8,
+      "n_present": 8
+    }
+  },
+  "mcp_probe_vs_gene_mode_pearson": {
+    "T cells": 0.9575147423487026,
+    "CD8 T cells": 0.11563925935421723,
+    "Cytotoxic lymphocytes": 0.9749788892907838,
+    "B lineage": 0.9831292047826642,
+    "NK cells": 0.9475103929180461,
+    "Monocytic lineage": 0.9792450595259254,
+    "Myeloid dendritic cells": 0.9922945230181249,
+    "Neutrophils": 0.9456136544675905,
+    "Endothelial cells": 0.976974387329288,
+    "Fibroblasts": 0.9958625455572339
+  },
+  "n": 452,
+  "purity_out_of_bounds_n": 0,
+  "descriptives": {
+    "StromalScore": {
+      "mean": -45.0246,
+      "std": 693.2911,
+      "min": -1780.5068,
+      "50%": -60.0304,
+      "max": 2196.9268
+    },
+    "ImmuneScore": {
+      "mean": 1074.8456,
+      "std": 646.7895,
+      "min": -336.9404,
+      "50%": 1021.7627,
+      "max": 3139.7408
+    },
+    "ESTIMATEScore": {
+      "mean": 1029.8209,
+      "std": 1249.5389,
+      "min": -1984.6757,
+      "50%": 944.1724,
+      "max": 4620.2653
+    },
+    "TumorPurity": {
+      "mean": 0.7155,
+      "std": 0.1277,
+      "min": 0.2837,
+      "50%": 0.736,
+      "max": 0.9512
+    },
+    "MCP_T cells": {
+      "mean": 4.4612,
+      "std": 0.2335,
+      "min": 4.0316,
+      "50%": 4.4252,
+      "max": 5.5007
+    },
+    "MCP_CD8 T cells": {
+      "mean": 4.2232,
+      "std": 0.3703,
+      "min": 3.4174,
+      "50%": 4.1652,
+      "max": 6.1001
+    },
+    "MCP_Cytotoxic lymphocytes": {
+      "mean": 4.4108,
+      "std": 0.469,
+      "min": 3.7422,
+      "50%": 4.3105,
+      "max": 6.7074
+    },
+    "MCP_B lineage": {
+      "mean": 4.6034,
+      "std": 0.453,
+      "min": 3.8335,
+      "50%": 4.4996,
+      "max": 7.0363
+    },
+    "MCP_NK cells": {
+      "mean": 3.8785,
+      "std": 0.1609,
+      "min": 3.5319,
+      "50%": 3.8611,
+      "max": 4.7406
+    },
+    "MCP_Monocytic lineage": {
+      "mean": 5.9089,
+      "std": 0.4979,
+      "min": 4.9184,
+      "50%": 5.8217,
+      "max": 7.9435
+    },
+    "MCP_Myeloid dendritic cells": {
+      "mean": 4.5757,
+      "std": 0.3033,
+      "min": 3.8934,
+      "50%": 4.5341,
+      "max": 5.6763
+    },
+    "MCP_Neutrophils": {
+      "mean": 4.7593,
+      "std": 0.2133,
+      "min": 4.2902,
+      "50%": 4.7275,
+      "max": 5.7669
+    },
+    "MCP_Endothelial cells": {
+      "mean": 5.1645,
+      "std": 0.2859,
+      "min": 4.5526,
+      "50%": 5.1284,
+      "max": 6.2526
+    },
+    "MCP_Fibroblasts": {
+      "mean": 8.186,
+      "std": 0.9076,
+      "min": 5.8498,
+      "50%": 8.1637,
+      "max": 11.0133
+    }
+  }
+}

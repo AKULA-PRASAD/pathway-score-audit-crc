@@ -1,0 +1,90 @@
+{
+  "plan_section": "X8",
+  "search": {
+    "database": "NCBI GEO DataSets (gds) via E-utilities",
+    "query": "(colorectal[All Fields] OR colon[All Fields] OR rectal[All Fields]) AND (cancer[All Fields] OR carcinoma[All Fields] OR adenocarcinoma[All Fields]) AND (recurrence[All Fields] OR relapse[All Fields] OR \"disease-free\"[All Fields] OR \"relapse-free\"[All Fields] OR \"recurrence-free\"[All Fields] OR prognosis[All Fields] OR prognostic[All Fields]) AND \"Homo sapiens\"[Organism] AND gse[Entry Type] AND (\"expression profiling by array\"[DataSet Type] OR \"expression profiling by high throughput sequencing\"[DataSet Type])",
+    "date": "2026-11-08",
+    "hits": 554,
+    "screened_n_ge_80": 85
+  },
+  "counts": {
+    "GSE14333": {
+      "stage_II_III_n": 185,
+      "events_II_III": 48,
+      "colon_only_II_III_n": 163,
+      "colon_only_events": 42,
+      "sites": {
+        "Right": 125,
+        "Rectum": 39,
+        "Left": 122,
+        "Colon": 3,
+        "": 1
+      }
+    },
+    "GSE161158": {
+      "stage_II_III_n": 158,
+      "stage_II_III_with_outcome": 154,
+      "events_II_III": 41
+    },
+    "GSE17536": {
+      "stage_II_III_n": 114,
+      "stage_II_III_with_outcome": 111,
+      "events_II_III": 31
+    },
+    "GSE17537": {
+      "stage_II_III_n": 34,
+      "stage_II_III_with_outcome": 34,
+      "events_II_III": 3
+    },
+    "GSE37892": {
+      "stage_II_III_n": 130,
+      "events_II_III": 37
+    },
+    "GSE33113": {
+      "stage_II_III_n": 90,
+      "events_II_III": 18
+    },
+    "GSE41258": {
+      "stage_II_III_n": 99,
+      "stage_II_III_with_outcome": 96,
+      "events_II_III": 21
+    },
+    "GSE103479": {
+      "stage_II_III_n": 156,
+      "stage_II_III_with_outcome": 154,
+      "events_II_III": 42
+    },
+    "GSE106584": {
+      "stage_II_III_n": 131,
+      "stage_II_III_with_outcome": 131,
+      "events_II_III": 52
+    },
+    "GSE143985": {
+      "stage_II_III_n": 91,
+      "stage_II_III_with_outcome": 91,
+      "events_II_III": 15
+    },
+    "GSE24551": {
+      "stage_II_III_n": 320,
+      "events_II_III": 124,
+      "note": "event and time field labels appear swapped in the deposit"
+    },
+    "GSE38832": {
+      "stage_II_III_n": 74,
+      "stage_II_III_with_outcome": 74,
+      "events_II_III": 9
+    },
+    "GSE81653": {
+      "stage_II_III_n": null,
+      "events_II_III": 234,
+      "note": "stage and time not deposited; event count is all stages"
+    },
+    "GSE58394": {
+      "stage_II_III_n": 300,
+      "events_II_III": 62,
+      "note": "stage II only; no time"
+    }
+  },
+  "events_needed_for_relaxed_slope_target": 337,
+  "n_eligible_for_frozen_model_validation": 0
+}

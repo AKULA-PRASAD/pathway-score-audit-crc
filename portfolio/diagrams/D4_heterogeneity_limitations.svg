@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="959.976pt" height="540pt" viewBox="0 0 959.976 540" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 540 
+L 959.976 540 
+L 959.976 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 38.16 180 
+L 357.84 180 
+Q 363.6 180 363.6 174.24 
+L 363.6 110.16 
+Q 363.6 104.4 357.84 104.4 
+L 38.16 104.4 
+Q 32.4 104.4 32.4 110.16 
+L 32.4 174.24 
+Q 32.4 180 38.16 180 
+z
+" clip-path="url(#p6e8dbd3887)" style="fill: #ffffff; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #8a94a3; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 38.16 266.4 
+L 357.84 266.4 
+Q 363.6 266.4 363.6 260.64 
+L 363.6 196.56 
+Q 363.6 190.8 357.84 190.8 
+L 38.16 190.8 
+Q 32.4 190.8 32.4 196.56 
+L 32.4 260.64 
+Q 32.4 266.4 38.16 266.4 
+z
+" clip-path="url(#p6e8dbd3887)" style="fill: #ffffff; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #8a94a3; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 38.16 352.8 
+L 357.84 352.8 
+Q 363.6 352.8 363.6 347.04 
+L 363.6 282.96 
+Q 363.6 277.2 357.84 277.2 
+L 38.16 277.2 
+Q 32.4 277.2 32.4 282.96 
+L 32.4 347.04 
+Q 32.4 352.8 38.16 352.8 
+z
+" clip-path="url(#p6e8dbd3887)" style="fill: #ffffff; stroke: #2a78d6; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 38.16 439.2 
+L 357.84 439.2 
+Q 363.6 439.2 363.6 433.44 
+L 363.6 369.36 
+Q 363.6 363.6 357.84 363.6 
+L 38.16 363.6 
+Q 32.4 363.6 32.4 369.36 
+L 32.4 433.44 
+Q 32.4 439.2 38.16 439.2 
+z
+" clip-path="url(#p6e8dbd3887)" style="fill: #ffffff; stroke: #2a78d6; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 448.56 356.4 
+L 595.44 356.4 
+Q 601.2 356.4 601.2 350.64 
+L 601.2 246.96 
+Q 601.2 241.2 595.44 241.2 
+L 448.56 241.2 
+Q 442.8 241.2 442.8 246.96 
+L 442.8 350.64 
+Q 442.8 356.4 448.56 356.4 
+z
+" clip-path="url(#p6e8dbd3887)" style="fill: #1f2933; stroke: #1f2933; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 635.76 457.2 
+L 921.816 457.2 
+Q 927.576 457.2 927.576 451.44 
+L 927.576 106.56 
+Q 927.576 100.8 921.816 100.8 
+L 635.76 100.8 
+Q 630 100.8 630 106.56 
+L 630 451.44 
+Q 630 457.2 635.76 457.2 
+z
+" clip-path="url(#p6e8dbd3887)" style="fill: #f5f7fa; stroke: #f5f7fa; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 363.6 142.2 
+L 442.8 298.8 
+" clip-path="url(#p6e8dbd3887)" style="fill: none; stroke: #8a94a3; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 363.6 228.6 
+L 442.8 298.8 
+" clip-path="url(#p6e8dbd3887)" style="fill: none; stroke: #8a94a3; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 363.6 315 
+L 442.8 298.8 
+" clip-path="url(#p6e8dbd3887)" style="fill: none; stroke: #8a94a3; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 363.6 401.4 
+L 442.8 298.8 
+" clip-path="url(#p6e8dbd3887)" style="fill: none; stroke: #8a94a3; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 22px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="32.4" y="55.616602" transform="rotate(-0 32.4 55.616602)">What a bulk pathway score may contain</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52606d" x="32.4" y="84.700342" transform="rotate(-0 32.4 84.700342)">Possible contributors to one number per patient. None was separated or quantified in this project.</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 11.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="43.2" y="125.375962" transform="rotate(-0 43.2 125.375962)">Tumour-cell expression programme</text>
+   </g>
+   <g id="text_4">
+    <g id="patch_8">
+     <path d="M 272.9 127.434668 
+L 318.634062 127.434668 
+Q 319.684062 127.434668 319.684062 126.384668 
+L 319.684062 118.415332 
+Q 319.684062 117.365332 318.634062 117.365332 
+L 272.9 117.365332 
+Q 271.85 117.365332 271.85 118.415332 
+L 271.85 126.384668 
+Q 271.85 127.434668 272.9 127.434668 
+z
+" style="fill: #7b8794; stroke: #7b8794; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 7px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="273.6" y="124.211523" transform="rotate(-0 273.6 124.211523)">NOT TESTED</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 9.3px; font-family: 'Arial', 'DejaVu Sans'; fill: #52606d" transform="translate(43.2 148.043074)">The intended biological signal; cannot be separated from the</text>
+    <text style="font-size: 9.3px; font-family: 'Arial', 'DejaVu Sans'; fill: #52606d" transform="translate(43.2 159.383988)">others in bulk tissue</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 11.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="43.2" y="211.776074" transform="rotate(-0 43.2 211.776074)">Stromal, immune and endothelial cells</text>
+   </g>
+   <g id="text_7">
+    <g id="patch_9">
+     <path d="M 272.9 213.834668 
+L 318.634062 213.834668 
+Q 319.684062 213.834668 319.684062 212.784668 
+L 319.684062 204.815332 
+Q 319.684062 203.765332 318.634062 203.765332 
+L 272.9 203.765332 
+Q 271.85 203.765332 271.85 204.815332 
+L 271.85 212.784668 
+Q 271.85 213.834668 272.9 213.834668 
+z
+" style="fill: #7b8794; stroke: #7b8794; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 7px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="273.6" y="210.611523" transform="rotate(-0 273.6 210.611523)">NOT TESTED</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 9.3px; font-family: 'Arial', 'DejaVu Sans'; fill: #52606d" transform="translate(43.2 234.497566)">Cell composition was not measured or deconvolved; an</text>
+    <text style="font-size: 9.3px; font-family: 'Arial', 'DejaVu Sans'; fill: #52606d" transform="translate(43.2 244.916473)">alternative explanation, especially for EMT</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 11.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="43.2" y="298.175962" transform="rotate(-0 43.2 298.175962)">Molecular subtype</text>
+   </g>
+   <g id="text_10">
+    <g id="patch_10">
+     <path d="M 272.9 300.234668 
+L 313.460625 300.234668 
+Q 314.510625 300.234668 314.510625 299.184668 
+L 314.510625 291.215332 
+Q 314.510625 290.165332 313.460625 290.165332 
+L 272.9 290.165332 
+Q 271.85 290.165332 271.85 291.215332 
+L 271.85 299.184668 
+Q 271.85 300.234668 272.9 300.234668 
+z
+" style="fill: #2a78d6; stroke: #2a78d6; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 7px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="273.6" y="297.011523" transform="rotate(-0 273.6 297.011523)">OBSERVED</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 9.3px; font-family: 'Arial', 'DejaVu Sans'; fill: #52606d" transform="translate(43.2 320.843074)">All four scores associate with MMR status (exploratory,</text>
+    <text style="font-size: 9.3px; font-family: 'Arial', 'DejaVu Sans'; fill: #52606d" transform="translate(43.2 331.316473)">outcome-free, n = 410)</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 11.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="43.2" y="384.575962" transform="rotate(-0 43.2 384.575962)">Processing batch</text>
+   </g>
+   <g id="text_13">
+    <g id="patch_11">
+     <path d="M 272.9 386.634668 
+L 313.460625 386.634668 
+Q 314.510625 386.634668 314.510625 385.584668 
+L 314.510625 377.615332 
+Q 314.510625 376.565332 313.460625 376.565332 
+L 272.9 376.565332 
+Q 271.85 376.565332 271.85 377.615332 
+L 271.85 385.584668 
+Q 271.85 386.634668 272.9 386.634668 
+z
+" style="fill: #2a78d6; stroke: #2a78d6; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 7px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="273.6" y="383.411523" transform="rotate(-0 273.6 383.411523)">OBSERVED</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 9.3px; font-family: 'Arial', 'DejaVu Sans'; fill: #52606d" transform="translate(43.2 407.563488)">Characterised, not resolved; residual batch structure after</text>
+    <text style="font-size: 9.3px; font-family: 'Arial', 'DejaVu Sans'; fill: #52606d" transform="translate(43.2 418.63848)">ComBat</text>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Arial', 'DejaVu Sans'; fill: #ffffff" transform="translate(473.660156 280.118848)">Bulk pathway</text>
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Arial', 'DejaVu Sans'; fill: #ffffff" transform="translate(501.987891 296.444824)">score</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #d9e2ec" x="522" y="337.129102" transform="rotate(-0 522 337.129102)">one number per patient</text>
+   </g>
+   <g id="text_17">
+    <g id="patch_12">
+     <path d="M 467.25 224.994287 
+L 520.832813 224.994287 
+Q 521.957813 224.994287 521.957813 223.869287 
+L 521.957813 215.330713 
+Q 521.957813 214.205713 520.832813 214.205713 
+L 467.25 214.205713 
+Q 466.125 214.205713 466.125 215.330713 
+L 466.125 223.869287 
+Q 466.125 224.994287 467.25 224.994287 
+z
+" style="fill: #7b8794; stroke: #7b8794; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 7.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="468" y="221.540918" transform="rotate(-0 468 221.540918)">CONCEPTUAL</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 8.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52606d" x="550.8" y="221.799624" transform="rotate(-0 550.8 221.799624)">lines are not weighted</text>
+   </g>
+   <g id="text_19">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="644.4" y="125.764258" transform="rotate(-0 644.4 125.764258)">What was observed</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 9.6px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="644.4" y="159.314859" transform="rotate(-0 644.4 159.314859)">MMR association ε² (BH q):</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 9.6px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="644.4" y="185.983359" transform="rotate(-0 644.4 185.983359)">  EMT 0.0394 (1.3×10⁻⁴)</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 9.6px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="644.4" y="212.594859" transform="rotate(-0 644.4 212.594859)">  E2F 0.0251 (0.0021)</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 9.6px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="644.4" y="239.234859" transform="rotate(-0 644.4 239.234859)">  Wnt 0.0187 (0.0070)</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 9.6px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="644.4" y="265.943109" transform="rotate(-0 644.4 265.943109)">  p53 0.1716 (4.7×10⁻¹⁶)</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 9.6px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(644.4 293.466609)">Batch/extraction location effects on scores did not</text>
+    <text style="font-size: 9.6px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(644.4 303.776578)">survive a test stratified by combat_mod (0 of 10).</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 9.6px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(644.4 338.606859)">combat_mod matches recorded MMR in all 410 samples,</text>
+    <text style="font-size: 9.6px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(644.4 349.854328)">but its provenance is unresolved: it is not an MMR</text>
+    <text style="font-size: 9.6px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(644.4 362.013797)">variable.</text>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 9.6px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(644.4 404.114859)">Leaving out one batch still flipped the Wnt and p53</text>
+    <text style="font-size: 9.6px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(644.4 416.330578)">coefficients.</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans'; fill: #52606d" transform="translate(32.4 507.470537)">Conceptual schematic: no contribution was estimated, and the connecting lines carry no weights or causal direction. Sources: reports/phase8c/score_vs_annotation.csv (mmr.status);</text>
+    <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans'; fill: #52606d" transform="translate(32.4 517.271221)">docs/PHASE8C_FROZEN_PATHWAY_SCORE_ANALYSIS.md §5.3; docs/PHASE8B_PCA_BATCH_INVESTIGATION.md (combat_mod ↔ MMR, 0 discordant of 410); docs/PHASE9_CORRECTED_FINAL_REPORT.md §12.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p6e8dbd3887">
+   <rect x="0" y="0" width="959.976" height="540"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -1,10 +1,38 @@
-# Optimism-corrected value of transcriptomic pathway scores for colon-cancer recurrence
+# What do cancer pathway scores really measure? A colon-cancer recurrence study and the `pathway-audit` tool
 
-A pre-specified, audited analysis of whether four Hallmark pathway scores improve recurrence-risk discrimination beyond clinical covariates in stage II–III colon cancer (GEO GSE39582). The headline result is a nested-bootstrap confidence interval for the optimism-corrected gain in Harrell's C.
+Gene-set ("pathway") scores are widely read as tumour biology and used as prognostic features. This project tested four of them rigorously in colon cancer, found what they actually track in bulk tumour tissue, replicated that across four cohorts, and turned the checks into a tested Python tool, **`pathway-audit`**, that anyone can run before interpreting a pathway score.
 
-**Status (8 November 2026):**
+**Skills shown:** Python (pandas, NumPy, SciPy, scikit-learn, lifelines) · R (survival) · survival analysis and optimism-corrected validation · GEO microarray and TCGA RNA-seq data · tissue-composition estimation (ESTIMATE, MCP-counter) · Python packaging, command-line tools, pytest · reproducible, audited pipelines.
+
+## At a glance
+
+| | |
+|---|---|
+| **Tool** | [`tools/pathway-audit/`](tools/pathway-audit/): a tested Python package and command-line tool that audits any pathway score (data-quality gate, gene drivers, tissue composition, genotype confounding, random-set null, survival screen), with self-contained HTML reports and a 30-second built-in demo, plus a single-cell source check (`sc-sources`). 13/13 tests pass; lint-clean; CI passes on Python 3.10 and 3.12 |
+| **Replicated finding** | In bulk tissue the Hallmark **EMT score tracks stromal (fibroblast) content**: gene-disjoint ρ 0.94–0.98 in GSE39582, GSE41258, GSE143985 and TCGA-COAD, each above its own random-gene-set baseline. **Confirmed in single cells** (3 public cohorts, registered before analysis): EMT-set transcripts come mainly from stromal cells (5.1× the expression-matched share; epithelial 0.45×), and no coherent tumour-cell EMT programme was detected (not ruled out) |
+| **Molecular anchoring** | The **p53 score tracks TP53 mutation**, replicated in GSE41258 and TCGA-COAD and robust to hypermutation. The BRAF–p53 link in GSE39582 was explained by MMR status and composition, and both BRAF effects in TCGA were explained by hypermutation |
+| **Data-quality catch** | One public cohort (GSE103479) fails a positive-control co-expression check; its values appear misaligned to probe IDs |
+| **Predictive test** | In 452 stage II–III colon cancers, adding the four scores (EMT, E2F, Wnt/β-catenin, p53) to clinical variables gave no reproducible improvement: optimism-corrected ΔC **+0.0043**, all five nested-bootstrap 95 % intervals include zero |
+| **Rigour** | Pre-specified estimand; hash-frozen pipeline; verifier 60/60; follow-up plans registered before running; independent code re-checks within the project of the primary result, the extensions and the TCGA analysis |
+
+```bash
+pip install -e tools/pathway-audit && pathway-audit demo --out demo/    # writes demo/report.html; recovers four planted truths
+```
+
+Start here: [`portfolio/README.md`](portfolio/README.md) (overview, presentation, web page) · [`docs/FINAL_RESEARCH_CONTRIBUTION.md`](docs/FINAL_RESEARCH_CONTRIBUTION.md) · [`docs/manuscript/MANUSCRIPT_DRAFT.md`](docs/manuscript/MANUSCRIPT_DRAFT.md)
+
+## Five-minute tour for reviewers
+
+1. **The tool:** `tools/pathway-audit/README.md`, then run the demo (one command above) and open `demo/report.html`.
+2. **The science in one page:** `docs/FINAL_RESEARCH_CONTRIBUTION.md`, or the draft paper `docs/manuscript/MANUSCRIPT_DRAFT.md`. Newest result: `docs/SINGLE_CELL_RESULTS.md`.
+3. **The code:** the tool's package `tools/pathway-audit/src/pathway_audit/` and the nested-bootstrap engine `src/phase9_corrected/`.
+4. **The evidence trail:** `docs/README.md` maps every document; `scripts/README.md` maps every script.
+5. **The slides:** `portfolio/presentation/GSE39582_recurrence_portfolio.pdf`.
+
+## Project status
+
 - **Scientifically complete:** the frozen verification passed (60 of 60 checks), and an independent re-implementation within this project reproduced every reported number from the raw checkpoints (not an external replication).
-- **Repository disposition:** owner decisions approved and committed; branch `phase9-corrected-pipeline` pushed to the private GitHub repository, and the checkpoint archive published as the private GitHub Release `phase9-corrected-campaign-2026-11-08`. The code licence and the public-release review are pending (`docs/PROJECT_COMPLETION_INVENTORY.md`).
+- **Licence:** MIT (`LICENSE`), chosen by the owner on 8 November 2026. **Public release:** pending the owner's review of per-sample data governance (`docs/PUBLIC_RELEASE_REPRODUCIBILITY_AUDIT.md`).
 
 ## Research question
 
@@ -33,12 +61,12 @@ Recurrence risk after surgery for stage II–III colon cancer varies widely, and
 - Adding the four pathway scores was **not shown** to improve discrimination. The data are compatible with no gain and with a gain of up to about 0.05 in C.
 - All percentile, basic and bias-corrected intervals include zero. That does not establish equivalence.
 - No pathway shows an independent association with recurrence in the primary model (hazard ratios measure association; added discrimination is the ΔC above).
-- E2F (< 1) and EMT (> 1) keep consistent directions, but neither is demonstrated here. EMT > 1 is consistent with reports that stromal/mesenchymal expression marks poor-prognosis colorectal cancer (Guinney 2015, whose subtype derivation included GSE39582; Calon 2015; Isella 2015); whether the Hallmark EMT score reflects stroma was not tested here. Evidence on proliferation and outcome is mixed (Anjomshoaa 2009; Luo 2019). Pathway scores are averaged mRNA levels, not measures of pathway activation, protein activity or mutation status. Full references: `docs/SCIENTIFIC_RESULTS_AND_FIGURES.md` §14.
+- E2F (< 1) and EMT (> 1) keep consistent directions, but neither is demonstrated here. EMT > 1 is consistent with reports that stromal/mesenchymal expression marks poor-prognosis colorectal cancer (Guinney 2015, whose subtype derivation included GSE39582; Calon 2015; Isella 2015); registered follow-up analyses later showed that the Hallmark EMT score tracks estimated stromal content in four cohorts (`docs/FINAL_RESEARCH_CONTRIBUTION.md`). Evidence on proliferation and outcome is mixed (Anjomshoaa 2009; Luo 2019). Pathway scores are averaged mRNA levels, not measures of pathway activation, protein activity or mutation status. Full references: `docs/SCIENTIFIC_RESULTS_AND_FIGURES.md` §14.
 - The corrected ΔC is stable across Monte Carlo runs and expression representations. Molecular coefficients are not stable across processing batches: leaving out one batch at a time changes the sign of the Wnt and p53 coefficients. Batch effects are characterised, not resolved.
 - A historical "paired out-of-original" ΔC interval that narrowly excluded zero is a different quantity, not an interval for the corrected ΔC, and it included zero under the alternative expression representation.
 - There is no claim of clinical utility, absolute-risk prediction, external validity, transportability or causal mechanism.
 
-**Full report:** `docs/PHASE9_CORRECTED_FINAL_REPORT.md`. **Illustrated results (9 main and 2 supplementary figures):** `docs/SCIENTIFIC_RESULTS_AND_FIGURES.md`.
+**Full report:** `docs/PHASE9_CORRECTED_FINAL_REPORT.md`. **Illustrated results (9 main and 2 supplementary figures):** `docs/SCIENTIFIC_RESULTS_AND_FIGURES.md`. **Portfolio overview, presentation and diagrams:** `portfolio/README.md`.
 
 ![Corrected ΔC intervals](reports/figures/final/Fig8_corrected_deltaC.png)
 
@@ -108,7 +136,14 @@ Recurrence risk after surgery for stage II–III colon cancer varies widely, and
 | `reports/phase9/corrected_rerun_report/` | final interval results (JSON) and tables |
 | `reports/phase9/independent_audit/` | independent audit results and report |
 | `reports/phase9/execution*/`, `dc_interval/`, `final_project/` | historical Phase 9 outputs, kept unchanged; the as-run intervals are superseded |
-| `tests/` | 1,085 tests |
+| `scripts/exploratory/` | registered post-hoc analyses X1–X9 (`run_all.sh`; validation 22/22) |
+| `scripts/research_extensions/` | research extensions E1–E3 and the TCGA addendum (`run_all.sh`; validation 28/28) |
+| `reports/exploratory/`, `reports/research_extensions/`, `results/research_extensions/`, `figures/research_extensions/` | outputs of the post-hoc work |
+| `scripts/single_cell/`, `results/single_cell/`, `figures/single_cell/` | registered single-cell extension S1–S5 (`run_all.sh`; validation 16/16) |
+| `tools/pathway-audit/` | the reusable tool: package, CLI, tests, demo and case-study scripts (bulk and single-cell) |
+| `reports/pathway_audit_case_study/` | tool reports for five colorectal cohorts |
+| `portfolio/` | presentation, web page, diagrams, resume text and portfolio QC |
+| `tests/` | 1,097 tests (`conftest.py` skips the 176 data-dependent ones when the data are absent) |
 
 ## Environment
 
@@ -121,7 +156,9 @@ python3.13 -m venv .venv
 .venv/bin/python -m pytest -q tests/
 ```
 
-Some tests read the locally built study inputs and historical outputs. They pass only after the data pipeline below has been run.
+**Without the data** (a fresh clone): 909 tests pass and 188 are skipped. The 176 tests that need the gitignored data bundle are listed in `tests/data_dependent_tests.txt`, and `tests/conftest.py` skips them with a stated reason. **With the data** (after the pipeline below): all 1,097 tests pass and none are skipped.
+
+`pathway-audit` has its own suite: `cd tools/pathway-audit && pip install -e ".[survival,test]" && pytest` (13 tests, no project data needed; also run by GitHub Actions on every push).
 
 ## Reproduction
 
@@ -158,4 +195,4 @@ The archive destination is pending the owner's decision.
 
 - **GSE39582:** public GEO data. Cite Marisa L. et al., *PLoS Med* 2013;10:e1001453, doi:10.1371/journal.pmed.1001453. Raw and processed data are not redistributed here: download them from GEO.
 - **Hallmark gene sets:** from MSigDB (Liberzon et al., *Cell Syst* 2015;1:417–425, doi:10.1016/j.cels.2015.12.004). Use is subject to MSigDB's terms. The panel files record set identifiers and resolved members.
-- **Code licence:** no licence file has been chosen yet.
+- **Code licence:** MIT (`LICENSE`). It covers the code and documentation written for this project. Third-party data, gene sets and reference files keep their own terms and are not redistributed, except the resolved Hallmark gene-set members recorded in the panel files.

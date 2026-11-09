@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pathway-audit"
+version = "0.2.0"
+description = "Audit what a gene-set (pathway) score measures in bulk tumour expression data before interpreting it."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Prasad Akula" }]
+keywords = ["bioinformatics", "gene set", "pathway score", "transcriptomics", "tumour microenvironment", "quality control", "colorectal cancer"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+dependencies = ["numpy>=1.24", "pandas>=2.0", "scipy>=1.10", "scikit-learn>=1.3"]
+
+[project.optional-dependencies]
+survival = ["lifelines>=0.27"]
+test = ["pytest>=7"]
+
+[project.scripts]
+pathway-audit = "pathway_audit.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 160
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E731"]
+
+[tool.ruff.lint.per-file-ignores]
+"src/pathway_audit/report_html.py" = ["E501"]  # inline HTML/CSS template strings

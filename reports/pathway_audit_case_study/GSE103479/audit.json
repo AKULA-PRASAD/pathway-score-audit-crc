@@ -1,0 +1,799 @@
+{
+  "n_samples": 156,
+  "n_genes": 24457,
+  "qc": {
+    "pairs": {
+      "COL1A1-COL1A2": 0.004461707460134801,
+      "COL1A1-COL3A1": 0.07782315870484449,
+      "COL1A2-COL3A1": 0.06163072152711238,
+      "SPARC-COL5A1": -0.009804992339818656,
+      "MKI67-TOP2A": 0.16883705603067467,
+      "BUB1-CCNB1": -0.06305192842801058,
+      "CD2-CD3E": 0.2695592018995333,
+      "CDX2-VIL1": 0.08306396136414597
+    },
+    "n_pairs": 8,
+    "median_r": 0.06972694011597844,
+    "threshold": 0.5,
+    "passed": false,
+    "note": ""
+  },
+  "composition_summary": {
+    "estimators": [
+      "StromalScore",
+      "ImmuneScore",
+      "MCP_Fibroblasts",
+      "MCP_Endothelial cells",
+      "MCP_Cytotoxic lymphocytes",
+      "MCP_T cells",
+      "MCP_Monocytic lineage"
+    ],
+    "n_common_genes_estimate": null,
+    "source": "ESTIMATE + MCP-counter"
+  },
+  "gene_sets": {
+    "EMT": {
+      "coverage": {
+        "n_genes": 198,
+        "n_present": 197,
+        "coverage": 0.9949494949494949,
+        "coverage_ok": true
+      },
+      "mean_inter_gene_r": 0.004803663441529337,
+      "min_logo_r": 0.9986919064959212,
+      "top_genes": [
+        {
+          "gene": "SAT1",
+          "item_rest_r": 0.6194394526409096,
+          "logo_r_with_full": 0.9991940170034543
+        },
+        {
+          "gene": "FMOD",
+          "item_rest_r": 0.5251215079579541,
+          "logo_r_with_full": 0.9990527708992059
+        },
+        {
+          "gene": "ID2",
+          "item_rest_r": 0.5203598059405422,
+          "logo_r_with_full": 0.9990462568081413
+        },
+        {
+          "gene": "CAPG",
+          "item_rest_r": 0.518192824423803,
+          "logo_r_with_full": 0.9990433119721706
+        },
+        {
+          "gene": "IL32",
+          "item_rest_r": 0.5169442697723546,
+          "logo_r_with_full": 0.999041620815555
+        },
+        {
+          "gene": "FBLN1",
+          "item_rest_r": 0.5160543696219556,
+          "logo_r_with_full": 0.9990404179417747
+        },
+        {
+          "gene": "SNTB1",
+          "item_rest_r": 0.5058424864908837,
+          "logo_r_with_full": 0.9990267628332073
+        },
+        {
+          "gene": "MYLK",
+          "item_rest_r": 0.4889537430570484,
+          "logo_r_with_full": 0.999004778086123
+        },
+        {
+          "gene": "PCOLCE",
+          "item_rest_r": 0.4766493455994306,
+          "logo_r_with_full": 0.9989892307080093
+        },
+        {
+          "gene": "MATN3",
+          "item_rest_r": 0.4640453653914675,
+          "logo_r_with_full": 0.9989737153668333
+        }
+      ],
+      "modules": [
+        {
+          "module": 1,
+          "n_genes": 15,
+          "genes": [
+            "CADM1",
+            "CALU",
+            "CAPG",
+            "COL16A1",
+            "CYR61",
+            "FBLN1",
+            "FMOD",
+            "HTRA1",
+            "ID2",
+            "IL32",
+            "MATN3",
+            "MYLK",
+            "PRSS2",
+            "SAT1",
+            "SNTB1"
+          ],
+          "mean_jaccard": 0.459919721745145,
+          "stability": "dissolved"
+        },
+        {
+          "module": 2,
+          "n_genes": 12,
+          "genes": [
+            "CDH6",
+            "COL6A2",
+            "ECM2",
+            "JUN",
+            "LAMA1",
+            "LRP1",
+            "LUM",
+            "MMP1",
+            "NTM",
+            "SFRP4",
+            "SGCG",
+            "SLIT3"
+          ],
+          "mean_jaccard": 0.6385953197559234,
+          "stability": "pattern"
+        },
+        {
+          "module": 3,
+          "n_genes": 11,
+          "genes": [
+            "FSTL1",
+            "GPC1",
+            "INHBA",
+            "ITGA2",
+            "ITGA5",
+            "MMP2",
+            "MSX1",
+            "PMEPA1",
+            "PTHLH",
+            "SGCB",
+            "SNAI2"
+          ],
+          "mean_jaccard": 0.5950611909590238,
+          "stability": "weak"
+        }
+      ],
+      "composition_rho": {
+        "StromalScore": -0.12029839895054606,
+        "ImmuneScore": 0.14209669516840256,
+        "MCP_Fibroblasts": 0.08751876847212782,
+        "MCP_Endothelial cells": -0.023312418011411228,
+        "MCP_Cytotoxic lymphocytes": -0.13597382687171056,
+        "MCP_T cells": 0.14224210143667715,
+        "MCP_Monocytic lineage": 0.12487237438953075
+      },
+      "genotype_effects": {
+        "TP53 positive": {
+          "n_pos": 78,
+          "n_neg": 59,
+          "rank_biserial": 0.2016514558887441,
+          "p_mannwhitney": 0.043927763869210545,
+          "unadjusted": [
+            0.3625635436046335,
+            0.0021004486351151592,
+            0.6777774036455337
+          ],
+          "adjusted": [
+            0.3280637289208486,
+            0.012227100227737582,
+            0.6563189061894755
+          ],
+          "verdict": "robust to adjustment"
+        },
+        "BRAF positive": {
+          "n_pos": 15,
+          "n_neg": 122,
+          "rank_biserial": -0.3147540983606557,
+          "p_mannwhitney": 0.04749981063042322,
+          "unadjusted": [
+            -0.6916002820239154,
+            -1.3305514269835943,
+            -0.018615900670569382
+          ],
+          "adjusted": [
+            -0.6688859218532478,
+            -1.341985644394265,
+            0.03486430754887463
+          ],
+          "verdict": "inconclusive"
+        }
+      },
+      "verdict": [
+        "incoherent (mean inter-gene r < 0.05)",
+        "largely composition-independent (max |rho| 0.14)"
+      ]
+    },
+    "E2F": {
+      "coverage": {
+        "n_genes": 195,
+        "n_present": 194,
+        "coverage": 0.9948717948717949,
+        "coverage_ok": true
+      },
+      "mean_inter_gene_r": 0.0008551279199599384,
+      "min_logo_r": 0.997785334767084,
+      "top_genes": [
+        {
+          "gene": "SMC6",
+          "item_rest_r": 0.3804765711726732,
+          "logo_r_with_full": 0.9981062364656115
+        },
+        {
+          "gene": "RAN",
+          "item_rest_r": 0.36415712865373256,
+          "logo_r_with_full": 0.9980793022302564
+        },
+        {
+          "gene": "KIF18B",
+          "item_rest_r": 0.3627230731235672,
+          "logo_r_with_full": 0.9980769918055724
+        },
+        {
+          "gene": "RFC1",
+          "item_rest_r": 0.3230740771596807,
+          "logo_r_with_full": 0.99801672134738
+        },
+        {
+          "gene": "ASF1B",
+          "item_rest_r": 0.3097074458050195,
+          "logo_r_with_full": 0.9979979727157788
+        },
+        {
+          "gene": "BRMS1L",
+          "item_rest_r": 0.30338609917247117,
+          "logo_r_with_full": 0.9979893818662289
+        },
+        {
+          "gene": "BUB1B",
+          "item_rest_r": 0.30325077529912636,
+          "logo_r_with_full": 0.9979891998940904
+        },
+        {
+          "gene": "CDCA8",
+          "item_rest_r": 0.29439749542476784,
+          "logo_r_with_full": 0.9979774710793816
+        },
+        {
+          "gene": "CKS1B",
+          "item_rest_r": 0.29179197200855483,
+          "logo_r_with_full": 0.9979740854411929
+        },
+        {
+          "gene": "MRE11A",
+          "item_rest_r": 0.28926451008724113,
+          "logo_r_with_full": 0.9979708299841429
+        }
+      ],
+      "modules": [
+        {
+          "module": 1,
+          "n_genes": 17,
+          "genes": [
+            "ATAD2",
+            "BRCA2",
+            "CDC25A",
+            "CENPM",
+            "DCTPP1",
+            "ESPL1",
+            "GINS1",
+            "HNRNPD",
+            "KIF2C",
+            "PAN2",
+            "POLE4",
+            "RAD51AP1",
+            "SMC3",
+            "SMC4",
+            "SPC24",
+            "TP53",
+            "UBE2S"
+          ],
+          "mean_jaccard": 0.6132828565210584,
+          "stability": "pattern"
+        },
+        {
+          "module": 2,
+          "n_genes": 15,
+          "genes": [
+            "ANP32E",
+            "BRCA1",
+            "CDCA3",
+            "CDKN2C",
+            "DUT",
+            "E2F8",
+            "MCM6",
+            "MELK",
+            "MYBL2",
+            "NASP",
+            "NUP107",
+            "RAD51C",
+            "RPA3",
+            "SRSF1",
+            "SYNCRIP"
+          ],
+          "mean_jaccard": 0.5214886074919128,
+          "stability": "weak"
+        },
+        {
+          "module": 3,
+          "n_genes": 14,
+          "genes": [
+            "AK2",
+            "BRMS1L",
+            "CDC25B",
+            "CKS2",
+            "ILF3",
+            "KIF18B",
+            "MSH2",
+            "ORC2",
+            "PA2G4",
+            "PCNA",
+            "PRPS1",
+            "RAN",
+            "TUBG1",
+            "UNG"
+          ],
+          "mean_jaccard": 0.40228859890392593,
+          "stability": "dissolved"
+        },
+        {
+          "module": 4,
+          "n_genes": 12,
+          "genes": [
+            "BARD1",
+            "BIRC5",
+            "CDK4",
+            "DSCC1",
+            "HN1",
+            "IPO7",
+            "NCAPD2",
+            "POP7",
+            "RPA2",
+            "TACC3",
+            "TCF19",
+            "TUBB"
+          ],
+          "mean_jaccard": 0.4273870034433883,
+          "stability": "dissolved"
+        }
+      ],
+      "composition_rho": {
+        "StromalScore": -0.06512304215201276,
+        "ImmuneScore": 0.11570229647073697,
+        "MCP_Fibroblasts": -0.08187953406774034,
+        "MCP_Endothelial cells": 0.07667335746234452,
+        "MCP_Cytotoxic lymphocytes": -0.18800398286734835,
+        "MCP_T cells": 0.31440312307376206,
+        "MCP_Monocytic lineage": 0.1590554914573817
+      },
+      "genotype_effects": {
+        "TP53 positive": {
+          "n_pos": 78,
+          "n_neg": 59,
+          "rank_biserial": -0.0008691873098652936,
+          "p_mannwhitney": 0.9947975727490058,
+          "unadjusted": [
+            0.012609119154836035,
+            -0.31575347506264023,
+            0.36274435655390574
+          ],
+          "adjusted": [
+            0.01984969510123985,
+            -0.3466367960361609,
+            0.3837214363301986
+          ],
+          "verdict": "not associated"
+        },
+        "BRAF positive": {
+          "n_pos": 15,
+          "n_neg": 122,
+          "rank_biserial": 0.08524590163934431,
+          "p_mannwhitney": 0.5931832963924142,
+          "unadjusted": [
+            0.15619317648238268,
+            -0.42335312013661486,
+            0.71684221086974
+          ],
+          "adjusted": [
+            0.13028248545514476,
+            -0.40675794060192416,
+            0.721094788339639
+          ],
+          "verdict": "not associated"
+        }
+      },
+      "verdict": [
+        "incoherent (mean inter-gene r < 0.05)",
+        "largely composition-independent (max |rho| 0.31)"
+      ]
+    },
+    "Wnt": {
+      "coverage": {
+        "n_genes": 41,
+        "n_present": 39,
+        "coverage": 0.9512195121951219,
+        "coverage_ok": true
+      },
+      "mean_inter_gene_r": 0.011357560984355856,
+      "min_logo_r": 0.9910044614570748,
+      "top_genes": [
+        {
+          "gene": "DLL1",
+          "item_rest_r": 0.42896249485667076,
+          "logo_r_with_full": 0.9926655322141655
+        },
+        {
+          "gene": "ADAM17",
+          "item_rest_r": 0.4204778496638674,
+          "logo_r_with_full": 0.9926005094531374
+        },
+        {
+          "gene": "HDAC11",
+          "item_rest_r": 0.403830447186879,
+          "logo_r_with_full": 0.9924766935871944
+        },
+        {
+          "gene": "TCF7",
+          "item_rest_r": 0.36348293721067976,
+          "logo_r_with_full": 0.9921972990673716
+        },
+        {
+          "gene": "PSEN2",
+          "item_rest_r": 0.3550123048893195,
+          "logo_r_with_full": 0.9921423650620922
+        },
+        {
+          "gene": "WNT5B",
+          "item_rest_r": 0.34007544069378765,
+          "logo_r_with_full": 0.992048644877023
+        },
+        {
+          "gene": "PPARD",
+          "item_rest_r": 0.3174960295641304,
+          "logo_r_with_full": 0.9919146033083674
+        },
+        {
+          "gene": "SKP2",
+          "item_rest_r": 0.31143244104252304,
+          "logo_r_with_full": 0.9918801721379659
+        },
+        {
+          "gene": "CTNNB1",
+          "item_rest_r": 0.30382492743673634,
+          "logo_r_with_full": 0.9918379113919042
+        },
+        {
+          "gene": "NOTCH1",
+          "item_rest_r": 0.292621905240544,
+          "logo_r_with_full": 0.9917775767147501
+        }
+      ],
+      "modules": [
+        {
+          "module": 1,
+          "n_genes": 6,
+          "genes": [
+            "ADAM17",
+            "DLL1",
+            "NOTCH1",
+            "PPARD",
+            "TCF7",
+            "TP53"
+          ],
+          "mean_jaccard": 0.6457777777777778,
+          "stability": "pattern"
+        },
+        {
+          "module": 2,
+          "n_genes": 5,
+          "genes": [
+            "FRAT1",
+            "FZD1",
+            "HDAC5",
+            "PSEN2",
+            "SKP2"
+          ],
+          "mean_jaccard": 0.6472261904761903,
+          "stability": "pattern"
+        }
+      ],
+      "composition_rho": {
+        "StromalScore": 0.10189818400214946,
+        "ImmuneScore": 0.006113385279195839,
+        "MCP_Fibroblasts": 0.02224399804017638,
+        "MCP_Endothelial cells": 0.05953438384093818,
+        "MCP_Cytotoxic lymphocytes": 0.192745491615432,
+        "MCP_T cells": 0.07294337058051871,
+        "MCP_Monocytic lineage": -0.1554835548671587
+      },
+      "genotype_effects": {
+        "TP53 positive": {
+          "n_pos": 78,
+          "n_neg": 59,
+          "rank_biserial": -0.10386788352890053,
+          "p_mannwhitney": 0.2998611612031027,
+          "unadjusted": [
+            -0.15736739400264513,
+            -0.5013149917129499,
+            0.1642378779234003
+          ],
+          "adjusted": [
+            -0.13062953903768101,
+            -0.43632508836846584,
+            0.18872878401165052
+          ],
+          "verdict": "not associated"
+        },
+        "BRAF positive": {
+          "n_pos": 15,
+          "n_neg": 122,
+          "rank_biserial": 0.23278688524590163,
+          "p_mannwhitney": 0.14296984197835044,
+          "unadjusted": [
+            0.3866027821269446,
+            -0.08266874717034016,
+            0.9060671620360056
+          ],
+          "adjusted": [
+            0.3664080585776981,
+            -0.16184015125874174,
+            0.8829609430020477
+          ],
+          "verdict": "not associated"
+        }
+      },
+      "verdict": [
+        "incoherent (mean inter-gene r < 0.05)",
+        "largely composition-independent (max |rho| 0.19)"
+      ]
+    },
+    "p53": {
+      "coverage": {
+        "n_genes": 194,
+        "n_present": 192,
+        "coverage": 0.9896907216494846,
+        "coverage_ok": true
+      },
+      "mean_inter_gene_r": 0.0016535853654349151,
+      "min_logo_r": 0.9980189414952876,
+      "top_genes": [
+        {
+          "gene": "DDIT4",
+          "item_rest_r": 0.37159553941505175,
+          "logo_r_with_full": 0.9982927244622536
+        },
+        {
+          "gene": "DDB2",
+          "item_rest_r": 0.34157553135042035,
+          "logo_r_with_full": 0.9982502797830792
+        },
+        {
+          "gene": "STOM",
+          "item_rest_r": 0.3401132148891755,
+          "logo_r_with_full": 0.9982483034693455
+        },
+        {
+          "gene": "ABHD4",
+          "item_rest_r": 0.3226678477917058,
+          "logo_r_with_full": 0.9982253798063366
+        },
+        {
+          "gene": "EPS8L2",
+          "item_rest_r": 0.30469890198883726,
+          "logo_r_with_full": 0.9982030292799031
+        },
+        {
+          "gene": "PRMT2",
+          "item_rest_r": 0.3007288114094552,
+          "logo_r_with_full": 0.9981982637382314
+        },
+        {
+          "gene": "RXRA",
+          "item_rest_r": 0.29754233325686996,
+          "logo_r_with_full": 0.9981944840113434
+        },
+        {
+          "gene": "AEN",
+          "item_rest_r": 0.29399245087320075,
+          "logo_r_with_full": 0.9981903206184388
+        },
+        {
+          "gene": "PMM1",
+          "item_rest_r": 0.2906672844988444,
+          "logo_r_with_full": 0.9981864660882088
+        },
+        {
+          "gene": "BLCAP",
+          "item_rest_r": 0.2790462266851681,
+          "logo_r_with_full": 0.9981733392308695
+        }
+      ],
+      "modules": [
+        {
+          "module": 1,
+          "n_genes": 21,
+          "genes": [
+            "ABAT",
+            "ACVR1B",
+            "CASP1",
+            "DRAM1",
+            "GLS2",
+            "HDAC3",
+            "IER5",
+            "ITGB4",
+            "JUN",
+            "KLF4",
+            "MAPKAPK3",
+            "MKNK2",
+            "NOTCH1",
+            "OSGIN1",
+            "PDGFA",
+            "PLXNB2",
+            "PROCR",
+            "RB1",
+            "STEAP3",
+            "TP53",
+            "VDR"
+          ],
+          "mean_jaccard": 0.7525041462563199,
+          "stability": "stable"
+        },
+        {
+          "module": 2,
+          "n_genes": 14,
+          "genes": [
+            "ADCK3",
+            "BAIAP2",
+            "DCXR",
+            "EPHA2",
+            "GPX2",
+            "HEXIM1",
+            "HRAS",
+            "LRMP",
+            "PIDD1",
+            "SERPINB5",
+            "TRIAP1",
+            "TXNIP",
+            "VAMP8",
+            "XPC"
+          ],
+          "mean_jaccard": 0.4786646377775692,
+          "stability": "dissolved"
+        },
+        {
+          "module": 3,
+          "n_genes": 11,
+          "genes": [
+            "ADA",
+            "BAX",
+            "BTG1",
+            "CYFIP2",
+            "IER3",
+            "PPP1R15A",
+            "RAD51C",
+            "RAD9A",
+            "RNF19B",
+            "SAT1",
+            "TNFSF9"
+          ],
+          "mean_jaccard": 0.46057132686676944,
+          "stability": "dissolved"
+        }
+      ],
+      "composition_rho": {
+        "StromalScore": -0.08360544325204279,
+        "ImmuneScore": 0.2557064057783186,
+        "MCP_Fibroblasts": 0.1610595691549051,
+        "MCP_Endothelial cells": -0.05711305337358346,
+        "MCP_Cytotoxic lymphocytes": 0.06403881715161763,
+        "MCP_T cells": 0.29815871410282746,
+        "MCP_Monocytic lineage": 0.06432646868233471
+      },
+      "genotype_effects": {
+        "TP53 positive": {
+          "n_pos": 78,
+          "n_neg": 59,
+          "rank_biserial": -0.036940460669274255,
+          "p_mannwhitney": 0.7133867047744566,
+          "unadjusted": [
+            -0.11073980428775211,
+            -0.4538102194579863,
+            0.21424973199613162
+          ],
+          "adjusted": [
+            -0.08551319335472168,
+            -0.41862630666909856,
+            0.20092480307521382
+          ],
+          "verdict": "not associated"
+        },
+        "BRAF positive": {
+          "n_pos": 15,
+          "n_neg": 122,
+          "rank_biserial": -0.20218579234972678,
+          "p_mannwhitney": 0.20344097848970533,
+          "unadjusted": [
+            -0.37244579388591714,
+            -1.2041027203092838,
+            0.486567262578781
+          ],
+          "adjusted": [
+            -0.44823255303861004,
+            -1.2761619942839835,
+            0.3614625819705169
+          ],
+          "verdict": "not associated"
+        }
+      },
+      "verdict": [
+        "incoherent (mean inter-gene r < 0.05)",
+        "largely composition-independent (max |rho| 0.30)"
+      ]
+    }
+  },
+  "pairwise": [
+    {
+      "pair": "EMT | E2F",
+      "spearman": 0.428859983246669,
+      "partial_given_composition": 0.4157376011400237,
+      "null_95_for_first_set": [
+        -0.5356164730773066,
+        -0.09145158763742575
+      ],
+      "exceeds_null": true
+    },
+    {
+      "pair": "EMT | Wnt",
+      "spearman": -0.44145659148741123,
+      "partial_given_composition": -0.4401572157725185,
+      "null_95_for_first_set": [
+        -0.5356164730773066,
+        -0.09145158763742575
+      ],
+      "exceeds_null": false
+    },
+    {
+      "pair": "EMT | p53",
+      "spearman": 0.3541654154351914,
+      "partial_given_composition": 0.3259008185076021,
+      "null_95_for_first_set": [
+        -0.5356164730773066,
+        -0.09145158763742575
+      ],
+      "exceeds_null": true
+    },
+    {
+      "pair": "E2F | Wnt",
+      "spearman": -0.12480283226122552,
+      "partial_given_composition": -0.12079095568675592,
+      "null_95_for_first_set": [
+        -0.27451737658737846,
+        0.0664598632681975
+      ],
+      "exceeds_null": false
+    },
+    {
+      "pair": "E2F | p53",
+      "spearman": 0.41890913688735754,
+      "partial_given_composition": 0.40244809436653556,
+      "null_95_for_first_set": [
+        -0.27451737658737846,
+        0.0664598632681975
+      ],
+      "exceeds_null": true
+    },
+    {
+      "pair": "Wnt | p53",
+      "spearman": 0.020341072529278813,
+      "partial_given_composition": 0.02791593784570674,
+      "null_95_for_first_set": [
+        0.2735781651764796,
+        0.6279513757635276
+      ],
+      "exceeds_null": true
+    }
+  ]
+}

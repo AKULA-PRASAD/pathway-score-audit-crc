@@ -67,7 +67,7 @@
 
 ## Minor, optional
 
-- **Code licence:** the repository has no licence file. Choose one if the repository is to be public. Owner decision.
+- **Code licence:** the repository has no licence file. Choose one if the repository is to be public. Owner decision. *Update 8 November 2026: the owner chose MIT (`LICENSE`); see "Later owner decisions" below.*
 - **Career dossier artifact:** shows the pre-result status. It can be refreshed from the final report on request.
 
 ---
@@ -97,3 +97,10 @@ On 8 November 2026 the project owner approved decisions D1–D5 as recommended a
 > One historical random-number link was not measured: the apparent-fit cross-validation on the full data starts from the same generator state as one of the 2,500 optimism resamples. Analytically its effect on θ̂ is at most 1.6 × 10⁻³ (strict worst case), and about 1.9 × 10⁻⁵ if that replicate is typical. These are calculations, not measurements.
 >
 > The primary percentile intervals do not use θ̂. The basic interval, z₀, the bias-corrected diagnostic, A7 and A8 do.
+
+---
+
+## Later owner decisions — 8 November 2026
+
+- **Code licence:** MIT, chosen by the owner. `LICENSE` added at the repository root and in `tools/pathway-audit/`. It covers project code and documentation only; third-party data and reference files keep their own terms.
+- **Local commits:** the owner authorised committing the post-commit work (registered post-hoc analyses, research extensions, `pathway-audit`, portfolio). Push, visibility change and publication remain **not** authorised.

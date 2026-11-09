@@ -1,0 +1,125 @@
+{
+ "note": "Tool (pathway_audit.single_cell) vs registered study analysis; random draws differ, so values agree closely but not exactly.",
+ "rows": [
+  {
+   "set": "E2F",
+   "compartment": "endothelial",
+   "study_median_enrichment": 1.141122103389469,
+   "tool_median_enrichment": 1.121923999105643
+  },
+  {
+   "set": "E2F",
+   "compartment": "epithelial",
+   "study_median_enrichment": 1.1152775693803965,
+   "tool_median_enrichment": 1.126237103968874
+  },
+  {
+   "set": "E2F",
+   "compartment": "immune",
+   "study_median_enrichment": 0.7717509468849246,
+   "tool_median_enrichment": 0.7690204226512962
+  },
+  {
+   "set": "E2F",
+   "compartment": "stromal",
+   "study_median_enrichment": 0.956681160433329,
+   "tool_median_enrichment": 0.9244701762152557
+  },
+  {
+   "set": "EMT",
+   "compartment": "endothelial",
+   "study_median_enrichment": 1.5866454544046087,
+   "tool_median_enrichment": 1.4358186351781848
+  },
+  {
+   "set": "EMT",
+   "compartment": "epithelial",
+   "study_median_enrichment": 0.44789238135542675,
+   "tool_median_enrichment": 0.4542794403598768
+  },
+  {
+   "set": "EMT",
+   "compartment": "immune",
+   "study_median_enrichment": 0.9179012748964918,
+   "tool_median_enrichment": 0.8913355964249207
+  },
+  {
+   "set": "EMT",
+   "compartment": "stromal",
+   "study_median_enrichment": 5.0849167521987315,
+   "tool_median_enrichment": 5.102715120227815
+  },
+  {
+   "set": "EMT-ex6",
+   "compartment": "endothelial",
+   "study_median_enrichment": 1.645587977234312,
+   "tool_median_enrichment": 1.5609633989668523
+  },
+  {
+   "set": "EMT-ex6",
+   "compartment": "epithelial",
+   "study_median_enrichment": 0.4827640493416427,
+   "tool_median_enrichment": 0.483935689387681
+  },
+  {
+   "set": "EMT-ex6",
+   "compartment": "immune",
+   "study_median_enrichment": 0.9682843473286089,
+   "tool_median_enrichment": 0.979585140668792
+  },
+  {
+   "set": "EMT-ex6",
+   "compartment": "stromal",
+   "study_median_enrichment": 4.15384935121442,
+   "tool_median_enrichment": 4.195659066723657
+  },
+  {
+   "set": "Wnt",
+   "compartment": "endothelial",
+   "study_median_enrichment": 1.4682520683862608,
+   "tool_median_enrichment": 1.4681647931582176
+  },
+  {
+   "set": "Wnt",
+   "compartment": "epithelial",
+   "study_median_enrichment": 1.0786658091743027,
+   "tool_median_enrichment": 1.0776641031588916
+  },
+  {
+   "set": "Wnt",
+   "compartment": "immune",
+   "study_median_enrichment": 0.809717339341524,
+   "tool_median_enrichment": 0.8178938462419238
+  },
+  {
+   "set": "Wnt",
+   "compartment": "stromal",
+   "study_median_enrichment": 1.0187020108464004,
+   "tool_median_enrichment": 1.015634119629907
+  },
+  {
+   "set": "p53",
+   "compartment": "endothelial",
+   "study_median_enrichment": 0.9984667934121093,
+   "tool_median_enrichment": 1.0023863722109834
+  },
+  {
+   "set": "p53",
+   "compartment": "epithelial",
+   "study_median_enrichment": 1.0625890048596633,
+   "tool_median_enrichment": 1.069759905347473
+  },
+  {
+   "set": "p53",
+   "compartment": "immune",
+   "study_median_enrichment": 0.9047334059244077,
+   "tool_median_enrichment": 0.8933463052010149
+  },
+  {
+   "set": "p53",
+   "compartment": "stromal",
+   "study_median_enrichment": 0.9499640027094607,
+   "tool_median_enrichment": 0.9580007502188893
+  }
+ ]
+}

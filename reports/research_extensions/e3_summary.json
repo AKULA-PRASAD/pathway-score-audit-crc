@@ -1,0 +1,144 @@
+{
+  "extension": "E3",
+  "label": "post-hoc extension, outcome-free, independent cohorts never pooled",
+  "cohorts": {
+    "GSE41258": {
+      "n_tumours": 186,
+      "n_genes": 12548,
+      "mcp_fibroblast_genes_present": "8/8",
+      "groups": {
+        "TP53": {
+          "pos": 91,
+          "neg": 53
+        },
+        "MSI": {
+          "pos": 35,
+          "neg": 117
+        }
+      }
+    },
+    "GSE143985": {
+      "n_tumours": 91,
+      "n_genes": 21655,
+      "mcp_fibroblast_genes_present": "8/8",
+      "groups": {
+        "TP53": {
+          "pos": 53,
+          "neg": 38
+        },
+        "BRAF": {
+          "pos": 2,
+          "neg": 89
+        },
+        "MSI": {
+          "pos": 5,
+          "neg": 85
+        }
+      }
+    },
+    "GSE103479": {
+      "n_tumours": 156,
+      "n_genes": 24457,
+      "mcp_fibroblast_genes_present": "8/8",
+      "groups": {
+        "TP53": {
+          "pos": 78,
+          "neg": 59
+        },
+        "BRAF": {
+          "pos": 15,
+          "neg": 122
+        }
+      }
+    }
+  },
+  "verdicts": {
+    "R1": {
+      "eligible_cohorts": 3,
+      "consistent": 1,
+      "opposite": 0,
+      "verdict": "PARTIALLY REPLICATED",
+      "GSE39582_effect": -0.296
+    },
+    "R2": {
+      "eligible_cohorts": 3,
+      "consistent": 0,
+      "opposite": 0,
+      "verdict": "NOT REPLICATED",
+      "GSE39582_effect": 0.188
+    },
+    "R3": {
+      "eligible_cohorts": 1,
+      "consistent": 0,
+      "opposite": 0,
+      "verdict": "NOT REPLICATED",
+      "GSE39582_effect": -0.455
+    },
+    "R4": {
+      "eligible_cohorts": 1,
+      "consistent": 0,
+      "opposite": 0,
+      "verdict": "NOT REPLICATED",
+      "GSE39582_effect": 0.482
+    },
+    "R5": {
+      "eligible_cohorts": 1,
+      "consistent": 0,
+      "opposite": 0,
+      "verdict": "NOT REPLICATED",
+      "GSE39582_effect": "eps2 0.167 (dMMR higher)"
+    },
+    "R6": {
+      "eligible_cohorts": 3,
+      "consistent": 2,
+      "opposite": 0,
+      "verdict": "REPLICATED",
+      "GSE39582_effect": 0.95
+    }
+  },
+  "bootstrap": {
+    "B": 2000,
+    "seed": 20261108
+  },
+  "qc_failed_cohorts": [
+    "GSE103479"
+  ],
+  "verdicts_excluding_qc_failed": {
+    "R1": {
+      "eligible_cohorts": 2,
+      "consistent": 1,
+      "opposite": 0,
+      "verdict": "PARTIALLY REPLICATED"
+    },
+    "R2": {
+      "eligible_cohorts": 2,
+      "consistent": 0,
+      "opposite": 0,
+      "verdict": "NOT REPLICATED"
+    },
+    "R3": {
+      "eligible_cohorts": 0,
+      "consistent": 0,
+      "opposite": 0,
+      "verdict": "NOT TESTABLE"
+    },
+    "R4": {
+      "eligible_cohorts": 0,
+      "consistent": 0,
+      "opposite": 0,
+      "verdict": "NOT TESTABLE"
+    },
+    "R5": {
+      "eligible_cohorts": 1,
+      "consistent": 0,
+      "opposite": 0,
+      "verdict": "NOT REPLICATED"
+    },
+    "R6": {
+      "eligible_cohorts": 2,
+      "consistent": 2,
+      "opposite": 0,
+      "verdict": "REPLICATED"
+    }
+  }
+}
