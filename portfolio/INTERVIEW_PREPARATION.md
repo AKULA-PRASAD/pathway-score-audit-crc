@@ -110,7 +110,7 @@ The model's risk predictions are too spread out. High-risk patients are predicte
 The recurrence-time unit is undocumented, so any horizon-based measure (5-year AUC, Brier score at a time point) would rest on an unverified assumption. Harrell's C depends only on ranking. Its limitations are that it is insensitive to small added predictors and says nothing about calibration or clinical utility.
 
 **11. How did you handle deaths without recurrence?**
-They are censored, so the model estimates the cause-specific hazard. That is valid for aetiology but cannot give an absolute recurrence probability. 1 − Kaplan–Meier would overstate risk. The 46 censored deaths were older and less often treated, so the censoring is informative. A Fine–Gray or composite-endpoint analysis was specified but not performed.
+They are censored, so the primary model estimates the cause-specific hazard. That is valid for aetiology but cannot give an absolute recurrence probability. The 46 censored deaths were older and less often treated, so the censoring is informative. In the registered follow-up (X2), the Aalen–Johansen cumulative incidence of recurrence at 60 time units was 30.7 %, against 31.3 % from 1 − Kaplan–Meier, and Fine–Gray subdistribution hazard ratios were close to the cause-specific ones. So competing deaths did not change the conclusions here (see question 31).
 
 **12. How do you know there was no data leakage?**
 Every estimated quantity (gene means and SDs, score scaling, λ) is re-estimated inside each training resample and applied unchanged to held-out samples. The production scorer was checked against an independent re-implementation (agreement within 3×10⁻¹⁵) and passed fold-isolation tests in which held-out data were deleted or corrupted.
@@ -133,7 +133,7 @@ They represent distinct axes of colorectal-cancer biology:
 They were chosen as one representative per correlation cluster without outcome data. PI3K/AKT/mTOR was kept as a sensitivity addition because it was highly correlated with p53.
 
 **15. EMT had a hazard ratio above 1. Does that mean EMT drives recurrence?**
-No. The interval includes 1, so there is no demonstrated association. Even if there were, a bulk EMT score mixes tumour cells undergoing EMT with fibroblasts that express the same mesenchymal genes. Published work attributes much bulk mesenchymal signal to stroma. Cell composition was not measured here, so tumour-cell EMT cannot be inferred.
+No. The interval includes 1, so there is no demonstrated association. Even if there were, a bulk EMT score mixes tumour cells undergoing EMT with fibroblasts that express the same mesenchymal genes. Published work attributes much bulk mesenchymal signal to stroma. Cell composition was not measured, but in the registered follow-up the EMT score tracked estimated fibroblast content (ρ 0.94–0.98 with shared genes removed) in four cohorts. So in bulk tissue it behaves as a stromal index, and tumour-cell EMT cannot be inferred from it.
 
 **16. Wnt is altered in over 90 % of colorectal cancers. Why no signal?**
 The 93 % figure is genomic alteration, not measured pathway activity, and the score averages 41 target genes that are loosely co-expressed in this tissue. The estimate sat near zero and changed sign under batch omission. I did not offer an explanation for the null, because none was tested.
@@ -142,9 +142,10 @@ The 93 % figure is genomic alteration, not measured pathway activity, and the sc
 The score carries molecular-subtype structure. MMR-deficient and proficient tumours differ in TP53 mutation rates and expression programmes. The association is exploratory, says nothing about mechanism, and is not an association with recurrence: p53's hazard ratio was 0.995. An ε² and a hazard ratio measure different things and should not be compared.
 
 **18. What would you need to know whether the EMT signal is tumour-intrinsic?**
-- Cell-type deconvolution or single-cell RNA-seq to locate mesenchymal-gene expression.
-- Spatial transcriptomics.
-- An analysis that adjusts the EMT–recurrence association for stromal fraction.
+- Computational deconvolution: done post hoc (ESTIMATE, MCP-counter). It shows the score tracks stromal estimates, but cannot locate expression in cells.
+- Adjusting the EMT–recurrence association for stromal fraction: tried (X7), but EMT and the stromal estimate are near-collinear (VIF > 10), so their coefficients cannot be separated.
+- Single-cell RNA-seq: the next registered step (`docs/SINGLE_CELL_EXTENSION_PLAN.md`), to measure which cells express the EMT genes.
+- Spatial transcriptomics or cell-resolved protein staining.
 
 **19. Isn't a coherence of 0.04 for Wnt evidence that the pathway is irrelevant?**
 No. Coherence describes how tightly the member genes co-vary in this tissue and processing. Low coherence means the averaged score is a weak summary. It says nothing about the pathway's biological importance, and high coherence is not evidence of activation.
@@ -161,7 +162,7 @@ Partly, yes. Omitted batches range from 14 to 103 patients, so removing a large 
 It comes from the same deposit, shares processing history, and is confounded with batch. It also has only 29 events. Calling it external validation would overstate generalisability.
 
 **23. Why not validate on another public cohort?**
-I checked. The candidate cohorts had 48 and 18 recurrence events against roughly 338 needed for a precise estimate, and two public cohorts shared about 130 patients. Validating on them would have produced misleading confirmation.
+I checked, twice. The registered eligibility audit (X8) screened 554 GEO hits, assessed 14 cohorts in detail and found none eligible: the largest had 124 recurrences against about 337 needed for a usefully precise estimate, and the others lacked stage, endpoint or platform compatibility. Validating on an underpowered cohort would have produced a misleading confirmation or a misleading failure.
 
 ### Ownership and process
 
@@ -177,7 +178,7 @@ Scientific direction and methodological decisions, all recorded in the project's
 - commissioned and reviewed verification and citation audits.
 
 **25. Which parts did you implement yourself, and how?**
-Answer this accurately and specifically: which components you wrote, which you reviewed, and which tools or collaborators generated or executed code. The project's value rests on decisions and verification, so describe the workflow as it actually was.
+Expect this question: the repository is large and was built in about a week. Answer accurately and specifically: which components you wrote, which you reviewed, and which tools or collaborators generated or executed code, and how you checked their output. The project's value rests on decisions and verification, so describe the workflow as it actually was, and be ready to walk through any file line by line.
 
 **26. What would you do differently?**
 - Plan a competing-risk analysis from the start.
@@ -187,6 +188,41 @@ Answer this accurately and specifically: which components you wrote, which you r
 
 **27. What is the main lesson?**
 Validation design matters more than model complexity. A carefully verified null result is a real result, and separating the estimand from convenient-looking statistics is what keeps it honest.
+
+### The follow-up work and the tool
+
+**28. Why does the ridge penalty apply only to the pathway block?**
+Two reasons. First, fairness and scale: ridge shrinkage depends on variable units, and the clinical block mixes an age spline with binary terms, so penalising it would make the result depend on coding choices. Second, nesting: with the clinical block unpenalised, M1 is exactly M2 with the pathway coefficients at zero, so any change in C is attributable to the pathways. The cost is that shrinking only the pathway block makes ΔC slightly conservative, which I state (questions 7 and 8).
+
+**29. What exactly does optimism correction remove, and what does it not remove?**
+For each bootstrap resample, the whole pipeline is refitted: spline knots, gene scaling, score scaling, λ tuning and the Cox fit. Optimism is the average of (C on the resample it was fitted to) minus (C of that model on the original data). Subtracting it removes the gain a model gets from fitting noise in this cohort. It does **not** remove sampling uncertainty (hence the nested bootstrap for an interval), and it says nothing about other populations, batches or platforms: it is internal validation only.
+
+**30. Why is the TCGA random-gene-set baseline about 0.64, when it is near zero in the microarray cohorts?**
+A score is the mean of z-scored genes. In bulk RNA-seq, a large share of genes move together along one dominant sample-wide axis, most plausibly tumour purity versus stromal and immune content, plus normalisation effects. The average of about 190 random genes therefore picks up part of that axis, which also correlates with fibroblast markers. In GSE39582 the random median was −0.14 (upper bound 0.05); in TCGA it was 0.64 (upper bound 0.76). That is why every cohort is compared with its own random baseline: TCGA's 0.98 still exceeds 0.76, but it is less informative than its size suggests. The cause of the shared axis was not formally decomposed, so I call it the most plausible explanation, not a finding.
+
+**31. What would Fine–Gray change compared with the cause-specific model?**
+The cause-specific model treats deaths without recurrence as censored and estimates the recurrence rate among patients still alive and recurrence-free: the right question for aetiology. Fine–Gray keeps patients who died in the risk set and models the subdistribution hazard, which maps directly onto the cumulative incidence of recurrence: the right question for absolute-risk prediction. With 46 competing deaths, the two can differ. Here they did not differ materially: the Aalen–Johansen incidence at 60 time units was 30.7 % against 31.3 % naive, and the subdistribution and cause-specific hazard ratios were similar. Absolute risks still are not reported, because the time unit is undocumented.
+
+**32. Why the gene-disjoint test?**
+The EMT set and the MCP-counter fibroblast markers share six genes, which would inflate their correlation by construction. Removing the shared genes and recomputing gave ρ 0.94–0.98 in all four cohorts, so the association is not an overlap artefact.
+
+**33. You added the quality-control gate after seeing an implausible result. Isn't that cherry-picking?**
+It is a declared deviation, and I treat it as one. The gate uses canonical co-expression pairs (collagens, proliferation, T-cell receptor, intestinal epithelium) that are unrelated to the hypotheses, and it would exclude a cohort whichever direction its results went. GSE103479 failed it badly (median r 0.07 against 0.78–0.94 elsewhere), probes for the same gene were uncorrelated, and adjacent probe IDs carried near-identical values. That is evidence of a defective deposit, not an inconvenient result.
+
+**34. Why rank-biserial effect sizes for the replication?**
+It is a scale-free, non-parametric effect size for two groups, so it can be compared across microarray and RNA-seq cohorts without assuming normality or a shared scale.
+
+**35. Why were the TCGA BRAF effects judged "not established"?**
+31 of the 44 BRAF-mutant tumours with mutation data were hypermutated (more than 300 mutated genes, against a cohort median of 113). After excluding hypermutated tumours, or adjusting for log mutation burden, the BRAF effects on the Wnt and p53 scores largely disappeared. The TP53 effect on the p53 score survived the same adjustment (−0.37 after exclusion).
+
+**36. Why re-implement ESTIMATE in Python?**
+So the tool runs without an R dependency. The re-implementation reads the official gene lists at run time (they are not bundled, because of their licence) and matches the package's own example output to 1.4 × 10⁻¹⁴.
+
+**37. How do you test a tool when you do not know the true answer for real data?**
+With synthetic data that has planted structure: a stromal programme, a mutation-driven programme, a programme confounded by an MSI-like factor, and a random set. The tests check that the audit labels each one correctly, that the quality gate fails when gene labels are shuffled, and that the survival screen shrinks the optimism of noise scores. The built-in demo recovers all four planted truths.
+
+**38. What is new about `pathway-audit`?**
+Not the individual methods, which are established. What is new is putting them in one tested workflow with explicit verdict rules and a data-quality gate in front, so a pathway score is checked for composition, a few dominant genes, genotype confounding and a broken dataset before anyone interprets it.
 
 ---
 
@@ -204,3 +240,9 @@ Validation design matters more than model complexity. A carefully verified null 
 | Pathway HRs, primary (95 % CI) | EMT 1.070 (0.951–1.202), E2F 0.906 (0.807–1.016), Wnt 1.016 (0.906–1.138), p53 0.995 (0.882–1.123); all intervals include 1 |
 | MMR ε² | EMT 0.0394, E2F 0.0251, Wnt 0.0187, p53 0.1716 (n = 410) |
 | Bootstrap | 5 runs × 750 × 100; about 765,000 model fits; verifier 60/60 |
+| Follow-up: EMT vs fibroblast markers, gene-disjoint ρ | 0.94 (GSE39582), 0.95 (GSE41258), 0.94 (GSE143985), 0.98 (TCGA-COAD) |
+| Random-gene-set baseline, upper 97.5 % | 0.05, −0.15, 0.26, 0.76 (TCGA median 0.64) |
+| TP53 → p53 score (rank-biserial) | GSE41258 −0.22; TCGA −0.42; TCGA excluding hypermutated −0.37; GSE143985 −0.06 (n.s.) |
+| Competing risks (X2) | recurrence incidence at 60 units 30.7 % (Aalen–Johansen) vs 31.3 % naive |
+| External audit (X8) | 554 hits, 14 assessed, 0 eligible; largest 124 recurrences vs ≈337 needed |
+| Tool | 11/11 tests; demo recovers 4/4 planted truths; 5-cohort case study (1 failed QC) |
