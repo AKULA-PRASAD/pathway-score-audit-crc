@@ -154,28 +154,40 @@ def calibration(y, p, clip=1e-6):
     """Calibration-in-the-large (intercept with logit(p) offset) and slope, by Newton steps.
 
     One prediction per patient is required (apply within a single repeat).
+    Returns NaN for an estimate that does not exist (constant predictions, or perfect separation,
+    where the logistic MLE diverges) instead of raising.
     """
     y = np.asarray(y, float)
     o = _logit(p, clip)
-    a = 0.0
-    for _ in range(100):                      # intercept with offset
+    a, ok_a = 0.0, False
+    for _ in range(200):                      # intercept with offset
         m = 1 / (1 + np.exp(-(a + o)))
         g, h = (y - m).sum(), (m * (1 - m)).sum()
+        if h < 1e-12:
+            break
         step = g / h
         a += step
         if abs(step) < 1e-10:
+            ok_a = True
             break
-    beta = np.zeros(2)
+    beta, ok_b = np.zeros(2), False
     Z = np.column_stack([np.ones_like(o), o])
-    for _ in range(100):                      # logistic slope on the logit
-        m = 1 / (1 + np.exp(-(Z @ beta)))
-        g = Z.T @ (y - m)
-        H = (Z * (m * (1 - m))[:, None]).T @ Z
-        step = np.linalg.solve(H, g)
-        beta += step
-        if np.max(np.abs(step)) < 1e-10:
-            break
-    return float(a), float(beta[1])
+    if np.std(o) > 1e-12:
+        for _ in range(200):                  # logistic slope on the logit
+            m = 1 / (1 + np.exp(-(Z @ beta)))
+            g = Z.T @ (y - m)
+            H = (Z * (m * (1 - m))[:, None]).T @ Z
+            try:
+                step = np.linalg.solve(H, g)
+            except np.linalg.LinAlgError:
+                break
+            beta += step
+            if not np.all(np.isfinite(beta)) or np.max(np.abs(beta)) > 1e6:
+                break
+            if np.max(np.abs(step)) < 1e-10:
+                ok_b = True
+                break
+    return (float(a) if ok_a else float("nan")), (float(beta[1]) if ok_b else float("nan"))
 
 
 def summarise(values) -> dict:

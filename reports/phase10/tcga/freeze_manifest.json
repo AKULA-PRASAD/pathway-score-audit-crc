@@ -1,6 +1,6 @@
 {
   "schema": "phase10-tcga-freeze-1",
-  "created_utc": "2026-11-09T17:20:51+00:00",
+  "created_utc": "2026-11-09T17:28:47+00:00",
   "statement": "Frozen before any TCGA MSI label was linked to TCGA expression. Evaluate once; no refit, retune or model selection after unblinding.",
   "training": {
     "cohort": "GSE39582, Phase 9 452-patient cohort with mmr.status",
@@ -4542,7 +4542,7 @@
     "tcga_clinical": "34e7c726fcbbce86c00c43156a874996ad521e4137fa400e00cce50b2581809e"
   },
   "code_sha256": {
-    "phase10/common.py": "aaf843ad12f663a17267857df31acc4dbb74b4413f488404110c625e34261bd1",
+    "phase10/common.py": "86554c88f853a78c2ba54a90d7d5b9f6dd29cfbfdf0a00b079b035cce66b9378",
     "phase10/mmr.py": "3b097a759d409969f58d02ffb53f2f8aaf2c5d2e96c1d3ef94b5a06d5b1c3278",
     "phase10/tcga.py": "aa998373723a9e80876d46a06f02a8a9f025b98852180dccff252ffbc04fc97f",
     "config/phase10/phase10.yaml": "683746a7a9799b195980fdf9e3fd36ff5003774bd7d60d14100228342495b80b"
@@ -4556,6 +4556,6 @@
     "lifelines": "0.30.3",
     "scikit-survival": "0.28.0"
   },
-  "git_head": "9cba5867b3241557417ff7dd7952ca89af5b23ea",
+  "git_head": "125667a26a173925e72a4224639ac498ddebc7b4",
   "bootstrap_resamples": 2000
 }
