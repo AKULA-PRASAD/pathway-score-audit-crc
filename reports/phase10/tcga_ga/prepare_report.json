@@ -1,0 +1,14 @@
+{
+  "label_free": true,
+  "primary_tumour_samples": 193,
+  "primary_population_n": 124,
+  "stage_counts": {
+    "II": 76,
+    "III": 51,
+    "I": 35,
+    "IV": 30,
+    "null": 1
+  },
+  "frozen_model_genes_missing_in_ga": [],
+  "patients_also_in_hiseq_population": 9
+}

@@ -1,0 +1,40 @@
+{
+  "schema": "phase10-tcga-ga-registration-1",
+  "deviation": "2: evaluation expression source HiSeqV2 -> GAV2 because the registered HiSeqV2 population had 4/182 labels",
+  "frozen_manifest": "reports/phase10/tcga/freeze_manifest.json",
+  "frozen_manifest_sha256": "1e3e336befb441c504e5fc95e4fc39573586ea7e70075d17a5c22d515aafa54d",
+  "model_sha256": {
+    "enet_logistic": "323dcb9ca9ae6886a946bf7c12111b050471c7c7c180a61168dca364aa53af25",
+    "random_forest": "f24546434f35253caef9979b21dec2b18e0ad7bb31e53804fbc01a2a9330851d",
+    "mlh1_only": "90c8b68bd811546e4dd0342e0938190f354656f33db4023a5a2689ed5e5de3af",
+    "clinical_only": "6f3a851a1ae1195f63578f5c053122f774363c004f89bb0443f31a2b18d776be"
+  },
+  "expression": {
+    "file": "data/external/tcga_coad_ga/GAV2.gz",
+    "sha256": "7b3e8c6b2da794493ec7cae08427b9edd1b4e65950d0a605554b9e5f6f30474b",
+    "source": "https://tcga.xenahubs.net/download/TCGA.COAD.sampleMap/GAV2.gz",
+    "unit": "log2(norm_count+1), RSEM, IlluminaGA_RNASeqV2, UNC (Xena 2017-10-13)"
+  },
+  "population": {
+    "file": "reports/phase10/tcga_ga/population_primary_stage2_3.csv",
+    "sha256": "9111e6b821e18bae932543ef41f9da0f2964737b61bb0ddde125cd4ded4f94ff",
+    "definition": "GAV2 primary tumour (-01), pathologic stage II-III, complete age/sex/location"
+  },
+  "label_definition": {
+    "column": "MSI_updated_Oct62011",
+    "positive": [
+      "MSI-H"
+    ],
+    "negative": [
+      "MSS",
+      "MSI-L"
+    ],
+    "other_values": "excluded (missing or unexpected)"
+  },
+  "code_sha256": {
+    "phase10/common.py": "86554c88f853a78c2ba54a90d7d5b9f6dd29cfbfdf0a00b079b035cce66b9378",
+    "phase10/tcga.py": "aa998373723a9e80876d46a06f02a8a9f025b98852180dccff252ffbc04fc97f",
+    "phase10/tcga_ga.py": "0471ea1e843d8e93fb185025922110729a31b347495036611c63d63c57359b56"
+  },
+  "statement": "Registered before any MSI label was linked to GAV2 expression. Evaluate once."
+}
