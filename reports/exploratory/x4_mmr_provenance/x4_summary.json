@@ -1,0 +1,124 @@
+{
+  "plan_section": "X4",
+  "label": "exploratory, outcome-free (except event count for power)",
+  "provenance": {
+    "fields": {
+      "GEO SOFT": "!Sample_characteristics_ch1 'mmr.status'; no combat_mod field; data_processing = 'RMA normalisation (Bioconductor R affy package) + ComBat (R sva package)' with no description of the ComBat model matrix",
+      "ArrayExpress SDRF": "Characteristics [mmr.status]; Characteristics [normalizationcombatmod] (values modcan1/modcan2); Characteristics [normalizationcombatbatch]",
+      "Marisa 2013 Table S1": "MMR.Status column; no ComBat fields"
+    },
+    "n_cohort": 452,
+    "geo_vs_sdrf_mmr_agreement": 1.0,
+    "geo_vs_tableS1_mmr_agreement": 1.0,
+    "crosstab_combat_mod_by_mmr_geo_cohort": {
+      "modcan2|pMMR": 350,
+      "modcan1|dMMR": 59,
+      "modcan2|N/A": 38,
+      "modcan1|N/A": 5
+    },
+    "crosstab_combat_mod_by_mmr_sdrf_all_deposit": {
+      "modcan2|pMMR": 444,
+      "modcan1|dMMR": 75,
+      "modcan2|NA": 42,
+      "modcan1|NA": 5
+    }
+  },
+  "robustness": [
+    {
+      "pathway": "EMT",
+      "n": 409,
+      "eps2": 0.036298646015057855,
+      "p": 7.13936955660039e-05,
+      "p_batch_stratified_perm": 9.999000099990002e-05,
+      "median_dMMR": 0.26883580201738316,
+      "median_pMMR": -0.2636982010489197,
+      "lobo_eps2_min": 0.023446316871062654,
+      "lobo_eps2_max": 0.05016942435235824,
+      "within_cit": {
+        "C2": {
+          "n_dMMR": 50,
+          "n_pMMR": 25,
+          "eps2": -0.002624369142033053,
+          "p": 0.36858747907466194
+        }
+      }
+    },
+    {
+      "pathway": "E2F",
+      "n": 409,
+      "eps2": 0.02719496393576602,
+      "p": 0.0005128506171465944,
+      "p_batch_stratified_perm": 0.031196880311968805,
+      "median_dMMR": 0.46963666727457754,
+      "median_pMMR": 0.09321221301625207,
+      "lobo_eps2_min": 0.007627525796851335,
+      "lobo_eps2_max": 0.03369360498546373,
+      "within_cit": {
+        "C2": {
+          "n_dMMR": 50,
+          "n_pMMR": 25,
+          "eps2": 0.025755155010814438,
+          "p": 0.08967898669211553
+        }
+      }
+    },
+    {
+      "pathway": "Wnt",
+      "n": 409,
+      "eps2": 0.02077741223503916,
+      "p": 0.0021041285364708914,
+      "p_batch_stratified_perm": 0.010298970102989701,
+      "median_dMMR": -0.48508104658975043,
+      "median_pMMR": -0.012776757448854597,
+      "lobo_eps2_min": 0.0073413837861368925,
+      "lobo_eps2_max": 0.027120092817882534,
+      "within_cit": {
+        "C2": {
+          "n_dMMR": 50,
+          "n_pMMR": 25,
+          "eps2": -0.00521989906272519,
+          "p": 0.43143871954850543
+        }
+      }
+    },
+    {
+      "pathway": "p53",
+      "n": 409,
+      "eps2": 0.1671113710038883,
+      "p": 9.77506952905044e-17,
+      "p_batch_stratified_perm": 9.999000099990002e-05,
+      "median_dMMR": 0.8669249756857739,
+      "median_pMMR": -0.17278988913037036,
+      "lobo_eps2_min": 0.08381711804586518,
+      "lobo_eps2_max": 0.20954825654779385,
+      "within_cit": {
+        "C2": {
+          "n_dMMR": 50,
+          "n_pMMR": 25,
+          "eps2": 0.07468089401586152,
+          "p": 0.01108459014777517
+        }
+      }
+    }
+  ],
+  "power": {
+    "n_dMMR": 59,
+    "n_pMMR": 350,
+    "n_missing": 43,
+    "dMMR_by_batch": {
+      "batch01": 11,
+      "batch05": 30,
+      "batch07": 13,
+      "batch08": 2,
+      "batch09": 1,
+      "batch10": 2
+    },
+    "dMMR_by_cit": {
+      "C2": 50,
+      "C4": 5,
+      "C3": 3,
+      "C5": 1
+    },
+    "recurrences_in_dMMR": 10
+  }
+}

@@ -1,0 +1,179 @@
+{
+  "plan_section": "X6",
+  "label": "descriptive; estimated composition, not measurement",
+  "overlap": {
+    "EMT": {
+      "n_members": 198,
+      "ESTIMATE stromal": {
+        "n": 26,
+        "pct_of_pathway": 13.1,
+        "genes": [
+          "ADAM12",
+          "BGN",
+          "COL1A2",
+          "COL3A1",
+          "COL5A3",
+          "COL6A3",
+          "COL8A2",
+          "COMP",
+          "CXCL12",
+          "DCN",
+          "ECM2",
+          "EDIL3",
+          "FAP",
+          "FBLN2",
+          "GREM1",
+          "LRRC15",
+          "LUM",
+          "MFAP5",
+          "MMP3",
+          "MXRA5",
+          "PDGFRB",
+          "RGS4",
+          "SFRP4",
+          "SGCD",
+          "THBS2",
+          "VCAM1"
+        ]
+      },
+      "ESTIMATE immune": {
+        "n": 5,
+        "pct_of_pathway": 2.5,
+        "genes": [
+          "EMP3",
+          "IL32",
+          "TGFB1",
+          "TNFAIP3",
+          "WIPF1"
+        ]
+      },
+      "MCP fibroblasts": {
+        "n": 6,
+        "pct_of_pathway": 3.0,
+        "genes": [
+          "COL1A1",
+          "COL3A1",
+          "COL6A2",
+          "DCN",
+          "GREM1",
+          "TAGLN"
+        ]
+      },
+      "MCP endothelial": {
+        "n": 0,
+        "pct_of_pathway": 0.0,
+        "genes": []
+      },
+      "stromal_union": {
+        "n": 29,
+        "pct_of_pathway": 14.6
+      }
+    },
+    "E2F": {
+      "n_members": 195,
+      "ESTIMATE stromal": {
+        "n": 0,
+        "pct_of_pathway": 0.0,
+        "genes": []
+      },
+      "ESTIMATE immune": {
+        "n": 0,
+        "pct_of_pathway": 0.0,
+        "genes": []
+      },
+      "MCP fibroblasts": {
+        "n": 0,
+        "pct_of_pathway": 0.0,
+        "genes": []
+      },
+      "MCP endothelial": {
+        "n": 0,
+        "pct_of_pathway": 0.0,
+        "genes": []
+      },
+      "stromal_union": {
+        "n": 0,
+        "pct_of_pathway": 0.0
+      }
+    },
+    "Wnt": {
+      "n_members": 41,
+      "ESTIMATE stromal": {
+        "n": 0,
+        "pct_of_pathway": 0.0,
+        "genes": []
+      },
+      "ESTIMATE immune": {
+        "n": 0,
+        "pct_of_pathway": 0.0,
+        "genes": []
+      },
+      "MCP fibroblasts": {
+        "n": 0,
+        "pct_of_pathway": 0.0,
+        "genes": []
+      },
+      "MCP endothelial": {
+        "n": 0,
+        "pct_of_pathway": 0.0,
+        "genes": []
+      },
+      "stromal_union": {
+        "n": 0,
+        "pct_of_pathway": 0.0
+      }
+    },
+    "p53": {
+      "n_members": 194,
+      "ESTIMATE stromal": {
+        "n": 0,
+        "pct_of_pathway": 0.0,
+        "genes": []
+      },
+      "ESTIMATE immune": {
+        "n": 4,
+        "pct_of_pathway": 2.1,
+        "genes": [
+          "CASP1",
+          "PTPRE",
+          "TAP1",
+          "TGFB1"
+        ]
+      },
+      "MCP fibroblasts": {
+        "n": 0,
+        "pct_of_pathway": 0.0,
+        "genes": []
+      },
+      "MCP endothelial": {
+        "n": 0,
+        "pct_of_pathway": 0.0,
+        "genes": []
+      },
+      "stromal_union": {
+        "n": 0,
+        "pct_of_pathway": 0.0
+      }
+    }
+  },
+  "emt_ex": {
+    "n_genes_original": 198,
+    "n_genes_removed": 29,
+    "n_genes_used": 169,
+    "rho_with_original_EMT": [
+      0.9959692871584669,
+      0.994458111289796,
+      0.996633266755404
+    ]
+  },
+  "estimators_agreement_StromalScore_vs_MCP_fibroblasts": [
+    0.9331152207165488,
+    0.9172184586752538,
+    0.9444713039046073
+  ],
+  "registered_rule_EMT_ex_abs_rho_ge_0.7_with_stromal": true,
+  "bootstrap": {
+    "B": 2000,
+    "seed": 20261108
+  }
+}

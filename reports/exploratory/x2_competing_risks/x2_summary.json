@@ -1,0 +1,121 @@
+{
+  "plan_section": "X2",
+  "label": "exploratory sensitivity; time unit PROVISIONAL (months); CIF by R survfit (tie-aware, deterministic); death-without-recurrence models have 46 events for 10 terms (~4.6 per term): unstable",
+  "event_coding_gate": {
+    "recurrences": 136,
+    "deaths_without_recurrence": 46,
+    "censored": 270,
+    "expected": {
+      "recurrences": 136,
+      "deaths_without_recurrence": 46
+    }
+  },
+  "n": 452,
+  "cif_at_horizons": [
+    {
+      "group": "all",
+      "cause": "recurrence",
+      "horizon": 36,
+      "cif": 0.265525038646629,
+      "lo": 0.226916505468222,
+      "hi": 0.310702590817781
+    },
+    {
+      "group": "all",
+      "cause": "recurrence",
+      "horizon": 60,
+      "cif": 0.306899712875247,
+      "lo": 0.265604713851077,
+      "hi": 0.354615068374575
+    },
+    {
+      "group": "all",
+      "cause": "death without recurrence",
+      "horizon": 36,
+      "cif": 0.0353206742632639,
+      "lo": 0.0214743532866988,
+      "hi": 0.0580948824747296
+    },
+    {
+      "group": "all",
+      "cause": "death without recurrence",
+      "horizon": 60,
+      "cif": 0.0661614437528884,
+      "lo": 0.045501321718637,
+      "hi": 0.0962024063066652
+    },
+    {
+      "group": "stage II",
+      "cause": "recurrence",
+      "horizon": 36,
+      "cif": 0.177831064934623,
+      "lo": 0.135516736454192,
+      "hi": 0.233357801281407
+    },
+    {
+      "group": "stage II",
+      "cause": "recurrence",
+      "horizon": 60,
+      "cif": 0.228557903283923,
+      "lo": 0.179919275142274,
+      "hi": 0.290345295756857
+    },
+    {
+      "group": "stage II",
+      "cause": "death without recurrence",
+      "horizon": 36,
+      "cif": 0.0426437344058829,
+      "lo": 0.0232310415443699,
+      "hi": 0.0782783707999608
+    },
+    {
+      "group": "stage II",
+      "cause": "death without recurrence",
+      "horizon": 60,
+      "cif": 0.0778908091392092,
+      "lo": 0.0491902800056228,
+      "hi": 0.123336930541303
+    },
+    {
+      "group": "stage III",
+      "cause": "recurrence",
+      "horizon": 36,
+      "cif": 0.375080484612096,
+      "lo": 0.312305117580283,
+      "hi": 0.450474110148642
+    },
+    {
+      "group": "stage III",
+      "cause": "recurrence",
+      "horizon": 60,
+      "cif": 0.404830057214607,
+      "lo": 0.340356917417054,
+      "hi": 0.481516216764778
+    },
+    {
+      "group": "stage III",
+      "cause": "death without recurrence",
+      "horizon": 36,
+      "cif": 0.0262006150489145,
+      "lo": 0.0110275886823209,
+      "hi": 0.0622504383067837
+    },
+    {
+      "group": "stage III",
+      "cause": "death without recurrence",
+      "horizon": 60,
+      "cif": 0.0517356376646486,
+      "lo": 0.0271976991001287,
+      "hi": 0.0984118617797029
+    }
+  ],
+  "naive_one_minus_KM_recurrence": {
+    "36": 0.2692852150599392,
+    "60": 0.3133510638967163
+  },
+  "R_version_output": [
+    "R version 4.5.2 (2025-10-31) ",
+    "survival 3.8.3 ",
+    "rows 32"
+  ]
+}

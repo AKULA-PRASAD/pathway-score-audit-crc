@@ -1,0 +1,33 @@
+{
+  "plan_section": "X9",
+  "date": "2026-11-08",
+  "prior_sources_searched": "8 (docs/PHASE6A_ENDPOINT_RESOLUTION.md \u00a71)",
+  "additional_sources": [
+    {
+      "source": "GEO series record GSE39582 (!Series_summary, !Series_overall_design) from the frozen SOFT file",
+      "finding": "no time unit statement; rfs.delay unlabelled, os.delay labelled months"
+    },
+    {
+      "source": "GEO SuperSeries GSE40967",
+      "finding": "no clinical description"
+    },
+    {
+      "source": "ArrayExpress/BioStudies E-GEOD-39582 study record (API JSON)",
+      "finding": "RFS.DELAY listed as an experimental factor with values only; no unit qualifier"
+    },
+    {
+      "source": "CIT programme website http://cit.ligue-cancer.net/ (GEO !Series_web_link)",
+      "finding": "host no longer resolves (DNS failure on 2026-11-08)"
+    },
+    {
+      "source": "Web search: GSE39582 rfs.delay months unit",
+      "finding": "secondary analyses tabulate GSE39582 follow-up in months (e.g. PMC7542516 table 3); these are third-party readings, not documentation"
+    },
+    {
+      "source": "Web search: Marisa 2013 RFS definition",
+      "finding": "RFS = time from surgery to first recurrence, computed for stage II-III (PMC3660251); no unit statement surfaced"
+    }
+  ],
+  "conclusion": "Unit remains [PROVISIONAL: months]. Time origin (surgery) and event (first recurrence) are documented in the publication; the unit of the deposited column is not.",
+  "status_change": "none"
+}

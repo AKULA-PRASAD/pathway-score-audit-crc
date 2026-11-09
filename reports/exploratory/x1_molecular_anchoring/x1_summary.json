@@ -1,0 +1,85 @@
+{
+  "plan_section": "X1",
+  "n_cohort": 452,
+  "missingness": {
+    "tp53.mutation": {
+      "n_valid": 286,
+      "n_missing_or_NA": 166,
+      "levels": {
+        "M": 156,
+        "WT": 130
+      }
+    },
+    "kras.mutation": {
+      "n_valid": 431,
+      "n_missing_or_NA": 21,
+      "levels": {
+        "WT": 270,
+        "M": 161
+      }
+    },
+    "braf.mutation": {
+      "n_valid": 398,
+      "n_missing_or_NA": 54,
+      "levels": {
+        "WT": 357,
+        "M": 41
+      }
+    },
+    "cimp.status": {
+      "n_valid": 385,
+      "n_missing_or_NA": 67,
+      "levels": {
+        "-": 310,
+        "+": 75
+      }
+    },
+    "cin.status": {
+      "n_valid": 363,
+      "n_missing_or_NA": 89,
+      "levels": {
+        "+": 282,
+        "-": 81
+      }
+    },
+    "cit.molecularsubtype": {
+      "n_valid": 452,
+      "n_missing_or_NA": 0,
+      "levels": {
+        "C5": 122,
+        "C1": 92,
+        "C2": 89,
+        "C3": 54,
+        "C6": 52,
+        "C4": 43
+      }
+    }
+  },
+  "n_primary_tests": 24,
+  "multiplicity": "BH-FDR across 24 tests",
+  "secondary_tp53_within_pMMR": {
+    "population": "pMMR tumours with TP53 status",
+    "n_mutant": 147,
+    "n_wildtype": 106,
+    "mean_diff_sd_mutant_minus_wt": -0.39413887282692617,
+    "batch_stratified_permutation_p": 0.00029997000299970003,
+    "n_permutations": 10000,
+    "mann_whitney_p": 0.0008255634509915568,
+    "rank_biserial": -0.24656655114876136
+  },
+  "tp53_by_mmr": {
+    "": {
+      "M": 2,
+      "WT": 2
+    },
+    "dMMR": {
+      "M": 7,
+      "WT": 22
+    },
+    "pMMR": {
+      "M": 147,
+      "WT": 106
+    }
+  },
+  "label": "exploratory, outcome-free"
+}

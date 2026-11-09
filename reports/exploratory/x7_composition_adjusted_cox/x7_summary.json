@@ -1,0 +1,251 @@
+{
+  "plan_section": "X7",
+  "label": "exploratory outcome analysis; unpenalised; not comparable with frozen nested estimand",
+  "n": 452,
+  "events": 136,
+  "models": {
+    "C0": [
+      "age_rcs1",
+      "age_rcs2",
+      "sex=Male",
+      "tnm.stage=3.0",
+      "tumor.location=proximal",
+      "chemotherapy.adjuvant=Y"
+    ],
+    "C1": [
+      "age_rcs1",
+      "age_rcs2",
+      "sex=Male",
+      "tnm.stage=3.0",
+      "tumor.location=proximal",
+      "chemotherapy.adjuvant=Y",
+      "StromalScore",
+      "ImmuneScore"
+    ],
+    "R0": [
+      "age_rcs1",
+      "age_rcs2",
+      "sex=Male",
+      "tnm.stage=3.0",
+      "tumor.location=proximal",
+      "chemotherapy.adjuvant=Y",
+      "EMT",
+      "E2F",
+      "Wnt",
+      "p53"
+    ],
+    "R1": [
+      "age_rcs1",
+      "age_rcs2",
+      "sex=Male",
+      "tnm.stage=3.0",
+      "tumor.location=proximal",
+      "chemotherapy.adjuvant=Y",
+      "EMT",
+      "E2F",
+      "Wnt",
+      "p53",
+      "StromalScore",
+      "ImmuneScore"
+    ],
+    "R2": [
+      "age_rcs1",
+      "age_rcs2",
+      "sex=Male",
+      "tnm.stage=3.0",
+      "tumor.location=proximal",
+      "chemotherapy.adjuvant=Y",
+      "EMT",
+      "E2F",
+      "Wnt",
+      "p53",
+      "MCP_Fibroblasts",
+      "MCP_Endothelial cells",
+      "MCP_Cytotoxic lymphocytes"
+    ]
+  },
+  "frozen_ridge_M2_HR": {
+    "EMT": {
+      "HR": 1.0695578328394761,
+      "lo": 0.951468487786623,
+      "hi": 1.2023035680870817
+    },
+    "E2F": {
+      "HR": 0.905668636045478,
+      "lo": 0.8071067385021017,
+      "hi": 1.0162666710461872
+    },
+    "Wnt": {
+      "HR": 1.015533146200498,
+      "lo": 0.9063305931307248,
+      "hi": 1.1378933678818577
+    },
+    "p53": {
+      "HR": 0.995269415556744,
+      "lo": 0.8817755834592022,
+      "hi": 1.123371102720598
+    }
+  },
+  "vif": {
+    "R1": {
+      "EMT": 12.80480589459103,
+      "E2F": 1.2381447855082433,
+      "Wnt": 1.182230770799621,
+      "p53": 1.9322358772255666,
+      "StromalScore": 18.95404215297862,
+      "ImmuneScore": 4.234415857463623
+    },
+    "R2": {
+      "EMT": 11.297757024972642,
+      "E2F": 1.3042921436004389,
+      "Wnt": 1.1564527234013549,
+      "p53": 1.5599627672286653,
+      "MCP_Fibroblasts": 10.53372755739797,
+      "MCP_Endothelial cells": 2.339526264554422,
+      "MCP_Cytotoxic lymphocytes": 1.3792290935122284
+    }
+  },
+  "lrt_blocks": {
+    "R1 vs R0": {
+      "chi2": 5.024429122711808,
+      "df": 2,
+      "p": 0.08108846487296247
+    },
+    "R2 vs R0": {
+      "chi2": 3.5580705255458724,
+      "df": 3,
+      "p": 0.3133083002140661
+    },
+    "C1 vs C0": {
+      "chi2": 3.9878926598960334,
+      "df": 2,
+      "p": 0.1361570432100097
+    },
+    "R0 vs C0": {
+      "chi2": 9.19410124803403,
+      "df": 4,
+      "p": 0.05642681222960398
+    }
+  },
+  "mmr_adjusted_sensitivity": {
+    "n": 409,
+    "events": 129,
+    "rows": [
+      {
+        "model": "R0 (MMR-known subset)",
+        "term": "EMT",
+        "HR": 1.1431074191722488,
+        "lo": 0.9422889617968554,
+        "hi": 1.3867238445358598,
+        "p": 0.17481066046988922
+      },
+      {
+        "model": "R0 (MMR-known subset)",
+        "term": "E2F",
+        "HR": 0.8464124372649879,
+        "lo": 0.7046888321047469,
+        "hi": 1.0166388075387682,
+        "p": 0.0745102983150372
+      },
+      {
+        "model": "R0 (MMR-known subset)",
+        "term": "Wnt",
+        "HR": 1.0307146959739641,
+        "lo": 0.8659436373790604,
+        "hi": 1.2268382590259226,
+        "p": 0.7335547357111148
+      },
+      {
+        "model": "R0 (MMR-known subset)",
+        "term": "p53",
+        "HR": 0.9749389530498288,
+        "lo": 0.7916917583442159,
+        "hi": 1.200601057363326,
+        "p": 0.8111642051182348
+      },
+      {
+        "model": "R0 + dMMR",
+        "term": "EMT",
+        "HR": 1.1712124606586898,
+        "lo": 0.9639040599145869,
+        "hi": 1.4231070134964832,
+        "p": 0.11181751895070888
+      },
+      {
+        "model": "R0 + dMMR",
+        "term": "E2F",
+        "HR": 0.8714728965625033,
+        "lo": 0.7242618860729357,
+        "hi": 1.0486055169366717,
+        "p": 0.1450536703391619
+      },
+      {
+        "model": "R0 + dMMR",
+        "term": "Wnt",
+        "HR": 0.984161707197579,
+        "lo": 0.8217368796793931,
+        "hi": 1.1786914885601214,
+        "p": 0.8622725904474052
+      },
+      {
+        "model": "R0 + dMMR",
+        "term": "p53",
+        "HR": 1.0333142919122538,
+        "lo": 0.8322884333162094,
+        "hi": 1.2828947070858294,
+        "p": 0.7665529251859222
+      },
+      {
+        "model": "R0 + dMMR",
+        "term": "dMMR",
+        "HR": 0.4855887511228429,
+        "lo": 0.23399646292513573,
+        "hi": 1.0076923055562699,
+        "p": 0.05245366527511709
+      }
+    ],
+    "caveat": "ComBat protected the combat_mod covariate (aligned with MMR), which can inflate MMR-group differences in the deposited expression (Nygaard et al., Biostatistics 2016)"
+  },
+  "bootstrap": {
+    "B": 200,
+    "seed": 20261108,
+    "scheme": "event-stratified, single level"
+  },
+  "discrimination": {
+    "C0": {
+      "apparent_C": 0.6241792444785538,
+      "optimism": 0.01995810866186829,
+      "corrected_C": 0.6042211358166855,
+      "n_boot_ok": 200.0,
+      "n_fail": 0.0
+    },
+    "C1": {
+      "apparent_C": 0.6270572183849237,
+      "optimism": 0.026051420012141346,
+      "corrected_C": 0.6010057983727823,
+      "n_boot_ok": 200.0,
+      "n_fail": 0.0
+    },
+    "R0": {
+      "apparent_C": 0.6417668627952589,
+      "optimism": 0.031539353328860036,
+      "corrected_C": 0.6102275094663988,
+      "n_boot_ok": 200.0,
+      "n_fail": 0.0
+    },
+    "R1": {
+      "apparent_C": 0.6515946107273812,
+      "optimism": 0.034445321307910504,
+      "corrected_C": 0.6171492894194708,
+      "n_boot_ok": 200.0,
+      "n_fail": 0.0
+    },
+    "R2": {
+      "apparent_C": 0.6468193058753304,
+      "optimism": 0.041137701517204965,
+      "corrected_C": 0.6056816043581255,
+      "n_boot_ok": 200.0,
+      "n_fail": 0.0
+    }
+  }
+}

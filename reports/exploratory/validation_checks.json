@@ -1,0 +1,182 @@
+{
+  "n": 22,
+  "n_fail": 0,
+  "checks": [
+    {
+      "check": "registered plan unchanged since registration",
+      "expected": "2943119efa6ed489d90db97df929c1d7d6c5d449129e6ddcafbfabdf0b6d329f",
+      "observed": "2943119efa6ed489d90db97df929c1d7d6c5d449129e6ddcafbfabdf0b6d329f",
+      "result": "PASS"
+    },
+    {
+      "check": "cohort size and events",
+      "expected": "452 / 136",
+      "observed": "452 / 136",
+      "result": "PASS"
+    },
+    {
+      "check": "frozen pathway definitions reproduce Phase 8C scores",
+      "expected": "max |diff| < 1e-12",
+      "observed": 2.220446049250313e-16,
+      "result": "PASS"
+    },
+    {
+      "check": "X1 number of primary tests",
+      "expected": 24,
+      "observed": 24,
+      "result": "PASS"
+    },
+    {
+      "check": "X1 TP53 group sizes",
+      "expected": "156 M / 130 WT",
+      "observed": {
+        "M": 156,
+        "WT": 130
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "X2 event coding reproduces Phase 6A",
+      "expected": "136 recurrences, 46 deaths w/o recurrence",
+      "observed": "136, 46",
+      "result": "PASS"
+    },
+    {
+      "check": "X2 unpenalised clinical model reproduces frozen M1 stage HR",
+      "expected": 1.9661,
+      "observed": 1.9661,
+      "result": "PASS"
+    },
+    {
+      "check": "X3 batch count and sizes",
+      "expected": "9 batches, 14–103",
+      "observed": "9, 14–103",
+      "result": "PASS"
+    },
+    {
+      "check": "X3 events per batch sum to 136",
+      "expected": 136,
+      "observed": 136,
+      "result": "PASS"
+    },
+    {
+      "check": "X4 combat_mod vs MMR in deposit: no discordant known-MMR samples",
+      "expected": 0,
+      "observed": 0,
+      "result": "PASS"
+    },
+    {
+      "check": "X4 MMR agreement GEO vs SDRF vs Table S1",
+      "expected": "1.0 / 1.0",
+      "observed": "1.0 / 1.0",
+      "result": "PASS"
+    },
+    {
+      "check": "X5 ESTIMATE re-implementation validation gate",
+      "expected": "< 1e-6",
+      "observed": 1.4175579929422241e-14,
+      "result": "PASS"
+    },
+    {
+      "check": "X5 composition estimates for all 452",
+      "expected": 452,
+      "observed": 452,
+      "result": "PASS"
+    },
+    {
+      "check": "X5 all MCP-counter marker probe sets present",
+      "expected": "all",
+      "observed": {
+        "T cells": {
+          "n_markers": 24,
+          "n_present": 24
+        },
+        "CD8 T cells": {
+          "n_markers": 2,
+          "n_present": 2
+        },
+        "Cytotoxic lymphocytes": {
+          "n_markers": 12,
+          "n_present": 12
+        },
+        "B lineage": {
+          "n_markers": 20,
+          "n_present": 20
+        },
+        "NK cells": {
+          "n_markers": 16,
+          "n_present": 16
+        },
+        "Monocytic lineage": {
+          "n_markers": 10,
+          "n_present": 10
+        },
+        "Myeloid dendritic cells": {
+          "n_markers": 7,
+          "n_present": 7
+        },
+        "Neutrophils": {
+          "n_markers": 19,
+          "n_present": 19
+        },
+        "Endothelial cells": {
+          "n_markers": 49,
+          "n_present": 49
+        },
+        "Fibroblasts": {
+          "n_markers": 18,
+          "n_present": 18
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "X6 EMT–stromal overlap",
+      "expected": "29 of 198 genes",
+      "observed": "29 of 198",
+      "result": "PASS"
+    },
+    {
+      "check": "X7 clinical model apparent C reproduces frozen M1 apparent C",
+      "expected": 0.6242,
+      "observed": 0.6242,
+      "result": "PASS"
+    },
+    {
+      "check": "X7 bootstrap: no failed refits",
+      "expected": 0,
+      "observed": 0.0,
+      "result": "PASS"
+    },
+    {
+      "check": "X8 GSE14333 stage II–III events reproduce Phase 5 (48)",
+      "expected": 48,
+      "observed": 48,
+      "result": "PASS"
+    },
+    {
+      "check": "X8 GSE33113 events reproduce Phase 5 (18)",
+      "expected": 18,
+      "observed": 18,
+      "result": "PASS"
+    },
+    {
+      "check": "X8 no cohort eligible for frozen-model validation",
+      "expected": 0,
+      "observed": 0,
+      "result": "PASS"
+    },
+    {
+      "check": "frozen θ̂ unchanged",
+      "expected": 0.004316,
+      "observed": 0.004316,
+      "result": "PASS"
+    },
+    {
+      "check": "six exploratory figures (PNG + SVG)",
+      "expected": 6,
+      "observed": 6,
+      "result": "PASS"
+    }
+  ]
+}
