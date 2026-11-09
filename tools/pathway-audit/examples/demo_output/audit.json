@@ -1,0 +1,677 @@
+{
+  "n_samples": 300,
+  "n_genes": 583,
+  "qc": {
+    "pairs": {
+      "COL1A1-COL1A2": 0.8227683492525052,
+      "COL1A1-COL3A1": 0.8604589268860614,
+      "COL1A2-COL3A1": 0.8483475964934185,
+      "SPARC-COL5A1": 0.8570900735695949,
+      "MKI67-TOP2A": 0.8668151524284246,
+      "BUB1-CCNB1": 0.8547350900411037,
+      "CD2-CD3E": 0.7640690904706662,
+      "CDX2-VIL1": 0.8761997322445791
+    },
+    "n_pairs": 8,
+    "median_r": 0.8559125818053492,
+    "threshold": 0.5,
+    "passed": true,
+    "note": ""
+  },
+  "composition_summary": {
+    "estimators": [
+      "StromalScore",
+      "ImmuneScore"
+    ],
+    "source": "user-supplied"
+  },
+  "gene_sets": {
+    "STROMAL_PROGRAMME": {
+      "coverage": {
+        "n_genes": 42,
+        "n_present": 42,
+        "coverage": 1.0,
+        "coverage_ok": true
+      },
+      "mean_inter_gene_r": 0.8424099237568463,
+      "min_logo_r": 0.9999390636950096,
+      "top_genes": [
+        {
+          "gene": "STR32",
+          "item_rest_r": 0.9336780596354395,
+          "logo_r_with_full": 0.9999570395726626
+        },
+        {
+          "gene": "STR14",
+          "item_rest_r": 0.931381490989213,
+          "logo_r_with_full": 0.9999556047144937
+        },
+        {
+          "gene": "STR0",
+          "item_rest_r": 0.9256426416785951,
+          "logo_r_with_full": 0.9999520346151947
+        },
+        {
+          "gene": "STR36",
+          "item_rest_r": 0.9245921616207619,
+          "logo_r_with_full": 0.9999513835064897
+        },
+        {
+          "gene": "STR16",
+          "item_rest_r": 0.9242511760691146,
+          "logo_r_with_full": 0.9999511723156288
+        },
+        {
+          "gene": "STR19",
+          "item_rest_r": 0.9237189506615338,
+          "logo_r_with_full": 0.9999508428351429
+        },
+        {
+          "gene": "STR13",
+          "item_rest_r": 0.9231730974231129,
+          "logo_r_with_full": 0.9999505051152087
+        },
+        {
+          "gene": "STR3",
+          "item_rest_r": 0.922562303238399,
+          "logo_r_with_full": 0.9999501274527782
+        },
+        {
+          "gene": "COL3A1",
+          "item_rest_r": 0.9223961265576003,
+          "logo_r_with_full": 0.9999500247466829
+        },
+        {
+          "gene": "STR35",
+          "item_rest_r": 0.9223013253743312,
+          "logo_r_with_full": 0.9999499661627541
+        }
+      ],
+      "modules": [
+        {
+          "module": 1,
+          "n_genes": 42,
+          "genes": [
+            "COL1A1",
+            "COL3A1",
+            "STR0",
+            "STR1",
+            "STR10",
+            "STR11",
+            "STR12",
+            "STR13",
+            "STR14",
+            "STR15",
+            "STR16",
+            "STR17",
+            "STR18",
+            "STR19",
+            "STR2",
+            "STR20",
+            "STR21",
+            "STR22",
+            "STR23",
+            "STR24",
+            "STR25",
+            "STR26",
+            "STR27",
+            "STR28",
+            "STR29",
+            "STR3",
+            "STR30",
+            "STR31",
+            "STR32",
+            "STR33",
+            "STR34",
+            "STR35",
+            "STR36",
+            "STR37",
+            "STR38",
+            "STR39",
+            "STR4",
+            "STR5",
+            "STR6",
+            "STR7",
+            "STR8",
+            "STR9"
+          ],
+          "mean_jaccard": 1.0,
+          "stability": "stable"
+        }
+      ],
+      "composition_rho": {
+        "StromalScore": 0.9469491883243147,
+        "ImmuneScore": -0.036460405115612396
+      },
+      "gene_disjoint_fibroblast_test": {
+        "rho": [
+          0.9744943832709251,
+          0.9626200027783335,
+          0.9824979542980045
+        ],
+        "n_set_genes_used": 40,
+        "n_markers": 5,
+        "n_shared_removed": 2
+      },
+      "genotype_effects": {
+        "Target mutation": {
+          "n_pos": 136,
+          "n_neg": 164,
+          "rank_biserial": -0.031653515064562376,
+          "p_mannwhitney": 0.6374438111493149,
+          "unadjusted": [
+            -0.05625160504009777,
+            -0.2630489133912208,
+            0.16544001764056296
+          ],
+          "adjusted": [
+            -0.050153835868260874,
+            -0.11103566968005231,
+            0.011691844084453047
+          ],
+          "verdict": "not associated"
+        },
+        "Driver mutation": {
+          "n_pos": 82,
+          "n_neg": 218,
+          "rank_biserial": -0.006712911165808855,
+          "p_mannwhitney": 0.9291959603597986,
+          "unadjusted": [
+            0.026717250591998074,
+            -0.22640833239104513,
+            0.2641313616045739
+          ],
+          "adjusted": [
+            0.005488815977296087,
+            -0.07453490666876163,
+            0.08207973377370086
+          ],
+          "verdict": "not associated"
+        }
+      },
+      "verdict": [
+        "coherent (mean inter-gene r 0.84)",
+        "composition-dominated (|rho| 0.95 with StromalScore; holds without shared genes)"
+      ]
+    },
+    "TARGET_PROGRAMME": {
+      "coverage": {
+        "n_genes": 40,
+        "n_present": 40,
+        "coverage": 1.0,
+        "coverage_ok": true
+      },
+      "mean_inter_gene_r": 0.3285696555524641,
+      "min_logo_r": 0.9993159880933242,
+      "top_genes": [
+        {
+          "gene": "TGT20",
+          "item_rest_r": 0.6397570975471835,
+          "logo_r_with_full": 0.999465343538298
+        },
+        {
+          "gene": "TGT9",
+          "item_rest_r": 0.621320884797733,
+          "logo_r_with_full": 0.9994442944039105
+        },
+        {
+          "gene": "TGT22",
+          "item_rest_r": 0.6084882353342329,
+          "logo_r_with_full": 0.9994300060465108
+        },
+        {
+          "gene": "TGT2",
+          "item_rest_r": 0.604165366329016,
+          "logo_r_with_full": 0.9994252598989539
+        },
+        {
+          "gene": "TGT26",
+          "item_rest_r": 0.5964885952244862,
+          "logo_r_with_full": 0.9994169147960964
+        },
+        {
+          "gene": "TGT16",
+          "item_rest_r": 0.5923566361178091,
+          "logo_r_with_full": 0.9994124672612597
+        },
+        {
+          "gene": "TGT3",
+          "item_rest_r": 0.5882256681054789,
+          "logo_r_with_full": 0.9994080516782784
+        },
+        {
+          "gene": "TGT14",
+          "item_rest_r": 0.5836257621687392,
+          "logo_r_with_full": 0.9994031711877468
+        },
+        {
+          "gene": "TGT35",
+          "item_rest_r": 0.5830251398283918,
+          "logo_r_with_full": 0.9994025367550302
+        },
+        {
+          "gene": "TGT34",
+          "item_rest_r": 0.5812135530567119,
+          "logo_r_with_full": 0.9994006271441089
+        }
+      ],
+      "modules": [
+        {
+          "module": 1,
+          "n_genes": 40,
+          "genes": [
+            "TGT0",
+            "TGT1",
+            "TGT10",
+            "TGT11",
+            "TGT12",
+            "TGT13",
+            "TGT14",
+            "TGT15",
+            "TGT16",
+            "TGT17",
+            "TGT18",
+            "TGT19",
+            "TGT2",
+            "TGT20",
+            "TGT21",
+            "TGT22",
+            "TGT23",
+            "TGT24",
+            "TGT25",
+            "TGT26",
+            "TGT27",
+            "TGT28",
+            "TGT29",
+            "TGT3",
+            "TGT30",
+            "TGT31",
+            "TGT32",
+            "TGT33",
+            "TGT34",
+            "TGT35",
+            "TGT36",
+            "TGT37",
+            "TGT38",
+            "TGT39",
+            "TGT4",
+            "TGT5",
+            "TGT6",
+            "TGT7",
+            "TGT8",
+            "TGT9"
+          ],
+          "mean_jaccard": 0.9233333333333333,
+          "stability": "stable"
+        }
+      ],
+      "composition_rho": {
+        "StromalScore": 0.005201835575950844,
+        "ImmuneScore": 0.0069738552650585005
+      },
+      "genotype_effects": {
+        "Target mutation": {
+          "n_pos": 136,
+          "n_neg": 164,
+          "rank_biserial": -1.0,
+          "p_mannwhitney": 2.879198678701323e-50,
+          "unadjusted": [
+            -1.9605443534637834,
+            -2.0081242106685773,
+            -1.9098429066356972
+          ],
+          "adjusted": [
+            -1.9605250398353748,
+            -2.0040914925357014,
+            -1.9139950666175236
+          ],
+          "verdict": "robust to adjustment"
+        },
+        "Driver mutation": {
+          "n_pos": 82,
+          "n_neg": 218,
+          "rank_biserial": -0.12228686507048558,
+          "p_mannwhitney": 0.10277965647412163,
+          "unadjusted": [
+            -0.22400081660817747,
+            -0.472463798772915,
+            0.03648166777210427
+          ],
+          "adjusted": [
+            -0.3583483425897921,
+            -0.6333500108572504,
+            -0.04229657535921753
+          ],
+          "verdict": "robust to adjustment"
+        }
+      },
+      "verdict": [
+        "coherent (mean inter-gene r 0.33)",
+        "largely composition-independent (max |rho| 0.01)"
+      ]
+    },
+    "CONFOUNDED_PROGRAMME": {
+      "coverage": {
+        "n_genes": 40,
+        "n_present": 40,
+        "coverage": 1.0,
+        "coverage_ok": true
+      },
+      "mean_inter_gene_r": 0.33842588411939495,
+      "min_logo_r": 0.9993158453848605,
+      "top_genes": [
+        {
+          "gene": "CNF17",
+          "item_rest_r": 0.6548412728243032,
+          "logo_r_with_full": 0.9994970224105221
+        },
+        {
+          "gene": "CNF32",
+          "item_rest_r": 0.6399374670997195,
+          "logo_r_with_full": 0.9994800251423241
+        },
+        {
+          "gene": "CNF7",
+          "item_rest_r": 0.6325894747820446,
+          "logo_r_with_full": 0.9994717889297252
+        },
+        {
+          "gene": "CNF20",
+          "item_rest_r": 0.6110755333450905,
+          "logo_r_with_full": 0.9994482209597634
+        },
+        {
+          "gene": "CNF6",
+          "item_rest_r": 0.6093401149979892,
+          "logo_r_with_full": 0.9994463553695419
+        },
+        {
+          "gene": "CNF24",
+          "item_rest_r": 0.6076589486818239,
+          "logo_r_with_full": 0.9994445531569259
+        },
+        {
+          "gene": "CNF2",
+          "item_rest_r": 0.6030451484527387,
+          "logo_r_with_full": 0.9994396327234966
+        },
+        {
+          "gene": "CNF15",
+          "item_rest_r": 0.6005302530018927,
+          "logo_r_with_full": 0.9994369664699333
+        },
+        {
+          "gene": "CNF11",
+          "item_rest_r": 0.5991057178387339,
+          "logo_r_with_full": 0.9994354611397488
+        },
+        {
+          "gene": "CNF30",
+          "item_rest_r": 0.5950025821617718,
+          "logo_r_with_full": 0.9994311452536312
+        }
+      ],
+      "modules": [
+        {
+          "module": 1,
+          "n_genes": 38,
+          "genes": [
+            "CNF0",
+            "CNF1",
+            "CNF10",
+            "CNF11",
+            "CNF12",
+            "CNF13",
+            "CNF14",
+            "CNF15",
+            "CNF16",
+            "CNF17",
+            "CNF18",
+            "CNF19",
+            "CNF2",
+            "CNF20",
+            "CNF21",
+            "CNF22",
+            "CNF23",
+            "CNF24",
+            "CNF26",
+            "CNF28",
+            "CNF29",
+            "CNF3",
+            "CNF30",
+            "CNF31",
+            "CNF32",
+            "CNF33",
+            "CNF34",
+            "CNF35",
+            "CNF36",
+            "CNF37",
+            "CNF38",
+            "CNF39",
+            "CNF4",
+            "CNF5",
+            "CNF6",
+            "CNF7",
+            "CNF8",
+            "CNF9"
+          ],
+          "mean_jaccard": 0.9372165991902833,
+          "stability": "stable"
+        }
+      ],
+      "composition_rho": {
+        "StromalScore": -0.016813964599606664,
+        "ImmuneScore": 0.023398482205357833
+      },
+      "genotype_effects": {
+        "Target mutation": {
+          "n_pos": 136,
+          "n_neg": 164,
+          "rank_biserial": -0.01560258249641322,
+          "p_mannwhitney": 0.816568096175081,
+          "unadjusted": [
+            -0.06289235416005175,
+            -0.29094304348366484,
+            0.17654516637781226
+          ],
+          "adjusted": [
+            0.004951923967170368,
+            -0.03865434449552644,
+            0.04630526765388195
+          ],
+          "verdict": "not associated"
+        },
+        "Driver mutation": {
+          "n_pos": 82,
+          "n_neg": 218,
+          "rank_biserial": 0.4688968449317521,
+          "p_mannwhitney": 3.898561972101511e-10,
+          "unadjusted": [
+            1.119645083686766,
+            0.8747378599097133,
+            1.3918335271423135
+          ],
+          "adjusted": [
+            0.019632970454205517,
+            -0.029996056436119432,
+            0.07722548321273952
+          ],
+          "verdict": "explained by adjustment covariates"
+        }
+      },
+      "verdict": [
+        "coherent (mean inter-gene r 0.34)",
+        "largely composition-independent (max |rho| 0.02)"
+      ]
+    },
+    "RANDOM_SET": {
+      "coverage": {
+        "n_genes": 40,
+        "n_present": 40,
+        "coverage": 1.0,
+        "coverage_ok": true
+      },
+      "mean_inter_gene_r": -0.0019316654522928281,
+      "min_logo_r": 0.9863895036847137,
+      "top_genes": [
+        {
+          "gene": "G17",
+          "item_rest_r": 0.1243359109756196,
+          "logo_r_with_full": 0.9866008089021724
+        },
+        {
+          "gene": "G1",
+          "item_rest_r": 0.08530884612734442,
+          "logo_r_with_full": 0.9864886952044319
+        },
+        {
+          "gene": "G0",
+          "item_rest_r": 0.06904212314029347,
+          "logo_r_with_full": 0.9864542879146929
+        },
+        {
+          "gene": "G34",
+          "item_rest_r": 0.049748813688443194,
+          "logo_r_with_full": 0.9864228795331467
+        },
+        {
+          "gene": "G2",
+          "item_rest_r": 0.04956028127416034,
+          "logo_r_with_full": 0.9864226229444361
+        },
+        {
+          "gene": "G28",
+          "item_rest_r": 0.04587852886534,
+          "logo_r_with_full": 0.9864178074242964
+        },
+        {
+          "gene": "G27",
+          "item_rest_r": 0.028759458014268994,
+          "logo_r_with_full": 0.9864002965177968
+        },
+        {
+          "gene": "G8",
+          "item_rest_r": 0.027100255672471475,
+          "logo_r_with_full": 0.9863990263218737
+        },
+        {
+          "gene": "G29",
+          "item_rest_r": 0.021439337614570682,
+          "logo_r_with_full": 0.9863952605260695
+        },
+        {
+          "gene": "G23",
+          "item_rest_r": 0.017954210459741878,
+          "logo_r_with_full": 0.9863933789631956
+        }
+      ],
+      "modules": [],
+      "composition_rho": {
+        "StromalScore": -0.04353826153623929,
+        "ImmuneScore": 0.0543588262091801
+      },
+      "genotype_effects": {
+        "Target mutation": {
+          "n_pos": 136,
+          "n_neg": 164,
+          "rank_biserial": -0.06241032998565277,
+          "p_mannwhitney": 0.35244849248354904,
+          "unadjusted": [
+            -0.11399818733551836,
+            -0.32545873463907626,
+            0.07297777846236292
+          ],
+          "adjusted": [
+            -0.10771014717070565,
+            -0.3399477105348889,
+            0.1086314384643437
+          ],
+          "verdict": "not associated"
+        },
+        "Driver mutation": {
+          "n_pos": 82,
+          "n_neg": 218,
+          "rank_biserial": 0.1264264936227344,
+          "p_mannwhitney": 0.09164566664554129,
+          "unadjusted": [
+            0.1809487898916683,
+            -0.05363460239840745,
+            0.4678650941429723
+          ],
+          "adjusted": [
+            0.14929477853538461,
+            -0.18440770494452735,
+            0.45612404762246067
+          ],
+          "verdict": "not associated"
+        }
+      },
+      "verdict": [
+        "incoherent (mean inter-gene r < 0.05)",
+        "largely composition-independent (max |rho| 0.05)"
+      ]
+    }
+  },
+  "pairwise": [
+    {
+      "pair": "STROMAL_PROGRAMME | TARGET_PROGRAMME",
+      "spearman": 0.019634440382670915,
+      "partial_given_composition": 0.04578860092152462,
+      "null_95_for_first_set": [
+        0.02497734172079256,
+        0.3713524641088834
+      ],
+      "exceeds_null": false
+    },
+    {
+      "pair": "STROMAL_PROGRAMME | CONFOUNDED_PROGRAMME",
+      "spearman": -0.012774364159601774,
+      "partial_given_composition": 0.009862052415677261,
+      "null_95_for_first_set": [
+        0.02497734172079256,
+        0.3713524641088834
+      ],
+      "exceeds_null": true
+    },
+    {
+      "pair": "STROMAL_PROGRAMME | RANDOM_SET",
+      "spearman": -0.031457682863142926,
+      "partial_given_composition": 0.030622804612237403,
+      "null_95_for_first_set": [
+        0.02497734172079256,
+        0.3713524641088834
+      ],
+      "exceeds_null": false
+    },
+    {
+      "pair": "TARGET_PROGRAMME | CONFOUNDED_PROGRAMME",
+      "spearman": 0.016838853765041833,
+      "partial_given_composition": 0.016770247760561217,
+      "null_95_for_first_set": [
+        -0.007720665960293659,
+        0.5011740807329894
+      ],
+      "exceeds_null": false
+    },
+    {
+      "pair": "TARGET_PROGRAMME | RANDOM_SET",
+      "spearman": 0.049071211902354465,
+      "partial_given_composition": 0.04903595232575365,
+      "null_95_for_first_set": [
+        -0.007720665960293659,
+        0.5011740807329894
+      ],
+      "exceeds_null": false
+    },
+    {
+      "pair": "CONFOUNDED_PROGRAMME | RANDOM_SET",
+      "spearman": -0.03444216046844965,
+      "partial_given_composition": -0.03647631586375368,
+      "null_95_for_first_set": [
+        -0.013461584999507642,
+        0.44462511287624523
+      ],
+      "exceeds_null": true
+    }
+  ]
+}
