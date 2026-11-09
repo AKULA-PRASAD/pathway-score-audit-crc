@@ -26,7 +26,7 @@ A pre-specified, internally validated survival-analysis study of whether four Ha
 
 | Deliverable | Audience | Path |
 |---|---|---|
-| Interactive research portfolio (web page source) | Everyone; start here | [`web/index.html`](web/index.html) (also published as a private web page) |
+| Interactive research portfolio (web page source) | Everyone; start here | [`web/index.html`](web/index.html) (live at https://akula-prasad.github.io/pathway-score-audit-crc/) |
 | Research report (abstract, methods, results, discussion) | Scientific reviewers | [`RESEARCH_REPORT.md`](RESEARCH_REPORT.md) |
 | Presentation, 19 slides plus 2 appendix slides (editable) | Interview presentations, about 15–20 minutes | [`presentation/GSE39582_recurrence_portfolio.pptx`](presentation/GSE39582_recurrence_portfolio.pptx) |
 | Presentation (PDF) | As above | [`presentation/GSE39582_recurrence_portfolio.pdf`](presentation/GSE39582_recurrence_portfolio.pdf) |

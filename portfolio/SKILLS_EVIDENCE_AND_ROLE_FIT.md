@@ -29,7 +29,7 @@ These expectations summarise common requirements for these titles. They are not 
 | Statistical uncertainty | Percentile intervals for corrected ΔC; Monte Carlo precision rule; distinguishing estimands; diagnostic intervals | `reports/phase9/corrected_rerun_report/corrected_interval_results.json`; Figures 8, S1 |
 | Reproducible research | Hash-frozen code and configuration, checkpointing, gated verifier, portable independent audit, deterministic figures | `docs/PHASE9_DECISION13_FREEZE_PROCEDURE.md`; `scripts/48_phase9_independent_audit.py`; `portfolio/REPRODUCIBILITY_GUIDE.md` |
 | Software testing | 1,097 automated tests; portfolio QC with 151 source-linked checks | `tests/`; `portfolio/PORTFOLIO_QC_REPORT.md` |
-| Git and release management | Versioned history, private GitHub Release with a hash-verified checkpoint archive | `docs/LARGE_ARTIFACT_ARCHIVE.md`; `reports/phase9/ARCHIVE_MANIFEST_SHA256.txt` |
+| Git and release management | Versioned history, GitHub Release with a hash-verified checkpoint archive | `docs/LARGE_ARTIFACT_ARCHIVE.md`; `reports/phase9/ARCHIVE_MANIFEST_SHA256.txt` |
 | Scientific communication | Final report, research report, citation audit, figures, presentation, interactive portfolio | `portfolio/RESEARCH_REPORT.md`; `docs/BIOLOGICAL_EVIDENCE_AND_CITATION_AUDIT.md`; `portfolio/presentation/` |
 | Scientific judgement | Recorded decisions DC1–DC7 (pre-specification, penalty scope, CIT internal, seed adjudication, precision top-up, rejecting misleading results, commissioning audits) | `docs/PORTFOLIO_PRESENTATION_BLUEPRINT.md` §F; `docs/OWNER_DECISION_REGISTER.md` |
 
