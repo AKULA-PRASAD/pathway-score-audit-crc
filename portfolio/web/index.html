@@ -98,10 +98,13 @@ button{font:inherit;color:inherit}
 .next-up .card p{font-size:.9rem;color:var(--ink-2);margin:.4em 0 0}
 .next-up .k{font-family:var(--data);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
 @media (max-width:760px){.next-up{grid-template-columns:1fr}}
-.pipe{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:14px 0}
+.pipe{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:14px 0}
 .pipe .st{border:1px solid var(--line);border-radius:8px;padding:10px;background:var(--sheet);font-size:.85rem;color:var(--ink-2)}
 .pipe .st strong{display:block;color:var(--ink);font-size:.9rem;margin-bottom:3px}
-@media (max-width:880px){.pipe{grid-template-columns:1fr 1fr}}
+@media (max-width:1000px){.pipe{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:620px){.pipe{grid-template-columns:1fr 1fr}}
+.stats.s3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:700px){.stats.s3{grid-template-columns:1fr}}
 @media (max-width:520px){.pipe{grid-template-columns:1fr}}
 .cli{font-family:var(--data);font-size:.74rem;line-height:1.6;background:var(--faint);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:12px 14px;overflow-x:auto;max-width:100%;white-space:pre}
 .vt{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:8px}
@@ -349,7 +352,7 @@ footer{margin-top:72px;padding-top:18px;border-top:1px solid var(--line);display
   <div>
     <div class="kicker">Computational biology · Colorectal cancer · Bulk transcriptomics · Python tool</div>
     <h1>What do cancer pathway scores really measure in a bulk tumour?</h1>
-    <p class="lede">Pathway scores such as "EMT" or "p53 activity" are read as tumour biology, but a bulk sample mixes cancer cells with stroma and immune cells, molecular subtypes and processing batches. This project shows when such scores mislead, provides a tool that checks them, and tests whether they predict recurrence in 452 stage II–III colon cancers.</p>
+    <p class="lede">Pathway scores such as "EMT" or "p53 activity" are read as tumour biology, but a bulk sample mixes cancer cells with stroma and immune cells, molecular subtypes and processing batches. This project shows when such scores mislead, provides a tool that checks them, confirms the main finding in single-cell data, and tests whether they predict recurrence in 452 stage II–III colon cancers.</p>
     <div class="cta"><button class="btn" id="tourStart">Explore in 3 minutes</button><button class="btn ghost" id="deepStart">Full technical walkthrough</button></div>
   </div>
   <div>
@@ -362,8 +365,8 @@ footer{margin-top:72px;padding-top:18px;border-top:1px solid var(--line);display
 </header>
 
 <div class="next-up" aria-label="What the project delivered">
-  <div class="card"><span class="k">1 · A reusable tool</span><div class="big">pathway-audit</div><p>A tested Python package and command-line tool that checks what a pathway score measures before it is interpreted: data quality, gene drivers, tissue composition and covariate-adjusted genotype effects.</p></div>
-  <div class="card"><span class="k">2 · Cross-cohort biology</span><div class="big">4 cohorts</div><p>The Hallmark EMT score tracks fibroblast markers (gene-disjoint ρ 0.94–0.98, each above its cohort's random baseline): in bulk tissue it reads stroma. The p53 score tracks TP53 mutation, replicated in two independent cohorts.</p></div>
+  <div class="card"><span class="k">1 · A reusable tool</span><div class="big">pathway-audit</div><p>A tested Python package and command-line tool that checks what a pathway score measures before it is interpreted: data quality, gene drivers, tissue composition, covariate-adjusted genotype effects and, in single-cell data, which cell types supply the signal. 13 tests, CI and a working Docker image.</p></div>
+  <div class="card"><span class="k">2 · Cross-cohort biology</span><div class="big">4 + 3 cohorts</div><p>The Hallmark EMT score tracks fibroblast markers in four bulk cohorts (gene-disjoint ρ 0.94–0.98, each above its cohort's random baseline), and single cells in three more show why: its transcripts come mainly from stromal cells. The p53 score tracks TP53 mutation, replicated in two independent cohorts.</p></div>
   <div class="card"><span class="k">3 · Data-quality catch</span><div class="big">1 of 5</div><p>One public cohort (GSE103479) failed a positive-control check: its values appear misaligned to probe labels. It would otherwise have produced a false "does not replicate".</p></div>
 </div>
 <div class="answer">
@@ -468,7 +471,7 @@ footer{margin-top:72px;padding-top:18px;border-top:1px solid var(--line);display
       <div class="case" id="emt2"><h3><span>Possibility 2</span>Stromal cells</h3><svg id="emtSvg2" viewBox="0 0 320 170" aria-hidden="true"></svg><p>Cancer-associated fibroblasts already express many of the same mesenchymal genes, so more stroma raises the score without any tumour-cell change.</p></div>
     </div>
     <p class="conclude">An elevated bulk EMT-associated score does not establish tumour-cell EMT.</p>
-    <p class="measure">In this cohort the EMT hazard ratio was 1.070 (0.951–1.202): above 1 in every fit, never distinguishable from 1. Published work attributes much bulk mesenchymal signal to stroma (Calon 2015; Isella 2015). Cell composition was not measured in this project, but registered follow-up analyses estimated it computationally (ESTIMATE, MCP-counter): the EMT score correlates 0.95 with the fibroblast estimate, 0.94 with shared genes removed, within every molecular subtype, and the same holds in three independent cohorts (section 07). The evidence therefore favours Possibility 2 for the bulk signal, without excluding a tumour-cell component.</p>
+    <p class="measure">In this cohort the EMT hazard ratio was 1.070 (0.951–1.202): above 1 in every fit, never distinguishable from 1. Published work attributes much bulk mesenchymal signal to stroma (Calon 2015; Isella 2015). Cell composition was not measured in GSE39582, but registered follow-up analyses estimated it computationally (ESTIMATE, MCP-counter): the EMT score correlates 0.95 with the fibroblast estimate, 0.94 with shared genes removed, within every molecular subtype, and the same holds in three independent cohorts. Public single-cell data from three further cohorts (different patients) then measured it directly: EMT-set transcripts come mainly from stromal cells, and malignant epithelial cells showed no coherent EMT programme in any of 61 patients (section 07). The evidence therefore strongly favours Possibility 2 for the bulk signal; rare or partial tumour-cell EMT states are not ruled out.</p>
   </div>
 </section>
 
@@ -484,25 +487,38 @@ footer{margin-top:72px;padding-top:18px;border-top:1px solid var(--line);display
 <section class="part" id="sec-tool" aria-labelledby="h-tool">
   <div class="rail"><span class="num">07</span><b>Replication &amp; tool</b>From finding<br>to solution</div>
   <div class="body">
-    <h2 id="h-tool">A replicated stromal reading of EMT, and a tool that checks any pathway score</h2>
-    <p class="measure">The prediction answer stayed negative, so the follow-up asked a question that the data can answer well: what do these scores measure in bulk tissue? Analyses were registered before they ran and used no outcome data; key results, including TCGA, were re-checked with independently written code.</p>
+    <h2 id="h-tool">A replicated stromal reading of EMT, confirmed in single cells, and a tool that checks any pathway score</h2>
+    <p class="measure">The prediction answer stayed negative, so the follow-up asked a question that the data can answer well: what do these scores measure in bulk tissue, and which cells produce them? Analyses were registered before they ran and used no outcome data; key results, including TCGA, were re-checked with independently written code.</p>
     <figure>
       <h3>EMT score versus fibroblast markers, with shared genes removed</h3>
       <div class="wide"><svg id="repChart" viewBox="0 0 760 230" role="img" aria-label="Gene-disjoint Spearman correlation between the EMT score and fibroblast markers: GSE39582 0.94, GSE41258 0.95, GSE143985 0.94, TCGA-COAD 0.98; GSE103479 failed quality control"></svg></div>
       <figcaption>Spearman ρ with bootstrap 95 % intervals; 6 genes shared between Hallmark EMT and the MCP-counter fibroblast markers were removed. Grey bands: 95 % range of 200 random gene sets of the same size in each cohort (upper bounds 0.05, −0.15, 0.26 and 0.76); every EMT value exceeds its cohort's band, though in TCGA RNA-seq random sets already reach about 0.64. GSE103479 is excluded after failing a positive-control co-expression check (median r 0.07 against 0.78–0.94 elsewhere). TCGA-COAD includes all stages.</figcaption>
     </figure>
+    <figure>
+      <h3>Measured in single cells: which cells supply the EMT-set transcripts</h3>
+      <div class="wide"><svg id="scChart" viewBox="0 0 760 240" role="img" aria-label="Median enrichment of EMT-set transcripts by cell compartment in three single-cell cohorts. Discovery GSE132465: stromal 5.08, endothelial 1.59, immune 0.92, epithelial 0.45. GSE144735: 2.84, 1.01, 0.33, 0.19. GSE178341: 9.80, 3.85, 1.65, 0.66."></svg></div>
+      <figcaption>Median per-patient enrichment of Hallmark EMT transcripts in each compartment, relative to 1,000 random gene sets matched on expression; 1× is the share expected from matched random genes; log scale. Public scRNA-seq with the authors' cell annotations, tumour samples of quality-passing patients: GSE132465 (discovery, 18 patients), GSE144735 (4) and GSE178341 (39). These are different patients from GSE39582. Plan and cell-type mapping committed before any expression value was read; outcome-free; mRNA only.</figcaption>
+    </figure>
+    <div class="stats s3">
+      <div><span class="v data">5.1 vs 0.45</span><span class="l">times the expected share of EMT-set transcripts, stromal vs epithelial cells (discovery; paired p 7.6×10⁻⁶; same direction in both replications)</span></div>
+      <div><span class="v data">0 of 61</span><span class="l">patients whose malignant cells co-express EMT genes beyond random genes: a tumour-cell programme was not detected (not ruled out)</span></div>
+      <div><span class="v data">ρ 0.97</span><span class="l">pseudo-bulk EMT score vs counted stromal fraction (random-gene-set 97.5th percentile 0.69; 0.67 in GSE178341)</span></div>
+    </div>
     <h3>pathway-audit: what it checks</h3>
     <div class="pipe">
       <div class="st"><strong>1 · Data-quality gate</strong>Do genes that co-express in almost every tumour co-express here?</div>
       <div class="st"><strong>2 · Gene drivers</strong>Coherence, leave-one-gene-out, stable modules</div>
-      <div class="st"><strong>3 · Composition</strong>Stromal and immune estimates, gene-disjoint test</div>
+      <div class="st"><strong>3 · Composition</strong>Stromal and immune estimates, gene-disjoint test, random-gene-set baseline</div>
       <div class="st"><strong>4 · Genotype effects</strong>Robust to, or explained by, composition and MMR?</div>
       <div class="st"><strong>5 · Survival screen</strong>Optimism-corrected gain over clinical variables</div>
+      <div class="st"><strong>6 · Single-cell sources</strong>Which annotated cell types supply each set's transcripts?</div>
     </div>
 <pre class="cli">pathway-audit fetch-references --cache refs/
 pathway-audit run --expr expression.tsv --gene-sets sets.gmt --out audit/ \
     --annotations samples.csv --binary "TP53 mutant=tp53:M:WT" --adjust mmr=dMMR \
-    --references refs/</pre>
+    --references refs/
+pathway-audit sc-sources --counts matrix.mtx --genes features.tsv --cells cells.csv \
+    --gene-sets sets.gmt --group-column patient --out sc/</pre>
     <h3>What it reported on five colorectal cohorts</h3>
     <div class="wide"><table class="vt">
       <thead><tr><th>Cohort</th><th>Quality gate</th><th>EMT score</th><th>Selected genotype result</th></tr></thead>
@@ -513,7 +529,7 @@ pathway-audit run --expr expression.tsv --gene-sets sets.gmt --out audit/ \
         <tr><td>GSE103479 (156)</td><td><strong>Fail (0.07)</strong></td><td>Not interpretable</td><td>Not interpretable</td></tr>
         <tr><td>TCGA-COAD (286)</td><td>Pass (0.94)</td><td>Composition-dominated</td><td>TP53 → lower p53 score, robust to composition and mutation burden; BRAF effects explained by hypermutation</td></tr>
       </tbody></table></div>
-    <p class="measure">Its built-in survival screen gives a corrected gain of +0.0048 for the four scores on GSE39582, close to the frozen nested-bootstrap estimate of +0.0043. The tool is tested (unit tests with planted structure; ESTIMATE re-implementation matches the original package to 10⁻¹⁴) and lives in the repository under <span class="data">tools/pathway-audit/</span>. Scores are bulk mRNA averages and composition values are estimates; the tool reports that in every audit.</p>
+    <p class="measure">Its built-in survival screen gives a corrected gain of +0.0048 for the four scores on GSE39582, close to the frozen nested-bootstrap estimate of +0.0043. On the discovery single-cell cohort, <span class="data">sc-sources</span> reproduces the registered analysis (stromal 5.10× vs 5.08×; epithelial 0.45× vs 0.45×). The tool is tested (13 unit tests, including planted-structure checks; ESTIMATE re-implementation matches the original package to 10⁻¹⁴), runs in continuous integration on Python 3.10 and 3.12, has a working Docker image, and lives in the repository under <span class="data">tools/pathway-audit/</span>. Scores are bulk mRNA averages and composition values are estimates; the tool reports that in every audit.</p>
   </div>
 </section>
 
@@ -601,7 +617,7 @@ pathway-audit run --expr expression.tsv --gene-sets sets.gmt --out audit/ \
   <div class="rail"><span class="num">13</span><b>Toolkit</b>Methods and stack</div>
   <div class="body">
     <h2 id="h-k">What the work used</h2>
-    <p class="stack"><span>Python 3.13</span> <span class="sep">/</span> <span>pathway-audit (own package, CLI, tests)</span> <span class="sep">/</span> <span>R survival (Fine–Gray, frailty)</span> <span class="sep">/</span> <span>ESTIMATE, MCP-counter</span> <span class="sep">/</span> <span>TCGA-COAD via UCSC Xena</span> <span class="sep">/</span> <span>NumPy, pandas, SciPy</span> <span class="sep">/</span> <span>lifelines</span> <span class="sep">/</span> <span>pytest</span> <span class="sep">/</span> <span>matplotlib</span> <span class="sep">/</span> <span>Git and GitHub Releases</span> <span class="sep">/</span> <span>Affymetrix probe mapping</span> <span class="sep">/</span> <span>MSigDB Hallmark gene sets</span> <span class="sep">/</span> <span>Penalised Cox regression</span> <span class="sep">/</span> <span>Fold-internal standardisation</span> <span class="sep">/</span> <span>Nested bootstrap optimism correction</span> <span class="sep">/</span> <span>Batch-effect diagnostics</span> <span class="sep">/</span> <span>Competing-risk reasoning</span> <span class="sep">/</span> <span>Hash-verified reproducible pipelines</span></p>
+    <p class="stack"><span>Python 3.13</span> <span class="sep">/</span> <span>pathway-audit (own package, CLI, tests)</span> <span class="sep">/</span> <span>Single-cell RNA-seq (h5py streaming, 370,000 cells)</span> <span class="sep">/</span> <span>GitHub Actions CI</span> <span class="sep">/</span> <span>Docker</span> <span class="sep">/</span> <span>R survival (Fine–Gray, frailty)</span> <span class="sep">/</span> <span>ESTIMATE, MCP-counter</span> <span class="sep">/</span> <span>TCGA-COAD via UCSC Xena</span> <span class="sep">/</span> <span>NumPy, pandas, SciPy</span> <span class="sep">/</span> <span>lifelines</span> <span class="sep">/</span> <span>pytest</span> <span class="sep">/</span> <span>matplotlib</span> <span class="sep">/</span> <span>Git and GitHub Releases</span> <span class="sep">/</span> <span>Affymetrix probe mapping</span> <span class="sep">/</span> <span>MSigDB Hallmark gene sets</span> <span class="sep">/</span> <span>Penalised Cox regression</span> <span class="sep">/</span> <span>Fold-internal standardisation</span> <span class="sep">/</span> <span>Nested bootstrap optimism correction</span> <span class="sep">/</span> <span>Batch-effect diagnostics</span> <span class="sep">/</span> <span>Competing-risk reasoning</span> <span class="sep">/</span> <span>Hash-verified reproducible pipelines</span></p>
     <details><summary style="cursor:pointer;font-weight:600">References</summary>
       <ol class="refs" style="margin-top:10px">
         <li>Guinney J et al. <i>Nat Med</i> 2015;21:1350–1356. doi:10.1038/nm.3967</li>
@@ -614,6 +630,8 @@ pathway-audit run --expr expression.tsv --gene-sets sets.gmt --out audit/ \
         <li>Marisa L et al. <i>PLoS Med</i> 2013;10:e1001453. doi:10.1371/journal.pmed.1001453</li>
         <li>Yoshihara K et al. <i>Nat Commun</i> 2013;4:2612. doi:10.1038/ncomms3612</li>
         <li>Becht E et al. <i>Genome Biol</i> 2016;17:218. doi:10.1186/s13059-016-1070-5</li>
+        <li>Lee HO et al. <i>Nat Genet</i> 2020;52:594–603. doi:10.1038/s41588-020-0636-z</li>
+        <li>Pelka K et al. <i>Cell</i> 2021;184:4734–4752. doi:10.1016/j.cell.2021.08.003</li>
       </ol></details>
   </div>
 </section>
@@ -792,25 +810,25 @@ const POPS=[
   what:"The cancer cells themselves, drawn here as malformed glands around a lumen.",
   how:"They contribute their own mRNA, including proliferation, Wnt-target and p53-target transcripts, to the pooled sample.",
   why:"A score is easily read as tumour-cell biology, but tumour transcripts are mixed with those of every other cell in the piece.",
-  meas:"Present in every sample but never isolated: the arrays cannot separate tumour-cell expression from the rest.",
-  next:"Tumour-cell-specific expression from single-cell RNA-seq, laser-capture microdissection, or deconvolution with a tumour-cell reference."},
- {id:"fib",name:"Fibroblasts and stroma",sw:"--cell-fib",st:["nm","NOT MEASURED"],
+  meas:"Present in every GSE39582 sample but never isolated: the arrays cannot separate tumour-cell expression from the rest. In public single-cell data from other patients, malignant epithelial cells supplied less than their expected share of EMT-set transcripts (0.45×) and showed no coherent EMT programme in any of 61 patients.",
+  next:"Spatial transcriptomics or protein staining on tumours with recurrence data, to look for rare or partial EMT states that single-cell RNA data can miss."},
+ {id:"fib",name:"Fibroblasts and stroma",sw:"--cell-fib",st:["part","ESTIMATED"],
   what:"Cancer-associated fibroblasts and the connective tissue between glands.",
   how:"They express many extracellular-matrix and mesenchymal genes, the same kind of genes that dominate the Hallmark EMT set.",
   why:"More stroma can raise the EMT score without any change in tumour cells, so EMT-score differences could reflect stromal content.",
-  meas:"Stromal fraction was not measured or estimated in this project.",
-  next:"Stromal-fraction estimates by deconvolution, matched histology review, or spatial transcriptomics."},
- {id:"imm",name:"Immune cells",sw:"--cell-imm",st:["nm","NOT MEASURED"],
+  meas:"Estimated computationally from the GSE39582 arrays (ESTIMATE stromal score, MCP-counter fibroblasts), not measured. In three public single-cell cohorts (other patients), stromal cells supplied EMT-set transcripts at 5.1× their expression-matched share, and a pseudo-bulk EMT score tracked the counted stromal fraction (ρ 0.97).",
+  next:"Matched histology review or spatial transcriptomics in tumours that also have recurrence data."},
+ {id:"imm",name:"Immune cells",sw:"--cell-imm",st:["part","ESTIMATED"],
   what:"Lymphocytes and other immune cells infiltrating the tumour and stroma.",
   how:"They add immune and inflammatory transcripts, and some cell-cycle transcripts when activated.",
   why:"Immune infiltration differs between colorectal-cancer subtypes and could shift several scores at once.",
-  meas:"Immune composition was not measured or estimated in this project.",
+  meas:"Estimated computationally from the same arrays (ESTIMATE immune score; MCP-counter lymphocyte and monocytic estimates), not measured. In single-cell data, immune cells supplied close to their expected share of EMT-set transcripts (0.92× in the discovery cohort).",
   next:"Immune-cell deconvolution, immunohistochemistry, or single-cell profiling."},
- {id:"endo",name:"Endothelial cells and vessels",sw:"--cell-endo",st:["nm","NOT MEASURED"],
+ {id:"endo",name:"Endothelial cells and vessels",sw:"--cell-endo",st:["part","ESTIMATED"],
   what:"Cells lining the blood vessels that supply the tumour, with red cells in the lumen.",
   how:"They contribute vascular and angiogenesis-related transcripts, some of which overlap with mesenchymal programmes.",
   why:"Vascular content varies between samples and adds variation that is not tumour-cell biology.",
-  meas:"Vascular content was not measured or estimated in this project.",
+  meas:"Estimated computationally from the same arrays (MCP-counter endothelial markers), not measured. In single-cell data, endothelial cells were mildly enriched for EMT-set transcripts (1.59× in the discovery cohort), consistent with vessels also expressing matrix genes.",
   next:"Endothelial-fraction estimates by deconvolution or spatial methods."}];
 (function(){const svg=document.getElementById("tissueSvg");let s=20250;const rnd=()=>(s=(s*16807)%2147483647)/2147483647;
   el("rect",{x:0,y:0,width:800,height:470,fill:V("--matrix")},svg);
@@ -831,7 +849,7 @@ const POPS=[
   placed=0;guard=0;while(placed<40&&guard<4000){guard++;const x=20+rnd()*760,y=48+rnd()*405;if(inGland(x,y)||inVessel(x,y))continue;el("circle",{cx:x,cy:y,r:5.2,fill:V("--cell-imm")},groups.imm);el("circle",{cx:x,cy:y,r:3.1,fill:V("--cell-epi-n"),opacity:.75},groups.imm);placed++;}
   const fig=document.getElementById("tissueFig"),card=document.getElementById("popcard"),pops=document.getElementById("pops"),btns=[];
   function render(i){fig.classList.toggle("dim",i>=0);POPS.forEach((p,j)=>groups[p.id].classList.toggle("on",j===i));all.setAttribute("aria-pressed",i<0);btns.forEach((b,j)=>b.setAttribute("aria-pressed",j===i));
-    if(i<0){card.innerHTML=`<span class="chip concept">conceptual</span><h3>Every cell contributes</h3><p class="measure">Select a population to see what it represents, how it could enter a bulk score, and what was measured.</p><dl><dt>Measured in this project</dt><dd>Only the pooled mixture: one expression value per gene per array. No population was separated or quantified.</dd></dl>`;return;}
+    if(i<0){card.innerHTML=`<span class="chip concept">conceptual</span><h3>Every cell contributes</h3><p class="measure">Select a population to see what it represents, how it could enter a bulk score, and what was measured.</p><dl><dt>Measured in this project</dt><dd>In GSE39582, only the pooled mixture: one expression value per gene per array. Composition was estimated computationally, not measured. Cell-level sources were measured separately, in public single-cell data from other patients (section 07).</dd></dl>`;return;}
     const p=POPS[i];card.innerHTML=`<span><span class="chip ${p.st[0]}">${p.st[1]}</span></span><h3>${p.name}</h3><dl>
       <dt>What it represents</dt><dd>${p.what}</dd><dt>How it enters a bulk measurement</dt><dd>${p.how}</dd><dt>Why it matters for pathway scores</dt><dd>${p.why}</dd>
       <dt>Measured in this project?</dt><dd>${p.meas}</dd><dt><span class="chip fut">FUTURE INVESTIGATION</span></dt><dd>${p.next}</dd></dl>`;}
@@ -857,11 +875,11 @@ const POPS=[
  ["Four pathway-expression scores","Scores for 452 patients; molecular anchoring added","part","Partially addressed","p53 target score lower in TP53-mutant tumours (−0.45 SD; also within pMMR), replicated in GSE41258 and TCGA-COAD.","Scores summarise bulk mRNA; they are not measurements of pathway activity."],
  ["Association with MMR status","Robust for p53 within subtype; ComBat covariate aligned with MMR","char","Characterised, not resolved","ε²: EMT 0.0394, E2F 0.0251, Wnt 0.0187, p53 0.1716 (410 patients, exploratory). Only the p53 association persists within the MSI-rich CIT C2 subtype.","ComBat protected a covariate aligned with MMR, so group differences may be inflated; provenance of that covariate is undocumented."],
  ["Batch-related heterogeneity","Frailty model, leave-one-batch-out diagnostics","part","Partially addressed","Batches differ in baseline recurrence hazard (frailty variance 0.13, about 0.03–0.50), but pathway hazard ratios are unchanged when it is modelled; 34 of 36 leave-one-batch-out shifts lie within 1.96 SE.","The source of the baseline heterogeneity (technical, centre, era) is unknown. Batch effects were characterised, not resolved."],
- ["Tumour-cell-specific expression","Every array is bulk tissue; purity estimated","nm","Not measured","ESTIMATE purity median 0.74 (computational estimate from the same arrays).","Tumour-cell expression itself would need microdissection, single-cell or spatial data."],
- ["Stromal, immune and endothelial content","ESTIMATE and MCP-counter estimates","part","Partially addressed","Two estimators agree (ρ 0.93). The EMT score behaves as a stromal index; E2F is higher in tumour-rich samples.","These are computational estimates, not measured fractions; cell composition was not measured."],
+ ["Tumour-cell-specific expression","Bulk arrays here; single cells in three public cohorts","part","Partially addressed","GSE39582: ESTIMATE purity median 0.74 (computational estimate from the same arrays). Public single-cell cohorts (18, 4 and 39 patients) measured malignant epithelial expression directly.","The GSE39582 patients' own tumour-cell expression was not measured; that would need microdissection or spatial data on these tumours."],
+ ["Stromal, immune and endothelial content","ESTIMATE and MCP-counter estimates","part","Partially addressed","Two estimators agree (ρ 0.93). The EMT score behaves as a stromal index; E2F is higher in tumour-rich samples. In single-cell data, a pseudo-bulk EMT score tracks the counted stromal fraction (ρ 0.97 discovery; 0.67 in GSE178341).","In GSE39582 these are computational estimates, not measured fractions; the single-cell patients are different people."],
  ["Direct pathway activation","Genomic links only","ne","Not established","Target-gene scores track genotype (TP53 → p53 score; BRAF → lower Wnt targets in GSE39582 and TCGA-COAD).","Would need protein, phospho-signalling or reporter-type measurements."],
- ["Tumour-cell EMT","Bulk EMT score tracks stroma in four cohorts","ne","Not established","EMT HR 1.070 (0.951–1.202). EMT score ρ 0.94–0.98 with fibroblast markers, gene-disjoint, in GSE39582, GSE41258, GSE143985 and TCGA-COAD.","An elevated bulk EMT-associated score does not establish tumour-cell EMT; bulk data cannot locate the cells."],
- ["Independent replication of the biology","Pre-registered in three external cohorts","rep","Replicated (2 of 6)","EMT–stroma and TP53 → p53 replicated (TP53 robust to hypermutation). BRAF effects in TCGA were explained by hypermutation on independent re-check, so not replicated; TP53 → E2F and MSI → p53 not replicated.","Outcome-free replication of associations, not validation of the recurrence model."],
+ ["Tumour-cell EMT","Bulk score tracks stroma; not detected in single tumour cells","ne","Not established","EMT HR 1.070 (0.951–1.202). EMT score ρ 0.94–0.98 with fibroblast markers, gene-disjoint, in four bulk cohorts. In single cells, EMT-gene coherence in malignant epithelium exceeded the random 95th percentile in 0 of 61 patients.","Not detected is not absent: rare or partial EMT states, transcripts lost to 3′ capture, or protein-level change would be missed."],
+ ["Independent replication of the biology","Pre-registered in three external cohorts","rep","Replicated (2 of 6)","EMT–stroma and TP53 → p53 replicated (TP53 robust to hypermutation). BRAF effects in TCGA were explained by hypermutation on independent re-check, so not replicated; TP53 → E2F and MSI → p53 not replicated. EMT–stroma was also confirmed at single-cell resolution in three further cohorts.","Outcome-free replication of associations, not validation of the recurrence model."],
  ["External predictive validation","Systematic search: 554 GEO hits, 14 cohorts assessed","ne","Not feasible","No independent cohort has a compatible endpoint, all five clinical predictors and enough events (largest 124; about 337 needed).","The CIT partition of GSE39582 is internal, never external validation."]];
   const host=document.getElementById("matrix");M.forEach(r=>{const d=document.createElement("details");d.innerHTML=`<summary><span class="q">${r[0]}</span><span class="e">${r[1]}</span><span class="s"><span class="chip ${r[2]}">${r[3]}</span></span><span class="plus" aria-hidden="true">+</span></summary><div class="more"><div><b>What the record shows</b>${r[4]}</div><div><b>What it does not show</b>${r[5]}</div></div>`;host.appendChild(d);});})();
 
@@ -909,6 +927,21 @@ const POPS=[
     card.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>sel(cur+Number(b.dataset.go))));if(f)btns[i].focus();}
   sel(0);})();
 
+/* single-cell sources */
+(function(){const svg=document.getElementById("scChart");if(!svg)return;
+  const rows=[["Stromal cells",[5.08,2.84,9.80]],["Endothelial cells",[1.59,1.01,3.85]],["Immune cells",[0.92,0.33,1.65]],["Epithelial cells",[0.45,0.19,0.66]]];
+  const C=[["GSE132465 (discovery, 18)","d"],["GSE144735 (4)","o"],["GSE178341 (39)","s"]];
+  const L=170,R=660,T=40,rh=38,B=T+rh*4,lo=Math.log10(0.1),hi=Math.log10(20),X=v=>L+(Math.log10(v)-lo)/(hi-lo)*(R-L);
+  axis(svg,X,[0.1,0.3,1,3,10],v=>v+"×",T-6,B,"enrichment vs expression-matched random genes (log scale)",(L+R)/2);
+  el("line",{x1:X(1),x2:X(1),y1:T-6,y2:B,class:"zl"},svg);el("text",{x:X(1)+5,y:T-10,class:"tk"},svg,"1× = expected share");
+  const mark=(k,x,y,g)=>k==="d"?el("circle",{cx:x,cy:y,r:6.5,fill:V("--ink")},g):k==="o"?el("circle",{cx:x,cy:y,r:5,fill:V("--sheet"),stroke:V("--ink-2"),"stroke-width":2},g):el("rect",{x:x-5,y:y-5,width:10,height:10,fill:V("--primary"),transform:`rotate(45 ${x} ${y})`},g);
+  let lx=L;C.forEach(([n,k])=>{mark(k,lx+6,12,svg);const t=el("text",{x:lx+18,y:16,class:"lb"},svg,n);lx+=t.getComputedTextLength?Math.max(150,t.getComputedTextLength()+40):170;});
+  rows.forEach(([n,v],i)=>{const y=T+rh*i+rh/2,g=el("g",{},svg);el("text",{x:L-12,y:y+4,"text-anchor":"end",class:"nm"},g,n);
+    el("line",{x1:X(Math.min(...v)),x2:X(Math.max(...v)),y1:y,y2:y,stroke:V("--line"),"stroke-width":3,"stroke-linecap":"round"},g);
+    [1,2,0].forEach(j=>mark(C[j][1],X(v[j]),y,g));
+    el("text",{x:740,y:y+4,"text-anchor":"end",class:"tk",style:"fill:var(--ink)"},g,v[0].toFixed(2)+"×");
+    hover(el("rect",{x:20,y:y-rh/2,width:730,height:rh,class:"hit"},svg),`<b>${n}</b><br>GSE132465 ${v[0].toFixed(2)}×<br>GSE144735 ${v[1].toFixed(2)}×<br>GSE178341 ${v[2].toFixed(2)}×`);});
+  el("text",{x:740,y:T-10,"text-anchor":"end",class:"tk"},svg,"discovery");})();
 /* roadmap */
 (function(){const D=[["GSE39582",0.943,0.927,0.956,true,-0.35,0.05],["GSE41258",0.950,0.921,0.966,true,-0.72,-0.15],["GSE143985",0.939,0.898,0.961,true,-0.26,0.26],["TCGA-COAD",0.979,0.972,0.982,true,0.46,0.76],["GSE103479",null,null,null,false]];
   const svg=document.getElementById("repChart");if(!svg)return;const NS="http://www.w3.org/2000/svg";const x0=170,x1=720,X=v=>x0+(x1-x0)*v;
@@ -919,7 +952,7 @@ const POPS=[
     if(d[4]){if(d[6]>0)el("rect",{x:X(Math.max(d[5],0)),y:y-12,width:X(d[6])-X(Math.max(d[5],0)),height:24,fill:"var(--apparent)",opacity:.35});el("rect",{x:x0,y:y-8,width:X(d[1])-x0,height:16,rx:3,fill:"var(--emt)",opacity:.85});el("line",{x1:X(d[2]),x2:X(d[3]),y1:y,y2:y,stroke:"var(--ink)","stroke-width":2});el("text",{x:X(d[3])+8,y:y+4,"font-size":12,fill:"var(--ink)","font-family":"var(--data)"},"ρ "+d[1].toFixed(2));}
     else{el("text",{x:x0+6,y:y+4,"font-size":12,fill:"var(--ink-2)"},"failed quality gate (control-pair median r 0.07): not interpretable");}});})();
 (function(){const R=[
- {q:"Is any EMT signal tumour-cell intrinsic? (bulk estimates now point to stroma)",data:["Tumour samples with single-cell or spatial profiles","Or cytokeratin / vimentin dual staining on matched blocks"],m:"Single-cell RNA-seq, spatial transcriptomics or dual immunohistochemistry to locate mesenchymal-gene expression in epithelial versus stromal cells.",ev:"An EMT association that persists after stromal adjustment, and mesenchymal genes localised to tumour cells, would support tumour-intrinsic EMT."},
+ {q:"Do tumour cells carry rare or partial EMT states? (single cells: stroma supplies the signal; no coherent tumour-cell programme in 61 patients)",data:["Spatial transcriptomics on tumours with recurrence data","Or cytokeratin / vimentin dual staining on matched blocks"],m:"Spatial or protein-level measurement at the invasive front, where partial EMT is expected, scored separately in epithelial and stromal cells.",ev:"Mesenchymal programmes localised to tumour cells in a reproducible subset of tumours, beyond what matched random genes show, would support tumour-intrinsic EMT."},
  {q:"Does the pathway signal persist within molecular subtypes? (only 10 recurrences in dMMR here)",data:["A dMMR cohort with at least about 50 recurrences","CMS labels where appropriate","Enough events per subgroup"],m:"Pre-specified analyses stratified by MMR status, CMS-aware models where appropriate, with event counts checked before fitting.",ev:"A consistent corrected gain within adequately powered subgroups would show the signal is not just subtype structure."},
  {q:"Is the recurrence model reproducible externally? (14 public cohorts assessed; none eligible)",data:["A cohort with a compatible recurrence endpoint","Documented recurrence-time units","Roughly 340 or more recurrence events"],m:"Uniform preprocessing, then validation of the frozen M1 and M2 models unchanged, including calibration.",ev:"A corrected discrimination gain whose interval excludes zero in an independent cohort; absent that, the null result stands."}];
   const host=document.getElementById("road");R.forEach(r=>{const d=document.createElement("div");d.className="row";
@@ -934,7 +967,7 @@ const POPS=[
     el("text",{x:X(r[1])+6,y:y+4,class:"tk"},svg,(r[2]?"":"≈")+r[1]);hover(el("rect",{x:L,y:y-13,width:R-L,height:26,class:"hit"},svg),`<b>${r[0]}</b><br>${r[2]?"":"≈ "}${r[1]} events<br>${r[3]}`);});})();
 
 /* 3-minute tour */
-(function(){const T=[["sec-q","The biological question","Does pathway expression add anything beyond clinical variables?"],["sec-bio","The four pathway features","Select a pathway: mechanism, evidence and result."],["sec-m","The analytical approach","Constrained, outcome-blind features and a nested bootstrap."],["sec-r","The corrected result","Step through apparent, optimism, corrected and uncertainty."],["sec-tissue","The scientific limits","Why a bulk score is a mixture, and the EMT example."],["sec-role","My methodological decisions","Seven decisions on record."],["sec-future","Future research","Each open question linked to the evidence that would answer it."]];
+(function(){const T=[["sec-q","The biological question","Does pathway expression add anything beyond clinical variables?"],["sec-bio","The four pathway features","Select a pathway: mechanism, evidence and result."],["sec-m","The analytical approach","Constrained, outcome-blind features and a nested bootstrap."],["sec-r","The corrected result","Step through apparent, optimism, corrected and uncertainty."],["sec-tissue","The scientific limits","Why a bulk score is a mixture, and the EMT example."],["sec-tool","Replication, single cells and the tool","EMT reads stroma in four bulk and three single-cell cohorts; pathway-audit checks any score."],["sec-role","My methodological decisions","Seven decisions on record."],["sec-future","Future research","Each open question linked to the evidence that would answer it."]];
   const bar=document.getElementById("tour"),pg=document.getElementById("tourPg"),tt=document.getElementById("tourT"),dots=document.getElementById("tourDots"),prev=document.getElementById("tourPrev"),next=document.getElementById("tourNext");let i=0;
   T.forEach(()=>dots.appendChild(document.createElement("i")));
   function go(k){i=Math.max(0,Math.min(T.length-1,k));document.querySelectorAll(".part").forEach(s=>s.classList.remove("tour-on"));const s=document.getElementById(T[i][0]);s.classList.add("tour-on");s.scrollIntoView({behavior:reduce?"auto":"smooth"});

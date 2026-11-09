@@ -7,6 +7,7 @@ How the project developed, using the dates recorded in the commits and in each d
 - Single-cell extension S1–S5 run in GSE132465, GSE144735 and GSE178341 after the plan and the compartment mapping were committed (`docs/SINGLE_CELL_RESULTS.md`).
 - `pathway-audit` 0.2.0: single-cell source check (`sc-sources`), 13 tests; reproduces the registered single-cell result.
 - Slides 16, 18 and 19, README, interview guide and resume text updated.
+- Web page updated for the single-cell results and `pathway-audit` 0.2.0 (interaction checks 76/76) and republished; branch merged into the default branch.
 - `pathway-audit` Docker image built and verified locally (Colima, Docker Engine 29): tests (12 passed, 1 skipped) and demo pass inside the container; documents and slide 16 updated. Not published to a registry.
 
 ## 2026-11-08: follow-up research, the tool and the portfolio
