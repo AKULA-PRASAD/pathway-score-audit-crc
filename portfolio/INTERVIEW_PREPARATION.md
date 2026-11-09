@@ -144,7 +144,7 @@ The score carries molecular-subtype structure. MMR-deficient and proficient tumo
 **18. What would you need to know whether the EMT signal is tumour-intrinsic?**
 - Computational deconvolution: done post hoc (ESTIMATE, MCP-counter). It shows the score tracks stromal estimates, but cannot locate expression in cells.
 - Adjusting the EMT–recurrence association for stromal fraction: tried (X7), but EMT and the stromal estimate are near-collinear (VIF > 10), so their coefficients cannot be separated.
-- Single-cell RNA-seq: the next registered step (`docs/SINGLE_CELL_EXTENSION_PLAN.md`), to measure which cells express the EMT genes.
+- Single-cell RNA-seq: done, as a registered extension in three public cohorts (`docs/SINGLE_CELL_RESULTS.md`). EMT-set transcripts come mainly from stromal cells (5.1× the expression-matched share; epithelial 0.45×), and no coherent tumour-cell EMT programme was detected (see questions 39 and 40).
 - Spatial transcriptomics or cell-resolved protein staining.
 
 **19. Isn't a coherence of 0.04 for Wnt evidence that the pathway is irrelevant?**
@@ -224,6 +224,15 @@ With synthetic data that has planted structure: a stromal programme, a mutation-
 **38. What is new about `pathway-audit`?**
 Not the individual methods, which are established. What is new is putting them in one tested workflow with explicit verdict rules and a data-quality gate in front, so a pathway score is checked for composition, a few dominant genes, genotype confounding and a broken dataset before anyone interprets it.
 
+**39. What did the single-cell analysis add, and how did you keep it honest?**
+It measured what the bulk work could only estimate: which cells express the EMT genes. I registered the plan and committed it before downloading anything, then committed the cell-type-to-compartment mapping after reading only the annotation files. For each patient I compared the EMT set's share of transcripts in each compartment with 1,000 random gene sets matched on expression level. Stromal cells carried 5.1 times the expected share and epithelial cells 0.45 times, in the discovery cohort (18 patients, p = 7.6 × 10⁻⁶) and in the same direction in two replication cohorts. A pseudo-bulk EMT score tracked the counted stromal fraction (ρ 0.97). I also re-read the raw matrix for two patients with separate code to check the streamed sums exactly.
+
+**40. Does S3 show that tumour-cell EMT does not exist in colorectal cancer?**
+No. It shows that, within malignant epithelial cells, the EMT genes were not more coherently co-expressed than expression-matched random genes in any of 61 patients (4 of 61 after an ambient-RNA control). That argues against a strong, uniform tumour-cell EMT programme in these samples. Rare or partial EMT states, transcripts lost to 3′ capture, or changes visible only in protein or spatial data would not be detected, so the verdict is "not detected at this resolution", which is exactly how the plan defined it in advance.
+
+**41. How did you process a 370,000-cell atlas on a laptop?**
+The matrix has about 764 million non-zero values, roughly 9 GB in memory. I streamed it in blocks of 20,000 cells straight from the HDF5 file and kept only per-patient, per-compartment sums plus a seeded subsample of up to 1,000 malignant cells per patient. The cap was declared in the plan's deviation log before any result was computed.
+
 ---
 
 ## Part 3. Numbers to know
@@ -245,4 +254,5 @@ Not the individual methods, which are established. What is new is putting them i
 | TP53 → p53 score (rank-biserial) | GSE41258 −0.22; TCGA −0.42; TCGA excluding hypermutated −0.37; GSE143985 −0.06 (n.s.) |
 | Competing risks (X2) | recurrence incidence at 60 units 30.7 % (Aalen–Johansen) vs 31.3 % naive |
 | External audit (X8) | 554 hits, 14 assessed, 0 eligible; largest 124 recurrences vs ≈337 needed |
-| Tool | 11/11 tests; demo recovers 4/4 planted truths; 5-cohort case study (1 failed QC) |
+| Tool | pathway-audit 0.2.0; 13/13 tests; CI passes on Python 3.10 and 3.12; demo recovers 4/4 planted truths; 5 bulk cohorts (1 failed QC) + 1 single-cell cohort |
+| Single cell (S1–S5) | EMT-set enrichment stromal 5.08× vs epithelial 0.45× (discovery, 18 patients); tumour-cell programme 0/61 patients; pseudo-bulk ρ 0.97 (random ≤ 0.69) |
