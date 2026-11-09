@@ -1,0 +1,86 @@
+{
+ "n": 16,
+ "n_fail": 0,
+ "checks": [
+  {
+   "check": "V1 raw re-read of 2 discovery patients reproduces streamed compartment sums",
+   "pass": true,
+   "detail": "max |diff| = 0.0"
+  },
+  {
+   "check": "V2 observed EMT compartment shares recomputed from raw counts",
+   "pass": true,
+   "detail": "max |diff| = 0.00e+00"
+  },
+  {
+   "check": "V3 per-patient compartment cell counts match the annotation file",
+   "pass": true,
+   "detail": "patients ['SMC01', 'SMC02']"
+  },
+  {
+   "check": "V4 discovery S4 Spearman rho recomputed (rank-Pearson)",
+   "pass": true,
+   "detail": "0.966976 vs 0.966976"
+  },
+  {
+   "check": "V5 QC positive-control markers in own compartment (GSE132465)",
+   "pass": true,
+   "detail": "9/9 markers"
+  },
+  {
+   "check": "V5 QC positive-control markers in own compartment (GSE144735)",
+   "pass": true,
+   "detail": "9/9 markers"
+  },
+  {
+   "check": "V5 QC positive-control markers in own compartment (GSE178341)",
+   "pass": true,
+   "detail": "8/8 markers"
+  },
+  {
+   "check": "V6 retained patients meet >= 50 epithelial and >= 20 stromal cells (GSE132465)",
+   "pass": true,
+   "detail": "18 patients"
+  },
+  {
+   "check": "V6 retained patients meet >= 50 epithelial and >= 20 stromal cells (GSE144735)",
+   "pass": true,
+   "detail": "4 patients"
+  },
+  {
+   "check": "V6 retained patients meet >= 50 epithelial and >= 20 stromal cells (GSE178341)",
+   "pass": true,
+   "detail": "39 patients"
+  },
+  {
+   "check": "V7 S3 restricted to QC-retained patients",
+   "pass": true,
+   "detail": "all cohorts"
+  },
+  {
+   "check": "V8 S1 verdict follows the registered rule",
+   "pass": true,
+   "detail": "supported=True"
+  },
+  {
+   "check": "V8 S2 verdict follows the registered rule",
+   "pass": true,
+   "detail": "supported=True"
+  },
+  {
+   "check": "V9 S3 verdict follows the registered rule",
+   "pass": true,
+   "detail": "not detected at this resolution"
+  },
+  {
+   "check": "V10 S4 verdict follows the registered rule",
+   "pass": true,
+   "detail": "rho 0.967, CI lo 0.859"
+  },
+  {
+   "check": "V11 Holm-adjusted p-values are >= unadjusted",
+   "pass": true,
+   "detail": "{\"S4\": \"2.56e-10\", \"S1\": \"2.29e-05\", \"S2\": \"2.29e-05\", \"S3\": \"1.00e+00\"}"
+  }
+ ]
+}

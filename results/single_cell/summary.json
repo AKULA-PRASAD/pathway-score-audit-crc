@@ -1,0 +1,269 @@
+{
+ "label": "registered single-cell extension S1-S5; outcome-free",
+ "cohorts_passing_qc": [
+  "GSE132465",
+  "GSE144735",
+  "GSE178341"
+ ],
+ "S1": {
+  "per_cohort": {
+   "GSE132465": {
+    "n_patients": 18,
+    "median_stromal_enrichment": 5.0849167521987315,
+    "median_epithelial_enrichment": 0.44789238135542675,
+    "median_difference": 4.723356485063169,
+    "wilcoxon_p": 7.62939453125e-06
+   },
+   "GSE144735": {
+    "n_patients": 4,
+    "median_stromal_enrichment": 2.838010311663335,
+    "median_epithelial_enrichment": 0.18979250758840577,
+    "median_difference": 2.6093394687123537,
+    "wilcoxon_p": 0.125
+   },
+   "GSE178341": {
+    "n_patients": 39,
+    "median_stromal_enrichment": 9.804196115575726,
+    "median_epithelial_enrichment": 0.6552808946207423,
+    "median_difference": 9.065108334392503,
+    "wilcoxon_p": 3.637978807091713e-12
+   }
+  },
+  "supported": true
+ },
+ "S2": {
+  "per_cohort": {
+   "GSE132465": {
+    "n_patients": 18,
+    "median_stromal_enrichment": 4.15384935121442,
+    "median_epithelial_enrichment": 0.4827640493416427,
+    "median_difference": 3.7002906969419973,
+    "wilcoxon_p": 7.62939453125e-06
+   },
+   "GSE144735": {
+    "n_patients": 4,
+    "median_stromal_enrichment": 2.6289521125691473,
+    "median_epithelial_enrichment": 0.2163912698391866,
+    "median_difference": 2.3745796014739593,
+    "wilcoxon_p": 0.125
+   },
+   "GSE178341": {
+    "n_patients": 39,
+    "median_stromal_enrichment": 7.843077619490455,
+    "median_epithelial_enrichment": 0.6626670669371623,
+    "median_difference": 7.1430416241991725,
+    "wilcoxon_p": 3.637978807091713e-12
+   }
+  },
+  "supported": true
+ },
+ "S3": {
+  "per_variant": {
+   "all genes": {
+    "GSE132465": {
+     "n_patients": 18,
+     "fraction_exceeding_p95": 0.0,
+     "median_coherence": 0.0470324961963388,
+     "median_random_p95": 0.08208275637296497
+    },
+    "GSE144735": {
+     "n_patients": 4,
+     "fraction_exceeding_p95": 0.0,
+     "median_coherence": 0.06465093827160044,
+     "median_random_p95": 0.1065881470467229
+    },
+    "GSE178341": {
+     "n_patients": 39,
+     "fraction_exceeding_p95": 0.0,
+     "median_coherence": 0.06838361062921512,
+     "median_random_p95": 0.12838605197585182
+    }
+   },
+   "ambient-RNA control": {
+    "GSE132465": {
+     "n_patients": 18,
+     "fraction_exceeding_p95": 0.1111111111111111,
+     "median_coherence": 0.08699837738610314,
+     "median_random_p95": 0.09766834002807182
+    },
+    "GSE144735": {
+     "n_patients": 4,
+     "fraction_exceeding_p95": 0.0,
+     "median_coherence": 0.09944905296094195,
+     "median_random_p95": 0.11194674266342153
+    },
+    "GSE178341": {
+     "n_patients": 39,
+     "fraction_exceeding_p95": 0.05128205128205128,
+     "median_coherence": 0.12931550747715048,
+     "median_random_p95": 0.16018077027601446
+    }
+   }
+  },
+  "verdict": "not detected at this resolution",
+  "binomial_p_discovery_vs_5pct": 1.0
+ },
+ "S4": {
+  "rows": [
+   {
+    "accession": "GSE132465",
+    "set": "EMT",
+    "n_patients": 18,
+    "n_genes": 171,
+    "rho": 0.9669762641898865,
+    "p": 6.412439256727512e-11,
+    "ci_lo": 0.8590133994126287,
+    "ci_hi": 0.9979079497907952,
+    "random_median": 0.5397316821465429,
+    "random_p97_5": 0.6925180598555211
+   },
+   {
+    "accession": "GSE132465",
+    "set": "EMT-ex6",
+    "n_patients": 18,
+    "n_genes": 165,
+    "rho": 0.9607843137254902,
+    "p": 2.4865670345238023e-10,
+    "ci_lo": 0.8498396685830968,
+    "ci_hi": 0.9979079497907952,
+    "random_median": 0.5459236326109391,
+    "random_p97_5": 0.7111455108359133
+   },
+   {
+    "accession": "GSE144735",
+    "set": "EMT",
+    "n_patients": 4,
+    "n_genes": 190,
+    "rho": 0.39999999999999997,
+    "p": 0.6,
+    "ci_lo": -0.7777777777777779,
+    "ci_hi": 1.0,
+    "random_median": -0.39999999999999997,
+    "random_p97_5": 0.19999999999999998
+   },
+   {
+    "accession": "GSE144735",
+    "set": "EMT-ex6",
+    "n_patients": 4,
+    "n_genes": 184,
+    "rho": 0.39999999999999997,
+    "p": 0.6,
+    "ci_lo": -0.7777777777777779,
+    "ci_hi": 1.0,
+    "random_median": -0.39999999999999997,
+    "random_p97_5": 0.19999999999999998
+   },
+   {
+    "accession": "GSE178341",
+    "set": "EMT",
+    "n_patients": 39,
+    "n_genes": 156,
+    "rho": 0.6724696356275305,
+    "p": 2.7472386302555717e-06,
+    "ci_lo": 0.4603517791519446,
+    "ci_hi": 0.810132801043392,
+    "random_median": 0.17246963562753037,
+    "random_p97_5": 0.29150303643724695
+   },
+   {
+    "accession": "GSE178341",
+    "set": "EMT-ex6",
+    "n_patients": 39,
+    "n_genes": 150,
+    "rho": 0.6566801619433199,
+    "p": 5.626417470322046e-06,
+    "ci_lo": 0.44511622877944745,
+    "ci_hi": 0.8048587273303558,
+    "random_median": 0.17398785425101215,
+    "random_p97_5": 0.2884767206477733
+   }
+  ],
+  "supported": true
+ },
+ "S5_median_enrichment": {
+  "GSE132465|E2F": {
+   "endothelial": 1.141122103389469,
+   "epithelial": 1.1152775693803965,
+   "immune": 0.7717509468849246,
+   "stromal": 0.956681160433329
+  },
+  "GSE132465|EMT": {
+   "endothelial": 1.5866454544046087,
+   "epithelial": 0.44789238135542675,
+   "immune": 0.9179012748964918,
+   "stromal": 5.0849167521987315
+  },
+  "GSE132465|Wnt": {
+   "endothelial": 1.4682520683862608,
+   "epithelial": 1.0786658091743027,
+   "immune": 0.809717339341524,
+   "stromal": 1.0187020108464004
+  },
+  "GSE132465|p53": {
+   "endothelial": 0.9984667934121093,
+   "epithelial": 1.0625890048596633,
+   "immune": 0.9047334059244077,
+   "stromal": 0.9499640027094607
+  },
+  "GSE144735|E2F": {
+   "endothelial": 1.0507063934791256,
+   "epithelial": 1.1726474021715267,
+   "immune": 0.7442111641652144,
+   "stromal": 0.9146909903033659
+  },
+  "GSE144735|EMT": {
+   "endothelial": 1.013100314099486,
+   "epithelial": 0.18979250758840577,
+   "immune": 0.32645919954893876,
+   "stromal": 2.838010311663335
+  },
+  "GSE144735|Wnt": {
+   "endothelial": 1.6438174873614653,
+   "epithelial": 0.8572955949493744,
+   "immune": 0.7940819819634906,
+   "stromal": 1.098912192233005
+  },
+  "GSE144735|p53": {
+   "endothelial": 0.9794102690021345,
+   "epithelial": 1.061391869393096,
+   "immune": 0.9566817233494873,
+   "stromal": 0.8814400919749437
+  },
+  "GSE178341|E2F": {
+   "endothelial": 0.9558406812763045,
+   "epithelial": 1.0644291441561453,
+   "immune": 0.7982483976083907,
+   "stromal": 0.8043188361220351
+  },
+  "GSE178341|EMT": {
+   "endothelial": 3.852507202889878,
+   "epithelial": 0.6552808946207423,
+   "immune": 1.6507760216443685,
+   "stromal": 9.804196115575726
+  },
+  "GSE178341|Wnt": {
+   "endothelial": 1.7344026215312967,
+   "epithelial": 1.0230020971649003,
+   "immune": 0.8001630753952268,
+   "stromal": 1.234851603081853
+  },
+  "GSE178341|p53": {
+   "endothelial": 0.9671262941909133,
+   "epithelial": 1.0189336905074764,
+   "immune": 0.9290847535097913,
+   "stromal": 0.931173453887365
+  }
+ },
+ "p_unadjusted_discovery": {
+  "S1": 7.62939453125e-06,
+  "S2": 7.62939453125e-06,
+  "S3": 1.0,
+  "S4": 6.412439256727512e-11
+ },
+ "p_holm_discovery": {
+  "S4": 2.564975702691005e-10,
+  "S1": 2.288818359375e-05,
+  "S2": 2.288818359375e-05,
+  "S3": 1.0
+ }
+}

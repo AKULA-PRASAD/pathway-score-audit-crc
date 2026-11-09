@@ -1,0 +1,1144 @@
+{
+ "GSE132465": {
+  "accession": "GSE132465",
+  "passed": true,
+  "compartments_present": [
+   "epithelial",
+   "stromal",
+   "immune",
+   "endothelial"
+  ],
+  "markers": {
+   "EPCAM": {
+    "expected": "epithelial",
+    "top": "epithelial",
+    "pass": true
+   },
+   "KRT8": {
+    "expected": "epithelial",
+    "top": "epithelial",
+    "pass": true
+   },
+   "KRT18": {
+    "expected": "epithelial",
+    "top": "epithelial",
+    "pass": true
+   },
+   "COL1A1": {
+    "expected": "stromal",
+    "top": "stromal",
+    "pass": true
+   },
+   "DCN": {
+    "expected": "stromal",
+    "top": "stromal",
+    "pass": true
+   },
+   "LUM": {
+    "expected": "stromal",
+    "top": "stromal",
+    "pass": true
+   },
+   "PTPRC": {
+    "expected": "immune",
+    "top": "immune",
+    "pass": true
+   },
+   "PECAM1": {
+    "expected": "endothelial",
+    "top": "endothelial",
+    "pass": true
+   },
+   "VWF": {
+    "expected": "endothelial",
+    "top": "endothelial",
+    "pass": true
+   }
+  },
+  "n_patients_tumour": 23,
+  "n_patients_retained": 18,
+  "retained": [
+   "SMC01",
+   "SMC02",
+   "SMC03",
+   "SMC04",
+   "SMC06",
+   "SMC07",
+   "SMC08",
+   "SMC09",
+   "SMC10",
+   "SMC11",
+   "SMC14",
+   "SMC15",
+   "SMC16",
+   "SMC17",
+   "SMC19",
+   "SMC20",
+   "SMC23",
+   "SMC24"
+  ],
+  "cells_per_patient": {
+   "SMC01": {
+    "epithelial": 1093,
+    "stromal": 112,
+    "immune": 1544,
+    "endothelial": 42
+   },
+   "SMC02": {
+    "epithelial": 352,
+    "stromal": 70,
+    "immune": 1232,
+    "endothelial": 35
+   },
+   "SMC03": {
+    "epithelial": 796,
+    "stromal": 186,
+    "immune": 1109,
+    "endothelial": 32
+   },
+   "SMC04": {
+    "epithelial": 307,
+    "stromal": 63,
+    "immune": 1385,
+    "endothelial": 81
+   },
+   "SMC05": {
+    "epithelial": 13,
+    "stromal": 13,
+    "immune": 631,
+    "endothelial": 3
+   },
+   "SMC06": {
+    "epithelial": 189,
+    "stromal": 78,
+    "immune": 1269,
+    "endothelial": 5
+   },
+   "SMC07": {
+    "epithelial": 542,
+    "stromal": 112,
+    "immune": 3319,
+    "endothelial": 96
+   },
+   "SMC08": {
+    "epithelial": 320,
+    "stromal": 134,
+    "immune": 1611,
+    "endothelial": 24
+   },
+   "SMC09": {
+    "epithelial": 1887,
+    "stromal": 25,
+    "immune": 1857,
+    "endothelial": 20
+   },
+   "SMC10": {
+    "epithelial": 511,
+    "stromal": 117,
+    "immune": 1531,
+    "endothelial": 40
+   },
+   "SMC11": {
+    "epithelial": 326,
+    "stromal": 32,
+    "immune": 1319,
+    "endothelial": 21
+   },
+   "SMC14": {
+    "epithelial": 166,
+    "stromal": 197,
+    "immune": 1286,
+    "endothelial": 96
+   },
+   "SMC15": {
+    "epithelial": 319,
+    "stromal": 197,
+    "immune": 1402,
+    "endothelial": 99
+   },
+   "SMC16": {
+    "epithelial": 2720,
+    "stromal": 20,
+    "immune": 207,
+    "endothelial": 9
+   },
+   "SMC17": {
+    "epithelial": 505,
+    "stromal": 134,
+    "immune": 635,
+    "endothelial": 68
+   },
+   "SMC18": {
+    "epithelial": 1516,
+    "stromal": 2,
+    "immune": 413,
+    "endothelial": 5
+   },
+   "SMC19": {
+    "epithelial": 382,
+    "stromal": 31,
+    "immune": 1121,
+    "endothelial": 6
+   },
+   "SMC20": {
+    "epithelial": 524,
+    "stromal": 351,
+    "immune": 783,
+    "endothelial": 23
+   },
+   "SMC21": {
+    "epithelial": 1727,
+    "stromal": 4,
+    "immune": 617,
+    "endothelial": 0
+   },
+   "SMC22": {
+    "epithelial": 1902,
+    "stromal": 6,
+    "immune": 445,
+    "endothelial": 10
+   },
+   "SMC23": {
+    "epithelial": 639,
+    "stromal": 20,
+    "immune": 967,
+    "endothelial": 13
+   },
+   "SMC24": {
+    "epithelial": 317,
+    "stromal": 35,
+    "immune": 1208,
+    "endothelial": 19
+   },
+   "SMC25": {
+    "epithelial": 416,
+    "stromal": 6,
+    "immune": 1189,
+    "endothelial": 21
+   }
+  },
+  "ambient_control_genes_excluded": 1367,
+  "emt_genes_excluded_by_ambient_control": [
+   "ACTA2",
+   "BASP1",
+   "BGN",
+   "CALD1",
+   "CALU",
+   "CAP2",
+   "CDH11",
+   "COL12A1",
+   "COL16A1",
+   "COL1A1",
+   "COL1A2",
+   "COL3A1",
+   "COL4A1",
+   "COL4A2",
+   "COL5A1",
+   "COL5A2",
+   "COL5A3",
+   "COL6A2",
+   "COL6A3",
+   "COL7A1",
+   "CTGF",
+   "CTHRC1",
+   "CXCL1",
+   "CXCL12",
+   "CXCL6",
+   "CYR61",
+   "DAB2",
+   "DCN",
+   "DPYSL3",
+   "ECM1",
+   "ECM2",
+   "EDIL3",
+   "EFEMP2",
+   "ELN",
+   "EMP3",
+   "ENO2",
+   "FAP",
+   "FBLN1",
+   "FBLN2",
+   "FBLN5",
+   "FBN1",
+   "FERMT2",
+   "FGF2",
+   "FLNA",
+   "FMOD",
+   "FN1",
+   "FSTL1",
+   "FSTL3",
+   "GADD45B",
+   "GAS1",
+   "GEM",
+   "GJA1",
+   "GLIPR1",
+   "GPC1",
+   "GPX7",
+   "GREM1",
+   "HTRA1",
+   "IGFBP3",
+   "IGFBP4",
+   "IL15",
+   "IL6",
+   "ITGA5",
+   "JUN",
+   "LAMC1",
+   "LGALS1",
+   "LOX",
+   "LOXL1",
+   "LOXL2",
+   "LRP1",
+   "LUM",
+   "MFAP5",
+   "MGP",
+   "MMP1",
+   "MMP14",
+   "MMP2",
+   "MMP3",
+   "MXRA5",
+   "MYL9",
+   "MYLK",
+   "NNMT",
+   "NTM",
+   "PCOLCE",
+   "PDGFRB",
+   "PDLIM4",
+   "PLOD1",
+   "PMP22",
+   "POSTN",
+   "PRRX1",
+   "PTX3",
+   "SERPINE1",
+   "SERPINE2",
+   "SERPINH1",
+   "SFRP4",
+   "SGCB",
+   "SGCD",
+   "SNAI2",
+   "SPARC",
+   "SPOCK1",
+   "SPP1",
+   "TAGLN",
+   "TGFB1",
+   "TGFBI",
+   "TGFBR3",
+   "TGM2",
+   "THBS1",
+   "THBS2",
+   "THY1",
+   "TIMP1",
+   "TIMP3",
+   "TNC",
+   "TPM2",
+   "VCAM1",
+   "VCAN",
+   "VIM",
+   "WIPF1",
+   "WNT5A"
+  ]
+ },
+ "GSE144735": {
+  "accession": "GSE144735",
+  "passed": true,
+  "compartments_present": [
+   "epithelial",
+   "stromal",
+   "immune",
+   "endothelial"
+  ],
+  "markers": {
+   "EPCAM": {
+    "expected": "epithelial",
+    "top": "epithelial",
+    "pass": true
+   },
+   "KRT8": {
+    "expected": "epithelial",
+    "top": "epithelial",
+    "pass": true
+   },
+   "KRT18": {
+    "expected": "epithelial",
+    "top": "epithelial",
+    "pass": true
+   },
+   "COL1A1": {
+    "expected": "stromal",
+    "top": "stromal",
+    "pass": true
+   },
+   "DCN": {
+    "expected": "stromal",
+    "top": "stromal",
+    "pass": true
+   },
+   "LUM": {
+    "expected": "stromal",
+    "top": "stromal",
+    "pass": true
+   },
+   "PTPRC": {
+    "expected": "immune",
+    "top": "immune",
+    "pass": true
+   },
+   "PECAM1": {
+    "expected": "endothelial",
+    "top": "endothelial",
+    "pass": true
+   },
+   "VWF": {
+    "expected": "endothelial",
+    "top": "endothelial",
+    "pass": true
+   }
+  },
+  "n_patients_tumour": 6,
+  "n_patients_retained": 4,
+  "retained": [
+   "KUL01",
+   "KUL19",
+   "KUL21",
+   "KUL30"
+  ],
+  "cells_per_patient": {
+   "KUL01": {
+    "epithelial": 730,
+    "stromal": 412,
+    "immune": 675,
+    "endothelial": 101
+   },
+   "KUL19": {
+    "epithelial": 574,
+    "stromal": 281,
+    "immune": 2085,
+    "endothelial": 176
+   },
+   "KUL21": {
+    "epithelial": 759,
+    "stromal": 690,
+    "immune": 601,
+    "endothelial": 99
+   },
+   "KUL28": {
+    "epithelial": 40,
+    "stromal": 107,
+    "immune": 140,
+    "endothelial": 127
+   },
+   "KUL30": {
+    "epithelial": 68,
+    "stromal": 185,
+    "immune": 187,
+    "endothelial": 111
+   },
+   "KUL31": {
+    "epithelial": 41,
+    "stromal": 0,
+    "immune": 33,
+    "endothelial": 1
+   }
+  },
+  "ambient_control_genes_excluded": 1416,
+  "emt_genes_excluded_by_ambient_control": [
+   "ABI3BP",
+   "ACTA2",
+   "BASP1",
+   "BGN",
+   "CALD1",
+   "CALU",
+   "CDH11",
+   "CDH6",
+   "COL12A1",
+   "COL16A1",
+   "COL1A1",
+   "COL1A2",
+   "COL3A1",
+   "COL4A1",
+   "COL4A2",
+   "COL5A1",
+   "COL5A2",
+   "COL5A3",
+   "COL6A2",
+   "COL6A3",
+   "COL8A2",
+   "CTGF",
+   "CTHRC1",
+   "CXCL1",
+   "CXCL12",
+   "CXCL6",
+   "CYR61",
+   "DAB2",
+   "DCN",
+   "DPYSL3",
+   "DST",
+   "ECM1",
+   "ECM2",
+   "EDIL3",
+   "EFEMP2",
+   "ELN",
+   "EMP3",
+   "ENO2",
+   "FAP",
+   "FBLN1",
+   "FBLN2",
+   "FBLN5",
+   "FBN1",
+   "FERMT2",
+   "FGF2",
+   "FLNA",
+   "FMOD",
+   "FN1",
+   "FSTL1",
+   "FSTL3",
+   "GADD45B",
+   "GAS1",
+   "GEM",
+   "GJA1",
+   "GLIPR1",
+   "GPC1",
+   "GPX7",
+   "GREM1",
+   "HTRA1",
+   "IGFBP3",
+   "IL6",
+   "INHBA",
+   "ITGA5",
+   "LAMA2",
+   "LAMC1",
+   "LGALS1",
+   "LOX",
+   "LOXL1",
+   "LOXL2",
+   "LRP1",
+   "LRRC15",
+   "LUM",
+   "MFAP5",
+   "MGP",
+   "MMP14",
+   "MMP2",
+   "MXRA5",
+   "MYL9",
+   "MYLK",
+   "NNMT",
+   "NTM",
+   "PCOLCE",
+   "PCOLCE2",
+   "PDGFRB",
+   "PDLIM4",
+   "PMP22",
+   "POSTN",
+   "PRRX1",
+   "PRSS2",
+   "PTHLH",
+   "PTX3",
+   "SERPINE1",
+   "SERPINE2",
+   "SERPINH1",
+   "SFRP1",
+   "SFRP4",
+   "SGCB",
+   "SGCD",
+   "SLIT2",
+   "SLIT3",
+   "SNAI2",
+   "SPARC",
+   "SPOCK1",
+   "TAGLN",
+   "TFPI2",
+   "TGFB1",
+   "TGFBI",
+   "TGFBR3",
+   "TGM2",
+   "THBS2",
+   "THY1",
+   "TIMP1",
+   "TIMP3",
+   "TNC",
+   "TNFAIP3",
+   "TPM2",
+   "VCAM1",
+   "VCAN",
+   "VEGFC",
+   "VIM",
+   "WIPF1"
+  ]
+ },
+ "GSE178341": {
+  "accession": "GSE178341",
+  "passed": true,
+  "compartments_present": [
+   "epithelial",
+   "stromal",
+   "immune",
+   "endothelial"
+  ],
+  "markers": {
+   "EPCAM": {
+    "expected": "epithelial",
+    "top": "epithelial",
+    "pass": true
+   },
+   "KRT8": {
+    "expected": "epithelial",
+    "top": "epithelial",
+    "pass": true
+   },
+   "KRT18": {
+    "expected": "epithelial",
+    "top": "epithelial",
+    "pass": true
+   },
+   "COL1A1": {
+    "expected": "stromal",
+    "top": "stromal",
+    "pass": true
+   },
+   "DCN": {
+    "expected": "stromal",
+    "top": "stromal",
+    "pass": true
+   },
+   "LUM": {
+    "expected": "stromal",
+    "top": "stromal",
+    "pass": true
+   },
+   "PTPRC": {
+    "expected": "immune",
+    "top": "immune",
+    "pass": true
+   },
+   "VWF": {
+    "expected": "endothelial",
+    "top": "endothelial",
+    "pass": true
+   }
+  },
+  "n_patients_tumour": 62,
+  "n_patients_retained": 39,
+  "retained": [
+   "C103",
+   "C109",
+   "C111",
+   "C112",
+   "C114",
+   "C122",
+   "C123",
+   "C124",
+   "C125",
+   "C126",
+   "C129",
+   "C130",
+   "C133",
+   "C135",
+   "C139",
+   "C140",
+   "C143",
+   "C145",
+   "C146",
+   "C147",
+   "C149",
+   "C150",
+   "C152",
+   "C153",
+   "C155",
+   "C157",
+   "C158",
+   "C160",
+   "C161",
+   "C162",
+   "C163",
+   "C165",
+   "C167",
+   "C168",
+   "C169",
+   "C170",
+   "C171",
+   "C172",
+   "C173"
+  ],
+  "cells_per_patient": {
+   "C103": {
+    "epithelial": 4608,
+    "stromal": 59,
+    "immune": 1348,
+    "endothelial": 81
+   },
+   "C104": {
+    "epithelial": 1883,
+    "stromal": 12,
+    "immune": 971,
+    "endothelial": 20
+   },
+   "C105": {
+    "epithelial": 1412,
+    "stromal": 13,
+    "immune": 1844,
+    "endothelial": 12
+   },
+   "C106": {
+    "epithelial": 1123,
+    "stromal": 1,
+    "immune": 800,
+    "endothelial": 2
+   },
+   "C107": {
+    "epithelial": 2259,
+    "stromal": 18,
+    "immune": 3052,
+    "endothelial": 72
+   },
+   "C109": {
+    "epithelial": 1521,
+    "stromal": 57,
+    "immune": 551,
+    "endothelial": 23
+   },
+   "C110": {
+    "epithelial": 791,
+    "stromal": 7,
+    "immune": 1713,
+    "endothelial": 16
+   },
+   "C111": {
+    "epithelial": 653,
+    "stromal": 84,
+    "immune": 1313,
+    "endothelial": 19
+   },
+   "C112": {
+    "epithelial": 1776,
+    "stromal": 66,
+    "immune": 2187,
+    "endothelial": 94
+   },
+   "C113": {
+    "epithelial": 2926,
+    "stromal": 17,
+    "immune": 1523,
+    "endothelial": 14
+   },
+   "C114": {
+    "epithelial": 1523,
+    "stromal": 24,
+    "immune": 1308,
+    "endothelial": 21
+   },
+   "C115": {
+    "epithelial": 562,
+    "stromal": 4,
+    "immune": 528,
+    "endothelial": 6
+   },
+   "C116": {
+    "epithelial": 921,
+    "stromal": 4,
+    "immune": 2392,
+    "endothelial": 9
+   },
+   "C118": {
+    "epithelial": 1200,
+    "stromal": 12,
+    "immune": 1986,
+    "endothelial": 13
+   },
+   "C119": {
+    "epithelial": 1034,
+    "stromal": 2,
+    "immune": 451,
+    "endothelial": 0
+   },
+   "C122": {
+    "epithelial": 2119,
+    "stromal": 52,
+    "immune": 1083,
+    "endothelial": 41
+   },
+   "C123": {
+    "epithelial": 4119,
+    "stromal": 38,
+    "immune": 4988,
+    "endothelial": 89
+   },
+   "C124": {
+    "epithelial": 1022,
+    "stromal": 213,
+    "immune": 5351,
+    "endothelial": 240
+   },
+   "C125": {
+    "epithelial": 2114,
+    "stromal": 151,
+    "immune": 3778,
+    "endothelial": 129
+   },
+   "C126": {
+    "epithelial": 956,
+    "stromal": 61,
+    "immune": 1594,
+    "endothelial": 46
+   },
+   "C129": {
+    "epithelial": 3125,
+    "stromal": 80,
+    "immune": 4051,
+    "endothelial": 119
+   },
+   "C130": {
+    "epithelial": 3229,
+    "stromal": 22,
+    "immune": 3532,
+    "endothelial": 37
+   },
+   "C132": {
+    "epithelial": 1367,
+    "stromal": 1,
+    "immune": 4228,
+    "endothelial": 13
+   },
+   "C133": {
+    "epithelial": 1005,
+    "stromal": 55,
+    "immune": 1988,
+    "endothelial": 19
+   },
+   "C134": {
+    "epithelial": 1232,
+    "stromal": 3,
+    "immune": 1307,
+    "endothelial": 21
+   },
+   "C135": {
+    "epithelial": 1069,
+    "stromal": 28,
+    "immune": 3497,
+    "endothelial": 82
+   },
+   "C136": {
+    "epithelial": 1431,
+    "stromal": 13,
+    "immune": 1832,
+    "endothelial": 21
+   },
+   "C137": {
+    "epithelial": 732,
+    "stromal": 1,
+    "immune": 1923,
+    "endothelial": 27
+   },
+   "C138": {
+    "epithelial": 468,
+    "stromal": 5,
+    "immune": 1315,
+    "endothelial": 2
+   },
+   "C139": {
+    "epithelial": 3125,
+    "stromal": 79,
+    "immune": 3042,
+    "endothelial": 164
+   },
+   "C140": {
+    "epithelial": 2397,
+    "stromal": 107,
+    "immune": 1821,
+    "endothelial": 177
+   },
+   "C142": {
+    "epithelial": 1383,
+    "stromal": 13,
+    "immune": 1665,
+    "endothelial": 40
+   },
+   "C143": {
+    "epithelial": 1278,
+    "stromal": 28,
+    "immune": 2028,
+    "endothelial": 58
+   },
+   "C144": {
+    "epithelial": 922,
+    "stromal": 10,
+    "immune": 2938,
+    "endothelial": 29
+   },
+   "C145": {
+    "epithelial": 2142,
+    "stromal": 88,
+    "immune": 704,
+    "endothelial": 156
+   },
+   "C146": {
+    "epithelial": 1889,
+    "stromal": 28,
+    "immune": 2733,
+    "endothelial": 81
+   },
+   "C147": {
+    "epithelial": 2096,
+    "stromal": 42,
+    "immune": 1574,
+    "endothelial": 89
+   },
+   "C149": {
+    "epithelial": 1302,
+    "stromal": 39,
+    "immune": 2524,
+    "endothelial": 150
+   },
+   "C150": {
+    "epithelial": 1775,
+    "stromal": 20,
+    "immune": 572,
+    "endothelial": 51
+   },
+   "C151": {
+    "epithelial": 329,
+    "stromal": 0,
+    "immune": 92,
+    "endothelial": 0
+   },
+   "C152": {
+    "epithelial": 1077,
+    "stromal": 52,
+    "immune": 669,
+    "endothelial": 35
+   },
+   "C153": {
+    "epithelial": 2614,
+    "stromal": 81,
+    "immune": 2037,
+    "endothelial": 128
+   },
+   "C154": {
+    "epithelial": 1911,
+    "stromal": 12,
+    "immune": 1075,
+    "endothelial": 51
+   },
+   "C155": {
+    "epithelial": 1454,
+    "stromal": 155,
+    "immune": 2393,
+    "endothelial": 70
+   },
+   "C156": {
+    "epithelial": 640,
+    "stromal": 10,
+    "immune": 3280,
+    "endothelial": 43
+   },
+   "C157": {
+    "epithelial": 2530,
+    "stromal": 663,
+    "immune": 1330,
+    "endothelial": 213
+   },
+   "C158": {
+    "epithelial": 815,
+    "stromal": 23,
+    "immune": 1429,
+    "endothelial": 85
+   },
+   "C159": {
+    "epithelial": 984,
+    "stromal": 18,
+    "immune": 1387,
+    "endothelial": 48
+   },
+   "C160": {
+    "epithelial": 2273,
+    "stromal": 74,
+    "immune": 1360,
+    "endothelial": 115
+   },
+   "C161": {
+    "epithelial": 2424,
+    "stromal": 136,
+    "immune": 1097,
+    "endothelial": 97
+   },
+   "C162": {
+    "epithelial": 8406,
+    "stromal": 897,
+    "immune": 5874,
+    "endothelial": 667
+   },
+   "C163": {
+    "epithelial": 2216,
+    "stromal": 49,
+    "immune": 2372,
+    "endothelial": 80
+   },
+   "C164": {
+    "epithelial": 1573,
+    "stromal": 19,
+    "immune": 2124,
+    "endothelial": 44
+   },
+   "C165": {
+    "epithelial": 1100,
+    "stromal": 49,
+    "immune": 1665,
+    "endothelial": 160
+   },
+   "C166": {
+    "epithelial": 4730,
+    "stromal": 11,
+    "immune": 709,
+    "endothelial": 77
+   },
+   "C167": {
+    "epithelial": 286,
+    "stromal": 36,
+    "immune": 1105,
+    "endothelial": 16
+   },
+   "C168": {
+    "epithelial": 766,
+    "stromal": 94,
+    "immune": 1652,
+    "endothelial": 40
+   },
+   "C169": {
+    "epithelial": 637,
+    "stromal": 33,
+    "immune": 1488,
+    "endothelial": 85
+   },
+   "C170": {
+    "epithelial": 3724,
+    "stromal": 315,
+    "immune": 5685,
+    "endothelial": 329
+   },
+   "C171": {
+    "epithelial": 4865,
+    "stromal": 74,
+    "immune": 11098,
+    "endothelial": 162
+   },
+   "C172": {
+    "epithelial": 374,
+    "stromal": 22,
+    "immune": 1127,
+    "endothelial": 19
+   },
+   "C173": {
+    "epithelial": 999,
+    "stromal": 239,
+    "immune": 1345,
+    "endothelial": 65
+   }
+  },
+  "ambient_control_genes_excluded": 1460,
+  "emt_genes_excluded_by_ambient_control": [
+   "ACTA2",
+   "BASP1",
+   "BGN",
+   "CALD1",
+   "CALU",
+   "CAP2",
+   "CDH11",
+   "COL12A1",
+   "COL16A1",
+   "COL1A1",
+   "COL1A2",
+   "COL3A1",
+   "COL4A1",
+   "COL4A2",
+   "COL5A1",
+   "COL5A2",
+   "COL5A3",
+   "COL6A2",
+   "COL6A3",
+   "COL7A1",
+   "CTGF",
+   "CTHRC1",
+   "CXCL1",
+   "CXCL12",
+   "CYR61",
+   "DAB2",
+   "DCN",
+   "DPYSL3",
+   "ECM1",
+   "EDIL3",
+   "EFEMP2",
+   "ELN",
+   "EMP3",
+   "ENO2",
+   "FAP",
+   "FBLN1",
+   "FBLN2",
+   "FBLN5",
+   "FBN1",
+   "FERMT2",
+   "FGF2",
+   "FLNA",
+   "FMOD",
+   "FN1",
+   "FSTL1",
+   "FSTL3",
+   "GADD45B",
+   "GEM",
+   "GJA1",
+   "GLIPR1",
+   "GPC1",
+   "GPX7",
+   "GREM1",
+   "HTRA1",
+   "IGFBP3",
+   "IGFBP4",
+   "IL6",
+   "INHBA",
+   "ITGA5",
+   "ITGB5",
+   "LAMC1",
+   "LGALS1",
+   "LOX",
+   "LOXL1",
+   "LOXL2",
+   "LRP1",
+   "LUM",
+   "MGP",
+   "MMP1",
+   "MMP14",
+   "MMP2",
+   "MXRA5",
+   "MYL9",
+   "MYLK",
+   "NNMT",
+   "PCOLCE",
+   "PDGFRB",
+   "PDLIM4",
+   "PLOD1",
+   "PMP22",
+   "POSTN",
+   "PRRX1",
+   "RHOB",
+   "SERPINE1",
+   "SERPINE2",
+   "SERPINH1",
+   "SGCB",
+   "SNAI2",
+   "SNTB1",
+   "SPARC",
+   "TAGLN",
+   "TGFB1",
+   "TGFBI",
+   "TGFBR3",
+   "TGM2",
+   "THBS2",
+   "THY1",
+   "TIMP1",
+   "TIMP3",
+   "TPM2",
+   "VCAM1",
+   "VCAN",
+   "VIM",
+   "WIPF1",
+   "WNT5A"
+  ]
+ }
+}
