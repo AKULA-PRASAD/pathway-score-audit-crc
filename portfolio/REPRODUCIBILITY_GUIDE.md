@@ -41,7 +41,7 @@ Build the caches and the analysis bundle with scripts 13 and 16–23, in order (
 - Some tests read the locally built inputs and frozen outputs, so they need steps 2–3 or the existing local files.
 
 ## 5. Re-checking the headline result from the archived checkpoints (TESTED)
-- **Restoring checkpoints.** The five checkpoint files are in the private GitHub Release asset `phase9_campaign_artifacts.tar` (579,716,096 bytes). The restore commands are in `docs/LARGE_ARTIFACT_ARCHIVE.md`.
+- **Restoring checkpoints.** The five checkpoint files are in the GitHub Release asset `phase9_campaign_artifacts.tar` (579,716,096 bytes). The restore commands are in `docs/LARGE_ARTIFACT_ARCHIVE.md`.
 - **Checking the archive manifest:**
   ```bash
   shasum -a 256 -c reports/phase9/ARCHIVE_MANIFEST_SHA256.txt   # 52 files: OK

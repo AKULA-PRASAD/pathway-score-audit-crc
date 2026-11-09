@@ -27,7 +27,7 @@ try{
  ok('a11y: focus-visible style defined',[...document.styleSheets].some(ss=>{try{return [...ss.cssRules].some(r=>r.selectorText&&r.selectorText.includes(':focus-visible'))}catch(e){return false}}));
  ok('a11y: chart marks focusable for tooltips',document.querySelectorAll('svg [tabindex="0"]').length>30);
  ok('a11y: status chips carry text',[...document.querySelectorAll('.chip')].every(c=>c.textContent.trim().length>0));
- ok('links: no external links to break',document.querySelectorAll('a[href^="http"]').length===0);
+ ok('links: outbound links only to the repository and its website',[...document.querySelectorAll('a[href^="http"]')].every(a=>['github.com','akula-prasad.github.io'].includes(new URL(a.href).hostname))&&document.querySelectorAll('footer a[href^="http"]').length===2);
  ok('nav: 11 section links resolve',document.querySelectorAll('.toc a').length===11&&[...document.querySelectorAll('.toc a')].every(a=>document.querySelector(a.getAttribute('href'))));
  (function(){const tip=document.getElementById('tip');let n=0,bad=0;document.querySelectorAll('svg [tabindex="0"]:not([role="button"])').forEach(m=>{m.dispatchEvent(new FocusEvent('focus'));n++;if(!(tip.classList.contains('on')&&tip.textContent.trim().length>5)){bad++;out.push('  no tooltip: '+(m.closest('svg').id||'?')+' '+(m.getAttribute('aria-label')||m.tagName));}m.dispatchEvent(new FocusEvent('blur'));});ok('tooltips: '+n+' chart marks show a tooltip on focus',n>30&&bad===0);})();
  ok('a11y: forest pathway targets are buttons',[...document.querySelectorAll('#forestAll [role="button"]')].length===4);

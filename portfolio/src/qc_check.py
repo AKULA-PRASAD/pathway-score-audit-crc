@@ -188,8 +188,12 @@ for link in re.findall(r"\]\(([^)#]+)\)", readme):
     target = (P / link).resolve()
     check("Links", f"portfolio README link {link}", "resolves", "portfolio/README.md", "exists" if target.exists() else "missing", target.exists())
 web_raw = text("portfolio/web/index.html")
-check("Web page", "no external script or link hosts other than Google Fonts", "fonts only", "portfolio/web/index.html",
-      ", ".join(sorted(set(re.findall(r"https?://([^/\"']+)", web_raw)))), set(re.findall(r"https?://([^/\"']+)", web_raw)) <= {"fonts.googleapis.com", "fonts.gstatic.com", "www.w3.org"})
+_res_hosts = set(re.findall(r"<(?:script|link|img|iframe|source)\b[^>]*?(?:src|href)=[\"']https?://([^/\"']+)", web_raw)) | set(re.findall(r"@import[^;]*https?://([^/\"')]+)", web_raw))
+check("Web page", "no external script or stylesheet hosts other than Google Fonts", "fonts only", "portfolio/web/index.html",
+      ", ".join(sorted(_res_hosts)) or "fonts only", _res_hosts <= {"fonts.googleapis.com", "fonts.gstatic.com"})
+_a_hosts = set(re.findall(r"<a\b[^>]*href=[\"']https?://([^/\"']+)", web_raw))
+check("Web page", "outbound links only to the project repository and its website", "github.com, akula-prasad.github.io", "portfolio/web/index.html",
+      ", ".join(sorted(_a_hosts)) or "none", _a_hosts <= {"github.com", "akula-prasad.github.io"})
 check("Web page", "conceptual label on tissue illustration", "present", "portfolio/web/index.html", "present" if "not a reconstruction of GSE39582 samples" in web_raw else "missing", "not a reconstruction of GSE39582 samples" in web_raw)
 
 # ---------------------------------------------------------------- artifact validation

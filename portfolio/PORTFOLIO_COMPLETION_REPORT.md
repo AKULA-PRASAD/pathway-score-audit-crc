@@ -84,16 +84,16 @@ Status key (one status per requirement):
 |---|---|---|---|
 | R1 | Frozen outputs, figures and archive unchanged | VERIFIED | 345 protected files and 25 figure files match recorded hashes; archive manifest 52/52 |
 | R2 | GitHub Release unchanged | VERIFIED | Tag `phase9-corrected-campaign-2026-11-08`; asset digest `sha256:0812b3ba…2aa2f` |
-| R3 | Repository state | VERIFIED | Work committed locally on branch `extensions-tool-portfolio` (five commits on top of `bf3c456`, owner-authorised 8 Nov 2026); not pushed; `phase9-corrected-pipeline` unchanged and level with the remote; visibility PRIVATE |
+| R3 | Repository state | VERIFIED | `extensions-tool-portfolio` merged into the default branch `phase9-corrected-pipeline` through pull request #1 (merge commit, no history rewritten; CI passed); repository made PUBLIC on 9 Nov 2026 by the owner after a full-history secrets and attribution scan |
 | R4 | Code licence | DONE | MIT chosen by the owner (8 Nov 2026); `LICENSE` at the root and in `tools/pathway-audit/` |
-| R5 | Per-sample data governance before any public release | OWNER DECISION | Open items in `docs/PUBLIC_RELEASE_REPRODUCIBILITY_AUDIT.md` |
+| R5 | Per-sample data governance before any public release | DONE | Owner decision 9 Nov 2026: per-sample tables derived from public GEO, TCGA and single-cell data are kept in the public repository |
 
 **Final readiness: PORTFOLIO READY WITH DISCLOSED LIMITATIONS.** Full readiness is withheld because P6 is blocked, and W6, W7, W8, P8 and D7 were not performed.
 
 ## 2. Owner actions
 1. Open the PPTX in PowerPoint or Keynote and work through the checklist in section 3 (resolves P6).
-2. Share the web page from its Share menu before sending the link.
-3. Decide R4 and R5 before making the repository public.
+2. Share the public website, https://akula-prasad.github.io/pathway-score-audit-crc/ (GitHub Pages), rather than the private web-page link, which cannot be opened outside the organisation.
+3. R4 and R5 are decided; the repository is public.
 
 ## 3. Manual PPTX checklist
 Open `portfolio/presentation/GSE39582_recurrence_portfolio.pptx` beside `portfolio/presentation/GSE39582_recurrence_portfolio.pdf`.

@@ -50,3 +50,4 @@ reports/phase9/corrected_rerun/runs/*.lock
 
 # --- single-cell environment ---
 .venv-sc/
+/site/

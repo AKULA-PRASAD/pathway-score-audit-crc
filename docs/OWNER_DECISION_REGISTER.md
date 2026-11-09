@@ -104,3 +104,8 @@ On 8 November 2026 the project owner approved decisions D1–D5 as recommended a
 
 - **Code licence:** MIT, chosen by the owner. `LICENSE` added at the repository root and in `tools/pathway-audit/`. It covers project code and documentation only; third-party data and reference files keep their own terms.
 - **Local commits:** the owner authorised committing the post-commit work (registered post-hoc analyses, research extensions, `pathway-audit`, portfolio). Push, visibility change and publication remain **not** authorised.
+
+## 9 November 2026: public release
+- **Visibility:** the owner approved making `AKULA-PRASAD/pathway-score-audit-crc` public.
+- **Per-sample data:** the owner decided to keep the per-sample tables (all derived from public GEO, TCGA and single-cell data) in the public repository.
+- **Website:** published on GitHub Pages at https://akula-prasad.github.io/pathway-score-audit-crc/.

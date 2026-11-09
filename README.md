@@ -19,6 +19,8 @@ Gene-set ("pathway") scores are widely read as tumour biology and used as progno
 pip install -e tools/pathway-audit && pathway-audit demo --out demo/    # writes demo/report.html; recovers four planted truths
 ```
 
+**Website:** [https://akula-prasad.github.io/pathway-score-audit-crc/](https://akula-prasad.github.io/pathway-score-audit-crc/) (interactive overview) · **Slides:** [PDF](https://akula-prasad.github.io/pathway-score-audit-crc/GSE39582_recurrence_portfolio.pdf)
+
 Start here: [`portfolio/README.md`](portfolio/README.md) (overview, presentation, web page) · [`docs/FINAL_RESEARCH_CONTRIBUTION.md`](docs/FINAL_RESEARCH_CONTRIBUTION.md) · [`docs/manuscript/MANUSCRIPT_DRAFT.md`](docs/manuscript/MANUSCRIPT_DRAFT.md)
 
 ## Five-minute tour for reviewers

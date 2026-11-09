@@ -24,6 +24,7 @@ ROLE = {
     "src/make_diagrams.py": "builds D1–D5", "src/make_slide_visuals.py": "builds slide visuals V01–V19 (original vector drawings)", "src/make_deck.py": "builds PPTX, PDF and speaker notes", "src/qc_check.py": "portfolio QC",
     "src/make_inventory.py": "writes this inventory",
     "src/web_check.py": "runs web interaction and accessibility checks in headless Chrome",
+    "src/build_site.py": "builds the public GitHub Pages site from web/index.html and the deck PDF",
     "src/web_interaction_test.html.part": "the web checks appended by web_check.py",
     "web/index.html": "interactive research portfolio (source of the published web page)",
     "RESEARCH_REPORT.md": "standalone research report", "INTERVIEW_PREPARATION.md": "modelling explanations and interview question bank",

@@ -2,6 +2,10 @@
 
 How the project developed, using the dates recorded in the commits and in each document. Work was developed in the working tree and committed in logical groups after the owner reviewed it, which is why several commits share a timestamp.
 
+## 2026-11-09: public release
+- Repository made public: https://github.com/AKULA-PRASAD/pathway-score-audit-crc.
+- Website published on GitHub Pages (https://akula-prasad.github.io/pathway-score-audit-crc/), built from `portfolio/web/index.html` by `portfolio/src/build_site.py` and `.github/workflows/pages.yml`; footer links to the code and the slides.
+
 ## 2026-11-08 (evening): single-cell extension and pathway-audit 0.2.0
 - Branch pushed to the private GitHub repository, renamed `pathway-score-audit-crc`; GitHub Actions CI passes on Python 3.10 and 3.12.
 - Single-cell extension S1–S5 run in GSE132465, GSE144735 and GSE178341 after the plan and the compartment mapping were committed (`docs/SINGLE_CELL_RESULTS.md`).
