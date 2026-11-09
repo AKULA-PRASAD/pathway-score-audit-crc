@@ -21,6 +21,14 @@ pip install -e tools/pathway-audit && pathway-audit demo --out demo/    # writes
 
 Start here: [`portfolio/README.md`](portfolio/README.md) (overview, presentation, web page) · [`docs/FINAL_RESEARCH_CONTRIBUTION.md`](docs/FINAL_RESEARCH_CONTRIBUTION.md) · [`docs/manuscript/MANUSCRIPT_DRAFT.md`](docs/manuscript/MANUSCRIPT_DRAFT.md)
 
+## Five-minute tour for reviewers
+
+1. **The tool:** `tools/pathway-audit/README.md`, then run the demo (one command above) and open `demo/report.html`.
+2. **The science in one page:** `docs/FINAL_RESEARCH_CONTRIBUTION.md`, or the draft paper `docs/manuscript/MANUSCRIPT_DRAFT.md`.
+3. **The code:** the tool's package `tools/pathway-audit/src/pathway_audit/` and the nested-bootstrap engine `src/phase9_corrected/`.
+4. **The evidence trail:** `docs/README.md` maps every document; `scripts/README.md` maps every script.
+5. **The slides:** `portfolio/presentation/GSE39582_recurrence_portfolio.pdf`.
+
 ## Project status
 
 - **Scientifically complete:** the frozen verification passed (60 of 60 checks), and an independent re-implementation within this project reproduced every reported number from the raw checkpoints (not an external replication).
@@ -128,7 +136,13 @@ Recurrence risk after surgery for stage II–III colon cancer varies widely, and
 | `reports/phase9/corrected_rerun_report/` | final interval results (JSON) and tables |
 | `reports/phase9/independent_audit/` | independent audit results and report |
 | `reports/phase9/execution*/`, `dc_interval/`, `final_project/` | historical Phase 9 outputs, kept unchanged; the as-run intervals are superseded |
-| `tests/` | 1,085 tests |
+| `scripts/exploratory/` | registered post-hoc analyses X1–X9 (`run_all.sh`; validation 22/22) |
+| `scripts/research_extensions/` | research extensions E1–E3 and the TCGA addendum (`run_all.sh`; validation 28/28) |
+| `reports/exploratory/`, `reports/research_extensions/`, `results/research_extensions/`, `figures/research_extensions/` | outputs of the post-hoc work |
+| `tools/pathway-audit/` | the reusable tool: package, CLI, tests, demo and case-study script |
+| `reports/pathway_audit_case_study/` | tool reports for five colorectal cohorts |
+| `portfolio/` | presentation, web page, diagrams, resume text and portfolio QC |
+| `tests/` | 1,097 tests (`conftest.py` skips the 176 data-dependent ones when the data are absent) |
 
 ## Environment
 
@@ -141,7 +155,9 @@ python3.13 -m venv .venv
 .venv/bin/python -m pytest -q tests/
 ```
 
-Some tests read the locally built study inputs and historical outputs. They pass only after the data pipeline below has been run.
+**Without the data** (a fresh clone): 909 tests pass and 188 are skipped. The 176 tests that need the gitignored data bundle are listed in `tests/data_dependent_tests.txt`, and `tests/conftest.py` skips them with a stated reason. **With the data** (after the pipeline below): all 1,097 tests pass and none are skipped.
+
+`pathway-audit` has its own suite: `cd tools/pathway-audit && pip install -e ".[survival,test]" && pytest` (11 tests, no project data needed).
 
 ## Reproduction
 
