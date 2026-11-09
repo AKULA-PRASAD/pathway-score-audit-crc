@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="959.976pt" height="540pt" viewBox="0 0 959.976 540" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 540 
+L 959.976 540 
+L 959.976 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 38.16 162 
+L 240.714 162 
+Q 246.474 162 246.474 156.24 
+L 246.474 113.76 
+Q 246.474 108 240.714 108 
+L 38.16 108 
+Q 32.4 108 32.4 113.76 
+L 32.4 156.24 
+Q 32.4 162 38.16 162 
+z
+" clip-path="url(#p6e8dbd3887)" style="fill: #1f2933; stroke: #1f2933; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 38.16 259.2 
+L 240.714 259.2 
+Q 246.474 259.2 246.474 253.44 
+L 246.474 174.96 
+Q 246.474 169.2 240.714 169.2 
+L 38.16 169.2 
+Q 32.4 169.2 32.4 174.96 
+L 32.4 253.44 
+Q 32.4 259.2 38.16 259.2 
+z
+" clip-path="url(#p6e8dbd3887)" style="fill: #ffffff; stroke: #e3e8ee; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 38.16 370.8 
+L 240.714 370.8 
+Q 246.474 370.8 246.474 365.04 
+L 246.474 272.16 
+Q 246.474 266.4 240.714 266.4 
+L 38.16 266.4 
+Q 32.4 266.4 32.4 272.16 
+L 32.4 365.04 
+Q 32.4 370.8 38.16 370.8 
+z
+" clip-path="url(#p6e8dbd3887)" style="fill: #ffffff; stroke: #e3e8ee; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 38.16 450 
+L 240.714 450 
+Q 246.474 450 246.474 444.24 
+L 246.474 383.76 
+Q 246.474 378 240.714 378 
+L 38.16 378 
+Q 32.4 378 32.4 383.76 
+L 32.4 444.24 
+Q 32.4 450 38.16 450 
+z
+" clip-path="url(#p6e8dbd3887)" style="fill: #ffffff; stroke: #e3e8ee; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 265.194 162 
+L 467.748 162 
+Q 473.508 162 473.508 156.24 
+L 473.508 113.76 
+Q 473.508 108 467.748 108 
+L 265.194 108 
+Q 259.434 108 259.434 113.76 
+L 259.434 156.24 
+Q 259.434 162 265.194 162 
+z
+" clip-path="url(#p6e8dbd3887)" style="fill: #1f2933; stroke: #1f2933; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 265.194 259.2 
+L 467.748 259.2 
+Q 473.508 259.2 473.508 253.44 
+L 473.508 174.96 
+Q 473.508 169.2 467.748 169.2 
+L 265.194 169.2 
+Q 259.434 169.2 259.434 174.96 
+L 259.434 253.44 
+Q 259.434 259.2 265.194 259.2 
+z
+" clip-path="url(#p6e8dbd3887)" style="fill: #ffffff; stroke: #e3e8ee; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 265.194 370.8 
+L 467.748 370.8 
+Q 473.508 370.8 473.508 365.04 
+L 473.508 272.16 
+Q 473.508 266.4 467.748 266.4 
+L 265.194 266.4 
+Q 259.434 266.4 259.434 272.16 
+L 259.434 365.04 
+Q 259.434 370.8 265.194 370.8 
+z
+" clip-path="url(#p6e8dbd3887)" style="fill: #ffffff; stroke: #e3e8ee; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 265.194 450 
+L 467.748 450 
+Q 473.508 450 473.508 444.24 
+L 473.508 383.76 
+Q 473.508 378 467.748 378 
+L 265.194 378 
+Q 259.434 378 259.434 383.76 
+L 259.434 444.24 
+Q 259.434 450 265.194 450 
+z
+" clip-path="url(#p6e8dbd3887)" style="fill: #ffffff; stroke: #e3e8ee; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 492.228 162 
+L 694.782 162 
+Q 700.542 162 700.542 156.24 
+L 700.542 113.76 
+Q 700.542 108 694.782 108 
+L 492.228 108 
+Q 486.468 108 486.468 113.76 
+L 486.468 156.24 
+Q 486.468 162 492.228 162 
+z
+" clip-path="url(#p6e8dbd3887)" style="fill: #1f2933; stroke: #1f2933; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 492.228 259.2 
+L 694.782 259.2 
+Q 700.542 259.2 700.542 253.44 
+L 700.542 174.96 
+Q 700.542 169.2 694.782 169.2 
+L 492.228 169.2 
+Q 486.468 169.2 486.468 174.96 
+L 486.468 253.44 
+Q 486.468 259.2 492.228 259.2 
+z
+" clip-path="url(#p6e8dbd3887)" style="fill: #ffffff; stroke: #e3e8ee; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 492.228 370.8 
+L 694.782 370.8 
+Q 700.542 370.8 700.542 365.04 
+L 700.542 272.16 
+Q 700.542 266.4 694.782 266.4 
+L 492.228 266.4 
+Q 486.468 266.4 486.468 272.16 
+L 486.468 365.04 
+Q 486.468 370.8 492.228 370.8 
+z
+" clip-path="url(#p6e8dbd3887)" style="fill: #ffffff; stroke: #e3e8ee; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 492.228 450 
+L 694.782 450 
+Q 700.542 450 700.542 444.24 
+L 700.542 383.76 
+Q 700.542 378 694.782 378 
+L 492.228 378 
+Q 486.468 378 486.468 383.76 
+L 486.468 444.24 
+Q 486.468 450 492.228 450 
+z
+" clip-path="url(#p6e8dbd3887)" style="fill: #ffffff; stroke: #e3e8ee; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 719.262 162 
+L 921.816 162 
+Q 927.576 162 927.576 156.24 
+L 927.576 113.76 
+Q 927.576 108 921.816 108 
+L 719.262 108 
+Q 713.502 108 713.502 113.76 
+L 713.502 156.24 
+Q 713.502 162 719.262 162 
+z
+" clip-path="url(#p6e8dbd3887)" style="fill: #1f2933; stroke: #1f2933; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 719.262 259.2 
+L 921.816 259.2 
+Q 927.576 259.2 927.576 253.44 
+L 927.576 174.96 
+Q 927.576 169.2 921.816 169.2 
+L 719.262 169.2 
+Q 713.502 169.2 713.502 174.96 
+L 713.502 253.44 
+Q 713.502 259.2 719.262 259.2 
+z
+" clip-path="url(#p6e8dbd3887)" style="fill: #ffffff; stroke: #e3e8ee; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 719.262 370.8 
+L 921.816 370.8 
+Q 927.576 370.8 927.576 365.04 
+L 927.576 272.16 
+Q 927.576 266.4 921.816 266.4 
+L 719.262 266.4 
+Q 713.502 266.4 713.502 272.16 
+L 713.502 365.04 
+Q 713.502 370.8 719.262 370.8 
+z
+" clip-path="url(#p6e8dbd3887)" style="fill: #ffffff; stroke: #e3e8ee; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 719.262 450 
+L 921.816 450 
+Q 927.576 450 927.576 444.24 
+L 927.576 383.76 
+Q 927.576 378 921.816 378 
+L 719.262 378 
+Q 713.502 378 713.502 383.76 
+L 713.502 444.24 
+Q 713.502 450 719.262 450 
+z
+" clip-path="url(#p6e8dbd3887)" style="fill: #ffffff; stroke: #e3e8ee; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 38.16 492.48 
+L 921.816 492.48 
+Q 927.576 492.48 927.576 486.72 
+L 927.576 460.8 
+Q 927.576 455.04 921.816 455.04 
+L 38.16 455.04 
+Q 32.4 455.04 32.4 460.8 
+L 32.4 486.72 
+Q 32.4 492.48 38.16 492.48 
+z
+" clip-path="url(#p6e8dbd3887)" style="fill: #f5f7fa; stroke: #f5f7fa; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 22px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="32.4" y="55.616602" transform="rotate(-0 32.4 55.616602)">Four biological axes of colorectal cancer, one question</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52606d" x="32.4" y="84.700342" transform="rotate(-0 32.4 84.700342)">Do four predefined pathway-expression scores add recurrence-discrimination information beyond clinical variables?</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="45.36" y="131.321836" transform="rotate(-0 45.36 131.321836)">Wnt/β-catenin</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 10.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #d9e2ec" x="45.36" y="151.037183" transform="rotate(-0 45.36 151.037183)">Initiating driver pathway</text>
+   </g>
+   <g id="text_5">
+    <g id="patch_19">
+     <path d="M 42.45 190.434287 
+L 85.617188 190.434287 
+Q 86.742188 190.434287 86.742188 189.309287 
+L 86.742188 180.770713 
+Q 86.742188 179.645713 85.617188 179.645713 
+L 42.45 179.645713 
+Q 41.325 179.645713 41.325 180.770713 
+L 41.325 189.309287 
+Q 41.325 190.434287 42.45 190.434287 
+z
+" style="fill: #52606d; stroke: #52606d; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 7.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="43.2" y="186.980918" transform="rotate(-0 43.2 186.980918)">TEXTBOOK</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(43.2 210.287598)">Loss of APC (or activating CTNNB1</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(43.2 222.487793)">mutation) stabilises β-catenin,</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(43.2 234.687988)">which with TCF/LEF drives target</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(43.2 246.888184)">genes such as MYC and AXIN2.</text>
+   </g>
+   <g id="text_7">
+    <g id="patch_20">
+     <path d="M 42.45 287.634287 
+L 90.890625 287.634287 
+Q 92.015625 287.634287 92.015625 286.509287 
+L 92.015625 277.970713 
+Q 92.015625 276.845713 90.890625 276.845713 
+L 42.45 276.845713 
+Q 41.325 276.845713 41.325 277.970713 
+L 41.325 286.509287 
+Q 41.325 287.634287 42.45 287.634287 
+z
+" style="fill: #7b5ea7; stroke: #7b5ea7; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 7.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="43.2" y="284.180918" transform="rotate(-0 43.2 284.180918)">LITERATURE</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(43.2 307.42666)">Wnt-pathway genes are genomically</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(43.2 319.687793)">altered in 93 % of tumours (R6).</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(43.2 332.879395)">Marked WNT/MYC activation</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(43.2 344.088184)">characterises CMS2 (R1). Alteration</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(43.2 357.221191)">is not measured activation.</text>
+   </g>
+   <g id="text_9">
+    <g id="patch_21">
+     <path d="M 42.45 399.234287 
+L 85.907812 399.234287 
+Q 87.032812 399.234287 87.032812 398.109287 
+L 87.032812 389.570713 
+Q 87.032812 388.445713 85.907812 388.445713 
+L 42.45 388.445713 
+Q 41.325 388.445713 41.325 389.570713 
+L 41.325 398.109287 
+Q 41.325 399.234287 42.45 399.234287 
+z
+" style="fill: #2a78d6; stroke: #2a78d6; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 7.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="43.2" y="395.780918" transform="rotate(-0 43.2 395.780918)">OBSERVED</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 8px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52606d" x="122.4" y="395.910234" transform="rotate(-0 122.4 395.910234)">project score</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(43.2 420.081348)">Mean standardised mRNA of 41 member</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(43.2 430.299512)">genes</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="272.394" y="131.321689" transform="rotate(-0 272.394 131.321689)">E2F targets</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 10.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #d9e2ec" x="272.394" y="151.037285" transform="rotate(-0 272.394 151.037285)">Proliferation</text>
+   </g>
+   <g id="text_14">
+    <g id="patch_22">
+     <path d="M 269.484 190.434287 
+L 312.651188 190.434287 
+Q 313.776188 190.434287 313.776188 189.309287 
+L 313.776188 180.770713 
+Q 313.776188 179.645713 312.651188 179.645713 
+L 269.484 179.645713 
+Q 268.359 179.645713 268.359 180.770713 
+L 268.359 189.309287 
+Q 268.359 190.434287 269.484 190.434287 
+z
+" style="fill: #52606d; stroke: #52606d; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 7.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="270.234" y="186.980918" transform="rotate(-0 270.234 186.980918)">TEXTBOOK</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(270.234 210.287598)">CDK–cyclin phosphorylation of RB</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(270.234 222.832324)">releases E2F factors, which activate</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(270.234 234.687988)">G1/S and DNA-replication genes.</text>
+   </g>
+   <g id="text_16">
+    <g id="patch_23">
+     <path d="M 269.484 287.634287 
+L 317.924625 287.634287 
+Q 319.049625 287.634287 319.049625 286.509287 
+L 319.049625 277.970713 
+Q 319.049625 276.845713 317.924625 276.845713 
+L 269.484 276.845713 
+Q 268.359 276.845713 268.359 277.970713 
+L 268.359 286.509287 
+Q 268.359 287.634287 269.484 287.634287 
+z
+" style="fill: #7b5ea7; stroke: #7b5ea7; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 7.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="270.234" y="284.180918" transform="rotate(-0 270.234 284.180918)">LITERATURE</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(270.234 307.487598)">Evidence linking proliferation to</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(270.234 319.685449)">outcome is mixed: lower in relapsed</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(270.234 331.887988)">primaries (R4), but high Ki-67 with</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(270.234 344.088184)">poorer survival (R5).</text>
+   </g>
+   <g id="text_18">
+    <g id="patch_24">
+     <path d="M 269.484 399.234287 
+L 312.941813 399.234287 
+Q 314.066813 399.234287 314.066813 398.109287 
+L 314.066813 389.570713 
+Q 314.066813 388.445713 312.941813 388.445713 
+L 269.484 388.445713 
+Q 268.359 388.445713 268.359 389.570713 
+L 268.359 398.109287 
+Q 268.359 399.234287 269.484 399.234287 
+z
+" style="fill: #2a78d6; stroke: #2a78d6; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 7.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="270.234" y="395.780918" transform="rotate(-0 270.234 395.780918)">OBSERVED</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 8px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52606d" x="349.434" y="395.910234" transform="rotate(-0 349.434 395.910234)">project score</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(270.234 420.079004)">Mean standardised mRNA of 195 member</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(270.234 430.299512)">genes</text>
+   </g>
+   <g id="text_21">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="499.428" y="131.321689" transform="rotate(-0 499.428 131.321689)">p53 pathway</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 10.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #d9e2ec" x="499.428" y="151.037183" transform="rotate(-0 499.428 151.037183)">DNA-damage checkpoint</text>
+   </g>
+   <g id="text_23">
+    <g id="patch_25">
+     <path d="M 496.518 190.434287 
+L 539.685188 190.434287 
+Q 540.810188 190.434287 540.810188 189.309287 
+L 540.810188 180.770713 
+Q 540.810188 179.645713 539.685188 179.645713 
+L 496.518 179.645713 
+Q 495.393 179.645713 495.393 180.770713 
+L 495.393 189.309287 
+Q 495.393 190.434287 496.518 190.434287 
+z
+" style="fill: #52606d; stroke: #52606d; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 7.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="497.268" y="186.980918" transform="rotate(-0 497.268 186.980918)">TEXTBOOK</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(497.268 210.346191)">Cellular stress stabilises p53,</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(497.268 222.487793)">which induces arrest (CDKN1A),</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(497.268 234.687988)">feedback (MDM2) and apoptosis genes.</text>
+   </g>
+   <g id="text_25">
+    <g id="patch_26">
+     <path d="M 496.518 287.634287 
+L 544.958625 287.634287 
+Q 546.083625 287.634287 546.083625 286.509287 
+L 546.083625 277.970713 
+Q 546.083625 276.845713 544.958625 276.845713 
+L 496.518 276.845713 
+Q 495.393 276.845713 495.393 277.970713 
+L 495.393 286.509287 
+Q 495.393 287.634287 496.518 287.634287 
+z
+" style="fill: #7b5ea7; stroke: #7b5ea7; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 7.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="497.268" y="284.180918" transform="rotate(-0 497.268 284.180918)">LITERATURE</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(497.268 308.40791)">TP53 is mutated in about 60 % of</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(497.268 319.687793)">non-hypermutated and about 20 % of</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(497.268 331.887988)">hypermutated tumours (R6).</text>
+   </g>
+   <g id="text_27">
+    <g id="patch_27">
+     <path d="M 496.518 399.234287 
+L 539.975813 399.234287 
+Q 541.100813 399.234287 541.100813 398.109287 
+L 541.100813 389.570713 
+Q 541.100813 388.445713 539.975813 388.445713 
+L 496.518 388.445713 
+Q 495.393 388.445713 495.393 389.570713 
+L 495.393 398.109287 
+Q 495.393 399.234287 496.518 399.234287 
+z
+" style="fill: #2a78d6; stroke: #2a78d6; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 7.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="497.268" y="395.780918" transform="rotate(-0 497.268 395.780918)">OBSERVED</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 8px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52606d" x="576.468" y="395.910234" transform="rotate(-0 576.468 395.910234)">project score</text>
+   </g>
+   <g id="text_29">
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(497.268 420.079004)">Mean standardised mRNA of 194 member</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(497.268 431.241699)">genes; not a TP53 mutation or</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(497.268 443.487988)">function assay</text>
+   </g>
+   <g id="text_30">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="726.462" y="131.321836" transform="rotate(-0 726.462 131.321836)">EMT</text>
+   </g>
+   <g id="text_31">
+    <text style="font-size: 10.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #d9e2ec" x="726.462" y="151.037183" transform="rotate(-0 726.462 151.037183)">Mesenchymal / stromal state</text>
+   </g>
+   <g id="text_32">
+    <g id="patch_28">
+     <path d="M 723.552 190.434287 
+L 766.719188 190.434287 
+Q 767.844188 190.434287 767.844188 189.309287 
+L 767.844188 180.770713 
+Q 767.844188 179.645713 766.719188 179.645713 
+L 723.552 179.645713 
+Q 722.427 179.645713 722.427 180.770713 
+L 722.427 189.309287 
+Q 722.427 190.434287 723.552 190.434287 
+z
+" style="fill: #52606d; stroke: #52606d; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 7.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="724.302" y="186.980918" transform="rotate(-0 724.302 186.980918)">TEXTBOOK</text>
+   </g>
+   <g id="text_33">
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(724.302 210.285254)">Epithelial cells lose E-cadherin</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(724.302 222.426855)">junctions and gain mesenchymal genes</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(724.302 234.687988)">(vimentin, fibronectin, collagens)</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(724.302 247.232715)">under SNAIL, ZEB and TWIST.</text>
+   </g>
+   <g id="text_34">
+    <g id="patch_29">
+     <path d="M 723.552 287.634287 
+L 771.992625 287.634287 
+Q 773.117625 287.634287 773.117625 286.509287 
+L 773.117625 277.970713 
+Q 773.117625 276.845713 771.992625 276.845713 
+L 723.552 276.845713 
+Q 722.427 276.845713 722.427 277.970713 
+L 722.427 286.509287 
+Q 722.427 287.634287 723.552 287.634287 
+z
+" style="fill: #7b5ea7; stroke: #7b5ea7; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 7.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="724.302" y="284.180918" transform="rotate(-0 724.302 284.180918)">LITERATURE</text>
+   </g>
+   <g id="text_35">
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(724.302 307.487598)">Mesenchymal CMS4 had worse relapse-</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(724.302 319.687793)">free survival (R1; GSE39582</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(724.302 331.887988)">contributed, so not independent).</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(724.302 344.027246)">Bulk mesenchymal signal is mostly</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(724.302 356.288379)">stromal (R2, R3).</text>
+   </g>
+   <g id="text_36">
+    <g id="patch_30">
+     <path d="M 723.552 399.234287 
+L 767.009813 399.234287 
+Q 768.134813 399.234287 768.134813 398.109287 
+L 768.134813 389.570713 
+Q 768.134813 388.445713 767.009813 388.445713 
+L 723.552 388.445713 
+Q 722.427 388.445713 722.427 389.570713 
+L 722.427 398.109287 
+Q 722.427 399.234287 723.552 399.234287 
+z
+" style="fill: #2a78d6; stroke: #2a78d6; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 7.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="724.302" y="395.780918" transform="rotate(-0 724.302 395.780918)">OBSERVED</text>
+   </g>
+   <g id="text_37">
+    <text style="font-size: 8px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52606d" x="803.502" y="395.910234" transform="rotate(-0 803.502 395.910234)">project score</text>
+   </g>
+   <g id="text_38">
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(724.302 420.079004)">Mean standardised mRNA of 198 member</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(724.302 431.287793)">genes; not a direct measure of EMT</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(724.302 444.420801)">in tumour cells</text>
+   </g>
+   <g id="text_39">
+    <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(46.8 470.620381)">Every project score is the mean training-fold-standardised mRNA of a fixed gene set in bulk tumour tissue. It summarises expression. It does not</text>
+    <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(46.8 482.592764)">measure pathway activation, protein activity, mutation status or the cell type the mRNA came from.</text>
+   </g>
+   <g id="text_40">
+    <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans'; fill: #52606d" transform="translate(32.4 507.470537)">Conceptual schematic: lanes are parallel axes, not a causal sequence. Mechanisms are textbook background. Context: verified references R1–R8</text>
+    <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans'; fill: #52606d" transform="translate(32.4 517.271221)">(docs/BIOLOGICAL_EVIDENCE_AND_CITATION_AUDIT.md). Gene counts: MSigDB Hallmark v2026.2.Hs, config/pathways/m2_panel_4set.json.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p6e8dbd3887">
+   <rect x="0" y="0" width="959.976" height="540"/>
+  </clipPath>
+ </defs>
+</svg>

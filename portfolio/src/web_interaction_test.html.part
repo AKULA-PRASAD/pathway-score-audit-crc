@@ -1,0 +1,37 @@
+<pre id="qa-results" style="white-space:pre-wrap"></pre><script>
+window.__errs=[];window.addEventListener('error',e=>window.__errs.push(String(e.message)));
+setTimeout(()=>{const out=[];const ok=(n,c)=>out.push((c?'PASS ':'FAIL ')+n);
+try{
+ const pt=[...document.querySelectorAll('#ptabs button')];ok('4 pathway tabs',pt.length===4);
+ pt.forEach((b,i)=>{b.click();const name=['EMT','E2F targets','Wnt/β-catenin','p53 pathway'][i];ok('pathway tab '+name,document.querySelector('#pexplorer .ttl').textContent===name&&document.querySelector('#mechHost svg')&&document.querySelectorAll('#forestAll circle').length>=8);});
+ const fl=[...document.querySelectorAll('#flow button')];ok('5 flow steps',fl.length===5);fl.forEach((b,i)=>{b.click();ok('flow step '+(i+1),document.getElementById('flowDetail').textContent.length>40&&b.getAttribute('aria-selected')==='true');});
+ const st=[...document.querySelectorAll('#storySeg button')];ok('4 story steps',st.length===4);st.forEach((b,i)=>{b.click();ok('story step '+(i+1),document.querySelector('#storyText .stage').textContent.includes('Step '+(i+1))&&document.querySelectorAll('#storySvg *').length>10);});
+ ok('story step 4 has 5 intervals',document.querySelectorAll('#storySvg line[stroke-linecap="round"]').length===5);
+ const pp=[...document.querySelectorAll('#pops button')];ok('5 population buttons',pp.length===5);pp.forEach((b,i)=>{b.click();ok('population '+b.textContent.trim(),document.getElementById('popcard').textContent.length>60&&(i===0?!document.getElementById('tissueFig').classList.contains('dim'):document.getElementById('tissueFig').classList.contains('dim')));});
+ ok('status labels present',['NOT SEPARATED','NOT MEASURED','FUTURE INVESTIGATION'].every(t=>{for(const b of pp.slice(1)){b.click();if(document.getElementById('popcard').textContent.includes(t))return true;}return false;}));
+ const es=[...document.querySelectorAll('#emtSeg button')];es.forEach((b,i)=>{b.click();const c1=document.getElementById('emt1').className,c2=document.getElementById('emt2').className;ok('EMT toggle '+b.textContent,i===0?c1.includes('on')&&c2.includes('off'):i===1?c1.includes('off')&&c2.includes('on'):c1.includes('on')&&c2.includes('on'));});
+ const dt=[...document.querySelectorAll('#matrix details')];ok('9 matrix rows',dt.length===9);dt.forEach(d=>d.open=true);ok('matrix rows expand',dt.every(d=>d.querySelector('.more').offsetHeight>0));
+ const bb=[...document.querySelectorAll('#batchSeg button')];bb.forEach((b,i)=>{b.click();ok('batch chart '+b.textContent,document.querySelectorAll('#batchSvg circle').length===9);});
+ const tr=[...document.querySelectorAll('#track button')];ok('9 journey stages',tr.length===9);tr.forEach((b,i)=>{b.click();ok('journey stage '+(i+1),document.querySelector('#stageCard h3').textContent.startsWith((i+1)+'.')&&document.querySelectorAll('#stageCard .k').length===6);});
+ document.querySelector('#stageCard [data-go="-1"]').click();ok('journey previous button',document.querySelector('#stageCard h3').textContent.startsWith('8.'));
+ document.getElementById('tourStart').click();ok('tour opens',!document.getElementById('tour').hidden);for(let k=0;k<6;k++)document.getElementById('tourNext').click();ok('tour reaches 7/7',document.getElementById('tourPg').textContent==='7 / 7');document.getElementById('tourNext').click();ok('tour finishes',document.getElementById('tour').hidden);
+ const db=document.getElementById('depthBtn');const before=getComputedStyle(document.querySelector('.tech')).display;db.click();const after=getComputedStyle(document.querySelector('.tech')).display;ok('technical depth toggle',before==='none'&&after!=='none');db.click();
+ ok('events chart 4 bars',document.querySelectorAll('#events rect:not(.hit)').length===4);ok('mmr chart 4 bars',document.querySelectorAll('#mmrSvg rect:not(.hit)').length===4);ok('condition chart 3 bars',document.querySelectorAll('#cond rect:not(.hit)').length===3);
+ ok('roadmap 3 rows',document.querySelectorAll('#road .row').length===3);
+ const txt=document.body.innerText;['+0.004316','0.6016','0.6059','0.833 / 0.862','0.1716','0.0394','0.0251','0.0187','1.070 (0.951–1.202)'].forEach(v=>ok('value shown '+v,txt.includes(v)));
+ ok('a11y: one h1',document.querySelectorAll('h1').length===1);
+ ok('a11y: every button has an accessible name',[...document.querySelectorAll('button')].every(b=>(b.textContent.trim()||b.getAttribute('aria-label')||'').length>0));
+ ok('a11y: every role=img svg has aria-label',[...document.querySelectorAll('svg[role="img"]')].every(s=>s.getAttribute('aria-label')));
+ ok('a11y: each tablist has exactly one tab stop (roving tabindex)',[...document.querySelectorAll('[role="tablist"]')].every(l=>[...l.querySelectorAll('[role="tab"]')].filter(b=>b.tabIndex===0).length===1));
+ (function(){document.querySelectorAll('#ptabs button')[0].click();const b=document.querySelectorAll('#ptabs button')[0];b.focus();b.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowRight',bubbles:true}));ok('a11y: arrow key moves between pathway tabs',document.activeElement===document.querySelectorAll('#ptabs button')[1]&&document.querySelector('#pexplorer .ttl').textContent==='E2F targets');})();
+ ok('a11y: focus-visible style defined',[...document.styleSheets].some(ss=>{try{return [...ss.cssRules].some(r=>r.selectorText&&r.selectorText.includes(':focus-visible'))}catch(e){return false}}));
+ ok('a11y: chart marks focusable for tooltips',document.querySelectorAll('svg [tabindex="0"]').length>30);
+ ok('a11y: status chips carry text',[...document.querySelectorAll('.chip')].every(c=>c.textContent.trim().length>0));
+ ok('links: no external links to break',document.querySelectorAll('a[href^="http"]').length===0);
+ ok('nav: 11 section links resolve',document.querySelectorAll('.toc a').length===11&&[...document.querySelectorAll('.toc a')].every(a=>document.querySelector(a.getAttribute('href'))));
+ (function(){const tip=document.getElementById('tip');let n=0,bad=0;document.querySelectorAll('svg [tabindex="0"]:not([role="button"])').forEach(m=>{m.dispatchEvent(new FocusEvent('focus'));n++;if(!(tip.classList.contains('on')&&tip.textContent.trim().length>5)){bad++;out.push('  no tooltip: '+(m.closest('svg').id||'?')+' '+(m.getAttribute('aria-label')||m.tagName));}m.dispatchEvent(new FocusEvent('blur'));});ok('tooltips: '+n+' chart marks show a tooltip on focus',n>30&&bad===0);})();
+ ok('a11y: forest pathway targets are buttons',[...document.querySelectorAll('#forestAll [role="button"]')].length===4);
+ ok('no horizontal overflow',document.documentElement.scrollWidth<=window.innerWidth+1);
+}catch(e){out.push('FAIL exception '+e.message);}
+out.push('errors: '+JSON.stringify(window.__errs));document.getElementById('qa-results').textContent=out.join('\n');},2500);
+</script>

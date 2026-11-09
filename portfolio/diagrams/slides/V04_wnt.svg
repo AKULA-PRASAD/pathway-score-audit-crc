@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="878.4pt" height="432pt" viewBox="0 0 878.4 432" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 432 
+L 878.4 432 
+L 878.4 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 25.2 7.2 
+L 486 7.2 
+Q 504 7.2 504 25.2 
+L 504 406.8 
+Q 504 424.8 486 424.8 
+L 25.2 424.8 
+Q 7.2 424.8 7.2 406.8 
+L 7.2 25.2 
+Q 7.2 7.2 25.2 7.2 
+z
+" clip-path="url(#p2f7f9f521a)" style="fill: #fbfaf7; stroke: #dde3ea; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 30.96 75.6 
+L 192.24 75.6 
+Q 198 75.6 198 81.36 
+L 198 134.64 
+Q 198 140.4 192.24 140.4 
+L 30.96 140.4 
+Q 25.2 140.4 25.2 134.64 
+L 25.2 81.36 
+Q 25.2 75.6 30.96 75.6 
+z
+" clip-path="url(#p2f7f9f521a)" style="fill: #ffffff; stroke: #00907e; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 239.76 86.4 
+L 318.24 86.4 
+Q 324 86.4 324 92.16 
+L 324 123.84 
+Q 324 129.6 318.24 129.6 
+L 239.76 129.6 
+Q 234 129.6 234 123.84 
+L 234 92.16 
+Q 234 86.4 239.76 86.4 
+z
+" clip-path="url(#p2f7f9f521a)" style="fill: #00907e; stroke: #00907e; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 365.76 86.4 
+L 476.64 86.4 
+Q 482.4 86.4 482.4 92.16 
+L 482.4 123.84 
+Q 482.4 129.6 476.64 129.6 
+L 365.76 129.6 
+Q 360 129.6 360 123.84 
+L 360 92.16 
+Q 360 86.4 365.76 86.4 
+z
+" clip-path="url(#p2f7f9f521a)" style="fill: #f4f6f9; stroke: #dde3ea; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 30.96 255.6 
+L 192.24 255.6 
+Q 198 255.6 198 261.36 
+L 198 314.64 
+Q 198 320.4 192.24 320.4 
+L 30.96 320.4 
+Q 25.2 320.4 25.2 314.64 
+L 25.2 261.36 
+Q 25.2 255.6 30.96 255.6 
+z
+" clip-path="url(#p2f7f9f521a)" style="fill: #ffffff; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #00907e; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 221.76 266.4 
+L 300.24 266.4 
+Q 306 266.4 306 272.16 
+L 306 303.84 
+Q 306 309.6 300.24 309.6 
+L 221.76 309.6 
+Q 216 309.6 216 303.84 
+L 216 272.16 
+Q 216 266.4 221.76 266.4 
+z
+" clip-path="url(#p2f7f9f521a)" style="fill: #00907e; stroke: #00907e; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 399.6 261 
+C 421.558817 261 442.621213 268.396715 458.148441 281.561104 
+C 473.67567 294.725493 482.4 312.582742 482.4 331.2 
+C 482.4 349.817258 473.67567 367.674507 458.148441 380.838896 
+C 442.621213 394.003285 421.558817 401.4 399.6 401.4 
+C 377.641183 401.4 356.578787 394.003285 341.051559 380.838896 
+C 325.52433 367.674507 316.8 349.817258 316.8 331.2 
+C 316.8 312.582742 325.52433 294.725493 341.051559 281.561104 
+C 356.578787 268.396715 377.641183 261 399.6 261 
+z
+" clip-path="url(#p2f7f9f521a)" style="fill: #f1eefb; stroke: #c9c0ee; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 347.76 291.6 
+L 451.44 291.6 
+Q 457.2 291.6 457.2 297.36 
+L 457.2 321.84 
+Q 457.2 327.6 451.44 327.6 
+L 347.76 327.6 
+Q 342 327.6 342 321.84 
+L 342 297.36 
+Q 342 291.6 347.76 291.6 
+z
+" clip-path="url(#p2f7f9f521a)" style="fill: #ffffff; stroke: #00907e; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 336.96 349.2 
+L 462.24 349.2 
+Q 468 349.2 468 354.96 
+L 468 386.64 
+Q 468 392.4 462.24 392.4 
+L 336.96 392.4 
+Q 331.2 392.4 331.2 386.64 
+L 331.2 354.96 
+Q 331.2 349.2 336.96 349.2 
+z
+" clip-path="url(#p2f7f9f521a)" style="fill: #ffffff; stroke: #00907e; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 25.2 201.6 
+L 486 201.6 
+" clip-path="url(#p2f7f9f521a)" style="fill: none; stroke: #dde3ea; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <g id="patch_11">
+     <path d="M 20.224 33.803449 
+L 138.443094 33.803449 
+Q 139.475094 33.803449 139.475094 32.771449 
+L 139.475094 21.948551 
+Q 139.475094 20.916551 138.443094 20.916551 
+L 20.224 20.916551 
+Q 19.192 20.916551 19.192 21.948551 
+L 19.192 32.771449 
+Q 19.192 33.803449 20.224 33.803449 
+z
+" style="fill: #52606d; stroke: #52606d; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 8.6px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="21.6" y="29.585586" transform="rotate(-0 21.6 29.585586)">ESTABLISHED MECHANISM</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="25.2" y="57.105352" transform="rotate(-0 25.2 57.105352)">APC intact, no Wnt signal</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="25.2" y="237.105352" transform="rotate(-0 25.2 237.105352)">APC lost or CTNNB1 mutated (most colorectal cancers)</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 10.5px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(64.914375 104.802012)">destruction complex</text>
+    <text style="font-size: 10.5px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(47.605781 116.690801)">APC · AXIN · GSK3β · CK1</text>
+   </g>
+   <g id="text_5">
+    <text style="font-style: italic; font-size: 9.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #1f2933" x="216" y="72" transform="rotate(-0 216 72)">phosphorylates</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="279" y="110.918437" transform="rotate(-0 279 110.918437)">β-catenin</text>
+   </g>
+   <g id="patch_12">
+    <path d="M 199.999512 108 
+Q 216.001573 108 229.991172 108 
+" style="fill: none; stroke: #1f2933; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 223.591172 104.8 
+L 229.991172 108 
+L 223.591172 111.2 
+z
+" style="fill: #1f2933; stroke: #1f2933; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(393.6875 104.954297)">proteasomal</text>
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(394.791406 116.157422)">degradation</text>
+   </g>
+   <g id="patch_13">
+    <path d="M 325.999512 108 
+Q 342.001573 108 355.991172 108 
+" style="fill: none; stroke: #1f2933; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 349.591172 104.8 
+L 355.991172 108 
+L 349.591172 111.2 
+z
+" style="fill: #1f2933; stroke: #1f2933; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_8">
+    <text style="font-style: italic; font-size: 11px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52606d" x="25.2" y="169.2" transform="rotate(-0 25.2 169.2)">Target genes stay off</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 10.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #1f2933" x="111.6" y="290.714414" transform="rotate(-0 111.6 290.714414)">complex disabled</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="261" y="290.918437" transform="rotate(-0 261 290.918437)">β-catenin</text>
+   </g>
+   <g id="text_11">
+    <text style="font-style: italic; font-size: 9.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #52606d" x="187.2" y="342" transform="rotate(-0 187.2 342)">β-catenin escapes degradation</text>
+   </g>
+   <g id="text_12">
+    <text style="font-style: italic; font-size: 9.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #52606d" x="260.64" y="327.6" transform="rotate(-0 260.64 327.6)">accumulates</text>
+   </g>
+   <g id="text_13">
+    <text style="font-style: italic; font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #6650c4" x="399.6" y="275.04" transform="rotate(-0 399.6 275.04)">nucleus</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #1f2933" x="399.6" y="312.246094" transform="rotate(-0 399.6 312.246094)">β-catenin + TCF/LEF</text>
+   </g>
+   <g id="patch_14">
+    <path d="M 307.788574 288.894287 
+Q 323.998492 296.999246 338.40841 304.204205 
+" style="fill: none; stroke: #1f2933; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 334.11516 298.479871 
+L 338.40841 304.204205 
+L 331.252993 304.204205 
+z
+" style="fill: #1f2933; stroke: #1f2933; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 9.8px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(350.861078 367.817508)">MYC, AXIN2, cyclin D:</text>
+    <text style="font-size: 9.8px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(375.362609 379.768148)">transcribed</text>
+   </g>
+   <g id="patch_15">
+    <path d="M 399.6 329.60127 
+Q 399.6 338.402994 399.6 345.192258 
+" style="fill: none; stroke: #1f2933; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 402.8 338.792258 
+L 399.6 345.192258 
+L 396.4 338.792258 
+z
+" style="fill: #1f2933; stroke: #1f2933; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_16">
+    <g id="patch_16">
+     <path d="M 524.224 30.203449 
+L 601.822875 30.203449 
+Q 602.854875 30.203449 602.854875 29.171449 
+L 602.854875 18.348551 
+Q 602.854875 17.316551 601.822875 17.316551 
+L 524.224 17.316551 
+Q 523.192 17.316551 523.192 18.348551 
+L 523.192 29.171449 
+Q 523.192 30.203449 524.224 30.203449 
+z
+" style="fill: #7b5ea7; stroke: #7b5ea7; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 8.6px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="525.6" y="25.985586" transform="rotate(-0 525.6 25.985586)">CRC LITERATURE</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 11.2px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(525.6 49.629672)">Wnt-pathway genes are genomically altered in 93 % of</text>
+    <text style="font-size: 11.2px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(525.6 62.453016)">colorectal cancers; APC or CTNNB1 in about 80 % (TCGA</text>
+    <text style="font-size: 11.2px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(525.6 75.276359)">2012). Marked WNT/MYC activation characterises CMS2</text>
+    <text style="font-size: 11.2px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(525.6 88.099703)">(Guinney 2015). Genomic alteration is not measured</text>
+    <text style="font-size: 11.2px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(525.6 101.967797)">activation.</text>
+   </g>
+   <g id="text_18">
+    <g id="patch_17">
+     <path d="M 524.224 134.523449 
+L 640.696219 134.523449 
+Q 641.728219 134.523449 641.728219 133.491449 
+L 641.728219 122.668551 
+Q 641.728219 121.636551 640.696219 121.636551 
+L 524.224 121.636551 
+Q 523.192 121.636551 523.192 122.668551 
+L 523.192 133.491449 
+Q 523.192 134.523449 524.224 134.523449 
+z
+" style="fill: #1f2933; stroke: #1f2933; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 8.6px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="525.6" y="130.305586" transform="rotate(-0 525.6 130.305586)">MEASURED IN THIS STUDY</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 11.2px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(525.6 153.949672)">Mean standardised mRNA of 41 target genes. Primary HR 1.016</text>
+    <text style="font-size: 11.2px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(525.6 166.773016)">(0.906–1.138); S-7 1.011 (0.879–1.162). Within-set</text>
+    <text style="font-size: 11.2px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(525.6 179.596359)">coherence 0.041 (loosely co-expressed). 1 sign change when</text>
+    <text style="font-size: 11.2px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(525.6 192.419703)">single batches are omitted. Post-hoc (same data): lower in</text>
+    <text style="font-size: 11.2px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(525.6 205.243047)">BRAF-mutant (-0.74 SD) and CIMP+ (-0.63 SD) tumours, one</text>
+    <text style="font-size: 11.2px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(525.6 219.111141)">serrated axis.</text>
+   </g>
+   <g id="text_20">
+    <g id="patch_18">
+     <path d="M 524.224 252.507449 
+L 644.046187 252.507449 
+Q 645.078188 252.507449 645.078188 251.475449 
+L 645.078188 240.652551 
+Q 645.078188 239.620551 644.046187 239.620551 
+L 524.224 239.620551 
+Q 523.192 239.620551 523.192 240.652551 
+L 523.192 251.475449 
+Q 523.192 252.507449 524.224 252.507449 
+z
+" style="fill: #ffffff; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #52606d; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 8.6px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52606d" x="525.6" y="248.289586" transform="rotate(-0 525.6 248.289586)">NOT TESTED / HYPOTHESIS</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 11.2px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(525.6 271.933672)">Pathway activation (no nuclear β-catenin or APC data). No</text>
+    <text style="font-size: 11.2px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(525.6 284.822641)">explanation is offered for the near-zero estimate.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p2f7f9f521a">
+   <rect x="0" y="0" width="878.4" height="432"/>
+  </clipPath>
+ </defs>
+</svg>
