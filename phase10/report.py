@@ -85,11 +85,19 @@ def track_b(lines):
 
 def track_b_tcga(lines):
     man = load("tcga/freeze_manifest.json")
-    ev = load("tcga/evaluation.json")
-    prep = load("tcga/prepare_report.json")
+    hs = load("tcga/evaluation.json")
+    ev = load("tcga_ga/evaluation.json")
+    prep = load("tcga_ga/prepare_report.json")
     lines += ["## Track B: independent-cohort, cross-platform evaluation in TCGA-COAD", ""]
+    if hs:
+        lines += [f"**Pre-registered HiSeqV2 evaluation: non-informative.** It ran once on the registered stage II–III population, but only "
+                  f"{hs['n']} of 182 patients carry `MSI_updated_Oct62011` ({hs['msi_h']} MSI-H): the 2012-freeze MSI calls sit mostly on "
+                  "Illumina GA samples. Its output (`reports/phase10/tcga/evaluation.json`) is kept unchanged and is not a performance estimate.", "",
+                  "**Declared deviation 2.** Before any label was linked to GA expression, the same frozen models, label definition and population rule "
+                  "were registered against TCGA-COAD GAV2 (same UNC RSEM pipeline, log2(norm_count+1), Illumina GA) and committed "
+                  "(`reports/phase10/tcga_ga/registration.json`). Declared deviation 1 was the calibration-routine fix, with byte-identical re-frozen models.", ""]
     if prep:
-        lines.append(f"Label-free preparation: {prep['primary_tumour_samples']} primary tumours; primary population "
+        lines.append(f"GA label-free preparation: {prep['primary_tumour_samples']} primary tumours; primary population "
                      f"(stage II–III, complete clinical) n = {prep['primary_population_n']}.")
     if man:
         lines.append(f"Freeze manifest: `reports/phase10/tcga/freeze_manifest.json` (SHA-256 `{C.sha256_file(C.REPORTS / 'tcga/freeze_manifest.json')}`), "

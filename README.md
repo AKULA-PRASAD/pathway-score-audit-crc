@@ -2,7 +2,7 @@
 
 Gene-set ("pathway") scores are widely read as tumour biology and used as prognostic features. This project tested four of them rigorously in colon cancer, found what they actually track in bulk tumour tissue, replicated that across four cohorts, and turned the checks into a tested Python tool, **`pathway-audit`**, that anyone can run before interpreting a pathway score.
 
-**Skills shown:** Python (pandas, NumPy, SciPy, scikit-learn, lifelines) · R (survival) · survival analysis and optimism-corrected validation · GEO microarray and TCGA RNA-seq data · tissue-composition estimation (ESTIMATE, MCP-counter) · Python packaging, command-line tools, pytest · reproducible, audited pipelines.
+**Skills shown:** Python (pandas, NumPy, SciPy, scikit-learn, scikit-survival, lifelines) · R (survival) · survival analysis and optimism-corrected validation · machine learning (elastic-net Cox and logistic regression, random forest, strictly nested cross-validation, calibration, independent-cohort evaluation) · GEO microarray and TCGA RNA-seq data · tissue-composition estimation (ESTIMATE, MCP-counter) · Python packaging, command-line tools, pytest · reproducible, audited pipelines.
 
 ## At a glance
 
@@ -13,6 +13,7 @@ Gene-set ("pathway") scores are widely read as tumour biology and used as progno
 | **Molecular anchoring** | The **p53 score tracks TP53 mutation**, replicated in GSE41258 and TCGA-COAD and robust to hypermutation. The BRAF–p53 link in GSE39582 was explained by MMR status and composition, and both BRAF effects in TCGA were explained by hypermutation |
 | **Data-quality catch** | One public cohort (GSE103479) fails a positive-control co-expression check; its values appear misaligned to probe IDs |
 | **Predictive test** | In 452 stage II–III colon cancers, adding the four scores (EMT, E2F, Wnt/β-catenin, p53) to clinical variables gave no reproducible improvement: optimism-corrected ΔC **+0.0043**, all five nested-bootstrap 95 % intervals include zero |
+| **Machine learning (Phase 10)** | **Recurrence:** an elastic-net Cox model over 2,000 genes kept no genes and matched the clinical model (cross-validated ΔC **+0.0003**). **MMR/MSI classification:** an elastic-net classifier trained on GSE39582 and frozen before TCGA labels were read reached TCGA-COAD AUROC **0.990** (95 % CI 0.965–1.000; 97 patients, 20 MSI-H), 0.104 above MLH1 alone. See [Phase 10](#phase-10-machine-learning-upgrade) |
 | **Rigour** | Pre-specified estimand; hash-frozen pipeline; verifier 60/60; follow-up plans registered before running; independent code re-checks within the project of the primary result, the extensions and the TCGA analysis |
 
 ```bash
@@ -35,6 +36,55 @@ Start here: [`portfolio/README.md`](portfolio/README.md) (overview, presentation
 
 - **Scientifically complete:** the frozen verification passed (60 of 60 checks), and an independent re-implementation within this project reproduced every reported number from the raw checkpoints (not an external replication).
 - **Licence:** MIT (`LICENSE`), chosen by the owner on 8 November 2026. **Public release:** pending the owner's review of per-sample data governance (`docs/PUBLIC_RELEASE_REPRODUCIBILITY_AUDIT.md`).
+
+## Phase 10: machine-learning upgrade
+
+Post-hoc and exploratory; Phase 9 is frozen and unchanged (27/27 frozen files and 52/52 archive hashes verified by the tests). Methods and model card: [`docs/PHASE10_METHODS_AND_MODEL_CARD.md`](docs/PHASE10_METHODS_AND_MODEL_CARD.md). Results, generated from `reports/phase10/`: [`docs/PHASE10_RESULTS.md`](docs/PHASE10_RESULTS.md).
+
+**Shared design:**
+- Saved, hashed patient-level folds: 5-fold × 10 repeats.
+- **Strict nesting:** the top-2,000 variance filter, scaling, pathway scores and spline knots are refit inside every inner-training fold.
+- Identical folds and comparable pairs for every model.
+- Repeat SDs describe partition variability; they are not confidence intervals.
+
+**Track A, recurrence (452 patients, 136 events; cause-specific hazard):**
+
+| Model | Harrell C (within-fold pooled, mean of 10 repeats) |
+|---|---|
+| M1 clinical Cox | 0.5998 |
+| M2 clinical + 4 pathways (strict) | 0.6026 |
+| M3 elastic-net Cox (clinical unpenalised + 2,000 genes) | 0.6000 |
+
+- M3 kept **0 genes in all 50 outer fits**, so the transcriptome added no recurrence discrimination this design could detect.
+- A training-fold permutation null gave C 0.503, with no leakage alarm.
+- These are not comparable with Phase 9's optimism-corrected values (0.6016 / 0.6059), which are a different estimand.
+
+**Track B, MMR/MSI-associated classification.** This is a positive control: strong, known biology.
+
+| Model | GSE39582 CV AUROC (likely biased upward) | TCGA-COAD AUROC (95 % CI) |
+|---|---|---|
+| Elastic-net logistic | 0.992 | **0.990** (0.965–1.000) |
+| Random forest | 0.987 | 0.980 (0.950–1.000) |
+| MLH1 only | 0.860 | 0.886 (0.773–0.974) |
+| Clinical only (age, sex, stage, location) | 0.750 | 0.773 (0.679–0.857) |
+
+Caveats to read alongside these numbers:
+- **ComBat:** GSE39582's deposited expression was ComBat-corrected with MMR status protected, so its CV metrics are likely inflated.
+- **TCGA evaluation:**
+  - The models were frozen and committed before any TCGA label was read.
+  - It's an independent-cohort, cross-platform evaluation (Affymetrix → Illumina GA RNA-seq).
+  - The labels are related but not identical PCR-MSI calls.
+  - Expression was z-scored within TCGA (unsupervised target-cohort adaptation), so it isn't a single-patient prediction pipeline.
+- **Declared deviation:** the pre-registered HiSeq evaluation had labels for only 4 of 182 patients. It is reported as non-informative and was replaced by a registered GA-platform evaluation.
+- **Not a clinical tool.**
+
+```bash
+python3.13 -m venv ~/.venvs/coad-phase10 && ~/.venvs/coad-phase10/bin/pip install -r requirements-phase10.txt
+P=~/.venvs/coad-phase10/bin/python
+$P -m pytest tests/phase10 -o addopts="" -q      # 21 safeguard tests
+$P -m phase10.mmr --repeats 10 && $P -m phase10.recurrence --repeats 10 --null 5
+$P -m phase10.report && $P -m phase10.site       # results doc, figures, website section
+```
 
 ## Research question
 

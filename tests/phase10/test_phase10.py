@@ -297,6 +297,31 @@ def test_phase9_hashes_unchanged():
     assert r["archive_files"] == 52 and r["archive_mismatches"] == []
 
 
+# ---------------------------------------------------------------- website numbers trace to reports
+def test_website_ml_section_matches_reports():
+    needed = ["recurrence/summary.json", "mmr/summary.json", "tcga_ga/evaluation.json", "tcga/evaluation.json"]
+    if not all((C.REPORTS / p).exists() for p in needed):
+        pytest.skip("Phase 10 results incomplete")
+    from phase10 import site
+    card, sec = site.render()
+    page = site.PAGE.read_text(encoding="utf-8")
+    assert f"<!-- PHASE10:START -->\n{sec}\n<!-- PHASE10:END -->" in page
+    assert f"<!-- PHASE10-CARD:START -->{card}<!-- PHASE10-CARD:END -->" in page
+
+
+def test_tcga_ga_evaluation_is_sealed_and_single():
+    from phase10 import tcga_ga as G
+    if not (G.OUT / "evaluation.json").exists():
+        pytest.skip("GA evaluation not run")
+    with pytest.raises(G.T.SealedLabelError, match="once"):
+        G.evaluate(C.load_config())                          # refuses a second evaluation
+    reg = json.loads(G.REG.read_text())
+    ev = json.loads((G.OUT / "evaluation.json").read_text())
+    assert ev["registration_sha256"] == C.sha256_file(G.REG)
+    man = json.loads((C.REPORTS / "tcga" / "freeze_manifest.json").read_text())
+    assert reg["model_sha256"] == {n: e["sha256"] for n, e in man["models"].items()}
+
+
 # ---------------------------------------------------------------- 12. results on the registered cohort/label
 def test_reported_results_use_registered_cohorts_and_labels():
     b = C.REPORTS / "mmr" / "summary.json"
