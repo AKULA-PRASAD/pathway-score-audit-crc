@@ -128,7 +128,7 @@ The wording is checked against `docs/PHASE9_THETA_ALIGNMENT_AUDIT.md` §1, §4.1
 | README covers question, motivation, data, preprocessing, scoring, models, validation, results, audit, interpretation, limitations, reproduction, environment, layout, data access | Yes. Restrained conclusion; no robust-improvement, utility, absolute-risk, external-validation, causal or generalisation claim |
 | File-size limits | Only the five checkpoints exceed 100 MB (excluded); largest committed file 6.3 MB |
 | Broken references | None in the deliverable documents (shorthand such as `scripts/46` refers to numbered scripts) |
-| Licence | None chosen (owner decision; required before public release) |
+| Licence | MIT, chosen by the owner on 8 November 2026 (`LICENSE`) |
 | Wording fixes G1–G13 | Applied after owner approval (8 Nov 2026) |
 
 ## 7. Proposed Git commit plan (not executed)
@@ -162,6 +162,6 @@ Commit messages should be professional English, with no tool attribution.
 | Report, README, inventory and handover agree on all numbers | ✅ |
 | Final report interpretation complete | ✅ G1–G13 applied after owner approval (8 Nov 2026) |
 | Owner decisions A–E | ✅ approved 8 Nov 2026 (recorded in the decision register) |
-| Licence | ⏳ open |
+| Licence | ✅ MIT (owner decision, 8 Nov 2026) |
 | Local commits | ✅ G1–G8 committed 8 Nov 2026 (`7e0df408`…`97ed2a04`), plus a documentation-only follow-up |
 | Push, GitHub Release, archive upload | ⏳ not authorised |

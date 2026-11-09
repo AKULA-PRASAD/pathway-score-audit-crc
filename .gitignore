@@ -43,3 +43,7 @@ secrets.yaml
 # reports/phase9/ARCHIVE_MANIFEST_SHA256.txt. Restore and check: docs/LARGE_ARTIFACT_ARCHIVE.md
 reports/phase9/corrected_rerun/runs/*.jsonl
 reports/phase9/corrected_rerun/runs/*.lock
+
+# --- editor / OS lock files ---
+~$*
+.DS_Store
