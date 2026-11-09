@@ -71,7 +71,7 @@ All files under `portfolio/`. Generated assets are derived from frozen project o
 | `src/values.py` | reads every portfolio number from frozen outputs | 13,168 | `56f29494f3c99d45…` |
 | `src/web_check.py` | runs web interaction and accessibility checks in headless Chrome | 2,046 | `592e487b62ac488b…` |
 | `src/web_interaction_test.html.part` | the web checks appended by web_check.py | 7,208 | `787e1ff7204a107c…` |
-| `web/index.html` | interactive research portfolio (source of the published web page) | 115,640 | `a36ea2e789a44ed8…` |
+| `web/index.html` | interactive research portfolio (source of the published web page) | 115,636 | `4ae9c6d44ce84fb1…` |
 
 ## Frozen sources read (not modified)
 
