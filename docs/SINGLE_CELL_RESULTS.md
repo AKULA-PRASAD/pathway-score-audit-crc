@@ -44,7 +44,7 @@ Endothelial cells were also mildly enriched for EMT-set transcripts (median 1.59
 
 ## Files
 
-- Scripts: `scripts/single_cell/` (`run_all.sh`); environment in `results/single_cell/ENVIRONMENT.txt`.
+- Scripts: `scripts/single_cell/` (`run_all.sh`), implemented with pandas, SciPy and h5py (the plan named Scanpy; see its deviation log); environment in `results/single_cell/ENVIRONMENT.txt`.
 - Results: `results/single_cell/summary.json`, `qc_gate.json`, `s1_s2_s5_enrichment.csv`, `s3_coherence.csv`, `s4_pseudobulk.csv`.
 - Validation: `results/single_cell/validation_checks.json` (16/16), including a raw re-read of two discovery patients that reproduces the streamed sums exactly.
 - Figure: `figures/single_cell/FS1_single_cell_sources.png`.

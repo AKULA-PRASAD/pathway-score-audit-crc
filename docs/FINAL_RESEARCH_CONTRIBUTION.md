@@ -1,7 +1,7 @@
 # Final research contribution
 
 **Date:** 8 November 2026.
-**Scope:** the original registered study, the post-hoc limitation investigation (X1–X9), the registered research extensions (E1–E3 plus the TCGA-COAD addendum), and the `pathway-audit` tool (`tools/pathway-audit/`).
+**Scope:** the original registered study, the post-hoc limitation investigation (X1–X9), the registered research extensions (E1–E3 plus the TCGA-COAD addendum), the registered single-cell extension (S1–S5), and the `pathway-audit` tool (`tools/pathway-audit/`).
 **Supporting documents:**
 - `docs/RESEARCH_QUESTION_REASSESSMENT.md`
 - `docs/BIOLOGICAL_CONTRIBUTION_STRENGTHENING_PLAN.md`
@@ -101,7 +101,7 @@ No external **predictive** validation was possible: no compatible cohort exists 
 ## 9. Remaining uncertainties
 
 - Pathway *activity* was not measured.
-- Tumour-cell-specific expression and tumour-cell EMT cannot be determined from bulk data.
+- Tumour-cell-specific expression cannot be determined from bulk data. Single-cell data (§9c) place the EMT-set transcripts mainly in stromal cells and detected no coherent tumour-cell EMT programme, but rare or partial tumour-cell states are not ruled out.
 - Composition is estimated computationally, not measured.
 - The provenance of the ComBat `combat_mod` covariate is undocumented. ComBat protected it, which may inflate MMR-group differences.
 - Baseline batch heterogeneity is real and of unknown source.
@@ -118,13 +118,29 @@ The project's methods are packaged as an installable Python tool with a command-
 - optionally, whether the scores add optimism-corrected discrimination to a clinical model.
 
 **What has been checked:**
-- 9 of 9 tests pass, including validation of the ESTIMATE re-implementation, in a fresh environment.
+- 13 of 13 tests pass, including validation of the ESTIMATE re-implementation and the single-cell source check, in a fresh environment; the code is lint-clean.
+- Continuous integration on GitHub Actions (lint, tests, demo) passes on Python 3.10 and 3.12.
 - Five-cohort case study (`reports/pathway_audit_case_study/`):
   - it flags EMT as composition-dominated in every usable cohort;
   - it fails GSE103479 at the quality gate;
   - its survival screen (+0.0048) is close to the frozen nested estimate (+0.0043).
 
-**Not yet run:** the Dockerfile and the CI workflow, because Docker is not installed here and nothing has been pushed.
+- Single-cell case study: on GSE132465 tumour cells, `sc-sources` reproduces the registered single-cell analysis (EMT set: stromal 5.10 vs 5.08, epithelial 0.45 vs 0.45).
+
+**Not yet run:** the Docker image has not been built (Docker is not installed on the development machine).
+
+## 9c. Single-cell extension (S1–S5)
+
+Registered before any data access (`docs/SINGLE_CELL_EXTENSION_PLAN.md`); results in `docs/SINGLE_CELL_RESULTS.md`. Three public cohorts (GSE132465 discovery, 18 patients; GSE144735, 4; GSE178341, 39), outcome-free.
+
+| Question | Result | Decision |
+|---|---|---|
+| S1 Which cells supply EMT-set transcripts? | Stromal enrichment 5.08× vs epithelial 0.45× the expression-matched share (discovery, p = 7.6 × 10⁻⁶); same direction in both replications | Supported |
+| S2 Same, gene-disjoint set | 4.15× vs 0.48× | Supported |
+| S3 Coherent EMT-like programme in malignant epithelium? | Above the random 95th percentile in 0 of 61 patients (4 of 61 with an ambient-RNA control) | Not detected at this resolution |
+| S4 Pseudo-bulk EMT score vs counted stromal fraction | ρ 0.97 (discovery; random upper bound 0.69); 0.67 in GSE178341 (random upper bound 0.29) | Supported |
+
+**Evidence class:** replicated, measured at single-cell resolution (mRNA). This upgrades the bulk finding from "tracks *estimated* stromal content" to "transcripts measured mainly in stromal cells", without establishing that tumour-cell EMT is absent.
 
 ## 10. Contribution to computational biology
 
@@ -135,7 +151,7 @@ The project's methods are packaged as an installable Python tool with a command-
 
 ## 11. Next logical study
 
-- **Most informative:** spatial transcriptomics, or single-cell / dual-IHC (cytokeratin with vimentin/ZEB1; nuclear β-catenin; p21) on a subset of stage II–III tumours with matched bulk arrays. This would separate epithelial from stromal mesenchymal expression and test whether the Wnt-target and p53-target modules reflect tumour-cell activity.
+- **Most informative:** spatial transcriptomics or multiplexed protein imaging (cytokeratin with vimentin/ZEB1; nuclear β-catenin; p21) on stage II–III tumours with matched bulk arrays. Single-cell RNA has now located the EMT-set transcripts mainly in stroma (§9c); spatial and protein data would test for rare or partial tumour-cell EMT states at the invasive front, and whether the Wnt-target and p53-target modules reflect tumour-cell activity.
 - **Computational:** apply `pathway-audit` to further cohorts (CPTAC proteogenomic colon data would allow protein-level checks of the p53 and Wnt targets); obtain a corrected or raw-CEL version of GSE103479.
 - **Predictive:** external validation of the frozen M1/M2 only in a cohort with about 340 or more recurrences and all five predictors.
 
