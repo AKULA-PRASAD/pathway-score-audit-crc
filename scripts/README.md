@@ -31,4 +31,6 @@ Core library code lives in `src/` (pathway scoring, standardisation, Phase 9 mod
 | `exploratory/` | X1–X8 (X9, the recurrence-time-unit search, was a document search recorded in `reports/exploratory/x9_time_unit/`): molecular anchoring, competing risks (Python and R), batch frailty (R), MMR provenance, ESTIMATE re-implementation and MCP-counter, scores versus composition, composition-adjusted Cox, external-cohort audit; shared helpers, figures and validation | `exploratory/run_all.sh` (validation 22/22) |
 | `research_extensions/` | E1 gene architecture and clusterwise stability; E2 composition- and subtype-conditioned structure; E3 replication in GSE41258, GSE143985, GSE103479 and TCGA-COAD, with the positive-control QC gate and challenge tests; figures and validation | `research_extensions/run_all.sh` (validation 28/28) |
 
+| `single_cell/` | S1–S5: stream three public scRNA-seq cohorts into per-patient compartment aggregates (`s0_build.py`), QC gate and registered tests (`s1_tests.py`), validation (`s_validate.py`), figure (`s_figures.py`) | `single_cell/run_all.sh` with `.venv-sc` (validation 16/16) |
+
 The reusable tool is not here: see `../tools/pathway-audit/`.

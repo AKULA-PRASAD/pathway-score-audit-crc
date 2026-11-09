@@ -2,6 +2,12 @@
 
 How the project developed, using the dates recorded in the commits and in each document. Work was developed in the working tree and committed in logical groups after the owner reviewed it, which is why several commits share a timestamp.
 
+## 2026-11-08 (evening): single-cell extension and pathway-audit 0.2.0
+- Branch pushed to the private GitHub repository, renamed `pathway-score-audit-crc`; GitHub Actions CI passes on Python 3.10 and 3.12.
+- Single-cell extension S1–S5 run in GSE132465, GSE144735 and GSE178341 after the plan and the compartment mapping were committed (`docs/SINGLE_CELL_RESULTS.md`).
+- `pathway-audit` 0.2.0: single-cell source check (`sc-sources`), 13 tests; reproduces the registered single-cell result.
+- Slides 16, 18 and 19, README, interview guide and resume text updated.
+
 ## 2026-11-08: follow-up research, the tool and the portfolio
 - Registered post-hoc analyses X1–X9 investigating every limitation (`docs/EXPLORATORY_ANALYSIS_PLAN.md`).
 - Registered research extensions E1–E3, with replication in GSE41258, GSE143985 and TCGA-COAD, a positive-control QC gate, and post-review challenge tests (`docs/RESEARCH_EXTENSION_REGISTER.md`).

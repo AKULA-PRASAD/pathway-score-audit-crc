@@ -38,7 +38,7 @@ The reusable tool is documented separately in [`../tools/pathway-audit/README.md
 | Limitation investigation X1–X9 | `EXPLORATORY_ANALYSIS_PLAN.md` (registered plan) → `ADDITIONAL_ANALYSES_METHODS_AND_RESULTS.md` (results) → `EXPLORATORY_INDEPENDENT_AUDIT_REPORT.md` (review); `EXTERNAL_COHORT_ELIGIBILITY_AUDIT.md` (X8) |
 | Interpretation | `SCIENTIFIC_INTERPRETATION_AND_CONCLUSION.md`, `SCIENTIFIC_LIMITATION_RESOLUTION_REGISTER.md`, `RESEARCH_QUESTION_REASSESSMENT.md` |
 | Research extensions E1–E3 | `BIOLOGICAL_CONTRIBUTION_STRENGTHENING_PLAN.md` → `RESEARCH_EXTENSION_REGISTER.md` (registered) and `RESEARCH_EXTENSION_ADDENDUM_TCGA.md` (registered) → `INDEPENDENT_SCIENTIFIC_CHALLENGE.md` (challenge) → `FINAL_RESEARCH_CONTRIBUTION.md` (synthesis) |
-| Next: single-cell S1–S5 | `SINGLE_CELL_EXTENSION_PLAN.md` (registered; not yet run) |
+| Single-cell extension S1–S5 | `SINGLE_CELL_EXTENSION_PLAN.md` (registered before data access) → `SINGLE_CELL_RESULTS.md` (results) |
 
 ## 3. Project records and release
 
@@ -67,4 +67,4 @@ The reusable tool is documented separately in [`../tools/pathway-audit/README.md
 | X1–X9 | Registered post-hoc analyses of each limitation |
 | E1–E3, R1–R6 | Research extensions, and the six pre-registered replication hypotheses within E3 |
 | C1–C6 | Post-review challenge tests (for example C2: gene-disjoint EMT–fibroblast test; C5: TCGA hypermutation; C6: cohort-specific random-gene-set baselines) |
-| S1–S5 | Planned single-cell questions |
+| S1–S5 | Registered single-cell questions (see `SINGLE_CELL_RESULTS.md`) |

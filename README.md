@@ -8,8 +8,8 @@ Gene-set ("pathway") scores are widely read as tumour biology and used as progno
 
 | | |
 |---|---|
-| **Tool** | [`tools/pathway-audit/`](tools/pathway-audit/): a tested Python package and command-line tool that audits any pathway score (data-quality gate, gene drivers, tissue composition, genotype confounding, random-set null, survival screen), with self-contained HTML reports and a 30-second built-in demo. 11/11 tests pass; lint-clean |
-| **Replicated finding** | In bulk tissue the Hallmark **EMT score tracks stromal (fibroblast) content**: gene-disjoint ρ 0.94–0.98 in GSE39582, GSE41258, GSE143985 and TCGA-COAD, each above its own random-gene-set baseline. This is a bulk-tissue association, not evidence of tumour-cell EMT |
+| **Tool** | [`tools/pathway-audit/`](tools/pathway-audit/): a tested Python package and command-line tool that audits any pathway score (data-quality gate, gene drivers, tissue composition, genotype confounding, random-set null, survival screen), with self-contained HTML reports and a 30-second built-in demo, plus a single-cell source check (`sc-sources`). 13/13 tests pass; lint-clean; CI passes on Python 3.10 and 3.12 |
+| **Replicated finding** | In bulk tissue the Hallmark **EMT score tracks stromal (fibroblast) content**: gene-disjoint ρ 0.94–0.98 in GSE39582, GSE41258, GSE143985 and TCGA-COAD, each above its own random-gene-set baseline. **Confirmed in single cells** (3 public cohorts, registered before analysis): EMT-set transcripts come mainly from stromal cells (5.1× the expression-matched share; epithelial 0.45×), and no coherent tumour-cell EMT programme was detected (not ruled out) |
 | **Molecular anchoring** | The **p53 score tracks TP53 mutation**, replicated in GSE41258 and TCGA-COAD and robust to hypermutation. The BRAF–p53 link in GSE39582 was explained by MMR status and composition, and both BRAF effects in TCGA were explained by hypermutation |
 | **Data-quality catch** | One public cohort (GSE103479) fails a positive-control co-expression check; its values appear misaligned to probe IDs |
 | **Predictive test** | In 452 stage II–III colon cancers, adding the four scores (EMT, E2F, Wnt/β-catenin, p53) to clinical variables gave no reproducible improvement: optimism-corrected ΔC **+0.0043**, all five nested-bootstrap 95 % intervals include zero |
@@ -24,7 +24,7 @@ Start here: [`portfolio/README.md`](portfolio/README.md) (overview, presentation
 ## Five-minute tour for reviewers
 
 1. **The tool:** `tools/pathway-audit/README.md`, then run the demo (one command above) and open `demo/report.html`.
-2. **The science in one page:** `docs/FINAL_RESEARCH_CONTRIBUTION.md`, or the draft paper `docs/manuscript/MANUSCRIPT_DRAFT.md`.
+2. **The science in one page:** `docs/FINAL_RESEARCH_CONTRIBUTION.md`, or the draft paper `docs/manuscript/MANUSCRIPT_DRAFT.md`. Newest result: `docs/SINGLE_CELL_RESULTS.md`.
 3. **The code:** the tool's package `tools/pathway-audit/src/pathway_audit/` and the nested-bootstrap engine `src/phase9_corrected/`.
 4. **The evidence trail:** `docs/README.md` maps every document; `scripts/README.md` maps every script.
 5. **The slides:** `portfolio/presentation/GSE39582_recurrence_portfolio.pdf`.
@@ -139,7 +139,8 @@ Recurrence risk after surgery for stage II–III colon cancer varies widely, and
 | `scripts/exploratory/` | registered post-hoc analyses X1–X9 (`run_all.sh`; validation 22/22) |
 | `scripts/research_extensions/` | research extensions E1–E3 and the TCGA addendum (`run_all.sh`; validation 28/28) |
 | `reports/exploratory/`, `reports/research_extensions/`, `results/research_extensions/`, `figures/research_extensions/` | outputs of the post-hoc work |
-| `tools/pathway-audit/` | the reusable tool: package, CLI, tests, demo and case-study script |
+| `scripts/single_cell/`, `results/single_cell/`, `figures/single_cell/` | registered single-cell extension S1–S5 (`run_all.sh`; validation 16/16) |
+| `tools/pathway-audit/` | the reusable tool: package, CLI, tests, demo and case-study scripts (bulk and single-cell) |
 | `reports/pathway_audit_case_study/` | tool reports for five colorectal cohorts |
 | `portfolio/` | presentation, web page, diagrams, resume text and portfolio QC |
 | `tests/` | 1,097 tests (`conftest.py` skips the 176 data-dependent ones when the data are absent) |
@@ -157,7 +158,7 @@ python3.13 -m venv .venv
 
 **Without the data** (a fresh clone): 909 tests pass and 188 are skipped. The 176 tests that need the gitignored data bundle are listed in `tests/data_dependent_tests.txt`, and `tests/conftest.py` skips them with a stated reason. **With the data** (after the pipeline below): all 1,097 tests pass and none are skipped.
 
-`pathway-audit` has its own suite: `cd tools/pathway-audit && pip install -e ".[survival,test]" && pytest` (11 tests, no project data needed).
+`pathway-audit` has its own suite: `cd tools/pathway-audit && pip install -e ".[survival,test]" && pytest` (13 tests, no project data needed; also run by GitHub Actions on every push).
 
 ## Reproduction
 
