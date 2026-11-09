@@ -242,8 +242,8 @@ z
     <text style="font-weight: 700; font-size: 10.4px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f7a4d" x="21.6" y="229.491406" transform="rotate(-0 21.6 229.491406)">Found</text>
    </g>
    <g id="text_9">
-    <text style="font-size: 10.6px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(102.24 223.822735)">Composition- and genotype-linked expression: EMT</text>
-    <text style="font-size: 10.6px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(102.24 235.276015)">score tracks stroma; p53 score tracks TP53 status.</text>
+    <text style="font-size: 10.6px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(102.24 223.773876)">EMT score tracks stroma in 4 bulk and 3 single-</text>
+    <text style="font-size: 10.6px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(102.24 235.276015)">cell cohorts; p53 score tracks TP53 status.</text>
    </g>
    <g id="patch_17">
     <path d="M 54 251.123906 
@@ -293,21 +293,22 @@ z
     <text style="font-weight: 700; font-size: 9px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #52606d" x="444.24" y="70.729102" transform="rotate(-0 444.24 70.729102)">Q1</text>
    </g>
    <g id="text_17">
-    <text style="font-weight: 700; font-size: 11.6px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="465.12" y="70.681953" transform="rotate(-0 465.12 70.681953)">Is the EMT-associated expression in tumour cells or in stroma?</text>
+    <text style="font-weight: 700; font-size: 11.6px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(465.12 64.369242)">Are there rare or partial tumour-cell EMT states that single-cell</text>
+    <text style="font-weight: 700; font-size: 11.6px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(465.12 76.994664)">RNA missed?</text>
    </g>
    <g id="text_18">
     <text style="font-weight: 700; font-size: 10.2px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52606d" x="435.6" y="96.705879" transform="rotate(-0 435.6 96.705879)">How:</text>
    </g>
    <g id="text_19">
-    <text style="font-size: 10.2px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(476.64 97.423415)">Spatial transcriptomics, single-cell RNA-seq or cell-resolved protein</text>
-    <text style="font-size: 10.2px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(476.64 108.431745)">staining (e.g. E-cadherin, vimentin) on matched tumours.</text>
+    <text style="font-size: 10.2px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(476.64 97.423415)">Spatial transcriptomics or multiplexed protein imaging (e.g.</text>
+    <text style="font-size: 10.2px; font-family: 'Arial', 'DejaVu Sans'; fill: #1f2933" transform="translate(476.64 108.431745)">E-cadherin, vimentin) at the invasive front.</text>
    </g>
    <g id="text_20">
     <text style="font-weight: 700; font-size: 10.2px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52606d" x="435.6" y="134.145879" transform="rotate(-0 435.6 134.145879)">Why:</text>
    </g>
    <g id="text_21">
-    <text style="font-size: 10.2px; font-family: 'Arial', 'DejaVu Sans'; fill: #52606d" transform="translate(476.64 134.923181)">Separates tumour-cell EMT from fibroblast content, which bulk data</text>
-    <text style="font-size: 10.2px; font-family: 'Arial', 'DejaVu Sans'; fill: #52606d" transform="translate(476.64 146.823214)">cannot do.</text>
+    <text style="font-size: 10.2px; font-family: 'Arial', 'DejaVu Sans'; fill: #52606d" transform="translate(476.64 134.863415)">Single cells placed EMT-set transcripts mainly in stroma, with no</text>
+    <text style="font-size: 10.2px; font-family: 'Arial', 'DejaVu Sans'; fill: #52606d" transform="translate(476.64 145.809589)">coherent tumour-cell programme; localised states need spatial data.</text>
    </g>
    <g id="text_22">
     <text style="font-weight: 700; font-size: 9px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #52606d" x="444.24" y="195.289102" transform="rotate(-0 444.24 195.289102)">Q2</text>

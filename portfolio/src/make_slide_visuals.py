@@ -704,7 +704,7 @@ def v16(V):
     # 1 · tool
     x0, y0, w0, h0 = 0.08, 0.06, 5.98, 2.92
     _block(ax, x0, y0, w0, h0, 1, "A reusable pathway-audit framework", *TOOL, "TESTED SOFTWARE")
-    _lines(ax, x0 + 0.24, y0 + 0.6, w0 - 0.4, [("Python package and command-line tool that checks what a bulk gene-set score measures before it is interpreted.", None, False)])
+    _lines(ax, x0 + 0.24, y0 + 0.6, w0 - 0.4, [("Python package and command-line tool that checks what a gene-set score measures, in bulk tumour data and in single cells, before it is interpreted.", None, False)])
     steps = ["Data-quality\ngate", "Gene drivers,\ncoherence", "Tissue\ncomposition", "Molecular\nassociations", "Random-set\nnull", "Survival\nscreen"]
     cw, cg = 0.88, 0.075
     for i, s in enumerate(steps):
@@ -713,28 +713,31 @@ def v16(V):
         ax.text(cx + cw / 2, y0 + 1.5, s, ha="center", va="center", fontsize=8.8, linespacing=1.15)
         if i < len(steps) - 1:
             act(ax, cx + cw, y0 + 1.52, cx + cw + cg, y0 + 1.52, color=TOOL[0], lw=1.2)
-    facts = [("11/11", "package tests pass"), ("4/4", "planted truths recovered in the demo"), ("5", "cohorts in the case study (1 failed the QC gate)")]
+    facts = [("13/13", "package tests pass"), ("CI", "passes on Python 3.10 and 3.12 (GitHub Actions)"), ("4/4", "planted truths recovered in the demo"),
+             ("5 + 1", "bulk + single-cell case-study cohorts")]
     for i, (n_, t) in enumerate(facts):
-        fx = x0 + 0.24 + i * 1.92
-        ax.text(fx, y0 + 2.04, n_, fontsize=17, fontweight="bold", color=TOOL[0], va="center")
-        ax.text(fx, y0 + 2.24, wrap(t, 1.78, 9.6), fontsize=9.6, color=INK, va="top", linespacing=1.15)
-    ax.text(x0 + 0.24, y0 + h0 - 0.13, "Docker image and GitHub Actions workflow written, not yet run.", fontsize=9.2, color=MUTED, va="bottom", style="italic")
+        fx = x0 + 0.24 + i * 1.42
+        ax.text(fx, y0 + 2.04, n_, fontsize=16, fontweight="bold", color=TOOL[0], va="center")
+        ax.text(fx, y0 + 2.24, wrap(t, 1.3, 9.2), fontsize=9.2, color=INK, va="top", linespacing=1.15)
+    ax.text(x0 + 0.24, y0 + h0 - 0.1, "Version 0.2.0. Docker image written, not yet built.", fontsize=9.0, color=MUTED, va="bottom", style="italic")
     # 2 · EMT
     x1, y1, w1, h1 = 6.14, 0.06, 5.98, 2.92
-    _block(ax, x1, y1, w1, h1, 2, "Replicated: bulk EMT score tracks stroma", *BIO, "REPLICATED · 4 COHORTS")
-    yy = _lines(ax, x1 + 0.24, y1 + 0.6, 2.3, [("Gene-disjoint ρ 0.94–0.98 with fibroblast markers in all four usable cohorts.", None, True),
-                                              ("Each above its own random-gene-set baseline (grey band, 95 % range).", None, False)], fs=10.3)
-    # bulk-tissue icon: tumour cells + fibroblasts pooled into one score
-    ix, iy = x1 + 0.3, y1 + 1.86
-    ax.add_patch(Circle((ix + 0.42, iy + 0.32), 0.36, fc=CELL["matrix"], ec=FAINT, lw=1))
-    for dx, dy in ((0.22, 0.2), (0.4, 0.14), (0.3, 0.4), (0.52, 0.34)):
-        ax.add_patch(Circle((ix + dx, iy + dy), 0.065, fc=CELL["epi"], ec=CELL["epin"], lw=0.6))
-    for dx, dy, a_ in ((0.62, 0.22, 30), (0.58, 0.5, -20), (0.2, 0.52, 10)):
-        ax.add_patch(Ellipse((ix + dx, iy + dy), 0.24, 0.07, angle=a_, fc=CELL["fib"], ec=CELL["fibn"], lw=0.6))
-    act(ax, ix + 0.82, iy + 0.32, ix + 1.12, iy + 0.32, color=MUTED, lw=1.2)
-    ax.text(ix + 1.16, iy + 0.32, "one bulk\nscore", fontsize=9, color=MUTED, va="center")
-    ax.text(x1 + 0.24, y1 + h0 - 0.13, "Bulk-tissue association; not tumour-cell EMT.", fontsize=9.6, color=BIO[0], va="bottom", fontweight="bold")
-    a = _axes(fig, x1 + 3.42, y1 + 0.62, 2.4, 1.85)
+    SC = V["SC"]
+    _block(ax, x1, y1, w1, h1, 2, "Replicated: EMT score tracks stroma", *BIO, "BULK ×4 · SINGLE-CELL ×3")
+    _lines(ax, x1 + 0.24, y1 + 0.58, 2.55, [("Bulk: gene-disjoint ρ 0.94–0.98 in four cohorts, each above its own random-gene-set band (grey).", None, True)], fs=9.4)
+    ax.text(x1 + 0.24, y1 + 1.2, "Single cells (discovery): EMT-set transcript\nshare vs matched random genes; dashed = 1×", fontsize=8.6, color=MUTED, va="top", linespacing=1.15)
+    bars = [("stromal", SC["emt_median"]["stromal"], CELL["fibn"]), ("endothelial", SC["emt_median"]["endothelial"], CELL["endo"]),
+            ("immune", SC["emt_median"]["immune"], CELL["imm"]), ("epithelial", SC["emt_median"]["epithelial"], CELL["epin"])]
+    for i, (lab, val, colr) in enumerate(bars):
+        by = y1 + 1.6 + i * 0.17
+        ax.text(x1 + 0.98, by, lab, fontsize=8.6, ha="right", va="center", color=INK)
+        wv = 0.27 * (math.log2(val) + 1.5)
+        ax.add_patch(Rectangle((x1 + 1.04, by - 0.06), max(wv, 0.02), 0.12, fc=colr, ec="none"))
+        ax.text(x1 + 1.08 + max(wv, 0.27 * 1.5), by, f"{val:.2f}×", fontsize=8.6, va="center", color=INK)
+    ax.plot([x1 + 1.04 + 0.27 * 1.5] * 2, [y1 + 1.5, y1 + 2.18], color=MUTED, lw=0.8, ls="--")
+    ax.text(x1 + 0.24, y1 + h0 - 0.1, "Tumour-cell EMT programme not\ndetected in single cells (not ruled\nout: rare or partial states).", fontsize=8.8,
+            color=BIO[0], va="bottom", fontweight="bold", linespacing=1.15)
+    a = _axes(fig, x1 + 3.82, y1 + 0.62, 2.0, 1.85)
     order = ["GSE39582", "GSE41258", "GSE143985", "TCGA-COAD"]
     for i, c in enumerate(order):
         yv = len(order) - 1 - i
@@ -795,7 +798,7 @@ def v16(V):
     # what remains unresolved
     yb = 5.12
     ax.text(0.1, yb + 0.02, "What remains unresolved", fontsize=11.2, fontweight="bold", color=INK, va="top")
-    gaps = [("Tumour-cell-specific EMT", "needs spatial, single-cell or cell-resolved protein evidence"),
+    gaps = [("Tumour-cell EMT", "not detected in single cells; partial states need spatial or protein data"),
             ("Direct pathway activation", "needs functional or protein-level measurement"),
             ("External predictive validation", f"no eligible cohort: {X['ext_eligible']} of {X['ext_assessed']} assessed; max {X['ext_max_events']} vs ≈{X['ext_needed']} recurrences needed"),
             ("Recurrence-time unit", "undocumented; provisionally months")]
@@ -845,7 +848,7 @@ def v18(V):
     steps = [("Asked", "Do four pathway scores improve recurrence prediction after surgery?", PRIMARY, "#eaf2fc"),
              ("Found", f"No reproducible gain: corrected ΔC +{V['theta']:.6f}, every interval includes zero.", PRIMARY, "#eaf2fc"),
              ("Asked next", "What do these scores measure in bulk tumour tissue?", "#1f7a4d", "#e9f5ee"),
-             ("Found", "Composition- and genotype-linked expression: EMT score tracks stroma; p53 score tracks TP53 status.", "#1f7a4d", "#e9f5ee"),
+             ("Found", "EMT score tracks stroma in 4 bulk and 3 single-cell cohorts; p53 score tracks TP53 status.", "#1f7a4d", "#e9f5ee"),
              ("Delivered", "pathway-audit, so these checks can be run before a score is interpreted.", "#6650c4", "#f1eefb")]
     y = 0.62
     for i, (lab, t, col, bg) in enumerate(steps):
@@ -861,9 +864,9 @@ def v18(V):
             fontsize=11.4, color=WHITE, va="top", linespacing=1.2)
     ax.text(5.85, 0.3, "Next scientific questions", fontsize=13.2, fontweight="bold", color=INK, va="center")
     tag(ax, 8.65, 0.3, "nt", fs=8.4)
-    qs = [("Is the EMT-associated expression in tumour cells or in stroma?",
-           "Spatial transcriptomics, single-cell RNA-seq or cell-resolved protein staining (e.g. E-cadherin, vimentin) on matched tumours.",
-           "Separates tumour-cell EMT from fibroblast content, which bulk data cannot do."),
+    qs = [("Are there rare or partial tumour-cell EMT states that single-cell RNA missed?",
+           "Spatial transcriptomics or multiplexed protein imaging (e.g. E-cadherin, vimentin) at the invasive front.",
+           "Single cells placed EMT-set transcripts mainly in stroma, with no coherent tumour-cell programme; localised states need spatial data."),
           ("Are the Wnt, E2F, p53 and EMT pathways actually active?",
            "Functional or protein-level readouts: reporter assays, phospho-protein and target-protein measurement.",
            "Turns expression associations into evidence about pathway function."),
@@ -912,20 +915,21 @@ def v19(V):
     ax.text(6.35, 0.35, "2 · Delivered as a tool: pathway-audit", fontsize=13, fontweight="bold")
     steps = [("Data-quality gate", "control gene pairs must co-express"), ("Gene drivers", "coherence, leave-one-out, stable modules"),
              ("Composition", "stromal / immune estimates, gene-disjoint test"), ("Genotype effects", "robust to, or explained by, MMR and composition"),
-             ("Survival screen", "optimism-corrected gain over clinical model")]
+             ("Survival screen", "optimism-corrected gain over clinical model"), ("Single-cell sources", "which cell types supply a set's transcripts")]
     for i, (h, t) in enumerate(steps):
-        y = 0.65 + i * 0.6
-        box(ax, 6.35, y, 5.7, 0.5, None, fc=PANEL, ec=GRID)
-        ax.text(6.5, y + 0.25, f"{i + 1}  {h}", fontsize=11.5, fontweight="bold", va="center")
-        ax.text(8.75, y + 0.25, t, fontsize=10.5, color=MUTED, va="center")
-    ax.text(6.35, 3.85, "Case study, five colorectal cohorts", fontsize=11.5, fontweight="bold")
+        y = 0.6 + i * 0.5
+        box(ax, 6.35, y, 5.7, 0.42, None, fc=PANEL, ec=GRID)
+        ax.text(6.5, y + 0.21, f"{i + 1}  {h}", fontsize=11, fontweight="bold", va="center")
+        ax.text(8.75, y + 0.21, t, fontsize=10.2, color=MUTED, va="center")
+    ax.text(6.35, 3.78, "Case studies: five bulk cohorts and one single-cell cohort", fontsize=11.2, fontweight="bold")
     lines = [f"EMT composition-dominated in all 4 usable cohorts", f"GSE103479 stopped at the quality gate",
              f"BRAF → p53 score explained by MMR and composition ({E['braf_p53'][0]:+.2f} → {E['braf_p53'][1]:+.2f} SD)",
              f"TCGA: BRAF effects explained by hypermutation; TP53 → p53 score robust",
-             f"Survival screen on GSE39582: corrected ΔC +{E['survival_screen']:.4f} (frozen +{V['theta']:.4f})"]
+             f"Survival screen on GSE39582: corrected ΔC +{E['survival_screen']:.4f} (frozen +{V['theta']:.4f})",
+             f"Single cells (GSE132465): EMT transcripts mainly stromal ({V['SC']['emt_median']['stromal']:.1f}×), epithelial {V['SC']['emt_median']['epithelial']:.2f}×"]
     for i, t in enumerate(lines):
-        ax.text(6.45, 4.17 + i * 0.3, "•  " + t, fontsize=10.4, va="center")
-    ax.text(0.15, 5.65, "Post-hoc registered extensions, outcome-free; tool tested (11/11) incl. ESTIMATE match to 1e-14. Composition values are estimates, not measured fractions.",
+        ax.text(6.45, 4.08 + i * 0.27, "•  " + t, fontsize=10.2, va="center")
+    ax.text(0.15, 5.8, "Post-hoc registered extensions, outcome-free; tool tested (13/13; CI passing) incl. ESTIMATE match to 1e-14. Composition values are estimates, not measured fractions.",
             fontsize=10, color=MUTED)
     save(fig, "V19_solution_tool")
 
@@ -936,6 +940,7 @@ if __name__ == "__main__":
     V = values.load()
     V["X"] = values.load_exploratory()
     V["E"] = values.load_extensions()
+    V["SC"] = values.load_single_cell()
     for f in ALL:
         f(V)
     print("wrote", len(list(OUT.glob("*.svg"))), "SVG and", len(list(OUT.glob("*.png"))), "PNG")

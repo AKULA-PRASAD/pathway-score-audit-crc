@@ -178,3 +178,24 @@ def load_extensions():
             "survival_screen": surv, "n_shared_fib": ch["C2_R6_gene_disjoint"]["n_shared_with_EMT"],
             "baseline": json.loads((P / "tcga_challenge_tests.json").read_text())["C6_random_baseline_R6"],
             "tcga_hyper": json.loads((P / "tcga_challenge_tests.json").read_text())["C5_tcga_hypermutation"]}
+
+
+def load_single_cell():
+    """Registered single-cell extension S1-S5 (outcome-free) and the tool's single-cell cross-check."""
+    R = ROOT / "results" / "single_cell"
+    summ = json.loads((R / "summary.json").read_text())
+    enr = list(csv.DictReader(open(R / "s1_s2_s5_enrichment.csv")))
+    med = {}
+    for comp in ("epithelial", "stromal", "immune", "endothelial"):
+        v = sorted(float(r["enrichment"]) for r in enr if r["accession"] == "GSE132465" and r["set"] == "EMT" and r["compartment"] == comp)
+        n = len(v)
+        med[comp] = (v[n // 2] + v[(n - 1) // 2]) / 2
+    s4 = {(r["accession"], r["set"]): r for r in csv.DictReader(open(R / "s4_pseudobulk.csv"))}
+    coh = list(csv.DictReader(open(R / "s3_coherence.csv")))
+    s3_exceed = sum(r["exceeds_p95"] == "True" for r in coh if r["variant"] == "all genes")
+    s3_n = sum(1 for r in coh if r["variant"] == "all genes")
+    val = json.loads((R / "validation_checks.json").read_text())
+    return {"summary": summ, "emt_median": med, "s4_rho": float(s4[("GSE132465", "EMT")]["rho"]), "s4_base": float(s4[("GSE132465", "EMT")]["random_p97_5"]),
+            "s4_rho_pelka": float(s4[("GSE178341", "EMT")]["rho"]), "s3_exceed": s3_exceed, "s3_n": s3_n,
+            "n_retained": {a: summ["S1"]["per_cohort"][a]["n_patients"] for a in summ["S1"]["per_cohort"]},
+            "validation": f"{val['n'] - val['n_fail']}/{val['n']}"}

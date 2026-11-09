@@ -29,67 +29,80 @@ z
   </g>
   <g id="axes_1">
    <g id="patch_2">
-    <path d="M 462.96 46.8 
-L 861.84 46.8 
-Q 867.6 46.8 867.6 52.56 
-L 867.6 77.04 
-Q 867.6 82.8 861.84 82.8 
-L 462.96 82.8 
-Q 457.2 82.8 457.2 77.04 
-L 457.2 52.56 
-Q 457.2 46.8 462.96 46.8 
+    <path d="M 462.96 43.2 
+L 861.84 43.2 
+Q 867.6 43.2 867.6 48.96 
+L 867.6 67.68 
+Q 867.6 73.44 861.84 73.44 
+L 462.96 73.44 
+Q 457.2 73.44 457.2 67.68 
+L 457.2 48.96 
+Q 457.2 43.2 462.96 43.2 
 z
 " clip-path="url(#p2f7f9f521a)" style="fill: #f4f6f9; stroke: #dde3ea; stroke-width: 1.3; stroke-linejoin: miter"/>
    </g>
    <g id="patch_3">
-    <path d="M 462.96 90 
-L 861.84 90 
-Q 867.6 90 867.6 95.76 
-L 867.6 120.24 
-Q 867.6 126 861.84 126 
-L 462.96 126 
-Q 457.2 126 457.2 120.24 
-L 457.2 95.76 
-Q 457.2 90 462.96 90 
+    <path d="M 462.96 79.2 
+L 861.84 79.2 
+Q 867.6 79.2 867.6 84.96 
+L 867.6 103.68 
+Q 867.6 109.44 861.84 109.44 
+L 462.96 109.44 
+Q 457.2 109.44 457.2 103.68 
+L 457.2 84.96 
+Q 457.2 79.2 462.96 79.2 
 z
 " clip-path="url(#p2f7f9f521a)" style="fill: #f4f6f9; stroke: #dde3ea; stroke-width: 1.3; stroke-linejoin: miter"/>
    </g>
    <g id="patch_4">
-    <path d="M 462.96 133.2 
-L 861.84 133.2 
-Q 867.6 133.2 867.6 138.96 
-L 867.6 163.44 
-Q 867.6 169.2 861.84 169.2 
-L 462.96 169.2 
-Q 457.2 169.2 457.2 163.44 
-L 457.2 138.96 
-Q 457.2 133.2 462.96 133.2 
+    <path d="M 462.96 115.2 
+L 861.84 115.2 
+Q 867.6 115.2 867.6 120.96 
+L 867.6 139.68 
+Q 867.6 145.44 861.84 145.44 
+L 462.96 145.44 
+Q 457.2 145.44 457.2 139.68 
+L 457.2 120.96 
+Q 457.2 115.2 462.96 115.2 
 z
 " clip-path="url(#p2f7f9f521a)" style="fill: #f4f6f9; stroke: #dde3ea; stroke-width: 1.3; stroke-linejoin: miter"/>
    </g>
    <g id="patch_5">
-    <path d="M 462.96 176.4 
-L 861.84 176.4 
-Q 867.6 176.4 867.6 182.16 
-L 867.6 206.64 
-Q 867.6 212.4 861.84 212.4 
-L 462.96 212.4 
-Q 457.2 212.4 457.2 206.64 
-L 457.2 182.16 
-Q 457.2 176.4 462.96 176.4 
+    <path d="M 462.96 151.2 
+L 861.84 151.2 
+Q 867.6 151.2 867.6 156.96 
+L 867.6 175.68 
+Q 867.6 181.44 861.84 181.44 
+L 462.96 181.44 
+Q 457.2 181.44 457.2 175.68 
+L 457.2 156.96 
+Q 457.2 151.2 462.96 151.2 
 z
 " clip-path="url(#p2f7f9f521a)" style="fill: #f4f6f9; stroke: #dde3ea; stroke-width: 1.3; stroke-linejoin: miter"/>
    </g>
    <g id="patch_6">
-    <path d="M 462.96 219.6 
-L 861.84 219.6 
-Q 867.6 219.6 867.6 225.36 
-L 867.6 249.84 
-Q 867.6 255.6 861.84 255.6 
-L 462.96 255.6 
-Q 457.2 255.6 457.2 249.84 
-L 457.2 225.36 
-Q 457.2 219.6 462.96 219.6 
+    <path d="M 462.96 187.2 
+L 861.84 187.2 
+Q 867.6 187.2 867.6 192.96 
+L 867.6 211.68 
+Q 867.6 217.44 861.84 217.44 
+L 462.96 217.44 
+Q 457.2 217.44 457.2 211.68 
+L 457.2 192.96 
+Q 457.2 187.2 462.96 187.2 
+z
+" clip-path="url(#p2f7f9f521a)" style="fill: #f4f6f9; stroke: #dde3ea; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 462.96 223.2 
+L 861.84 223.2 
+Q 867.6 223.2 867.6 228.96 
+L 867.6 247.68 
+Q 867.6 253.44 861.84 253.44 
+L 462.96 253.44 
+Q 457.2 253.44 457.2 247.68 
+L 457.2 228.96 
+Q 457.2 223.2 462.96 223.2 
 z
 " clip-path="url(#p2f7f9f521a)" style="fill: #f4f6f9; stroke: #dde3ea; stroke-width: 1.3; stroke-linejoin: miter"/>
    </g>
@@ -100,59 +113,68 @@ z
     <text style="font-weight: 700; font-size: 13px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="457.2" y="25.2" transform="rotate(-0 457.2 25.2)">2 · Delivered as a tool: pathway-audit</text>
    </g>
    <g id="text_3">
-    <text style="font-weight: 700; font-size: 11.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="468" y="67.775962" transform="rotate(-0 468 67.775962)">1  Data-quality gate</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="468" y="61.166572" transform="rotate(-0 468 61.166572)">1  Data-quality gate</text>
    </g>
    <g id="text_4">
-    <text style="font-size: 10.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52606d" x="630" y="67.517183" transform="rotate(-0 630 67.517183)">control gene pairs must co-express</text>
+    <text style="font-size: 10.2px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52606d" x="630" y="60.959549" transform="rotate(-0 630 60.959549)">control gene pairs must co-express</text>
    </g>
    <g id="text_5">
-    <text style="font-weight: 700; font-size: 11.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="468" y="110.976074" transform="rotate(-0 468 110.976074)">2  Gene drivers</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="468" y="97.16668" transform="rotate(-0 468 97.16668)">2  Gene drivers</text>
    </g>
    <g id="text_6">
-    <text style="font-size: 10.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52606d" x="630" y="110.717285" transform="rotate(-0 630 110.717285)">coherence, leave-one-out, stable modules</text>
+    <text style="font-size: 10.2px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52606d" x="630" y="96.959648" transform="rotate(-0 630 96.959648)">coherence, leave-one-out, stable modules</text>
    </g>
    <g id="text_7">
-    <text style="font-weight: 700; font-size: 11.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="468" y="154.176074" transform="rotate(-0 468 154.176074)">3  Composition</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="468" y="133.16668" transform="rotate(-0 468 133.16668)">3  Composition</text>
    </g>
    <g id="text_8">
-    <text style="font-size: 10.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52606d" x="630" y="153.917183" transform="rotate(-0 630 153.917183)">stromal / immune estimates, gene-disjoint test</text>
+    <text style="font-size: 10.2px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52606d" x="630" y="132.959549" transform="rotate(-0 630 132.959549)">stromal / immune estimates, gene-disjoint test</text>
    </g>
    <g id="text_9">
-    <text style="font-weight: 700; font-size: 11.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="468" y="197.375962" transform="rotate(-0 468 197.375962)">4  Genotype effects</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="468" y="169.166572" transform="rotate(-0 468 169.166572)">4  Genotype effects</text>
    </g>
    <g id="text_10">
-    <text style="font-size: 10.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52606d" x="630" y="197.117183" transform="rotate(-0 630 197.117183)">robust to, or explained by, MMR and composition</text>
+    <text style="font-size: 10.2px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52606d" x="630" y="168.959549" transform="rotate(-0 630 168.959549)">robust to, or explained by, MMR and composition</text>
    </g>
    <g id="text_11">
-    <text style="font-weight: 700; font-size: 11.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="468" y="240.576074" transform="rotate(-0 468 240.576074)">5  Survival screen</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="468" y="205.16668" transform="rotate(-0 468 205.16668)">5  Survival screen</text>
    </g>
    <g id="text_12">
-    <text style="font-size: 10.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52606d" x="630" y="240.317183" transform="rotate(-0 630 240.317183)">optimism-corrected gain over clinical model</text>
+    <text style="font-size: 10.2px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52606d" x="630" y="204.959549" transform="rotate(-0 630 204.959549)">optimism-corrected gain over clinical model</text>
    </g>
    <g id="text_13">
-    <text style="font-weight: 700; font-size: 11.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="457.2" y="277.2" transform="rotate(-0 457.2 277.2)">Case study, five colorectal cohorts</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="468" y="241.166572" transform="rotate(-0 468 241.166572)">6  Single-cell sources</text>
    </g>
    <g id="text_14">
-    <text style="font-size: 10.4px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="464.4" y="302.931406" transform="rotate(-0 464.4 302.931406)">•  EMT composition-dominated in all 4 usable cohorts</text>
+    <text style="font-size: 10.2px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52606d" x="630" y="240.959549" transform="rotate(-0 630 240.959549)">which cell types supply a set's transcripts</text>
    </g>
    <g id="text_15">
-    <text style="font-size: 10.4px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="464.4" y="324.531305" transform="rotate(-0 464.4 324.531305)">•  GSE103479 stopped at the quality gate</text>
+    <text style="font-weight: 700; font-size: 11.2px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="457.2" y="272.16" transform="rotate(-0 457.2 272.16)">Case studies: five bulk cohorts and one single-cell cohort</text>
    </g>
    <g id="text_16">
-    <text style="font-size: 10.4px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="464.4" y="346.131305" transform="rotate(-0 464.4 346.131305)">•  BRAF → p53 score explained by MMR and composition (+0.89 → +0.03 SD)</text>
+    <text style="font-size: 10.2px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="464.4" y="296.399648" transform="rotate(-0 464.4 296.399648)">•  EMT composition-dominated in all 4 usable cohorts</text>
    </g>
    <g id="text_17">
-    <text style="font-size: 10.4px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="464.4" y="367.731305" transform="rotate(-0 464.4 367.731305)">•  TCGA: BRAF effects explained by hypermutation; TP53 → p53 score robust</text>
+    <text style="font-size: 10.2px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="464.4" y="315.839549" transform="rotate(-0 464.4 315.839549)">•  GSE103479 stopped at the quality gate</text>
    </g>
    <g id="text_18">
-    <text style="font-size: 10.4px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="464.4" y="389.331305" transform="rotate(-0 464.4 389.331305)">•  Survival screen on GSE39582: corrected ΔC +0.0048 (frozen +0.0043)</text>
+    <text style="font-size: 10.2px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="464.4" y="335.279549" transform="rotate(-0 464.4 335.279549)">•  BRAF → p53 score explained by MMR and composition (+0.89 → +0.03 SD)</text>
    </g>
    <g id="text_19">
-    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52606d" x="10.8" y="406.8" transform="rotate(-0 10.8 406.8)">Post-hoc registered extensions, outcome-free; tool tested (11/11) incl. ESTIMATE match to 1e-14. Composition values are estimates, not measured fractions.</text>
+    <text style="font-size: 10.2px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="464.4" y="354.719549" transform="rotate(-0 464.4 354.719549)">•  TCGA: BRAF effects explained by hypermutation; TP53 → p53 score robust</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 10.2px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="464.4" y="374.159549" transform="rotate(-0 464.4 374.159549)">•  Survival screen on GSE39582: corrected ΔC +0.0048 (frozen +0.0043)</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 10.2px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="464.4" y="393.599549" transform="rotate(-0 464.4 393.599549)">•  Single cells (GSE132465): EMT transcripts mainly stromal (5.1×), epithelial 0.45×</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52606d" x="10.8" y="417.6" transform="rotate(-0 10.8 417.6)">Post-hoc registered extensions, outcome-free; tool tested (13/13; CI passing) incl. ESTIMATE match to 1e-14. Composition values are estimates, not measured fractions.</text>
    </g>
   </g>
   <g id="axes_2">
-   <g id="patch_7">
+   <g id="patch_8">
     <path d="M 114.192 246.24 
 L 404.064 246.24 
 L 404.064 64.8 
@@ -160,7 +182,7 @@ L 114.192 64.8
 z
 " style="fill: #ffffff"/>
    </g>
-   <g id="patch_8">
+   <g id="patch_9">
     <path d="M 114.192 106.11 
 L 358.370056 106.11 
 L 358.370056 88.29 
@@ -168,7 +190,7 @@ L 114.192 88.29
 z
 " clip-path="url(#p1d1f5a43e9)" style="fill: #c2366c"/>
    </g>
-   <g id="patch_9">
+   <g id="patch_10">
     <path d="M 114.192 138.51 
 L 359.991302 138.51 
 L 359.991302 120.69 
@@ -176,7 +198,7 @@ L 114.192 120.69
 z
 " clip-path="url(#p1d1f5a43e9)" style="fill: #c2366c"/>
    </g>
-   <g id="patch_10">
+   <g id="patch_11">
     <path d="M 114.192 170.91 
 L 357.314201 170.91 
 L 357.314201 153.09 
@@ -184,7 +206,7 @@ L 114.192 153.09
 z
 " clip-path="url(#p1d1f5a43e9)" style="fill: #c2366c"/>
    </g>
-   <g id="patch_11">
+   <g id="patch_12">
     <path d="M 114.192 203.31 
 L 367.551059 203.31 
 L 367.551059 185.49 
@@ -192,7 +214,7 @@ L 114.192 185.49
 z
 " clip-path="url(#p1d1f5a43e9)" style="fill: #c2366c"/>
    </g>
-   <g id="patch_12">
+   <g id="patch_13">
     <path d="M 114.192 235.71 
 L 114.192 235.71 
 L 114.192 217.89 
@@ -212,7 +234,7 @@ L 0 3.5
        <use xlink:href="#mb144980501" x="114.192" y="246.24" style="fill: #52606d; stroke: #52606d; stroke-width: 0.8"/>
       </g>
      </g>
-     <g id="text_20">
+     <g id="text_23">
       <text style="font-size: 12px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #52606d" x="114.192" y="261.976328" transform="rotate(-0 114.192 261.976328)">0.0</text>
      </g>
     </g>
@@ -222,7 +244,7 @@ L 0 3.5
        <use xlink:href="#mb144980501" x="165.954857" y="246.24" style="fill: #52606d; stroke: #52606d; stroke-width: 0.8"/>
       </g>
      </g>
-     <g id="text_21">
+     <g id="text_24">
       <text style="font-size: 12px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #52606d" x="165.954857" y="261.976328" transform="rotate(-0 165.954857 261.976328)">0.2</text>
      </g>
     </g>
@@ -232,7 +254,7 @@ L 0 3.5
        <use xlink:href="#mb144980501" x="217.717714" y="246.24" style="fill: #52606d; stroke: #52606d; stroke-width: 0.8"/>
       </g>
      </g>
-     <g id="text_22">
+     <g id="text_25">
       <text style="font-size: 12px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #52606d" x="217.717714" y="261.976328" transform="rotate(-0 217.717714 261.976328)">0.4</text>
      </g>
     </g>
@@ -242,7 +264,7 @@ L 0 3.5
        <use xlink:href="#mb144980501" x="269.480571" y="246.24" style="fill: #52606d; stroke: #52606d; stroke-width: 0.8"/>
       </g>
      </g>
-     <g id="text_23">
+     <g id="text_26">
       <text style="font-size: 12px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #52606d" x="269.480571" y="261.976328" transform="rotate(-0 269.480571 261.976328)">0.6</text>
      </g>
     </g>
@@ -252,7 +274,7 @@ L 0 3.5
        <use xlink:href="#mb144980501" x="321.243429" y="246.24" style="fill: #52606d; stroke: #52606d; stroke-width: 0.8"/>
       </g>
      </g>
-     <g id="text_24">
+     <g id="text_27">
       <text style="font-size: 12px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #52606d" x="321.243429" y="261.976328" transform="rotate(-0 321.243429 261.976328)">0.8</text>
      </g>
     </g>
@@ -262,11 +284,11 @@ L 0 3.5
        <use xlink:href="#mb144980501" x="373.006286" y="246.24" style="fill: #52606d; stroke: #52606d; stroke-width: 0.8"/>
       </g>
      </g>
-     <g id="text_25">
+     <g id="text_28">
       <text style="font-size: 12px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #52606d" x="373.006286" y="261.976328" transform="rotate(-0 373.006286 261.976328)">1.0</text>
      </g>
     </g>
-    <g id="text_26">
+    <g id="text_29">
      <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #52606d" x="259.128" y="275.781992" transform="rotate(-0 259.128 275.781992)">Spearman ρ, EMT score vs fibroblast markers (6 shared genes removed)</text>
     </g>
    </g>
@@ -282,7 +304,7 @@ L -3.5 0
        <use xlink:href="#mb4b0e3331a" x="114.192" y="97.2" style="fill: #52606d; stroke: #52606d; stroke-width: 0.8"/>
       </g>
      </g>
-     <g id="text_27">
+     <g id="text_30">
       <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #52606d" x="107.192" y="101.20415" transform="rotate(-0 107.192 101.20415)">GSE39582</text>
      </g>
     </g>
@@ -292,7 +314,7 @@ L -3.5 0
        <use xlink:href="#mb4b0e3331a" x="114.192" y="129.6" style="fill: #52606d; stroke: #52606d; stroke-width: 0.8"/>
       </g>
      </g>
-     <g id="text_28">
+     <g id="text_31">
       <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #52606d" x="107.192" y="133.60415" transform="rotate(-0 107.192 133.60415)">GSE41258</text>
      </g>
     </g>
@@ -302,7 +324,7 @@ L -3.5 0
        <use xlink:href="#mb4b0e3331a" x="114.192" y="162" style="fill: #52606d; stroke: #52606d; stroke-width: 0.8"/>
       </g>
      </g>
-     <g id="text_29">
+     <g id="text_32">
       <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #52606d" x="107.192" y="166.00415" transform="rotate(-0 107.192 166.00415)">GSE143985</text>
      </g>
     </g>
@@ -312,7 +334,7 @@ L -3.5 0
        <use xlink:href="#mb4b0e3331a" x="114.192" y="194.4" style="fill: #52606d; stroke: #52606d; stroke-width: 0.8"/>
       </g>
      </g>
-     <g id="text_30">
+     <g id="text_33">
       <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #52606d" x="107.192" y="198.407266" transform="rotate(-0 107.192 198.407266)">TCGA-COAD</text>
      </g>
     </g>
@@ -322,7 +344,7 @@ L -3.5 0
        <use xlink:href="#mb4b0e3331a" x="114.192" y="226.8" style="fill: #52606d; stroke: #52606d; stroke-width: 0.8"/>
       </g>
      </g>
-     <g id="text_31">
+     <g id="text_34">
       <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #52606d" x="107.192" y="230.80415" transform="rotate(-0 107.192 230.80415)">GSE103479</text>
      </g>
     </g>
@@ -367,32 +389,32 @@ L 182.640526 150.336
 L 311.296189 182.736 
 " clip-path="url(#p1d1f5a43e9)" style="fill: none; stroke: #52606d; stroke-opacity: 0.6; stroke-width: 3"/>
    </g>
-   <g id="patch_13">
+   <g id="patch_14">
     <path d="M 114.192 246.24 
 L 114.192 64.8 
 " style="fill: none; stroke: #8a94a3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
-   <g id="patch_14">
+   <g id="patch_15">
     <path d="M 114.192 246.24 
 L 404.064 246.24 
 " style="fill: none; stroke: #8a94a3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
-   <g id="text_32">
+   <g id="text_35">
     <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="366.715758" y="100.04668" transform="rotate(-0 366.715758 100.04668)">0.94</text>
    </g>
-   <g id="text_33">
+   <g id="text_36">
     <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="369.28359" y="132.44668" transform="rotate(-0 369.28359 132.44668)">0.95</text>
    </g>
-   <g id="text_34">
+   <g id="text_37">
     <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="368.129351" y="164.84668" transform="rotate(-0 368.129351 164.84668)">0.94</text>
    </g>
-   <g id="text_35">
+   <g id="text_38">
     <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1f2933" x="373.621159" y="197.24668" transform="rotate(-0 373.621159 197.24668)">0.98</text>
    </g>
-   <g id="text_36">
+   <g id="text_39">
     <text style="font-size: 10.5px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52606d" x="160.778571" y="229.517183" transform="rotate(-0 160.778571 229.517183)">failed quality gate (control r 0.07)</text>
    </g>
-   <g id="text_37">
+   <g id="text_40">
     <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52606d" x="114.192" y="77.112" transform="rotate(-0 114.192 77.112)">grey: random gene sets, 95 % range (cohort-specific; ≤ 0 not shown)</text>
    </g>
   </g>
