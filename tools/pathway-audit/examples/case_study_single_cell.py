@@ -19,6 +19,7 @@ sys.path.insert(0, str(REPO / "tools" / "pathway-audit" / "src"))
 sys.path.insert(0, str(REPO / "scripts" / "single_cell"))
 
 import sccommon as C  # noqa: E402
+
 from pathway_audit.single_cell import cell_type_sources, verdicts  # noqa: E402
 
 OUT = REPO / "reports" / "pathway_audit_case_study" / "single_cell_GSE132465"
@@ -44,7 +45,8 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     table.to_csv(OUT / "sc_sources.csv", index=False)
     v = verdicts(table)
-    (OUT / "SC_SOURCES.md").write_text("# Single-cell source check: GSE132465 tumour cells (18 patients)\n\n" + "\n".join(f"- **{k}:** {t}" for k, t in v.items()) + "\n")
+    body = "\n".join(f"- **{k}:** {t}" for k, t in v.items())
+    (OUT / "SC_SOURCES.md").write_text("# Single-cell source check: GSE132465 tumour cells (18 patients)\n\n" + body + "\n")
     study = pd.read_csv(C.RES / "s1_s2_s5_enrichment.csv", dtype={"patient": str})
     study = study[study["accession"] == acc].groupby(["set", "compartment"])["enrichment"].median()
     tool = table.set_index(["set", "cell_type"])["enrichment"]
