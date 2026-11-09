@@ -1,0 +1,122 @@
+{
+  "label": "registered addendum; outcome-free; TCGA all stages; never pooled",
+  "n_primary_tumours": 286,
+  "qc": {
+    "median_r": 0.9414197411967604,
+    "pairs": {
+      "COL1A1-COL1A2": 0.9850671282100192,
+      "COL1A1-COL3A1": 0.9613826216101705,
+      "COL1A2-COL3A1": 0.9854052419906724,
+      "MKI67-TOP2A": 0.5188082574907659,
+      "CD2-CD3E": 0.9711517072526642,
+      "CDX2-VIL1": 0.504221319407379,
+      "SPARC-COL5A1": 0.9214568607833502,
+      "BUB1-CCNB1": 0.7018483717552944
+    },
+    "passed": true
+  },
+  "coverage": [
+    {
+      "pathway": "EMT",
+      "n_present": 195,
+      "coverage_rule_met": true
+    },
+    {
+      "pathway": "E2F",
+      "n_present": 189,
+      "coverage_rule_met": true
+    },
+    {
+      "pathway": "Wnt",
+      "n_present": 41,
+      "coverage_rule_met": true
+    },
+    {
+      "pathway": "p53",
+      "n_present": 190,
+      "coverage_rule_met": true
+    }
+  ],
+  "groups": {
+    "TP53": {
+      "pos": 162,
+      "neg": 105
+    },
+    "BRAF": {
+      "pos": 44,
+      "neg": 223
+    },
+    "MSI": {
+      "pos": 1,
+      "neg": 4
+    }
+  },
+  "fibroblast_markers_present": 8,
+  "R6_gene_disjoint": [
+    0.9789222330942484,
+    0.972013102899158,
+    0.9823757315323433
+  ],
+  "verdicts_qc_passing_plus_tcga": {
+    "R1": {
+      "eligible_cohorts": 3,
+      "consistent": 2,
+      "opposite": 0,
+      "verdict": "REPLICATED",
+      "cohorts": [
+        "GSE41258",
+        "GSE143985",
+        "TCGA-COAD"
+      ]
+    },
+    "R2": {
+      "eligible_cohorts": 3,
+      "consistent": 0,
+      "opposite": 0,
+      "verdict": "NOT REPLICATED",
+      "cohorts": [
+        "GSE41258",
+        "GSE143985",
+        "TCGA-COAD"
+      ]
+    },
+    "R3": {
+      "eligible_cohorts": 1,
+      "consistent": 1,
+      "opposite": 0,
+      "verdict": "PARTIALLY REPLICATED",
+      "cohorts": [
+        "TCGA-COAD"
+      ]
+    },
+    "R4": {
+      "eligible_cohorts": 1,
+      "consistent": 1,
+      "opposite": 0,
+      "verdict": "PARTIALLY REPLICATED",
+      "cohorts": [
+        "TCGA-COAD"
+      ]
+    },
+    "R5": {
+      "eligible_cohorts": 1,
+      "consistent": 0,
+      "opposite": 0,
+      "verdict": "NOT REPLICATED",
+      "cohorts": [
+        "GSE41258"
+      ]
+    },
+    "R6": {
+      "eligible_cohorts": 3,
+      "consistent": 3,
+      "opposite": 0,
+      "verdict": "REPLICATED",
+      "cohorts": [
+        "GSE41258",
+        "GSE143985",
+        "TCGA-COAD"
+      ]
+    }
+  }
+}

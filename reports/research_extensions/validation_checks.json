@@ -1,0 +1,183 @@
+{
+  "n": 28,
+  "n_fail": 0,
+  "checks": [
+    {
+      "check": "extension plan unchanged since registration",
+      "expected": "c30dd5f4e9c49d80a002823bbb7a25a82c32077e6769ba1ab08413fcb0a722c7",
+      "observed": "c30dd5f4e9c49d80a002823bbb7a25a82c32077e6769ba1ab08413fcb0a722c7",
+      "result": "PASS"
+    },
+    {
+      "check": "E3 downloads match recorded checksums",
+      "expected": "all match",
+      "observed": "all match",
+      "result": "PASS"
+    },
+    {
+      "check": "GSE39582 cohort",
+      "expected": "452",
+      "observed": 452,
+      "result": "PASS"
+    },
+    {
+      "check": "E1 genes are members of the frozen gene sets",
+      "expected": true,
+      "observed": true,
+      "result": "PASS"
+    },
+    {
+      "check": "E1 gene counts per set",
+      "expected": "198/195/41/194",
+      "observed": "198/195/41/194",
+      "result": "PASS"
+    },
+    {
+      "check": "E1 H-E1 evaluability follows registered ARI rule (p53 median ARI < 0.7 → not evaluable)",
+      "expected": "consistent",
+      "observed": "ARI 0.636, evaluable False",
+      "result": "PASS"
+    },
+    {
+      "check": "E1 scoring helper reproduces frozen cohort scores",
+      "expected": "< 1e-10",
+      "observed": 0.0,
+      "result": "PASS"
+    },
+    {
+      "check": "E2 within-subtype n sums to 452",
+      "expected": 452,
+      "observed": 452,
+      "result": "PASS"
+    },
+    {
+      "check": "E3 GSE41258 primary tumours only",
+      "expected": 186,
+      "observed": 186,
+      "result": "PASS"
+    },
+    {
+      "check": "E3 GSE143985 / GSE103479 tumour counts",
+      "expected": "91 / 156",
+      "observed": "91 / 156",
+      "result": "PASS"
+    },
+    {
+      "check": "E3 frozen coverage rule met for all scores",
+      "expected": "all",
+      "observed": 12,
+      "result": "PASS"
+    },
+    {
+      "check": "E3 six hypotheses × three cohorts recorded",
+      "expected": 18,
+      "observed": 18,
+      "result": "PASS"
+    },
+    {
+      "check": "E3 QC verdict set present",
+      "expected": "present",
+      "observed": true,
+      "result": "PASS"
+    },
+    {
+      "check": "E3 cohorts share no samples with GSE39582",
+      "expected": "none",
+      "observed": "none",
+      "result": "PASS"
+    },
+    {
+      "check": "frozen θ̂ unchanged",
+      "expected": 0.004316,
+      "observed": 0.004316,
+      "result": "PASS"
+    },
+    {
+      "check": "three extension figures (PNG + SVG)",
+      "expected": 3,
+      "observed": 3,
+      "result": "PASS"
+    },
+    {
+      "check": "challenge: gene-disjoint R6 rho >= 0.9 in all three QC-passing cohorts",
+      "expected": ">= 0.9",
+      "observed": {
+        "GSE39582": 0.943,
+        "GSE41258": 0.95,
+        "GSE143985": 0.939
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "deliverable docs/RESEARCH_QUESTION_REASSESSMENT.md exists",
+      "expected": true,
+      "observed": true,
+      "result": "PASS"
+    },
+    {
+      "check": "deliverable docs/BIOLOGICAL_CONTRIBUTION_STRENGTHENING_PLAN.md exists",
+      "expected": true,
+      "observed": true,
+      "result": "PASS"
+    },
+    {
+      "check": "deliverable docs/RESEARCH_EXTENSION_REGISTER.md exists",
+      "expected": true,
+      "observed": true,
+      "result": "PASS"
+    },
+    {
+      "check": "deliverable docs/FINAL_RESEARCH_CONTRIBUTION.md exists",
+      "expected": true,
+      "observed": true,
+      "result": "PASS"
+    },
+    {
+      "check": "deliverable docs/INDEPENDENT_SCIENTIFIC_CHALLENGE.md exists",
+      "expected": true,
+      "observed": true,
+      "result": "PASS"
+    },
+    {
+      "check": "TCGA addendum unchanged since registration",
+      "expected": "28cdfbcb48c14c8b0e9a06dfa324a3e1ec78a3141d86d07090c41f3ad9bc0b36",
+      "observed": "28cdfbcb48c14c8b0e9a06dfa324a3e1ec78a3141d86d07090c41f3ad9bc0b36",
+      "result": "PASS"
+    },
+    {
+      "check": "TCGA downloads match recorded checksums",
+      "expected": "all match",
+      "observed": "all match",
+      "result": "PASS"
+    },
+    {
+      "check": "TCGA passes positive-control QC",
+      "expected": ">= 0.5",
+      "observed": 0.941,
+      "result": "PASS"
+    },
+    {
+      "check": "TCGA primary tumours",
+      "expected": 286,
+      "observed": 286,
+      "result": "PASS"
+    },
+    {
+      "check": "R6 exceeds each cohort's random-gene-set 97.5th percentile",
+      "expected": true,
+      "observed": {
+        "GSE39582": 0.05,
+        "TCGA-COAD": 0.76,
+        "GSE41258": -0.15,
+        "GSE143985": 0.26
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "TCGA R1 robust to excluding hypermutated tumours (CI < 0)",
+      "expected": "< 0",
+      "observed": -0.204,
+      "result": "PASS"
+    }
+  ]
+}

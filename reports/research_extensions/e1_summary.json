@@ -1,0 +1,69 @@
+{
+  "extension": "E1",
+  "label": "post-hoc extension, outcome-free",
+  "n": 452,
+  "rule": {
+    "linkage": "average",
+    "distance": "1 - Pearson r",
+    "cut": 0.7,
+    "min_module": "10 (Wnt 5)",
+    "bootstrap": 200
+  },
+  "stability": {
+    "EMT": {
+      "n_modules": 1,
+      "n_unassigned": 81,
+      "n_genes": 198,
+      "median_ARI": 0.0,
+      "ARI_IQR": [
+        0.0,
+        0.0
+      ],
+      "stable": false,
+      "min_logo_r": 0.9999478633366862,
+      "partition_agreement_repIQR_ARI": 0.7009247284186116
+    },
+    "E2F": {
+      "n_modules": 2,
+      "n_unassigned": 37,
+      "n_genes": 195,
+      "median_ARI": 0.6382620606467383,
+      "ARI_IQR": [
+        0.5674692579498876,
+        0.7158225791008361
+      ],
+      "stable": false,
+      "min_logo_r": 0.9999572418634315,
+      "partition_agreement_repIQR_ARI": 0.454630858710309
+    },
+    "Wnt": {
+      "n_modules": 1,
+      "n_unassigned": 36,
+      "n_genes": 41,
+      "median_ARI": 1.0,
+      "ARI_IQR": [
+        1.0,
+        1.0
+      ],
+      "stable": true,
+      "min_logo_r": 0.9953566824605835,
+      "partition_agreement_repIQR_ARI": 0.33499361430395913
+    },
+    "p53": {
+      "n_modules": 3,
+      "n_unassigned": 156,
+      "n_genes": 194,
+      "median_ARI": 0.6356569059341799,
+      "ARI_IQR": [
+        0.508133579005617,
+        0.7742379886344067
+      ],
+      "stable": false,
+      "min_logo_r": 0.9996485309737734,
+      "partition_agreement_repIQR_ARI": 0.7175565316401998
+    }
+  },
+  "H_E1": {
+    "evaluable": false
+  }
+}
