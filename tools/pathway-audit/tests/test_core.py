@@ -155,3 +155,47 @@ def test_demo_recovers_planted_truth(tmp_path):
 def test_cli_demo(tmp_path):
     assert cli_main(["demo", "--out", str(tmp_path / "d")]) == 0
     assert (tmp_path / "d" / "report.html").exists() and (tmp_path / "d" / "REPORT.md").exists()
+
+
+def synthetic_sc(seed=3):
+    """Single-cell counts: 3 patients x (epithelial, fibroblast, immune); a STROMAL set is expressed mainly by fibroblasts,
+    a RANDOM set has no cell-type preference."""
+    rng = np.random.default_rng(seed)
+    genes = [f"G{i}" for i in range(400)]
+    base = rng.gamma(0.6, 1.0, size=400)
+    stromal = [f"G{i}" for i in range(30)]
+    random_set = [f"G{i}" for i in rng.choice(np.arange(100, 400), 30, replace=False)]
+    rows, types, pats = [], [], []
+    for p in ("P1", "P2", "P3"):
+        for t, n in (("epithelial", 300), ("fibroblast", 80), ("immune", 150)):
+            mu = base.copy()
+            mu[:30] *= 6.0 if t == "fibroblast" else 0.3
+            rows.append(rng.poisson(mu, size=(n, 400)))
+            types += [t] * n
+            pats += [p] * n
+    return np.vstack(rows), genes, np.array(types), np.array(pats), {"STROMAL": stromal, "RANDOM": random_set}
+
+
+def test_single_cell_sources_recovers_planted_cell_type():
+    from pathway_audit.single_cell import cell_type_sources, verdicts
+    X, genes, types, pats, sets = synthetic_sc()
+    t = cell_type_sources(X, genes, types, sets, groups=pats, n_random=200, seed=1).set_index(["set", "cell_type"])["enrichment"]
+    assert t[("STROMAL", "fibroblast")] > 2 and t[("STROMAL", "epithelial")] < 0.5
+    assert all(0.7 < t[("RANDOM", c)] < 1.4 for c in ("epithelial", "fibroblast", "immune"))
+    assert "fibroblast" in verdicts(t.reset_index().assign(n_genes=30))["STROMAL"]
+
+
+def test_cli_sc_sources(tmp_path):
+    import scipy.io
+    import scipy.sparse as sp
+    X, genes, types, pats, sets = synthetic_sc()
+    scipy.io.mmwrite(tmp_path / "matrix.mtx", sp.csr_matrix(X).T)
+    (tmp_path / "genes.txt").write_text("\n".join(genes) + "\n")
+    pd.DataFrame({"cell_type": types, "patient": pats}).to_csv(tmp_path / "cells.csv", index=False)
+    (tmp_path / "sets.json").write_text(pd.Series(sets).to_json())
+    rc = cli_main(["sc-sources", "--counts", str(tmp_path / "matrix.mtx"), "--genes", str(tmp_path / "genes.txt"), "--cells", str(tmp_path / "cells.csv"),
+                   "--gene-sets", str(tmp_path / "sets.json"), "--group-column", "patient", "--n-random", "100", "--out", str(tmp_path / "sc")])
+    assert rc == 0
+    out = pd.read_csv(tmp_path / "sc" / "sc_sources.csv")
+    assert set(out["set"]) == {"STROMAL", "RANDOM"}
+    assert "mainly supplied by fibroblast" in (tmp_path / "sc" / "SC_SOURCES.md").read_text()

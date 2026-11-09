@@ -5,7 +5,7 @@ co-expression QC, (2) which genes drive the score and whether it is internally c
 composition, (4) whether genotype associations survive adjustment for composition and covariates, and optionally
 (5) whether it adds optimism-corrected discrimination to a clinical survival model.
 """
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 from .audit import audit  # noqa: F401
 from .qc import coexpression_qc  # noqa: F401

@@ -23,3 +23,18 @@ All thresholds are fixed in code (`src/pathway_audit/`) and listed here. They ar
   - the gene-disjoint EMT–fibroblast ρ (0.94 in GSE39582) matches the independent challenge;
   - the BRAF → p53 "explained" verdict matches E2;
   - the survival screen (+0.0048) is close to the frozen nested estimate (+0.0043).
+
+## Single-cell source check (`sc-sources`)
+
+**Input:** single-cell UMI counts (cells × genes), a cell-type label per cell, and optionally a group label (for example patient).
+
+**Method:**
+1. Keep genes detected in at least 1 % of cells; assign each gene to a decile of total expression.
+2. For each group and cell type with at least 20 cells, sum the counts per gene.
+3. For a gene set, compute its share of transcripts in each cell type: the set's summed counts in that cell type divided by its summed counts over all cell types.
+4. Compute the same share for 1,000 random gene sets matched to the target on size and expression decile (target genes excluded), and average.
+5. Enrichment = observed share / random share. With groups, report the median across groups.
+
+**Reading it:** enrichment ≥ 2 means a cell type supplies at least twice the share that expression-matched random genes would; ≤ 0.5 means it is depleted. Values near 1 mean no preference.
+
+**Validated against:** the registered single-cell analysis of GSE132465 (EMT set: stromal 5.10 vs 5.08, epithelial 0.45 vs 0.45; `examples/case_study_single_cell.py`).

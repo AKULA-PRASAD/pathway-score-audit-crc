@@ -5,6 +5,8 @@
   pathway-audit run --expr expr.tsv --gene-sets sets.gmt --out report/ [--annotations ann.csv]
                     [--binary TP53=tp53:M:WT ...] [--adjust mmr=dMMR ...] [--references refs/]
                     [--survival time,event,age,stage3]
+  pathway-audit sc-sources --counts matrix.mtx --genes features.tsv --cells cells.csv --gene-sets sets.gmt --out sc/
+                    [--cell-type-column cell_type] [--group-column patient]
 """
 from __future__ import annotations
 
@@ -37,7 +39,19 @@ def main(argv=None):
     r.add_argument("--log2", default="auto", choices=["auto", "yes", "no"])
     r.add_argument("--title", default="Pathway-score audit")
     r.add_argument("--seed", type=int, default=0)
+    s = sub.add_parser("sc-sources", help="which annotated cell types supply each gene set's transcripts (single-cell counts)")
+    s.add_argument("--counts", required=True, help="10x Matrix Market (genes x cells, .mtx or .mtx.gz) or scipy .npz (cells x genes)")
+    s.add_argument("--genes", required=True, help="gene symbols, one per line, or 10x features.tsv (symbol in column 2)")
+    s.add_argument("--cells", required=True, help="CSV/TSV with one row per cell, in matrix order")
+    s.add_argument("--gene-sets", required=True, help="GMT or JSON {name: [genes]}")
+    s.add_argument("--out", required=True)
+    s.add_argument("--cell-type-column", default="cell_type")
+    s.add_argument("--group-column", help="optional per-cell group (e.g. patient); enrichment is the median across groups")
+    s.add_argument("--n-random", type=int, default=1000)
+    s.add_argument("--seed", type=int, default=0)
     a = p.parse_args(argv)
+    if a.cmd == "sc-sources":
+        return _sc_sources(a)
     if a.cmd == "demo":
         from .demo import run_demo
         res, path = run_demo(a.out)
@@ -75,3 +89,38 @@ def main(argv=None):
 
 if __name__ == "__main__":
     sys.exit(main())
+
+
+def _sc_sources(a):
+    import warnings
+    from pathlib import Path
+
+    import pandas as pd
+    import scipy.io
+    import scipy.sparse as sp
+
+    from .single_cell import cell_type_sources, verdicts
+
+    if a.counts.endswith(".npz"):
+        X = sp.load_npz(a.counts).tocsr()
+    else:
+        with warnings.catch_warnings():  # SciPy's return-type deprecation notice; the result is converted to CSR either way
+            warnings.simplefilter("ignore", DeprecationWarning)
+            X = sp.csr_matrix(scipy.io.mmread(a.counts)).T.tocsr()
+    g = pd.read_csv(a.genes, sep="\t", header=None)
+    genes = g.iloc[:, 1] if g.shape[1] > 1 else g.iloc[:, 0]
+    cells = io.read_annotations(a.cells) if not a.cells.endswith(".csv") else pd.read_csv(a.cells)
+    groups = cells[a.group_column] if a.group_column else None
+    table = cell_type_sources(X, genes, cells[a.cell_type_column], io.read_gene_sets(a.gene_sets), groups=groups,
+                              n_random=a.n_random, seed=a.seed)
+    out = Path(a.out)
+    out.mkdir(parents=True, exist_ok=True)
+    table.to_csv(out / "sc_sources.csv", index=False)
+    v = verdicts(table)
+    lines = ["# Single-cell source check", "", "Enrichment = a gene set's share of transcripts in a cell type, divided by the share for random gene sets "
+             "matched on size and mean expression (1 = as expected). mRNA only; not protein or pathway activity.", ""]
+    lines += [f"- **{k}:** {t}" for k, t in v.items()]
+    (out / "SC_SOURCES.md").write_text("\n".join(lines) + "\n")
+    for k, t in v.items():
+        print(f"  {k}: {t}")
+    return 0
