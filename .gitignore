@@ -47,3 +47,6 @@ reports/phase9/corrected_rerun/runs/*.lock
 # --- editor / OS lock files ---
 ~$*
 .DS_Store
+
+# --- single-cell environment ---
+.venv-sc/

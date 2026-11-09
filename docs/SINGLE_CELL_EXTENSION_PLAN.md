@@ -83,3 +83,5 @@ A cohort that fails the gate is excluded and reported, as GSE103479 was in the b
 ## 6. Deviations
 
 Any change to this plan after data access will be recorded here, dated and justified, before the affected results are reported.
+
+- **2026-11-08, after reading annotation files only (no expression values):** the compartment mapping is fixed in `config/single_cell/compartment_map.json`. Two clarifications follow from the annotations. (1) GSE144735 has tumour core, tumour border and normal samples; tumour core ("Tumor") is used, as the plan specifies tumour samples. (2) GSE178341's released labels do not separate malignant from normal epithelium, so for S3 its "malignant epithelial" set is all epithelial cells from tumour specimens, which may include some normal epithelium. Enteric glia and Schwann cells are excluded from the four compartments.
