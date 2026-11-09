@@ -84,7 +84,7 @@ Status key (one status per requirement):
 |---|---|---|---|
 | R1 | Frozen outputs, figures and archive unchanged | VERIFIED | 345 protected files and 25 figure files match recorded hashes; archive manifest 52/52 |
 | R2 | GitHub Release unchanged | VERIFIED | Tag `phase9-corrected-campaign-2026-11-08`; asset digest `sha256:0812b3ba…2aa2f` |
-| R3 | Repository state unchanged | VERIFIED | HEAD `bf3c456`, level with the remote; nothing staged; visibility PRIVATE |
+| R3 | Repository state | VERIFIED | Work committed locally on branch `extensions-tool-portfolio` (five commits on top of `bf3c456`, owner-authorised 8 Nov 2026); not pushed; `phase9-corrected-pipeline` unchanged and level with the remote; visibility PRIVATE |
 | R4 | Code licence | DONE | MIT chosen by the owner (8 Nov 2026); `LICENSE` at the root and in `tools/pathway-audit/` |
 | R5 | Per-sample data governance before any public release | OWNER DECISION | Open items in `docs/PUBLIC_RELEASE_REPRODUCIBILITY_AUDIT.md` |
 
