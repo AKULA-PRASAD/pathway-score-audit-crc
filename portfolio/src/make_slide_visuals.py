@@ -719,7 +719,7 @@ def v16(V):
         fx = x0 + 0.24 + i * 1.42
         ax.text(fx, y0 + 2.04, n_, fontsize=16, fontweight="bold", color=TOOL[0], va="center")
         ax.text(fx, y0 + 2.24, wrap(t, 1.3, 9.2), fontsize=9.2, color=INK, va="top", linespacing=1.15)
-    ax.text(x0 + 0.24, y0 + h0 - 0.1, "Version 0.2.0. Docker image written, not yet built.", fontsize=9.0, color=MUTED, va="bottom", style="italic")
+    ax.text(x0 + 0.24, y0 + h0 - 0.1, "Version 0.2.0. Docker image builds and runs (tests + demo).", fontsize=9.0, color=MUTED, va="bottom", style="italic")
     # 2 · EMT
     x1, y1, w1, h1 = 6.14, 0.06, 5.98, 2.92
     SC = V["SC"]

@@ -127,7 +127,7 @@ The project's methods are packaged as an installable Python tool with a command-
 
 - Single-cell case study: on GSE132465 tumour cells, `sc-sources` reproduces the registered single-cell analysis (EMT set: stromal 5.10 vs 5.08, epithelial 0.45 vs 0.45).
 
-**Not yet run:** the Docker image has not been built (Docker is not installed on the development machine).
+**Container:** the Docker image builds and runs locally (Colima, Docker Engine 29); inside it the 13 tests give 12 passed and 1 skipped (reference files absent), and the demo recovers all four planted truths. It is not published to a container registry.
 
 ## 9c. Single-cell extension (S1–S5)
 

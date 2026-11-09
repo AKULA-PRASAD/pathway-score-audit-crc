@@ -82,7 +82,12 @@ pytest                                    # synthetic data with known structure
 PATHWAY_AUDIT_REFS=refs/ pytest           # also checks the ESTIMATE re-implementation against the package example
 ```
 
-13 tests. Continuous integration (GitHub Actions) runs lint, the tests and the demo on Python 3.10 and 3.12 at every push, and passes. The Docker image has not yet been built.
+13 tests. Continuous integration (GitHub Actions) runs lint, the tests and the demo on Python 3.10 and 3.12 at every push, and passes. The Docker image builds and runs: inside the container the tests pass (12 passed, 1 skipped without reference files) and the demo recovers all four planted truths. It is built locally and not published to a container registry.
+
+```bash
+docker build -t pathway-audit:0.2.0 tools/pathway-audit
+docker run --rm -v "$PWD/demo:/out" pathway-audit:0.2.0 demo --out /out
+```
 
 The synthetic tests check that:
 - the QC gate fails when gene labels are shuffled;

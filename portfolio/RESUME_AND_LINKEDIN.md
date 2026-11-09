@@ -28,7 +28,7 @@ I built pathway-audit, a tested Python tool that checks what a cancer pathway sc
 - Pathway activity or protein function.
 - Tumour-cell EMT, or that the EMT score "is not" tumour-cell EMT: bulk data cannot separate the two.
 - External validation of the prediction model.
-- A public release, PyPI package or working Docker image: none exists yet. The code is MIT-licensed and CI passes, but the repository is private and the Docker image has not been built.
+- A public release, PyPI package or published container image: none exists yet. The code is MIT-licensed, CI passes and the Docker image builds and runs locally (tests and demo pass inside it), but the repository is private and the image is not on a registry.
 - Scanpy-based analysis: the single-cell work used pandas, SciPy and h5py directly.
 - "Novel algorithm": the tool combines established methods in a new, tested workflow.
 

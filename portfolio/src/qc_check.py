@@ -259,7 +259,7 @@ slide_keys = {
     "V13_central_result": ["0.6016", "0.6059", "0.6242", "0.6382", "+0.004316", "did not demonstrate"],
     "V14_forest": [fmt(x["hr"]) for x in V["pathways"]] + [fmt(x["hr_s7"]) for x in V["pathways"]] + ["Sensitivity only", fmt(V["five_set_e2f"])],
     "V15_robustness": ["0.0394", "0.0251", "0.0187", "0.1716", "0.833", "0.862", "0.836", "characterised, not resolved"],
-    "V16_project_established": ["What remains unresolved", "13/13", "not yet built", "CI", "4/4", "0.94", "0.95", "0.98", "5.08×", "0.45×", "not ruled", "not a measure of p53", "explained by hypermutation", "+0.004316", "include zero", "provisionally months", "0 of 14"],
+    "V16_project_established": ["What remains unresolved", "13/13", "builds and runs", "CI", "4/4", "0.94", "0.95", "0.98", "5.08×", "0.45×", "not ruled", "not a measure of p53", "explained by hypermutation", "+0.004316", "include zero", "provisionally months", "0 of 14"],
     "V17_decisions_audit": ["DC1", "DC2", "DC3", "DC4", "DC5", "DC6", "DC7", "60 / 60"],
     "V18_conclusion_questions": ["+0.004316", "includes zero", "pathway-audit", "Take-home", "NOT TESTED", "Next scientific questions", "≈337", "single-cell RNA missed"],
     "V19_solution_tool": ["0.94", "0.95", "0.98", "failed quality gate", "pathway-audit", "Survival screen", "Single-cell sources", "13/13"],
