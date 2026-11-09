@@ -49,6 +49,13 @@ def test_calibration_matches_logistic_reference():
     assert abs(a) < 0.5                                  # well-calibrated draws -> intercept near 0
 
 
+def test_calibration_returns_nan_when_estimate_does_not_exist():
+    _, slope = C.calibration([0, 0, 1, 1], [0.1, 0.2, 0.8, 0.9])       # perfect separation
+    assert np.isnan(slope)
+    _, slope = C.calibration([0, 1, 0, 1], [0.3] * 4)                 # constant predictions
+    assert np.isnan(slope)
+
+
 # ---------------------------------------------------------------- 4/11. folds
 def test_folds_partition_stratify_and_are_deterministic():
     ids = [f"s{i}" for i in range(409)]
